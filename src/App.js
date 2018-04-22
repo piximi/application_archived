@@ -37,7 +37,7 @@ class App extends Component {
 
     return (
       <div className={classes.root}>
-        <AppBar position="absolute" className={classes.appBar} color="default">
+        <AppBar position="fixed" className={classes.appBar} color="default">
           <Toolbar>
             <Typography variant="title" color="inherit" noWrap>
               &nbsp;

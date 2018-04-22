@@ -8,6 +8,7 @@ import {
 } from 'material-ui';
 import LabelOutlineIcon from '@material-ui/icons/LabelOutline';
 import { withStyles } from 'material-ui/styles';
+import Sample from './Sample';
 
 const styles = theme => ({
   root: {
@@ -37,20 +38,9 @@ class Samples extends Component {
   render() {
     return (
       <GridList cellHeight={256} cols={3}>
-        {this.props.samples.map(sample => (
-          <GridListTile key={sample.image.pathname} cols={1}>
-            <LazyLoad height={'100%'} offset={100} once>
-              <img src={sample.image.pathname} />
-
-              <GridListTileBar
-                actionPosition="left"
-                actionIcon={
-                  <IconButton>
-                    <LabelOutlineIcon />
-                  </IconButton>
-                }
-              />
-            </LazyLoad>
+        {this.props.samples.map((sample, index) => (
+          <GridListTile key={index} cols={1}>
+            <Sample pathname={sample.image.pathname} />
           </GridListTile>
         ))}
       </GridList>
