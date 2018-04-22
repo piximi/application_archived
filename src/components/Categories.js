@@ -20,7 +20,7 @@ class Categories extends Component {
     this.state = {
       categories: [
         {
-          id: uuidv4(),
+          identifier: uuidv4(),
           color: '',
           name: ''
         }
@@ -44,9 +44,10 @@ class Categories extends Component {
     return (
       <React.Fragment>
         <List subheader={<ListSubheader>Categories</ListSubheader>}>
-          {this.state.categories.map((category, index) => (
+          {this.state.categories.map(category => (
             <Category
-              key={category.id}
+              key={category.identifier}
+              identifier={category.identifier}
               color={category.color}
               name={category.name}
             />

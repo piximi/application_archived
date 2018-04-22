@@ -9,6 +9,22 @@ import {
 } from 'material-ui';
 import LabelIcon from '@material-ui/icons/Label';
 import './Category.css';
+import { DropTarget } from 'react-dnd';
+
+const spec = {
+  drop(props, monitor, component) {
+    return {
+      categoryIdentifier: component.props.category.categoryIdentifier
+    };
+  }
+};
+
+function collect(connect, monitor) {
+  return {
+    connectDropTarget: connect.dropTarget(),
+    isOver: monitor.isOver()
+  };
+}
 
 class Category extends Component {
   constructor(props) {
@@ -37,35 +53,39 @@ class Category extends Component {
   }
 
   render() {
-    return (
-      <Grid container spacing={0}>
-        <ListItem button>
-          <Grid item xs={2}>
-            <ListItemIcon>
-              <LabelIcon />
-            </ListItemIcon>
-          </Grid>
+    const { connectDropTarget } = this.props;
 
-          <Grid item xs={8}>
-            <Input
-              className="name"
-              onChange={this.onInputChange}
-              value={this.state.name}
-            />
-          </Grid>
+    return connectDropTarget(
+      <div>
+        <Grid container spacing={0}>
+          <ListItem button>
+            <Grid item xs={2}>
+              <ListItemIcon>
+                <LabelIcon />
+              </ListItemIcon>
+            </Grid>
 
-          <Grid item xs={2}>
-            <ListItemSecondaryAction>
-              <Checkbox
-                checked={this.state.checked}
-                onChange={this.onCheckboxChange}
+            <Grid item xs={8}>
+              <Input
+                className="name"
+                onChange={this.onInputChange}
+                value={this.state.name}
               />
-            </ListItemSecondaryAction>
-          </Grid>
-        </ListItem>
-      </Grid>
+            </Grid>
+
+            <Grid item xs={2}>
+              <ListItemSecondaryAction>
+                <Checkbox
+                  checked={this.state.checked}
+                  onChange={this.onCheckboxChange}
+                />
+              </ListItemSecondaryAction>
+            </Grid>
+          </ListItem>
+        </Grid>
+      </div>
     );
   }
 }
 
-export default Category;
+export default DropTarget('Image', spec, collect)(Category);
