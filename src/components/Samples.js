@@ -42,9 +42,9 @@ class Samples extends Component {
   render() {
     return (
       <GridList cellHeight={256} cols={this.props.columns}>
-        {this.props.pathnames.map((pathname, index) => (
+        {this.state.samples.map((sample, index) => (
           <GridListTile key={index} cols={1}>
-            <Sample pathname={pathname} />
+            <Sample pathname={sample.pathname} />
           </GridListTile>
         ))}
       </GridList>

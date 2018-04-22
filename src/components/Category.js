@@ -15,7 +15,6 @@ class Category extends Component {
     super(props);
 
     this.state = {
-      color: null,
       checked: true,
       name: this.props.name
     };

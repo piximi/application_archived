@@ -3,6 +3,14 @@ import LabelOutlineIcon from '@material-ui/icons/LabelOutline';
 import React, { Component } from 'react';
 
 class Sample extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      category: this.props.category || null
+    };
+  }
+
   render() {
     return (
       <React.Fragment>

@@ -3,6 +3,7 @@ import { Button, List, ListSubheader } from 'material-ui';
 import Category from './Category';
 import AddIcon from '@material-ui/icons/Add';
 import { withStyles } from 'material-ui/styles';
+import uuidv4 from 'uuid';
 
 const styles = theme => ({
   create: {
@@ -19,6 +20,8 @@ class Categories extends Component {
     this.state = {
       categories: [
         {
+          id: uuidv4(),
+          color: '',
           name: ''
         }
       ]
@@ -42,7 +45,11 @@ class Categories extends Component {
       <React.Fragment>
         <List subheader={<ListSubheader>Categories</ListSubheader>}>
           {this.state.categories.map((category, index) => (
-            <Category key={index} name={category.name} />
+            <Category
+              key={category.id}
+              color={category.color}
+              name={category.name}
+            />
           ))}
         </List>
 
