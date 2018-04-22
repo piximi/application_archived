@@ -16,7 +16,8 @@ const styles = theme => ({
     display: 'flex'
   },
   appBar: {
-    zIndex: theme.zIndex.drawer + 1
+    zIndex: theme.zIndex.drawer + 1,
+    position: 'fixed'
   },
   drawerPaper: {
     position: 'relative'
@@ -45,7 +46,7 @@ class App extends Component {
           </Toolbar>
         </AppBar>
 
-        <Grid container spacing={24}>
+        <Grid container spacing={0}>
           <Grid item xs={3}>
             <Drawer
               classes={{ paper: classes.drawerPaper }}
@@ -58,10 +59,12 @@ class App extends Component {
           </Grid>
 
           <Grid item xs={9}>
-            <div className={classes.toolbar} />
+            <main className={classes.content}>
+              <div className={classes.toolbar} />
 
-            <br />
-            <Samples samples={data} />
+              <br />
+              <Samples samples={data} />
+            </main>
           </Grid>
         </Grid>
       </div>

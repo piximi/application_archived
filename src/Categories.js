@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, List } from 'material-ui';
+import { Button, List, ListSubheader } from 'material-ui';
 import Category from './Category';
 import AddIcon from '@material-ui/icons/Add';
 import { withStyles } from 'material-ui/styles';
@@ -40,7 +40,7 @@ class Categories extends Component {
   render() {
     return (
       <div>
-        <List component="nav">
+        <List subheader={<ListSubheader>Categories</ListSubheader>}>
           {this.state.categories.map((category, index) => (
             <Category key={index} name={category.name} />
           ))}

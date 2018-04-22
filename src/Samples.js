@@ -36,7 +36,7 @@ const styles = theme => ({
 class Samples extends Component {
   render() {
     return (
-      <GridList cellHeight={160} cols={3}>
+      <GridList cellHeight={256} cols={3}>
         {this.props.samples.map(sample => (
           <GridListTile key={sample.image.pathname} cols={1}>
             <LazyLoad height={'100%'} offset={100} once>
