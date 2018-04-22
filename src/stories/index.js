@@ -5,20 +5,11 @@ import Categories from '../Categories';
 import Samples from '../Samples';
 import { Grid, Paper } from 'material-ui';
 import data from '../images/mnist.json';
-import Sample from '../Sample';
 
 storiesOf('Categories', module).add('default', () => (
   <Grid container spacing={0}>
     <Grid item xs={4}>
       <Categories />
-    </Grid>
-  </Grid>
-));
-
-storiesOf('Sample', module).add('default', () => (
-  <Grid container spacing={24}>
-    <Grid item xs={1}>
-      <Sample />
     </Grid>
   </Grid>
 ));

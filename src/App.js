@@ -4,6 +4,7 @@ import { withStyles } from 'material-ui/styles';
 import { AppBar, Drawer, Grid, Toolbar, Typography } from 'material-ui';
 import Categories from './Categories';
 import Samples from './Samples';
+import data from './images/stock.json';
 
 const styles = theme => ({
   root: {
@@ -56,7 +57,12 @@ class App extends Component {
             </Drawer>
           </Grid>
 
-          <Grid item xs={9} />
+          <Grid item xs={9}>
+            <div className={classes.toolbar} />
+
+            <br />
+            <Samples samples={data} />
+          </Grid>
         </Grid>
       </div>
     );

@@ -1,31 +1,61 @@
 import React, { Component } from 'react';
 import LazyLoad from 'react-lazyload';
-import { Grid } from 'material-ui';
+import {
+  GridList,
+  GridListTile,
+  GridListTileBar,
+  IconButton
+} from 'material-ui';
+import LabelOutlineIcon from '@material-ui/icons/LabelOutline';
+import { withStyles } from 'material-ui/styles';
+
+const styles = theme => ({
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+    overflow: 'hidden',
+    backgroundColor: theme.palette.background.paper
+  },
+  gridList: {
+    width: 500,
+    height: 450,
+    // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
+    transform: 'translateZ(0)'
+  },
+  titleBar: {
+    background:
+      'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, ' +
+      'rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)'
+  },
+  icon: {
+    color: 'white'
+  }
+});
 
 class Samples extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      xs: 1
-    };
-  }
-
   render() {
     return (
-      <Grid container spacing={24}>
-        <Grid item xs={12} />
-
+      <GridList cellHeight={160} cols={3}>
         {this.props.samples.map(sample => (
-          <Grid item xs={1}>
+          <GridListTile key={sample.image.pathname} cols={1}>
             <LazyLoad height={'100%'} offset={100} once>
               <img src={sample.image.pathname} />
+
+              <GridListTileBar
+                actionPosition="left"
+                actionIcon={
+                  <IconButton>
+                    <LabelOutlineIcon />
+                  </IconButton>
+                }
+              />
             </LazyLoad>
-          </Grid>
+          </GridListTile>
         ))}
-      </Grid>
+      </GridList>
     );
   }
 }
 
-export default Samples;
+export default withStyles(styles)(Samples);
