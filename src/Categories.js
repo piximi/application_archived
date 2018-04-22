@@ -5,9 +5,9 @@ import AddIcon from '@material-ui/icons/Add';
 import { withStyles } from 'material-ui/styles';
 
 const styles = theme => ({
-  fab: {
-    position: 'absolute',
+  create: {
     bottom: theme.spacing.unit * 2,
+    position: 'absolute',
     right: theme.spacing.unit * 2
   }
 });
@@ -15,20 +15,40 @@ const styles = theme => ({
 class Categories extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      categories: [
+        {
+          name: ''
+        }
+      ]
+    };
+
+    this.onClick = this.onClick.bind(this);
+  }
+
+  onClick() {
+    const category = {
+      name: ''
+    };
+
+    this.setState(previousState => ({
+      categories: [...previousState.categories, category]
+    }));
   }
 
   render() {
     return (
       <div>
         <List component="nav">
-          <Category name="0" />
-          <Category name="1" />
+          {this.state.categories.map((category, index) => (
+            <Category key={index} name={category.name} />
+          ))}
         </List>
 
         <Button
-          aria-label="add"
-          className={this.props.classes.fab}
-          color="secondary"
+          className={this.props.classes.create}
+          onClick={this.onClick}
           variant="fab"
         >
           <AddIcon />
