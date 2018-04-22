@@ -37,7 +37,7 @@ const styles = theme => ({
 class Samples extends Component {
   render() {
     return (
-      <GridList cellHeight={256} cols={3}>
+      <GridList cellHeight={256} cols={this.props.columns}>
         {this.props.samples.map((sample, index) => (
           <GridListTile key={index} cols={1}>
             <Sample pathname={sample.image.pathname} />
