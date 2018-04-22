@@ -47,15 +47,17 @@ class Classifier extends Component {
     this.state = {
       columns: 4
     };
-
-    this.onChange = this.onChange.bind(this);
   }
 
-  onChange(event) {
+  onChange = event => {
     this.setState({
       columns: event.target.value
     });
-  }
+  };
+
+  onDrop = dropped => {
+    this.props.onDrop(dropped);
+  };
 
   render() {
     const { classes } = this.props;
@@ -102,7 +104,11 @@ class Classifier extends Component {
                   />
                 </Toolbar>
 
-                <Samples columns={this.state.columns} pathnames={data} />
+                <Samples
+                  columns={this.state.columns}
+                  drop={this.onDrop}
+                  pathnames={data}
+                />
               </main>
             </Grid>
           </Grid>

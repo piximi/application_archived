@@ -20,11 +20,9 @@ class Categories extends Component {
     this.state = {
       categories: []
     };
-
-    this.onClick = this.onClick.bind(this);
   }
 
-  onClick() {
+  onClick = () => {
     const category = {
       color: '',
       identifier: uuidv4(),
@@ -34,7 +32,7 @@ class Categories extends Component {
     this.setState(previousState => ({
       categories: [...previousState.categories, category]
     }));
-  }
+  };
 
   render() {
     return (

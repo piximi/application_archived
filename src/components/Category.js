@@ -34,23 +34,19 @@ class Category extends Component {
       checked: true,
       name: this.props.name
     };
-
-    this.onCheckboxChange = this.onCheckboxChange.bind(this);
-
-    this.onInputChange = this.onInputChange.bind(this);
   }
 
-  onCheckboxChange() {
+  onCheckboxChange = () => {
     this.setState({
       checked: !this.state.checked
     });
-  }
+  };
 
-  onInputChange(event) {
+  onInputChange = event => {
     this.setState({
       name: event.target.value
     });
-  }
+  };
 
   render() {
     const { connectDropTarget } = this.props;

@@ -44,13 +44,11 @@ class Sample extends Component {
       identifier: props.identifier,
       pathname: props.pathname
     };
-
-    this.onDrop = this.onDrop.bind(this);
   }
 
-  onDrop(dropped) {
+  onDrop = dropped => {
     this.props.drop(dropped);
-  }
+  };
 
   render() {
     const { connectDragSource, pathname } = this.props;
