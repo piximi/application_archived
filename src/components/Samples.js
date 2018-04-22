@@ -21,7 +21,11 @@ class Samples extends Component {
       <GridList cellHeight={256} cols={this.props.columns}>
         {this.state.samples.map((sample, index) => (
           <GridListTile key={index} cols={1}>
-            <Sample pathname={sample.pathname} />
+            <Sample
+              categoryIdentifier={sample.categoryIdentifier}
+              identifier={sample.identifier}
+              pathname={sample.pathname}
+            />
           </GridListTile>
         ))}
       </GridList>

@@ -14,14 +14,14 @@ const source = {
     if (monitor.didDrop()) {
       const categoryIdentifier = monitor.getDropResult().categoryIdentifier;
 
-      const imageIdentifier = Number(props.identifier);
+      const imageIdentifier = props.identifier;
 
       const previousCategoryIdentifier = props.categoryIdentifier;
 
       const props = {
         categoryIdentifier: categoryIdentifier,
         previousCategoryIdentifier: previousCategoryIdentifier,
-        image_id: imageIdentifier
+        imageIdentifier: imageIdentifier
       };
 
       component.onDrop(props);
@@ -37,6 +37,15 @@ function collect(connect, monitor) {
 }
 
 class Sample extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      identifier: props.identifier,
+      pathname: props.pathname
+    };
+  }
+
   onDrop(props) {
     this.props.drop(props);
   }

@@ -14,7 +14,7 @@ import { DropTarget } from 'react-dnd';
 const spec = {
   drop(props, monitor, component) {
     return {
-      categoryIdentifier: component.props.category.categoryIdentifier
+      categoryIdentifier: component.props.categoryIdentifier
     };
   }
 };
