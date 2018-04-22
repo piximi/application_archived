@@ -1,9 +1,32 @@
 import React from 'react';
 
-import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
+import { storiesOf, addDecorator } from '@storybook/react';
+import Categories from '../Categories';
+import Samples from '../Samples';
+import { Grid, Paper } from 'material-ui';
+import data from '../images/mnist.json';
+import Sample from '../Sample';
 
-import { Button } from 'material-ui';
-import CytoAppBar from '../CytoAppBar';
+storiesOf('Categories', module).add('default', () => (
+  <Grid container spacing={0}>
+    <Grid item xs={4}>
+      <Categories />
+    </Grid>
+  </Grid>
+));
 
-storiesOf('CytoAppBar', module).add('default', () => <CytoAppBar />);
+storiesOf('Sample', module).add('default', () => (
+  <Grid container spacing={24}>
+    <Grid item xs={1}>
+      <Sample />
+    </Grid>
+  </Grid>
+));
+
+storiesOf('Samples', module).add('default', () => (
+  <Grid container spacing={24}>
+    <Grid item xs={8}>
+      <Samples samples={data} />
+    </Grid>
+  </Grid>
+));
