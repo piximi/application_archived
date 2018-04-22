@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { withStyles } from 'material-ui/styles';
-import { AppBar, Drawer, Grid, Input, Toolbar, Typography } from 'material-ui';
+import { AppBar, Drawer, Grid, Toolbar, Typography } from 'material-ui';
 import Categories from './components/Categories';
 import Samples from './components/Samples';
 import data from './images/stock.json';
@@ -90,7 +90,7 @@ class App extends Component {
                 />
               </Toolbar>
 
-              <Samples columns={this.state.columns} samples={data} />
+              <Samples columns={this.state.columns} pathnames={data} />
             </main>
           </Grid>
         </Grid>

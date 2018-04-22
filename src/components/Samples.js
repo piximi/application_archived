@@ -1,12 +1,5 @@
 import React, { Component } from 'react';
-import LazyLoad from 'react-lazyload';
-import {
-  GridList,
-  GridListTile,
-  GridListTileBar,
-  IconButton
-} from 'material-ui';
-import LabelOutlineIcon from '@material-ui/icons/LabelOutline';
+import { GridList, GridListTile } from 'material-ui';
 import { withStyles } from 'material-ui/styles';
 import Sample from './Sample';
 
@@ -35,12 +28,23 @@ const styles = theme => ({
 });
 
 class Samples extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      samples: this.props.pathnames.map(pathname => ({
+        category_id: null,
+        pathname: pathname
+      }))
+    };
+  }
+
   render() {
     return (
       <GridList cellHeight={256} cols={this.props.columns}>
-        {this.props.samples.map((sample, index) => (
+        {this.props.pathnames.map((pathname, index) => (
           <GridListTile key={index} cols={1}>
-            <Sample pathname={sample.image.pathname} />
+            <Sample pathname={pathname} />
           </GridListTile>
         ))}
       </GridList>

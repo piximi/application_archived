@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { Button, List, ListSubheader, Toolbar } from 'material-ui';
+import { Button, List, ListSubheader } from 'material-ui';
 import Category from './Category';
 import AddIcon from '@material-ui/icons/Add';
-import SaveIcon from '@material-ui/icons/Save';
 import { withStyles } from 'material-ui/styles';
 
 const styles = theme => ({
