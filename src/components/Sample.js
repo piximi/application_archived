@@ -12,11 +12,19 @@ const source = {
   },
   endDrag(props, monitor, component) {
     if (monitor.didDrop()) {
-      component.onDrop({
-        categoryIdentifier: monitor.getDropResult().categoryIdentifier,
-        previousCategoryIdentifier: props.categoryIdentifier,
-        imageIdentifier: props.identifier
-      });
+      const categoryIdentifier = monitor.getDropResult().categoryIdentifier;
+
+      const imageIdentifier = props.identifier;
+
+      const previousCategoryIdentifier = props.categoryIdentifier;
+
+      const dropped = {
+        categoryIdentifier: categoryIdentifier,
+        previousCategoryIdentifier: previousCategoryIdentifier,
+        imageIdentifier: imageIdentifier
+      };
+
+      component.onDrop(dropped);
     }
   }
 };
@@ -36,10 +44,12 @@ class Sample extends Component {
       identifier: props.identifier,
       pathname: props.pathname
     };
+
+    this.onDrop = this.onDrop.bind(this);
   }
 
-  onDrop(props) {
-    this.props.drop(props);
+  onDrop(dropped) {
+    this.props.drop(dropped);
   }
 
   render() {

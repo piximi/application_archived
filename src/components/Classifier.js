@@ -12,6 +12,8 @@ import {
 import Categories from './Categories';
 import Samples from '../components/Samples';
 import data from '../images/stock.json';
+import HTML5Backend from 'react-dnd-html5-backend';
+import { DragDropContextProvider } from 'react-dnd';
 
 const styles = theme => ({
   root: {
@@ -59,51 +61,53 @@ class Classifier extends Component {
     const { classes } = this.props;
 
     return (
-      <div className={classes.root}>
-        <AppBar position="fixed" className={classes.appBar} color="default">
-          <Toolbar>
-            <Typography variant="title" color="inherit" noWrap>
-              &nbsp;
-            </Typography>
-          </Toolbar>
-        </AppBar>
+      <DragDropContextProvider backend={HTML5Backend}>
+        <div className={classes.root}>
+          <AppBar position="fixed" className={classes.appBar} color="default">
+            <Toolbar>
+              <Typography variant="title" color="inherit" noWrap>
+                &nbsp;
+              </Typography>
+            </Toolbar>
+          </AppBar>
 
-        <Grid container spacing={0}>
-          <Grid item xs={3}>
-            <Drawer
-              classes={{ paper: classes.drawerPaper }}
-              variant="permanent"
-            >
-              <div className={classes.toolbar} />
+          <Grid container spacing={0}>
+            <Grid item xs={3}>
+              <Drawer
+                classes={{ paper: classes.drawerPaper }}
+                variant="permanent"
+              >
+                <div className={classes.toolbar} />
 
-              <Toolbar />
+                <Toolbar />
 
-              <Divider />
+                <Divider />
 
-              <Categories />
-            </Drawer>
+                <Categories />
+              </Drawer>
+            </Grid>
+
+            <Grid item xs={9}>
+              <main className={classes.content}>
+                <div className={classes.toolbar} />
+
+                <Toolbar>
+                  <input
+                    type="range"
+                    min="2"
+                    max="8"
+                    step="1"
+                    value={this.state.columns}
+                    onChange={this.onChange}
+                  />
+                </Toolbar>
+
+                <Samples columns={this.state.columns} pathnames={data} />
+              </main>
+            </Grid>
           </Grid>
-
-          <Grid item xs={9}>
-            <main className={classes.content}>
-              <div className={classes.toolbar} />
-
-              <Toolbar>
-                <input
-                  type="range"
-                  min="2"
-                  max="8"
-                  step="1"
-                  value={this.state.columns}
-                  onChange={this.onChange}
-                />
-              </Toolbar>
-
-              <Samples columns={this.state.columns} pathnames={data} />
-            </main>
-          </Grid>
-        </Grid>
-      </div>
+        </div>
+      </DragDropContextProvider>
     );
   }
 }
