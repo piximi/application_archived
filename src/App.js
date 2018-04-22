@@ -36,7 +36,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      columns: 3
+      columns: 4
     };
 
     this.onChange = this.onChange.bind(this);
