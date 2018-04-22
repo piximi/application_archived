@@ -1,8 +1,8 @@
 import React from 'react';
 
 import { storiesOf, addDecorator } from '@storybook/react';
-import Categories from '../Categories';
-import Samples from '../Samples';
+import Categories from '../components/Categories';
+import Samples from '../components/Samples';
 import { Grid, Paper } from 'material-ui';
 import data from '../images/mnist.json';
 

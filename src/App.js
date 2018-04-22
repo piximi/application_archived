@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import { withStyles } from 'material-ui/styles';
 import { AppBar, Drawer, Grid, Toolbar, Typography } from 'material-ui';
-import Categories from './Categories';
-import Samples from './Samples';
+import Categories from './components/Categories';
+import Samples from './components/Samples';
 import data from './images/stock.json';
 
 const styles = theme => ({
@@ -16,8 +16,7 @@ const styles = theme => ({
     display: 'flex'
   },
   appBar: {
-    zIndex: theme.zIndex.drawer + 1,
-    position: 'fixed'
+    zIndex: theme.zIndex.drawer + 1
   },
   drawerPaper: {
     position: 'relative'
@@ -38,7 +37,7 @@ class App extends Component {
 
     return (
       <div className={classes.root}>
-        <AppBar position="absolute" className={classes.appBar}>
+        <AppBar position="absolute" className={classes.appBar} color="default">
           <Toolbar>
             <Typography variant="title" color="inherit" noWrap>
               &nbsp;
