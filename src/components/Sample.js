@@ -12,19 +12,11 @@ const source = {
   },
   endDrag(props, monitor, component) {
     if (monitor.didDrop()) {
-      const categoryIdentifier = monitor.getDropResult().categoryIdentifier;
-
-      const imageIdentifier = props.identifier;
-
-      const previousCategoryIdentifier = props.categoryIdentifier;
-
-      const props = {
-        categoryIdentifier: categoryIdentifier,
-        previousCategoryIdentifier: previousCategoryIdentifier,
-        imageIdentifier: imageIdentifier
-      };
-
-      component.onDrop(props);
+      component.onDrop({
+        categoryIdentifier: monitor.getDropResult().categoryIdentifier,
+        previousCategoryIdentifier: props.categoryIdentifier,
+        imageIdentifier: props.identifier
+      });
     }
   }
 };

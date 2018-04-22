@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, List, ListSubheader } from 'material-ui';
+import { Button, Divider, List, ListSubheader } from 'material-ui';
 import Category from './Category';
 import AddIcon from '@material-ui/icons/Add';
 import { withStyles } from 'material-ui/styles';
@@ -18,13 +18,7 @@ class Categories extends Component {
     super(props);
 
     this.state = {
-      categories: [
-        {
-          identifier: uuidv4(),
-          color: '',
-          name: ''
-        }
-      ]
+      categories: []
     };
 
     this.onClick = this.onClick.bind(this);
@@ -32,6 +26,8 @@ class Categories extends Component {
 
   onClick() {
     const category = {
+      color: '',
+      identifier: uuidv4(),
       name: ''
     };
 

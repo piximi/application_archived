@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
 import './Classifier.css';
 import { withStyles } from 'material-ui/styles';
-import { AppBar, Drawer, Grid, Toolbar, Typography } from 'material-ui';
+import {
+  AppBar,
+  Divider,
+  Drawer,
+  Grid,
+  Toolbar,
+  Typography
+} from 'material-ui';
 import Categories from './Categories';
 import Samples from '../components/Samples';
 import data from '../images/stock.json';
@@ -70,6 +77,8 @@ class Classifier extends Component {
               <div className={classes.toolbar} />
 
               <Toolbar />
+
+              <Divider />
 
               <Categories />
             </Drawer>
