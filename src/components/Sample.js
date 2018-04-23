@@ -14,17 +14,14 @@ const source = {
     if (monitor.didDrop()) {
       const categoryIdentifier = monitor.getDropResult().categoryIdentifier;
 
-      const imageIdentifier = props.identifier;
+      const color = monitor.getDropResult().color;
 
-      const previousCategoryIdentifier = props.categoryIdentifier;
-
-      const dropped = {
+      component.setState({
         categoryIdentifier: categoryIdentifier,
-        previousCategoryIdentifier: previousCategoryIdentifier,
-        imageIdentifier: imageIdentifier
-      };
-
-      component.onDrop(dropped);
+        color: color,
+        identifier: props.identifier,
+        pathname: props.pathname
+      });
     }
   }
 };
@@ -41,6 +38,8 @@ class Sample extends Component {
     super(props);
 
     this.state = {
+      categoryIdentifier: '',
+      color: '',
       identifier: props.identifier,
       pathname: props.pathname
     };
@@ -59,7 +58,12 @@ class Sample extends Component {
           <img src={pathname} style={{ width: '100%' }} />
         </LazyLoad>
 
-        <GridListTileBar />
+        <GridListTileBar
+          style={{
+            backgroundColor: this.state.color || 'rgba(0, 0, 0, 0.4)',
+            opacity: 0.4
+          }}
+        />
       </div>
     );
   }
