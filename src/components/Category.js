@@ -4,15 +4,22 @@ import {
   Grid,
   Input,
   ListItem,
-  ListItemIcon,
   ListItemSecondaryAction
 } from 'material-ui';
-import LabelIcon from '@material-ui/icons/Label';
+import Avatar from 'material-ui/Avatar';
 import './Category.css';
 import { DropTarget } from 'react-dnd';
 
 const spec = {
   drop(props, monitor, component) {
+    const item = monitor.getItem();
+
+    if (component.state.pathname.length === 0) {
+      component.setState({
+        pathname: item.pathname
+      });
+    }
+
     return {
       categoryIdentifier: component.props.identifier,
       color: component.props.color
@@ -33,7 +40,8 @@ class Category extends Component {
 
     this.state = {
       checked: true,
-      name: this.props.name
+      name: this.props.name,
+      pathname: this.props.pathname
     };
   }
 
@@ -51,15 +59,16 @@ class Category extends Component {
 
   render() {
     const { connectDropTarget } = this.props;
-
     return connectDropTarget(
       <div>
         <Grid container spacing={0}>
           <ListItem button>
-            <Grid item xs={2}>
-              <ListItemIcon>
-                <LabelIcon style={{ color: this.props.color }} />
-              </ListItemIcon>
+            <Grid item xs={3}>
+              <Avatar
+                src={this.state.pathname}
+                style={{ border: '5px solid ' + this.props.color }}
+                className="class-avatar"
+              />
             </Grid>
 
             <Grid item xs={8}>
