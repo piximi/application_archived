@@ -14,8 +14,11 @@ const source = {
     if (monitor.didDrop()) {
       const categoryIdentifier = monitor.getDropResult().categoryIdentifier;
 
+      const color = monitor.getDropResult().color;
+
       component.setState({
         categoryIdentifier: categoryIdentifier,
+        color: color,
         identifier: props.identifier,
         pathname: props.pathname
       });
@@ -36,6 +39,7 @@ class Sample extends Component {
 
     this.state = {
       categoryIdentifier: '',
+      color: '',
       identifier: props.identifier,
       pathname: props.pathname
     };
@@ -54,7 +58,12 @@ class Sample extends Component {
           <img src={pathname} style={{ width: '100%' }} />
         </LazyLoad>
 
-        {/*<GridListTileBar />*/}
+        <GridListTileBar
+          style={{
+            backgroundColor: this.state.color || 'rgba(0, 0, 0, 0.4)',
+            opacity: 0.4
+          }}
+        />
       </div>
     );
   }
