@@ -18,7 +18,18 @@ class Categories extends Component {
     super(props);
 
     this.state = {
-      categories: []
+      categories: [
+        { color: '', identifier: uuidv4(), name: '0' },
+        { color: '', identifier: uuidv4(), name: '1' },
+        { color: '', identifier: uuidv4(), name: '2' },
+        { color: '', identifier: uuidv4(), name: '3' },
+        { color: '', identifier: uuidv4(), name: '4' },
+        { color: '', identifier: uuidv4(), name: '5' },
+        { color: '', identifier: uuidv4(), name: '6' },
+        { color: '', identifier: uuidv4(), name: '7' },
+        { color: '', identifier: uuidv4(), name: '8' },
+        { color: '', identifier: uuidv4(), name: '9' }
+      ]
     };
   }
 
