@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Divider, List, ListSubheader } from 'material-ui';
+import { Button, List, ListSubheader } from 'material-ui';
 import Category from './Category';
 import AddIcon from '@material-ui/icons/Add';
 import { withStyles } from 'material-ui/styles';

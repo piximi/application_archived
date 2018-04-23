@@ -45,7 +45,7 @@ class Classifier extends Component {
     super(props);
 
     this.state = {
-      columns: 24
+      columns: 10
     };
   }
 

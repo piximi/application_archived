@@ -1,5 +1,4 @@
 import { GridListTileBar, IconButton } from 'material-ui';
-import LabelOutlineIcon from '@material-ui/icons/LabelOutline';
 import React, { Component } from 'react';
 import { DragSource } from 'react-dnd';
 import LazyLoad from 'react-lazyload';

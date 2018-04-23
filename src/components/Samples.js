@@ -18,7 +18,7 @@ class Samples extends Component {
 
   render() {
     return (
-      <GridList cellHeight={34} cols={this.props.columns}>
+      <GridList cellHeight={'inherit'} cols={this.props.columns}>
         {this.state.samples.map((sample, index) => (
           <GridListTile key={index} cols={1}>
             <Sample
