@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { GridList, GridListTile } from 'material-ui';
 import Sample from './Sample';
 import uuidv4 from 'uuid';
+import withDragDropContext from './dnd-global-context';
 
 class Samples extends Component {
   constructor(props) {
@@ -34,4 +35,4 @@ class Samples extends Component {
   }
 }
 
-export default Samples;
+export default withDragDropContext(Samples);
