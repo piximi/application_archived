@@ -57,7 +57,7 @@ class Category extends Component {
           <ListItem button>
             <Grid item xs={2}>
               <ListItemIcon>
-                <LabelIcon />
+                <LabelIcon style={{ color: this.props.color }} />
               </ListItemIcon>
             </Grid>
 

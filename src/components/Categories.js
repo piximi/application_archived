@@ -19,16 +19,16 @@ class Categories extends Component {
 
     this.state = {
       categories: [
-        { color: '', identifier: uuidv4(), name: '0' },
-        { color: '', identifier: uuidv4(), name: '1' },
-        { color: '', identifier: uuidv4(), name: '2' },
-        { color: '', identifier: uuidv4(), name: '3' },
-        { color: '', identifier: uuidv4(), name: '4' },
-        { color: '', identifier: uuidv4(), name: '5' },
-        { color: '', identifier: uuidv4(), name: '6' },
-        { color: '', identifier: uuidv4(), name: '7' },
-        { color: '', identifier: uuidv4(), name: '8' },
-        { color: '', identifier: uuidv4(), name: '9' }
+        { color: 'rgb(145,159,94)', identifier: uuidv4(), name: '0' },
+        { color: 'rgb(59,140,192)', identifier: uuidv4(), name: '1' },
+        { color: 'rgb(252,244,87)', identifier: uuidv4(), name: '2' },
+        { color: 'rgb(231,80,35)', identifier: uuidv4(), name: '3' },
+        { color: 'rgb(178,97,172)', identifier: uuidv4(), name: '4' },
+        { color: 'rgb(58,219,175)', identifier: uuidv4(), name: '5' },
+        { color: 'rgb(128,189,45)', identifier: uuidv4(), name: '6' },
+        { color: 'rgb(36,112,83)', identifier: uuidv4(), name: '7' },
+        { color: 'rgb(163,140,62)', identifier: uuidv4(), name: '8' },
+        { color: 'rgb(225,17,164)', identifier: uuidv4(), name: '9' }
       ]
     };
   }
