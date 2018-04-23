@@ -14,17 +14,11 @@ const source = {
     if (monitor.didDrop()) {
       const categoryIdentifier = monitor.getDropResult().categoryIdentifier;
 
-      const imageIdentifier = props.identifier;
-
-      const previousCategoryIdentifier = props.categoryIdentifier;
-
-      const dropped = {
+      component.setState({
         categoryIdentifier: categoryIdentifier,
-        previousCategoryIdentifier: previousCategoryIdentifier,
-        imageIdentifier: imageIdentifier
-      };
-
-      component.onDrop(dropped);
+        identifier: props.identifier,
+        pathname: props.pathname
+      });
     }
   }
 };
@@ -41,6 +35,7 @@ class Sample extends Component {
     super(props);
 
     this.state = {
+      categoryIdentifier: '',
       identifier: props.identifier,
       pathname: props.pathname
     };
