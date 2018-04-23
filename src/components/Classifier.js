@@ -30,6 +30,9 @@ const styles = theme => ({
   drawerPaper: {
     position: 'relative'
   },
+  primaryToolbar: {
+    backgroundColor: theme.palette.background.default
+  },
   content: {
     height: '100%',
     flexGrow: 1,
@@ -90,20 +93,22 @@ class Classifier extends Component {
             </Grid>
 
             <Grid item xs={9}>
+              <div className={classes.toolbar} />
+
+              <Toolbar className={classes.primaryToolbar}>
+                <input
+                  type="range"
+                  min="2"
+                  max="24"
+                  step="1"
+                  value={this.state.columns}
+                  onChange={this.onChange}
+                />
+              </Toolbar>
+
+              <Divider />
+
               <main className={classes.content}>
-                <div className={classes.toolbar} />
-
-                <Toolbar>
-                  <input
-                    type="range"
-                    min="2"
-                    max="24"
-                    step="1"
-                    value={this.state.columns}
-                    onChange={this.onChange}
-                  />
-                </Toolbar>
-
                 <Samples
                   columns={this.state.columns}
                   drop={this.onDrop}
