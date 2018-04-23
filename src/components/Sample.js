@@ -60,14 +60,7 @@ class Sample extends Component {
           <img src={pathname} />
         </LazyLoad>
 
-        <GridListTileBar
-          actionIcon={
-            <IconButton>
-              <LabelOutlineIcon />
-            </IconButton>
-          }
-          actionPosition="left"
-        />
+        <GridListTileBar />
       </div>
     );
   }

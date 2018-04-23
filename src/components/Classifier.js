@@ -11,7 +11,7 @@ import {
 } from 'material-ui';
 import Categories from './Categories';
 import Samples from '../components/Samples';
-import data from '../images/stock.json';
+import data from '../images/mnist.json';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContextProvider } from 'react-dnd';
 
@@ -56,7 +56,7 @@ class Classifier extends Component {
   };
 
   onDrop = dropped => {
-    this.props.onDrop(dropped);
+    this.props.drop(dropped);
   };
 
   render() {
@@ -97,7 +97,7 @@ class Classifier extends Component {
                   <input
                     type="range"
                     min="2"
-                    max="8"
+                    max="24"
                     step="1"
                     value={this.state.columns}
                     onChange={this.onChange}
