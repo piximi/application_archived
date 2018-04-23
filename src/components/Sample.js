@@ -2,6 +2,7 @@ import { GridListTileBar, IconButton } from 'material-ui';
 import LabelOutlineIcon from '@material-ui/icons/LabelOutline';
 import React, { Component } from 'react';
 import { DragSource } from 'react-dnd';
+import LazyLoad from 'react-lazyload';
 
 const source = {
   beginDrag(props) {
@@ -47,7 +48,7 @@ class Sample extends Component {
   }
 
   onDrop = dropped => {
-    this.props.drop(dropped);
+    this.props.onDrop(dropped);
   };
 
   render() {
@@ -55,7 +56,9 @@ class Sample extends Component {
 
     return connectDragSource(
       <div>
-        <img src={pathname} />
+        <LazyLoad height={'100%'} once>
+          <img src={pathname} />
+        </LazyLoad>
 
         <GridListTileBar
           actionIcon={
