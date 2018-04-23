@@ -2,7 +2,5 @@ language: node_js
 node_js:
   - "9"
 script:
-  - rm -rf node_modules
   - npm install
-  - npm run build
   - npm test
