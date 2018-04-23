@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TestUtils from 'react-dom/test-utils';
 import Sample from './Sample';
+import TestUtils from 'react-dom/test-utils';
 
 it('renders without crashing', () => {
   // Obtain the reference to the component before React DnD wrapping
@@ -15,6 +15,7 @@ it('renders without crashing', () => {
     <OriginalSample connectDragSource={identity} pathname="foo.png" />
   );
 
-  let img = TestUtils.findRenderedDOMComponentWithTag(tree, 'img');
-  expect(img.getAttribute('src')).toEqual('foo.png');
+  let div = TestUtils.scryRenderedDOMComponentsWithTag(tree, 'div')[1];
+
+  expect(div.className).toContain('lazyload-placeholder');
 });
