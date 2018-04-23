@@ -59,7 +59,7 @@ class Sample extends Component {
           <img src={pathname} style={{ width: '100%' }} />
         </LazyLoad>
 
-        <GridListTileBar />
+        {/*<GridListTileBar />*/}
       </div>
     );
   }

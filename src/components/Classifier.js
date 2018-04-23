@@ -7,6 +7,10 @@ import {
   Drawer,
   Grid,
   Toolbar,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
   Typography
 } from 'material-ui';
 import Categories from './Categories';
@@ -96,14 +100,21 @@ class Classifier extends Component {
               <div className={classes.toolbar} />
 
               <Toolbar className={classes.primaryToolbar}>
-                <input
-                  type="range"
-                  min="2"
-                  max="24"
-                  step="1"
-                  value={this.state.columns}
-                  onChange={this.onChange}
-                />
+                <Grid container spacing={0}>
+                  <Grid item xs={10} />
+
+                  <Grid item xs={2}>
+                    <input
+                      type="range"
+                      min="2"
+                      max="24"
+                      step="1"
+                      value={this.state.columns}
+                      onChange={this.onChange}
+                      style={{ width: '100%' }}
+                    />
+                  </Grid>
+                </Grid>
               </Toolbar>
 
               <Divider />
