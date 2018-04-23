@@ -11,7 +11,7 @@ import {
 } from 'material-ui';
 import Categories from './Categories';
 import Samples from '../components/Samples';
-import data from '../images/stock.json';
+import data from '../images/mnist.json';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContextProvider } from 'react-dnd';
 
@@ -30,6 +30,9 @@ const styles = theme => ({
   drawerPaper: {
     position: 'relative'
   },
+  primaryToolbar: {
+    backgroundColor: theme.palette.background.default
+  },
   content: {
     height: '100%',
     flexGrow: 1,
@@ -45,7 +48,7 @@ class Classifier extends Component {
     super(props);
 
     this.state = {
-      columns: 4
+      columns: 10
     };
   }
 
@@ -56,7 +59,7 @@ class Classifier extends Component {
   };
 
   onDrop = dropped => {
-    this.props.onDrop(dropped);
+    this.props.drop(dropped);
   };
 
   render() {
@@ -90,20 +93,22 @@ class Classifier extends Component {
             </Grid>
 
             <Grid item xs={9}>
+              <div className={classes.toolbar} />
+
+              <Toolbar className={classes.primaryToolbar}>
+                <input
+                  type="range"
+                  min="2"
+                  max="24"
+                  step="1"
+                  value={this.state.columns}
+                  onChange={this.onChange}
+                />
+              </Toolbar>
+
+              <Divider />
+
               <main className={classes.content}>
-                <div className={classes.toolbar} />
-
-                <Toolbar>
-                  <input
-                    type="range"
-                    min="2"
-                    max="8"
-                    step="1"
-                    value={this.state.columns}
-                    onChange={this.onChange}
-                  />
-                </Toolbar>
-
                 <Samples
                   columns={this.state.columns}
                   drop={this.onDrop}
