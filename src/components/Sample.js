@@ -7,20 +7,19 @@ const source = {
   beginDrag(props) {
     return {
       identifier: props.identifier,
-      categoryIdentifier: props.categoryIdentifier
+      categoryIdentifier: props.categoryIdentifier,
+      pathname: props.pathname
     };
   },
   endDrag(props, monitor, component) {
     if (monitor.didDrop()) {
       const categoryIdentifier = monitor.getDropResult().categoryIdentifier;
-
       const color = monitor.getDropResult().color;
-
+      // TODO !!!
       component.setState({
         categoryIdentifier: categoryIdentifier,
         color: color,
-        identifier: props.identifier,
-        pathname: props.pathname
+        identifier: props.identifier
       });
     }
   }
