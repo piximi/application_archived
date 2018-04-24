@@ -11,13 +11,15 @@ import {
   InputLabel,
   Select,
   MenuItem,
-  Typography
+  Typography,
+  Button
 } from 'material-ui';
 import Categories from './Categories';
 import Samples from '../components/Samples';
 import data from '../images/mnist.json';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContextProvider } from 'react-dnd';
+import * as API from '../API';
 
 const styles = theme => ({
   root: {
@@ -77,6 +79,8 @@ class Classifier extends Component {
               <Typography variant="title" color="inherit" noWrap>
                 &nbsp;
               </Typography>
+
+              <Button onClick={() => API.trainOnRun()}>Run</Button>
             </Toolbar>
           </AppBar>
 

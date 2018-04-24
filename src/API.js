@@ -1,21 +1,8 @@
-import store from '../index';
 import * as data from './dataset';
 import * as training from './simpleMobileNetScript';
 
 const getImData = () => {
-  if (store == null) {
-    return null;
-  } else {
-    let images = Object.values(store.getState().images);
-    const imgTags = images.map(image => {
-      var img = new Image();
-      img.src = image.src;
-      img.id = image.id;
-      img.catId = image.category;
-      return img;
-    });
-    return imgTags;
-  }
+  return document.getElementsByClassName('sample');
 };
 
 async function trainOnRun(imgData) {
