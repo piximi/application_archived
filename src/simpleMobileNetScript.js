@@ -17,7 +17,7 @@ const TEST_ITERATION_FREQUENCY = 5;
 async function loadNetwork(num_classes) {
   //get Prelaoded model of MobileNet
   const preLoadedmodel = await tf.loadModel(
-    'https://raw.githubusercontent.com/cytoai/models/master/MobileNetJS/model.json'
+    'http://weights.cyto.ai/mobilenet/model.json'
   );
 
   //get some intermediate layer
