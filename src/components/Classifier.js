@@ -7,10 +7,6 @@ import {
   Drawer,
   Grid,
   Toolbar,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
   Typography
 } from 'material-ui';
 import Categories from './Categories';
@@ -92,7 +88,7 @@ class Classifier extends Component {
 
                 <Divider />
 
-                <Categories />
+                <Categories categories={data.categories} />
               </Drawer>
             </Grid>
 
@@ -123,7 +119,7 @@ class Classifier extends Component {
                 <Samples
                   columns={this.state.columns}
                   drop={this.onDrop}
-                  pathnames={data}
+                  pathnames={data.images}
                 />
               </main>
             </Grid>

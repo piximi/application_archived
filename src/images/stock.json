@@ -1,14 +1,52 @@
-[
-  "images/stock/0e15b0fc72bcffcc35fb7dd5164b1e65.jpg",
-  "images/stock/201f99bb2b8fbf7048c006b152eacbbb.jpg",
-  "images/stock/542acb26208fc4e6893d6d78b16009f2.jpg",
-  "images/stock/659b212caac48aae423f6aa84fa628cd.jpg",
-  "images/stock/6cf6f1529b835b010859e408f1e27aa0.jpg",
-  "images/stock/763cc3fe8df97e3acba8067c2eee4286.jpg",
-  "images/stock/7822e13fc3bb6805501e9a5a68241c65.jpg",
-  "images/stock/7c0dcbab72fc9f5c149f993d6d41dced.jpg",
-  "images/stock/7c2ec20c79ca939f7a37fa60d6554948.jpg",
-  "images/stock/b860f7f6716144e88a1615af0c5552a2.jpg",
-  "images/stock/c9b7fc273b00e74f4981ee983a8d6087.jpg",
-  "images/stock/d8f6f7c51835b8acd547b11b86ef08bc.jpg"
-]
+{
+  "images": [
+    {
+      "category": null,
+      "pathname": "images/stock/0e15b0fc72bcffcc35fb7dd5164b1e65.jpg"
+    },
+    {
+      "category": null,
+      "pathname": "images/stock/201f99bb2b8fbf7048c006b152eacbbb.jpg"
+    },
+    {
+      "category": null,
+
+      "pathname": "images/stock/542acb26208fc4e6893d6d78b16009f2.jpg"
+    },
+    {
+      "category": null,
+
+      "pathname": "images/stock/659b212caac48aae423f6aa84fa628cd.jpg"
+    },
+    {
+      "category": null,
+
+      "pathname": "images/stock/6cf6f1529b835b010859e408f1e27aa0.jpg"
+    },
+    {
+      "category": null,
+
+      "pathname": "images/stock/763cc3fe8df97e3acba8067c2eee4286.jpg"
+    },
+    {
+      "category": null,
+
+      "pathname": "images/stock/7822e13fc3bb6805501e9a5a68241c65.jpg"
+    },
+    {
+      "pathname": "images/stock/7c0dcbab72fc9f5c149f993d6d41dced.jpg"
+    },
+    {
+      "pathname": "images/stock/7c2ec20c79ca939f7a37fa60d6554948.jpg"
+    },
+    {
+      "pathname": "images/stock/b860f7f6716144e88a1615af0c5552a2.jpg"
+    },
+    {
+      "pathname": "images/stock/c9b7fc273b00e74f4981ee983a8d6087.jpg"
+    },
+    {
+      "pathname": "images/stock/d8f6f7c51835b8acd547b11b86ef08bc.jpg"
+    }
+  ]
+}

@@ -8,10 +8,10 @@ class Samples extends Component {
     super(props);
 
     this.state = {
-      samples: this.props.pathnames.map(pathname => ({
+      images: this.props.pathnames.map(image => ({
         identifier: uuidv4(),
         categoryIdentifier: null,
-        pathname: pathname
+        pathname: image.pathname
       }))
     };
   }
@@ -19,7 +19,7 @@ class Samples extends Component {
   render() {
     return (
       <GridList cellHeight={'auto'} cols={this.props.columns} spacing={4}>
-        {this.state.samples.map((sample, index) => (
+        {this.state.images.map((sample, index) => (
           <GridListTile key={index} cols={1}>
             <Sample
               categoryIdentifier={sample.categoryIdentifier}
