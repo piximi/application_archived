@@ -66,7 +66,7 @@ class Category extends Component {
             <Grid item xs={3}>
               <Avatar
                 src={this.state.pathname}
-                style={{ border: '5px solid ' + this.props.color }}
+                style={{ borderColor: this.props.color }}
                 className="class-avatar"
               />
             </Grid>
