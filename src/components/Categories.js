@@ -4,6 +4,7 @@ import Category from './Category';
 import AddIcon from '@material-ui/icons/Add';
 import { withStyles } from 'material-ui/styles';
 import uuidv4 from 'uuid';
+import withDragDropContext from './dnd-global-context';
 
 const styles = theme => ({
   create: {
@@ -63,4 +64,6 @@ class Categories extends Component {
   }
 }
 
-export default withStyles(styles, { withTheme: true })(Categories);
+export default withDragDropContext(
+  withStyles(styles, { withTheme: true })(Categories)
+);
