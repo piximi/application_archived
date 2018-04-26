@@ -1,4 +1,7 @@
 {
+  "settings": {
+    "columns": 10
+  },
   "categories": [
     {
       "color": "rgb(145,159,94)",

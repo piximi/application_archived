@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 import './App.css';
 import Classifier from './components/Classifier';
+import data from './images/mnist.json';
 
 class App extends Component {
   render() {
-    return <Classifier />;
+    return (
+      <Classifier
+        categories={data.categories}
+        images={data.images}
+        settings={data.settings}
+      />
+    );
   }
 }
 

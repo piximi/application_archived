@@ -11,7 +11,6 @@ import {
 } from 'material-ui';
 import Categories from './Categories';
 import Samples from '../components/Samples';
-import data from '../images/mnist.json';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContextProvider } from 'react-dnd';
 
@@ -48,7 +47,7 @@ class Classifier extends Component {
     super(props);
 
     this.state = {
-      columns: 10
+      columns: this.props.settings.columns
     };
   }
 
@@ -56,10 +55,6 @@ class Classifier extends Component {
     this.setState({
       columns: event.target.value
     });
-  };
-
-  onDrop = dropped => {
-    this.props.drop(dropped);
   };
 
   render() {
@@ -88,7 +83,7 @@ class Classifier extends Component {
 
                 <Divider />
 
-                <Categories categories={data.categories} />
+                <Categories categories={this.props.categories} />
               </Drawer>
             </Grid>
 
@@ -118,8 +113,7 @@ class Classifier extends Component {
               <main className={classes.content}>
                 <Samples
                   columns={this.state.columns}
-                  drop={this.onDrop}
-                  pathnames={data.images}
+                  pathnames={this.props.images}
                 />
               </main>
             </Grid>
