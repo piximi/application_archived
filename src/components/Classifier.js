@@ -13,6 +13,7 @@ import Categories from './Categories';
 import Samples from '../components/Samples';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContextProvider } from 'react-dnd';
+import uuidv4 from 'uuid';
 
 const styles = theme => ({
   root: {
@@ -59,6 +60,19 @@ class Classifier extends Component {
     });
   };
 
+  createCategory = () => {
+    const category = {
+      color: '',
+      name: '',
+      index: 10,
+      visible: true
+    };
+
+    this.setState(previous => ({
+      categories: [...previous.categories, category]
+    }));
+  };
+
   render() {
     const { classes } = this.props;
 
@@ -85,7 +99,10 @@ class Classifier extends Component {
 
                 <Divider />
 
-                <Categories categories={this.props.categories} />
+                <Categories
+                  categories={this.state.categories}
+                  onClick={this.createCategory}
+                />
               </Drawer>
             </Grid>
 
@@ -115,7 +132,7 @@ class Classifier extends Component {
               <main className={classes.content}>
                 <Samples
                   columns={this.state.settings.columns}
-                  pathnames={this.props.images}
+                  pathnames={this.state.images}
                 />
               </main>
             </Grid>
