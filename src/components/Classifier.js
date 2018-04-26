@@ -14,6 +14,7 @@ import Samples from '../components/Samples';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContextProvider } from 'react-dnd';
 import uuidv4 from 'uuid';
+import _ from 'lodash';
 
 const styles = theme => ({
   root: {
@@ -61,15 +62,16 @@ class Classifier extends Component {
   };
 
   createCategory = () => {
-    const category = {
-      color: '',
-      name: '',
-      index: 10,
-      visible: true
-    };
-
     this.setState(previous => ({
-      categories: [...previous.categories, category]
+      categories: [
+        ...previous.categories,
+        {
+          color: '',
+          name: '',
+          index: _.last(previous.categories).index + 1,
+          visible: true
+        }
+      ]
     }));
   };
 
