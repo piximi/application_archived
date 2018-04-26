@@ -134,7 +134,7 @@ class Classifier extends Component {
               <main className={classes.content}>
                 <Samples
                   columns={this.state.settings.columns}
-                  pathnames={this.state.images}
+                  images={this.state.images}
                 />
               </main>
             </Grid>
