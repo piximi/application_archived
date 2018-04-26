@@ -19,8 +19,8 @@ const Categories = props => {
       <List subheader={<ListSubheader>Categories</ListSubheader>}>
         {props.categories.map(category => (
           <Category
-            key={category.identifier}
-            identifier={category.identifier}
+            key={category.index}
+            index={category.index}
             color={category.color}
             name={category.name}
           />

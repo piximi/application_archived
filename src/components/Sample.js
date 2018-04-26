@@ -45,10 +45,6 @@ class Sample extends Component {
     };
   }
 
-  onDrop = dropped => {
-    this.props.onDrop(dropped);
-  };
-
   render() {
     const { connectDragSource, pathname } = this.props;
 
