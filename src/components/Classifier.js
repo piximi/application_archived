@@ -47,13 +47,15 @@ class Classifier extends Component {
     super(props);
 
     this.state = {
-      columns: this.props.settings.columns
+      categories: this.props.categories,
+      images: this.props.images,
+      settings: this.props.settings
     };
   }
 
   onChange = event => {
     this.setState({
-      columns: event.target.value
+      settings: { ...this.state.settings, columns: event.target.value }
     });
   };
 
@@ -100,7 +102,7 @@ class Classifier extends Component {
                       min="2"
                       max="24"
                       step="1"
-                      value={this.state.columns}
+                      value={this.state.settings.columns}
                       onChange={this.onChange}
                       style={{ width: '100%' }}
                     />
@@ -112,7 +114,7 @@ class Classifier extends Component {
 
               <main className={classes.content}>
                 <Samples
-                  columns={this.state.columns}
+                  columns={this.state.settings.columns}
                   pathnames={this.props.images}
                 />
               </main>
