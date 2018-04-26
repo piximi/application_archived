@@ -1,4 +1,4 @@
-import { GridListTileBar, IconButton } from 'material-ui';
+import { GridListTileBar } from 'material-ui';
 import React, { Component } from 'react';
 import { DragSource } from 'react-dnd';
 import LazyLoad from 'react-lazyload';
@@ -51,7 +51,7 @@ class Sample extends Component {
     return connectDragSource(
       <div>
         <LazyLoad height={'100%'} once>
-          <img src={pathname} style={{ width: '100%' }} />
+          <img alt="foo" src={pathname} style={{ width: '100%' }} />
         </LazyLoad>
 
         <GridListTileBar

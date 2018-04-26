@@ -13,7 +13,6 @@ import Categories from './Categories';
 import Samples from '../components/Samples';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContextProvider } from 'react-dnd';
-import uuidv4 from 'uuid';
 import _ from 'lodash';
 
 const styles = theme => ({

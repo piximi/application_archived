@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Button, List, ListSubheader } from 'material-ui';
 import Category from './Category';
 import AddIcon from '@material-ui/icons/Add';
