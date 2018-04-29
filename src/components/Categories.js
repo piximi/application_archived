@@ -12,10 +12,13 @@ const Categories = props => {
       <List subheader={<ListSubheader>Categories</ListSubheader>}>
         {props.categories.map(category => (
           <Category
+            categoryOnChange={props.categoryOnChange}
             key={category.index}
+            identifier={category.identifier}
             index={category.index}
             color={category.color}
             name={category.name}
+            visible={category.visible}
           />
         ))}
       </List>

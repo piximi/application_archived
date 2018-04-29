@@ -9,6 +9,8 @@ import {
 } from 'material-ui';
 import LabelIcon from '@material-ui/icons/Label';
 import { DropTarget } from 'react-dnd';
+import styles from './Classifier.css';
+import { withStyles } from 'material-ui/styles/index';
 
 const spec = {
   drop(props, monitor, component) {
@@ -49,7 +51,13 @@ class Category extends Component {
   };
 
   render() {
-    const { connectDropTarget } = this.props;
+    const {
+      categoryOnChange,
+      color,
+      connectDropTarget,
+      identifier,
+      visible
+    } = this.props;
 
     return connectDropTarget(
       <div>
@@ -57,13 +65,13 @@ class Category extends Component {
           <ListItem button>
             <Grid item xs={2}>
               <ListItemIcon>
-                <LabelIcon style={{ color: this.props.color }} />
+                <LabelIcon style={{ color: color }} />
               </ListItemIcon>
             </Grid>
 
             <Grid item xs={8}>
               <Input
-                style={{ width: '100%' }}
+                className={styles.name}
                 onChange={this.onInputChange}
                 value={this.state.name}
               />
@@ -72,8 +80,8 @@ class Category extends Component {
             <Grid item xs={2}>
               <ListItemSecondaryAction>
                 <Checkbox
-                  checked={this.state.checked}
-                  onChange={this.onCheckboxChange}
+                  checked={visible}
+                  onChange={event => categoryOnChange(event, identifier)}
                 />
               </ListItemSecondaryAction>
             </Grid>
@@ -84,4 +92,4 @@ class Category extends Component {
   }
 }
 
-export default DropTarget('Image', spec, collect)(Category);
+export default withStyles(styles)(DropTarget('Image', spec, collect)(Category));

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Classifier from './components/Classifier';
-import data from './images/mnist.json';
+import data from './images/small-mnist.json';
 
 class App extends Component {
   render() {

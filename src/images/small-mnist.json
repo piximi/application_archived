@@ -1,0 +1,124 @@
+{
+  "settings": {
+    "columns": 10
+  },
+  "categories": [
+    {
+      "color": "rgb(145,159,94)",
+      "identifier": "16e0e1b8-ae79-46f5-80cf-58e7f8dda344",
+      "index": 0,
+      "name": "0",
+      "visible": true
+    },
+    {
+      "color": "rgb(59,140,192)",
+      "identifier": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
+      "index": 1,
+      "name": "1",
+      "visible": true
+    },
+    {
+      "color": "rgb(252,244,87)",
+      "identifier": "f488bb9a-4274-49e3-a11c-c90d28d2c393",
+      "index": 2,
+      "name": "2",
+      "visible": true
+    },
+    {
+      "color": "rgb(231,80,35)",
+      "identifier": "7e062fd1-bdc3-48ed-ba4c-f7d01417a951",
+      "index": 3,
+      "name": "3",
+      "visible": true
+    },
+    {
+      "color": "rgb(178,97,172)",
+      "identifier": "563b4ff6-f0ea-408a-a568-a109cbeb310a",
+      "index": 4,
+      "name": "4",
+      "visible": true
+    },
+    {
+      "color": "rgb(58,219,175)",
+      "identifier": "d3a41b7b-40ea-4f44-a79d-2c065fdb2b2f",
+      "index": 5,
+      "name": "5",
+      "visible": true
+    },
+    {
+      "color": "rgb(128,189,45)",
+      "identifier": "467076d1-409c-4b4f-a26f-f3068ab7869e",
+      "index": 6,
+      "name": "6",
+      "visible": true
+    },
+    {
+      "color": "rgb(36,112,83)",
+      "identifier": "8cba2400-da58-403b-979d-af2b56c656aa",
+      "index": 7,
+      "name": "7",
+      "visible": true
+    },
+    {
+      "color": "rgb(163,140,62)",
+      "identifier": "dd3a43cd-3447-45e4-b144-0c5caf37fae3",
+      "index": 8,
+      "name": "8",
+      "visible": true
+    },
+    {
+      "color": "rgb(225,17,164)",
+      "identifier": "a2ca8ef8-411b-48d2-954b-3caf8f38541d",
+      "index": 9,
+      "name": "9",
+      "visible": true
+    }
+  ],
+  "images": [
+    {
+      "category": null,
+      "identifier": "b42368ef-2963-4e99-9e77-46633f4fbabc",
+      "pathname": "images/mnist/0048b84923b814c5e56e2c75082ea18e.png"
+    },
+    {
+      "category": null,
+      "identifier": "89464ad3-11f9-4653-97eb-a0046b05fa93",
+      "pathname": "images/mnist/011e2e7cf655a56f9dca27f055e7b1fd.png"
+    },
+    {
+      "category": null,
+      "identifier": "f9aadbc4-83da-493d-a8e9-66eb597da906",
+      "pathname": "images/mnist/015586f8c7b338ae6768857af4eb1643.png"
+    },
+    {
+      "category": null,
+      "identifier": "0d1922f7-163e-43dc-a770-1a36d7ef6ed4",
+      "pathname": "images/mnist/0178d1fd8be28c83f1cc65312f0848ab.png"
+    },
+    {
+      "category": null,
+      "identifier": "07a2ed14-8fca-411b-b258-1a540b8fcf2a",
+      "pathname": "images/mnist/019ca710d7e115033800388ae54c6b57.png"
+    },
+    {
+      "category": null,
+      "identifier": "56b69d07-5766-44e3-bc7d-313f0133b2a4",
+      "pathname": "images/mnist/01bbc3938f233396d6d8322cc702e1bb.png"
+    },
+    {
+      "category": null,
+      "identifier": "3724b365-cf8d-46d2-99ad-d1d3fd4d9e6a",
+      "pathname": "images/mnist/01d42eede272860ce8850508915151f1.png"
+    },
+    {
+      "category": null,
+      "identifier": "b061382c-0ff0-4980-bc8d-cc92324b4373",
+      "pathname": "images/mnist/02367175ab3621c9ba84b9dce47c607b.png"
+    },
+    {
+      "category": null,
+      "identifier": "849443c3-c0d5-43ef-bc68-ea58f8ef092f",
+      "pathname": "images/mnist/026fefc459e27a86dee4ade1f5be5494.png"
+    }
+  ]
+}
