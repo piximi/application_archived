@@ -14,16 +14,7 @@ const source = {
     if (monitor.didDrop()) {
       const category = monitor.getDropResult().category;
 
-      const color = monitor.getDropResult().color;
-
       props.updateImageCategory(props.identifier, category);
-
-      // component.setState({
-      //   category: category,
-      //   color: color,
-      //   identifier: props.identifier,
-      //   pathname: props.pathname
-      // });
     }
   }
 };
