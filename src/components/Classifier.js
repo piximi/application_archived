@@ -13,6 +13,7 @@ import Categories from './Categories';
 import Images from './Images';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContextProvider } from 'react-dnd';
+import uuidv4 from 'uuid';
 import _ from 'lodash';
 
 class Classifier extends Component {
@@ -38,9 +39,7 @@ class Classifier extends Component {
   categoryOnNameChange = (event, identifier) => {
     const categories = this.state.categories;
 
-    const index = _.findIndex(categories, function(category) {
-      return category.identifier === identifier;
-    });
+    const index = this.findCategoryIndex(identifier);
 
     categories[index].name = event.target.value;
 
@@ -52,9 +51,7 @@ class Classifier extends Component {
   categoryOnChange = (event, identifier) => {
     const categories = this.state.categories;
 
-    const index = _.findIndex(categories, function(category) {
-      return category.identifier === identifier;
-    });
+    const index = this.findCategoryIndex(identifier);
 
     categories[index].visible = !categories[index].visible;
 
@@ -69,12 +66,19 @@ class Classifier extends Component {
         ...previous.categories,
         {
           color: '',
+          identifier: uuidv4(),
           name: '',
           index: _.last(previous.categories).index + 1,
           visible: true
         }
       ]
     }));
+  };
+
+  findCategoryIndex = identifier => {
+    return _.findIndex(this.state.categories, function(category) {
+      return category.identifier === identifier;
+    });
   };
 
   render() {
