@@ -8,7 +8,6 @@ import {
   ListItemSecondaryAction
 } from 'material-ui';
 import LabelIcon from '@material-ui/icons/Label';
-import './Category.css';
 import { DropTarget } from 'react-dnd';
 
 const spec = {
@@ -64,7 +63,7 @@ class Category extends Component {
 
             <Grid item xs={8}>
               <Input
-                className="name"
+                style={{ width: '100%' }}
                 onChange={this.onInputChange}
                 value={this.state.name}
               />

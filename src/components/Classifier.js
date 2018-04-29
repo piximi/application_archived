@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Classifier.css';
+import styles from './Classifier.css.js';
 import { withStyles } from 'material-ui/styles';
 import {
   AppBar,
@@ -15,34 +15,6 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContextProvider } from 'react-dnd';
 import _ from 'lodash';
 
-const styles = theme => ({
-  root: {
-    flexGrow: 1,
-    height: '100%',
-    zIndex: 1,
-    overflow: 'hidden',
-    position: 'relative',
-    display: 'flex'
-  },
-  appBar: {
-    zIndex: theme.zIndex.drawer + 1
-  },
-  drawerPaper: {
-    position: 'relative'
-  },
-  primaryToolbar: {
-    backgroundColor: theme.palette.background.default
-  },
-  content: {
-    height: '100%',
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.default,
-    padding: theme.spacing.unit * 3,
-    minWidth: 0 // So the Typography noWrap works
-  },
-  toolbar: theme.mixins.toolbar
-});
-
 class Classifier extends Component {
   constructor(props) {
     super(props);
@@ -56,7 +28,10 @@ class Classifier extends Component {
 
   onChange = event => {
     this.setState({
-      settings: { ...this.state.settings, columns: event.target.value }
+      settings: {
+        ...this.state.settings,
+        columns: event.target.value
+      }
     });
   };
 

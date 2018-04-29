@@ -4,14 +4,7 @@ import Category from './Category';
 import AddIcon from '@material-ui/icons/Add';
 import { withStyles } from 'material-ui/styles';
 import withDragDropContext from './dnd-global-context';
-
-const styles = theme => ({
-  create: {
-    bottom: theme.spacing.unit * 2,
-    position: 'absolute',
-    right: theme.spacing.unit * 2
-  }
-});
+import styles from './Categories.css';
 
 const Categories = props => {
   return (
