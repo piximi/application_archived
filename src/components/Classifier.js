@@ -10,7 +10,7 @@ import {
   Typography
 } from 'material-ui';
 import Categories from './Categories';
-import Samples from '../components/Samples';
+import Images from './Images';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContextProvider } from 'react-dnd';
 import _ from 'lodash';
@@ -106,7 +106,7 @@ class Classifier extends Component {
               <Divider />
 
               <main className={classes.content}>
-                <Samples
+                <Images
                   columns={this.state.settings.columns}
                   images={this.state.images}
                 />

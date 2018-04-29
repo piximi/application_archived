@@ -33,7 +33,7 @@ function collect(connect, monitor) {
   };
 }
 
-class Sample extends Component {
+class Image extends Component {
   constructor(props) {
     super(props);
 
@@ -65,4 +65,4 @@ class Sample extends Component {
   }
 }
 
-export default DragSource('Image', source, collect)(Sample);
+export default DragSource('Image', source, collect)(Image);

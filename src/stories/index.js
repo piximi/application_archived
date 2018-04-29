@@ -14,7 +14,7 @@ storiesOf('Categories', module).add('default', () => (
   </Grid>
 ));
 
-storiesOf('Sample', module).add('default', () => (
+storiesOf('Image', module).add('default', () => (
   <Grid container spacing={24}>
     <Grid item xs={3}>
       <Category />
