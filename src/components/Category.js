@@ -51,7 +51,7 @@ const Category = props => {
 
           <Grid item xs={8}>
             <Input
-              className={styles.name}
+              style={{ width: '100%' }}
               onChange={event => categoryOnNameChange(event, identifier)}
               value={name}
             />
