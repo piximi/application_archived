@@ -38,12 +38,6 @@ class Category extends Component {
     };
   }
 
-  onCheckboxChange = () => {
-    this.setState({
-      checked: !this.state.checked
-    });
-  };
-
   onInputChange = event => {
     this.setState({
       name: event.target.value
