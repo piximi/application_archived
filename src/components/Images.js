@@ -10,7 +10,7 @@ class Images extends Component {
         {this.props.images.map((sample, index) => (
           <GridListTile key={index} cols={1}>
             <Image
-              categoryIdentifier={sample.categoryIdentifier}
+              category={sample.category}
               identifier={sample.identifier}
               pathname={sample.pathname}
             />

@@ -15,7 +15,7 @@ import { withStyles } from 'material-ui/styles/index';
 const spec = {
   drop(props, monitor, component) {
     return {
-      categoryIdentifier: props.identifier,
+      category: props.identifier,
       color: props.color
     };
   }

@@ -7,17 +7,17 @@ const source = {
   beginDrag(props) {
     return {
       identifier: props.identifier,
-      categoryIdentifier: props.categoryIdentifier
+      category: props.category
     };
   },
   endDrag(props, monitor, component) {
     if (monitor.didDrop()) {
-      const categoryIdentifier = monitor.getDropResult().categoryIdentifier;
+      const category = monitor.getDropResult().category;
 
       const color = monitor.getDropResult().color;
 
       component.setState({
-        categoryIdentifier: categoryIdentifier,
+        category: category,
         color: color,
         identifier: props.identifier,
         pathname: props.pathname
@@ -38,7 +38,7 @@ class Image extends Component {
     super(props);
 
     this.state = {
-      categoryIdentifier: '',
+      category: '',
       color: '',
       identifier: props.identifier,
       pathname: props.pathname
