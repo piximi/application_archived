@@ -75,9 +75,39 @@ class Classifier extends Component {
     }));
   };
 
+  findCategory = identifier => {
+    const index = this.findCategoryIndex(identifier);
+
+    return this.state.categories[index];
+  };
+
   findCategoryIndex = identifier => {
     return _.findIndex(this.state.categories, function(category) {
       return category.identifier === identifier;
+    });
+  };
+
+  findImage = identifier => {
+    const index = this.findImageIndex(identifier);
+
+    return this.state.images[index];
+  };
+
+  findImageIndex = identifier => {
+    return _.findIndex(this.state.images, function(image) {
+      return image.identifier === identifier;
+    });
+  };
+
+  updateImageCategory = (identifier, category) => {
+    const images = this.state.images;
+
+    const index = this.findImageIndex(identifier);
+
+    images[index].category = category;
+
+    this.setState({
+      images: images
     });
   };
 
@@ -142,7 +172,9 @@ class Classifier extends Component {
               <main className={classes.content}>
                 <Images
                   columns={this.state.settings.columns}
+                  findCategory={this.findCategory}
                   images={this.state.images}
+                  updateImageCategory={this.updateImageCategory}
                 />
               </main>
             </Grid>

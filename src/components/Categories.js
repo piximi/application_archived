@@ -17,7 +17,7 @@ const Categories = props => {
             color={category.color}
             identifier={category.identifier}
             index={category.index}
-            key={category.index}
+            key={category.identifier}
             name={category.name}
             visible={category.visible}
           />

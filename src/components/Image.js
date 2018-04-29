@@ -16,12 +16,14 @@ const source = {
 
       const color = monitor.getDropResult().color;
 
-      component.setState({
-        category: category,
-        color: color,
-        identifier: props.identifier,
-        pathname: props.pathname
-      });
+      props.updateImageCategory(props.identifier, category);
+
+      // component.setState({
+      //   category: category,
+      //   color: color,
+      //   identifier: props.identifier,
+      //   pathname: props.pathname
+      // });
     }
   }
 };
@@ -34,19 +36,16 @@ function collect(connect, monitor) {
 }
 
 class Image extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      category: '',
-      color: '',
-      identifier: props.identifier,
-      pathname: props.pathname
-    };
-  }
-
   render() {
-    const { connectDragSource, pathname } = this.props;
+    const { category, connectDragSource, findCategory, pathname } = this.props;
+
+    let color;
+
+    if (!!category) {
+      color = findCategory(category).color;
+    } else {
+      color = 'rgba(0, 0, 0, 0.4)';
+    }
 
     return connectDragSource(
       <div>
@@ -56,7 +55,7 @@ class Image extends Component {
 
         <GridListTileBar
           style={{
-            backgroundColor: this.state.color || 'rgba(0, 0, 0, 0.4)',
+            backgroundColor: color,
             opacity: 0.4
           }}
         />

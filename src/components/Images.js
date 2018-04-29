@@ -8,11 +8,13 @@ class Images extends Component {
     return (
       <GridList cellHeight={'auto'} cols={this.props.columns} spacing={4}>
         {this.props.images.map((sample, index) => (
-          <GridListTile key={index} cols={1}>
+          <GridListTile key={sample.identifier} cols={1}>
             <Image
               category={sample.category}
               identifier={sample.identifier}
+              findCategory={this.props.findCategory}
               pathname={sample.pathname}
+              updateImageCategory={this.props.updateImageCategory}
             />
           </GridListTile>
         ))}
