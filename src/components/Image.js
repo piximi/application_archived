@@ -44,12 +44,7 @@ class Image extends Component {
           <img alt="foo" src={pathname} style={{ width: '100%' }} />
         </LazyLoad>
 
-        <GridListTileBar
-          style={{
-            backgroundColor: color,
-            opacity: 0.4
-          }}
-        />
+        <GridListTileBar style={{ backgroundColor: color, opacity: 0.4 }} />
       </div>
     );
   }
