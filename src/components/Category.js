@@ -29,27 +29,14 @@ function collect(connect, monitor) {
 }
 
 class Category extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      checked: true,
-      name: this.props.name
-    };
-  }
-
-  onInputChange = event => {
-    this.setState({
-      name: event.target.value
-    });
-  };
-
   render() {
     const {
       categoryOnChange,
+      categoryOnNameChange,
       color,
       connectDropTarget,
       identifier,
+      name,
       visible
     } = this.props;
 
@@ -66,8 +53,8 @@ class Category extends Component {
             <Grid item xs={8}>
               <Input
                 className={styles.name}
-                onChange={this.onInputChange}
-                value={this.state.name}
+                onChange={event => categoryOnNameChange(event, identifier)}
+                value={name}
               />
             </Grid>
 

@@ -35,6 +35,20 @@ class Classifier extends Component {
     });
   };
 
+  categoryOnNameChange = (event, identifier) => {
+    const categories = this.state.categories;
+
+    const index = _.findIndex(categories, function(category) {
+      return category.identifier === identifier;
+    });
+
+    categories[index].name = event.target.value;
+
+    this.setState({
+      categories: categories
+    });
+  };
+
   categoryOnChange = (event, identifier) => {
     const categories = this.state.categories;
 
@@ -92,6 +106,7 @@ class Classifier extends Component {
                 <Categories
                   categories={this.state.categories}
                   categoryOnChange={this.categoryOnChange}
+                  categoryOnNameChange={this.categoryOnNameChange}
                   onClick={this.createCategory}
                 />
               </Drawer>

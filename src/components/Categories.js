@@ -13,10 +13,11 @@ const Categories = props => {
         {props.categories.map(category => (
           <Category
             categoryOnChange={props.categoryOnChange}
-            key={category.index}
+            categoryOnNameChange={props.categoryOnNameChange}
+            color={category.color}
             identifier={category.identifier}
             index={category.index}
-            color={category.color}
+            key={category.index}
             name={category.name}
             visible={category.visible}
           />
