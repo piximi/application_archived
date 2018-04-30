@@ -3,6 +3,7 @@ import styles from './Classifier.css.js';
 import { withStyles } from 'material-ui/styles';
 import {
   AppBar,
+  Button,
   Divider,
   Drawer,
   Grid,
@@ -15,6 +16,7 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContextProvider } from 'react-dnd';
 import uuidv4 from 'uuid';
 import _ from 'lodash';
+import * as API from '../classifier';
 
 class Classifier extends Component {
   constructor(props) {
@@ -120,8 +122,10 @@ class Classifier extends Component {
           <AppBar position="fixed" className={classes.appBar} color="default">
             <Toolbar>
               <Typography variant="title" color="inherit" noWrap>
-                &nbsp;
+                Cyto
               </Typography>
+
+              <Button onClick={() => API.trainOnRun()}>Run</Button>
             </Toolbar>
           </AppBar>
 
