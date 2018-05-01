@@ -101,6 +101,8 @@ async function train(modelDict, datasetObj) {
       validationData = datasetObj.nextValidationBatch(TEST_BATCH_SIZE);
     }
 
+    console.log(validationData);
+
     // The entire dataset doesn't fit into memory so we call fit repeatedly
     // with batches.
     await modelDict['ShallowNet'].fit(
@@ -108,10 +110,10 @@ async function train(modelDict, datasetObj) {
       batch[1],
       {
         batchSize: BATCH_SIZE,
-        validationData: [
-          modelDict['PretrainedModel'].predict(validationData[0]),
-          validationData[1]
-        ],
+        // validationData: [
+        //   modelDict['PretrainedModel'].predict(validationData[0]),
+        //   validationData[1]
+        // ],
         epochs: 1,
         callbacks: {
           onBatchEnd: async (batch, logs) => {
@@ -164,7 +166,7 @@ async function predict(modelDict, datasetObj) {
   //const classId = (await predictedClass.data())[0];
   //console.log(predictedClass.data())
   // ui.predictClass(classId);
-  await tensorflow.nextensorflowrame();
+  await tensorflow.nextFrame();
   //}
   // ui.donePredicting();
 }
