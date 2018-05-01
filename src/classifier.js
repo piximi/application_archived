@@ -1,8 +1,8 @@
-import * as tf from '@tensorflow/tfjs';
+import * as tensorflow from '@tensorflow/tfjs';
 
 //console.log(model)
 const LEARNING_RATE = 1e-4;
-const optimizer = tf.train.adam(LEARNING_RATE);
+const optimizer = tensorflow.train.adam(LEARNING_RATE);
 // How many examples the model should "see" before making a parameter update.
 const BATCH_SIZE = 4;
 // How many batches to train the model for.
@@ -14,28 +14,30 @@ const TRAIN_BATCHES = 10;
 const TEST_BATCH_SIZE = 4;
 const TEST_ITERATION_FREQUENCY = 5;
 
+let VALIDATIONSET_RATIO = 0.3;
+
 async function loadNetwork(num_classes) {
   //get Prelaoded model of MobileNet
-  const preLoadedmodel = await tf.loadModel(
+  const preLoadedmodel = await tensorflow.loadModel(
     'https://weights.cyto.ai/mobilenet/model.json'
   );
 
   //get some intermediate layer
   const layer = preLoadedmodel.getLayer('conv_pw_13_relu');
 
-  var tmpModel = tf.model({
+  let tmpModel = tensorflow.model({
     inputs: preLoadedmodel.inputs,
     outputs: layer.output
   });
 
-  for (var i = 0; i < tmpModel.layers.length; i++) {
+  for (let i = 0; i < tmpModel.layers.length; i++) {
     tmpModel.layers[i].trainable = false;
   }
   /*
   //flattenlayer
-  const flattenLayer = tf.layers.flatten();
+  const flattenLayer = tensorflow.layers.flatten();
   //create denselayer for class prediction
-  const dense = tf.layers.dense({
+  const dense = tensorflow.layers.dense({
     units: num_classes,
     kernelInitializer: 'VarianceScaling',
     activation: 'softmax'
@@ -45,16 +47,16 @@ async function loadNetwork(num_classes) {
   const output = dense.apply(flattenLayer.apply(tmpModel.outputs));
 
   //create the model
-  const model = tf.model({inputs: preLoadedmodel.inputs, outputs: output});
+  const model = tensorflow.model({inputs: preLoadedmodel.inputs, outputs: output});
 
   */
 
-  const model = tf.sequential({
+  const model = tensorflow.sequential({
     layers: [
       // Flattens the input to a vector so we can use it in a dense layer. While
       // technically a layer, this only performs a reshape (and has no training
       // parameters).
-      tf.layers.flatten({
+      tensorflow.layers.flatten({
         inputShape: [
           tmpModel.output.shape[1],
           tmpModel.output.shape[2],
@@ -63,13 +65,13 @@ async function loadNetwork(num_classes) {
       }),
       // The number of units of the last layer should correspond
       // to the number of classes we want to predict.
-      tf.layers.dense({
+      tensorflow.layers.dense({
         units: 100,
         activation: 'relu',
         kernelInitializer: 'varianceScaling',
         useBias: true
       }),
-      tf.layers.dense({
+      tensorflow.layers.dense({
         units: num_classes,
         kernelInitializer: 'VarianceScaling',
         useBias: false,
@@ -90,9 +92,9 @@ async function train(modelDict, datasetObj) {
   for (let i = 0; i < TRAIN_BATCHES; i++) {
     // TODO: Change function for getting training batch
     const batch = datasetObj.nextTrainBatch(BATCH_SIZE);
-    //tf.tensor(batch[0]).print();
+    //tensorflow.tensor(batch[0]).print();
     // var testBatch;
-    var validationData;
+    let validationData;
     // Every few batches test the accuracy of the mode.
     if (i % TEST_ITERATION_FREQUENCY === 0) {
       //TODO: get a new function to get validation batch
@@ -115,7 +117,7 @@ async function train(modelDict, datasetObj) {
           onBatchEnd: async (batch, logs) => {
             console.log('Loss:' + logs.loss.toFixed(5));
             console.log('Accuracy:' + logs.acc);
-            await tf.nextFrame();
+            await tensorflow.nextensorflowrame();
           }
         }
       }
@@ -131,18 +133,18 @@ async function train(modelDict, datasetObj) {
 
 async function predict(modelDict, datasetObj) {
   //while (isPredicting) {
-  tf.tidy(() => {
+  tensorflow.tidy(() => {
     // Load img
-    for (var img of datasetObj.predictionSet) {
-      var imgTensor = tf.fromPixels(img);
+    for (let img of datasetObj.predictionSet) {
+      let imgTensor = tensorflow.fromPixels(img);
 
       //Preprocessing
-      imgTensor = tf.image.resizeBilinear(imgTensor, [224, 224]);
+      imgTensor = tensorflow.image.resizeBilinear(imgTensor, [224, 224]);
       imgTensor = imgTensor.expandDims(0);
       imgTensor = imgTensor
         .toFloat()
-        .div(tf.scalar(127.0))
-        .sub(tf.scalar(1.0));
+        .div(tensorflow.scalar(127.0))
+        .sub(tensorflow.scalar(1.0));
 
       // Make a prediction through mobilenet, getting the internal activation of
       // the mobilenet model.
@@ -162,7 +164,7 @@ async function predict(modelDict, datasetObj) {
   //const classId = (await predictedClass.data())[0];
   //console.log(predictedClass.data())
   // ui.predictClass(classId);
-  await tf.nextFrame();
+  await tensorflow.nextensorflowrame();
   //}
   // ui.donePredicting();
 }
@@ -172,14 +174,12 @@ async function run(datasetObj) {
 
   console.log(model);
 
-  var doneTraining = await train(model, datasetObj);
+  let doneTraining = await train(model, datasetObj);
   if (doneTraining) {
     console.log('Predicting!');
     await predict(model, datasetObj);
   }
 }
-
-var VALIDATIONSET_RATIO = 0.3;
 
 class Dataset {
   constructor() {
@@ -195,42 +195,47 @@ class Dataset {
 
     this.predictionSet = [];
   }
+
   get num_classes() {
     return this.numClasses;
   }
+
   loadFromArray(imDataArray) {
     // function to split into training, validation and prediction set
     if (imDataArray == null) {
       throw 'No Image Data Array given.';
     }
-    var labeledImages = {};
 
-    for (var currentImage of imDataArray) {
-      if (currentImage.catId == null) {
-        this.predictionSet.push(currentImage);
+    let labeledImages = {};
+
+    for (let image of imDataArray) {
+      if (image.category == null) {
+        this.predictionSet.push(image);
       } else {
-        var currentLabelID = currentImage.catId;
+        let currentLabelID = image.category;
+
         if (currentLabelID in labeledImages) {
-          labeledImages[currentLabelID].push(currentImage);
+          labeledImages[currentLabelID].push(image);
         } else {
-          labeledImages[currentLabelID] = [currentImage];
+          labeledImages[currentLabelID] = [image];
         }
       }
     }
 
     this.numClasses = Object.keys(labeledImages).length;
 
-    for (var labelId in labeledImages) {
+    for (let labelId in labeledImages) {
       // At least 1 element
-      var numSamplesValidation = Math.max(
+      let numSamplesValidation = Math.max(
         1,
         Math.round(labeledImages[labelId].length * VALIDATIONSET_RATIO)
       );
-      var validationIndices = tf.util.createShuffledIndices(
+
+      let validationIndices = tensorflow.util.createShuffledIndices(
         numSamplesValidation
       );
 
-      for (var i = 0; i < labeledImages[labelId].length; i++) {
+      for (let i = 0; i < labeledImages[labelId].length; i++) {
         if (i in validationIndices) {
           this.validationSet.push(labeledImages[labelId][i]);
         } else {
@@ -239,10 +244,11 @@ class Dataset {
       }
     }
 
-    this.trainingSetShuffledIndices = tf.util.createShuffledIndices(
+    this.trainingSetShuffledIndices = tensorflow.util.createShuffledIndices(
       this.trainingSet.length
     );
-    this.validationSetShuffledIndices = tf.util.createShuffledIndices(
+
+    this.validationSetShuffledIndices = tensorflow.util.createShuffledIndices(
       this.validationSet.length
     );
 
@@ -252,12 +258,14 @@ class Dataset {
       ' Elements: ',
       this.trainingSet
     );
+
     console.log(
       'Validation Set n_v =',
       this.validationSet.length,
       ' Elements: ',
       this.validationSet
     );
+
     console.log(
       'Prediction Set n_p =',
       this.predictionSet.length,
@@ -296,33 +304,35 @@ class Dataset {
 
   // TODO: change to shuffled indices list
   nextRandomBatch(batchSize, datasetList, shuffleIndices, updateIndexFunc) {
-    var batchXY = [];
-    for (var i = 0; i < batchSize; i++) {
+    let batchXY = [];
+
+    for (let i = 0; i < batchSize; i++) {
       batchXY.push(datasetList[shuffleIndices[updateIndexFunc()]]);
     }
-    var result = this.convertToBatchTensor(batchXY);
-    return result;
+
+    return this.convertToBatchTensor(batchXY);
   }
 
   convertToBatchTensor(imageArray) {
-    return tf.tidy(() => {
-      var xs = null;
+    return tensorflow.tidy(() => {
+      let xs = null;
       // var ys = null;
-      var ys2 = null;
-      for (var img of imageArray) {
+      let ys2 = null;
+
+      for (let img of imageArray) {
         // Convert the image to tensor
-        let imgTensor = tf.fromPixels(img);
-        // const labelTensor = tf.oneHot(
-        //   tf.tensor1d([img.catId]),
+        let imgTensor = tensorflow.fromPixels(img);
+        // const labelTensor = tensorflow.oneHot(
+        //   tensorflow.tensor1d([img.category]),
         //   this.numClasses
         // );
 
-        imgTensor = tf.image.resizeBilinear(imgTensor, [224, 224]);
+        imgTensor = tensorflow.image.resizeBilinear(imgTensor, [224, 224]);
         imgTensor = imgTensor.expandDims(0);
         imgTensor = imgTensor
           .toFloat()
-          .div(tf.scalar(127.0))
-          .sub(tf.scalar(1.0));
+          .div(tensorflow.scalar(127.0))
+          .sub(tensorflow.scalar(1.0));
         if (xs == null) {
           xs = imgTensor;
         } else {
@@ -330,25 +340,36 @@ class Dataset {
         }
 
         if (ys2 == null) {
-          ys2 = [img.catId];
+          ys2 = [img.category];
         } else {
-          ys2.push(img.catId);
+          ys2.push(img.category);
         }
       }
-      const labelBatch = tf.oneHot(tf.tensor1d(ys2), this.numClasses);
-      return [tf.keep(xs), tf.keep(labelBatch)];
+      const labelBatch = tensorflow.oneHot(
+        tensorflow.tensor1d(ys2),
+        this.numClasses
+      );
+      return [tensorflow.keep(xs), tensorflow.keep(labelBatch)];
     });
   }
 }
 
-const getImData = () => {
-  return document.getElementsByClassName('image');
-};
+async function trainOnRun(state) {
+  const images = state.images.map(observation => {
+    let image = new Image();
 
-async function trainOnRun(imgData) {
+    image.category = observation.category;
+
+    image.src = observation.pathname;
+
+    return image;
+  });
+
+  console.log(images);
+
   const dataset = new Dataset();
 
-  dataset.loadFromArray(getImData());
+  dataset.loadFromArray(images);
 
   await run(dataset);
 

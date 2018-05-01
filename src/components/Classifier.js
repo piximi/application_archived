@@ -113,6 +113,10 @@ class Classifier extends Component {
     });
   };
 
+  train = () => {
+    return API.trainOnRun(this.state);
+  };
+
   render() {
     const { classes } = this.props;
 
@@ -125,7 +129,7 @@ class Classifier extends Component {
                 Cyto
               </Typography>
 
-              <Button onClick={() => API.trainOnRun()}>Run</Button>
+              <Button onClick={this.train}>Run</Button>
             </Toolbar>
           </AppBar>
 
