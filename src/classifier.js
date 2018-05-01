@@ -91,7 +91,7 @@ async function train(modelDict, datasetObj) {
     // TODO: Change function for getting training batch
     const batch = datasetObj.nextTrainBatch(BATCH_SIZE);
     //tf.tensor(batch[0]).print();
-    var testBatch;
+    // var testBatch;
     var validationData;
     // Every few batches test the accuracy of the mode.
     if (i % TEST_ITERATION_FREQUENCY === 0) {
@@ -101,7 +101,7 @@ async function train(modelDict, datasetObj) {
 
     // The entire dataset doesn't fit into memory so we call fit repeatedly
     // with batches.
-    const history = await modelDict['ShallowNet'].fit(
+    await modelDict['ShallowNet'].fit(
       modelDict['PretrainedModel'].predict(batch[0]),
       batch[1],
       {
@@ -131,7 +131,7 @@ async function train(modelDict, datasetObj) {
 
 async function predict(modelDict, datasetObj) {
   //while (isPredicting) {
-  const predictedClass = tf.tidy(() => {
+  tf.tidy(() => {
     // Load img
     for (var img of datasetObj.predictionSet) {
       var imgTensor = tf.fromPixels(img);
@@ -307,15 +307,15 @@ class Dataset {
   convertToBatchTensor(imageArray) {
     return tf.tidy(() => {
       var xs = null;
-      var ys = null;
+      // var ys = null;
       var ys2 = null;
       for (var img of imageArray) {
         // Convert the image to tensor
-        const imgTensor = tf.fromPixels(img);
-        const labelTensor = tf.oneHot(
-          tf.tensor1d([img.catId]),
-          this.numClasses
-        );
+        let imgTensor = tf.fromPixels(img);
+        // const labelTensor = tf.oneHot(
+        //   tf.tensor1d([img.catId]),
+        //   this.numClasses
+        // );
 
         imgTensor = tf.image.resizeBilinear(imgTensor, [224, 224]);
         imgTensor = imgTensor.expandDims(0);
@@ -342,23 +342,17 @@ class Dataset {
 }
 
 const getImData = () => {
-  return document.getElementsByClassName('sample');
+  return document.getElementsByClassName('image');
 };
 
 async function trainOnRun(imgData) {
-  //var imgArray= getImData();
-  //for (var i of imgArray){
-  //console.log(i);
-  //console.log(i.id, " : ", i.catId);
-  //}
-  var dataset = new Dataset();
+  const dataset = new Dataset();
 
   dataset.loadFromArray(getImData());
 
   await run(dataset);
-  //console.log(dataset.nextTrainBatch(8));
 
   return null;
 }
 
-export { getImData, Dataset, trainOnRun, run };
+export { trainOnRun };

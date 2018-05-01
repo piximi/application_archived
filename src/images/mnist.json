@@ -76,22 +76,22 @@
   ],
   "images": [
     {
-      "category": null,
+      "category": "a2ca8ef8-411b-48d2-954b-3caf8f38541d",
       "identifier": "5f8dbdec-34bf-471c-8027-88c602110246",
       "pathname": "images/mnist/0048b84923b814c5e56e2c75082ea18e.png"
     },
     {
-      "category": null,
+      "category": "a2ca8ef8-411b-48d2-954b-3caf8f38541d",
       "identifier": "d53dd7e9-8a35-4141-94ef-170d00e3836b",
       "pathname": "images/mnist/011e2e7cf655a56f9dca27f055e7b1fd.png"
     },
     {
-      "category": null,
+      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
       "identifier": "09e1775d-4627-4ff2-9071-06914e4222cf",
       "pathname": "images/mnist/015586f8c7b338ae6768857af4eb1643.png"
     },
     {
-      "category": null,
+      "category": "a2ca8ef8-411b-48d2-954b-3caf8f38541d",
       "identifier": "e0c958da-5fff-4853-993e-7acd9503a0ea",
       "pathname": "images/mnist/0178d1fd8be28c83f1cc65312f0848ab.png"
     },

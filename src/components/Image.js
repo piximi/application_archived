@@ -41,7 +41,12 @@ class Image extends Component {
     return connectDragSource(
       <div>
         <LazyLoad height={'100%'} once>
-          <img alt="foo" src={pathname} style={{ width: '100%' }} />
+          <img
+            alt="foo"
+            className="image"
+            src={pathname}
+            style={{ width: '100%' }}
+          />
         </LazyLoad>
 
         <GridListTileBar style={{ backgroundColor: color, opacity: 0.4 }} />
