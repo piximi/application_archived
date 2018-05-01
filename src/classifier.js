@@ -117,7 +117,7 @@ async function train(modelDict, datasetObj) {
           onBatchEnd: async (batch, logs) => {
             console.log('Loss:' + logs.loss.toFixed(5));
             console.log('Accuracy:' + logs.acc);
-            await tensorflow.nextensorflowrame();
+            await tensorflow.nextFrame();
           }
         }
       }
