@@ -17,6 +17,7 @@ import { DragDropContextProvider } from 'react-dnd';
 import uuidv4 from 'uuid';
 import _ from 'lodash';
 import * as API from '../classifier';
+import Download from '@axetroy/react-download';
 
 class Classifier extends Component {
   constructor(props) {
@@ -28,6 +29,20 @@ class Classifier extends Component {
       settings: this.props.settings
     };
   }
+
+  save = () => {
+    console.log('save');
+  };
+
+  open = event => {
+    const reader = new FileReader();
+
+    reader.readAsText(event.target.files[0]);
+
+    reader.onload = stream => {
+      this.setState(JSON.parse(stream.target.result));
+    };
+  };
 
   onChange = event => {
     this.setState({
@@ -130,6 +145,15 @@ class Classifier extends Component {
               </Typography>
 
               <Button onClick={this.train}>Run</Button>
+
+              <input onChange={this.open} type="file" />
+
+              <Download
+                file="example.cyto"
+                content={JSON.stringify(this.state)}
+              >
+                <Button onClick={this.save}>Save</Button>
+              </Download>
             </Toolbar>
           </AppBar>
 

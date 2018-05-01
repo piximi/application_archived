@@ -1,6 +1,5 @@
 import * as tensorflow from '@tensorflow/tfjs';
 
-//console.log(model)
 const LEARNING_RATE = 1e-4;
 const optimizer = tensorflow.train.adam(LEARNING_RATE);
 // How many examples the model should "see" before making a parameter update.
@@ -33,23 +32,6 @@ async function loadNetwork(num_classes) {
   for (let i = 0; i < tmpModel.layers.length; i++) {
     tmpModel.layers[i].trainable = false;
   }
-  /*
-  //flattenlayer
-  const flattenLayer = tensorflow.layers.flatten();
-  //create denselayer for class prediction
-  const dense = tensorflow.layers.dense({
-    units: num_classes,
-    kernelInitializer: 'VarianceScaling',
-    activation: 'softmax'
-  });
-
-  //apply the layers
-  const output = dense.apply(flattenLayer.apply(tmpModel.outputs));
-
-  //create the model
-  const model = tensorflow.model({inputs: preLoadedmodel.inputs, outputs: output});
-
-  */
 
   const model = tensorflow.sequential({
     layers: [
@@ -63,8 +45,6 @@ async function loadNetwork(num_classes) {
           tmpModel.output.shape[3]
         ]
       }),
-      // The number of units of the last layer should correspond
-      // to the number of classes we want to predict.
       tensorflow.layers.dense({
         units: 100,
         activation: 'relu',
@@ -88,14 +68,14 @@ async function loadNetwork(num_classes) {
 
   return { PretrainedModel: tmpModel, ShallowNet: model };
 }
+
 async function train(modelDict, datasetObj) {
   for (let i = 0; i < TRAIN_BATCHES; i++) {
     // TODO: Change function for getting training batch
     const batch = datasetObj.nextTrainBatch(BATCH_SIZE);
-    //tensorflow.tensor(batch[0]).print();
-    // var testBatch;
+
     let validationData;
-    // Every few batches test the accuracy of the mode.
+
     if (i % TEST_ITERATION_FREQUENCY === 0) {
       //TODO: get a new function to get validation batch
       validationData = datasetObj.nextValidationBatch(TEST_BATCH_SIZE);
@@ -124,14 +104,10 @@ async function train(modelDict, datasetObj) {
         }
       }
     );
-
-    // ... plotting code ...
   }
 
   return true;
 }
-
-//var isPredicting = true;
 
 async function predict(modelDict, datasetObj) {
   //while (isPredicting) {
@@ -158,29 +134,23 @@ async function predict(modelDict, datasetObj) {
 
       // Returns the index with the maximum probability. This number corresponds
       // to the class the model thinks is the most probable given the input.
-      console.log(img, predictions.as1D().print());
+      // console.log(img, predictions.as1D().print());
     }
     //return predictions//.as1D().argMax();
   });
 
-  //const classId = (await predictedClass.data())[0];
-  //console.log(predictedClass.data())
-  // ui.predictClass(classId);
   await tensorflow.nextFrame();
-  //}
-  // ui.donePredicting();
 }
 
 async function run(datasetObj) {
   const model = await loadNetwork(datasetObj.num_classes);
 
-  console.log(model);
-
   let doneTraining = await train(model, datasetObj);
-  if (doneTraining) {
-    console.log('Predicting!');
-    await predict(model, datasetObj);
-  }
+
+  // if (doneTraining) {
+  //   console.log('Predicting!');
+  //   await predict(model, datasetObj);
+  // }
 }
 
 class Dataset {
@@ -322,12 +292,7 @@ class Dataset {
       let ys2 = null;
 
       for (let img of imageArray) {
-        // Convert the image to tensor
         let imgTensor = tensorflow.fromPixels(img);
-        // const labelTensor = tensorflow.oneHot(
-        //   tensorflow.tensor1d([img.category]),
-        //   this.numClasses
-        // );
 
         imgTensor = tensorflow.image.resizeBilinear(imgTensor, [224, 224]);
         imgTensor = imgTensor.expandDims(0);
@@ -349,8 +314,10 @@ class Dataset {
       }
       const labelBatch = tensorflow.oneHot(
         tensorflow.tensor1d(ys2),
+
         this.numClasses
       );
+
       return [tensorflow.keep(xs), tensorflow.keep(labelBatch)];
     });
   }
@@ -366,8 +333,6 @@ async function trainOnRun(state) {
 
     return image;
   });
-
-  console.log(images);
 
   const dataset = new Dataset();
 
