@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import styles from './Classifier.css.js';
 import { withStyles } from 'material-ui/styles';
-import { Divider, Drawer, Grid, Toolbar } from 'material-ui';
-import Categories from './Categories';
+import { Grid } from 'material-ui';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContextProvider } from 'react-dnd';
 import uuidv4 from 'uuid';
