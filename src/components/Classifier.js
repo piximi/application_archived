@@ -130,7 +130,12 @@ class Classifier extends Component {
     return (
       <DragDropContextProvider backend={HTML5Backend}>
         <div className={classes.root}>
-          <Primary />
+          <Primary
+            save={this.save}
+            open={this.open}
+            content={this.state}
+            train={this.train}
+          />
 
           <Grid container spacing={0}>
             <Sidebar

@@ -5,7 +5,7 @@ import { withStyles } from 'material-ui/styles/index';
 import Download from '@axetroy/react-download';
 
 const Primary = props => {
-  const { classes } = props;
+  const { classes, train, open, save, content } = props;
 
   return (
     <AppBar position="fixed" className={classes.appBar} color="default">
@@ -14,12 +14,12 @@ const Primary = props => {
           Cyto
         </Typography>
 
-        <Button onClick={this.train}>Run</Button>
+        <Button onClick={train}>Run</Button>
 
-        <input onChange={this.open} type="file" />
+        <input onChange={open} type="file" />
 
-        <Download file="example.cyto" content={JSON.stringify(this.state)}>
-          <Button onClick={this.save}>Save</Button>
+        <Download file="example.cyto" content={JSON.stringify(content)}>
+          <Button onClick={save}>Save</Button>
         </Download>
       </Toolbar>
     </AppBar>
