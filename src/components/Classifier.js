@@ -10,6 +10,7 @@ import _ from 'lodash';
 import * as API from '../classifier';
 import Gallery from './Gallery';
 import Primary from './Primary';
+import Sidebar from './Sidebar';
 
 class Classifier extends Component {
   constructor(props) {
@@ -133,25 +134,12 @@ class Classifier extends Component {
           <Primary />
 
           <Grid container spacing={0}>
-            <Grid item xs={3}>
-              <Drawer
-                classes={{ paper: classes.drawerPaper }}
-                variant="permanent"
-              >
-                <div className={classes.toolbar} />
-
-                <Toolbar />
-
-                <Divider />
-
-                <Categories
-                  categories={this.state.categories}
-                  categoryOnChange={this.categoryOnChange}
-                  categoryOnNameChange={this.categoryOnNameChange}
-                  onClick={this.createCategory}
-                />
-              </Drawer>
-            </Grid>
+            <Sidebar
+              categories={this.state.categories}
+              categoryOnChange={this.categoryOnChange}
+              categoryOnNameChange={this.categoryOnNameChange}
+              createCategory={this.createCategory}
+            />
 
             <Gallery
               onColumnsChange={this.onColumnsChange}
