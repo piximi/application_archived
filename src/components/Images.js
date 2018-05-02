@@ -6,7 +6,11 @@ import withDragDropContext from './dnd-global-context';
 class Images extends Component {
   render() {
     return (
-      <GridList cellHeight={'auto'} cols={this.props.columns} spacing={4}>
+      <GridList
+        cellHeight={'auto'}
+        cols={Number(this.props.columns)}
+        spacing={4}
+      >
         {this.props.images.map((sample, index) => (
           <GridListTile key={index} cols={1}>
             <Image

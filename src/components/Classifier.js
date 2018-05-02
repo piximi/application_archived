@@ -11,13 +11,13 @@ import {
   Typography
 } from 'material-ui';
 import Categories from './Categories';
-import Images from './Images';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContextProvider } from 'react-dnd';
 import uuidv4 from 'uuid';
 import _ from 'lodash';
 import * as API from '../classifier';
 import Download from '@axetroy/react-download';
+import Gallery from './Gallery';
 
 class Classifier extends Component {
   constructor(props) {
@@ -44,7 +44,7 @@ class Classifier extends Component {
     };
   };
 
-  onChange = event => {
+  onColumnsChange = event => {
     this.setState({
       settings: {
         ...this.state.settings,
@@ -178,38 +178,13 @@ class Classifier extends Component {
               </Drawer>
             </Grid>
 
-            <Grid item xs={9}>
-              <div className={classes.toolbar} />
-
-              <Toolbar className={classes.primaryToolbar}>
-                <Grid container spacing={0}>
-                  <Grid item xs={10} />
-
-                  <Grid item xs={2}>
-                    <input
-                      type="range"
-                      min="2"
-                      max="24"
-                      step="1"
-                      value={this.state.settings.columns}
-                      onChange={this.onChange}
-                      style={{ width: '100%' }}
-                    />
-                  </Grid>
-                </Grid>
-              </Toolbar>
-
-              <Divider />
-
-              <main className={classes.content}>
-                <Images
-                  columns={this.state.settings.columns}
-                  findCategory={this.findCategory}
-                  images={this.state.images}
-                  updateImageCategory={this.updateImageCategory}
-                />
-              </main>
-            </Grid>
+            <Gallery
+              onColumnsChange={this.onColumnsChange}
+              findCategory={this.findCategory}
+              images={this.state.images}
+              settings={this.state.settings}
+              updateImageCategory={this.updateImageCategory}
+            />
           </Grid>
         </div>
       </DragDropContextProvider>
