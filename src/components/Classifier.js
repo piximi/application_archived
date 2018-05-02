@@ -1,23 +1,15 @@
 import React, { Component } from 'react';
 import styles from './Classifier.css.js';
 import { withStyles } from 'material-ui/styles';
-import {
-  AppBar,
-  Button,
-  Divider,
-  Drawer,
-  Grid,
-  Toolbar,
-  Typography
-} from 'material-ui';
+import { Divider, Drawer, Grid, Toolbar } from 'material-ui';
 import Categories from './Categories';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContextProvider } from 'react-dnd';
 import uuidv4 from 'uuid';
 import _ from 'lodash';
 import * as API from '../classifier';
-import Download from '@axetroy/react-download';
 import Gallery from './Gallery';
+import Primary from './Primary';
 
 class Classifier extends Component {
   constructor(props) {
@@ -138,24 +130,7 @@ class Classifier extends Component {
     return (
       <DragDropContextProvider backend={HTML5Backend}>
         <div className={classes.root}>
-          <AppBar position="fixed" className={classes.appBar} color="default">
-            <Toolbar>
-              <Typography variant="title" color="inherit" noWrap>
-                Cyto
-              </Typography>
-
-              <Button onClick={this.train}>Run</Button>
-
-              <input onChange={this.open} type="file" />
-
-              <Download
-                file="example.cyto"
-                content={JSON.stringify(this.state)}
-              >
-                <Button onClick={this.save}>Save</Button>
-              </Download>
-            </Toolbar>
-          </AppBar>
+          <Primary />
 
           <Grid container spacing={0}>
             <Grid item xs={3}>
