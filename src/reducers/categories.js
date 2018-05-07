@@ -1,6 +1,7 @@
 import {
   CREATE_CATEGORY,
   DELETE_CATEGORY,
+  UPDATE_CATEGORY_DESCRIPTION,
   UPDATE_CATEGORY_VISIBILITY
 } from '../constants';
 
@@ -11,6 +12,17 @@ const categories = (state = [], action) => {
     case DELETE_CATEGORY:
       return state.filter(category => {
         return category.identifier !== action.identifier;
+      });
+    case UPDATE_CATEGORY_DESCRIPTION:
+      return state.map(category => {
+        if (category.identifier === action.identifier) {
+          return {
+            ...category,
+            description: action.description
+          };
+        } else {
+          return category;
+        }
       });
     case UPDATE_CATEGORY_VISIBILITY:
       return state.map(category => {
