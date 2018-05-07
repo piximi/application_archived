@@ -7,7 +7,7 @@ import {
 const categories = (state = [], action) => {
   switch (action.type) {
     case CREATE_CATEGORY:
-      return [...state, action.payload];
+      return [...state, action.category];
     case DELETE_CATEGORY:
       return state.filter(category => {
         return category.identifier !== action.identifier;

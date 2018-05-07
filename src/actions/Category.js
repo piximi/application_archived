@@ -6,12 +6,12 @@ import {
 
 export const createCategory = category => ({
   type: 'CREATE_CATEGORY',
-  payload: category
+  category
 });
 
-export const deleteCategory = category => ({
+export const deleteCategory = identifier => ({
   type: 'DELETE_CATEGORY',
-  payload: category
+  identifier
 });
 
 export const updateCategoryVisibility = identifier => ({
