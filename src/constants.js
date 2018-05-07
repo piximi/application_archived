@@ -1,5 +1,3 @@
-export const ADD_ARTICLE = 'ADD_ARTICLE';
-
 export const CREATE_CATEGORY = 'CREATE_CATEGORY';
 
 export const DELETE_CATEGORY = 'DELETE_CATEGORY';
