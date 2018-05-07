@@ -13,7 +13,7 @@ const categories = (state = [], action) => {
         return category.identifier !== action.identifier;
       });
     case UPDATE_CATEGORY_VISIBILITY:
-      state.map(category => {
+      return state.map(category => {
         if (category.identifier === action.identifier) {
           return {
             ...category,
