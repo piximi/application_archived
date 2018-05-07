@@ -1,4 +1,8 @@
-import { CREATE_CATEGORY, DELETE_CATEGORY } from '../constants';
+import {
+  CREATE_CATEGORY,
+  DELETE_CATEGORY,
+  UPDATE_CATEGORY_VISIBILITY
+} from '../constants';
 
 const initialState = {
   categories: [],
@@ -18,6 +22,20 @@ const reducer = (state = initialState, action) => {
         ...state,
         categories: state.categories.filter(category => {
           return category.identifier !== action.identifier;
+        })
+      };
+    case UPDATE_CATEGORY_VISIBILITY:
+      return {
+        ...state,
+        categories: state.categories.map(category => {
+          if (category.identifier === action.identifier) {
+            return {
+              ...category,
+              visible: !category.visible
+            };
+          } else {
+            return category;
+          }
         })
       };
     default:
