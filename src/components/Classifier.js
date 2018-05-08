@@ -45,30 +45,6 @@ class Classifier extends Component {
     });
   };
 
-  categoryOnNameChange = (event, identifier) => {
-    const categories = this.state.categories;
-
-    const index = this.findCategoryIndex(identifier);
-
-    categories[index].name = event.target.value;
-
-    this.setState({
-      categories: categories
-    });
-  };
-
-  categoryOnChange = (event, identifier) => {
-    const categories = this.state.categories;
-
-    const index = this.findCategoryIndex(identifier);
-
-    categories[index].visible = !categories[index].visible;
-
-    this.setState({
-      categories: categories
-    });
-  };
-
   createCategory = () => {
     this.setState(previous => ({
       categories: [
@@ -138,12 +114,7 @@ class Classifier extends Component {
           />
 
           <Grid container spacing={0}>
-            <Sidebar
-              categories={this.state.categories}
-              categoryOnChange={this.categoryOnChange}
-              categoryOnNameChange={this.categoryOnNameChange}
-              createCategory={this.createCategory}
-            />
+            <Sidebar categories={this.state.categories} />
 
             <Gallery
               onColumnsChange={this.onColumnsChange}

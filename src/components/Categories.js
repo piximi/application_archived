@@ -12,8 +12,6 @@ const Categories = props => {
       <List subheader={<ListSubheader>Categories</ListSubheader>}>
         {props.categories.map(category => (
           <ConnectedCategory
-            categoryOnChange={props.categoryOnChange}
-            categoryOnNameChange={props.categoryOnNameChange}
             color={category.color}
             identifier={category.identifier}
             index={category.index}

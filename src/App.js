@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
-import Classifier from './components/Classifier';
+import ConnectedClassifier from './containers/ConnectedClassifier';
 import data from './images/mnist.json';
 
 class App extends Component {
   render() {
     return (
-      <Classifier
+      <ConnectedClassifier
         categories={data.categories}
         images={data.images}
         settings={data.settings}
