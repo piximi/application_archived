@@ -2,7 +2,6 @@ import { Divider, Drawer, Grid, Toolbar } from 'material-ui';
 import React from 'react';
 import styles from './Primary.css';
 import { withStyles } from 'material-ui/styles/index';
-import Categories from './Categories';
 import ConnectedCategories from '../containers/ConnectedCategories';
 
 const Sidebar = props => {

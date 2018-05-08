@@ -26,7 +26,7 @@ const Categories = props => {
 
       <Button
         className={props.classes.create}
-        onClick={props.onClick}
+        onClick={props.createCategory}
         variant="fab"
       >
         <AddIcon />

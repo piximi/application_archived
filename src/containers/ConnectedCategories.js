@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { createCategory } from '../actions/category';
+import { createCategoryAction } from '../actions/category';
 import Categories from '../components/Categories';
 
 const mapStateToProps = (state, props) => {
@@ -11,9 +11,9 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    onClick: () => {
+    createCategory: () => {
       console.log(props);
-      dispatch(createCategory(props));
+      dispatch(createCategoryAction(props));
     }
   };
 };

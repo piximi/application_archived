@@ -1,8 +1,8 @@
 import {
-  createCategory,
-  deleteCategory,
-  updateCategoryDescription,
-  updateCategoryVisibility
+  createCategoryAction,
+  deleteCategoryAction,
+  updateCategoryDescriptionAction,
+  updateCategoryVisibilityAction
 } from './category';
 import {
   CREATE_CATEGORY,
@@ -22,7 +22,7 @@ describe('category actions', () => {
       category
     };
 
-    expect(createCategory(category)).toEqual(expectedAction);
+    expect(createCategoryAction(category)).toEqual(expectedAction);
   });
 
   it('should create an action to delete a category', () => {
@@ -33,7 +33,7 @@ describe('category actions', () => {
       identifier
     };
 
-    expect(deleteCategory(identifier)).toEqual(expectedAction);
+    expect(deleteCategoryAction(identifier)).toEqual(expectedAction);
   });
 
   it('should create an action to update a category description', () => {
@@ -45,7 +45,7 @@ describe('category actions', () => {
       description: 'foo'
     };
 
-    expect(updateCategoryDescription(identifier, 'foo')).toEqual(
+    expect(updateCategoryDescriptionAction(identifier, 'foo')).toEqual(
       expectedAction
     );
   });
@@ -58,6 +58,6 @@ describe('category actions', () => {
       identifier
     };
 
-    expect(updateCategoryVisibility(identifier)).toEqual(expectedAction);
+    expect(updateCategoryVisibilityAction(identifier)).toEqual(expectedAction);
   });
 });
