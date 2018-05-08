@@ -4,6 +4,8 @@ import uuidv4 from 'uuid';
 import { createCategoryAction } from '../actions/category';
 import Categories from '../components/Categories';
 
+let index = 0;
+
 const mapStateToProps = (state, props) => {
   return state;
 };
@@ -12,7 +14,10 @@ const mapDispatchToProps = (dispatch, props) => {
   return {
     createCategory: () => {
       const category = {
-        identifier: uuidv4()
+        color: 'red',
+        identifier: uuidv4(),
+        index: index++,
+        visible: true
       };
 
       dispatch(createCategoryAction(category));

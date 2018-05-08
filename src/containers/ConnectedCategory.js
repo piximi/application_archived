@@ -7,6 +7,7 @@ import {
 import Category from '../components/Category';
 
 const mapStateToProps = (state, props) => {
+  console.log(props);
   return props;
 };
 
