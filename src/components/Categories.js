@@ -12,12 +12,8 @@ const Categories = props => {
       <List subheader={<ListSubheader>Categories</ListSubheader>}>
         {props.categories.map(category => (
           <ConnectedCategory
-            color={category.color}
-            identifier={category.identifier}
-            index={category.index}
             key={category.identifier}
-            description={category.description}
-            visible={category.visible}
+            identifier={category.identifier}
           />
         ))}
       </List>

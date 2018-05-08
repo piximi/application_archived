@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import _ from 'lodash';
 
 import {
   updateCategoryDescriptionAction,
@@ -7,7 +8,11 @@ import {
 import Category from '../components/Category';
 
 const mapStateToProps = (state, props) => {
-  return props;
+  const index = _.findIndex(state.categories, function(category) {
+    return category.identifier === props.identifier;
+  });
+
+  return state.categories[index];
 };
 
 const mapDispatchToProps = (dispatch, props) => {
