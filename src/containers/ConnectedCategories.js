@@ -5,9 +5,7 @@ import { createCategoryAction } from '../actions/category';
 import Categories from '../components/Categories';
 
 const mapStateToProps = (state, props) => {
-  return {
-    categories: state
-  };
+  return state;
 };
 
 const mapDispatchToProps = (dispatch, props) => {

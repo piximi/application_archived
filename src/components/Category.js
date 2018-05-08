@@ -30,11 +30,10 @@ function collect(connect, monitor) {
 
 const Category = props => {
   const {
-    categoryOnChange,
-    categoryOnNameChange,
+    updateCategoryVisibility,
+    updateCategoryDescriptionAction,
     color,
     connectDropTarget,
-    identifier,
     name,
     visible
   } = props;
@@ -52,17 +51,14 @@ const Category = props => {
           <Grid item xs={8}>
             <Input
               style={{ width: '100%' }}
-              onChange={event => categoryOnNameChange(event, identifier)}
+              onChange={updateCategoryDescriptionAction}
               value={name}
             />
           </Grid>
 
           <Grid item xs={2}>
             <ListItemSecondaryAction>
-              <Checkbox
-                checked={visible}
-                onChange={event => categoryOnChange(event, identifier)}
-              />
+              <Checkbox checked={visible} onChange={updateCategoryVisibility} />
             </ListItemSecondaryAction>
           </Grid>
         </ListItem>

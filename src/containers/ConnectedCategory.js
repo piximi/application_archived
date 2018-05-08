@@ -1,6 +1,9 @@
 import { connect } from 'react-redux';
 
-import { updateCategoryVisibilityAction } from '../actions/category';
+import {
+  updateCategoryDescriptionAction,
+  updateCategoryVisibilityAction
+} from '../actions/category';
 import Category from '../components/Category';
 
 const mapStateToProps = (state, props) => {
@@ -9,7 +12,10 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    onClick: () => {
+    updateCategoryDescription: () => {
+      dispatch(updateCategoryDescriptionAction(props));
+    },
+    updateCategoryVisibility: () => {
       dispatch(updateCategoryVisibilityAction(props));
     }
   };
