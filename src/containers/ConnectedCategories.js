@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import uuidv4 from 'uuid';
 
 import { createCategoryAction } from '../actions/category';
 import Categories from '../components/Categories';
@@ -12,8 +13,11 @@ const mapStateToProps = (state, props) => {
 const mapDispatchToProps = (dispatch, props) => {
   return {
     createCategory: () => {
-      console.log(props);
-      dispatch(createCategoryAction(props));
+      const category = {
+        identifier: uuidv4()
+      };
+
+      dispatch(createCategoryAction(category));
     }
   };
 };
