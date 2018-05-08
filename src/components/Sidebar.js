@@ -3,6 +3,7 @@ import React from 'react';
 import styles from './Primary.css';
 import { withStyles } from 'material-ui/styles/index';
 import Categories from './Categories';
+import ConnectedCategories from '../containers/ConnectedCategories';
 
 const Sidebar = props => {
   const {
@@ -22,7 +23,7 @@ const Sidebar = props => {
 
         <Divider />
 
-        <Categories
+        <ConnectedCategories
           categories={categories}
           categoryOnChange={categoryOnChange}
           categoryOnNameChange={categoryOnNameChange}

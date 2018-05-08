@@ -18,3 +18,5 @@ const mapDispatchToProps = (dispatch, props) => {
 const ConnectedCategory = connect(mapStateToProps, mapDispatchToProps)(
   Category
 );
+
+export default ConnectedCategory;

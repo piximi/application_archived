@@ -1,17 +1,17 @@
 import React from 'react';
 import { Button, List, ListSubheader } from 'material-ui';
-import Category from './Category';
 import AddIcon from '@material-ui/icons/Add';
 import { withStyles } from 'material-ui/styles';
 import withDragDropContext from './dnd-global-context';
 import styles from './Categories.css';
+import ConnectedCategory from '../containers/ConnectedCategory';
 
 const Categories = props => {
   return (
     <React.Fragment>
       <List subheader={<ListSubheader>Categories</ListSubheader>}>
         {props.categories.map(category => (
-          <Category
+          <ConnectedCategory
             categoryOnChange={props.categoryOnChange}
             categoryOnNameChange={props.categoryOnNameChange}
             color={category.color}
