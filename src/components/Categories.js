@@ -16,7 +16,7 @@ const Categories = props => {
             identifier={category.identifier}
             index={category.index}
             key={category.identifier}
-            name={category.name}
+            description={category.description}
             visible={category.visible}
           />
         ))}

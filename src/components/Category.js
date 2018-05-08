@@ -34,7 +34,7 @@ const Category = props => {
     updateCategoryDescriptionAction,
     color,
     connectDropTarget,
-    name,
+    description,
     visible
   } = props;
 
@@ -52,7 +52,7 @@ const Category = props => {
             <Input
               style={{ width: '100%' }}
               onChange={updateCategoryDescriptionAction}
-              value={name}
+              value={description}
             />
           </Grid>
 
