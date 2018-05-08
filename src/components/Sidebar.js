@@ -5,13 +5,7 @@ import { withStyles } from 'material-ui/styles/index';
 import ConnectedCategories from '../containers/ConnectedCategories';
 
 const Sidebar = props => {
-  const {
-    categories,
-    categoryOnChange,
-    categoryOnNameChange,
-    createCategory,
-    classes
-  } = props;
+  const { classes } = props;
 
   return (
     <Grid item xs={3}>
@@ -22,12 +16,7 @@ const Sidebar = props => {
 
         <Divider />
 
-        <ConnectedCategories
-          categories={categories}
-          categoryOnChange={categoryOnChange}
-          categoryOnNameChange={categoryOnNameChange}
-          onClick={createCategory}
-        />
+        <ConnectedCategories />
       </Drawer>
     </Grid>
   );

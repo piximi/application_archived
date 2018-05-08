@@ -45,21 +45,6 @@ class Classifier extends Component {
     });
   };
 
-  createCategory = () => {
-    this.setState(previous => ({
-      categories: [
-        ...previous.categories,
-        {
-          color: '',
-          identifier: uuidv4(),
-          name: '',
-          index: _.last(previous.categories).index + 1,
-          visible: true
-        }
-      ]
-    }));
-  };
-
   findCategory = identifier => {
     const index = this.findCategoryIndex(identifier);
 
@@ -114,7 +99,7 @@ class Classifier extends Component {
           />
 
           <Grid container spacing={0}>
-            <Sidebar categories={this.state.categories} />
+            <Sidebar />
 
             <Gallery
               onColumnsChange={this.onColumnsChange}
