@@ -7,8 +7,6 @@ import Categories from '../components/Categories';
 let index = 0;
 
 const mapStateToProps = (state, props) => {
-  state.categories = props.categories;
-
   return state;
 };
 

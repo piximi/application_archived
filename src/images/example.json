@@ -1,0 +1,29 @@
+{
+  "settings": {
+    "columns": 10
+  },
+  "categories": [
+    {
+      "color": "rgb(145,159,94)",
+      "identifier": "16e0e1b8-ae79-46f5-80cf-58e7f8dda344",
+      "index": 0,
+      "description": "0",
+      "visible": true
+    },
+    {
+      "color": "rgb(59,140,192)",
+      "identifier": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
+      "index": 1,
+      "description": "1",
+      "visible": true
+    },
+    {
+      "color": "rgb(252,244,87)",
+      "identifier": "f488bb9a-4274-49e3-a11c-c90d28d2c393",
+      "index": 2,
+      "description": "2",
+      "visible": true
+    }
+  ],
+  "images": []
+}
