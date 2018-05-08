@@ -21,7 +21,9 @@ const mapDispatchToProps = (dispatch, props) => {
       dispatch(updateCategoryDescriptionAction(props));
     },
     updateCategoryVisibility: () => {
-      dispatch(updateCategoryVisibilityAction(props));
+      const identifier = props.identifier;
+
+      dispatch(updateCategoryVisibilityAction(identifier));
     }
   };
 };

@@ -31,7 +31,7 @@ function collect(connect, monitor) {
 const Category = props => {
   const {
     updateCategoryVisibility,
-    updateCategoryDescriptionAction,
+    updateCategoryDescription,
     color,
     connectDropTarget,
     description,
@@ -51,7 +51,7 @@ const Category = props => {
           <Grid item xs={8}>
             <Input
               style={{ width: '100%' }}
-              onChange={updateCategoryDescriptionAction}
+              onChange={updateCategoryDescription}
               value={description}
             />
           </Grid>
