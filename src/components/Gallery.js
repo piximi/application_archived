@@ -40,7 +40,7 @@ const Gallery = props => {
 
       <main className={classes.content}>
         <ConnectedImages
-          columns={settings.columns}
+          columns={8}
           findCategory={findCategory}
           images={images}
           updateImageCategory={updateImageCategory}

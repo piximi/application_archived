@@ -37,12 +37,6 @@ class Classifier extends Component {
     });
   };
 
-  findImage = identifier => {
-    const index = this.findImageIndex(identifier);
-
-    return this.props.images[index];
-  };
-
   findImageIndex = identifier => {
     return _.findIndex(this.props.images, function(image) {
       return image.identifier === identifier;

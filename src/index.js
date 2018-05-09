@@ -15,8 +15,6 @@ const demo = {
   settings: {}
 };
 
-console.log(data);
-
 const store = createStore(reducer, demo);
 
 ReactDOM.render(
