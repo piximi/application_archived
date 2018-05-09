@@ -4,7 +4,7 @@ import _ from 'lodash';
 import {
   updateCategoryDescriptionAction,
   updateCategoryVisibilityAction
-} from '../actions/category';
+} from '../actions/categories';
 import Category from '../components/Category';
 
 const mapStateToProps = (state, props) => {

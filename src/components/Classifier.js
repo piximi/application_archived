@@ -4,7 +4,6 @@ import { withStyles } from 'material-ui/styles';
 import { Grid } from 'material-ui';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContextProvider } from 'react-dnd';
-import uuidv4 from 'uuid';
 import _ from 'lodash';
 import * as API from '../classifier';
 import Gallery from './Gallery';

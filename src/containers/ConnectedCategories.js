@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import uuidv4 from 'uuid';
 
-import { createCategoryAction } from '../actions/category';
+import { createCategoryAction } from '../actions/categories';
 import Categories from '../components/Categories';
 
 let index = 0;
