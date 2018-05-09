@@ -1,6 +1,6 @@
 import { Divider, Grid, Toolbar } from 'material-ui';
 import React from 'react';
-import Images from './Images';
+import ConnectedImages from '../containers/ConnectedImages';
 import styles from './Gallery.css';
 import { withStyles } from 'material-ui/styles/index';
 
@@ -39,7 +39,7 @@ const Gallery = props => {
       <Divider />
 
       <main className={classes.content}>
-        <Images
+        <ConnectedImages
           columns={settings.columns}
           findCategory={findCategory}
           images={images}
