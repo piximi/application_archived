@@ -43,18 +43,6 @@ class Classifier extends Component {
     });
   };
 
-  updateImageCategory = (identifier, category) => {
-    const images = this.props.images;
-
-    const index = this.findImageIndex(identifier);
-
-    images[index].category = category;
-
-    this.setState({
-      images: images
-    });
-  };
-
   train = () => {
     return API.trainOnRun(this.state);
   };
@@ -80,7 +68,6 @@ class Classifier extends Component {
               findCategory={this.findCategory}
               images={this.props.images}
               settings={this.props.settings}
-              updateImageCategory={this.updateImageCategory}
             />
           </Grid>
         </div>
