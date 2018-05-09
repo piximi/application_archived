@@ -2,12 +2,17 @@ import React from 'react';
 import {
   Checkbox,
   Grid,
+  IconButton,
   Input,
   ListItem,
   ListItemIcon,
-  ListItemSecondaryAction
+  ListItemSecondaryAction,
+  ListItemText
 } from 'material-ui';
 import LabelIcon from '@material-ui/icons/Label';
+import LabelOutlineIcon from '@material-ui/icons/LabelOutline';
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
 import { DropTarget } from 'react-dnd';
 import styles from './Classifier.css';
 import { withStyles } from 'material-ui/styles/index';
@@ -30,6 +35,7 @@ function collect(connect, monitor) {
 
 const Category = props => {
   const {
+    deleteCategory,
     updateCategoryVisibility,
     updateCategoryDescription,
     color,
@@ -40,29 +46,28 @@ const Category = props => {
 
   return connectDropTarget(
     <div>
-      <Grid container spacing={0}>
-        <ListItem button>
-          <Grid item xs={2}>
-            <ListItemIcon>
-              <LabelIcon style={{ color: color }} />
-            </ListItemIcon>
-          </Grid>
+      <ListItem button>
+        <Checkbox
+          checked={visible}
+          onChange={updateCategoryVisibility}
+          icon={<LabelOutlineIcon style={{ color: color }} />}
+          checkedIcon={<LabelIcon style={{ color: color }} />}
+        />
 
-          <Grid item xs={8}>
-            <Input
-              style={{ width: '100%' }}
-              onChange={updateCategoryDescription}
-              value={description}
-            />
-          </Grid>
+        {/*<Input style={{ width: '100%' }} onChange={updateCategoryDescription} value={description}/>*/}
 
-          <Grid item xs={2}>
-            <ListItemSecondaryAction>
-              <Checkbox checked={visible} onChange={updateCategoryVisibility} />
-            </ListItemSecondaryAction>
-          </Grid>
-        </ListItem>
-      </Grid>
+        <ListItemText primary={description} />
+
+        <ListItemSecondaryAction>
+          <ListItemIcon>
+            <EditIcon />
+          </ListItemIcon>
+
+          <ListItemIcon onClick={deleteCategory}>
+            <DeleteIcon />
+          </ListItemIcon>
+        </ListItemSecondaryAction>
+      </ListItem>
     </div>
   );
 };

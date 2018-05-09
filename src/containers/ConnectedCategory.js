@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 
 import {
+  deleteCategoryAction,
   updateCategoryDescriptionAction,
   updateCategoryVisibilityAction
 } from '../actions/categories';
@@ -14,6 +15,11 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
+    deleteCategory: event => {
+      const identifier = props.identifier;
+
+      dispatch(deleteCategoryAction(identifier));
+    },
     updateCategoryDescription: event => {
       const identifier = props.identifier;
 
