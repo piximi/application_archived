@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { updateImageCategoryAction } from '../actions/images';
 import Image from '../components/Image';
 
-const mapStateToProps = state => {
-  return state;
+const mapStateToProps = (state, props) => {
+  return state.images.find(image => props.identifier === image.identifier);
 };
 
 const mapDispatchToProps = dispatch => {

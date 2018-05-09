@@ -7,7 +7,6 @@ import getVisibleImages from '../selectors/images';
 
 const mapStateToProps = state => {
   return {
-    categories: state.categories,
     images: getVisibleImages(state),
     settings: state.settings
   };
