@@ -1,10 +1,7 @@
 import { connect } from 'react-redux';
 import uuidv4 from 'uuid';
 
-import {
-  createImageAction,
-  updateImageCategoryAction
-} from '../actions/images';
+import { createImageAction } from '../actions/images';
 import Images from '../components/Images';
 
 const mapStateToProps = state => {
@@ -20,9 +17,6 @@ const mapDispatchToProps = dispatch => {
       };
 
       dispatch(createImageAction(image));
-    },
-    updateImageCategory: (identifier, category) => {
-      dispatch(updateImageCategoryAction(identifier, category));
     }
   };
 };
