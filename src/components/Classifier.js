@@ -37,18 +37,12 @@ class Classifier extends Component {
     });
   };
 
-  findImageIndex = identifier => {
-    return _.findIndex(this.props.images, function(image) {
-      return image.identifier === identifier;
-    });
-  };
-
   train = () => {
     return API.trainOnRun(this.state);
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, images, settings } = this.props;
 
     return (
       <DragDropContextProvider backend={HTML5Backend}>
@@ -64,10 +58,9 @@ class Classifier extends Component {
             <Sidebar />
 
             <ConnectedGallery
-              onColumnsChange={this.onColumnsChange}
               findCategory={this.findCategory}
-              images={this.props.images}
-              settings={this.props.settings}
+              images={images}
+              settings={settings}
             />
           </Grid>
         </div>
