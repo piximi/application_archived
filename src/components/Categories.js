@@ -6,11 +6,11 @@ import withDragDropContext from './dnd-global-context';
 import styles from './Categories.css';
 import ConnectedCategory from '../containers/ConnectedCategory';
 
-const Categories = props => {
+const Categories = ({ classes, categories, createCategory }) => {
   return (
     <React.Fragment>
       <List subheader={<ListSubheader>Categories</ListSubheader>}>
-        {props.categories.map(category => (
+        {categories.map(category => (
           <ConnectedCategory
             key={category.identifier}
             identifier={category.identifier}
@@ -18,11 +18,7 @@ const Categories = props => {
         ))}
       </List>
 
-      <Button
-        className={props.classes.create}
-        onClick={props.createCategory}
-        variant="fab"
-      >
+      <Button className={classes.create} onClick={createCategory} variant="fab">
         <AddIcon />
       </Button>
     </React.Fragment>
