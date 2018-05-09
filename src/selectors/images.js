@@ -1,7 +1,12 @@
+import _ from 'lodash';
 import { createSelector } from 'reselect';
 
-const getVisibleCategories = (state, props) => {
-  return '';
+const getVisibleCategories = state => {
+  return _.map(state.categories, function(category) {
+    if (category.visible === true) {
+      return category.identifier;
+    }
+  });
 };
 
 const getImages = state => {
@@ -10,10 +15,10 @@ const getImages = state => {
 
 const getVisibleImages = createSelector(
   [getVisibleCategories, getImages],
-  (visibilityFilter, todos) => {
-    switch (visibilityFilter) {
+  (category, images) => {
+    switch (category) {
       default:
-        return todos;
+        return images;
     }
   }
 );
