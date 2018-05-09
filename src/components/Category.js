@@ -46,7 +46,7 @@ const Category = props => {
 
   return connectDropTarget(
     <div>
-      <ListItem button>
+      <ListItem>
         <Checkbox
           checked={visible}
           onChange={updateCategoryVisibility}

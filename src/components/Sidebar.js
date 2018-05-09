@@ -6,7 +6,7 @@ import ConnectedCategories from '../containers/ConnectedCategories';
 
 const Sidebar = ({ classes }) => {
   return (
-    <Grid item xs={2}>
+    <Grid item xs={3}>
       <Drawer classes={{ paper: classes.drawerPaper }} variant="permanent">
         <div className={classes.toolbar} />
 
