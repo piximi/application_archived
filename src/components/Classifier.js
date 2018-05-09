@@ -28,11 +28,11 @@ class Classifier extends Component {
   findCategory = identifier => {
     const index = this.findCategoryIndex(identifier);
 
-    return this.state.categories[index];
+    return this.props.categories[index];
   };
 
   findCategoryIndex = identifier => {
-    return _.findIndex(this.state.categories, function(category) {
+    return _.findIndex(this.props.categories, function(category) {
       return category.identifier === identifier;
     });
   };
@@ -40,17 +40,17 @@ class Classifier extends Component {
   findImage = identifier => {
     const index = this.findImageIndex(identifier);
 
-    return this.state.images[index];
+    return this.props.images[index];
   };
 
   findImageIndex = identifier => {
-    return _.findIndex(this.state.images, function(image) {
+    return _.findIndex(this.props.images, function(image) {
       return image.identifier === identifier;
     });
   };
 
   updateImageCategory = (identifier, category) => {
-    const images = this.state.images;
+    const images = this.props.images;
 
     const index = this.findImageIndex(identifier);
 

@@ -11,9 +11,11 @@ import reducer from './reducers';
 
 const demo = {
   categories: data.categories,
-  images: [],
+  images: data.images,
   settings: {}
 };
+
+console.log(data);
 
 const store = createStore(reducer, demo);
 
