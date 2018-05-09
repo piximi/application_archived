@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { GridList, GridListTile } from 'material-ui';
-import Image from './Image';
+import ConnectedImage from '../containers/ConnectedImage';
 import withDragDropContext from './dnd-global-context';
 
 class Images extends Component {
@@ -13,12 +13,11 @@ class Images extends Component {
       >
         {this.props.images.map((sample, index) => (
           <GridListTile key={index} cols={1}>
-            <Image
+            <ConnectedImage
               category={sample.category}
               identifier={sample.identifier}
               findCategory={this.props.findCategory}
               pathname={sample.pathname}
-              updateImageCategory={this.props.updateImageCategory}
             />
           </GridListTile>
         ))}
