@@ -4,9 +4,7 @@ import styles from './Primary.css';
 import { withStyles } from 'material-ui/styles/index';
 import Download from '@axetroy/react-download';
 
-const Primary = props => {
-  const { classes, train, open, save, content } = props;
-
+const Primary = ({ classes, train, open, save, content }) => {
   return (
     <AppBar position="fixed" className={classes.appBar} color="default">
       <Toolbar>

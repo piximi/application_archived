@@ -4,9 +4,7 @@ import styles from './Primary.css';
 import { withStyles } from 'material-ui/styles/index';
 import ConnectedCategories from '../containers/ConnectedCategories';
 
-const Sidebar = props => {
-  const { classes } = props;
-
+const Sidebar = ({ classes }) => {
   return (
     <Grid item xs={3}>
       <Drawer classes={{ paper: classes.drawerPaper }} variant="permanent">
