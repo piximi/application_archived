@@ -5,10 +5,10 @@ export const createImageAction = category => ({
   category
 });
 
-export const updateImageCategoryAction = (identifier, categoryIdentifier) => ({
+export const updateImageCategoryAction = (identifier, category) => ({
   type: 'UPDATE_IMAGE_CATEGORY',
   identifier,
-  categoryIdentifier
+  category
 });
 
 export const deleteImageAction = identifier => ({

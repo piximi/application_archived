@@ -7,21 +7,22 @@ import {
 } from '../actions/images';
 import Images from '../components/Images';
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = state => {
   return state;
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = dispatch => {
   return {
     createImage: () => {
       const image = {
-        identifier: uuidv4()
+        identifier: uuidv4(),
+        pathname: ''
       };
 
       dispatch(createImageAction(image));
     },
-    updateImageCategory: () => {
-      dispatch(updateImageCategoryAction());
+    updateImageCategory: (identifier, category) => {
+      dispatch(updateImageCategoryAction(identifier, category));
     }
   };
 };
