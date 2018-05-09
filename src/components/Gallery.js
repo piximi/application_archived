@@ -11,7 +11,7 @@ const Gallery = props => {
     updateImageCategory,
     images,
     settings,
-    onColumnsChange
+    updateCategoryDescription
   } = props;
 
   return (
@@ -29,7 +29,7 @@ const Gallery = props => {
               max="24"
               step="1"
               value={settings.columns}
-              onChange={onColumnsChange}
+              onChange={updateCategoryDescription}
               style={{ width: '100%' }}
             />
           </Grid>

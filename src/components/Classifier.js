@@ -6,21 +6,11 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContextProvider } from 'react-dnd';
 import _ from 'lodash';
 import * as API from '../classifier';
-import Gallery from './Gallery';
+import ConnectedGallery from '../containers/ConnectedGallery';
 import Primary from './Primary';
 import Sidebar from './Sidebar';
 
 class Classifier extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      categories: this.props.categories,
-      images: this.props.images,
-      settings: this.props.settings
-    };
-  }
-
   save = () => {
     console.log('save');
   };
@@ -33,15 +23,6 @@ class Classifier extends Component {
     reader.onload = stream => {
       this.setState(JSON.parse(stream.target.result));
     };
-  };
-
-  onColumnsChange = event => {
-    this.setState({
-      settings: {
-        ...this.state.settings,
-        columns: event.target.value
-      }
-    });
   };
 
   findCategory = identifier => {
@@ -100,11 +81,11 @@ class Classifier extends Component {
           <Grid container spacing={0}>
             <Sidebar />
 
-            <Gallery
+            <ConnectedGallery
               onColumnsChange={this.onColumnsChange}
               findCategory={this.findCategory}
-              images={this.state.images}
-              settings={this.state.settings}
+              images={this.props.images}
+              settings={this.props.settings}
               updateImageCategory={this.updateImageCategory}
             />
           </Grid>
