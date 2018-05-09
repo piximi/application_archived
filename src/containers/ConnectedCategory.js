@@ -8,11 +8,9 @@ import {
 import Category from '../components/Category';
 
 const mapStateToProps = (state, props) => {
-  const index = _.findIndex(state.categories, function(category) {
-    return category.identifier === props.identifier;
-  });
-
-  return state.categories[index];
+  return state.categories.find(
+    category => props.identifier === category.identifier
+  );
 };
 
 const mapDispatchToProps = (dispatch, props) => {
