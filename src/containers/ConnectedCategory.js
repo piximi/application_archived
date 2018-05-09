@@ -17,8 +17,12 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    updateCategoryDescription: () => {
-      dispatch(updateCategoryDescriptionAction(props));
+    updateCategoryDescription: event => {
+      const identifier = props.identifier;
+
+      const description = event.target.value;
+
+      dispatch(updateCategoryDescriptionAction(identifier, description));
     },
     updateCategoryVisibility: () => {
       const identifier = props.identifier;
