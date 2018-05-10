@@ -31,6 +31,7 @@ const images = (state = { images: [], imageByteStrings: {} }, action) => {
         ...state,
         images: images
       };
+
     default:
       return state;
   }
