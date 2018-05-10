@@ -6,6 +6,7 @@ const styles = {
       color: 'rgba(0,0,0,0.87)'
     }
   },
+  isNotOver: {},
   isOver: {
     background: 'red'
   }

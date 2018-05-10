@@ -29,7 +29,6 @@ function collect(connect, monitor) {
 }
 
 const Category = props => {
-  console.log(props);
   const {
     deleteCategory,
     updateCategoryVisibility,
@@ -46,7 +45,9 @@ const Category = props => {
         dense
         button
         onClick={updateCategoryVisibility}
-        classes={{ root: props.isOver ? props.classes.isOver : {} }}
+        classes={{
+          root: props.isOver ? props.classes.isOver : props.classes.isNotOver
+        }}
       >
         <ListItemIcon>
           {visible ? (
