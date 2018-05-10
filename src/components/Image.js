@@ -61,9 +61,6 @@ class Image extends Component {
             classes={{ root: classes.content }}
             style={{ backgroundColor: color }}
           />
-          {/*<img alt="foo" className="image" src={pathname} style={{ width: '100%' }}/>*/}
-
-          {/*<GridListTileBar style={{ backgroundColor: color, opacity: 0.4 }} />*/}
         </Card>
       </div>
     );
