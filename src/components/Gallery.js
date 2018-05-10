@@ -15,7 +15,7 @@ const Gallery = props => {
   } = props;
 
   return (
-    <Grid item xs={9}>
+    <Grid item xs={10}>
       <div className={classes.toolbar} />
 
       <Toolbar className={classes.primaryToolbar}>
