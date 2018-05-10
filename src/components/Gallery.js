@@ -18,23 +18,23 @@ const Gallery = props => {
     <Grid item xs={10}>
       <div className={classes.toolbar} />
 
-      <Toolbar className={classes.primaryToolbar}>
-        <Grid container spacing={0}>
-          <Grid item xs={10} />
+      {/*<Toolbar className={classes.primaryToolbar}>*/}
+      {/*<Grid container spacing={0}>*/}
+      {/*<Grid item xs={10} />*/}
 
-          <Grid item xs={2}>
-            <input
-              type="range"
-              min="2"
-              max="24"
-              step="1"
-              value={settings.columns}
-              onChange={updateCategoryDescription}
-              style={{ width: '100%' }}
-            />
-          </Grid>
-        </Grid>
-      </Toolbar>
+      {/*<Grid item xs={2}>*/}
+      {/*<input*/}
+      {/*type="range"*/}
+      {/*min="2"*/}
+      {/*max="24"*/}
+      {/*step="1"*/}
+      {/*value={settings.columns}*/}
+      {/*onChange={updateCategoryDescription}*/}
+      {/*style={{ width: '100%' }}*/}
+      {/*/>*/}
+      {/*</Grid>*/}
+      {/*</Grid>*/}
+      {/*</Toolbar>*/}
 
       <Divider />
 
