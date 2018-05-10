@@ -1,13 +1,11 @@
 import {
-  CircularProgress,
   Divider,
   Drawer,
   Grid,
   List,
   ListItem,
   ListItemIcon,
-  ListItemText,
-  Toolbar
+  ListItemText
 } from 'material-ui';
 import React from 'react';
 import styles from './Primary.css';
@@ -15,22 +13,43 @@ import { withStyles } from 'material-ui/styles/index';
 import ConnectedCategories from '../containers/ConnectedCategories';
 import SettingsIcon from '@material-ui/icons/Settings';
 import FeedbackIcon from '@material-ui/icons/Feedback';
+import FolderOpenIcon from '@material-ui/icons/FolderOpen';
 import HelpIcon from '@material-ui/icons/Help';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
+import SaveIcon from '@material-ui/icons/Save';
 import * as API from '../classifier';
+import Download from '@axetroy/react-download';
 
 const onClick = () => {
   return API.trainOnRun({});
 };
 
-const Sidebar = ({ classes }) => {
+const Sidebar = ({ open, save, classes }) => {
   return (
     <Grid item xs={2}>
       <Drawer classes={{ paper: classes.drawerPaper }} variant="permanent">
         <div className={classes.toolbar} />
 
-        <Toolbar />
+        <List dense>
+          <ListItem button onClick={open}>
+            <ListItemIcon>
+              <FolderOpenIcon />
+            </ListItemIcon>
+
+            <ListItemText inset primary="Open..." />
+          </ListItem>
+
+          <Download file="example.cyto" content={JSON.stringify({})}>
+            <ListItem button>
+              <ListItemIcon>
+                <SaveIcon />
+              </ListItemIcon>
+
+              <ListItemText inset primary="Save" />
+            </ListItem>
+          </Download>
+        </List>
 
         <Divider />
 

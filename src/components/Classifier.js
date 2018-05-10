@@ -4,7 +4,6 @@ import { withStyles } from 'material-ui/styles';
 import { Grid } from 'material-ui';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContextProvider } from 'react-dnd';
-import * as API from '../classifier';
 import ConnectedGallery from '../containers/ConnectedGallery';
 import Primary from './Primary';
 import Sidebar from './Sidebar';
@@ -39,7 +38,7 @@ class Classifier extends Component {
           <Primary save={this.save} open={this.open} content={this.state} />
 
           <Grid container spacing={0}>
-            <Sidebar />
+            <Sidebar open={this.open} save={this.save} />
 
             <ConnectedGallery
               findCategory={this.findCategory}
