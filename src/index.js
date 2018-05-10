@@ -14,6 +14,12 @@ const demo = {
   images: data.images,
   settings: {
     columns: 8,
+    help: {
+      open: false
+    },
+    settings: {
+      open: false
+    },
     sidebar: {
       open: true
     }
