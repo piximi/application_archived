@@ -24,6 +24,9 @@ class Classifier extends Component {
     };
   };
 
+  upload = (images, imageByteStrings) => {
+    this.props.createImageAction(images, imageByteStrings);
+  };
   findCategory = identifier => {
     return this.props.categories.find(function(category) {
       return category.identifier === identifier;
@@ -35,12 +38,13 @@ class Classifier extends Component {
   };
 
   render() {
-    const { classes, images, settings } = this.props;
+    const { classes, settings } = this.props;
 
     return (
       <DragDropContextProvider backend={HTML5Backend}>
         <div className={classes.root}>
           <Primary
+            upload={this.upload}
             save={this.save}
             open={this.open}
             content={this.state}
@@ -52,7 +56,6 @@ class Classifier extends Component {
 
             <ConnectedGallery
               findCategory={this.findCategory}
-              images={images}
               settings={settings}
             />
           </Grid>

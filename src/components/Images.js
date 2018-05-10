@@ -17,7 +17,7 @@ class Images extends Component {
               category={sample.category}
               identifier={sample.identifier}
               findCategory={this.props.findCategory}
-              pathname={sample.pathname}
+              pathname={this.props.imageByteStrings[sample.identifier]}
             />
           </GridListTile>
         ))}

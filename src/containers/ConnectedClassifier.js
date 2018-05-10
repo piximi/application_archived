@@ -6,6 +6,7 @@ import {
   saveClassifierAction
 } from '../actions/classifier';
 import Classifier from '../components/Classifier';
+import { createImageAction } from '../actions/images';
 
 const mapStateToProps = state => {
   return state;
@@ -27,11 +28,15 @@ const mapDispatchToProps = (dispatch, props) => {
       const pathname = '';
 
       dispatch(saveClassifierAction(pathname));
+    },
+
+    createImageAction: (images, imageByteStrings) => {
+      dispatch(createImageAction(images, imageByteStrings));
     }
   };
 };
 
-const ConnectedClassifier = connect(mapStateToProps, mapDispatchToProps())(
+const ConnectedClassifier = connect(mapStateToProps, mapDispatchToProps)(
   Classifier
 );
 

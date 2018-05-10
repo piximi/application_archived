@@ -11,7 +11,7 @@ import reducer from './reducers';
 
 const demo = {
   categories: data.categories,
-  images: data.images,
+  //images: data.images,
   settings: {}
 };
 

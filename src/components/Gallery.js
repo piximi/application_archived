@@ -10,6 +10,7 @@ const Gallery = props => {
     findCategory,
     updateImageCategory,
     images,
+    imageByteStrings,
     settings,
     updateCategoryDescription
   } = props;
@@ -43,6 +44,7 @@ const Gallery = props => {
           columns={8}
           findCategory={findCategory}
           images={images}
+          imageByteStrings={imageByteStrings}
           updateImageCategory={updateImageCategory}
         />
       </main>

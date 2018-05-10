@@ -7,20 +7,17 @@ import getVisibleImages from '../selectors/images';
 
 const mapStateToProps = state => {
   return {
-    images: getVisibleImages(state),
+    //images: getVisibleImages(state),
+    images: state.images.images,
+    imageByteStrings: state.images.imageByteStrings,
     settings: state.settings
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    createImage: () => {
-      const image = {
-        identifier: uuidv4(),
-        pathname: ''
-      };
-
-      dispatch(createImageAction(image));
+    createImageAction: (images, imageByteStrings) => {
+      dispatch(createImageAction(images, imageByteStrings));
     }
   };
 };

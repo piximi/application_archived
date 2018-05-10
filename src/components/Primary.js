@@ -3,8 +3,9 @@ import React from 'react';
 import styles from './Primary.css';
 import { withStyles } from 'material-ui/styles/index';
 import Download from '@axetroy/react-download';
+import UploadButton from './UploadButton';
 
-const Primary = ({ classes, train, open, save, content }) => {
+const Primary = ({ classes, train, open, upload, save, content }) => {
   return (
     <AppBar position="fixed" className={classes.appBar} color="default">
       <Toolbar>
@@ -15,6 +16,8 @@ const Primary = ({ classes, train, open, save, content }) => {
         <Button onClick={train}>Run</Button>
 
         <input onChange={open} type="file" />
+
+        <UploadButton upload={upload} />
 
         <Download file="example.cyto" content={JSON.stringify(content)}>
           <Button onClick={save}>Save</Button>
