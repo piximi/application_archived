@@ -1,7 +1,15 @@
-import { GridListTileBar } from 'material-ui';
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  GridListTileBar,
+  Typography,
+  withStyles
+} from 'material-ui';
 import React, { Component } from 'react';
 import { DragSource } from 'react-dnd';
 import LazyLoad from 'react-lazyload';
+import styles from './Image.css';
 
 const source = {
   beginDrag(props) {
@@ -28,7 +36,13 @@ function collect(connect, monitor) {
 
 class Image extends Component {
   render() {
-    const { category, connectDragSource, findCategory, pathname } = this.props;
+    const {
+      category,
+      connectDragSource,
+      findCategory,
+      pathname,
+      classes
+    } = this.props;
 
     let color;
 
@@ -40,19 +54,17 @@ class Image extends Component {
 
     return connectDragSource(
       <div>
-        <LazyLoad height={'100%'} once>
-          <img
-            alt="foo"
-            className="image"
-            src={pathname}
-            style={{ width: '100%' }}
-          />
-        </LazyLoad>
+        <Card>
+          <CardMedia image={pathname} classes={{ root: classes.media }} />
 
-        <GridListTileBar style={{ backgroundColor: color, opacity: 0.4 }} />
+          <CardContent style={{ backgroundColor: color }} />
+          {/*<img alt="foo" className="image" src={pathname} style={{ width: '100%' }}/>*/}
+
+          {/*<GridListTileBar style={{ backgroundColor: color, opacity: 0.4 }} />*/}
+        </Card>
       </div>
     );
   }
 }
 
-export default DragSource('Image', source, collect)(Image);
+export default withStyles(styles)(DragSource('Image', source, collect)(Image));
