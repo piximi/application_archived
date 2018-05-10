@@ -57,7 +57,10 @@ class Image extends Component {
         <Card>
           <CardMedia image={pathname} classes={{ root: classes.media }} />
 
-          <CardContent style={{ backgroundColor: color }} />
+          <CardContent
+            classes={{ root: classes.content }}
+            style={{ backgroundColor: color }}
+          />
           {/*<img alt="foo" className="image" src={pathname} style={{ width: '100%' }}/>*/}
 
           {/*<GridListTileBar style={{ backgroundColor: color, opacity: 0.4 }} />*/}
