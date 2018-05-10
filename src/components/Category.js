@@ -1,9 +1,5 @@
 import React from 'react';
 import {
-  Checkbox,
-  Grid,
-  IconButton,
-  Input,
   ListItem,
   ListItemIcon,
   ListItemSecondaryAction,
@@ -11,7 +7,6 @@ import {
 } from 'material-ui';
 import LabelIcon from '@material-ui/icons/Label';
 import LabelOutlineIcon from '@material-ui/icons/LabelOutline';
-import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { DropTarget } from 'react-dnd';
 import styles from './Category.css';
@@ -34,6 +29,7 @@ function collect(connect, monitor) {
 }
 
 const Category = props => {
+  console.log(props);
   const {
     deleteCategory,
     updateCategoryVisibility,
@@ -46,7 +42,12 @@ const Category = props => {
 
   return connectDropTarget(
     <div>
-      <ListItem dense button onClick={updateCategoryVisibility}>
+      <ListItem
+        dense
+        button
+        onClick={updateCategoryVisibility}
+        classes={{ root: props.isOver ? props.classes.isOver : {} }}
+      >
         <ListItemIcon>
           {visible ? (
             <LabelIcon style={{ color: color }} />

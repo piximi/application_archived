@@ -5,6 +5,9 @@ const styles = {
     '&:hover': {
       color: 'rgba(0,0,0,0.87)'
     }
+  },
+  isOver: {
+    background: 'red'
   }
 };
 
