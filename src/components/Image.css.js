@@ -1,7 +1,5 @@
 const styles = {
-  content: {
-    paddingBootom: 8
-  },
+  content: {},
   media: {
     height: 100,
     background: 'black',
