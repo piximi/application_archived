@@ -12,8 +12,6 @@ const Primary = ({ classes, train, open, save, content }) => {
           Cyto
         </Typography>
 
-        <Button onClick={train}>Run</Button>
-
         <input onChange={open} type="file" />
 
         <Download file="example.cyto" content={JSON.stringify(content)}>

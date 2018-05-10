@@ -1,4 +1,5 @@
 import {
+  CircularProgress,
   Divider,
   Drawer,
   Grid,
@@ -15,6 +16,13 @@ import ConnectedCategories from '../containers/ConnectedCategories';
 import SettingsIcon from '@material-ui/icons/Settings';
 import FeedbackIcon from '@material-ui/icons/Feedback';
 import HelpIcon from '@material-ui/icons/Help';
+import ExpandLessIcon from '@material-ui/icons/ExpandLess';
+import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
+import * as API from '../classifier';
+
+const onClick = () => {
+  return API.trainOnRun({});
+};
 
 const Sidebar = ({ classes }) => {
   return (
@@ -27,6 +35,26 @@ const Sidebar = ({ classes }) => {
         <Divider />
 
         <ConnectedCategories />
+
+        <Divider />
+
+        <List dense>
+          <ListItem button>
+            <ListItemIcon>
+              <ExpandLessIcon />
+            </ListItemIcon>
+
+            <ListItemText inset primary="Model" />
+          </ListItem>
+
+          <ListItem dense button onClick={onClick}>
+            <ListItemIcon>
+              <PlayCircleOutlineIcon />
+            </ListItemIcon>
+
+            <ListItemText primary="Fit" />
+          </ListItem>
+        </List>
 
         <Divider />
 

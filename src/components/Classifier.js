@@ -30,22 +30,13 @@ class Classifier extends Component {
     });
   };
 
-  train = () => {
-    return API.trainOnRun(this.state);
-  };
-
   render() {
     const { classes, images, settings } = this.props;
 
     return (
       <DragDropContextProvider backend={HTML5Backend}>
         <div className={classes.root}>
-          <Primary
-            save={this.save}
-            open={this.open}
-            content={this.state}
-            train={this.train}
-          />
+          <Primary save={this.save} open={this.open} content={this.state} />
 
           <Grid container spacing={0}>
             <Sidebar />
