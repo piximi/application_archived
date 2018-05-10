@@ -12,3 +12,8 @@ export const updateSettingSidebarOpenAction = sidebar => ({
   type: 'UPDATE_SETTING_SIDEBAR_OPEN',
   sidebar
 });
+
+export const openSettingsDialog = sidebar => ({
+  type: 'OPEN_SETTINGS_DIALOG',
+  sidebar
+});

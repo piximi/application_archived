@@ -1,10 +1,18 @@
 import {
-  UPDATE_SETTING_SIDEBAR_OPEN,
-  UPDATE_SETTING_COLUMNS
+  OPEN_SETTINGS_DIALOG,
+  UPDATE_SETTING_COLUMNS,
+  UPDATE_SETTING_SIDEBAR_OPEN
 } from '../constants';
 
 const settings = (state = {}, action) => {
   switch (action.type) {
+    case OPEN_SETTINGS_DIALOG:
+      return {
+        ...state,
+        settings: {
+          open: !state.settings.open
+        }
+      };
     case UPDATE_SETTING_COLUMNS:
       return {
         ...state,
