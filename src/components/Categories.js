@@ -16,7 +16,7 @@ import ConnectedCategory from '../containers/ConnectedCategory';
 const Categories = ({ classes, categories, createCategory }) => {
   return (
     <React.Fragment>
-      <List dense subheader={<ListSubheader>Categories</ListSubheader>}>
+      <List dense>
         {categories.map(category => (
           <ConnectedCategory
             key={category.identifier}

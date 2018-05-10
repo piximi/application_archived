@@ -14,7 +14,7 @@ import LabelOutlineIcon from '@material-ui/icons/LabelOutline';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { DropTarget } from 'react-dnd';
-import styles from './Classifier.css';
+import styles from './Category.css';
 import { withStyles } from 'material-ui/styles/index';
 
 const spec = {
@@ -46,24 +46,24 @@ const Category = props => {
 
   return connectDropTarget(
     <div>
-      <ListItem>
-        <Checkbox
-          checked={visible}
-          onChange={updateCategoryVisibility}
-          icon={<LabelOutlineIcon style={{ color: color }} />}
-          checkedIcon={<LabelIcon style={{ color: color }} />}
-        />
+      <ListItem dense button onClick={updateCategoryVisibility}>
+        <ListItemIcon>
+          {visible ? (
+            <LabelIcon style={{ color: color }} />
+          ) : (
+            <LabelOutlineIcon style={{ color: color }} />
+          )}
+        </ListItemIcon>
 
         {/*<Input style={{ width: '100%' }} onChange={updateCategoryDescription} value={description}/>*/}
 
         <ListItemText primary={description} />
 
         <ListItemSecondaryAction>
-          <ListItemIcon>
-            <EditIcon />
-          </ListItemIcon>
-
-          <ListItemIcon onClick={deleteCategory}>
+          <ListItemIcon
+            onClick={deleteCategory}
+            classes={{ root: props.classes.icon }}
+          >
             <DeleteIcon />
           </ListItemIcon>
         </ListItemSecondaryAction>
