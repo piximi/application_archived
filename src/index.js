@@ -12,7 +12,12 @@ import reducer from './reducers';
 const demo = {
   categories: data.categories,
   images: data.images,
-  settings: {}
+  settings: {
+    columns: 8,
+    sidebar: {
+      open: true
+    }
+  }
 };
 
 const store = createStore(reducer, demo);
