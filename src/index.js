@@ -14,6 +14,9 @@ const demo = {
   images: data.images,
   settings: {
     columns: 8,
+    createCategory: {
+      open: false
+    },
     help: {
       open: false
     },

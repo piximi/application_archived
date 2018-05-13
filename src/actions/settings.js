@@ -22,3 +22,13 @@ export const closeSettingsDialogAction = sidebar => ({
   type: 'CLOSE_SETTINGS_DIALOG',
   sidebar
 });
+
+export const openCreateCategoryDialogAction = sidebar => ({
+  type: 'OPEN_CREATE_CATEGORY_DIALOG',
+  sidebar
+});
+
+export const closeCreateCategoryDialogAction = sidebar => ({
+  type: 'CLOSE_CREATE_CATEGORY_DIALOG',
+  sidebar
+});
