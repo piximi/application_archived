@@ -2,7 +2,10 @@ import { connect } from 'react-redux';
 import uuidv4 from 'uuid';
 
 import { createCategoryAction } from '../actions/categories';
-import { openCreateCategoryDialogAction } from '../actions/settings';
+import {
+  closeCreateCategoryDialogAction,
+  openCreateCategoryDialogAction
+} from '../actions/settings';
 import Categories from '../components/Categories';
 
 let index = 0;
@@ -23,6 +26,9 @@ const mapDispatchToProps = (dispatch, props) => {
       };
 
       dispatch(createCategoryAction(category));
+    },
+    closeCreateCategoryDialog: () => {
+      dispatch(closeCreateCategoryDialogAction({}));
     },
     openCreateCategoryDialog: () => {
       dispatch(openCreateCategoryDialogAction({}));

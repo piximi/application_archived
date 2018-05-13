@@ -7,15 +7,32 @@ import {
   DialogActions,
   DialogContent,
   DialogContentText,
-  DialogTitle
+  DialogTitle,
+  FormControl,
+  Grid,
+  Input,
+  InputLabel,
+  TextField
 } from 'material-ui';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 const CreateCategoryDialog = ({ classes, onClose, open }) => {
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogTitle id="form-dialog-title">Settings</DialogTitle>
       <DialogContent>
-        <DialogContentText>&nbsp;</DialogContentText>
+        <Grid container spacing={24} alignItems="flex-end">
+          <Grid item>
+            <AccountCircleIcon />
+          </Grid>
+
+          <Grid item>
+            <FormControl className={classes.formControl}>
+              <InputLabel htmlFor="name-simple">Description</InputLabel>
+
+              <Input id="name-simple" value="Description" />
+            </FormControl>
+          </Grid>
+        </Grid>
       </DialogContent>
 
       <DialogActions>
@@ -24,7 +41,7 @@ const CreateCategoryDialog = ({ classes, onClose, open }) => {
         </Button>
 
         <Button onClick={onClose} color="primary">
-          Save
+          Create category
         </Button>
       </DialogActions>
     </Dialog>
