@@ -1,4 +1,5 @@
 import {
+  CLOSE_SETTINGS_DIALOG,
   OPEN_SETTINGS_DIALOG,
   UPDATE_SETTING_COLUMNS,
   UPDATE_SETTING_SIDEBAR_OPEN
@@ -6,6 +7,13 @@ import {
 
 const settings = (state = {}, action) => {
   switch (action.type) {
+    case CLOSE_SETTINGS_DIALOG:
+      return {
+        ...state,
+        settings: {
+          close: !state.settings.open
+        }
+      };
     case OPEN_SETTINGS_DIALOG:
       return {
         ...state,

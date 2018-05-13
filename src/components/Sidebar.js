@@ -11,6 +11,7 @@ import React from 'react';
 import styles from './Primary.css';
 import { withStyles } from 'material-ui/styles/index';
 import ConnectedCategories from '../containers/ConnectedCategories';
+import Settings from './Settings';
 import SettingsIcon from '@material-ui/icons/Settings';
 import FeedbackIcon from '@material-ui/icons/Feedback';
 import FolderOpenIcon from '@material-ui/icons/FolderOpen';
@@ -25,7 +26,14 @@ const onClick = () => {
   return API.trainOnRun({});
 };
 
-const Sidebar = ({ open, save, classes }) => {
+const Sidebar = ({
+  open,
+  settings,
+  closeSettingsDialog,
+  openSettingsDialog,
+  save,
+  classes
+}) => {
   return (
     <Grid item xs={2}>
       <Drawer classes={{ paper: classes.drawerPaper }} variant="permanent">
@@ -78,7 +86,7 @@ const Sidebar = ({ open, save, classes }) => {
         <Divider />
 
         <List dense>
-          <ListItem dense button>
+          <ListItem dense button onClick={openSettingsDialog}>
             <ListItemIcon>
               <SettingsIcon />
             </ListItemIcon>
@@ -102,6 +110,8 @@ const Sidebar = ({ open, save, classes }) => {
             <ListItemText primary="Help" />
           </ListItem>
         </List>
+
+        <Settings onClose={closeSettingsDialog} open={settings.open} />
       </Drawer>
     </Grid>
   );

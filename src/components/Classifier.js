@@ -6,7 +6,7 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContextProvider } from 'react-dnd';
 import ConnectedGallery from '../containers/ConnectedGallery';
 import ConnectedPrimary from '../containers/ConnectedPrimary';
-import Sidebar from './Sidebar';
+import ConnectedSidebar from '../containers/ConnectedSidebar';
 
 class Classifier extends Component {
   save = () => {
@@ -42,7 +42,7 @@ class Classifier extends Component {
           />
 
           <Grid container spacing={0}>
-            <Sidebar open={this.open} save={this.save} />
+            <ConnectedSidebar open={this.open} save={this.save} />
 
             <ConnectedGallery
               findCategory={this.findCategory}

@@ -13,7 +13,12 @@ export const updateSettingSidebarOpenAction = sidebar => ({
   sidebar
 });
 
-export const openSettingsDialog = sidebar => ({
+export const openSettingsDialogAction = sidebar => ({
   type: 'OPEN_SETTINGS_DIALOG',
+  sidebar
+});
+
+export const closeSettingsDialogAction = sidebar => ({
+  type: 'CLOSE_SETTINGS_DIALOG',
   sidebar
 });
