@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './CreateCategoryDialog.css';
 import { withStyles } from 'material-ui/styles/index';
 import {
+  Avatar,
   Button,
   Dialog,
   DialogActions,
@@ -11,7 +12,6 @@ import {
   Input,
   InputLabel
 } from 'material-ui';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 const CreateCategoryDialog = ({ createCategory, classes, onClose, open }) => {
   return (
@@ -19,7 +19,7 @@ const CreateCategoryDialog = ({ createCategory, classes, onClose, open }) => {
       <DialogContent>
         <Grid container spacing={24} alignItems="flex-end">
           <Grid item>
-            <AccountCircleIcon />
+            <Avatar>&nbsp;</Avatar>
           </Grid>
 
           <Grid item>
@@ -37,8 +37,8 @@ const CreateCategoryDialog = ({ createCategory, classes, onClose, open }) => {
           Cancel
         </Button>
 
-        <Button onClick={createCategory} color="primary">
-          Create category
+        <Button onClick={onClose} color="primary">
+          Create
         </Button>
       </DialogActions>
     </Dialog>

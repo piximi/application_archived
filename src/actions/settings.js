@@ -32,3 +32,8 @@ export const closeCreateCategoryDialogAction = sidebar => ({
   type: 'CLOSE_CREATE_CATEGORY_DIALOG',
   sidebar
 });
+
+export const toggleCreateCategoryColorMenu = settings => ({
+  type: 'TOGGLE_CREATE_CATEGORY_COLOR_MENU',
+  settings
+});

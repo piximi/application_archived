@@ -15,6 +15,9 @@ const demo = {
   settings: {
     columns: 8,
     createCategory: {
+      color: {
+        open: false
+      },
       open: false
     },
     help: {
