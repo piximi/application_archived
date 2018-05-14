@@ -2,7 +2,6 @@ import React from 'react';
 import styles from './CreateCategoryDialog.css';
 import { withStyles } from 'material-ui/styles/index';
 import {
-  Avatar,
   Button,
   Dialog,
   DialogActions,
@@ -10,9 +9,7 @@ import {
   FormControl,
   Grid,
   Input,
-  InputLabel,
-  Menu,
-  MenuItem
+  InputLabel
 } from 'material-ui';
 import AddIcon from '@material-ui/icons/Add';
 
@@ -21,8 +18,7 @@ const CreateCategoryDialog = ({
   createCategory,
   classes,
   onClose,
-  open,
-  settings
+  open
 }) => {
   return (
     <Dialog open={open} onClose={onClose}>

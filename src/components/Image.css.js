@@ -1,5 +1,10 @@
 const styles = {
-  content: {},
+  content: {
+    paddingBottom: 0,
+    '&:last-child': {
+      paddingBottom: 0
+    }
+  },
   media: {
     height: 100,
     background: 'black',
