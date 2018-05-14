@@ -16,17 +16,6 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    createCategory: () => {
-      const category = {
-        color: 'red',
-        description: '',
-        identifier: uuidv4(),
-        index: index++,
-        visible: true
-      };
-
-      dispatch(createCategoryAction(category));
-    },
     closeCreateCategoryDialog: () => {
       dispatch(closeCreateCategoryDialogAction({}));
     },

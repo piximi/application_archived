@@ -6,17 +6,14 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
-  DialogContentText,
-  DialogTitle,
   FormControl,
   Grid,
   Input,
-  InputLabel,
-  TextField
+  InputLabel
 } from 'material-ui';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
-const CreateCategoryDialog = ({ classes, onClose, open }) => {
+const CreateCategoryDialog = ({ createCategory, classes, onClose, open }) => {
   return (
     <Dialog open={open} onClose={onClose}>
       <DialogContent>
@@ -26,10 +23,10 @@ const CreateCategoryDialog = ({ classes, onClose, open }) => {
           </Grid>
 
           <Grid item>
-            <FormControl className={classes.formControl}>
-              <InputLabel htmlFor="name-simple">Description</InputLabel>
+            <FormControl>
+              <InputLabel htmlFor="name-simple">Category</InputLabel>
 
-              <Input id="name-simple" value="Description" />
+              <Input id="name-simple" value=" " />
             </FormControl>
           </Grid>
         </Grid>
@@ -40,7 +37,7 @@ const CreateCategoryDialog = ({ classes, onClose, open }) => {
           Cancel
         </Button>
 
-        <Button onClick={onClose} color="primary">
+        <Button onClick={createCategory} color="primary">
           Create category
         </Button>
       </DialogActions>

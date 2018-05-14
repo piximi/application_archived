@@ -6,15 +6,14 @@ import withDragDropContext from './dnd-global-context';
 import styles from './Categories.css';
 import ConnectedCategory from '../containers/ConnectedCategory';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
-import CreateCategoryDialog from './CreateCategoryDialog';
+import ConnectedCreateCategoryDialog from '../containers/ConnectedCreateCategoryDialog';
 
 const Categories = ({
   classes,
   closeCreateCategoryDialog,
   openCreateCategoryDialog,
   settings,
-  categories,
-  createCategory
+  categories
 }) => {
   return (
     <React.Fragment>
@@ -42,7 +41,7 @@ const Categories = ({
         </ListItem>
       </List>
 
-      <CreateCategoryDialog
+      <ConnectedCreateCategoryDialog
         onClose={closeCreateCategoryDialog}
         open={settings.createCategory.open}
       />
