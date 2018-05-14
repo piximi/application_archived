@@ -33,7 +33,7 @@ export const closeCreateCategoryDialogAction = sidebar => ({
   sidebar
 });
 
-export const toggleCreateCategoryColorMenu = settings => ({
+export const toggleCreateCategoryColorMenuAction = settings => ({
   type: 'TOGGLE_CREATE_CATEGORY_COLOR_MENU',
   settings
 });

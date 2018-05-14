@@ -1,7 +1,10 @@
 import { connect } from 'react-redux';
 
 import { createCategoryAction } from '../actions/categories';
-import { closeCreateCategoryDialogAction } from '../actions/settings';
+import {
+  closeCreateCategoryDialogAction,
+  toggleCreateCategoryColorMenuAction
+} from '../actions/settings';
 
 import CreateCategoryDialog from '../components/CreateCategoryDialog';
 import uuidv4 from 'uuid';
@@ -9,7 +12,7 @@ import uuidv4 from 'uuid';
 let index = 0;
 
 const mapStateToProps = (state, props) => {
-  return state.categories;
+  return state;
 };
 
 const mapDispatchToProps = (dispatch, props) => {
@@ -24,6 +27,9 @@ const mapDispatchToProps = (dispatch, props) => {
       };
 
       dispatch(createCategoryAction(category));
+    },
+    toggleCreateCategoryColorMenu: () => {
+      dispatch(toggleCreateCategoryColorMenuAction());
     }
   };
 };

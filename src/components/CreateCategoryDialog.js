@@ -10,16 +10,34 @@ import {
   FormControl,
   Grid,
   Input,
-  InputLabel
+  InputLabel,
+  Menu,
+  MenuItem
 } from 'material-ui';
+import AddIcon from '@material-ui/icons/Add';
 
-const CreateCategoryDialog = ({ createCategory, classes, onClose, open }) => {
+const CreateCategoryDialog = ({
+  toggleCreateCategoryColorMenu,
+  createCategory,
+  classes,
+  onClose,
+  open,
+  settings
+}) => {
   return (
     <Dialog open={open} onClose={onClose}>
       <DialogContent>
         <Grid container spacing={24} alignItems="flex-end">
           <Grid item>
-            <Avatar>&nbsp;</Avatar>
+            <Button
+              variant="fab"
+              mini
+              color="secondary"
+              aria-label="add"
+              onClick={toggleCreateCategoryColorMenu}
+            >
+              <AddIcon />
+            </Button>
           </Grid>
 
           <Grid item>

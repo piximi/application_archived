@@ -4,7 +4,8 @@ import {
   OPEN_CREATE_CATEGORY_DIALOG,
   OPEN_SETTINGS_DIALOG,
   UPDATE_SETTING_COLUMNS,
-  UPDATE_SETTING_SIDEBAR_OPEN
+  UPDATE_SETTING_SIDEBAR_OPEN,
+  TOGGLE_CREATE_CATEGORY_COLOR_MENU
 } from '../constants';
 
 const settings = (state = {}, action) => {
@@ -35,6 +36,16 @@ const settings = (state = {}, action) => {
         ...state,
         createCategory: {
           open: !state.createCategory.open
+        }
+      };
+    case TOGGLE_CREATE_CATEGORY_COLOR_MENU:
+      return {
+        ...state,
+        createCategory: {
+          ...state.createCategory,
+          color: {
+            open: !state.createCategory.color.open
+          }
         }
       };
     case UPDATE_SETTING_COLUMNS:
