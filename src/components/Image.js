@@ -1,14 +1,6 @@
-import {
-  Card,
-  CardContent,
-  CardMedia,
-  GridListTileBar,
-  Typography,
-  withStyles
-} from 'material-ui';
+import { Card, CardContent, CardMedia, withStyles } from 'material-ui';
 import React, { Component } from 'react';
 import { DragSource } from 'react-dnd';
-import LazyLoad from 'react-lazyload';
 import styles from './Image.css';
 
 const source = {
