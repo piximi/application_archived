@@ -32,7 +32,6 @@ const Category = props => {
   const {
     deleteCategory,
     updateCategoryVisibility,
-    updateCategoryDescription,
     color,
     connectDropTarget,
     description,
@@ -56,8 +55,6 @@ const Category = props => {
             <LabelOutlineIcon style={{ color: color }} />
           )}
         </ListItemIcon>
-
-        {/*<Input style={{ width: '100%' }} onChange={updateCategoryDescription} value={description}/>*/}
 
         <ListItemText primary={description} />
 
