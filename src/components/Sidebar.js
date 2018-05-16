@@ -12,6 +12,7 @@ import styles from './Primary.css';
 import { withStyles } from 'material-ui/styles/index';
 import ConnectedCategories from '../containers/ConnectedCategories';
 import Settings from './Settings';
+import HelpDialog from './HelpDialog';
 import SettingsIcon from '@material-ui/icons/Settings';
 import FeedbackIcon from '@material-ui/icons/Feedback';
 import FolderOpenIcon from '@material-ui/icons/FolderOpen';
@@ -31,6 +32,8 @@ const Sidebar = ({
   settings,
   closeSettingsDialog,
   openSettingsDialog,
+  openHelpDialog,
+  toggleHelpDialog,
   save,
   classes
 }) => {
@@ -112,6 +115,8 @@ const Sidebar = ({
         </List>
 
         <Settings onClose={closeSettingsDialog} open={settings.open} />
+
+        <HelpDialog onClose={toggleHelpDialog} open={false} />
       </Drawer>
     </Grid>
   );

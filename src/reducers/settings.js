@@ -5,7 +5,8 @@ import {
   OPEN_SETTINGS_DIALOG,
   UPDATE_SETTING_COLUMNS,
   UPDATE_SETTING_SIDEBAR_OPEN,
-  TOGGLE_CREATE_CATEGORY_COLOR_MENU
+  TOGGLE_CREATE_CATEGORY_COLOR_MENU,
+  TOGGLE_HELP_DIALOG
 } from '../constants';
 
 const settings = (state = {}, action) => {
@@ -46,6 +47,13 @@ const settings = (state = {}, action) => {
           color: {
             open: !state.createCategory.color.open
           }
+        }
+      };
+    case TOGGLE_HELP_DIALOG:
+      return {
+        ...state,
+        help: {
+          open: !state.help.open
         }
       };
     case UPDATE_SETTING_COLUMNS:
