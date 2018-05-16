@@ -8,7 +8,7 @@ const styles = {
   },
   isNotOver: {},
   isOver: {
-    background: 'red'
+    background: 'rgba(0, 0, 0, 0.20)'
   }
 };
 
