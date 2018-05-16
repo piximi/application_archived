@@ -1,12 +1,14 @@
 import React from 'react';
 import styles from './HelpDialog.css';
 import { withStyles } from 'material-ui/styles/index';
-import { Dialog, DialogContent } from 'material-ui';
+import { Dialog, DialogContent, DialogContentText } from 'material-ui';
 
 const HelpDialog = ({ open, onClose }) => {
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogContent />
+      <DialogContent>
+        <DialogContentText>&nbsp;</DialogContentText>
+      </DialogContent>
     </Dialog>
   );
 };
