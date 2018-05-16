@@ -38,6 +38,7 @@ export const toggleCreateCategoryColorMenuAction = settings => ({
   settings
 });
 
-export const toggleHelpDialogAction = () => ({
-  type: 'TOGGLE_HELP_DIALOG'
+export const toggleHelpDialogAction = settings => ({
+  type: 'TOGGLE_HELP_DIALOG',
+  settings
 });

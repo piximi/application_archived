@@ -114,9 +114,9 @@ const Sidebar = ({
           </ListItem>
         </List>
 
-        <Settings onClose={closeSettingsDialog} open={settings.open} />
+        <Settings onClose={closeSettingsDialog} open={settings.settings.open} />
 
-        <HelpDialog onClose={toggleHelpDialog} open={false} />
+        <HelpDialog onClose={toggleHelpDialog} open={settings.help.open} />
       </Drawer>
     </Grid>
   );
