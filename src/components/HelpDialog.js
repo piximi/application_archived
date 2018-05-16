@@ -1,7 +1,13 @@
 import React from 'react';
 import styles from './HelpDialog.css';
 import { withStyles } from 'material-ui/styles/index';
-import { Dialog, DialogContent, DialogContentText } from 'material-ui';
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText
+} from 'material-ui';
 
 const HelpDialog = ({ open, onClose }) => {
   return (
@@ -9,6 +15,16 @@ const HelpDialog = ({ open, onClose }) => {
       <DialogContent>
         <DialogContentText>&nbsp;</DialogContentText>
       </DialogContent>
+
+      <DialogActions>
+        <Button onClick={onClose} color="primary">
+          Cancel
+        </Button>
+
+        <Button onClick={onClose} color="primary">
+          OK
+        </Button>
+      </DialogActions>
     </Dialog>
   );
 };

@@ -20,7 +20,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(openSettingsDialogAction({}));
     },
     toggleHelpDialog: () => {
-      dispatch(toggleHelpDialogAction());
+      dispatch(toggleHelpDialogAction({}));
     }
   };
 };

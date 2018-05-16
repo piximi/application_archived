@@ -105,7 +105,7 @@ const Sidebar = ({
             <ListItemText primary="Send feedback" />
           </ListItem>
 
-          <ListItem dense button>
+          <ListItem dense button onClick={toggleHelpDialog}>
             <ListItemIcon>
               <HelpIcon />
             </ListItemIcon>
