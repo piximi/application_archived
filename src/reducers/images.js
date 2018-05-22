@@ -1,10 +1,13 @@
 import {
   CREATE_IMAGE,
   DELETE_IMAGE,
-  UPDATE_IMAGE_CATEGORY
+  UPDATE_IMAGE_CATEGORY,
+  ADD_IMAGES,
+  UPDATE_IMAGES_HAVING_CERTAIN_CATEGORY
 } from '../constants';
 
-const images = (state = { images: [], imageByteStrings: {} }, action) => {
+const images = (state = {}, action) => {
+  let images = [];
   switch (action.type) {
     case CREATE_IMAGE:
       return {
@@ -17,7 +20,7 @@ const images = (state = { images: [], imageByteStrings: {} }, action) => {
         return image.identifier !== action.identifier;
       });
     case UPDATE_IMAGE_CATEGORY:
-      const images = state.images.map(image => {
+      images = state.images.map(image => {
         if (image.identifier === action.identifier) {
           return {
             ...image,
@@ -30,6 +33,29 @@ const images = (state = { images: [], imageByteStrings: {} }, action) => {
       return {
         ...state,
         images: images
+      };
+
+    case UPDATE_IMAGES_HAVING_CERTAIN_CATEGORY:
+      console.log('True');
+      images = state.images.map(image => {
+        if (image.category === action.category) {
+          return {
+            ...image,
+            category: null
+          };
+        } else {
+          return image;
+        }
+      });
+      return {
+        ...state,
+        images: images
+      };
+
+    case ADD_IMAGES:
+      return {
+        ...state,
+        images: action.images
       };
 
     default:

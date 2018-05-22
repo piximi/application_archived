@@ -14,13 +14,12 @@ class Classifier extends Component {
     console.log('save');
   };
 
-  open = event => {
+  open = files => {
     const reader = new FileReader();
-
-    reader.readAsText(event.target.files[0]);
-
+    reader.readAsText(files[0]);
     reader.onload = stream => {
-      this.setState(JSON.parse(stream.target.result));
+      const result = JSON.parse(stream.target.result);
+      this.props.fileImport(result);
     };
   };
 
@@ -34,7 +33,7 @@ class Classifier extends Component {
   };
 
   train = () => {
-    return API.trainOnRun(this.state);
+    return API.trainOnRun(this.props);
   };
 
   render() {

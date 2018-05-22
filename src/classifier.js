@@ -1,4 +1,6 @@
 import * as tensorflow from '@tensorflow/tfjs';
+import { store } from './index';
+import { updateImageCategoryAction } from './actions/images';
 
 const LEARNING_RATE = 1e-4;
 const optimizer = tensorflow.train.adam(LEARNING_RATE);
@@ -81,7 +83,7 @@ async function train(modelDict, datasetObj) {
       validationData = datasetObj.nextValidationBatch(TEST_BATCH_SIZE);
     }
 
-    console.log(validationData);
+    //console.log(validationData);
 
     // The entire dataset doesn't fit into memory so we call fit repeatedly
     // with batches.
@@ -134,7 +136,9 @@ async function predict(modelDict, datasetObj) {
 
       // Returns the index with the maximum probability. This number corresponds
       // to the class the model thinks is the most probable given the input.
-      // console.log(img, predictions.as1D().print());
+      //console.log(img.identifier)
+      //predictions.as1D().print();
+      passArguments(img.identifier, predictions.as1D());
     }
     //return predictions//.as1D().argMax();
   });
@@ -147,10 +151,10 @@ async function run(datasetObj) {
 
   let doneTraining = await train(model, datasetObj);
 
-  // if (doneTraining) {
-  //   console.log('Predicting!');
-  //   await predict(model, datasetObj);
-  // }
+  if (doneTraining) {
+    console.log('Predicting!');
+    await predict(model, datasetObj);
+  }
 }
 
 class Dataset {
@@ -323,23 +327,43 @@ class Dataset {
   }
 }
 
-async function trainOnRun(state) {
-  const images = state.images.map(observation => {
+function getCategoryIndex(categoryId, categories) {
+  let index = 0;
+  for (let category of categories) {
+    if (categoryId == category.identifier) {
+      return index;
+    } else {
+      index++;
+    }
+  }
+  return null;
+}
+
+function passArguments(imgId, predictions) {
+  console.log(imgId);
+  let predictionsArray = predictions.dataSync();
+  console.log(predictionsArray);
+  let index = predictionsArray.indexOf(Math.max(...predictionsArray));
+  console.log(store.getState());
+  const category = store.getState().categories[index].identifier;
+  console.log(category);
+  store.dispatch(updateImageCategoryAction(imgId, category));
+}
+
+async function trainOnRun(images, categories) {
+  const imageTags = images.images.map(observation => {
     let image = new Image();
+    image.identifier = observation.identifier;
+    image.category = getCategoryIndex(observation.category, categories);
 
-    image.category = observation.category;
-
-    image.src = observation.pathname;
+    image.src = images.imageByteStrings[observation.identifier];
 
     return image;
   });
 
   const dataset = new Dataset();
-
-  dataset.loadFromArray(images);
-
+  dataset.loadFromArray(imageTags);
   await run(dataset);
-
   return null;
 }
 

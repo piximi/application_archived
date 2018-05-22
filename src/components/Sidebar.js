@@ -22,9 +22,10 @@ import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import SaveIcon from '@material-ui/icons/Save';
 import * as API from '../classifier';
 import Download from '@axetroy/react-download';
+import { zerosVariable } from '@tensorflow/tfjs-layers/dist/backend/tfjs_backend';
 
-const onClick = () => {
-  return API.trainOnRun({});
+const onClick = (images, categories) => {
+  return API.trainOnRun(images, categories);
 };
 
 const Sidebar = ({
@@ -35,23 +36,39 @@ const Sidebar = ({
   openHelpDialog,
   toggleHelpDialog,
   save,
-  classes
+  classes,
+  categories,
+  images
 }) => {
+  const exportObject = {
+    settings: settings,
+    categories: categories,
+    images: images.images
+  };
+
   return (
     <Grid item xs={2}>
       <Drawer classes={{ paper: classes.drawerPaper }} variant="permanent">
         <div className={classes.toolbar} />
 
         <List dense>
-          <ListItem button onClick={open}>
+          <ListItem button component="label">
             <ListItemIcon>
               <FolderOpenIcon />
             </ListItemIcon>
-
             <ListItemText inset primary="Open..." />
+
+            <input
+              style={{ display: 'none' }}
+              type="file"
+              accept=".cyto"
+              name="file"
+              id="file"
+              onChange={e => open(e.target.files)}
+            />
           </ListItem>
 
-          <Download file="example.cyto" content={JSON.stringify({})}>
+          <Download file="example.cyto" content={JSON.stringify(exportObject)}>
             <ListItem button>
               <ListItemIcon>
                 <SaveIcon />
@@ -77,7 +94,7 @@ const Sidebar = ({
             <ListItemText inset primary="Model" />
           </ListItem>
 
-          <ListItem dense button onClick={onClick}>
+          <ListItem dense button onClick={() => onClick(images, categories)}>
             <ListItemIcon>
               <PlayCircleOutlineIcon />
             </ListItemIcon>

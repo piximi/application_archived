@@ -26,7 +26,7 @@ class FileInput extends Component {
           my.imageByteStrings[identifier] = e.target.result;
 
           if (my.images.length === count) {
-            my.props.upload(my.images, my.imageByteStrings);
+            my.props.createImageAction(my.images, my.imageByteStrings);
           }
         };
       })(image, this);
@@ -44,13 +44,15 @@ class FileInput extends Component {
 
   render() {
     return (
-      <Button variant="raised">
+      <Button variant="raised" component="label">
         <input
+          style={{ display: 'none' }}
           type="file"
           accept="image/*"
           onChange={e => this.handleChange(e.target.files)}
           ref={node => this._addDirectory(node)}
         />
+        UPLOAD IMAGES
       </Button>
     );
   }

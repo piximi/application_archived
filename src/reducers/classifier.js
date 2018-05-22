@@ -1,6 +1,10 @@
-import { CLASSIFIER_OPEN, CLASSIFIER_SAVE } from '../constants';
+import {
+  CLASSIFIER_OPEN,
+  CLASSIFIER_SAVE,
+  IMPORT_SETTINGS
+} from '../constants';
 
-const categories = (state = {}, action) => {
+const classifier = (state = {}, action) => {
   switch (action.type) {
     case CLASSIFIER_OPEN:
       return {
@@ -12,9 +16,10 @@ const categories = (state = {}, action) => {
       return state.filter(category => {
         return category.identifier !== action.identifier;
       });
+
     default:
       return state;
   }
 };
 
-export default categories;
+export default classifier;

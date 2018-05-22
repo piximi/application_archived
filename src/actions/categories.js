@@ -1,9 +1,15 @@
 import {
+  ADD_CATEGORIES,
   CREATE_CATEGORY,
   DELETE_CATEGORY,
   UPDATE_CATEGORY_DESCRIPTION,
   UPDATE_CATEGORY_VISIBILITY
 } from '../constants';
+
+export const addCategories = categories => ({
+  type: 'ADD_CATEGORIES',
+  categories
+});
 
 export const createCategoryAction = category => ({
   type: 'CREATE_CATEGORY',

@@ -1,24 +1,24 @@
-import { AppBar, IconButton, Toolbar } from 'material-ui';
+import { AppBar, IconButton, Toolbar, Typography } from 'material-ui';
 import React from 'react';
 import styles from './Primary.css';
 import { withStyles } from 'material-ui/styles/index';
 import Download from '@axetroy/react-download';
-import UploadButton from './UploadButton';
+import ConnectedUploadButton from '../containers/ConnectedUploadButton';
 
-const Primary = ({ classes, train, upload, updateSettingSidebarOpen}) => {
+const Primary = ({ classes, train, upload, updateSettingSidebarOpen }) => {
   return (
     <AppBar position="fixed" className={classes.appBar} color="default">
       <Toolbar>
-        <Typography variant="title" color="inherit" noWrap>
-          Cyto
+        <Typography variant="title" color="inherit">
+          CYTO AI
         </Typography>
+
         <IconButton
           color="inherit"
           aria-label="open drawer"
           onClick={updateSettingSidebarOpen}
         />
-        <Button onClick={train}>Run</Button>
-        <UploadButton upload={upload} />
+        <ConnectedUploadButton />
       </Toolbar>
     </AppBar>
   );

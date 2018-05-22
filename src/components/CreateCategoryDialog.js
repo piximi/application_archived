@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styles from './CreateCategoryDialog.css';
 import { withStyles } from 'material-ui/styles/index';
 import {
@@ -13,50 +13,58 @@ import {
 } from 'material-ui';
 import AddIcon from '@material-ui/icons/Add';
 
-const CreateCategoryDialog = ({
-  toggleCreateCategoryColorMenu,
-  createCategory,
-  classes,
-  onClose,
-  open
-}) => {
-  return (
-    <Dialog open={open} onClose={onClose}>
-      <DialogContent>
-        <Grid container spacing={24} alignItems="flex-end">
-          <Grid item>
-            <Button
-              variant="fab"
-              mini
-              color="secondary"
-              aria-label="add"
-              onClick={toggleCreateCategoryColorMenu}
-            >
-              <AddIcon />
-            </Button>
+class CreateCategoryDialog extends Component {
+  render() {
+    const {
+      toggleCreateCategoryColorMenu,
+      createCategory,
+      classes,
+      onClose,
+      open
+    } = this.props;
+
+    return (
+      <Dialog open={open} onClose={onClose}>
+        <DialogContent>
+          <Grid container spacing={24} alignItems="flex-end">
+            <Grid item>
+              <Button
+                variant="fab"
+                mini
+                color="secondary"
+                aria-label="add"
+                onClick={toggleCreateCategoryColorMenu}
+              >
+                <AddIcon />
+              </Button>´
+            </Grid>
+
+            <Grid item>
+              <FormControl>
+                <InputLabel htmlFor="name-simple">Category</InputLabel>
+                <Input id="name-simple" />
+              </FormControl>
+            </Grid>
           </Grid>
+        </DialogContent>
 
-          <Grid item>
-            <FormControl>
-              <InputLabel htmlFor="name-simple">Category</InputLabel>
+        <DialogActions>
+          <Button onClick={() => onClose('Cancel')} color="primary">
+            Cancel
+          </Button>
 
-              <Input id="name-simple" value=" " />
-            </FormControl>
-          </Grid>
-        </Grid>
-      </DialogContent>
-
-      <DialogActions>
-        <Button onClick={onClose} color="primary">
-          Cancel
-        </Button>
-
-        <Button onClick={onClose} color="primary">
-          Create
-        </Button>
-      </DialogActions>
-    </Dialog>
-  );
-};
+          <Button
+            onClick={() =>
+              onClose('Create', document.getElementById('name-simple'))
+            }
+            color="primary"
+          >
+            Create
+          </Button>
+        </DialogActions>
+      </Dialog>
+    );
+  }
+}
 
 export default withStyles(styles)(CreateCategoryDialog);

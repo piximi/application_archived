@@ -6,7 +6,8 @@ import {
   saveClassifierAction
 } from '../actions/classifier';
 import Classifier from '../components/Classifier';
-import { createImageAction } from '../actions/images';
+import { createImageAction, addImages } from '../actions/images';
+import { addCategories } from '../actions/categories';
 
 const mapStateToProps = state => {
   return state;
@@ -28,6 +29,11 @@ const mapDispatchToProps = (dispatch, props) => {
       const pathname = '';
 
       dispatch(saveClassifierAction(pathname));
+    },
+
+    fileImport: exportedSettings => {
+      dispatch(addImages(exportedSettings.images));
+      dispatch(addCategories(exportedSettings.categories));
     },
 
     createImageAction: (images, imageByteStrings) => {

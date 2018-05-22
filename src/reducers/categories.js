@@ -1,4 +1,5 @@
 import {
+  ADD_CATEGORIES,
   CREATE_CATEGORY,
   DELETE_CATEGORY,
   UPDATE_CATEGORY_DESCRIPTION,
@@ -7,6 +8,9 @@ import {
 
 const categories = (state = [], action) => {
   switch (action.type) {
+    case ADD_CATEGORIES:
+      return action.categories;
+
     case CREATE_CATEGORY:
       return [...state, action.category];
     case DELETE_CATEGORY:

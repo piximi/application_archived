@@ -11,7 +11,7 @@ import reducer from './reducers';
 
 const demo = {
   categories: data.categories,
-  images: data.images,
+  images: { images: [], imageByteStrings: {} },
   settings: {
     columns: 8,
     createCategory: {
@@ -42,3 +42,5 @@ ReactDOM.render(
 );
 
 registerServiceWorker();
+
+export { store };
