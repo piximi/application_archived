@@ -5,7 +5,13 @@ import styles from './Gallery.css';
 import { withStyles } from 'material-ui/styles/index';
 
 const Gallery = props => {
-  const { classes, findCategory, updateImageCategory, images } = props;
+  const {
+    classes,
+    findCategory,
+    updateImageCategory,
+    images,
+    imageByteStrings,
+  } = props;
 
   return (
     <Grid item xs={10}>
@@ -18,6 +24,7 @@ const Gallery = props => {
           columns={8}
           findCategory={findCategory}
           images={images}
+          imageByteStrings={imageByteStrings}
           updateImageCategory={updateImageCategory}
         />
       </main>

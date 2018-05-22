@@ -4,7 +4,9 @@ import { updateImageCategoryAction } from '../actions/images';
 import Image from '../components/Image';
 
 const mapStateToProps = (state, props) => {
-  return state.images.find(image => props.identifier === image.identifier);
+  return state.images.images.find(
+    image => props.identifier === image.identifier
+  );
 };
 
 const mapDispatchToProps = dispatch => {

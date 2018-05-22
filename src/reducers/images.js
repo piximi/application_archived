@@ -4,16 +4,20 @@ import {
   UPDATE_IMAGE_CATEGORY
 } from '../constants';
 
-const images = (state = [], action) => {
+const images = (state = { images: [], imageByteStrings: {} }, action) => {
   switch (action.type) {
     case CREATE_IMAGE:
-      return [...state, action.image];
+      return {
+        ...state,
+        images: action.image,
+        imageByteStrings: action.imageByteStrings
+      };
     case DELETE_IMAGE:
       return state.filter(image => {
         return image.identifier !== action.identifier;
       });
     case UPDATE_IMAGE_CATEGORY:
-      return state.map(image => {
+      const images = state.images.map(image => {
         if (image.identifier === action.identifier) {
           return {
             ...image,
@@ -23,6 +27,11 @@ const images = (state = [], action) => {
           return image;
         }
       });
+      return {
+        ...state,
+        images: images
+      };
+
     default:
       return state;
   }

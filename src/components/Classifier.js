@@ -4,6 +4,7 @@ import { withStyles } from 'material-ui/styles';
 import { Grid } from 'material-ui';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContextProvider } from 'react-dnd';
+import * as API from '../classifier';
 import ConnectedGallery from '../containers/ConnectedGallery';
 import ConnectedPrimary from '../containers/ConnectedPrimary';
 import ConnectedSidebar from '../containers/ConnectedSidebar';
@@ -23,10 +24,17 @@ class Classifier extends Component {
     };
   };
 
+  upload = (images, imageByteStrings) => {
+    this.props.createImageAction(images, imageByteStrings);
+  };
   findCategory = identifier => {
     return this.props.categories.find(function(category) {
       return category.identifier === identifier;
     });
+  };
+
+  train = () => {
+    return API.trainOnRun(this.state);
   };
 
   render() {

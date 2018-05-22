@@ -1,8 +1,9 @@
 import { CREATE_IMAGE, DELETE_IMAGE } from '../constants';
 
-export const createImageAction = category => ({
+export const createImageAction = (image, imageByteStrings) => ({
   type: 'CREATE_IMAGE',
-  category
+  image,
+  imageByteStrings
 });
 
 export const updateImageCategoryAction = (identifier, category) => ({
