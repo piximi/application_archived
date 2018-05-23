@@ -2,6 +2,10 @@ import * as tensorflow from '@tensorflow/tfjs';
 import { store } from './index';
 import { updateImageCategoryAction } from './actions/images';
 
+let indexMap = {};
+let categoryIndexArray = [];
+let counter = 0;
+
 const LEARNING_RATE = 1e-4;
 const optimizer = tensorflow.train.adam(LEARNING_RATE);
 // How many examples the model should "see" before making a parameter update.
@@ -138,7 +142,7 @@ async function predict(modelDict, datasetObj) {
       // to the class the model thinks is the most probable given the input.
       //console.log(img.identifier)
       //predictions.as1D().print();
-      passArguments(img.identifier, predictions.as1D());
+      passResults(img.identifier, predictions.as1D());
     }
     //return predictions//.as1D().argMax();
   });
@@ -339,27 +343,38 @@ function getCategoryIndex(categoryId, categories) {
   return null;
 }
 
-function passArguments(imgId, predictions) {
+function passResults(imgId, predictions) {
   console.log(imgId);
   let predictionsArray = predictions.dataSync();
   console.log(predictionsArray);
-  let index = predictionsArray.indexOf(Math.max(...predictionsArray));
-  console.log(store.getState());
+  let index = indexMap[predictionsArray.indexOf(Math.max(...predictionsArray))];
+  console.log(index);
   const category = store.getState().categories[index].identifier;
   console.log(category);
   store.dispatch(updateImageCategoryAction(imgId, category));
 }
 
 async function trainOnRun(images, categories) {
+  indexMap = {};
+  counter = 0;
+  categoryIndexArray;
   const imageTags = images.images.map(observation => {
+    let categoryIndex = getCategoryIndex(observation.category, categories);
+
+    // Create Index Map
+    if (!categoryIndexArray.includes(categoryIndex) && categoryIndex !== null) {
+      categoryIndexArray.push(categoryIndex);
+      indexMap[counter] = categoryIndex;
+      counter++;
+    }
+
     let image = new Image();
     image.identifier = observation.identifier;
     image.category = getCategoryIndex(observation.category, categories);
-
     image.src = images.imageByteStrings[observation.identifier];
-
     return image;
   });
+  console.log(indexMap);
 
   const dataset = new Dataset();
   dataset.loadFromArray(imageTags);
