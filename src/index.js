@@ -6,12 +6,16 @@ import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import data from './images/mnist';
+import dataImages from './images/stock';
 
 import reducer from './reducers';
 
 const demo = {
   categories: data.categories,
-  images: { images: [], imageByteStrings: {} },
+  images: {
+    images: dataImages.images,
+    imageByteStrings: dataImages.imageByteStrings
+  },
   settings: {
     columns: 8,
     createCategory: {

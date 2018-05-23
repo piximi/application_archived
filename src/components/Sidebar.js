@@ -45,6 +45,7 @@ const Sidebar = ({
     categories: categories,
     images: images.images
   };
+  // const imageByteStrings = {...images.imageByteStrings}
 
   return (
     <Grid item xs={2}>
@@ -68,7 +69,10 @@ const Sidebar = ({
             />
           </ListItem>
 
-          <Download file="example.cyto" content={JSON.stringify(exportObject)}>
+          <Download
+            file="example.cyto"
+            content={JSON.stringify(exportObject, null, '\t')}
+          >
             <ListItem button>
               <ListItemIcon>
                 <SaveIcon />

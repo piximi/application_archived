@@ -4,73 +4,17 @@
   },
   "categories": [
     {
-      "color": "rgb(145,159,94)",
+      "color": "#EC407A",
       "identifier": "16e0e1b8-ae79-46f5-80cf-58e7f8dda344",
       "index": 0,
       "description": "0",
       "visible": true
     },
     {
-      "color": "rgb(59,140,192)",
+      "color": "#651FFF",
       "identifier": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
       "index": 1,
       "description": "1",
-      "visible": true
-    },
-    {
-      "color": "rgb(252,244,87)",
-      "identifier": "f488bb9a-4274-49e3-a11c-c90d28d2c393",
-      "index": 2,
-      "description": "2",
-      "visible": true
-    },
-    {
-      "color": "rgb(231,80,35)",
-      "identifier": "7e062fd1-bdc3-48ed-ba4c-f7d01417a951",
-      "index": 3,
-      "description": "3",
-      "visible": true
-    },
-    {
-      "color": "rgb(178,97,172)",
-      "identifier": "563b4ff6-f0ea-408a-a568-a109cbeb310a",
-      "index": 4,
-      "description": "4",
-      "visible": true
-    },
-    {
-      "color": "rgb(58,219,175)",
-      "identifier": "d3a41b7b-40ea-4f44-a79d-2c065fdb2b2f",
-      "index": 5,
-      "description": "5",
-      "visible": true
-    },
-    {
-      "color": "rgb(128,189,45)",
-      "identifier": "467076d1-409c-4b4f-a26f-f3068ab7869e",
-      "index": 6,
-      "description": "6",
-      "visible": true
-    },
-    {
-      "color": "rgb(36,112,83)",
-      "identifier": "8cba2400-da58-403b-979d-af2b56c656aa",
-      "index": 7,
-      "description": "7",
-      "visible": true
-    },
-    {
-      "color": "rgb(163,140,62)",
-      "identifier": "dd3a43cd-3447-45e4-b144-0c5caf37fae3",
-      "index": 8,
-      "description": "8",
-      "visible": true
-    },
-    {
-      "color": "rgb(225,17,164)",
-      "identifier": "a2ca8ef8-411b-48d2-954b-3caf8f38541d",
-      "index": 9,
-      "description": "9",
       "visible": true
     }
   ],
