@@ -5,7 +5,14 @@ import { withStyles } from 'material-ui/styles/index';
 import Download from '@axetroy/react-download';
 import ConnectedUploadButton from '../containers/ConnectedUploadButton';
 
-const Primary = ({ classes, train, upload, updateSettingSidebarOpen }) => {
+const Primary = ({
+  classes,
+  train,
+  upload,
+  updateSettingSidebarOpen,
+  updateSettingColumns,
+  columns
+}) => {
   return (
     <AppBar position="fixed" className={classes.appBar} color="default">
       <Toolbar>
@@ -19,6 +26,19 @@ const Primary = ({ classes, train, upload, updateSettingSidebarOpen }) => {
           onClick={updateSettingSidebarOpen}
         />
         <ConnectedUploadButton />
+
+        <div
+          style={{ position: 'fixed', right: '10%', zIndex: 1 }}
+          className="slidecontainer"
+        >
+          <input
+            onChange={e => updateSettingColumns(e)}
+            type="range"
+            min="1"
+            max="100"
+            value={columns}
+          />
+        </div>
       </Toolbar>
     </AppBar>
   );

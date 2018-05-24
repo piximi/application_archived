@@ -1,6 +1,10 @@
 import { connect } from 'react-redux';
 
-import { updateSettingSidebarOpenAction } from '../actions/settings';
+import {
+  updateSettingSidebarOpenAction,
+  updateSettingColumns
+} from '../actions/settings';
+
 import Primary from '../components/Primary';
 
 const mapStateToProps = state => {
@@ -11,6 +15,12 @@ const mapDispatchToProps = dispatch => {
   return {
     updateSettingSidebarOpen: () => {
       dispatch(updateSettingSidebarOpenAction({}));
+    },
+
+    updateSettingColumns: event => {
+      const columns = event.target.value;
+
+      dispatch(updateSettingColumns(columns));
     }
   };
 };

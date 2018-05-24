@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-
 import Gallery from '../components/Gallery';
 import { updateSettingColumns } from '../actions/settings';
 
@@ -9,7 +8,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateCategoryDescription: event => {
+    updateSettingColumns: event => {
       const columns = event.target.value;
 
       dispatch(updateSettingColumns(columns));
