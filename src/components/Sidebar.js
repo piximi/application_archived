@@ -49,7 +49,11 @@ const Sidebar = ({
 
   return (
     <Grid item xs={2}>
-      <Drawer classes={{ paper: classes.drawerPaper }} variant="permanent">
+      <Drawer
+        style={{ position: 'fixed' }}
+        classes={{ paper: classes.drawerPaper }}
+        variant="permanent"
+      >
         <div className={classes.toolbar} />
 
         <List dense>

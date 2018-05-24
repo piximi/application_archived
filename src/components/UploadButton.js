@@ -20,6 +20,7 @@ class FileInput extends Component {
           let identifier = hash(e.target.result);
           my.images.push({
             category: null,
+            probability: null,
             identifier: identifier,
             filename: fileName
           });

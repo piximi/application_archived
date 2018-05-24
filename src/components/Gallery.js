@@ -10,13 +10,12 @@ const Gallery = props => {
     findCategory,
     updateImageCategory,
     images,
-    imageByteStrings,
+    imageByteStrings
   } = props;
 
   return (
     <Grid item xs={10}>
       <div className={classes.toolbar} />
-
       <Divider />
 
       <main className={classes.content}>

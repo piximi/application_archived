@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { HotKeys } from 'react-hotkeys';
-import { GridList, GridListTile } from 'material-ui';
+import { GridList, GridListTile, ListSubheader } from 'material-ui';
 import ConnectedImage from '../containers/ConnectedImage';
 import withDragDropContext from './dnd-global-context';
 
@@ -100,6 +100,7 @@ class Images extends Component {
                   identifier={sample.identifier}
                   findCategory={this.props.findCategory}
                   pathname={this.props.imageByteStrings[sample.identifier]}
+                  probability={sample.probability}
                 />
               </GridListTile>
             </div>

@@ -1,6 +1,9 @@
 import * as tensorflow from '@tensorflow/tfjs';
 import { store } from './index';
-import { updateImageCategoryAction } from './actions/images';
+import {
+  updateImageCategoryAction,
+  updateImageProbability
+} from './actions/images';
 
 let indexMap = {};
 let categoryIndexArray = [];
@@ -157,6 +160,7 @@ async function run(datasetObj) {
 
   if (doneTraining) {
     console.log('Predicting!');
+    alert('Predicting');
     await predict(model, datasetObj);
   }
 }
@@ -232,6 +236,7 @@ class Dataset {
       this.validationSet.length
     );
 
+    alert('Training');
     console.log(
       'Training Set n_t =',
       this.trainingSet.length,
@@ -344,14 +349,16 @@ function getCategoryIndex(categoryId, categories) {
 }
 
 function passResults(imgId, predictions) {
-  console.log(imgId);
+  //console.log(imgId);
   let predictionsArray = predictions.dataSync();
-  console.log(predictionsArray);
+  //console.log(predictionsArray);
   let index = indexMap[predictionsArray.indexOf(Math.max(...predictionsArray))];
-  console.log(index);
-  const category = store.getState().categories[index].identifier;
-  console.log(category);
+  //console.log(index);
+  let category = store.getState().categories[index].identifier;
+  //console.log(category);
   store.dispatch(updateImageCategoryAction(imgId, category));
+  let probability = predictionsArray[index];
+  store.dispatch(updateImageProbability(imgId, probability));
 }
 
 async function trainOnRun(images, categories) {

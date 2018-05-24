@@ -1,4 +1,10 @@
-import { Card, CardContent, CardMedia, withStyles } from 'material-ui';
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  withStyles
+} from 'material-ui';
 import React, { Component } from 'react';
 import { DragSource } from 'react-dnd';
 import styles from './Image.css';
@@ -33,11 +39,10 @@ class Image extends Component {
       connectDragSource,
       findCategory,
       pathname,
-      classes
+      classes,
+      probability
     } = this.props;
-
     let color;
-
     if (!!category) {
       color = findCategory(category).color;
     } else {
@@ -52,7 +57,13 @@ class Image extends Component {
           <CardContent
             classes={{ root: classes.content }}
             style={{ backgroundColor: color }}
-          />
+          >
+            <Typography component="p">
+              {probability == null
+                ? null
+                : 'Prob: ' + String(probability).slice(0, 8)}
+            </Typography>
+          </CardContent>
         </Card>
       </div>
     );
