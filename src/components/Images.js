@@ -61,11 +61,12 @@ class Images extends Component {
     },
     classify: event => {
       const identifier = this.props.images[this.inFocus].identifier;
-      const newKey = Number(event.key) === 0 ? 10 : Number(event.key) - 1;
-      if (newKey > this.props.categories.length - 1) {
+
+      const index = Number(event.key) == 0 ? 9 : Number(event.key) - 1;
+      if (index > this.props.categories.length - 1) {
         return null;
       }
-      const category = this.props.categories[newKey].identifier;
+      const category = this.props.categories[index].identifier;
       this.props.updateImageCategory(identifier, category);
     }
   };
