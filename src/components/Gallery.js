@@ -5,16 +5,7 @@ import styles from './Gallery.css';
 import { withStyles } from 'material-ui/styles/index';
 
 const Gallery = props => {
-  const {
-    classes,
-    findCategory,
-    updateImageCategory,
-    images,
-    imageByteStrings,
-    settings,
-    updateSettingColumns,
-    filteredImages
-  } = props;
+  const { classes, findCategory, updateImageCategory, settings } = props;
   return (
     <Grid item xs={10}>
       <div className={classes.toolbar} />

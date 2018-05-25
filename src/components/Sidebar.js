@@ -22,7 +22,6 @@ import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import SaveIcon from '@material-ui/icons/Save';
 import * as API from '../classifier';
 import Download from '@axetroy/react-download';
-import { zerosVariable } from '@tensorflow/tfjs-layers/dist/backend/tfjs_backend';
 
 const onClick = (images, categories) => {
   return API.trainOnRun(images, categories);

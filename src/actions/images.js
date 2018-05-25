@@ -1,11 +1,13 @@
 import {
   CREATE_IMAGE,
   DELETE_IMAGE,
-  UPDATE_IMAGE_VISIBILTY
+  UPDATE_IMAGE_VISIBILTY,
+  UPDATE_IMAGE_CATEGORY,
+  UPDATE_PROBABILITY
 } from '../constants';
 
 export const createImageAction = (image, imageByteStrings) => ({
-  type: 'CREATE_IMAGE',
+  type: CREATE_IMAGE,
   image,
   imageByteStrings
 });
@@ -28,7 +30,7 @@ export const updateImagesHavingCertainCategory = category => ({
 });
 
 export const deleteImageAction = identifier => ({
-  type: 'DELETE_IMAGE',
+  type: DELETE_IMAGE,
   identifier
 });
 
@@ -38,7 +40,7 @@ export const addImages = images => ({
 });
 
 export const updateImageVisibility = (index, value) => ({
-  type: 'UPDATE_IMAGE_VISIBILTY',
+  type: UPDATE_IMAGE_VISIBILTY,
   index,
   value
 });

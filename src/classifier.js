@@ -339,7 +339,7 @@ class Dataset {
 function getCategoryIndex(categoryId, categories) {
   let index = 0;
   for (let category of categories) {
-    if (categoryId == category.identifier) {
+    if (categoryId === category.identifier) {
       return index;
     } else {
       index++;

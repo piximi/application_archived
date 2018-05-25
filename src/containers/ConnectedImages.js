@@ -4,7 +4,6 @@ import {
   updateImageCategoryAction
 } from '../actions/images';
 import Images from '../components/Images';
-import getVisibleImages from '../selectors/images';
 
 const mapStateToProps = state => {
   return {

@@ -7,28 +7,28 @@ import {
 } from '../constants';
 
 export const addCategories = categories => ({
-  type: 'ADD_CATEGORIES',
+  type: ADD_CATEGORIES,
   categories
 });
 
 export const createCategoryAction = category => ({
-  type: 'CREATE_CATEGORY',
+  type: CREATE_CATEGORY,
   category
 });
 
 export const deleteCategoryAction = identifier => ({
-  type: 'DELETE_CATEGORY',
+  type: DELETE_CATEGORY,
   identifier
 });
 
 export const updateCategoryDescriptionAction = (identifier, description) => ({
-  type: 'UPDATE_CATEGORY_DESCRIPTION',
+  type: UPDATE_CATEGORY_DESCRIPTION,
   identifier,
   description
 });
 
 export const updateCategoryVisibilityAction = (identifier, value) => ({
-  type: 'UPDATE_CATEGORY_VISIBILITY',
+  type: UPDATE_CATEGORY_VISIBILITY,
   identifier,
   value
 });

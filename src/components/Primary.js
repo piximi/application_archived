@@ -2,7 +2,6 @@ import { AppBar, IconButton, Toolbar, Typography } from 'material-ui';
 import React from 'react';
 import styles from './Primary.css';
 import { withStyles } from 'material-ui/styles/index';
-import Download from '@axetroy/react-download';
 import ConnectedUploadButton from '../containers/ConnectedUploadButton';
 
 const Primary = ({

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { HotKeys } from 'react-hotkeys';
-import { GridList, GridListTile, ListSubheader } from 'material-ui';
+import { GridList, GridListTile } from 'material-ui';
 import ConnectedImage from '../containers/ConnectedImage';
 import withDragDropContext from './dnd-global-context';
 
@@ -45,7 +45,7 @@ class Images extends Component {
     moveLeft: 'left',
     moveUp: 'up',
     moveDown: 'down',
-    classify: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+    classify: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'backspace']
   };
 
   handlers = {
@@ -71,8 +71,12 @@ class Images extends Component {
     },
     classify: event => {
       const identifier = this.props.images[this.inFocus].identifier;
-
-      const index = Number(event.key) == 0 ? 9 : Number(event.key) - 1;
+      console.log(event.key);
+      if (event.key === 'Backspace') {
+        this.props.updateImageCategory(identifier, null);
+        return null;
+      }
+      const index = Number(event.key) === 0 ? 9 : Number(event.key) - 1;
       if (index > this.props.categories.length - 1) {
         return null;
       }

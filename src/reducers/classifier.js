@@ -1,8 +1,4 @@
-import {
-  CLASSIFIER_OPEN,
-  CLASSIFIER_SAVE,
-  IMPORT_SETTINGS
-} from '../constants';
+import { CLASSIFIER_OPEN, CLASSIFIER_SAVE } from '../constants';
 
 const classifier = (state = {}, action) => {
   switch (action.type) {
