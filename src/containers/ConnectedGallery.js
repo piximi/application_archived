@@ -10,7 +10,6 @@ const mapDispatchToProps = dispatch => {
   return {
     updateSettingColumns: event => {
       const columns = event.target.value;
-
       dispatch(updateSettingColumns(columns));
     }
   };

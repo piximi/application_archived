@@ -12,7 +12,8 @@ const Gallery = props => {
     images,
     imageByteStrings,
     settings,
-    updateSettingColumns
+    updateSettingColumns,
+    filteredImages
   } = props;
   return (
     <Grid item xs={10}>
@@ -24,8 +25,6 @@ const Gallery = props => {
         <ConnectedImages
           columns={settings.columns}
           findCategory={findCategory}
-          images={images}
-          imageByteStrings={imageByteStrings}
           updateImageCategory={updateImageCategory}
         />
       </main>

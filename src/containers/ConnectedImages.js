@@ -8,10 +8,9 @@ import getVisibleImages from '../selectors/images';
 
 const mapStateToProps = state => {
   return {
-    categories: state.categories,
     images: state.images.images,
-    imageByteStrings: state.images.imageByteStrings,
-    settings: state.settings
+    categories: state.categories,
+    imageByteStrings: state.images.imageByteStrings
   };
 };
 

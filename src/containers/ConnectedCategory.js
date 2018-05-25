@@ -5,14 +5,22 @@ import {
   updateCategoryDescriptionAction,
   updateCategoryVisibilityAction
 } from '../actions/categories';
+
+import { updateImageVisibility } from '../actions/images';
+
 import Category from '../components/Category';
 
 import { updateImagesHavingCertainCategory } from '../actions/images';
 
 const mapStateToProps = (state, props) => {
-  return state.categories.find(
+  const category = state.categories.find(
     category => props.identifier === category.identifier
   );
+  return {
+    ...category,
+    categories: state.categories,
+    images: state.images.images
+  };
 };
 
 const mapDispatchToProps = (dispatch, props) => {
@@ -27,9 +35,14 @@ const mapDispatchToProps = (dispatch, props) => {
       const description = event.target.value;
       dispatch(updateCategoryDescriptionAction(identifier, description));
     },
-    updateCategoryVisibility: () => {
+    updateCategoryVisibility: (images, value) => {
       const identifier = props.identifier;
       dispatch(updateCategoryVisibilityAction(identifier));
+      for (let index in images) {
+        if (images[index].category == props.identifier) {
+          dispatch(updateImageVisibility(index, value));
+        }
+      }
     }
   };
 };

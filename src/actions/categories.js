@@ -27,7 +27,8 @@ export const updateCategoryDescriptionAction = (identifier, description) => ({
   description
 });
 
-export const updateCategoryVisibilityAction = identifier => ({
+export const updateCategoryVisibilityAction = (identifier, value) => ({
   type: 'UPDATE_CATEGORY_VISIBILITY',
-  identifier
+  identifier,
+  value
 });

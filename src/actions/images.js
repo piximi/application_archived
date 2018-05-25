@@ -1,4 +1,8 @@
-import { CREATE_IMAGE, DELETE_IMAGE } from '../constants';
+import {
+  CREATE_IMAGE,
+  DELETE_IMAGE,
+  UPDATE_IMAGE_VISIBILTY
+} from '../constants';
 
 export const createImageAction = (image, imageByteStrings) => ({
   type: 'CREATE_IMAGE',
@@ -31,4 +35,10 @@ export const deleteImageAction = identifier => ({
 export const addImages = images => ({
   type: 'ADD_IMAGES',
   images
+});
+
+export const updateImageVisibility = (index, value) => ({
+  type: 'UPDATE_IMAGE_VISIBILTY',
+  index,
+  value
 });

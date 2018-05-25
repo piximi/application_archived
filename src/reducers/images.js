@@ -4,7 +4,8 @@ import {
   UPDATE_IMAGE_CATEGORY,
   ADD_IMAGES,
   UPDATE_PROBABILITY,
-  UPDATE_IMAGES_HAVING_CERTAIN_CATEGORY
+  UPDATE_IMAGES_HAVING_CERTAIN_CATEGORY,
+  UPDATE_IMAGE_VISIBILTY
 } from '../constants';
 
 const images = (state = {}, action) => {
@@ -53,7 +54,6 @@ const images = (state = {}, action) => {
       };
 
     case UPDATE_IMAGES_HAVING_CERTAIN_CATEGORY:
-      console.log('True');
       images = state.images.map(image => {
         if (image.category === action.category) {
           return {
@@ -73,6 +73,14 @@ const images = (state = {}, action) => {
       return {
         ...state,
         images: action.images
+      };
+
+    case UPDATE_IMAGE_VISIBILTY:
+      images = state.images;
+      images[action.index].visible = action.value;
+      return {
+        ...state,
+        images: images
       };
 
     default:

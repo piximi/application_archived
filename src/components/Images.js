@@ -11,14 +11,16 @@ class Images extends Component {
     this._handleClick = this.handleClick.bind(this);
     this.inFocus = null;
     this.NoPicPerRow = null;
+    this.myMap = {};
+    this.reverseMap = {};
   }
 
   // TODO check how many pictures per row are displayed without nasty calculation
   handleClick(e, i) {
-    if (i >= this.props.images.length || i < 0) {
+    const node = this._nodes.get(i);
+    if (node == null) {
       return null;
     }
-    const node = this._nodes.get(i);
     node.focus();
     this.inFocus = Number(
       document.activeElement.firstChild.getAttribute('index')
@@ -27,15 +29,15 @@ class Images extends Component {
 
   // Returns number of pictures displayed per row
   calcPicsPerRow() {
-    let imgPerRow =
-      document.getElementById('foo').offsetWidth /
-      document.getElementById('1Tile').offsetWidth;
-    imgPerRow = imgPerRow * 2;
-    imgPerRow = Math.floor(
-      (document.getElementById('foo').offsetWidth - imgPerRow) /
-        document.getElementById('1Tile').offsetWidth
-    );
-    return imgPerRow;
+    for (let node of this._nodes) {
+      const tileWidth = node[1].offsetWidth;
+      const containerWidth = document.getElementById('foo').offsetWidth;
+      let imgPerRow = containerWidth / tileWidth;
+      const padding = imgPerRow * 5;
+      imgPerRow = Math.floor((containerWidth - padding) / tileWidth);
+      return imgPerRow;
+    }
+    return 0;
   }
 
   keyMap = {
@@ -48,16 +50,24 @@ class Images extends Component {
 
   handlers = {
     moveRight: event => {
-      this.handleClick(event, this.inFocus + 1);
+      let index = this.reverseMap[this.myMap[this.inFocus] + 1];
+      this.handleClick(event, index);
     },
     moveLeft: event => {
-      this.handleClick(event, this.inFocus - 1);
+      let index = this.reverseMap[this.myMap[this.inFocus] - 1];
+      this.handleClick(event, index);
     },
     moveUp: event => {
-      this.handleClick(event, this.inFocus - this.calcPicsPerRow());
+      let index = this.reverseMap[
+        this.myMap[this.inFocus] - this.calcPicsPerRow()
+      ];
+      this.handleClick(event, index);
     },
     moveDown: event => {
-      this.handleClick(event, this.inFocus + this.calcPicsPerRow());
+      let index = this.reverseMap[
+        this.myMap[this.inFocus] + this.calcPicsPerRow()
+      ];
+      this.handleClick(event, index);
     },
     classify: event => {
       const identifier = this.props.images[this.inFocus].identifier;
@@ -72,14 +82,14 @@ class Images extends Component {
   };
 
   render() {
-    return (
-      <GridList
-        id="foo"
-        cellHeight={'auto'}
-        cols={Number(this.props.columns)}
-        spacing={4}
-      >
-        {this.props.images.map((sample, index) => (
+    let counter = -1;
+    let filteredImages = this.props.images.map((sample, index) => {
+      if (sample.visible) {
+        counter = counter + 1;
+        this.myMap[index] = counter;
+        this.reverseMap[counter] = index;
+
+        return (
           <HotKeys
             key={'hotkey' + index}
             keyMap={this.keyMap}
@@ -88,14 +98,10 @@ class Images extends Component {
             <div
               tabIndex="-1"
               ref={c => this._nodes.set(index, c)}
+              index={index}
               onClick={e => this.handleClick(e, index)}
             >
-              <GridListTile
-                key={index}
-                index={index}
-                id={index + 'Tile'}
-                cols={1}
-              >
+              <GridListTile key={index} index={index} cols={1}>
                 <ConnectedImage
                   category={sample.category}
                   identifier={sample.identifier}
@@ -106,7 +112,19 @@ class Images extends Component {
               </GridListTile>
             </div>
           </HotKeys>
-        ))}
+        );
+      } else {
+        return null;
+      }
+    });
+    return (
+      <GridList
+        id="foo"
+        cellHeight={'auto'}
+        cols={Number(this.props.columns)}
+        spacing={5}
+      >
+        {filteredImages}
       </GridList>
     );
   }

@@ -30,6 +30,7 @@ const Categories = ({
           <ConnectedCategory
             key={category.identifier}
             identifier={category.identifier}
+            categories={categories}
           />
         ))}
 

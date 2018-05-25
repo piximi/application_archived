@@ -21,6 +21,7 @@ class FileInput extends Component {
           my.images.push({
             category: null,
             probability: null,
+            visible: true,
             identifier: identifier,
             filename: fileName
           });

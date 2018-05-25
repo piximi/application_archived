@@ -35,6 +35,7 @@ const Category = props => {
     color,
     connectDropTarget,
     description,
+    images,
     visible
   } = props;
 
@@ -43,7 +44,7 @@ const Category = props => {
       <ListItem
         dense
         button
-        onClick={updateCategoryVisibility}
+        onClick={() => updateCategoryVisibility(images, !visible)}
         classes={{
           root: props.isOver ? props.classes.isOver : props.classes.isNotOver
         }}
