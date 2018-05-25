@@ -1,4 +1,4 @@
-import { AppBar, IconButton, Toolbar, Typography } from 'material-ui';
+import { AppBar, IconButton, Toolbar, Typography, Button } from 'material-ui';
 import React from 'react';
 import styles from './Primary.css';
 import { withStyles } from 'material-ui/styles/index';
@@ -7,6 +7,7 @@ import ConnectedUploadButton from '../containers/ConnectedUploadButton';
 const Primary = ({
   classes,
   train,
+  sortImages,
   upload,
   updateSettingSidebarOpen,
   updateSettingColumns,
@@ -25,6 +26,11 @@ const Primary = ({
           onClick={updateSettingSidebarOpen}
         />
         <ConnectedUploadButton />
+
+        <Button onClick={() => sortImages()} variant="raised">
+          {' '}
+          SORT{' '}
+        </Button>
 
         <div
           style={{ position: 'fixed', right: '10%', zIndex: 1 }}

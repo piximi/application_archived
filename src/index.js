@@ -16,24 +16,7 @@ const demo = {
     images: dataImages.images,
     imageByteStrings: dataImages.imageByteStrings
   },
-  settings: {
-    columns: 8,
-    createCategory: {
-      color: {
-        open: false
-      },
-      open: false
-    },
-    help: {
-      open: false
-    },
-    settings: {
-      open: false
-    },
-    sidebar: {
-      open: true
-    }
-  }
+  settings: data.settings
 };
 
 const store = createStore(reducer, demo);

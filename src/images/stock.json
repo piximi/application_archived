@@ -1,326 +1,326 @@
 {
   "images": [
     {
-      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 3881662591,
-      "filename": "mnist_png/406.png"
+      "identifier": 1197920536,
+      "filename": "mnist_png/351.png"
     },
     {
-      "category": "16e0e1b8-ae79-46f5-80cf-58e7f8dda344",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 408540106,
-      "filename": "mnist_png/88.png"
+      "identifier": 489159479,
+      "filename": "mnist_png/37.png"
     },
     {
-      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 3615163039,
-      "filename": "mnist_png/77.png"
+      "identifier": 2892426585,
+      "filename": "mnist_png/345.png"
     },
     {
-      "category": "16e0e1b8-ae79-46f5-80cf-58e7f8dda344",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 4173799583,
-      "filename": "mnist_png/63.png"
+      "identifier": 3012365288,
+      "filename": "mnist_png/184.png"
     },
     {
-      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 1564064006,
-      "filename": "mnist_png/200.png"
+      "identifier": 3531156077,
+      "filename": "mnist_png/224.png"
     },
     {
-      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 3930621183,
-      "filename": "mnist_png/201.png"
+      "identifier": 338677807,
+      "filename": "mnist_png/231.png"
     },
     {
-      "category": "16e0e1b8-ae79-46f5-80cf-58e7f8dda344",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 318138543,
-      "filename": "mnist_png/229.png"
+      "identifier": 2739084753,
+      "filename": "mnist_png/1.png"
     },
     {
-      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 423084967,
-      "filename": "mnist_png/177.png"
+      "identifier": 2556826856,
+      "filename": "mnist_png/3.png"
     },
     {
-      "category": "16e0e1b8-ae79-46f5-80cf-58e7f8dda344",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 1363190617,
-      "filename": "mnist_png/216.png"
+      "identifier": 3254205241,
+      "filename": "mnist_png/192.png"
     },
     {
-      "category": "16e0e1b8-ae79-46f5-80cf-58e7f8dda344",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 2743269504,
-      "filename": "mnist_png/75.png"
+      "identifier": 4227437907,
+      "filename": "mnist_png/152.png"
     },
     {
-      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 242148738,
-      "filename": "mnist_png/174.png"
+      "identifier": 1106442913,
+      "filename": "mnist_png/408.png"
     },
     {
-      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 2437562434,
-      "filename": "mnist_png/366.png"
+      "identifier": 2325864623,
+      "filename": "mnist_png/51.png"
     },
     {
-      "category": "16e0e1b8-ae79-46f5-80cf-58e7f8dda344",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 1189581070,
-      "filename": "mnist_png/399.png"
+      "identifier": 1366938278,
+      "filename": "mnist_png/232.png"
     },
     {
-      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 1410640791,
-      "filename": "mnist_png/59.png"
+      "identifier": 3749484837,
+      "filename": "mnist_png/78.png"
     },
     {
-      "category": "16e0e1b8-ae79-46f5-80cf-58e7f8dda344",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 3460548020,
-      "filename": "mnist_png/206.png"
+      "identifier": 1763412352,
+      "filename": "mnist_png/435.png"
     },
     {
-      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 1715329899,
-      "filename": "mnist_png/70.png"
+      "identifier": 1106049166,
+      "filename": "mnist_png/357.png"
     },
     {
-      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 2756323393,
-      "filename": "mnist_png/398.png"
+      "identifier": 922693698,
+      "filename": "mnist_png/394.png"
     },
     {
-      "category": "16e0e1b8-ae79-46f5-80cf-58e7f8dda344",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 2882056622,
-      "filename": "mnist_png/429.png"
+      "identifier": 390659651,
+      "filename": "mnist_png/169.png"
     },
     {
-      "category": "16e0e1b8-ae79-46f5-80cf-58e7f8dda344",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 3489266079,
-      "filename": "mnist_png/359.png"
+      "identifier": 3953862900,
+      "filename": "mnist_png/40.png"
     },
     {
-      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 683524280,
-      "filename": "mnist_png/99.png"
+      "identifier": 188220240,
+      "filename": "mnist_png/6.png"
     },
     {
-      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 841382515,
-      "filename": "mnist_png/8.png"
+      "identifier": 2117091524,
+      "filename": "mnist_png/68.png"
     },
     {
-      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 2887863877,
-      "filename": "mnist_png/72.png"
+      "identifier": 4075264911,
+      "filename": "mnist_png/69.png"
     },
     {
-      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 902583468,
-      "filename": "mnist_png/205.png"
+      "identifier": 3970987944,
+      "filename": "mnist_png/397.png"
     },
     {
-      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 1104754093,
-      "filename": "mnist_png/211.png"
+      "identifier": 3327313551,
+      "filename": "mnist_png/156.png"
     },
     {
-      "category": "16e0e1b8-ae79-46f5-80cf-58e7f8dda344",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 3168522842,
-      "filename": "mnist_png/210.png"
+      "identifier": 1966208915,
+      "filename": "mnist_png/208.png"
     },
     {
-      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 975096844,
-      "filename": "mnist_png/67.png"
+      "identifier": 3297693189,
+      "filename": "mnist_png/234.png"
     },
     {
-      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 2951876072,
-      "filename": "mnist_png/358.png"
+      "identifier": 2955662474,
+      "filename": "mnist_png/209.png"
     },
     {
-      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 1961936744,
-      "filename": "mnist_png/416.png"
+      "identifier": 848825172,
+      "filename": "mnist_png/56.png"
     },
     {
-      "category": "16e0e1b8-ae79-46f5-80cf-58e7f8dda344",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 1073390804,
-      "filename": "mnist_png/303.png"
+      "identifier": 3716227583,
+      "filename": "mnist_png/81.png"
     },
     {
-      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 1824303190,
-      "filename": "mnist_png/14.png"
+      "identifier": 3512039296,
+      "filename": "mnist_png/95.png"
     },
     {
-      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 749813080,
-      "filename": "mnist_png/276.png"
+      "identifier": 1083682340,
+      "filename": "mnist_png/382.png"
     },
     {
-      "category": "16e0e1b8-ae79-46f5-80cf-58e7f8dda344",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 2129638109,
-      "filename": "mnist_png/114.png"
+      "identifier": 2967222392,
+      "filename": "mnist_png/427.png"
     },
     {
-      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 2811199024,
-      "filename": "mnist_png/128.png"
+      "identifier": 2054689749,
+      "filename": "mnist_png/355.png"
     },
     {
-      "category": "16e0e1b8-ae79-46f5-80cf-58e7f8dda344",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 857696771,
-      "filename": "mnist_png/458.png"
+      "identifier": 2779139173,
+      "filename": "mnist_png/440.png"
     },
     {
-      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 2071560054,
-      "filename": "mnist_png/102.png"
+      "identifier": 3623879726,
+      "filename": "mnist_png/326.png"
     },
     {
-      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 3770944826,
-      "filename": "mnist_png/248.png"
+      "identifier": 1649697953,
+      "filename": "mnist_png/124.png"
     },
     {
-      "category": "16e0e1b8-ae79-46f5-80cf-58e7f8dda344",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 3957032405,
-      "filename": "mnist_png/260.png"
+      "identifier": 4171889440,
+      "filename": "mnist_png/118.png"
     },
     {
-      "category": "16e0e1b8-ae79-46f5-80cf-58e7f8dda344",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 3079065930,
-      "filename": "mnist_png/249.png"
+      "identifier": 1331910296,
+      "filename": "mnist_png/246.png"
     },
     {
-      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 2846812495,
-      "filename": "mnist_png/315.png"
+      "identifier": 109505494,
+      "filename": "mnist_png/290.png"
     },
     {
-      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 853027976,
-      "filename": "mnist_png/113.png"
+      "identifier": 1685206314,
+      "filename": "mnist_png/24.png"
     },
     {
-      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 723824351,
-      "filename": "mnist_png/270.png"
+      "identifier": 3845368407,
+      "filename": "mnist_png/119.png"
     },
     {
-      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 3052926138,
-      "filename": "mnist_png/112.png"
+      "identifier": 1287687714,
+      "filename": "mnist_png/443.png"
     },
     {
-      "category": "16e0e1b8-ae79-46f5-80cf-58e7f8dda344",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 2557800091,
-      "filename": "mnist_png/310.png"
+      "identifier": 3271406067,
+      "filename": "mnist_png/251.png"
     },
     {
-      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 363131474,
-      "filename": "mnist_png/462.png"
+      "identifier": 1895810026,
+      "filename": "mnist_png/293.png"
     },
     {
-      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 1242281622,
-      "filename": "mnist_png/104.png"
+      "identifier": 447052441,
+      "filename": "mnist_png/320.png"
     },
     {
-      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
+      "category": null,
       "probability": null,
       "visible": true,
-      "identifier": 1606440078,
-      "filename": "mnist_png/105.png"
+      "identifier": 1400861394,
+      "filename": "mnist_png/23.png"
     },
     {
       "category": null,
@@ -414,326 +414,326 @@
       "filename": "mnist_png/283.png"
     },
     {
-      "category": null,
+      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
       "probability": null,
       "visible": true,
-      "identifier": 489159479,
-      "filename": "mnist_png/37.png"
+      "identifier": 3881662591,
+      "filename": "mnist_png/406.png"
     },
     {
-      "category": null,
+      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
       "probability": null,
       "visible": true,
-      "identifier": 1400861394,
-      "filename": "mnist_png/23.png"
+      "identifier": 841382515,
+      "filename": "mnist_png/8.png"
     },
     {
-      "category": null,
+      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
       "probability": null,
       "visible": true,
-      "identifier": 447052441,
-      "filename": "mnist_png/320.png"
+      "identifier": 1961936744,
+      "filename": "mnist_png/416.png"
     },
     {
-      "category": null,
+      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
       "probability": null,
       "visible": true,
-      "identifier": 1895810026,
-      "filename": "mnist_png/293.png"
+      "identifier": 3615163039,
+      "filename": "mnist_png/77.png"
     },
     {
-      "category": null,
+      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
       "probability": null,
       "visible": true,
-      "identifier": 3271406067,
-      "filename": "mnist_png/251.png"
+      "identifier": 2951876072,
+      "filename": "mnist_png/358.png"
     },
     {
-      "category": null,
+      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
       "probability": null,
       "visible": true,
-      "identifier": 1287687714,
-      "filename": "mnist_png/443.png"
+      "identifier": 2071560054,
+      "filename": "mnist_png/102.png"
     },
     {
-      "category": null,
+      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
       "probability": null,
       "visible": true,
-      "identifier": 3845368407,
-      "filename": "mnist_png/119.png"
+      "identifier": 1824303190,
+      "filename": "mnist_png/14.png"
     },
     {
-      "category": null,
+      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
       "probability": null,
       "visible": true,
-      "identifier": 1685206314,
-      "filename": "mnist_png/24.png"
+      "identifier": 1104754093,
+      "filename": "mnist_png/211.png"
     },
     {
-      "category": null,
+      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
       "probability": null,
       "visible": true,
-      "identifier": 109505494,
-      "filename": "mnist_png/290.png"
+      "identifier": 749813080,
+      "filename": "mnist_png/276.png"
     },
     {
-      "category": null,
+      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
       "probability": null,
       "visible": true,
-      "identifier": 1331910296,
-      "filename": "mnist_png/246.png"
+      "identifier": 1715329899,
+      "filename": "mnist_png/70.png"
     },
     {
-      "category": null,
+      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
       "probability": null,
       "visible": true,
-      "identifier": 4171889440,
-      "filename": "mnist_png/118.png"
+      "identifier": 3052926138,
+      "filename": "mnist_png/112.png"
     },
     {
-      "category": null,
+      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
       "probability": null,
       "visible": true,
-      "identifier": 1649697953,
-      "filename": "mnist_png/124.png"
+      "identifier": 3770944826,
+      "filename": "mnist_png/248.png"
     },
     {
-      "category": null,
+      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
       "probability": null,
       "visible": true,
-      "identifier": 3623879726,
-      "filename": "mnist_png/326.png"
+      "identifier": 2887863877,
+      "filename": "mnist_png/72.png"
     },
     {
-      "category": null,
+      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
       "probability": null,
       "visible": true,
-      "identifier": 2779139173,
-      "filename": "mnist_png/440.png"
+      "identifier": 1242281622,
+      "filename": "mnist_png/104.png"
     },
     {
-      "category": null,
+      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
       "probability": null,
       "visible": true,
-      "identifier": 2054689749,
-      "filename": "mnist_png/355.png"
+      "identifier": 723824351,
+      "filename": "mnist_png/270.png"
     },
     {
-      "category": null,
+      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
       "probability": null,
       "visible": true,
-      "identifier": 2967222392,
-      "filename": "mnist_png/427.png"
+      "identifier": 975096844,
+      "filename": "mnist_png/67.png"
     },
     {
-      "category": null,
+      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
       "probability": null,
       "visible": true,
-      "identifier": 1083682340,
-      "filename": "mnist_png/382.png"
+      "identifier": 902583468,
+      "filename": "mnist_png/205.png"
     },
     {
-      "category": null,
+      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
       "probability": null,
       "visible": true,
-      "identifier": 3512039296,
-      "filename": "mnist_png/95.png"
+      "identifier": 2756323393,
+      "filename": "mnist_png/398.png"
     },
     {
-      "category": null,
+      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
       "probability": null,
       "visible": true,
-      "identifier": 3716227583,
-      "filename": "mnist_png/81.png"
+      "identifier": 853027976,
+      "filename": "mnist_png/113.png"
     },
     {
-      "category": null,
+      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
       "probability": null,
       "visible": true,
-      "identifier": 848825172,
-      "filename": "mnist_png/56.png"
+      "identifier": 423084967,
+      "filename": "mnist_png/177.png"
     },
     {
-      "category": null,
+      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
       "probability": null,
       "visible": true,
-      "identifier": 2955662474,
-      "filename": "mnist_png/209.png"
+      "identifier": 3930621183,
+      "filename": "mnist_png/201.png"
     },
     {
-      "category": null,
+      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
       "probability": null,
       "visible": true,
-      "identifier": 3297693189,
-      "filename": "mnist_png/234.png"
+      "identifier": 242148738,
+      "filename": "mnist_png/174.png"
     },
     {
-      "category": null,
+      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
       "probability": null,
       "visible": true,
-      "identifier": 1966208915,
-      "filename": "mnist_png/208.png"
+      "identifier": 2846812495,
+      "filename": "mnist_png/315.png"
     },
     {
-      "category": null,
+      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
       "probability": null,
       "visible": true,
-      "identifier": 3327313551,
-      "filename": "mnist_png/156.png"
+      "identifier": 1606440078,
+      "filename": "mnist_png/105.png"
     },
     {
-      "category": null,
+      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
       "probability": null,
       "visible": true,
-      "identifier": 3970987944,
-      "filename": "mnist_png/397.png"
+      "identifier": 1410640791,
+      "filename": "mnist_png/59.png"
     },
     {
-      "category": null,
+      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
       "probability": null,
       "visible": true,
-      "identifier": 4075264911,
-      "filename": "mnist_png/69.png"
+      "identifier": 683524280,
+      "filename": "mnist_png/99.png"
     },
     {
-      "category": null,
+      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
       "probability": null,
       "visible": true,
-      "identifier": 2117091524,
-      "filename": "mnist_png/68.png"
+      "identifier": 1564064006,
+      "filename": "mnist_png/200.png"
     },
     {
-      "category": null,
+      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
       "probability": null,
       "visible": true,
-      "identifier": 188220240,
-      "filename": "mnist_png/6.png"
+      "identifier": 2557800091,
+      "filename": "mnist_png/310.png"
     },
     {
-      "category": null,
+      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
       "probability": null,
       "visible": true,
-      "identifier": 3953862900,
-      "filename": "mnist_png/40.png"
+      "identifier": 2437562434,
+      "filename": "mnist_png/366.png"
     },
     {
-      "category": null,
+      "category": "2b18b9ba-f372-4e09-9ba0-3e8d5286391e",
       "probability": null,
       "visible": true,
-      "identifier": 390659651,
-      "filename": "mnist_png/169.png"
+      "identifier": 2811199024,
+      "filename": "mnist_png/128.png"
     },
     {
-      "category": null,
+      "category": "16e0e1b8-ae79-46f5-80cf-58e7f8dda344",
       "probability": null,
       "visible": true,
-      "identifier": 922693698,
-      "filename": "mnist_png/394.png"
+      "identifier": 2743269504,
+      "filename": "mnist_png/75.png"
     },
     {
-      "category": null,
+      "category": "16e0e1b8-ae79-46f5-80cf-58e7f8dda344",
       "probability": null,
       "visible": true,
-      "identifier": 1106049166,
-      "filename": "mnist_png/357.png"
+      "identifier": 3957032405,
+      "filename": "mnist_png/260.png"
     },
     {
-      "category": null,
+      "category": "16e0e1b8-ae79-46f5-80cf-58e7f8dda344",
       "probability": null,
       "visible": true,
-      "identifier": 1763412352,
-      "filename": "mnist_png/435.png"
+      "identifier": 3079065930,
+      "filename": "mnist_png/249.png"
     },
     {
-      "category": null,
+      "category": "16e0e1b8-ae79-46f5-80cf-58e7f8dda344",
       "probability": null,
       "visible": true,
-      "identifier": 3749484837,
-      "filename": "mnist_png/78.png"
+      "identifier": 4173799583,
+      "filename": "mnist_png/63.png"
     },
     {
-      "category": null,
+      "category": "16e0e1b8-ae79-46f5-80cf-58e7f8dda344",
       "probability": null,
       "visible": true,
-      "identifier": 1366938278,
-      "filename": "mnist_png/232.png"
+      "identifier": 3460548020,
+      "filename": "mnist_png/206.png"
     },
     {
-      "category": null,
+      "category": "16e0e1b8-ae79-46f5-80cf-58e7f8dda344",
       "probability": null,
       "visible": true,
-      "identifier": 2325864623,
-      "filename": "mnist_png/51.png"
+      "identifier": 2129638109,
+      "filename": "mnist_png/114.png"
     },
     {
-      "category": null,
+      "category": "16e0e1b8-ae79-46f5-80cf-58e7f8dda344",
       "probability": null,
       "visible": true,
-      "identifier": 1106442913,
-      "filename": "mnist_png/408.png"
+      "identifier": 1073390804,
+      "filename": "mnist_png/303.png"
     },
     {
-      "category": null,
+      "category": "16e0e1b8-ae79-46f5-80cf-58e7f8dda344",
       "probability": null,
       "visible": true,
-      "identifier": 4227437907,
-      "filename": "mnist_png/152.png"
+      "identifier": 3489266079,
+      "filename": "mnist_png/359.png"
     },
     {
-      "category": null,
+      "category": "16e0e1b8-ae79-46f5-80cf-58e7f8dda344",
       "probability": null,
       "visible": true,
-      "identifier": 3254205241,
-      "filename": "mnist_png/192.png"
+      "identifier": 1189581070,
+      "filename": "mnist_png/399.png"
     },
     {
-      "category": null,
+      "category": "16e0e1b8-ae79-46f5-80cf-58e7f8dda344",
       "probability": null,
       "visible": true,
-      "identifier": 2556826856,
-      "filename": "mnist_png/3.png"
+      "identifier": 408540106,
+      "filename": "mnist_png/88.png"
     },
     {
-      "category": null,
+      "category": "16e0e1b8-ae79-46f5-80cf-58e7f8dda344",
       "probability": null,
       "visible": true,
-      "identifier": 2739084753,
-      "filename": "mnist_png/1.png"
+      "identifier": 2882056622,
+      "filename": "mnist_png/429.png"
     },
     {
-      "category": null,
+      "category": "16e0e1b8-ae79-46f5-80cf-58e7f8dda344",
       "probability": null,
       "visible": true,
-      "identifier": 338677807,
-      "filename": "mnist_png/231.png"
+      "identifier": 857696771,
+      "filename": "mnist_png/458.png"
     },
     {
-      "category": null,
+      "category": "16e0e1b8-ae79-46f5-80cf-58e7f8dda344",
       "probability": null,
       "visible": true,
-      "identifier": 3531156077,
-      "filename": "mnist_png/224.png"
+      "identifier": 1363190617,
+      "filename": "mnist_png/216.png"
     },
     {
-      "category": null,
+      "category": "16e0e1b8-ae79-46f5-80cf-58e7f8dda344",
       "probability": null,
       "visible": true,
-      "identifier": 3012365288,
-      "filename": "mnist_png/184.png"
+      "identifier": 3168522842,
+      "filename": "mnist_png/210.png"
     },
     {
-      "category": null,
+      "category": "16e0e1b8-ae79-46f5-80cf-58e7f8dda344",
       "probability": null,
       "visible": true,
-      "identifier": 2892426585,
-      "filename": "mnist_png/345.png"
+      "identifier": 318138543,
+      "filename": "mnist_png/229.png"
     },
     {
-      "category": null,
+      "category": "16e0e1b8-ae79-46f5-80cf-58e7f8dda344",
       "probability": null,
       "visible": true,
-      "identifier": 1197920536,
-      "filename": "mnist_png/351.png"
+      "identifier": 363131474,
+      "filename": "mnist_png/462.png"
     }
   ],
 

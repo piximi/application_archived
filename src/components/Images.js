@@ -71,7 +71,6 @@ class Images extends Component {
     },
     classify: event => {
       const identifier = this.props.images[this.inFocus].identifier;
-      console.log(event.key);
       if (event.key === 'Backspace') {
         this.props.updateImageCategory(identifier, null);
         return null;

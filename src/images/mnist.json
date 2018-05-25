@@ -1,7 +1,23 @@
 {
   "settings": {
-    "columns": 10
+    "columns": "62",
+    "createCategory": {
+      "color": {
+        "open": false
+      },
+      "open": false
+    },
+    "help": {
+      "open": false
+    },
+    "settings": {
+      "open": false
+    },
+    "sidebar": {
+      "open": true
+    }
   },
+
   "categories": [
     {
       "color": "#EC407A",

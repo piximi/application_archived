@@ -5,8 +5,10 @@ import {
   ADD_IMAGES,
   UPDATE_PROBABILITY,
   UPDATE_IMAGES_HAVING_CERTAIN_CATEGORY,
-  UPDATE_IMAGE_VISIBILTY
+  UPDATE_IMAGE_VISIBILTY,
+  SORT_IMAGES
 } from '../constants';
+import { sortImages } from '../actions/images';
 
 const images = (state = {}, action) => {
   let images = [];
@@ -81,6 +83,33 @@ const images = (state = {}, action) => {
       return {
         ...state,
         images: images
+      };
+
+    case SORT_IMAGES:
+      //images = state.images;
+      //images[action.index].visible = action.value;
+
+      console.log('HAHAHA');
+      let sortedImages = [...state.images];
+      console.log(sortedImages);
+      sortedImages.sort(function(a, b) {
+        if (a.category === null) {
+          return 0;
+        } else if (b.category === null) {
+          return 1;
+        } else if (a.category === b.category) {
+          return -1;
+        } else if (true) {
+        /*else if(true) {
+          return a.category < b.category ? -1 : 1;
+        }*/
+          return a.category < b.category ? 1 : -1;
+        }
+      });
+      console.log(sortedImages);
+      return {
+        ...state,
+        images: sortedImages
       };
 
     default:
