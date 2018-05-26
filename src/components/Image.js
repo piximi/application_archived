@@ -59,9 +59,7 @@ class Image extends Component {
             style={{ backgroundColor: color }}
           >
             <Typography component="p">
-              {probability == null
-                ? null
-                : 'Prob: ' + String(probability).slice(0, 8)}
+              {probability == null ? null : String(probability).slice(0, 8)}
             </Typography>
           </CardContent>
         </Card>

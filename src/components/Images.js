@@ -3,6 +3,7 @@ import { HotKeys } from 'react-hotkeys';
 import { GridList, GridListTile } from 'material-ui';
 import ConnectedImage from '../containers/ConnectedImage';
 import withDragDropContext from './dnd-global-context';
+import styles from './Images.css';
 
 class Images extends Component {
   constructor(props) {
@@ -101,8 +102,10 @@ class Images extends Component {
             key={'hotkey' + index}
             keyMap={this.keyMap}
             handlers={this.handlers}
+            tabIndex=""
           >
             <div
+              className={styles.focus}
               tabIndex="-1"
               ref={c => this._nodes.set(index, c)}
               index={index}
