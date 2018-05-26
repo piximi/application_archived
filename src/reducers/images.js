@@ -94,16 +94,13 @@ const images = (state = {}, action) => {
       console.log(sortedImages);
       sortedImages.sort(function(a, b) {
         if (a.category === null) {
-          return 0;
+          return -1;
         } else if (b.category === null) {
           return 1;
         } else if (a.category === b.category) {
-          return -1;
+          return 0;
         } else if (true) {
-        /*else if(true) {
           return a.category < b.category ? -1 : 1;
-        }*/
-          return a.category < b.category ? 1 : -1;
         }
       });
       console.log(sortedImages);
