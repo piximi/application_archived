@@ -70,9 +70,13 @@ class Images extends Component {
       this.handleClick(event, index);
     },
     classify: event => {
+      if (this.props.images[this.inFocus] == null) {
+        return null;
+      }
       const identifier = this.props.images[this.inFocus].identifier;
       if (event.key === 'Backspace') {
-        this.props.updateImageCategory(identifier, null);
+        let newCategory = null;
+        this.props.updateImageCategory(identifier, newCategory);
         return null;
       }
       const index = Number(event.key) === 0 ? 9 : Number(event.key) - 1;

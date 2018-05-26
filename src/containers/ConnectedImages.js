@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import {
   createImageAction,
-  updateImageCategoryAction
+  updateImageCategoryAction,
+  updateImageProbability
 } from '../actions/images';
 import Images from '../components/Images';
 
@@ -20,6 +21,7 @@ const mapDispatchToProps = dispatch => {
     },
     updateImageCategory: (identifier, category) => {
       dispatch(updateImageCategoryAction(identifier, category));
+      dispatch(updateImageProbability(identifier, null));
     }
   };
 };

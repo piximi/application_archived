@@ -18,13 +18,15 @@ class FileInput extends Component {
         const fileName = theFile.webkitRelativePath;
         return function(e) {
           let identifier = hash(e.target.result);
-          my.images.push({
-            category: null,
-            probability: null,
-            visible: true,
-            identifier: identifier,
-            filename: fileName
-          });
+          if (fileName !== '.DS_Store') {
+            my.images.push({
+              category: null,
+              probability: null,
+              visible: true,
+              identifier: identifier,
+              filename: fileName
+            });
+          }
           my.imageByteStrings[identifier] = e.target.result;
 
           if (my.images.length === count) {

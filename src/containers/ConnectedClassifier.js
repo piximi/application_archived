@@ -32,8 +32,8 @@ const mapDispatchToProps = (dispatch, props) => {
     },
 
     fileImport: exportedSettings => {
-      dispatch(addImages(exportedSettings.images));
       dispatch(addCategories(exportedSettings.categories));
+      dispatch(addImages(exportedSettings.images));
     },
 
     createImageAction: (images, imageByteStrings) => {
