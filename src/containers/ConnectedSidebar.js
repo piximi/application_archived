@@ -12,12 +12,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    toggleHelpDialog: () => {
-      dispatch(toggleHelpDialogAction({}));
-    },
-    toggleSettingsDialog: () => {
-      dispatch(toggleSettingsDialogAction());
-    }
+    toggleHelpDialog: () => dispatch(toggleHelpDialogAction()),
+    toggleSettingsDialog: () => dispatch(toggleSettingsDialogAction())
   };
 };
 
