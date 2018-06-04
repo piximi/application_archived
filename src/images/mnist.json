@@ -1,5 +1,8 @@
 {
   "settings": {
+    "categories": {
+      "collapsed": false
+    },
     "columns": "22",
     "createCategory": {
       "color": {

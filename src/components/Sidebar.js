@@ -54,6 +54,7 @@ const Sidebar = ({
   return (
     <Grid item xs={2}>
       <Drawer
+        anchor="left"
         style={{ position: 'fixed' }}
         classes={{ paper: classes.drawerPaper }}
         variant="permanent"

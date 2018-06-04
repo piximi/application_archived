@@ -1,13 +1,12 @@
 import { connect } from 'react-redux';
 import uuidv4 from 'uuid';
 import randomcolor from 'randomcolor';
-
 import { createCategoryAction } from '../actions/categories';
 import {
   closeCreateCategoryDialogAction,
+  toggleCategoriesCollapseAction,
   toggleCreateCategoryDialogAction
 } from '../actions/settings';
-
 import Categories from '../components/Categories';
 
 let index = 0;
@@ -34,7 +33,8 @@ const mapDispatchToProps = (dispatch, props) => {
         dispatch(createCategoryAction(category));
       }
       dispatch(closeCreateCategoryDialogAction({}));
-    }
+    },
+    toggleCategoriesCollapse: () => dispatch(toggleCategoriesCollapseAction())
   };
 };
 

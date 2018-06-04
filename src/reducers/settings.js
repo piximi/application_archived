@@ -2,6 +2,7 @@ import {
   CLOSE_CREATE_CATEGORY_DIALOG,
   TOGGLE_CREATE_CATEGORY_COLOR_MENU,
   TOGGLE_CREATE_CATEGORY_DIALOG,
+  TOGGLE_CATEGORIES_COLLAPSE,
   TOGGLE_HELP_DIALOG,
   TOGGLE_MODEL_COLLAPSE,
   TOGGLE_SEND_FEEDBACK_DIALOG,
@@ -41,6 +42,13 @@ const settings = (state = {}, action) => {
           color: {
             open: !state.createCategory.color.open
           }
+        }
+      };
+    case TOGGLE_CATEGORIES_COLLAPSE:
+      return {
+        ...state,
+        categories: {
+          collapsed: !state.categories.collapsed
         }
       };
     case TOGGLE_SEND_FEEDBACK_DIALOG:

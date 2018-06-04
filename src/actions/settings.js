@@ -2,6 +2,7 @@ import {
   CLOSE_CREATE_CATEGORY_DIALOG,
   TOGGLE_CREATE_CATEGORY_COLOR_MENU,
   TOGGLE_CREATE_CATEGORY_DIALOG,
+  TOGGLE_CATEGORIES_COLLAPSE,
   TOGGLE_HELP_DIALOG,
   TOGGLE_MODEL_COLLAPSE,
   TOGGLE_SEND_FEEDBACK_DIALOG,
@@ -32,6 +33,10 @@ export const toggleCreateCategoryColorMenuAction = settings => ({
 
 export const toggleCreateCategoryDialogAction = () => ({
   type: TOGGLE_CREATE_CATEGORY_DIALOG
+});
+
+export const toggleCategoriesCollapseAction = () => ({
+  type: TOGGLE_CATEGORIES_COLLAPSE
 });
 
 export const toggleHelpDialogAction = () => ({

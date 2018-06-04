@@ -1,11 +1,18 @@
 import React from 'react';
-import { List, ListItem, ListItemIcon, ListItemText } from 'material-ui';
+import {
+  Collapse,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText
+} from 'material-ui';
 import AddIcon from '@material-ui/icons/Add';
 import { withStyles } from 'material-ui/styles';
 import withDragDropContext from './dnd-global-context';
 import styles from './Categories.css';
 import ConnectedCategory from '../containers/ConnectedCategory';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ConnectedCreateCategoryDialog from '../containers/ConnectedCreateCategoryDialog';
 
 const Categories = ({
@@ -13,33 +20,44 @@ const Categories = ({
   classes,
   closeCreateCategoryDialog,
   settings,
+  toggleCategoriesCollapse,
   toggleCreateCategoryDialog
 }) => {
   return (
     <React.Fragment>
       <List dense>
-        <ListItem button>
+        <ListItem button onClick={toggleCategoriesCollapse}>
           <ListItemIcon>
-            <ExpandLessIcon />
+            {!settings.categories.collapsed ? (
+              <ExpandLessIcon />
+            ) : (
+              <ExpandMoreIcon />
+            )}
           </ListItemIcon>
 
           <ListItemText inset primary="Categories" />
         </ListItem>
 
-        {categories.map(category => (
-          <ConnectedCategory
-            key={category.identifier}
-            identifier={category.identifier}
-            categories={categories}
-          />
-        ))}
+        <Collapse
+          in={!settings.categories.collapsed}
+          timeout="auto"
+          unmountOnExit
+        >
+          {categories.map(category => (
+            <ConnectedCategory
+              key={category.identifier}
+              identifier={category.identifier}
+              categories={categories}
+            />
+          ))}
 
-        <ListItem button onClick={toggleCreateCategoryDialog}>
-          <ListItemIcon>
-            <AddIcon />
-          </ListItemIcon>
-          <ListItemText inset primary="Create category" />
-        </ListItem>
+          <ListItem button onClick={toggleCreateCategoryDialog}>
+            <ListItemIcon>
+              <AddIcon />
+            </ListItemIcon>
+            <ListItemText inset primary="Create category" />
+          </ListItem>
+        </Collapse>
       </List>
 
       <ConnectedCreateCategoryDialog
