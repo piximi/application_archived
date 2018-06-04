@@ -1,4 +1,5 @@
 import {
+  Collapse,
   Divider,
   Drawer,
   Grid,
@@ -18,6 +19,7 @@ import FeedbackIcon from '@material-ui/icons/Feedback';
 import FolderOpenIcon from '@material-ui/icons/FolderOpen';
 import HelpIcon from '@material-ui/icons/Help';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import SaveIcon from '@material-ui/icons/Save';
 import * as API from '../classifier';
@@ -39,6 +41,7 @@ const Sidebar = ({
   save,
   settings,
   toggleHelpDialog,
+  toggleModelCollapse,
   toggleSendFeedbackDialog,
   toggleSettingsDialog
 }) => {
@@ -95,21 +98,27 @@ const Sidebar = ({
         <Divider />
 
         <List dense>
-          <ListItem button>
+          <ListItem button onClick={toggleModelCollapse}>
             <ListItemIcon>
-              <ExpandLessIcon />
+              {!settings.model.collapsed ? (
+                <ExpandLessIcon />
+              ) : (
+                <ExpandMoreIcon />
+              )}
             </ListItemIcon>
 
             <ListItemText inset primary="Model" />
           </ListItem>
 
-          <ListItem dense button onClick={() => onClick(images, categories)}>
-            <ListItemIcon>
-              <PlayCircleOutlineIcon />
-            </ListItemIcon>
+          <Collapse in={!settings.model.collapsed} timeout="auto" unmountOnExit>
+            <ListItem dense button onClick={() => onClick(images, categories)}>
+              <ListItemIcon>
+                <PlayCircleOutlineIcon />
+              </ListItemIcon>
 
-            <ListItemText primary="Fit" />
-          </ListItem>
+              <ListItemText primary="Fit" />
+            </ListItem>
+          </Collapse>
         </List>
 
         <Divider />

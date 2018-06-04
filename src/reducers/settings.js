@@ -3,6 +3,7 @@ import {
   TOGGLE_CREATE_CATEGORY_COLOR_MENU,
   TOGGLE_CREATE_CATEGORY_DIALOG,
   TOGGLE_HELP_DIALOG,
+  TOGGLE_MODEL_COLLAPSE,
   TOGGLE_SEND_FEEDBACK_DIALOG,
   TOGGLE_SETTINGS_DIALOG,
   UPDATE_SETTING_COLUMNS,
@@ -54,6 +55,13 @@ const settings = (state = {}, action) => {
         ...state,
         help: {
           open: !state.help.open
+        }
+      };
+    case TOGGLE_MODEL_COLLAPSE:
+      return {
+        ...state,
+        model: {
+          collapsed: !state.model.collapsed
         }
       };
     case UPDATE_SETTING_COLUMNS:
