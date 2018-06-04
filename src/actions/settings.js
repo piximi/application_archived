@@ -1,10 +1,9 @@
 import {
   CLOSE_CREATE_CATEGORY_DIALOG,
-  CLOSE_SETTINGS_DIALOG,
   OPEN_CREATE_CATEGORY_DIALOG,
-  OPEN_SETTINGS_DIALOG,
   TOGGLE_CREATE_CATEGORY_COLOR_MENU,
   TOGGLE_HELP_DIALOG,
+  TOGGLE_SEND_FEEDBACK_DIALOG,
   TOGGLE_SETTINGS_DIALOG,
   UPDATE_SETTING_COLUMNS,
   UPDATE_SETTING_SIDEBAR_OPEN
@@ -38,6 +37,10 @@ export const toggleCreateCategoryColorMenuAction = settings => ({
 export const toggleHelpDialogAction = settings => ({
   type: TOGGLE_HELP_DIALOG,
   settings
+});
+
+export const toggleSendFeedbackDialogAction = () => ({
+  type: TOGGLE_SEND_FEEDBACK_DIALOG
 });
 
 export const toggleSettingsDialogAction = () => ({

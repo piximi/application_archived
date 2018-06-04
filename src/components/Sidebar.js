@@ -22,6 +22,7 @@ import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import SaveIcon from '@material-ui/icons/Save';
 import * as API from '../classifier';
 import Download from '@axetroy/react-download';
+import SendFeedbackDialog from './SendFeedbackDialog';
 
 const onClick = (images, categories) => {
   return API.trainOnRun(images, categories);
@@ -38,6 +39,7 @@ const Sidebar = ({
   save,
   settings,
   toggleHelpDialog,
+  toggleSendFeedbackDialog,
   toggleSettingsDialog
 }) => {
   const exportObject = {
@@ -121,7 +123,7 @@ const Sidebar = ({
             <ListItemText primary="Settings" />
           </ListItem>
 
-          <ListItem dense button>
+          <ListItem dense button onClick={toggleSendFeedbackDialog}>
             <ListItemIcon>
               <FeedbackIcon />
             </ListItemIcon>
@@ -141,6 +143,11 @@ const Sidebar = ({
         <Settings
           onClose={toggleSettingsDialog}
           open={settings.settings.open}
+        />
+
+        <SendFeedbackDialog
+          onClose={toggleSendFeedbackDialog}
+          open={settings.sendFeedback.open}
         />
 
         <HelpDialog onClose={toggleHelpDialog} open={settings.help.open} />

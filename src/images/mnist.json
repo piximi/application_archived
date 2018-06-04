@@ -10,6 +10,9 @@
     "help": {
       "open": false
     },
+    "sendFeedback": {
+      "open": false
+    },
     "settings": {
       "open": false
     },

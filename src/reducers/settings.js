@@ -3,6 +3,7 @@ import {
   OPEN_CREATE_CATEGORY_DIALOG,
   TOGGLE_CREATE_CATEGORY_COLOR_MENU,
   TOGGLE_HELP_DIALOG,
+  TOGGLE_SEND_FEEDBACK_DIALOG,
   TOGGLE_SETTINGS_DIALOG,
   UPDATE_SETTING_COLUMNS,
   UPDATE_SETTING_SIDEBAR_OPEN
@@ -39,6 +40,13 @@ const settings = (state = {}, action) => {
           color: {
             open: !state.createCategory.color.open
           }
+        }
+      };
+    case TOGGLE_SEND_FEEDBACK_DIALOG:
+      return {
+        ...state,
+        sendFeedback: {
+          open: !state.sendFeedback.open
         }
       };
     case TOGGLE_HELP_DIALOG:
