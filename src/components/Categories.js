@@ -9,11 +9,11 @@ import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ConnectedCreateCategoryDialog from '../containers/ConnectedCreateCategoryDialog';
 
 const Categories = ({
+  categories,
   classes,
   closeCreateCategoryDialog,
-  openCreateCategoryDialog,
   settings,
-  categories
+  toggleCreateCategoryDialog
 }) => {
   return (
     <React.Fragment>
@@ -34,7 +34,7 @@ const Categories = ({
           />
         ))}
 
-        <ListItem button onClick={openCreateCategoryDialog}>
+        <ListItem button onClick={toggleCreateCategoryDialog}>
           <ListItemIcon>
             <AddIcon />
           </ListItemIcon>

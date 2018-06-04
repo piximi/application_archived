@@ -5,7 +5,7 @@ import randomcolor from 'randomcolor';
 import { createCategoryAction } from '../actions/categories';
 import {
   closeCreateCategoryDialogAction,
-  openCreateCategoryDialogAction
+  toggleCreateCategoryDialogAction
 } from '../actions/settings';
 
 import Categories from '../components/Categories';
@@ -18,6 +18,9 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
+    toggleCreateCategoryDialog: () => {
+      dispatch(toggleCreateCategoryDialogAction());
+    },
     closeCreateCategoryDialog: (action, element) => {
       if (action === 'Create') {
         const categoryName = element.value;
@@ -31,9 +34,6 @@ const mapDispatchToProps = (dispatch, props) => {
         dispatch(createCategoryAction(category));
       }
       dispatch(closeCreateCategoryDialogAction({}));
-    },
-    openCreateCategoryDialog: () => {
-      dispatch(openCreateCategoryDialogAction({}));
     }
   };
 };

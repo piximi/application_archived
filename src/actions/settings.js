@@ -1,7 +1,7 @@
 import {
   CLOSE_CREATE_CATEGORY_DIALOG,
-  OPEN_CREATE_CATEGORY_DIALOG,
   TOGGLE_CREATE_CATEGORY_COLOR_MENU,
+  TOGGLE_CREATE_CATEGORY_DIALOG,
   TOGGLE_HELP_DIALOG,
   TOGGLE_SEND_FEEDBACK_DIALOG,
   TOGGLE_SETTINGS_DIALOG,
@@ -19,11 +19,6 @@ export const updateSettingSidebarOpenAction = sidebar => ({
   sidebar
 });
 
-export const openCreateCategoryDialogAction = sidebar => ({
-  type: OPEN_CREATE_CATEGORY_DIALOG,
-  sidebar
-});
-
 export const closeCreateCategoryDialogAction = sidebar => ({
   type: CLOSE_CREATE_CATEGORY_DIALOG,
   sidebar
@@ -34,9 +29,12 @@ export const toggleCreateCategoryColorMenuAction = settings => ({
   settings
 });
 
-export const toggleHelpDialogAction = settings => ({
-  type: TOGGLE_HELP_DIALOG,
-  settings
+export const toggleCreateCategoryDialogAction = () => ({
+  type: TOGGLE_CREATE_CATEGORY_DIALOG
+});
+
+export const toggleHelpDialogAction = () => ({
+  type: TOGGLE_HELP_DIALOG
 });
 
 export const toggleSendFeedbackDialogAction = () => ({

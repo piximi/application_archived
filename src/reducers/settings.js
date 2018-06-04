@@ -1,7 +1,7 @@
 import {
   CLOSE_CREATE_CATEGORY_DIALOG,
-  OPEN_CREATE_CATEGORY_DIALOG,
   TOGGLE_CREATE_CATEGORY_COLOR_MENU,
+  TOGGLE_CREATE_CATEGORY_DIALOG,
   TOGGLE_HELP_DIALOG,
   TOGGLE_SEND_FEEDBACK_DIALOG,
   TOGGLE_SETTINGS_DIALOG,
@@ -11,6 +11,13 @@ import {
 
 const settings = (state = {}, action) => {
   switch (action.type) {
+    case TOGGLE_CREATE_CATEGORY_DIALOG:
+      return {
+        ...state,
+        createCategory: {
+          open: !state.createCategory.open
+        }
+      };
     case CLOSE_CREATE_CATEGORY_DIALOG:
       return {
         ...state,
@@ -23,13 +30,6 @@ const settings = (state = {}, action) => {
         ...state,
         settings: {
           open: !state.settings.open
-        }
-      };
-    case OPEN_CREATE_CATEGORY_DIALOG:
-      return {
-        ...state,
-        createCategory: {
-          open: !state.createCategory.open
         }
       };
     case TOGGLE_CREATE_CATEGORY_COLOR_MENU:
