@@ -1,12 +1,11 @@
 import {
   CLOSE_CREATE_CATEGORY_DIALOG,
-  CLOSE_SETTINGS_DIALOG,
   OPEN_CREATE_CATEGORY_DIALOG,
-  OPEN_SETTINGS_DIALOG,
-  UPDATE_SETTING_COLUMNS,
-  UPDATE_SETTING_SIDEBAR_OPEN,
   TOGGLE_CREATE_CATEGORY_COLOR_MENU,
-  TOGGLE_HELP_DIALOG
+  TOGGLE_HELP_DIALOG,
+  TOGGLE_SETTINGS_DIALOG,
+  UPDATE_SETTING_COLUMNS,
+  UPDATE_SETTING_SIDEBAR_OPEN
 } from '../constants';
 
 const settings = (state = {}, action) => {
@@ -18,14 +17,7 @@ const settings = (state = {}, action) => {
           open: !state.createCategory.open
         }
       };
-    case CLOSE_SETTINGS_DIALOG:
-      return {
-        ...state,
-        settings: {
-          close: !state.settings.open
-        }
-      };
-    case OPEN_SETTINGS_DIALOG:
+    case TOGGLE_SETTINGS_DIALOG:
       return {
         ...state,
         settings: {

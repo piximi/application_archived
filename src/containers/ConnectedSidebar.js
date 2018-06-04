@@ -1,9 +1,8 @@
 import { connect } from 'react-redux';
 
 import {
-  closeSettingsDialogAction,
-  openSettingsDialogAction,
-  toggleHelpDialogAction
+  toggleHelpDialogAction,
+  toggleSettingsDialogAction
 } from '../actions/settings';
 import Sidebar from '../components/Sidebar';
 
@@ -13,14 +12,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    closeSettingsDialog: () => {
-      dispatch(closeSettingsDialogAction({}));
-    },
-    openSettingsDialog: () => {
-      dispatch(openSettingsDialogAction({}));
-    },
     toggleHelpDialog: () => {
       dispatch(toggleHelpDialogAction({}));
+    },
+    toggleSettingsDialog: () => {
+      dispatch(toggleSettingsDialogAction());
     }
   };
 };

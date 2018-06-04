@@ -28,23 +28,23 @@ const onClick = (images, categories) => {
 };
 
 const Sidebar = ({
-  open,
-  settings,
-  closeSettingsDialog,
-  openSettingsDialog,
-  openHelpDialog,
-  toggleHelpDialog,
-  save,
-  classes,
   categories,
-  images
+  classes,
+  closeSettingsDialog,
+  images,
+  open,
+  openHelpDialog,
+  openSettingsDialog,
+  save,
+  settings,
+  toggleHelpDialog,
+  toggleSettingsDialog
 }) => {
   const exportObject = {
     settings: settings,
     categories: categories,
     images: images.images
   };
-  // const imageByteStrings = {...images.imageByteStrings}
 
   return (
     <Grid item xs={2}>
@@ -113,7 +113,7 @@ const Sidebar = ({
         <Divider />
 
         <List dense>
-          <ListItem dense button onClick={openSettingsDialog}>
+          <ListItem dense button onClick={toggleSettingsDialog}>
             <ListItemIcon>
               <SettingsIcon />
             </ListItemIcon>
@@ -138,7 +138,10 @@ const Sidebar = ({
           </ListItem>
         </List>
 
-        <Settings onClose={closeSettingsDialog} open={settings.settings.open} />
+        <Settings
+          onClose={toggleSettingsDialog}
+          open={settings.settings.open}
+        />
 
         <HelpDialog onClose={toggleHelpDialog} open={settings.help.open} />
       </Drawer>
