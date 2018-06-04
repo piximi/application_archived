@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Settings.css';
+import styles from './SettingsDialog.css';
 import { withStyles } from 'material-ui/styles/index';
 import {
   Button,
@@ -10,7 +10,7 @@ import {
   DialogTitle
 } from 'material-ui';
 
-const Settings = ({ classes, onClose, open }) => {
+const SettingsDialog = ({ classes, onClose, open }) => {
   return (
     <Dialog open={open} onClose={onClose}>
       <DialogTitle id="form-dialog-title">Settings</DialogTitle>
@@ -31,4 +31,4 @@ const Settings = ({ classes, onClose, open }) => {
   );
 };
 
-export default withStyles(styles)(Settings);
+export default withStyles(styles)(SettingsDialog);
