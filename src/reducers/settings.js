@@ -1,5 +1,6 @@
 import {
   CLOSE_CREATE_CATEGORY_DIALOG,
+  CHANGE_SETTINGS_DIALOG_TAB,
   TOGGLE_CREATE_CATEGORY_COLOR_MENU,
   TOGGLE_CREATE_CATEGORY_DIALOG,
   TOGGLE_CATEGORIES_COLLAPSE,
@@ -13,6 +14,14 @@ import {
 
 const settings = (state = {}, action) => {
   switch (action.type) {
+    case CHANGE_SETTINGS_DIALOG_TAB:
+      return {
+        ...state,
+        settings: {
+          ...state.settings,
+          tab: action.index
+        }
+      };
     case TOGGLE_CREATE_CATEGORY_DIALOG:
       return {
         ...state,

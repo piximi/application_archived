@@ -12,7 +12,7 @@ import React from 'react';
 import styles from './Primary.css';
 import { withStyles } from 'material-ui/styles/index';
 import ConnectedCategories from '../containers/ConnectedCategories';
-import SettingsDialog from './SettingsDialog';
+import ConnectedSettingsDialog from '../containers/ConnectedSettingsDialog';
 import HelpDialog from './HelpDialog';
 import SettingsIcon from '@material-ui/icons/Settings';
 import FeedbackIcon from '@material-ui/icons/Feedback';
@@ -150,7 +150,7 @@ const Sidebar = ({
           </ListItem>
         </List>
 
-        <SettingsDialog
+        <ConnectedSettingsDialog
           onClose={toggleSettingsDialog}
           open={settings.settings.open}
         />

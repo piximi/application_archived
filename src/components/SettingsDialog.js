@@ -1,32 +1,32 @@
 import React from 'react';
 import styles from './SettingsDialog.css';
 import { withStyles } from 'material-ui/styles/index';
-import {
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle
-} from 'material-ui';
+import { Dialog, Tab, Tabs } from 'material-ui';
+import SettingsDialogTabContainer from './SettingsDialogTabContainer';
 
-const SettingsDialog = ({ classes, onClose, open }) => {
+const SettingsDialog = ({
+  classes,
+  onClose,
+  open,
+  settings,
+  changeSettingsDialogTab
+}) => {
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogTitle id="form-dialog-title">Settings</DialogTitle>
-      <DialogContent>
-        <DialogContentText>&nbsp;</DialogContentText>
-      </DialogContent>
-
-      <DialogActions>
-        <Button onClick={onClose} color="primary">
-          Cancel
-        </Button>
-
-        <Button onClick={onClose} color="primary">
-          Save
-        </Button>
-      </DialogActions>
+      <Tabs value={settings.settings.tab} onChange={changeSettingsDialogTab}>
+        <Tab label="Item One" />
+        <Tab label="Item Two" />
+        <Tab label="Item Three" href="#basic-tabs" />
+      </Tabs>
+      {settings.settings.tab === 0 && (
+        <SettingsDialogTabContainer>A</SettingsDialogTabContainer>
+      )}
+      {settings.settings.tab === 1 && (
+        <SettingsDialogTabContainer>B</SettingsDialogTabContainer>
+      )}
+      {settings.settings.tab === 2 && (
+        <SettingsDialogTabContainer>C</SettingsDialogTabContainer>
+      )}
     </Dialog>
   );
 };

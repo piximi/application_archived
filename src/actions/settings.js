@@ -1,4 +1,5 @@
 import {
+  CHANGE_SETTINGS_DIALOG_TAB,
   CLOSE_CREATE_CATEGORY_DIALOG,
   TOGGLE_CREATE_CATEGORY_COLOR_MENU,
   TOGGLE_CREATE_CATEGORY_DIALOG,
@@ -24,6 +25,11 @@ export const updateSettingSidebarOpenAction = sidebar => ({
 export const closeCreateCategoryDialogAction = sidebar => ({
   type: CLOSE_CREATE_CATEGORY_DIALOG,
   sidebar
+});
+
+export const changeSettingsDialogTabAction = index => ({
+  type: CHANGE_SETTINGS_DIALOG_TAB,
+  index
 });
 
 export const toggleCreateCategoryColorMenuAction = settings => ({
