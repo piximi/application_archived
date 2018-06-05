@@ -1,4 +1,4 @@
-import { Button, Divider, Grid } from 'material-ui';
+import { Button, Divider, Grid, Toolbar } from 'material-ui';
 import React from 'react';
 import ConnectedImages from '../containers/ConnectedImages';
 import styles from './Gallery.css';
@@ -21,25 +21,27 @@ const Gallery = props => {
       <Divider />
 
       <main className={classes.content}>
-        <ConnectedUploadButton />
+        <Toolbar>
+          <ConnectedUploadButton />
 
-        <Button onClick={() => sortImages()} variant="raised">
-          {' '}
-          SORT{' '}
-        </Button>
+          <Button onClick={() => sortImages()} variant="raised">
+            {' '}
+            SORT{' '}
+          </Button>
 
-        <div
-          style={{ position: 'fixed', right: '10%', zIndex: 1 }}
-          className="slidecontainer"
-        >
-          <input
-            onChange={e => updateSettingColumns(e)}
-            type="range"
-            min="1"
-            max="100"
-            value={settings.columns}
-          />
-        </div>
+          <div
+            style={{ position: 'fixed', right: '10%', zIndex: 1 }}
+            className="slidecontainer"
+          >
+            <input
+              onChange={e => updateSettingColumns(e)}
+              type="range"
+              min="1"
+              max="100"
+              value={settings.columns}
+            />
+          </div>
+        </Toolbar>
 
         <ConnectedImages
           columns={settings.columns}
