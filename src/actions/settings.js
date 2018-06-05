@@ -27,9 +27,9 @@ export const closeCreateCategoryDialogAction = sidebar => ({
   sidebar
 });
 
-export const changeSettingsDialogTabAction = index => ({
+export const changeSettingsDialogTabAction = tab => ({
   type: CHANGE_SETTINGS_DIALOG_TAB,
-  index
+  tab
 });
 
 export const toggleCreateCategoryColorMenuAction = settings => ({

@@ -19,7 +19,7 @@ const settings = (state = {}, action) => {
         ...state,
         settings: {
           ...state.settings,
-          tab: action.index
+          tab: action.tab
         }
       };
     case TOGGLE_CREATE_CATEGORY_DIALOG:
