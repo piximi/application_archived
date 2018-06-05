@@ -8,6 +8,7 @@ import * as API from '../classifier';
 import ConnectedGallery from '../containers/ConnectedGallery';
 import ConnectedPrimary from '../containers/ConnectedPrimary';
 import ConnectedSidebar from '../containers/ConnectedSidebar';
+import Main from './Main';
 
 class Classifier extends Component {
   save = () => {
@@ -51,11 +52,13 @@ class Classifier extends Component {
           <Grid container spacing={0}>
             <ConnectedSidebar open={this.open} save={this.save} />
 
-            <ConnectedGallery
-              findCategory={this.findCategory}
-              images={images}
-              settings={settings}
-            />
+            <Grid item xs={10}>
+              <ConnectedGallery
+                findCategory={this.findCategory}
+                images={images}
+                settings={settings}
+              />
+            </Grid>
           </Grid>
         </div>
       </DragDropContextProvider>

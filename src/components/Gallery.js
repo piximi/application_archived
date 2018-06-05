@@ -15,7 +15,7 @@ const Gallery = props => {
     sortImages
   } = props;
   return (
-    <Grid item xs={10}>
+    <div>
       <div className={classes.toolbar} />
 
       <Divider />
@@ -49,7 +49,7 @@ const Gallery = props => {
           updateImageCategory={updateImageCategory}
         />
       </main>
-    </Grid>
+    </div>
   );
 };
 
