@@ -1,4 +1,4 @@
-const styles = {
+const styles = theme => ({
   icon: {
     color: 'rgba(0,0,0,0.50)',
     cursor: 'pointer',
@@ -10,6 +10,6 @@ const styles = {
   isOver: {
     background: 'rgba(0, 0, 0, 0.20)'
   }
-};
+});
 
 export default styles;

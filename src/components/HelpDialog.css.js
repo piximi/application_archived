@@ -1,5 +1,3 @@
-const styles = theme => ({
-  root: {}
-});
+const styles = theme => ({});
 
 export default styles;

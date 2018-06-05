@@ -1,4 +1,4 @@
-const styles = {
+const styles = theme => ({
   content: {
     paddingBottom: 0,
     '&:last-child': {
@@ -12,6 +12,6 @@ const styles = {
     backgroundPosition: 'center',
     backgroundSize: 'contain'
   }
-};
+});
 
 export default styles;
