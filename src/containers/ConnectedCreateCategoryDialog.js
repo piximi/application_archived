@@ -1,10 +1,7 @@
 import { connect } from 'react-redux';
 
 import { createCategoryAction } from '../actions/categories';
-import {
-  closeCreateCategoryDialogAction,
-  toggleCreateCategoryColorMenuAction
-} from '../actions/settings';
+import { toggleCreateCategoryColorMenuAction } from '../actions/settings';
 
 import CreateCategoryDialog from '../components/CreateCategoryDialog';
 import uuidv4 from 'uuid';

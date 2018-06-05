@@ -15,13 +15,7 @@ import AddIcon from '@material-ui/icons/Add';
 
 class CreateCategoryDialog extends Component {
   render() {
-    const {
-      toggleCreateCategoryColorMenu,
-      createCategory,
-      classes,
-      onClose,
-      open
-    } = this.props;
+    const { toggleCreateCategoryColorMenu, onClose, open } = this.props;
 
     return (
       <Dialog open={open} onClose={onClose}>

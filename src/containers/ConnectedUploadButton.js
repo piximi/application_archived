@@ -1,10 +1,7 @@
 import { connect } from 'react-redux';
 import UploadButton from '../components/UploadButton';
 
-import {
-  createImageAction,
-  updateImageCategoryAction
-} from '../actions/images';
+import { createImageAction } from '../actions/images';
 
 const mapStateToProps = state => {
   return state;

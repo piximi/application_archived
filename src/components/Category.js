@@ -11,7 +11,6 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import { DropTarget } from 'react-dnd';
 import styles from './Category.css';
 import { withStyles } from 'material-ui/styles/index';
-import withDragDropContext from './dnd-global-context';
 
 const spec = {
   drop(props, monitor, component) {

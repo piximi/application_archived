@@ -8,7 +8,6 @@ import {
   UPDATE_IMAGE_VISIBILTY,
   SORT_IMAGES
 } from '../constants';
-import { sortImages } from '../actions/images';
 
 const images = (state = {}, action) => {
   let images = [];
