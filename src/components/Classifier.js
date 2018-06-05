@@ -63,4 +63,4 @@ class Classifier extends Component {
   }
 }
 
-export default withStyles(styles)(Classifier);
+export default withStyles(styles, { withTheme: true })(Classifier);

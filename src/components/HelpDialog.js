@@ -29,4 +29,4 @@ const HelpDialog = ({ open, onClose }) => {
   );
 };
 
-export default withStyles(styles)(HelpDialog);
+export default withStyles(styles, { withTheme: true })(HelpDialog);

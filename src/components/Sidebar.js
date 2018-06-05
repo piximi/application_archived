@@ -166,4 +166,4 @@ const Sidebar = ({
   );
 };
 
-export default withStyles(styles)(Sidebar);
+export default withStyles(styles, { withTheme: true })(Sidebar);

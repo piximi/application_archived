@@ -31,4 +31,4 @@ const SettingsDialog = ({ classes, onClose, open }) => {
   );
 };
 
-export default withStyles(styles)(SettingsDialog);
+export default withStyles(styles, { withTheme: true })(SettingsDialog);

@@ -11,6 +11,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import { DropTarget } from 'react-dnd';
 import styles from './Category.css';
 import { withStyles } from 'material-ui/styles/index';
+import withDragDropContext from './dnd-global-context';
 
 const spec = {
   drop(props, monitor, component) {
@@ -72,4 +73,6 @@ const Category = props => {
   );
 };
 
-export default withStyles(styles)(DropTarget('Image', spec, collect)(Category));
+export default withStyles(styles, { withTheme: true })(
+  DropTarget('Image', spec, collect)(Category)
+);

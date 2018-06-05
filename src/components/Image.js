@@ -68,4 +68,6 @@ class Image extends Component {
   }
 }
 
-export default withStyles(styles)(DragSource('Image', source, collect)(Image));
+export default withStyles(styles, { withTheme: true })(
+  DragSource('Image', source, collect)(Image)
+);

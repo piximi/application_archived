@@ -49,4 +49,4 @@ const Primary = ({
   );
 };
 
-export default withStyles(styles)(Primary);
+export default withStyles(styles, { withTheme: true })(Primary);

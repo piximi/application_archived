@@ -23,4 +23,4 @@ const Gallery = props => {
   );
 };
 
-export default withStyles(styles)(Gallery);
+export default withStyles(styles, { withTheme: true })(Gallery);

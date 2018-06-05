@@ -67,4 +67,4 @@ class CreateCategoryDialog extends Component {
   }
 }
 
-export default withStyles(styles)(CreateCategoryDialog);
+export default withStyles(styles, { withTheme: true })(CreateCategoryDialog);

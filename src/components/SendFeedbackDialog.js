@@ -31,4 +31,4 @@ const SendFeedbackDialog = ({ classes, onClose, open }) => {
   );
 };
 
-export default withStyles(styles)(SendFeedbackDialog);
+export default withStyles(styles, { withTheme: true })(SendFeedbackDialog);
