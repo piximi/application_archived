@@ -2,8 +2,6 @@ import { connect } from 'react-redux';
 
 import { toggleSidebarAction, updateSettingColumns } from '../actions/settings';
 
-import { sortImages } from '../actions/images';
-
 import Primary from '../components/Primary';
 
 const mapStateToProps = state => {
@@ -21,9 +19,6 @@ const mapDispatchToProps = dispatch => {
     },
     toggleSidebar: () => {
       dispatch(toggleSidebarAction());
-    },
-    sortImages: () => {
-      dispatch(sortImages());
     }
   };
 };

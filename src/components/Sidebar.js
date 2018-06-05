@@ -55,8 +55,8 @@ const Sidebar = ({
     <Grid item xs={2}>
       <Drawer
         anchor="left"
-        style={{ position: 'fixed' }}
         classes={{ paper: classes.drawerPaper }}
+        open={settings.sidebar.open}
         variant="permanent"
       >
         <div className={classes.toolbar} />
