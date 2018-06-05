@@ -18,6 +18,7 @@ const SettingsDialog = ({
           <Tabs
             value={settings.settings.tab}
             onChange={changeSettingsDialogTab}
+            fullWidth
           >
             <Tab label="Item One" />
             <Tab label="Item Two" />
