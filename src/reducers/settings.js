@@ -84,6 +84,7 @@ const settings = (state = {}, action) => {
       };
     case TOGGLE_SIDEBAR:
       return {
+        ...state,
         sidebar: {
           open: !state.sidebar.open
         }

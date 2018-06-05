@@ -18,11 +18,6 @@ export const updateSettingColumns = columns => ({
   columns
 });
 
-export const updateSettingSidebarOpenAction = sidebar => ({
-  type: UPDATE_SETTING_SIDEBAR_OPEN,
-  sidebar
-});
-
 export const closeCreateCategoryDialogAction = sidebar => ({
   type: CLOSE_CREATE_CATEGORY_DIALOG,
   sidebar
