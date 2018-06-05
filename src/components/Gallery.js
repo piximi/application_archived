@@ -1,9 +1,10 @@
-import { Button, Divider, Grid, Toolbar } from 'material-ui';
+import { Button, Divider, Toolbar, Tooltip } from 'material-ui';
 import React from 'react';
 import ConnectedImages from '../containers/ConnectedImages';
 import styles from './Gallery.css';
 import { withStyles } from 'material-ui/styles/index';
 import ConnectedUploadButton from '../containers/ConnectedUploadButton';
+import AddIcon from '@material-ui/icons/Add';
 
 const Gallery = props => {
   const {
@@ -15,39 +16,32 @@ const Gallery = props => {
     sortImages
   } = props;
   return (
-    <div>
+    <div className={classes.content}>
       <div className={classes.toolbar} />
 
-      <Divider />
+      {/*<Divider />*/}
 
-      <main className={classes.content}>
-        <Toolbar>
-          <ConnectedUploadButton />
+      <main>
+        {/*<Toolbar>*/}
+        {/*<ConnectedUploadButton />*/}
 
-          <Button onClick={() => sortImages()} variant="raised">
-            {' '}
-            SORT{' '}
-          </Button>
+        {/*<Button onClick={() => sortImages()} variant="raised">{' '}SORT{' '}</Button>*/}
 
-          <div
-            style={{ position: 'fixed', right: '10%', zIndex: 1 }}
-            className="slidecontainer"
-          >
-            <input
-              onChange={e => updateSettingColumns(e)}
-              type="range"
-              min="1"
-              max="100"
-              value={settings.columns}
-            />
-          </div>
-        </Toolbar>
+        {/*<div style={{ position: 'fixed', right: '10%', zIndex: 1 }} className="slidecontainer">*/}
+        {/*<input onChange={e => updateSettingColumns(e)} type="range" min="1" max="100" value={settings.columns}/>*/}
+        {/*</div>*/}
+        {/*</Toolbar>*/}
 
         <ConnectedImages
           columns={settings.columns}
           findCategory={findCategory}
           updateImageCategory={updateImageCategory}
         />
+        <Tooltip id="tooltip-fab" title="Upload new image">
+          <Button variant="fab" color="secondary" className={classes.fab}>
+            <AddIcon />
+          </Button>
+        </Tooltip>
       </main>
     </div>
   );
