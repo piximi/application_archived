@@ -7,6 +7,13 @@ const styles = theme => ({
     position: 'relative',
     display: 'flex'
   },
+  flex: {
+    flex: 1
+  },
+  menuButton: {
+    marginLeft: -12,
+    marginRight: 20
+  },
   appBar: {
     zIndex: theme.zIndex.drawer + 1
   },

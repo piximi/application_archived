@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 
 import {
+  toggleSidebarAction,
   updateSettingSidebarOpenAction,
   updateSettingColumns
 } from '../actions/settings';
@@ -26,7 +27,9 @@ const mapDispatchToProps = dispatch => {
       const columns = event.target.value;
       dispatch(updateSettingColumns(columns));
     },
-
+    toggleSidebar: () => {
+      dispatch(toggleSidebarAction());
+    },
     sortImages: () => {
       dispatch(sortImages());
     }

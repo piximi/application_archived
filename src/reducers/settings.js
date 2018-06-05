@@ -9,7 +9,8 @@ import {
   TOGGLE_SEND_FEEDBACK_DIALOG,
   TOGGLE_SETTINGS_DIALOG,
   UPDATE_SETTING_COLUMNS,
-  UPDATE_SETTING_SIDEBAR_OPEN
+  UPDATE_SETTING_SIDEBAR_OPEN,
+  TOGGLE_SIDEBAR
 } from '../constants';
 
 const settings = (state = {}, action) => {
@@ -79,6 +80,12 @@ const settings = (state = {}, action) => {
         ...state,
         model: {
           collapsed: !state.model.collapsed
+        }
+      };
+    case TOGGLE_SIDEBAR:
+      return {
+        sidebar: {
+          open: !state.sidebar.open
         }
       };
     case UPDATE_SETTING_COLUMNS:

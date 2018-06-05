@@ -3,6 +3,7 @@ import React from 'react';
 import styles from './Primary.css';
 import { withStyles } from 'material-ui/styles/index';
 import ConnectedUploadButton from '../containers/ConnectedUploadButton';
+import MenuIcon from '@material-ui/icons/Menu';
 
 const Primary = ({
   classes,
@@ -11,26 +12,28 @@ const Primary = ({
   upload,
   updateSettingSidebarOpen,
   updateSettingColumns,
+  toggleSidebar,
   columns
 }) => {
   return (
     <AppBar position="fixed" className={classes.appBar} color="default">
       <Toolbar>
-        <Typography variant="title" color="inherit">
-          CYTO AI
+        <IconButton
+          className={classes.menuButton}
+          color="inherit"
+          aria-label="Menu"
+          onClick={toggleSidebar}
+        >
+          <MenuIcon />
+        </IconButton>
+
+        <Typography variant="title" color="inherit" className={classes.flex}>
+          Cyto
         </Typography>
 
-        <IconButton
-          color="inherit"
-          aria-label="open drawer"
-          onClick={updateSettingSidebarOpen}
-        />
-        <ConnectedUploadButton />
+        {/*<ConnectedUploadButton />*/}
 
-        <Button onClick={() => sortImages()} variant="raised">
-          {' '}
-          SORT{' '}
-        </Button>
+        {/*<Button onClick={() => sortImages()} variant="raised">{' '}SORT{' '}</Button>*/}
 
         <div
           style={{ position: 'fixed', right: '10%', zIndex: 1 }}

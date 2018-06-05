@@ -8,6 +8,7 @@ import {
   TOGGLE_MODEL_COLLAPSE,
   TOGGLE_SEND_FEEDBACK_DIALOG,
   TOGGLE_SETTINGS_DIALOG,
+  TOGGLE_SIDEBAR,
   UPDATE_SETTING_COLUMNS,
   UPDATE_SETTING_SIDEBAR_OPEN
 } from '../constants';
@@ -59,4 +60,8 @@ export const toggleSendFeedbackDialogAction = () => ({
 
 export const toggleSettingsDialogAction = () => ({
   type: TOGGLE_SETTINGS_DIALOG
+});
+
+export const toggleSidebarAction = () => ({
+  type: TOGGLE_SIDEBAR
 });
