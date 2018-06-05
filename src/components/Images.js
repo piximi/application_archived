@@ -4,6 +4,7 @@ import { GridList, GridListTile } from 'material-ui';
 import ConnectedImage from '../containers/ConnectedImage';
 import withDragDropContext from './dnd-global-context';
 import styles from './Images.css';
+import { withStyles } from 'material-ui/styles/index';
 
 class Images extends Component {
   constructor(props) {
@@ -140,4 +141,6 @@ class Images extends Component {
   }
 }
 
-export default withDragDropContext(Images);
+export default withDragDropContext(
+  withStyles(styles, { withTheme: true })(Images)
+);
