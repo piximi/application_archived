@@ -3,7 +3,8 @@ import {
   ListItem,
   ListItemIcon,
   ListItemSecondaryAction,
-  ListItemText
+  ListItemText,
+  Tooltip
 } from 'material-ui';
 import LabelIcon from '@material-ui/icons/Label';
 import LabelOutlineIcon from '@material-ui/icons/LabelOutline';
@@ -60,12 +61,14 @@ const Category = props => {
         <ListItemText primary={description} />
 
         <ListItemSecondaryAction>
-          <ListItemIcon
-            onClick={deleteCategory}
-            classes={{ root: props.classes.icon }}
-          >
-            <DeleteIcon />
-          </ListItemIcon>
+          <Tooltip id="tooltip-icon" title="Delete category">
+            <ListItemIcon
+              onClick={deleteCategory}
+              classes={{ root: props.classes.icon }}
+            >
+              <DeleteIcon />
+            </ListItemIcon>
+          </Tooltip>
         </ListItemSecondaryAction>
       </ListItem>
     </div>
