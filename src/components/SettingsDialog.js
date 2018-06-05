@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './SettingsDialog.css';
 import { withStyles } from 'material-ui/styles/index';
-import { Dialog, Tab, Tabs } from 'material-ui';
+import { AppBar, Dialog, Tab, Tabs } from 'material-ui';
 import SettingsDialogTabContainer from './SettingsDialogTabContainer';
 
 const SettingsDialog = ({
@@ -13,20 +13,27 @@ const SettingsDialog = ({
 }) => {
   return (
     <Dialog open={open} onClose={onClose}>
-      <Tabs value={settings.settings.tab} onChange={changeSettingsDialogTab}>
-        <Tab label="Item One" />
-        <Tab label="Item Two" />
-        <Tab label="Item Three" href="#basic-tabs" />
-      </Tabs>
-      {settings.settings.tab === 0 && (
-        <SettingsDialogTabContainer>A</SettingsDialogTabContainer>
-      )}
-      {settings.settings.tab === 1 && (
-        <SettingsDialogTabContainer>B</SettingsDialogTabContainer>
-      )}
-      {settings.settings.tab === 2 && (
-        <SettingsDialogTabContainer>C</SettingsDialogTabContainer>
-      )}
+      <div className={classes.root}>
+        <AppBar position="static">
+          <Tabs
+            value={settings.settings.tab}
+            onChange={changeSettingsDialogTab}
+          >
+            <Tab label="Item One" />
+            <Tab label="Item Two" />
+            <Tab label="Item Three" href="#basic-tabs" />
+          </Tabs>
+        </AppBar>
+        {settings.settings.tab === 0 && (
+          <SettingsDialogTabContainer>A</SettingsDialogTabContainer>
+        )}
+        {settings.settings.tab === 1 && (
+          <SettingsDialogTabContainer>B</SettingsDialogTabContainer>
+        )}
+        {settings.settings.tab === 2 && (
+          <SettingsDialogTabContainer>C</SettingsDialogTabContainer>
+        )}
+      </div>
     </Dialog>
   );
 };
