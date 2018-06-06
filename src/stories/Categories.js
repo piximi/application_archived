@@ -20,6 +20,6 @@ const store = createStore(reducer, fixture);
 
 storiesOf('Categories', module).add('example', () => (
   <Provider store={store}>
-    <Categories />
+    <Categories categories={fixture.categories} />
   </Provider>
 ));
