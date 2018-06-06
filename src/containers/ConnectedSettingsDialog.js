@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import { changeSettingsDialogTabAction } from '../actions/settings';
-import SettingsDialog from '../components/SettingsDialog';
+import SettingsDialog from '../components/SettingsDialog/SettingsDialog';
 
 const mapStateToProps = state => {
   return state;

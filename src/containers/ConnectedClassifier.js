@@ -5,7 +5,7 @@ import {
   openClassifierAction,
   saveClassifierAction
 } from '../actions/classifier';
-import Classifier from '../components/Classifier';
+import Classifier from '../components/Classifier/Classifier';
 import { createImageAction, addImages } from '../actions/images';
 import { addCategories } from '../actions/categories';
 

@@ -9,11 +9,11 @@ import {
   ListItemText
 } from 'material-ui';
 import React from 'react';
-import styles from './Primary.css';
+import styles from '../Primary/Primary.css';
 import { withStyles } from 'material-ui/styles/index';
-import ConnectedCategories from '../containers/ConnectedCategories';
-import ConnectedSettingsDialog from '../containers/ConnectedSettingsDialog';
-import HelpDialog from './HelpDialog';
+import ConnectedCategories from '../../containers/ConnectedCategories';
+import ConnectedSettingsDialog from '../../containers/ConnectedSettingsDialog';
+import HelpDialog from '../HelpDialog/HelpDialog';
 import SettingsIcon from '@material-ui/icons/Settings';
 import FeedbackIcon from '@material-ui/icons/Feedback';
 import FolderOpenIcon from '@material-ui/icons/FolderOpen';
@@ -22,9 +22,9 @@ import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import SaveIcon from '@material-ui/icons/Save';
-import * as API from '../classifier';
+import * as API from '../../classifier';
 import Download from '@axetroy/react-download';
-import SendFeedbackDialog from './SendFeedbackDialog';
+import SendFeedbackDialog from '../SendFeedbackDialog/SendFeedbackDialog';
 
 const onClick = (images, categories) => {
   return API.trainOnRun(images, categories);

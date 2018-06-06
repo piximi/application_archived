@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Images from '../components/Images';
+import Images from '../components/Images/Images';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import data from '../images/mnist';

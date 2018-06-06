@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './SettingsDialog.css';
 import { withStyles } from 'material-ui/styles/index';
 import { AppBar, Dialog, Tab, Tabs } from 'material-ui';
-import SettingsDialogTabContainer from './SettingsDialogTabContainer';
+import SettingsDialogTabContainer from '../SettingsDialogTabContainer/SettingsDialogTabContainer';
 
 const SettingsDialog = ({
   classes,

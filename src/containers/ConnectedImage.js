@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import { updateImageCategoryAction } from '../actions/images';
-import Image from '../components/Image';
+import Image from '../components/Image/Image';
 
 const mapStateToProps = (state, props) => {
   return state.images.images.find(

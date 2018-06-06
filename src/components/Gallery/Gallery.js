@@ -1,9 +1,9 @@
 import { Button, Divider, Toolbar, Tooltip } from 'material-ui';
 import React from 'react';
-import ConnectedImages from '../containers/ConnectedImages';
+import ConnectedImages from '../../containers/ConnectedImages';
 import styles from './Gallery.css';
 import { withStyles } from 'material-ui/styles/index';
-import ConnectedUploadButton from '../containers/ConnectedUploadButton';
+import ConnectedUploadButton from '../../containers/ConnectedUploadButton';
 import AddIcon from '@material-ui/icons/Add';
 
 const Gallery = props => {

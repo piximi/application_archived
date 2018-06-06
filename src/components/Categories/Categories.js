@@ -8,12 +8,12 @@ import {
 } from 'material-ui';
 import AddIcon from '@material-ui/icons/Add';
 import { withStyles } from 'material-ui/styles';
-import withDragDropContext from './dnd-global-context';
+import withDragDropContext from '../dnd-global-context';
 import styles from './Categories.css';
-import ConnectedCategory from '../containers/ConnectedCategory';
+import ConnectedCategory from '../../containers/ConnectedCategory';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import ConnectedCreateCategoryDialog from '../containers/ConnectedCreateCategoryDialog';
+import ConnectedCreateCategoryDialog from '../../containers/ConnectedCreateCategoryDialog';
 
 const Categories = ({
   categories,

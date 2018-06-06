@@ -6,7 +6,7 @@ import {
   toggleSendFeedbackDialogAction,
   toggleSettingsDialogAction
 } from '../actions/settings';
-import Sidebar from '../components/Sidebar';
+import Sidebar from '../components/Sidebar/Sidebar';
 
 const mapStateToProps = state => {
   return state;

@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import { toggleSidebarAction, updateSettingColumns } from '../actions/settings';
 
-import Primary from '../components/Primary';
+import Primary from '../components/Primary/Primary';
 
 const mapStateToProps = state => {
   return {

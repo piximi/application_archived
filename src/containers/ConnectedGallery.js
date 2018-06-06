@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Gallery from '../components/Gallery';
+import Gallery from '../components/Gallery/Gallery';
 import {
   toggleUploadDialogAction,
   updateSettingColumns

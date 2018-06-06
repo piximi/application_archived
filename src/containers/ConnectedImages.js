@@ -4,7 +4,7 @@ import {
   updateImageCategoryAction,
   updateImageProbability
 } from '../actions/images';
-import Images from '../components/Images';
+import Images from '../components/Images/Images';
 
 const mapStateToProps = state => {
   return {

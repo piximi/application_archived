@@ -4,11 +4,11 @@ import { withStyles } from 'material-ui/styles';
 import { Grid } from 'material-ui';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContextProvider } from 'react-dnd';
-import * as API from '../classifier';
-import ConnectedGallery from '../containers/ConnectedGallery';
-import ConnectedPrimary from '../containers/ConnectedPrimary';
-import ConnectedSidebar from '../containers/ConnectedSidebar';
-import Main from './Main';
+import * as API from '../../classifier';
+import ConnectedGallery from '../../containers/ConnectedGallery';
+import ConnectedPrimary from '../../containers/ConnectedPrimary';
+import ConnectedSidebar from '../../containers/ConnectedSidebar';
+import Main from '../Main/Main';
 
 class Classifier extends Component {
   save = () => {

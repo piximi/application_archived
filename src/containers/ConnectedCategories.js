@@ -7,7 +7,7 @@ import {
   toggleCategoriesCollapseAction,
   toggleCreateCategoryDialogAction
 } from '../actions/settings';
-import Categories from '../components/Categories';
+import Categories from '../components/Categories/Categories';
 
 let index = 0;
 

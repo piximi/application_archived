@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { HotKeys } from 'react-hotkeys';
 import { GridList, GridListTile } from 'material-ui';
-import ConnectedImage from '../containers/ConnectedImage';
-import withDragDropContext from './dnd-global-context';
+import ConnectedImage from '../../containers/ConnectedImage';
+import withDragDropContext from '../dnd-global-context';
 import styles from './Images.css';
 import { withStyles } from 'material-ui/styles/index';
 

@@ -8,7 +8,7 @@ import {
 
 import { updateImageVisibility } from '../actions/images';
 
-import Category from '../components/Category';
+import Category from '../components/Category/Category';
 
 import { updateImagesHavingCertainCategory } from '../actions/images';
 
