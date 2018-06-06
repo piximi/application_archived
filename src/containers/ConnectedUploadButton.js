@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import UploadButton from '../components/UploadButton';
+import UploadButton from '../components/UploadButton/UploadButton';
 
 import { createImageAction } from '../actions/images';
 

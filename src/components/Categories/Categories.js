@@ -8,7 +8,7 @@ import {
 } from 'material-ui';
 import AddIcon from '@material-ui/icons/Add';
 import { withStyles } from 'material-ui/styles';
-import withDragDropContext from '../dnd-global-context';
+import withDragDropContext from '../DragDropContext/DragDropContext';
 import styles from './Categories.css';
 import ConnectedCategory from '../../containers/ConnectedCategory';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
