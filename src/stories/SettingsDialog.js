@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import SettingsDialog from '../components/SettingsDialog';
+import ConnectedSettingsDialog from '../containers/ConnectedSettingsDialog';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import data from '../images/mnist';
@@ -20,6 +20,6 @@ const store = createStore(reducer, fixture);
 
 storiesOf('SettingsDialog', module).add('example', () => (
   <Provider store={store}>
-    <SettingsDialog open={true} settings={fixture.settings} />
+    <ConnectedSettingsDialog open={true} settings={fixture.settings} />
   </Provider>
 ));

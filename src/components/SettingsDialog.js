@@ -22,7 +22,7 @@ const SettingsDialog = ({
           >
             <Tab label="Item One" />
             <Tab label="Item Two" />
-            <Tab label="Item Three" href="#basic-tabs" />
+            <Tab label="Item Three" />
           </Tabs>
         </AppBar>
         {settings.settings.tab === 0 && (
