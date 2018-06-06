@@ -25,9 +25,11 @@
     },
     "sidebar": {
       "open": true
+    },
+    "upload": {
+      "toggled": false
     }
   },
-
   "categories": [
     {
       "color": "#EC407A",

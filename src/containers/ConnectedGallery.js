@@ -1,6 +1,9 @@
 import { connect } from 'react-redux';
 import Gallery from '../components/Gallery';
-import { updateSettingColumns } from '../actions/settings';
+import {
+  toggleUploadDialogAction,
+  updateSettingColumns
+} from '../actions/settings';
 import { sortImages } from '../actions/images';
 
 const mapStateToProps = state => {
@@ -15,6 +18,9 @@ const mapDispatchToProps = dispatch => {
     },
     sortImages: () => {
       dispatch(sortImages());
+    },
+    toggleUploadDialog: () => {
+      dispatch(toggleUploadDialogAction());
     }
   };
 };

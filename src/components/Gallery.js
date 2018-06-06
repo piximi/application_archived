@@ -13,7 +13,8 @@ const Gallery = props => {
     updateImageCategory,
     updateSettingColumns,
     settings,
-    sortImages
+    sortImages,
+    toggleUploadDialog
   } = props;
   return (
     <div className={classes.content}>
@@ -37,8 +38,14 @@ const Gallery = props => {
           findCategory={findCategory}
           updateImageCategory={updateImageCategory}
         />
+
         <Tooltip id="tooltip-fab" title="Upload new image">
-          <Button variant="fab" color="secondary" className={classes.fab}>
+          <Button
+            variant="fab"
+            color="secondary"
+            className={classes.fab}
+            onClick={toggleUploadDialog}
+          >
             <AddIcon />
           </Button>
         </Tooltip>

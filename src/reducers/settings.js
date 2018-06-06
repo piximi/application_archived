@@ -1,16 +1,17 @@
 import {
-  CLOSE_CREATE_CATEGORY_DIALOG,
   CHANGE_SETTINGS_DIALOG_TAB,
+  CLOSE_CREATE_CATEGORY_DIALOG,
+  TOGGLE_CATEGORIES_COLLAPSE,
   TOGGLE_CREATE_CATEGORY_COLOR_MENU,
   TOGGLE_CREATE_CATEGORY_DIALOG,
-  TOGGLE_CATEGORIES_COLLAPSE,
   TOGGLE_HELP_DIALOG,
   TOGGLE_MODEL_COLLAPSE,
   TOGGLE_SEND_FEEDBACK_DIALOG,
   TOGGLE_SETTINGS_DIALOG,
+  TOGGLE_SIDEBAR,
+  TOGGLE_UPLOAD_DIALOG,
   UPDATE_SETTING_COLUMNS,
-  UPDATE_SETTING_SIDEBAR_OPEN,
-  TOGGLE_SIDEBAR
+  UPDATE_SETTING_SIDEBAR_OPEN
 } from '../constants';
 
 const settings = (state = {}, action) => {
@@ -87,6 +88,13 @@ const settings = (state = {}, action) => {
         ...state,
         sidebar: {
           open: !state.sidebar.open
+        }
+      };
+    case TOGGLE_UPLOAD_DIALOG:
+      return {
+        ...state,
+        upload: {
+          toggled: !state.upload.toggled
         }
       };
     case UPDATE_SETTING_COLUMNS:

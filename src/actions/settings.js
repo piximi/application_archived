@@ -1,16 +1,16 @@
 import {
   CHANGE_SETTINGS_DIALOG_TAB,
   CLOSE_CREATE_CATEGORY_DIALOG,
+  TOGGLE_CATEGORIES_COLLAPSE,
   TOGGLE_CREATE_CATEGORY_COLOR_MENU,
   TOGGLE_CREATE_CATEGORY_DIALOG,
-  TOGGLE_CATEGORIES_COLLAPSE,
   TOGGLE_HELP_DIALOG,
   TOGGLE_MODEL_COLLAPSE,
   TOGGLE_SEND_FEEDBACK_DIALOG,
   TOGGLE_SETTINGS_DIALOG,
   TOGGLE_SIDEBAR,
-  UPDATE_SETTING_COLUMNS,
-  UPDATE_SETTING_SIDEBAR_OPEN
+  TOGGLE_UPLOAD_DIALOG,
+  UPDATE_SETTING_COLUMNS
 } from '../constants';
 
 export const updateSettingColumns = columns => ({
@@ -59,4 +59,8 @@ export const toggleSettingsDialogAction = () => ({
 
 export const toggleSidebarAction = () => ({
   type: TOGGLE_SIDEBAR
+});
+
+export const toggleUploadDialogAction = () => ({
+  type: TOGGLE_UPLOAD_DIALOG
 });
