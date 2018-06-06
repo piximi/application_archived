@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Categories from '../components/Categories';
+import ConnectedCategories from '../containers/ConnectedCategories';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import data from '../images/mnist';
@@ -20,6 +20,6 @@ const store = createStore(reducer, fixture);
 
 storiesOf('Categories', module).add('example', () => (
   <Provider store={store}>
-    <Categories categories={fixture.categories} />
+    <ConnectedCategories categories={fixture.categories} />
   </Provider>
 ));

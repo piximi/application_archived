@@ -20,9 +20,9 @@ const SettingsDialog = ({
             onChange={changeSettingsDialogTab}
             fullWidth
           >
-            <Tab label="Item One" />
-            <Tab label="Item Two" />
-            <Tab label="Item Three" />
+            <Tab label="A" />
+            <Tab label="B" />
+            <Tab label="C" />
           </Tabs>
         </AppBar>
         {settings.settings.tab === 0 && (
