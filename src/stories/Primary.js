@@ -7,7 +7,7 @@ import data from '../images/mnist';
 import reducer from '../reducers';
 import dataImages from '../images/stock';
 
-const demo = {
+const fixture = {
   categories: data.categories,
   images: {
     images: dataImages.images,
@@ -16,7 +16,7 @@ const demo = {
   settings: data.settings
 };
 
-const store = createStore(reducer, demo);
+const store = createStore(reducer, fixture);
 
 storiesOf('Primary', module).add('example', () => (
   <Provider store={store}>
