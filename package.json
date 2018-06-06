@@ -5,6 +5,7 @@
   "dependencies": {
     "@axetroy/react-download": "^1.1.1",
     "@material-ui/icons": "^1.0.0-beta.42",
+    "@storybook/addon-console": "^1.0.0",
     "@tensorflow/tfjs": "^0.9.1",
     "classnames": "^2.2.5",
     "flow-bin": "^0.70.0",

@@ -3,5 +3,5 @@ import { storiesOf } from '@storybook/react';
 import CreateCategoryDialog from '../components/CreateCategoryDialog';
 
 storiesOf('CreateCategoryDialog', module).add('example', () => (
-  <CreateCategoryDialog />
+  <CreateCategoryDialog open={true} />
 ));
