@@ -3,6 +3,7 @@ import React from 'react';
 import ConnectedImages from '../../containers/ConnectedImages';
 import styles from './Gallery.css';
 import { withStyles } from 'material-ui/styles/index';
+import ConnectedUploadDialog from '../../containers/ConnectedUploadDialog';
 import ConnectedUploadButton from '../../containers/ConnectedUploadButton';
 import AddIcon from '@material-ui/icons/Add';
 
@@ -50,6 +51,11 @@ const Gallery = props => {
           </Button>
         </Tooltip>
       </main>
+
+      <ConnectedUploadDialog
+        onClose={toggleUploadDialog}
+        open={settings.upload.toggled}
+      />
     </div>
   );
 };
