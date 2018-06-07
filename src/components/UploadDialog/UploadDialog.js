@@ -1,11 +1,19 @@
 import React from 'react';
 import styles from './UploadDialog.css';
 import { withStyles } from 'material-ui/styles/index';
-import { Button, Dialog, DialogActions, DialogContent } from 'material-ui';
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle
+} from 'material-ui';
 
 const UploadDialog = ({ open, onClose }) => {
   return (
     <Dialog open={open} onClose={onClose}>
+      <DialogTitle id="form-dialog-title">Upload file or directory</DialogTitle>
+
       <DialogContent>
         <input name="myFile" type="file" />
       </DialogContent>
