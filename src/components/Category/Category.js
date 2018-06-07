@@ -12,6 +12,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import { DropTarget } from 'react-dnd';
 import styles from './Category.css';
 import { withStyles } from 'material-ui/styles/index';
+import ConnectedDeleteCategoryDialog from '../../containers/ConnectedDeleteCategoryDialog';
 
 const spec = {
   drop(props, monitor, component) {
@@ -31,13 +32,15 @@ function collect(connect, monitor) {
 
 const Category = props => {
   const {
-    deleteCategory,
+    identifier,
     updateCategoryVisibility,
     color,
     connectDropTarget,
     description,
     images,
-    visible
+    visible,
+    settings,
+    toggleDeleteCategoryDialog
   } = props;
 
   return connectDropTarget(
@@ -63,7 +66,7 @@ const Category = props => {
         <ListItemSecondaryAction>
           <Tooltip id="tooltip-icon" title="Delete category">
             <ListItemIcon
-              onClick={deleteCategory}
+              onClick={toggleDeleteCategoryDialog}
               classes={{ root: props.classes.icon }}
             >
               <DeleteIcon />
@@ -71,6 +74,13 @@ const Category = props => {
           </Tooltip>
         </ListItemSecondaryAction>
       </ListItem>
+
+      <ConnectedDeleteCategoryDialog
+        description={description}
+        identifier={identifier}
+        onClose={toggleDeleteCategoryDialog}
+        open={settings.deleteCategory.toggled}
+      />
     </div>
   );
 };

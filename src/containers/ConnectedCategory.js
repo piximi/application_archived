@@ -5,6 +5,7 @@ import {
   updateCategoryDescriptionAction,
   updateCategoryVisibilityAction
 } from '../actions/categories';
+import { toggleDeleteCategoryDialogAction } from '../actions/settings';
 
 import { updateImageVisibility } from '../actions/images';
 
@@ -16,10 +17,12 @@ const mapStateToProps = (state, props) => {
   const category = state.categories.find(
     category => props.identifier === category.identifier
   );
+
   return {
     ...category,
     categories: state.categories,
-    images: state.images.images
+    images: state.images.images,
+    settings: state.settings
   };
 };
 
@@ -29,6 +32,9 @@ const mapDispatchToProps = (dispatch, props) => {
       const identifier = props.identifier;
       dispatch(deleteCategoryAction(identifier));
       dispatch(updateImagesHavingCertainCategory(identifier));
+    },
+    toggleDeleteCategoryDialog: () => {
+      dispatch(toggleDeleteCategoryDialogAction());
     },
     updateCategoryDescription: event => {
       const identifier = props.identifier;
