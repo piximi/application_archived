@@ -1,19 +1,13 @@
 import React from 'react';
 import styles from './UploadDialog.css';
 import { withStyles } from 'material-ui/styles/index';
-import {
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText
-} from 'material-ui';
+import { Button, Dialog, DialogActions, DialogContent } from 'material-ui';
 
 const UploadDialog = ({ open, onClose }) => {
   return (
     <Dialog open={open} onClose={onClose}>
       <DialogContent>
-        <DialogContentText>&nbsp;</DialogContentText>
+        <input name="myFile" type="file" />
       </DialogContent>
 
       <DialogActions>
@@ -22,7 +16,7 @@ const UploadDialog = ({ open, onClose }) => {
         </Button>
 
         <Button onClick={onClose} color="primary">
-          OK
+          Upload
         </Button>
       </DialogActions>
     </Dialog>
