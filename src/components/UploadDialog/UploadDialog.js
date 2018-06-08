@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styles from './UploadDialog.css';
 import { withStyles } from 'material-ui/styles/index';
 import {
@@ -9,26 +9,32 @@ import {
   DialogTitle
 } from 'material-ui';
 
-const UploadDialog = ({ open, onClose }) => {
-  return (
-    <Dialog open={open} onClose={onClose}>
-      <DialogTitle id="form-dialog-title">Upload file or directory</DialogTitle>
+class UploadDialog extends Component {
+  render() {
+    const { classes, onClose, open } = this.props;
 
-      <DialogContent>
-        <input name="myFile" type="file" />
-      </DialogContent>
+    return (
+      <Dialog open={open} onClose={onClose}>
+        <DialogTitle id="form-dialog-title">
+          Upload file or directory
+        </DialogTitle>
 
-      <DialogActions>
-        <Button onClick={onClose} color="primary">
-          Cancel
-        </Button>
+        <DialogContent>
+          <input name="myFile" type="file" />
+        </DialogContent>
 
-        <Button onClick={onClose} color="primary">
-          Upload
-        </Button>
-      </DialogActions>
-    </Dialog>
-  );
-};
+        <DialogActions>
+          <Button onClick={onClose} color="primary">
+            Cancel
+          </Button>
+
+          <Button onClick={onClose} color="primary">
+            Upload
+          </Button>
+        </DialogActions>
+      </Dialog>
+    );
+  }
+}
 
 export default withStyles(styles, { withTheme: true })(UploadDialog);
