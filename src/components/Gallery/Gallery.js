@@ -1,4 +1,4 @@
-import { Button, Divider, Toolbar, Tooltip } from 'material-ui';
+import { Button, Toolbar, Tooltip } from 'material-ui';
 import React from 'react';
 import ConnectedImages from '../../containers/ConnectedImages';
 import styles from './Gallery.css';
@@ -20,8 +20,6 @@ const Gallery = props => {
   return (
     <div className={classes.content}>
       <div className={classes.toolbar} />
-
-      {/*<Divider />*/}
 
       <main>
         <Toolbar>

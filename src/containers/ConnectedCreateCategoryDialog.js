@@ -10,8 +10,6 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = (dispatch, props) => {
-  debugger;
-
   return {
     createCategory: () => {
       const category = {

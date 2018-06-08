@@ -1,4 +1,4 @@
-import { AppBar, IconButton, Toolbar, Typography, Button } from 'material-ui';
+import { AppBar, IconButton, Toolbar, Typography } from 'material-ui';
 import React from 'react';
 import styles from './Primary.css';
 import { withStyles } from 'material-ui/styles/index';

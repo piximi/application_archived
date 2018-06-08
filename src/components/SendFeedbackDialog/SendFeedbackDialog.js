@@ -12,7 +12,7 @@ import {
 
 class SendFeedbackDialog extends Component {
   render() {
-    const { classes, onClose, open } = this.props;
+    const { onClose, open } = this.props;
 
     return (
       <Dialog open={open} onClose={onClose}>
