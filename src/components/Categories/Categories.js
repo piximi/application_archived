@@ -52,9 +52,9 @@ class Categories extends Component {
           <Collapse in={!this.state.collapsed} timeout="auto" unmountOnExit>
             {categories.map(category => (
               <ConnectedCategory
-                key={category.identifier}
-                identifier={category.identifier}
                 categories={categories}
+                identifier={category.identifier}
+                key={category.identifier}
               />
             ))}
 
