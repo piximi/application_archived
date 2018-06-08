@@ -8,7 +8,7 @@ import {
   ListItemIcon,
   ListItemText
 } from 'material-ui';
-import React from 'react';
+import React, { Component } from 'react';
 import styles from '../Primary/Primary.css';
 import { withStyles } from 'material-ui/styles/index';
 import ConnectedCategories from '../../containers/ConnectedCategories';
@@ -30,140 +30,167 @@ const onClick = (images, categories) => {
   return API.trainOnRun(images, categories);
 };
 
-const Sidebar = ({
-  categories,
-  classes,
-  closeSettingsDialog,
-  images,
-  open,
-  openHelpDialog,
-  openSettingsDialog,
-  save,
-  settings,
-  toggleHelpDialog,
-  toggleModelCollapse,
-  toggleSendFeedbackDialog,
-  toggleSettingsDialog
-}) => {
-  const exportObject = {
-    settings: settings,
-    categories: categories,
-    images: images.images
+class Sidebar extends Component {
+  state = {
+    sendFeedbackDialogToggled: false,
+    settingsDialogToggled: false
   };
 
-  return (
-    <Grid item xs={2}>
-      <Drawer
-        anchor="left"
-        classes={{ paper: classes.drawerPaper }}
-        open={settings.sidebar.open}
-        variant="permanent"
-      >
-        <div className={classes.toolbar} />
+  toggleSendFeedbackDialog = () => {
+    this.setState({
+      sendFeedbackDialogToggled: !this.state.sendFeedbackDialogToggled
+    });
+  };
 
-        <List dense>
-          <ListItem button component="label">
-            <ListItemIcon>
-              <FolderOpenIcon />
-            </ListItemIcon>
-            <ListItemText inset primary="Open..." />
+  toggleSettingsDialog = () => {
+    this.setState({ settingsDialogToggled: !this.state.settingsDialogToggled });
+  };
 
-            <input
-              style={{ display: 'none' }}
-              type="file"
-              accept=".cyto"
-              name="file"
-              id="file"
-              onChange={e => open(e.target.files)}
-            />
-          </ListItem>
+  render() {
+    const {
+      categories,
+      classes,
+      closeSettingsDialog,
+      images,
+      open,
+      openHelpDialog,
+      openSettingsDialog,
+      save,
+      settings,
+      toggleHelpDialog,
+      toggleModelCollapse,
+      toggleSendFeedbackDialog,
+      toggleSettingsDialog
+    } = this.props;
 
-          <Download
-            file="example.cyto"
-            content={JSON.stringify(exportObject, null, '\t')}
-          >
-            <ListItem button>
+    const exportObject = {
+      settings: settings,
+      categories: categories,
+      images: images.images
+    };
+
+    return (
+      <Grid item xs={2}>
+        <Drawer
+          anchor="left"
+          classes={{ paper: classes.drawerPaper }}
+          open={settings.sidebar.open}
+          variant="permanent"
+        >
+          <div className={classes.toolbar} />
+
+          <List dense>
+            <ListItem button component="label">
               <ListItemIcon>
-                <SaveIcon />
+                <FolderOpenIcon />
+              </ListItemIcon>
+              <ListItemText inset primary="Open..." />
+
+              <input
+                style={{ display: 'none' }}
+                type="file"
+                accept=".cyto"
+                name="file"
+                id="file"
+                onChange={e => open(e.target.files)}
+              />
+            </ListItem>
+
+            <Download
+              file="example.cyto"
+              content={JSON.stringify(exportObject, null, '\t')}
+            >
+              <ListItem button>
+                <ListItemIcon>
+                  <SaveIcon />
+                </ListItemIcon>
+
+                <ListItemText inset primary="Save" />
+              </ListItem>
+            </Download>
+          </List>
+
+          <Divider />
+
+          <ConnectedCategories />
+
+          <Divider />
+
+          <List dense>
+            <ListItem button onClick={toggleModelCollapse}>
+              <ListItemIcon>
+                {!settings.model.collapsed ? (
+                  <ExpandLessIcon />
+                ) : (
+                  <ExpandMoreIcon />
+                )}
               </ListItemIcon>
 
-              <ListItemText inset primary="Save" />
+              <ListItemText inset primary="Model" />
             </ListItem>
-          </Download>
-        </List>
 
-        <Divider />
+            <Collapse
+              in={!settings.model.collapsed}
+              timeout="auto"
+              unmountOnExit
+            >
+              <ListItem
+                dense
+                button
+                onClick={() => onClick(images, categories)}
+              >
+                <ListItemIcon>
+                  <PlayCircleOutlineIcon />
+                </ListItemIcon>
 
-        <ConnectedCategories />
+                <ListItemText primary="Fit" />
+              </ListItem>
+            </Collapse>
+          </List>
 
-        <Divider />
+          <Divider />
 
-        <List dense>
-          <ListItem button onClick={toggleModelCollapse}>
-            <ListItemIcon>
-              {!settings.model.collapsed ? (
-                <ExpandLessIcon />
-              ) : (
-                <ExpandMoreIcon />
-              )}
-            </ListItemIcon>
-
-            <ListItemText inset primary="Model" />
-          </ListItem>
-
-          <Collapse in={!settings.model.collapsed} timeout="auto" unmountOnExit>
-            <ListItem dense button onClick={() => onClick(images, categories)}>
+          <List dense>
+            <ListItem dense button onClick={toggleSettingsDialog}>
               <ListItemIcon>
-                <PlayCircleOutlineIcon />
+                <SettingsIcon />
               </ListItemIcon>
 
-              <ListItemText primary="Fit" />
+              <ListItemText primary="Settings" />
             </ListItem>
-          </Collapse>
-        </List>
 
-        <Divider />
+            <ListItem dense button onClick={toggleSendFeedbackDialog}>
+              <ListItemIcon>
+                <FeedbackIcon />
+              </ListItemIcon>
 
-        <List dense>
-          <ListItem dense button onClick={toggleSettingsDialog}>
-            <ListItemIcon>
-              <SettingsIcon />
-            </ListItemIcon>
+              <ListItemText primary="Send feedback" />
+            </ListItem>
 
-            <ListItemText primary="Settings" />
-          </ListItem>
+            <ListItem dense button onClick={toggleHelpDialog}>
+              <ListItemIcon>
+                <HelpIcon />
+              </ListItemIcon>
 
-          <ListItem dense button onClick={toggleSendFeedbackDialog}>
-            <ListItemIcon>
-              <FeedbackIcon />
-            </ListItemIcon>
+              <ListItemText primary="Help" />
+            </ListItem>
+          </List>
 
-            <ListItemText primary="Send feedback" />
-          </ListItem>
+          <ConnectedSettingsDialog
+            onClose={toggleSettingsDialog}
+            open={settings.settings.open}
+          />
 
-          <ListItem dense button onClick={toggleHelpDialog}>
-            <ListItemIcon>
-              <HelpIcon />
-            </ListItemIcon>
+          <SendFeedbackDialog
+            onClose={this.toggleSendFeedbackDialog()}
+            open={this.state.sendFeedbackDialogToggled}
+          />
 
-            <ListItemText primary="Help" />
-          </ListItem>
-        </List>
-
-        <ConnectedSettingsDialog
-          onClose={toggleSettingsDialog}
-          open={settings.settings.open}
-        />
-
-        <SendFeedbackDialog
-          onClose={toggleSendFeedbackDialog}
-          open={settings.sendFeedback.open}
-        />
-
-        <HelpDialog onClose={toggleHelpDialog} open={settings.help.open} />
-      </Drawer>
-    </Grid>
-  );
-};
+          <HelpDialog onClose={toggleHelpDialog} open={settings.help.open} />
+        </Drawer>
+      </Grid>
+    );
+  }
+}
 
 export default withStyles(styles, { withTheme: true })(Sidebar);
