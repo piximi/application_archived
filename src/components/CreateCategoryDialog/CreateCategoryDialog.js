@@ -42,7 +42,9 @@ class CreateCategoryDialog extends Component {
               <Grid item>
                 <IconButton
                   aria-haspopup="true"
-                  aria-owns={this.state.anchor ? 'simple-menu' : null}
+                  aria-owns={
+                    this.state.anchor ? 'create-category-color-menu' : null
+                  }
                   onClick={this.openCreateCategoryColorMenu}
                 >
                   <LabelOutlineIcon />
@@ -50,7 +52,7 @@ class CreateCategoryDialog extends Component {
               </Grid>
 
               <Grid item>
-                <TextField id="input-with-icon-grid" label="Category" />
+                <TextField id="create-category-description" label="Category" />
               </Grid>
             </Grid>
           </div>
