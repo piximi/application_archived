@@ -5,36 +5,34 @@ import { AppBar, Dialog, Tab, Tabs } from 'material-ui';
 import SettingsDialogTabContainer from '../SettingsDialogTabContainer/SettingsDialogTabContainer';
 
 class SettingsDialog extends Component {
+  state = {
+    tab: 0
+  };
+
+  onChange = (event, value) => {
+    this.setState({ tab: value });
+  };
+
   render() {
-    const {
-      classes,
-      onClose,
-      open,
-      settings,
-      changeSettingsDialogTab
-    } = this.props;
+    const { classes, onClose, open } = this.props;
 
     return (
       <Dialog open={open} onClose={onClose}>
         <div className={classes.root}>
           <AppBar position="static">
-            <Tabs
-              value={settings.settings.tab}
-              onChange={changeSettingsDialogTab}
-              fullWidth
-            >
+            <Tabs value={this.state.tab} onChange={this.onChange} fullWidth>
               <Tab label="A" />
               <Tab label="B" />
               <Tab label="C" />
             </Tabs>
           </AppBar>
-          {settings.settings.tab === 0 && (
+          {this.state.tab === 0 && (
             <SettingsDialogTabContainer>A</SettingsDialogTabContainer>
           )}
-          {settings.settings.tab === 1 && (
+          {this.state.tab === 1 && (
             <SettingsDialogTabContainer>B</SettingsDialogTabContainer>
           )}
-          {settings.settings.tab === 2 && (
+          {this.state.tab === 2 && (
             <SettingsDialogTabContainer>C</SettingsDialogTabContainer>
           )}
         </div>

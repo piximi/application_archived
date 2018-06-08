@@ -25,6 +25,7 @@ import SaveIcon from '@material-ui/icons/Save';
 import * as API from '../../classifier';
 import Download from '@axetroy/react-download';
 import SendFeedbackDialog from '../SendFeedbackDialog/SendFeedbackDialog';
+import SettingsDialog from '../SettingsDialog/SettingsDialog';
 
 const onClick = (images, categories) => {
   return API.trainOnRun(images, categories);
@@ -77,13 +78,10 @@ class Sidebar extends Component {
     const {
       categories,
       classes,
-      closeSettingsDialog,
       images,
       open,
-      openSettingsDialog,
       save,
       settings,
-      toggleHelpDialog,
       toggleModelCollapse,
       toggleSettingsDialog
     } = this.props;
@@ -201,7 +199,7 @@ class Sidebar extends Component {
             </ListItem>
           </List>
 
-          <ConnectedSettingsDialog
+          <SettingsDialog
             onClose={this.closeSettingsDialog}
             open={this.state.settingsDialogOpen}
           />

@@ -13,14 +13,8 @@
     "deleteCategory": {
       "toggled": false
     },
-    "help": {
-      "open": false
-    },
     "model": {
       "collapsed": false
-    },
-    "sendFeedback": {
-      "open": false
     },
     "settings": {
       "tab": 1,
