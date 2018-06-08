@@ -1,11 +1,6 @@
 import { connect } from 'react-redux';
 
-import {
-  toggleHelpDialogAction,
-  toggleModelCollapseAction,
-  toggleSendFeedbackDialogAction,
-  toggleSettingsDialogAction
-} from '../actions/settings';
+import { toggleModelCollapseAction } from '../actions/settings';
 import Sidebar from '../components/Sidebar/Sidebar';
 
 const mapStateToProps = state => {
@@ -14,10 +9,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    toggleHelpDialog: () => dispatch(toggleHelpDialogAction()),
-    toggleModelCollapse: () => dispatch(toggleModelCollapseAction()),
-    toggleSendFeedbackDialog: () => dispatch(toggleSendFeedbackDialogAction()),
-    toggleSettingsDialog: () => dispatch(toggleSettingsDialogAction())
+    toggleModelCollapse: () => dispatch(toggleModelCollapseAction())
   };
 };
 

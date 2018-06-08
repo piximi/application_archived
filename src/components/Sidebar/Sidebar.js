@@ -33,6 +33,7 @@ const onClick = (images, categories) => {
 class Sidebar extends Component {
   state = {
     helpDialogOpen: false,
+    modelListCollapsed: false,
     sendFeedbackDialogOpen: false,
     settingsDialogOpen: false
   };
