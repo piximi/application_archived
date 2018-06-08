@@ -55,9 +55,7 @@ class Category extends Component {
       connectDropTarget,
       description,
       images,
-      visible,
-      settings,
-      toggleDeleteCategoryDialog
+      visible
     } = this.props;
 
     return connectDropTarget(
@@ -85,7 +83,7 @@ class Category extends Component {
           <ListItemSecondaryAction>
             <Tooltip id="tooltip-icon" title="Delete category">
               <ListItemIcon
-                onClick={toggleDeleteCategoryDialog}
+                onClick={this.openDeleteCategoryDialog}
                 classes={{ root: this.props.classes.icon }}
               >
                 <DeleteIcon />
