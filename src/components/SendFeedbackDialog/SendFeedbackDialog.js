@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styles from './SendFeedbackDialog.css';
 import { withStyles } from 'material-ui/styles/index';
 import {
@@ -10,25 +10,29 @@ import {
   DialogTitle
 } from 'material-ui';
 
-const SendFeedbackDialog = ({ classes, onClose, open }) => {
-  return (
-    <Dialog open={open} onClose={onClose}>
-      <DialogTitle id="form-dialog-title">Send feedback</DialogTitle>
-      <DialogContent>
-        <DialogContentText>&nbsp;</DialogContentText>
-      </DialogContent>
+class SendFeedbackDialog extends Component {
+  render() {
+    const { classes, onClose, open } = this.props;
 
-      <DialogActions>
-        <Button onClick={onClose} color="primary">
-          Cancel
-        </Button>
+    return (
+      <Dialog open={open} onClose={onClose}>
+        <DialogTitle id="form-dialog-title">Send feedback</DialogTitle>
+        <DialogContent>
+          <DialogContentText>&nbsp;</DialogContentText>
+        </DialogContent>
 
-        <Button onClick={onClose} color="primary">
-          Save
-        </Button>
-      </DialogActions>
-    </Dialog>
-  );
-};
+        <DialogActions>
+          <Button onClick={onClose} color="primary">
+            Cancel
+          </Button>
+
+          <Button onClick={onClose} color="primary">
+            Save
+          </Button>
+        </DialogActions>
+      </Dialog>
+    );
+  }
+}
 
 export default withStyles(styles, { withTheme: true })(SendFeedbackDialog);

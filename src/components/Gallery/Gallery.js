@@ -24,15 +24,27 @@ const Gallery = props => {
       {/*<Divider />*/}
 
       <main>
-        {/*<Toolbar>*/}
-        {/*<ConnectedUploadButton />*/}
+        <Toolbar>
+          <ConnectedUploadButton />
 
-        {/*<Button onClick={() => sortImages()} variant="raised">{' '}SORT{' '}</Button>*/}
+          <Button onClick={() => sortImages()} variant="raised">
+            {' '}
+            SORT{' '}
+          </Button>
 
-        {/*<div style={{ position: 'fixed', right: '10%', zIndex: 1 }} className="slidecontainer">*/}
-        {/*<input onChange={e => updateSettingColumns(e)} type="range" min="1" max="100" value={settings.columns}/>*/}
-        {/*</div>*/}
-        {/*</Toolbar>*/}
+          <div
+            style={{ position: 'fixed', right: '10%', zIndex: 1 }}
+            className="slidecontainer"
+          >
+            <input
+              onChange={e => updateSettingColumns(e)}
+              type="range"
+              min="1"
+              max="100"
+              value={settings.columns}
+            />
+          </div>
+        </Toolbar>
 
         <ConnectedImages
           columns={settings.columns}
