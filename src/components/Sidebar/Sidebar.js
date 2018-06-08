@@ -12,7 +12,6 @@ import React, { Component } from 'react';
 import styles from '../Primary/Primary.css';
 import { withStyles } from 'material-ui/styles/index';
 import ConnectedCategories from '../../containers/ConnectedCategories';
-import ConnectedSettingsDialog from '../../containers/ConnectedSettingsDialog';
 import HelpDialog from '../HelpDialog/HelpDialog';
 import SettingsIcon from '@material-ui/icons/Settings';
 import FeedbackIcon from '@material-ui/icons/Feedback';
@@ -80,10 +79,8 @@ class Sidebar extends Component {
       classes,
       images,
       open,
-      save,
       settings,
-      toggleModelCollapse,
-      toggleSettingsDialog
+      toggleModelCollapse
     } = this.props;
 
     const exportObject = {
