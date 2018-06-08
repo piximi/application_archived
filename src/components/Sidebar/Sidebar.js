@@ -32,18 +32,45 @@ const onClick = (images, categories) => {
 
 class Sidebar extends Component {
   state = {
-    sendFeedbackDialogToggled: false,
-    settingsDialogToggled: false
+    helpDialogOpen: false,
+    sendFeedbackDialogOpen: false,
+    settingsDialogOpen: false
   };
 
-  toggleSendFeedbackDialog = () => {
+  closeHelpDialog = () => {
     this.setState({
-      sendFeedbackDialogToggled: !this.state.sendFeedbackDialogToggled
+      helpDialogOpen: false
     });
   };
 
-  toggleSettingsDialog = () => {
-    this.setState({ settingsDialogToggled: !this.state.settingsDialogToggled });
+  closeSendFeedbackDialog = () => {
+    this.setState({
+      sendFeedbackDialogOpen: false
+    });
+  };
+
+  closeSettingsDialog = () => {
+    this.setState({
+      settingsDialogOpen: false
+    });
+  };
+
+  openHelpDialog = () => {
+    this.setState({
+      helpDialogOpen: true
+    });
+  };
+
+  openSendFeedbackDialog = () => {
+    this.setState({
+      sendFeedbackDialogOpen: true
+    });
+  };
+
+  openSettingsDialog = () => {
+    this.setState({
+      settingsDialogOpen: true
+    });
   };
 
   render() {
@@ -53,13 +80,11 @@ class Sidebar extends Component {
       closeSettingsDialog,
       images,
       open,
-      openHelpDialog,
       openSettingsDialog,
       save,
       settings,
       toggleHelpDialog,
       toggleModelCollapse,
-      toggleSendFeedbackDialog,
       toggleSettingsDialog
     } = this.props;
 
@@ -151,7 +176,7 @@ class Sidebar extends Component {
           <Divider />
 
           <List dense>
-            <ListItem dense button onClick={toggleSettingsDialog}>
+            <ListItem dense button onClick={this.openSettingsDialog}>
               <ListItemIcon>
                 <SettingsIcon />
               </ListItemIcon>
@@ -159,7 +184,7 @@ class Sidebar extends Component {
               <ListItemText primary="Settings" />
             </ListItem>
 
-            <ListItem dense button onClick={toggleSendFeedbackDialog}>
+            <ListItem dense button onClick={this.openSendFeedbackDialog}>
               <ListItemIcon>
                 <FeedbackIcon />
               </ListItemIcon>
@@ -167,7 +192,7 @@ class Sidebar extends Component {
               <ListItemText primary="Send feedback" />
             </ListItem>
 
-            <ListItem dense button onClick={toggleHelpDialog}>
+            <ListItem dense button onClick={this.openHelpDialog}>
               <ListItemIcon>
                 <HelpIcon />
               </ListItemIcon>
@@ -177,16 +202,19 @@ class Sidebar extends Component {
           </List>
 
           <ConnectedSettingsDialog
-            onClose={toggleSettingsDialog}
-            open={settings.settings.open}
+            onClose={this.closeSettingsDialog}
+            open={this.state.settingsDialogOpen}
           />
 
           <SendFeedbackDialog
-            onClose={this.toggleSendFeedbackDialog()}
-            open={this.state.sendFeedbackDialogToggled}
+            onClose={this.closeSendFeedbackDialog}
+            open={this.state.sendFeedbackDialogOpen}
           />
 
-          <HelpDialog onClose={toggleHelpDialog} open={settings.help.open} />
+          <HelpDialog
+            onClose={this.closeHelpDialog}
+            open={this.state.helpDialogOpen}
+          />
         </Drawer>
       </Grid>
     );
