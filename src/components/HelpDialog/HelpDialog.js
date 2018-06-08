@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styles from './HelpDialog.css';
 import { withStyles } from 'material-ui/styles/index';
 import {
@@ -9,24 +9,28 @@ import {
   DialogContentText
 } from 'material-ui';
 
-const HelpDialog = ({ open, onClose }) => {
-  return (
-    <Dialog open={open} onClose={onClose}>
-      <DialogContent>
-        <DialogContentText>&nbsp;</DialogContentText>
-      </DialogContent>
+class HelpDialog extends Component {
+  render() {
+    const { onClose, open } = this.props;
 
-      <DialogActions>
-        <Button onClick={onClose} color="primary">
-          Cancel
-        </Button>
+    return (
+      <Dialog open={open} onClose={onClose}>
+        <DialogContent>
+          <DialogContentText>&nbsp;</DialogContentText>
+        </DialogContent>
 
-        <Button onClick={onClose} color="primary">
-          OK
-        </Button>
-      </DialogActions>
-    </Dialog>
-  );
-};
+        <DialogActions>
+          <Button onClick={onClose} color="primary">
+            Cancel
+          </Button>
+
+          <Button onClick={onClose} color="primary">
+            OK
+          </Button>
+        </DialogActions>
+      </Dialog>
+    );
+  }
+}
 
 export default withStyles(styles, { withTheme: true })(HelpDialog);
