@@ -6,56 +6,81 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
-  FormControl,
+  IconButton,
   Grid,
-  Input,
-  InputLabel
+  Menu,
+  MenuItem,
+  TextField
 } from 'material-ui';
-import AddIcon from '@material-ui/icons/Add';
+import LabelOutlineIcon from '@material-ui/icons/LabelOutline';
 
 class CreateCategoryDialog extends Component {
+  state = {
+    anchor: null
+  };
+
+  handleClick = event => {
+    this.setState({
+      anchor: event.currentTarget
+    });
+  };
+
+  closeCreateCategoryColorMenu = () => {
+    this.setState({
+      anchor: null
+    });
+  };
+
   render() {
-    const { toggleCreateCategoryColorMenu, onClose, open } = this.props;
+    const { classes, onClose, open } = this.props;
 
     return (
       <Dialog open={open} onClose={onClose}>
         <DialogContent>
-          <Grid container spacing={24} alignItems="flex-end">
-            <Grid item>
-              <Button
-                variant="fab"
-                mini
-                color="secondary"
-                aria-label="add"
-                onClick={toggleCreateCategoryColorMenu}
-              >
-                <AddIcon />
-              </Button>´
-            </Grid>
+          <div className={classes.margin}>
+            <Grid container spacing={8} alignItems="flex-end">
+              <Grid item>
+                <IconButton
+                  aria-haspopup="true"
+                  aria-owns={this.state.anchor ? 'simple-menu' : null}
+                  onClick={this.handleClick}
+                >
+                  <LabelOutlineIcon />
+                </IconButton>
+              </Grid>
 
-            <Grid item>
-              <FormControl>
-                <InputLabel htmlFor="name-simple">Category</InputLabel>
-                <Input id="name-simple" />
-              </FormControl>
+              <Grid item>
+                <TextField id="input-with-icon-grid" label="Category" />
+              </Grid>
             </Grid>
-          </Grid>
+          </div>
         </DialogContent>
 
         <DialogActions>
-          <Button onClick={() => onClose('Cancel')} color="primary">
+          <Button color="primary" onClick={onClose}>
             Cancel
           </Button>
 
           <Button
+            color="primary"
             onClick={() =>
               onClose('Create', document.getElementById('name-simple'))
             }
-            color="primary"
           >
             Create
           </Button>
         </DialogActions>
+
+        <Menu
+          anchorEl={this.state.anchor}
+          id="create-category-color-menu"
+          onClose={this.closeCreateCategoryColorMenu}
+          open={Boolean(this.state.anchor)}
+        >
+          <MenuItem onClick={this.closeCreateCategoryColorMenu}>
+            &nbsp;
+          </MenuItem>
+        </Menu>
       </Dialog>
     );
   }
