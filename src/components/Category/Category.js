@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   ListItem,
   ListItemIcon,
@@ -30,60 +30,80 @@ function collect(connect, monitor) {
   };
 }
 
-const Category = props => {
-  const {
-    identifier,
-    updateCategoryVisibility,
-    color,
-    connectDropTarget,
-    description,
-    images,
-    visible,
-    settings,
-    toggleDeleteCategoryDialog
-  } = props;
+class Category extends Component {
+  state = {
+    deleteCategoryDialogOpen: false
+  };
 
-  return connectDropTarget(
-    <div>
-      <ListItem
-        dense
-        button
-        onClick={() => updateCategoryVisibility(images, !visible)}
-        classes={{
-          root: props.isOver ? props.classes.isOver : props.classes.isNotOver
-        }}
-      >
-        <ListItemIcon>
-          {visible ? (
-            <LabelIcon style={{ color: color }} />
-          ) : (
-            <LabelOutlineIcon style={{ color: color }} />
-          )}
-        </ListItemIcon>
+  closeDeleteCategoryDialog = () => {
+    this.setState({
+      deleteCategoryDialogOpen: false
+    });
+  };
 
-        <ListItemText primary={description} />
+  openDeleteCategoryDialog = () => {
+    this.setState({
+      deleteCategoryDialogOpen: true
+    });
+  };
 
-        <ListItemSecondaryAction>
-          <Tooltip id="tooltip-icon" title="Delete category">
-            <ListItemIcon
-              onClick={toggleDeleteCategoryDialog}
-              classes={{ root: props.classes.icon }}
-            >
-              <DeleteIcon />
-            </ListItemIcon>
-          </Tooltip>
-        </ListItemSecondaryAction>
-      </ListItem>
+  render() {
+    const {
+      identifier,
+      updateCategoryVisibility,
+      color,
+      connectDropTarget,
+      description,
+      images,
+      visible,
+      settings,
+      toggleDeleteCategoryDialog
+    } = this.props;
 
-      <ConnectedDeleteCategoryDialog
-        description={description}
-        identifier={identifier}
-        onClose={toggleDeleteCategoryDialog}
-        open={settings.deleteCategory.toggled}
-      />
-    </div>
-  );
-};
+    return connectDropTarget(
+      <div>
+        <ListItem
+          dense
+          button
+          onClick={() => updateCategoryVisibility(images, !visible)}
+          classes={{
+            root: this.props.isOver
+              ? this.props.classes.isOver
+              : this.props.classes.isNotOver
+          }}
+        >
+          <ListItemIcon>
+            {visible ? (
+              <LabelIcon style={{ color: color }} />
+            ) : (
+              <LabelOutlineIcon style={{ color: color }} />
+            )}
+          </ListItemIcon>
+
+          <ListItemText primary={description} />
+
+          <ListItemSecondaryAction>
+            <Tooltip id="tooltip-icon" title="Delete category">
+              <ListItemIcon
+                onClick={toggleDeleteCategoryDialog}
+                classes={{ root: this.props.classes.icon }}
+              >
+                <DeleteIcon />
+              </ListItemIcon>
+            </Tooltip>
+          </ListItemSecondaryAction>
+        </ListItem>
+
+        <ConnectedDeleteCategoryDialog
+          description={description}
+          identifier={identifier}
+          onClose={this.closeDeleteCategoryDialog}
+          open={this.state.deleteCategoryDialogOpen}
+        />
+      </div>
+    );
+  }
+}
 
 export default withStyles(styles, { withTheme: true })(
   DropTarget('Image', spec, collect)(Category)
