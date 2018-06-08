@@ -19,7 +19,7 @@ class CreateCategoryDialog extends Component {
     anchor: null
   };
 
-  handleClick = event => {
+  openCreateCategoryColorMenu = event => {
     this.setState({
       anchor: event.currentTarget
     });
@@ -32,7 +32,7 @@ class CreateCategoryDialog extends Component {
   };
 
   render() {
-    const { classes, onClose, open } = this.props;
+    const { classes, createCategory, onClose, open } = this.props;
 
     return (
       <Dialog open={open} onClose={onClose}>
@@ -43,7 +43,7 @@ class CreateCategoryDialog extends Component {
                 <IconButton
                   aria-haspopup="true"
                   aria-owns={this.state.anchor ? 'simple-menu' : null}
-                  onClick={this.handleClick}
+                  onClick={this.openCreateCategoryColorMenu}
                 >
                   <LabelOutlineIcon />
                 </IconButton>
@@ -61,12 +61,7 @@ class CreateCategoryDialog extends Component {
             Cancel
           </Button>
 
-          <Button
-            color="primary"
-            onClick={() =>
-              onClose('Create', document.getElementById('name-simple'))
-            }
-          >
+          <Button color="primary" onClick={createCategory}>
             Create
           </Button>
         </DialogActions>
