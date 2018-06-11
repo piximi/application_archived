@@ -17,6 +17,7 @@ function loadStories() {
   require('../src/stories/SettingsDialog');
   require('../src/stories/SettingsDialogTabContainer');
   // require('../src/stories/Sidebar');
+  require('../src/stories/Settings');
   require('../src/stories/UploadDialog');
 }
 
