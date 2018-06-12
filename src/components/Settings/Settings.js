@@ -54,8 +54,7 @@ class Settings extends Component {
                 className={classes.menuButton}
                 color="inherit"
                 aria-label="Menu"
-                component={Link}
-                to="/"
+                onClick={this.props.onClose}
               >
                 <ArrowBackIcon />
               </IconButton>

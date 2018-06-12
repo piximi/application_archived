@@ -23,7 +23,6 @@
     "react-dom": "^16.3.2",
     "react-hotkeys": "^1.1.4",
     "react-lazyload": "^2.3.0",
-    "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
     "react-transition-group": "^2.3.1",
     "reselect": "^3.0.1",

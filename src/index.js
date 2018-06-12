@@ -24,13 +24,7 @@ const store = createStore(reducer, demo);
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router>
-      <Switch>
-        <Route exact path="/" component={App} />
-
-        <Route path="/settings" component={Settings} />
-      </Switch>
-    </Router>
+    <App />
   </Provider>,
   document.getElementById('root')
 );

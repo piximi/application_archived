@@ -25,7 +25,6 @@ import * as API from '../../classifier';
 import Download from '@axetroy/react-download';
 import SendFeedbackDialog from '../SendFeedbackDialog/SendFeedbackDialog';
 import SettingsDialog from '../SettingsDialog/SettingsDialog';
-import { Link } from 'react-router-dom';
 
 const onClick = (images, categories) => {
   return API.trainOnRun(images, categories);
@@ -173,7 +172,7 @@ class Sidebar extends Component {
           <Divider />
 
           <List dense>
-            <ListItem dense button component={Link} to="/settings">
+            <ListItem dense button onClick={this.openSettingsDialog}>
               <ListItemIcon>
                 <SettingsIcon />
               </ListItemIcon>
