@@ -91,128 +91,118 @@ class Sidebar extends Component {
     };
 
     return (
-      <Grid item xs={2}>
-        <Drawer
-          anchor="left"
-          classes={{ paper: classes.drawerPaper }}
-          open={settings.sidebar.open}
-          variant="permanent"
-        >
-          <div className={classes.toolbar} />
+      <Drawer
+        anchor="left"
+        classes={{ paper: classes.drawerPaper }}
+        open={settings.sidebar.open}
+        variant="permanent"
+      >
+        <div className={classes.toolbar} />
 
-          <List dense>
-            <ListItem button component="label">
+        <List dense>
+          <ListItem button component="label">
+            <ListItemIcon>
+              <FolderOpenIcon />
+            </ListItemIcon>
+            <ListItemText inset primary="Open..." />
+
+            <input
+              style={{ display: 'none' }}
+              type="file"
+              accept=".cyto"
+              name="file"
+              id="file"
+              onChange={e => open(e.target.files)}
+            />
+          </ListItem>
+
+          <Download
+            file="example.cyto"
+            content={JSON.stringify(exportObject, null, '\t')}
+          >
+            <ListItem button>
               <ListItemIcon>
-                <FolderOpenIcon />
-              </ListItemIcon>
-              <ListItemText inset primary="Open..." />
-
-              <input
-                style={{ display: 'none' }}
-                type="file"
-                accept=".cyto"
-                name="file"
-                id="file"
-                onChange={e => open(e.target.files)}
-              />
-            </ListItem>
-
-            <Download
-              file="example.cyto"
-              content={JSON.stringify(exportObject, null, '\t')}
-            >
-              <ListItem button>
-                <ListItemIcon>
-                  <SaveIcon />
-                </ListItemIcon>
-
-                <ListItemText inset primary="Save" />
-              </ListItem>
-            </Download>
-          </List>
-
-          <Divider />
-
-          <ConnectedCategories />
-
-          <Divider />
-
-          <List dense>
-            <ListItem button onClick={toggleModelCollapse}>
-              <ListItemIcon>
-                {!settings.model.collapsed ? (
-                  <ExpandLessIcon />
-                ) : (
-                  <ExpandMoreIcon />
-                )}
+                <SaveIcon />
               </ListItemIcon>
 
-              <ListItemText inset primary="Model" />
+              <ListItemText inset primary="Save" />
             </ListItem>
+          </Download>
+        </List>
 
-            <Collapse
-              in={!settings.model.collapsed}
-              timeout="auto"
-              unmountOnExit
-            >
-              <ListItem
-                dense
-                button
-                onClick={() => onClick(images, categories)}
-              >
-                <ListItemIcon>
-                  <PlayCircleOutlineIcon />
-                </ListItemIcon>
+        <Divider />
 
-                <ListItemText primary="Fit" />
-              </ListItem>
-            </Collapse>
-          </List>
+        <ConnectedCategories />
 
-          <Divider />
+        <Divider />
 
-          <List dense>
-            <ListItem dense button onClick={this.openSettingsDialog}>
+        <List dense>
+          <ListItem button onClick={toggleModelCollapse}>
+            <ListItemIcon>
+              {!settings.model.collapsed ? (
+                <ExpandLessIcon />
+              ) : (
+                <ExpandMoreIcon />
+              )}
+            </ListItemIcon>
+
+            <ListItemText inset primary="Model" />
+          </ListItem>
+
+          <Collapse in={!settings.model.collapsed} timeout="auto" unmountOnExit>
+            <ListItem dense button onClick={() => onClick(images, categories)}>
               <ListItemIcon>
-                <SettingsIcon />
+                <PlayCircleOutlineIcon />
               </ListItemIcon>
 
-              <ListItemText primary="Settings" />
+              <ListItemText primary="Fit" />
             </ListItem>
+          </Collapse>
+        </List>
 
-            <ListItem dense button onClick={this.openSendFeedbackDialog}>
-              <ListItemIcon>
-                <FeedbackIcon />
-              </ListItemIcon>
+        <Divider />
 
-              <ListItemText primary="Send feedback" />
-            </ListItem>
+        <List dense>
+          <ListItem dense button onClick={this.openSettingsDialog}>
+            <ListItemIcon>
+              <SettingsIcon />
+            </ListItemIcon>
 
-            <ListItem dense button onClick={this.openHelpDialog}>
-              <ListItemIcon>
-                <HelpIcon />
-              </ListItemIcon>
+            <ListItemText primary="Settings" />
+          </ListItem>
 
-              <ListItemText primary="Help" />
-            </ListItem>
-          </List>
+          <ListItem dense button onClick={this.openSendFeedbackDialog}>
+            <ListItemIcon>
+              <FeedbackIcon />
+            </ListItemIcon>
 
-          <SettingsDialog
-            onClose={this.closeSettingsDialog}
-            open={this.state.settingsDialogOpen}
-          />
+            <ListItemText primary="Send feedback" />
+          </ListItem>
 
-          <SendFeedbackDialog
-            onClose={this.closeSendFeedbackDialog}
-            open={this.state.sendFeedbackDialogOpen}
-          />
+          <ListItem dense button onClick={this.openHelpDialog}>
+            <ListItemIcon>
+              <HelpIcon />
+            </ListItemIcon>
 
-          <HelpDialog
-            onClose={this.closeHelpDialog}
-            open={this.state.helpDialogOpen}
-          />
-        </Drawer>
-      </Grid>
+            <ListItemText primary="Help" />
+          </ListItem>
+        </List>
+
+        <SettingsDialog
+          onClose={this.closeSettingsDialog}
+          open={this.state.settingsDialogOpen}
+        />
+
+        <SendFeedbackDialog
+          onClose={this.closeSendFeedbackDialog}
+          open={this.state.sendFeedbackDialogOpen}
+        />
+
+        <HelpDialog
+          onClose={this.closeHelpDialog}
+          open={this.state.helpDialogOpen}
+        />
+      </Drawer>
     );
   }
 }
