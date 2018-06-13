@@ -1,80 +1,30 @@
+const drawerWidth = 240;
+
 const styles = theme => ({
-  root: {
-    flexGrow: 1
-  },
-  appFrame: {
-    height: 430,
-    zIndex: 1,
-    overflow: 'hidden',
-    position: 'relative',
-    display: 'flex',
-    width: '100%'
-  },
   appBar: {
-    position: 'absolute',
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
-    })
+    borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
+    boxShadow: 'none',
+    left: 0,
+    width: 'inherit'
   },
-  appBarShift: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen
-    })
+  drawerHeader: {
+    // display: 'flex',
+    // alignItems: 'center',
+    // justifyContent: 'flex-end',
+    // padding: '0 8px',
+    // borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
+    // ...theme.mixins.toolbar,
   },
-  'appBarShift-left': {
-    marginLeft: drawerWidth
-  },
-  'appBarShift-right': {
-    marginRight: drawerWidth
-  },
-  menuButton: {
-    marginLeft: 12,
-    marginRight: 20
-  },
-  hide: {
-    display: 'none'
+  flex: {
+    flex: 1
   },
   drawerPaper: {
     position: 'relative',
-    width: drawerWidth
+    width: drawerWidth,
+    boxShadow:
+      '0 16px 24px 2px rgba(0,0,0,0.14),0 6px 30px 5px rgba(0,0,0,0.12),0 8px 10px -5px rgba(0,0,0,0.2)'
   },
-  drawerHeader: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    padding: '0 8px',
-    ...theme.mixins.toolbar
-  },
-  content: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.default,
-    padding: theme.spacing.unit * 3,
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
-    })
-  },
-  'content-left': {
-    marginLeft: -drawerWidth
-  },
-  'content-right': {
-    marginRight: -drawerWidth
-  },
-  contentShift: {
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen
-    })
-  },
-  'contentShift-left': {
-    marginLeft: 0
-  },
-  'contentShift-right': {
-    marginRight: 0
-  }
+  toolbar: theme.mixins.toolbar
 });
 
 export default styles;

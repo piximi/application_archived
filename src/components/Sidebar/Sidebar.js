@@ -1,15 +1,20 @@
 import {
+  AppBar,
   Collapse,
   Divider,
   Drawer,
   Grid,
+  IconButton,
   List,
   ListItem,
   ListItemIcon,
-  ListItemText
+  ListItemSecondaryAction,
+  ListItemText,
+  Toolbar,
+  Typography
 } from 'material-ui';
 import React, { Component } from 'react';
-import styles from '../Primary/Primary.css';
+import styles from './Sidebar.css';
 import { withStyles } from 'material-ui/styles/index';
 import ConnectedCategories from '../../containers/ConnectedCategories';
 import HelpDialog from '../HelpDialog/HelpDialog';
@@ -25,6 +30,8 @@ import * as API from '../../classifier';
 import Download from '@axetroy/react-download';
 import SendFeedbackDialog from '../SendFeedbackDialog/SendFeedbackDialog';
 import SettingsDialog from '../SettingsDialog/SettingsDialog';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import classNames from 'classnames';
 
 const onClick = (images, categories) => {
   return API.trainOnRun(images, categories);
@@ -81,7 +88,9 @@ class Sidebar extends Component {
       images,
       open,
       settings,
-      toggleModelCollapse
+      toggleModelCollapse,
+      toggled,
+      toggle
     } = this.props;
 
     const exportObject = {
@@ -94,10 +103,32 @@ class Sidebar extends Component {
       <Drawer
         anchor="left"
         classes={{ paper: classes.drawerPaper }}
-        open={settings.sidebar.open}
-        variant="permanent"
+        open={toggled}
+        variant="persistent"
       >
-        <div className={classes.toolbar} />
+        <AppBar
+          className={classNames(classes.appBar)}
+          color="default"
+          position="static"
+        >
+          <Toolbar>
+            <Typography
+              variant="title"
+              color="inherit"
+              className={classes.flex}
+            >
+              Cyto
+            </Typography>
+
+            <IconButton
+              className={classNames(classes.menuButton)}
+              color="inherit"
+              onClick={toggle}
+            >
+              <ChevronLeftIcon />
+            </IconButton>
+          </Toolbar>
+        </AppBar>
 
         <List dense>
           <ListItem button component="label">
