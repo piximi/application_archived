@@ -7,7 +7,6 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import data from './images/mnist';
 import dataImages from './images/stock';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import reducer from './reducers';
 import Settings from './components/Settings/Settings';
 
