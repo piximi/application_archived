@@ -4,6 +4,8 @@ import styles from './Application.css';
 import classNames from 'classnames';
 import ConnectedSidebar from '../../containers/ConnectedSidebar';
 import PrimaryAppBar from '../AppBar/PrimaryAppBar';
+import { Button } from 'material-ui';
+import AddIcon from '@material-ui/icons/Add';
 
 class Application extends Component {
   state = {
@@ -30,6 +32,10 @@ class Application extends Component {
           })}
         >
           <div className={classes.drawerHeader} />
+
+          <Button variant="fab" className={classes.fab}>
+            <AddIcon />
+          </Button>
         </main>
       </div>
     );
