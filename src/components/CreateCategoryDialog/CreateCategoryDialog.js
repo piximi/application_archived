@@ -10,9 +10,12 @@ import {
   Grid,
   Menu,
   MenuItem,
-  TextField
+  TextField,
+  Popover,
+  Typography
 } from 'material-ui';
 import LabelOutlineIcon from '@material-ui/icons/LabelOutline';
+import ColorPicker from '../ColorPicker/ColorPicker';
 
 class CreateCategoryDialog extends Component {
   state = {
@@ -68,16 +71,21 @@ class CreateCategoryDialog extends Component {
           </Button>
         </DialogActions>
 
-        <Menu
-          anchorEl={this.state.anchor}
-          id="create-category-color-menu"
-          onClose={this.closeCreateCategoryColorMenu}
+        <Popover
           open={Boolean(this.state.anchor)}
+          anchorEl={this.state.anchor}
+          onClose={this.closeCreateCategoryColorMenu}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'center'
+          }}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'center'
+          }}
         >
-          <MenuItem onClick={this.closeCreateCategoryColorMenu}>
-            &nbsp;
-          </MenuItem>
-        </Menu>
+          <ColorPicker />
+        </Popover>
       </Dialog>
     );
   }
