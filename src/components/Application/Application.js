@@ -5,7 +5,6 @@ import { AppBar, IconButton, Toolbar, Typography } from 'material-ui';
 import classNames from 'classnames';
 import MenuIcon from '@material-ui/icons/Menu';
 import ConnectedSidebar from '../../containers/ConnectedSidebar';
-import ColorPicker from '../ColorPicker/ColorPicker';
 
 class Application extends Component {
   state = {

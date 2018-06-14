@@ -84,7 +84,9 @@ class CreateCategoryDialog extends Component {
             horizontal: 'center'
           }}
         >
-          <ColorPicker />
+          <div className={classes.colorPicker}>
+            <ColorPicker />
+          </div>
         </Popover>
       </Dialog>
     );
