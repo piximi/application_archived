@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { withStyles } from 'material-ui/styles';
 import styles from './Application.css';
-import { AppBar, IconButton, Toolbar, Typography } from 'material-ui';
 import classNames from 'classnames';
-import MenuIcon from '@material-ui/icons/Menu';
 import ConnectedSidebar from '../../containers/ConnectedSidebar';
+import PrimaryAppBar from '../AppBar/PrimaryAppBar';
 
 class Application extends Component {
   state = {
@@ -20,31 +19,7 @@ class Application extends Component {
 
     return (
       <div className={classes.appFrame}>
-        <AppBar
-          className={classNames(classes.appBar, {
-            [classes.appBarShift]: this.state.open,
-            [classes.appBarShiftLeft]: this.state.open
-          })}
-          color="default"
-        >
-          <Toolbar disableGutters={!this.state.open}>
-            <IconButton
-              aria-label="open drawer"
-              className={classNames(
-                classes.menuButton,
-                this.state.open && classes.hide
-              )}
-              color="inherit"
-              onClick={this.onClick}
-            >
-              <MenuIcon />
-            </IconButton>
-
-            <Typography variant="title" color="inherit">
-              Cyto
-            </Typography>
-          </Toolbar>
-        </AppBar>
+        <PrimaryAppBar toggle={this.onClick} toggled={this.state.open} />
 
         <ConnectedSidebar toggle={this.onClick} toggled={this.state.open} />
 

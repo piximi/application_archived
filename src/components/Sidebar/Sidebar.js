@@ -117,7 +117,7 @@ class Sidebar extends Component {
               color="inherit"
               className={classes.flex}
             >
-              Cyto
+              Logo
             </Typography>
 
             <IconButton
