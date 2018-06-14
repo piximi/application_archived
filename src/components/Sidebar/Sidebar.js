@@ -32,6 +32,7 @@ import SendFeedbackDialog from '../SendFeedbackDialog/SendFeedbackDialog';
 import SettingsDialog from '../SettingsDialog/SettingsDialog';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import classNames from 'classnames';
+import SidebarAppBar from '../SidebarAppBar/SidebarAppBar';
 
 const onClick = (images, categories) => {
   return API.trainOnRun(images, categories);
@@ -106,29 +107,33 @@ class Sidebar extends Component {
         open={toggled}
         variant="persistent"
       >
-        <AppBar
-          className={classNames(classes.appBar)}
-          color="default"
-          position="static"
-        >
-          <Toolbar>
-            <Typography
-              variant="title"
-              color="inherit"
-              className={classes.flex}
-            >
-              Logo
-            </Typography>
+        <div className={classes.drawerHeader} />
 
-            <IconButton
-              className={classNames(classes.menuButton)}
-              color="inherit"
-              onClick={toggle}
-            >
-              <ChevronLeftIcon />
-            </IconButton>
-          </Toolbar>
-        </AppBar>
+        <SidebarAppBar toggle={toggle} />
+
+        {/*<AppBar*/}
+        {/*className={classNames(classes.appBar)}*/}
+        {/*color="default"*/}
+        {/*position="static"*/}
+        {/*>*/}
+        {/*<Toolbar>*/}
+        {/*<Typography*/}
+        {/*variant="title"*/}
+        {/*color="inherit"*/}
+        {/*className={classes.flex}*/}
+        {/*>*/}
+        {/*Logo*/}
+        {/*</Typography>*/}
+
+        {/*<IconButton*/}
+        {/*className={classNames(classes.menuButton)}*/}
+        {/*color="inherit"*/}
+        {/*onClick={toggle}*/}
+        {/*>*/}
+        {/*<ChevronLeftIcon />*/}
+        {/*</IconButton>*/}
+        {/*</Toolbar>*/}
+        {/*</AppBar>*/}
 
         <List dense>
           <ListItem button component="label">

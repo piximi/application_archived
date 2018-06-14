@@ -8,12 +8,11 @@ const styles = theme => ({
     width: 'inherit'
   },
   drawerHeader: {
-    // display: 'flex',
-    // alignItems: 'center',
-    // justifyContent: 'flex-end',
-    // padding: '0 8px',
-    // borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
-    // ...theme.mixins.toolbar,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    padding: '0 8px',
+    ...theme.mixins.toolbar
   },
   flex: {
     flex: 1
