@@ -19,7 +19,24 @@ import ColorPicker from '../ColorPicker/ColorPicker';
 
 class CreateCategoryDialog extends Component {
   state = {
-    anchor: null
+    anchor: null,
+    color: '#FF0000',
+    description: 'foo'
+  };
+
+  onColorChange = (color, event) => {
+    this.setState({
+      ...this.state,
+      anchor: null,
+      color: color.hex
+    });
+  };
+
+  onDescriptionChange = event => {
+    this.setState({
+      ...this.state,
+      description: event.target.value
+    });
   };
 
   openCreateCategoryColorMenu = event => {
@@ -28,7 +45,7 @@ class CreateCategoryDialog extends Component {
     });
   };
 
-  closeCreateCategoryColorMenu = () => {
+  closePopover = () => {
     this.setState({
       anchor: null
     });
@@ -55,7 +72,11 @@ class CreateCategoryDialog extends Component {
               </Grid>
 
               <Grid item>
-                <TextField id="create-category-description" label="Category" />
+                <TextField
+                  id="create-category-description"
+                  label="Category"
+                  onChange={this.onDescriptionChange}
+                />
               </Grid>
             </Grid>
           </div>
@@ -66,7 +87,12 @@ class CreateCategoryDialog extends Component {
             Cancel
           </Button>
 
-          <Button color="primary" onClick={createCategory}>
+          <Button
+            color="primary"
+            onClick={() =>
+              createCategory(this.state.color, this.state.description)
+            }
+          >
             Create
           </Button>
         </DialogActions>
@@ -74,7 +100,7 @@ class CreateCategoryDialog extends Component {
         <Popover
           open={Boolean(this.state.anchor)}
           anchorEl={this.state.anchor}
-          onClose={this.closeCreateCategoryColorMenu}
+          onClose={this.closePopover}
           anchorOrigin={{
             vertical: 'bottom',
             horizontal: 'center'
@@ -85,7 +111,7 @@ class CreateCategoryDialog extends Component {
           }}
         >
           <div className={classes.colorPicker}>
-            <ColorPicker />
+            <ColorPicker onChange={this.onColorChange} />
           </div>
         </Popover>
       </Dialog>

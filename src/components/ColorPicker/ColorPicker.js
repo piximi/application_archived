@@ -5,7 +5,9 @@ import { CirclePicker } from 'react-color';
 
 class ColorPicker extends Component {
   render() {
-    return <CirclePicker />;
+    const { onChange } = this.props;
+
+    return <CirclePicker onChange={onChange} />;
   }
 }
 

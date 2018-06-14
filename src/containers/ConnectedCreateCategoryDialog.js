@@ -11,10 +11,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    createCategory: () => {
+    createCategory: (color, description) => {
       const category = {
-        color: 'red',
-        description: '',
+        color: color,
+        description: description,
         identifier: uuidv4(),
         index: index++,
         visible: true
