@@ -58,27 +58,22 @@ class CreateCategoryDialog extends Component {
       <Dialog open={open} onClose={onClose}>
         <DialogContent>
           <div className={classes.margin}>
-            <Grid container spacing={8} alignItems="flex-end">
-              <Grid item>
-                <IconButton
-                  aria-haspopup="true"
-                  aria-owns={
-                    this.state.anchor ? 'create-category-color-menu' : null
-                  }
-                  onClick={this.openCreateCategoryColorMenu}
-                >
-                  <LabelOutlineIcon />
-                </IconButton>
-              </Grid>
+            <IconButton
+              aria-haspopup="true"
+              aria-owns={
+                this.state.anchor ? 'create-category-color-menu' : null
+              }
+              onClick={this.openCreateCategoryColorMenu}
+              styles={{}}
+            >
+              <LabelOutlineIcon />
+            </IconButton>
 
-              <Grid item>
-                <TextField
-                  id="create-category-description"
-                  label="Category"
-                  onChange={this.onDescriptionChange}
-                />
-              </Grid>
-            </Grid>
+            <TextField
+              id="create-category-description"
+              label="Category"
+              onChange={this.onDescriptionChange}
+            />
           </div>
         </DialogContent>
 
