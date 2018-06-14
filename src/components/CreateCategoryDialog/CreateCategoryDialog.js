@@ -18,7 +18,7 @@ class CreateCategoryDialog extends Component {
   state = {
     anchor: null,
     color: '#FF0000',
-    description: 'foo'
+    description: ''
   };
 
   onColorChange = (color, event) => {
@@ -57,9 +57,8 @@ class CreateCategoryDialog extends Component {
           <div className={classes.margin}>
             <IconButton
               aria-haspopup="true"
-              aria-owns={
-                this.state.anchor ? 'create-category-color-menu' : null
-              }
+              aria-owns={this.state.anchor ? 'create-category-color' : null}
+              disableRipple
               onClick={this.openCreateCategoryColorMenu}
               style={{
                 color: this.state.color
@@ -70,8 +69,9 @@ class CreateCategoryDialog extends Component {
 
             <TextField
               id="create-category-description"
-              label="Category"
+              label="Description"
               onChange={this.onDescriptionChange}
+              value={this.state.description}
             />
           </div>
         </DialogContent>
@@ -87,7 +87,7 @@ class CreateCategoryDialog extends Component {
               createCategory(this.state.color, this.state.description)
             }
           >
-            Create
+            Create category
           </Button>
         </DialogActions>
 
