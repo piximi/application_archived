@@ -7,13 +7,10 @@ import {
   DialogActions,
   DialogContent,
   IconButton,
-  Grid,
-  Menu,
-  MenuItem,
   TextField,
-  Popover,
-  Typography
+  Popover
 } from 'material-ui';
+import LabelIcon from '@material-ui/icons/Label';
 import LabelOutlineIcon from '@material-ui/icons/LabelOutline';
 import ColorPicker from '../ColorPicker/ColorPicker';
 
@@ -64,9 +61,11 @@ class CreateCategoryDialog extends Component {
                 this.state.anchor ? 'create-category-color-menu' : null
               }
               onClick={this.openCreateCategoryColorMenu}
-              styles={{}}
+              style={{
+                color: this.state.color
+              }}
             >
-              <LabelOutlineIcon />
+              <LabelIcon />
             </IconButton>
 
             <TextField
