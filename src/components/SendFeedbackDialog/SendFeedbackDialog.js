@@ -15,11 +15,16 @@ class SendFeedbackDialog extends Component {
     const { classes, onClose, open } = this.props;
 
     return (
-      <Dialog open={open} onClose={onClose}>
-        <DialogTitle id="form-dialog-title">Send feedback</DialogTitle>
-
+      <Dialog
+        open={open}
+        onClose={onClose}
+        className={classes.sendFeedbackDialog}
+      >
         <DialogContent className={classes.sendFeedbackDialogContent}>
-          <textarea className={classes.sendFeedbackTextArea} />
+          <textarea
+            className={classes.sendFeedbackTextArea}
+            placeholder={'This is an example message'}
+          />
         </DialogContent>
 
         <DialogActions>
@@ -28,7 +33,7 @@ class SendFeedbackDialog extends Component {
           </Button>
 
           <Button onClick={onClose} color="primary">
-            Save
+            Send feedback
           </Button>
         </DialogActions>
       </Dialog>

@@ -1,4 +1,5 @@
 const styles = theme => ({
+  sendFeedbackDialog: {},
   sendFeedbackDialogContent: {
     paddingLeft: 0,
     paddingRight: 0
