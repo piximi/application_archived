@@ -6,19 +6,20 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
-  DialogContentText,
-  DialogTitle
+  DialogTitle,
+  TextField
 } from 'material-ui';
 
 class SendFeedbackDialog extends Component {
   render() {
-    const { onClose, open } = this.props;
+    const { classes, onClose, open } = this.props;
 
     return (
       <Dialog open={open} onClose={onClose}>
         <DialogTitle id="form-dialog-title">Send feedback</DialogTitle>
-        <DialogContent>
-          <DialogContentText>&nbsp;</DialogContentText>
+
+        <DialogContent className={classes.sendFeedbackDialogContent}>
+          <textarea className={classes.sendFeedbackTextArea} />
         </DialogContent>
 
         <DialogActions>
