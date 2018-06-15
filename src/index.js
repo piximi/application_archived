@@ -4,11 +4,11 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
 import data from './images/mnist';
 import dataImages from './images/stock';
 import reducer from './reducers';
-import Settings from './components/Settings/Settings';
+import createRavenMiddleware from 'raven-for-redux';
 
 const demo = {
   categories: data.categories,
@@ -19,7 +19,15 @@ const demo = {
   settings: data.settings
 };
 
-const store = createStore(reducer, demo);
+const store = createStore(
+  reducer,
+  demo,
+  applyMiddleware(
+    createRavenMiddleware(window.Raven, {
+      environment: 'production'
+    })
+  )
+);
 
 ReactDOM.render(
   <Provider store={store}>

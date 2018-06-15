@@ -11,7 +11,8 @@
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
-
+    <script src=https://cdn.ravenjs.com/3.24.0/raven.min.js
+            crossorigin=anonymous></script>
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -38,5 +39,8 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script>
+      Raven.config('https://998d745a400749e898f86b8d193ca210@sentry.io/1227251', {}).install()
+    </script>
   </body>
 </html>
