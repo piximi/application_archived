@@ -111,30 +111,6 @@ class Sidebar extends Component {
 
         <SidebarAppBar toggle={toggle} />
 
-        {/*<AppBar*/}
-        {/*className={classNames(classes.appBar)}*/}
-        {/*color="default"*/}
-        {/*position="static"*/}
-        {/*>*/}
-        {/*<Toolbar>*/}
-        {/*<Typography*/}
-        {/*variant="title"*/}
-        {/*color="inherit"*/}
-        {/*className={classes.flex}*/}
-        {/*>*/}
-        {/*Logo*/}
-        {/*</Typography>*/}
-
-        {/*<IconButton*/}
-        {/*className={classNames(classes.menuButton)}*/}
-        {/*color="inherit"*/}
-        {/*onClick={toggle}*/}
-        {/*>*/}
-        {/*<ChevronLeftIcon />*/}
-        {/*</IconButton>*/}
-        {/*</Toolbar>*/}
-        {/*</AppBar>*/}
-
         <List dense>
           <ListItem button component="label">
             <ListItemIcon>

@@ -1,5 +1,6 @@
 const styles = theme => ({
   margin: {
+    marginLeft: 0,
     margin: theme.spacing.unit
   },
   colorPicker: {

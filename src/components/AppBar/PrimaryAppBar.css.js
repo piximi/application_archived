@@ -2,7 +2,6 @@ const drawerWidth = 240;
 
 const styles = theme => ({
   appBar: {
-    position: 'absolute',
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
