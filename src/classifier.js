@@ -90,7 +90,7 @@ async function train(modelDict, datasetObj) {
       validationData = datasetObj.nextValidationBatch(TEST_BATCH_SIZE);
     }
 
-    //console.log(validationData);
+    console.log(validationData);
 
     // The entire dataset doesn't fit into memory so we call fit repeatedly
     // with batches.
@@ -187,7 +187,7 @@ class Dataset {
   loadFromArray(imDataArray) {
     // function to split into training, validation and prediction set
     if (imDataArray == null) {
-      throw 'No Image Data Array given.';
+      console.log('No Image Data Array given.');
     }
 
     let labeledImages = {};

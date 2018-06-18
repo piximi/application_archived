@@ -11,7 +11,6 @@ import {
   Popover
 } from 'material-ui';
 import LabelIcon from '@material-ui/icons/Label';
-import LabelOutlineIcon from '@material-ui/icons/LabelOutline';
 import ColorPicker from '../ColorPicker/ColorPicker';
 
 class CreateCategoryDialog extends Component {

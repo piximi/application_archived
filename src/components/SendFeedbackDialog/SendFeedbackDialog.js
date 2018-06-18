@@ -1,14 +1,7 @@
 import React, { Component } from 'react';
 import styles from './SendFeedbackDialog.css';
 import { withStyles } from 'material-ui/styles/index';
-import {
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  TextField
-} from 'material-ui';
+import { Button, Dialog, DialogActions, DialogContent } from 'material-ui';
 
 class SendFeedbackDialog extends Component {
   render() {

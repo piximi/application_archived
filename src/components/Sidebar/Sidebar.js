@@ -1,17 +1,11 @@
 import {
-  AppBar,
   Collapse,
   Divider,
   Drawer,
-  Grid,
-  IconButton,
   List,
   ListItem,
   ListItemIcon,
-  ListItemSecondaryAction,
-  ListItemText,
-  Toolbar,
-  Typography
+  ListItemText
 } from 'material-ui';
 import React, { Component } from 'react';
 import styles from './Sidebar.css';
@@ -30,8 +24,6 @@ import * as API from '../../classifier';
 import Download from '@axetroy/react-download';
 import SendFeedbackDialog from '../SendFeedbackDialog/SendFeedbackDialog';
 import SettingsDialog from '../SettingsDialog/SettingsDialog';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import classNames from 'classnames';
 import SidebarAppBar from '../SidebarAppBar/SidebarAppBar';
 
 const onClick = (images, categories) => {

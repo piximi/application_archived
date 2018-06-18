@@ -28,7 +28,7 @@ const strings = dataImages.imageByteStrings;
 for (const string in strings) {
   const checksum = string;
 
-  createImage(parseInt(checksum), strings[checksum]);
+  createImage(parseInt(checksum, 10), strings[checksum]);
 }
 
 const store = createStore(reducer, demo);

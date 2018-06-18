@@ -61,11 +61,12 @@ class Image extends Component {
       color = 'rgba(0, 0, 0, 0.4)';
     }
 
-    // database.images.get(checksum).then(image => {
-    //   this.setState({
-    //     data: image.data
-    //   });
-    // });
+    // TODO: make this work
+    database.images.get(checksum).then(image => {
+      // this.setState({
+      //   data: image.data
+      // });
+    });
 
     return connectDragSource(
       <div>

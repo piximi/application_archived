@@ -95,7 +95,7 @@ const images = (state = {}, action) => {
           return 1;
         } else if (a.category === b.category) {
           return 0;
-        } else if (true) {
+        } else {
           return a.category < b.category ? -1 : 1;
         }
       });

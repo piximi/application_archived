@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import styles from './SettingsDialog.css';
 import { withStyles } from 'material-ui/styles/index';
-import { AppBar, Dialog, Slide, Tab, Tabs } from 'material-ui';
-import SettingsDialogTabContainer from '../SettingsDialogTabContainer/SettingsDialogTabContainer';
+import { Dialog, Slide } from 'material-ui';
 import Settings from '../Settings/Settings';
 
 class SettingsDialog extends Component {
@@ -19,6 +18,7 @@ class SettingsDialog extends Component {
 
     return (
       <Dialog
+        className={classes.settingsDialog}
         fullScreen
         open={open}
         onClose={onClose}

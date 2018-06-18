@@ -5,7 +5,7 @@ import ConnectedImage from '../../containers/ConnectedImage';
 import withDragDropContext from '../DragDropContext/DragDropContext';
 import styles from './Images.css';
 import { withStyles } from 'material-ui/styles/index';
-import { database, findImage } from '../../database';
+import { database } from '../../database';
 
 class Images extends Component {
   constructor(props) {
@@ -107,10 +107,6 @@ class Images extends Component {
         this.myMap[index] = counter;
 
         this.reverseMap[counter] = index;
-
-        const checksum = sample.identifier;
-
-        const image = this.findImage(checksum);
 
         return (
           <HotKeys
