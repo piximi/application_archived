@@ -2,8 +2,17 @@ import Dexie from 'dexie';
 
 const database = new Dexie('cyto');
 
-database.version(1).stores({
-  images: 'checksum, data'
-});
+const createImage = (checksum, data) => {
+  database.images.add({
+    checksum: checksum,
+    data: data
+  });
+};
 
-export { database };
+const findImage = checksum => {
+  database.images.get(checksum, image => {
+    return image;
+  });
+};
+
+export { createImage, database, findImage };

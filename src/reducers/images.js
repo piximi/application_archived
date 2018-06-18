@@ -11,6 +11,7 @@ import {
 
 const images = (state = {}, action) => {
   let images = [];
+
   switch (action.type) {
     case CREATE_IMAGE:
       return {
@@ -37,7 +38,6 @@ const images = (state = {}, action) => {
         ...state,
         images: images
       };
-
     case UPDATE_PROBABILITY:
       images = state.images.map(image => {
         if (image.identifier === action.identifier) {
@@ -53,7 +53,6 @@ const images = (state = {}, action) => {
         ...state,
         images: images
       };
-
     case UPDATE_IMAGES_HAVING_CERTAIN_CATEGORY:
       images = state.images.map(image => {
         if (image.category === action.category) {
@@ -69,21 +68,19 @@ const images = (state = {}, action) => {
         ...state,
         images: images
       };
-
     case ADD_IMAGES:
       return {
         ...state,
         images: action.images
       };
-
     case UPDATE_IMAGE_VISIBILTY:
       images = state.images;
       images[action.index].visible = action.value;
+
       return {
         ...state,
         images: images
       };
-
     case SORT_IMAGES:
       //images = state.images;
       //images[action.index].visible = action.value;
@@ -103,11 +100,11 @@ const images = (state = {}, action) => {
         }
       });
       console.log(sortedImages);
+
       return {
         ...state,
         images: sortedImages
       };
-
     default:
       return state;
   }

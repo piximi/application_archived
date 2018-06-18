@@ -30,7 +30,7 @@ class FileInput extends Component {
         const pathname = theFile.webkitRelativePath;
 
         return function(e) {
-          const identifier = hash(e.target.result);
+          const checksum = hash(e.target.result);
 
           const data = e.target.result;
 
@@ -38,13 +38,13 @@ class FileInput extends Component {
             category: null,
             probability: null,
             visible: true,
-            identifier: identifier,
+            identifier: checksum,
             filename: pathname
           });
 
-          that.createImage(identifier, data);
+          that.createImage(checksum, data);
 
-          that.imageByteStrings[identifier] = data;
+          that.imageByteStrings[checksum] = data;
 
           if (that.images.length === count) {
             that.props.createImageAction(that.images, that.imageByteStrings);

@@ -9,12 +9,10 @@ import data from './images/mnist';
 import dataImages from './images/stock';
 import reducer from './reducers';
 import createRavenMiddleware from 'raven-for-redux';
-import Dexie from 'dexie';
-
-const database = new Dexie('cyto');
+import { createImage, database } from './database';
 
 database.version(1).stores({
-  images: '++id, data'
+  images: 'checksum, data'
 });
 
 const demo = {
@@ -25,6 +23,14 @@ const demo = {
   },
   settings: data.settings
 };
+
+const images = dataImages.imageByteStrings;
+
+for (const image in images) {
+  const checksum = image;
+
+  createImage(parseInt(checksum), images[checksum]);
+}
 
 const store = createStore(
   reducer,

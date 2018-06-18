@@ -5,6 +5,7 @@ import ConnectedImage from '../../containers/ConnectedImage';
 import withDragDropContext from '../DragDropContext/DragDropContext';
 import styles from './Images.css';
 import { withStyles } from 'material-ui/styles/index';
+import { database, findImage } from '../../database';
 
 class Images extends Component {
   constructor(props) {
@@ -92,11 +93,16 @@ class Images extends Component {
 
   render() {
     let counter = -1;
+
     let filteredImages = this.props.images.map((sample, index) => {
       if (sample.visible) {
         counter = counter + 1;
+
         this.myMap[index] = counter;
+
         this.reverseMap[counter] = index;
+
+        // debugger;
 
         return (
           <HotKeys
@@ -128,6 +134,7 @@ class Images extends Component {
         return null;
       }
     });
+
     return (
       <GridList
         id="foo"
