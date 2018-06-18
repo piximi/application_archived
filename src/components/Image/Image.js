@@ -8,7 +8,7 @@ import {
 import React, { Component } from 'react';
 import { DragSource } from 'react-dnd';
 import styles from './Image.css';
-import { database, findImage } from '../../database';
+import { database } from '../../database';
 
 const source = {
   beginDrag(props) {
@@ -61,19 +61,16 @@ class Image extends Component {
       color = 'rgba(0, 0, 0, 0.4)';
     }
 
-    database.images.get(checksum).then(image => {
-      this.setState({
-        data: image.data
-      });
-    });
+    // database.images.get(checksum).then(image => {
+    //   this.setState({
+    //     data: image.data
+    //   });
+    // });
 
     return connectDragSource(
       <div>
         <Card>
-          <CardMedia
-            image={this.state.data}
-            classes={{ root: classes.media }}
-          />
+          <CardMedia image={pathname} classes={{ root: classes.media }} />
 
           <CardContent
             classes={{ root: classes.content }}
