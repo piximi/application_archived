@@ -8,6 +8,7 @@ import {
 import React, { Component } from 'react';
 import { DragSource } from 'react-dnd';
 import styles from './Image.css';
+import { database, findImage } from '../../database';
 
 const source = {
   beginDrag(props) {
@@ -33,8 +34,17 @@ function collect(connect, monitor) {
 }
 
 class Image extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data: ''
+    };
+  }
+
   render() {
     const {
+      checksum,
       category,
       connectDragSource,
       findCategory,
@@ -42,17 +52,28 @@ class Image extends Component {
       classes,
       probability
     } = this.props;
+
     let color;
+
     if (!!category) {
       color = findCategory(category).color;
     } else {
       color = 'rgba(0, 0, 0, 0.4)';
     }
 
+    database.images.get(checksum).then(image => {
+      this.setState({
+        data: image.data
+      });
+    });
+
     return connectDragSource(
       <div>
         <Card>
-          <CardMedia image={pathname} classes={{ root: classes.media }} />
+          <CardMedia
+            image={this.state.data}
+            classes={{ root: classes.media }}
+          />
 
           <CardContent
             classes={{ root: classes.content }}

@@ -3,7 +3,7 @@ import Dexie from 'dexie';
 const database = new Dexie('cyto');
 
 const createImage = (checksum, data) => {
-  database.images.add({
+  database.images.put({
     checksum: checksum,
     data: data
   });

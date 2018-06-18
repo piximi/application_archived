@@ -4,15 +4,14 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
-import { applyMiddleware, createStore } from 'redux';
+import { createStore } from 'redux';
 import data from './images/mnist';
 import dataImages from './images/stock';
 import reducer from './reducers';
-import createRavenMiddleware from 'raven-for-redux';
 import { createImage, database } from './database';
 
 database.version(1).stores({
-  images: 'checksum, data'
+  images: '&checksum'
 });
 
 const demo = {
@@ -24,23 +23,15 @@ const demo = {
   settings: data.settings
 };
 
-const images = dataImages.imageByteStrings;
+const strings = dataImages.imageByteStrings;
 
-for (const image in images) {
-  const checksum = image;
+for (const string in strings) {
+  const checksum = string;
 
-  createImage(parseInt(checksum), images[checksum]);
+  createImage(parseInt(checksum), strings[checksum]);
 }
 
-const store = createStore(
-  reducer,
-  demo,
-  applyMiddleware(
-    createRavenMiddleware(window.Raven, {
-      environment: 'production'
-    })
-  )
-);
+const store = createStore(reducer, demo);
 
 ReactDOM.render(
   <Provider store={store}>

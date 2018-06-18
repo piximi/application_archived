@@ -91,6 +91,12 @@ class Images extends Component {
     }
   };
 
+  findImage = checksum => {
+    database.images.get(checksum).then(image => {
+      return image.data;
+    });
+  };
+
   render() {
     let counter = -1;
 
@@ -102,7 +108,9 @@ class Images extends Component {
 
         this.reverseMap[counter] = index;
 
-        // debugger;
+        const checksum = sample.identifier;
+
+        const image = this.findImage(checksum);
 
         return (
           <HotKeys
@@ -120,6 +128,7 @@ class Images extends Component {
             >
               <GridListTile key={index} index={index} cols={1}>
                 <ConnectedImage
+                  checksum={sample.identifier}
                   category={sample.category}
                   identifier={sample.identifier}
                   findCategory={this.props.findCategory}
