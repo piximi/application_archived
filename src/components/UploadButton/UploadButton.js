@@ -1,40 +1,57 @@
 import React, { Component } from 'react';
 import Button from 'material-ui/Button';
 import hash from 'string-hash';
+import { database } from '../../database';
 
 class FileInput extends Component {
   images = [];
   imageByteStrings = {};
 
-  // Reads data from input
-  handleChange = files => {
-    this.images = [];
-    this.imageByteStrings = [];
-    var count = files.length; // total number of files
-    for (let i = 0; i < count; i++) {
-      const reader = new FileReader();
-      const image = files[i];
-      reader.onload = (function(theFile, my) {
-        const fileName = theFile.webkitRelativePath;
-        return function(e) {
-          let identifier = hash(e.target.result);
-          if (fileName !== '.DS_Store') {
-            my.images.push({
-              category: null,
-              probability: null,
-              visible: true,
-              identifier: identifier,
-              filename: fileName
-            });
-          }
-          my.imageByteStrings[identifier] = e.target.result;
+  createImage = (checksum, data) => {
+    database.images.add({
+      checksum: checksum,
+      data: data
+    });
+  };
 
-          if (my.images.length === count) {
-            my.props.createImageAction(my.images, my.imageByteStrings);
+  onChange = () => e => {
+    this.images = [];
+
+    this.imageByteStrings = [];
+
+    const images = e.target.files;
+
+    const count = images.length;
+
+    for (let image of images) {
+      const reader = new FileReader();
+
+      reader.onload = (function(theFile, that) {
+        const pathname = theFile.webkitRelativePath;
+
+        return function(e) {
+          const identifier = hash(e.target.result);
+
+          const data = e.target.result;
+
+          that.images.push({
+            category: null,
+            probability: null,
+            visible: true,
+            identifier: identifier,
+            filename: pathname
+          });
+
+          that.createImage(identifier, data);
+
+          that.imageByteStrings[identifier] = data;
+
+          if (that.images.length === count) {
+            that.props.createImageAction(that.images, that.imageByteStrings);
           }
         };
       })(image, this);
-      // Read in the image file as a data URL.
+
       reader.readAsDataURL(image);
     }
   };
@@ -53,7 +70,7 @@ class FileInput extends Component {
           style={{ display: 'none' }}
           type="file"
           accept="image/*"
-          onChange={e => this.handleChange(e.target.files)}
+          onChange={this.onChange()}
           ref={node => this._addDirectory(node)}
         />
         UPLOAD IMAGES

@@ -8,6 +8,7 @@
     "@storybook/addon-console": "^1.0.0",
     "@tensorflow/tfjs": "^0.9.1",
     "classnames": "^2.2.5",
+    "dexie": "^2.0.4",
     "flow-bin": "^0.70.0",
     "gh-pages": "^1.1.0",
     "husky": "^0.14.3",

@@ -9,6 +9,13 @@ import data from './images/mnist';
 import dataImages from './images/stock';
 import reducer from './reducers';
 import createRavenMiddleware from 'raven-for-redux';
+import Dexie from 'dexie';
+
+const database = new Dexie('cyto');
+
+database.version(1).stores({
+  images: '++id, data'
+});
 
 const demo = {
   categories: data.categories,
