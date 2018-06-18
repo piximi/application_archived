@@ -18,55 +18,46 @@ const Gallery = props => {
     toggleUploadDialog
   } = props;
   return (
-    <div className={classes.content}>
-      <div className={classes.toolbar} />
+    <main>
+      <Toolbar>
+        <ConnectedUploadButton />
 
-      <main>
-        <Toolbar>
-          <ConnectedUploadButton />
+        <Button onClick={() => sortImages()} variant="raised">
+          {' '}
+          SORT{' '}
+        </Button>
 
-          <Button onClick={() => sortImages()} variant="raised">
-            {' '}
-            SORT{' '}
-          </Button>
+        <div
+          style={{ position: 'fixed', right: '10%', zIndex: 1 }}
+          className="slidecontainer"
+        >
+          <input
+            onChange={e => updateSettingColumns(e)}
+            type="range"
+            min="1"
+            max="100"
+            value={settings.columns}
+          />
+        </div>
+      </Toolbar>
 
-          <div
-            style={{ position: 'fixed', right: '10%', zIndex: 1 }}
-            className="slidecontainer"
-          >
-            <input
-              onChange={e => updateSettingColumns(e)}
-              type="range"
-              min="1"
-              max="100"
-              value={settings.columns}
-            />
-          </div>
-        </Toolbar>
-
-        <ConnectedImages
-          columns={settings.columns}
-          findCategory={findCategory}
-          updateImageCategory={updateImageCategory}
-        />
-
-        <Tooltip id="tooltip-fab" title="Upload new image">
-          <Button
-            variant="fab"
-            color="secondary"
-            className={classes.fab}
-            onClick={toggleUploadDialog}
-          >
-            <AddIcon />
-          </Button>
-        </Tooltip>
-      </main>
-
-      <ConnectedUploadDialog
-        onClose={toggleUploadDialog}
-        open={settings.upload.toggled}
+      <ConnectedImages
+        columns={settings.columns}
+        findCategory={findCategory}
+        updateImageCategory={updateImageCategory}
       />
-    </div>
+
+      <Tooltip id="tooltip-fab" title="Upload new image">
+        <Button
+          variant="fab"
+          color="secondary"
+          className={classes.fab}
+          onClick={toggleUploadDialog}
+        >
+          <AddIcon />
+        </Button>
+      </Tooltip>
+    </main>
   );
 };
 
