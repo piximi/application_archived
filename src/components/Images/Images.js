@@ -141,12 +141,7 @@ class Images extends Component {
     });
 
     return (
-      <GridList
-        id="foo"
-        cellHeight={'auto'}
-        cols={Number(this.props.columns)}
-        spacing={5}
-      >
+      <GridList cellHeight={'auto'} cols={Number(this.props.columns)}>
         {filteredImages}
       </GridList>
     );

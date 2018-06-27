@@ -2,6 +2,11 @@ import {
   Card,
   CardContent,
   CardMedia,
+  GridList,
+  GridListTile,
+  GridListTileBar,
+  IconButton,
+  ListSubheader,
   Typography,
   withStyles
 } from 'material-ui';
@@ -9,6 +14,7 @@ import React, { Component } from 'react';
 import { DragSource } from 'react-dnd';
 import styles from './Image.css';
 import { database } from '../../database';
+import LabelIcon from '@material-ui/icons/Label';
 
 const source = {
   beginDrag(props) {
@@ -69,19 +75,34 @@ class Image extends Component {
     });
 
     return connectDragSource(
-      <div>
-        <Card>
-          <CardMedia image={pathname} classes={{ root: classes.media }} />
+      <div className={classes.foo}>
+        <GridListTile>
+          <img
+            className={classes.image}
+            src={'http://via.placeholder.com/512x512'}
+          />
+          <GridListTileBar
+            title="foo"
+            subtitle={<span>example</span>}
+            actionIcon={
+              <IconButton className={classes.icon}>
+                <LabelIcon style={{ color: color }} />
+              </IconButton>
+            }
+          />
+        </GridListTile>
+        {/*<Card>*/}
+        {/*<CardMedia image={pathname} classes={{ root: classes.media }} />*/}
 
-          <CardContent
-            classes={{ root: classes.content }}
-            style={{ backgroundColor: color }}
-          >
-            <Typography component="p">
-              {probability == null ? null : String(probability).slice(0, 8)}
-            </Typography>
-          </CardContent>
-        </Card>
+        {/*<CardContent*/}
+        {/*classes={{ root: classes.content }}*/}
+        {/*style={{ backgroundColor: color }}*/}
+        {/*>*/}
+        {/*<Typography component="p">*/}
+        {/*{probability == null ? null : String(probability).slice(0, 8)}*/}
+        {/*</Typography>*/}
+        {/*</CardContent>*/}
+        {/*</Card>*/}
       </div>
     );
   }

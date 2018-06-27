@@ -8,7 +8,7 @@ class FileInput extends Component {
   imageByteStrings = {};
 
   createImage = (checksum, data) => {
-    database.images.add({
+    database.images.put({
       checksum: checksum,
       data: data
     });
