@@ -77,13 +77,9 @@ class Image extends Component {
     return connectDragSource(
       <div className={classes.foo}>
         <GridListTile>
-          <img
-            className={classes.image}
-            src={'http://via.placeholder.com/512x512'}
-          />
+          <img className={classes.image} src={pathname} />
           <GridListTileBar
-            title="foo"
-            subtitle={<span>example</span>}
+            title={probability == null ? null : String(probability).slice(0, 8)}
             actionIcon={
               <IconButton className={classes.icon}>
                 <LabelIcon style={{ color: color }} />
@@ -91,18 +87,6 @@ class Image extends Component {
             }
           />
         </GridListTile>
-        {/*<Card>*/}
-        {/*<CardMedia image={pathname} classes={{ root: classes.media }} />*/}
-
-        {/*<CardContent*/}
-        {/*classes={{ root: classes.content }}*/}
-        {/*style={{ backgroundColor: color }}*/}
-        {/*>*/}
-        {/*<Typography component="p">*/}
-        {/*{probability == null ? null : String(probability).slice(0, 8)}*/}
-        {/*</Typography>*/}
-        {/*</CardContent>*/}
-        {/*</Card>*/}
       </div>
     );
   }
