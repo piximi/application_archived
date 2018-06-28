@@ -22,7 +22,7 @@ class SidebarAppBar extends Component {
           </IconButton>
 
           <Typography variant="title" color="inherit">
-            Logo
+            <img height="50px" src="https://cyto.ai/images/logo.png" />
           </Typography>
         </Toolbar>
       </AppBar>

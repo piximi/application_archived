@@ -326,8 +326,7 @@ class Dataset {
         }
       }
       const labelBatch = tensorflow.oneHot(
-        tensorflow.tensor1d(ys2),
-
+        tensorflow.tensor1d(ys2, 'int32'),
         this.numClasses
       );
 

@@ -5,8 +5,8 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import data from './images/mnist';
-import dataImages from './images/stock';
+import data from './images/subpopulation_small';
+import dataImages from './images/subpop';
 import reducer from './reducers';
 import { createImage, database } from './database';
 
@@ -28,7 +28,7 @@ const strings = dataImages.imageByteStrings;
 for (const string in strings) {
   const checksum = string;
 
-  createImage(parseInt(checksum, 10), strings[checksum]);
+  createImage(checksum, strings[checksum]);
 }
 
 const store = createStore(reducer, demo);
