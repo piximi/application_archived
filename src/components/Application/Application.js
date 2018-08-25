@@ -48,10 +48,6 @@ class Application extends Component {
               images={images}
               settings={settings}
             />
-
-            <Button variant="fab" className={classes.fab}>
-              <AddIcon />
-            </Button>
           </main>
         </div>
       </DragDropContextProvider>
