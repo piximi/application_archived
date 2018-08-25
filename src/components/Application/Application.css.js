@@ -55,7 +55,7 @@ const styles = theme => ({
     })
   },
   contentLeft: {
-    marginLeft: -drawerWidth
+    marginLeft: 0
   },
   contentShift: {
     transition: theme.transitions.create('margin', {
@@ -64,7 +64,7 @@ const styles = theme => ({
     })
   },
   contentShiftLeft: {
-    marginLeft: 0
+    marginLeft: drawerWidth
   },
   fab: {
     position: 'absolute',
