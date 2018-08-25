@@ -35,15 +35,9 @@ class Category extends Component {
     deleteCategoryDialogOpen: false
   };
 
-  closeDeleteCategoryDialog = () => {
+  toggleDeleteCategoryDialog = () => {
     this.setState({
-      deleteCategoryDialogOpen: false
-    });
-  };
-
-  openDeleteCategoryDialog = () => {
-    this.setState({
-      deleteCategoryDialogOpen: true
+      deleteCategoryDialogOpen: !this.state.deleteCategoryDialogOpen
     });
   };
 
@@ -83,7 +77,7 @@ class Category extends Component {
           <ListItemSecondaryAction>
             <Tooltip id="tooltip-icon" title="Delete category">
               <ListItemIcon
-                onClick={this.openDeleteCategoryDialog}
+                onClick={this.toggleDeleteCategoryDialog}
                 classes={{ root: this.props.classes.icon }}
               >
                 <DeleteIcon />
@@ -95,7 +89,7 @@ class Category extends Component {
         <ConnectedDeleteCategoryDialog
           description={description}
           identifier={identifier}
-          onClose={this.closeDeleteCategoryDialog}
+          onClose={this.toggleDeleteCategoryDialog}
           open={this.state.deleteCategoryDialogOpen}
         />
       </div>

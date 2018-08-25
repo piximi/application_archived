@@ -12,22 +12,14 @@ import {
 
 class DeleteCategoryDialog extends Component {
   render() {
-    const {
-      deleteCategory,
-      description,
-      toggleDeleteCategoryDialog,
-      settings
-    } = this.props;
+    const { deleteCategory, description, open, onClose, settings } = this.props;
 
     const dialogTitle = `Delete ${description}?`;
 
     const dialogContentText = `Images categorized as ${description} won’t be deleted.`;
 
     return (
-      <Dialog
-        open={settings.deleteCategory.toggled}
-        onClose={toggleDeleteCategoryDialog}
-      >
+      <Dialog open={open} onClose={() => onClose()}>
         <DialogTitle id="alert-dialog-title">{dialogTitle}</DialogTitle>
 
         <DialogContent>
@@ -37,7 +29,7 @@ class DeleteCategoryDialog extends Component {
         </DialogContent>
 
         <DialogActions>
-          <Button onClick={toggleDeleteCategoryDialog} color="primary">
+          <Button onClick={() => onClose()} color="primary">
             Cancel
           </Button>
 
