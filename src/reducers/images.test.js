@@ -3,7 +3,7 @@ import { CREATE_IMAGE, DELETE_IMAGE } from '../constants';
 
 describe('images', () => {
   it('should return the initial state', () => {
-    expect(images(undefined, {})).toEqual([]);
+    expect(images(undefined, {})).toEqual({});
   });
 
   it('should CREATE_IMAGE', () => {
@@ -16,11 +16,12 @@ describe('images', () => {
         type: CREATE_IMAGE,
         image
       })
-    ).toEqual([
-      {
+    ).toEqual({
+      imageByteStrings: undefined,
+      images: {
         pathname: 'example.png'
       }
-    ]);
+    });
   });
 
   it('should DELETE_IMAGE', () => {
