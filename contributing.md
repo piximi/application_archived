@@ -35,9 +35,13 @@ You might fork a project in order to propose changes to the upstream, or origina
 #### Step 1: Create a local clone of your fork
 
 1. On GitHub, navigate to your fork of the cyto repository.
+
 2. Under the repository name, click Clone or download.
+
 3. In the Clone with HTTPs section, click the copy to clipboard symbol to copy the clone URL for the repository.
+
 4. Open Terminal.
+
 5. Type git clone, and then paste the URL you copied in Step 2. It will look like this, with your GitHub username instead of YOUR-USERNAME: 
 ``` 
 git clone https://github.com/YOUR-USERNAME/cyto
@@ -51,9 +55,11 @@ Now, you have a local copy of your fork of the cyto repository!
 When you fork a project in order to propose changes to the original repository, you can configure Git to pull changes from the original, or upstream, repository into the local clone of your fork.
 
 1. On GitHub, navigate to the cytoai/cyto repository.
+
 2. Under the repository name, click Clone or download
 
 3. In the Clone with HTTPs section, click the copy to clipboard symbol to copy the clone URL for the repository.
+
 4. Open Terminal.
 
 5. Change directories to the location of the fork you cloned in **Step 1: Create a local clone of your fork**.
