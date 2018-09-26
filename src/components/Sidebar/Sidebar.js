@@ -175,7 +175,11 @@ class Sidebar extends Component {
             <ListItemText primary="Settings" />
           </ListItem>
 
-          <ListItem dense button onClick={this.openSendFeedbackDialog}>
+          <ListItem
+            button
+            component="a"
+            href="https://docs.google.com/forms/d/e/1FAIpQLScAAydUXdfxxdjdkVpTJBXvZ2cGZblTRYHlcLEjfbTQsgoUug/viewform?usp=sf_link"
+          >
             <ListItemIcon>
               <FeedbackIcon />
             </ListItemIcon>
