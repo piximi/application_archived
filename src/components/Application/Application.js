@@ -4,8 +4,6 @@ import styles from './Application.css';
 import classNames from 'classnames';
 import ConnectedSidebar from '../../containers/ConnectedSidebar';
 import PrimaryAppBar from '../AppBar/PrimaryAppBar';
-import { Button } from 'material-ui';
-import AddIcon from '@material-ui/icons/Add';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContextProvider } from 'react-dnd';
 import ConnectedGallery from '../../containers/ConnectedGallery';

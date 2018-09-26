@@ -28,7 +28,11 @@ class PrimaryAppBar extends Component {
           </IconButton>
 
           <Typography variant="title" color="inherit">
-            <img height="50px" src="https://cyto.ai/images/logo.png" />
+            <img
+              alt="logo"
+              height="50px"
+              src="https://cyto.ai/images/logo.png"
+            />
           </Typography>
         </Toolbar>
       </AppBar>

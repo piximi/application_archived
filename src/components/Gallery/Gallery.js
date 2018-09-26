@@ -1,10 +1,9 @@
-import { Button, Toolbar, Tooltip } from 'material-ui';
+import { Button, Tooltip } from 'material-ui';
 import React from 'react';
 import ConnectedImages from '../../containers/ConnectedImages';
 import styles from './Gallery.css';
 import { withStyles } from 'material-ui/styles/index';
 import ConnectedUploadDialog from '../../containers/ConnectedUploadDialog';
-import ConnectedUploadButton from '../../containers/ConnectedUploadButton';
 import AddIcon from '@material-ui/icons/Add';
 
 const Gallery = props => {
@@ -12,9 +11,7 @@ const Gallery = props => {
     classes,
     findCategory,
     updateImageCategory,
-    updateSettingColumns,
     settings,
-    sortImages,
     toggleUploadDialog
   } = props;
   return (

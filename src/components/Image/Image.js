@@ -1,13 +1,7 @@
 import {
-  Card,
-  CardContent,
-  CardMedia,
-  GridList,
   GridListTile,
   GridListTileBar,
   IconButton,
-  ListSubheader,
-  Typography,
   withStyles
 } from 'material-ui';
 import React, { Component } from 'react';
@@ -77,7 +71,7 @@ class Image extends Component {
     return connectDragSource(
       <div className={classes.foo}>
         <GridListTile>
-          <img className={classes.image} src={pathname} />
+          <img alt="foo" className={classes.image} src={pathname} />
           <GridListTileBar
             title={probability == null ? null : String(probability).slice(0, 8)}
             actionIcon={

@@ -12,7 +12,7 @@ import {
 
 class DeleteCategoryDialog extends Component {
   render() {
-    const { deleteCategory, description, open, onClose, settings } = this.props;
+    const { deleteCategory, description, open, onClose } = this.props;
 
     const dialogTitle = `Delete ${description}?`;
 

@@ -363,7 +363,9 @@ function passResults(imgId, predictions) {
 async function trainOnRun(images, categories) {
   indexMap = {};
   counter = 0;
-  categoryIndexArray;
+  categoryIndexArray = [];
+
+  console.log(categoryIndexArray);
   const imageTags = images.images.map(observation => {
     let categoryIndex = getCategoryIndex(observation.category, categories);
 
