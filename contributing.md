@@ -52,8 +52,10 @@ When you fork a project in order to propose changes to the original repository, 
 
 1. On GitHub, navigate to the cytoai/cyto repository.
 2. Under the repository name, click Clone or download
+
 3. In the Clone with HTTPs section, click the copy to clipboard symbol to copy the clone URL for the repository.
 4. Open Terminal.
+
 5. Change directories to the location of the fork you cloned in **Step 1: Create a local clone of your fork**.
 
 6. Type ``` git remote -v ``` and press Enter. You'll see the current configured remote repository for your fork.
