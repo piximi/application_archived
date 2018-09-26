@@ -1,6 +1,14 @@
 language: node_js
+env:
+  global:
+    - ENCRYPTION_LABEL: "b8ec437447e4"
+    - COMMIT_AUTHOR_EMAIL: "allen.goodman@icloud.com"
 node_js:
-  - "9"
+  - '9'
+deploy:
+  - npm run deploy
 script:
   - npm install
   - npm test
+before_install:
+  - openssl aes-256-cbc -K $encrypted_b8ec437447e4_key -iv $encrypted_b8ec437447e4_iv -in cyto_rsa.enc -out ~\/.ssh/cyto_rsa -d
