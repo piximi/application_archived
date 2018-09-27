@@ -70,7 +70,7 @@ class Image extends Component {
 
     return connectDragSource(
       <div className={classes.foo}>
-        <GridListTile>
+        <GridListTile component="div">
           <img alt="foo" className={classes.image} src={pathname} />
           <GridListTileBar
             title={probability == null ? null : String(probability).slice(0, 8)}

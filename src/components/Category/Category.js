@@ -57,7 +57,7 @@ class Category extends Component {
         <ListItem
           dense
           button
-          onClick={() => updateCategoryVisibility(images, !visible)}
+          onClick={() => updateCategoryVisibility(identifier, images, !visible)}
           classes={{
             root: this.props.isOver
               ? this.props.classes.isOver

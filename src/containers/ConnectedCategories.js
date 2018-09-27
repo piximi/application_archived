@@ -45,11 +45,10 @@ const mapDispatchToProps = (dispatch, props) => {
       dispatch(updateCategoryDescriptionAction(identifier, description));
     },
 
-    updateCategoryVisibility: (images, value) => {
-      const identifier = props.identifier;
+    updateCategoryVisibility: (identifier, images, value) => {
       dispatch(updateCategoryVisibilityAction(identifier));
-      for (let index in images) {
-        if (images[index].category === props.identifier) {
+      for (let index in images.images) {
+        if (images.images[index].category === identifier) {
           dispatch(updateImageVisibility(index, value));
         }
       }
