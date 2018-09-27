@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { HotKeys } from 'react-hotkeys';
 import { GridList, GridListTile } from 'material-ui';
-import ConnectedImage from '../../containers/ConnectedImage';
+import Image from '../Image/Image';
 import withDragDropContext from '../DragDropContext/DragDropContext';
 import styles from './Images.css';
 import { withStyles } from 'material-ui/styles/index';
@@ -123,11 +123,12 @@ class Images extends Component {
               onClick={e => this.handleClick(e, index)}
             >
               <GridListTile key={index} index={index} cols={1}>
-                <ConnectedImage
+                <Image
                   checksum={sample.identifier}
                   category={sample.category}
                   identifier={sample.identifier}
                   findCategory={this.props.findCategory}
+                  updateImageCategory={this.props.updateImageCategory}
                   pathname={this.props.imageByteStrings[sample.identifier]}
                   probability={sample.probability}
                 />

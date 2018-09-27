@@ -7,13 +7,8 @@ import ConnectedUploadDialog from '../../containers/ConnectedUploadDialog';
 import AddIcon from '@material-ui/icons/Add';
 
 const Gallery = props => {
-  const {
-    classes,
-    findCategory,
-    updateImageCategory,
-    settings,
-    toggleUploadDialog
-  } = props;
+  const { classes, findCategory, settings, toggleUploadDialog } = props;
+
   return (
     <div className={classes.content}>
       <main>
@@ -42,7 +37,6 @@ const Gallery = props => {
         <ConnectedImages
           columns={settings.columns}
           findCategory={findCategory}
-          updateImageCategory={updateImageCategory}
         />
 
         <Tooltip id="tooltip-fab" title="Upload new image">
