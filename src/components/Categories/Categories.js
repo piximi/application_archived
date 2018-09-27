@@ -10,7 +10,7 @@ import AddIcon from '@material-ui/icons/Add';
 import { withStyles } from 'material-ui/styles';
 import withDragDropContext from '../DragDropContext/DragDropContext';
 import styles from './Categories.css';
-import ConnectedCategory from '../../containers/ConnectedCategory';
+import Category from '../Category/Category';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ConnectedCreateCategoryDialog from '../../containers/ConnectedCreateCategoryDialog';
@@ -36,7 +36,12 @@ class Categories extends Component {
   };
 
   render() {
-    const { categories } = this.props;
+    const {
+      categories,
+      updateCategoryVisibility,
+      connectDropTarget,
+      images
+    } = this.props;
 
     return (
       <React.Fragment>
@@ -51,10 +56,16 @@ class Categories extends Component {
 
           <Collapse in={!this.state.collapsed} timeout="auto" unmountOnExit>
             {categories.map(category => (
-              <ConnectedCategory
+              <Category
                 categories={categories}
                 identifier={category.identifier}
                 key={category.identifier}
+                description={category.description}
+                visible={category.visible}
+                color={category.color}
+                images={images}
+                updateCategoryVisibility={updateCategoryVisibility}
+                connectDropTarget={connectDropTarget}
               />
             ))}
 
