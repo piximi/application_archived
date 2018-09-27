@@ -32,7 +32,7 @@ Add additional notes about how to deploy this on a live system
 
 You can deploy by running: ``` npm deploy ```
 
-You can define where to deploy in the package.json file under: *** homepage ***
+You can define where to deploy in the package.json file under: ** homepage **
 
 ## Contributing
 
