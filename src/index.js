@@ -1,4 +1,5 @@
 import React from 'react';
+import * as tensorflow from '@tensorflow/tfjs';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
@@ -13,6 +14,16 @@ import { createImage, database } from './database';
 database.version(1).stores({
   images: '&checksum'
 });
+
+// Load model from server and save it to inxdexeddb
+async function loadModelFromServer() {
+  const preloadedModel = await tensorflow.loadModel(
+    'https://weights.cyto.ai/mobilenet/model.json'
+  );
+  await preloadedModel.save('indexeddb://my-model-1');
+}
+
+loadModelFromServer();
 
 const demo = {
   categories: data.categories,

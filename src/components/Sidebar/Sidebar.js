@@ -15,6 +15,7 @@ import HelpDialog from '../HelpDialog/HelpDialog';
 import SettingsIcon from '@material-ui/icons/Settings';
 import FeedbackIcon from '@material-ui/icons/Feedback';
 import FolderOpenIcon from '@material-ui/icons/FolderOpen';
+import OpenInBrowserIcon from '@material-ui/icons/OpenInBrowser';
 import HelpIcon from '@material-ui/icons/Help';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -160,6 +161,22 @@ class Sidebar extends Component {
               </ListItemIcon>
 
               <ListItemText primary="Fit" />
+            </ListItem>
+
+            <ListItem dense button onClick={() => onClick(images, categories)}>
+              <ListItemIcon>
+                <OpenInBrowserIcon />
+              </ListItemIcon>
+
+              <ListItemText primary="Import Weights" />
+            </ListItem>
+
+            <ListItem dense button onClick={() => API.exportWeights()}>
+              <ListItemIcon>
+                <SaveIcon />
+              </ListItemIcon>
+
+              <ListItemText primary="Save Weights" />
             </ListItem>
           </Collapse>
         </List>
