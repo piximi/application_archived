@@ -28,8 +28,6 @@ What things you need to install the software and how to install them
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
-
 You can deploy by running: ``` npm deploy ```
 
 You can define where to deploy in the package.json file under: ** homepage **
