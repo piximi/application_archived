@@ -16,8 +16,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    createImageAction: (images, imageByteStrings) => {
-      dispatch(createImageAction(images, imageByteStrings));
+    createImageAction: image => {
+      dispatch(createImageAction(image));
     },
     updateImageCategory: (identifier, category) => {
       dispatch(updateImageCategoryAction(identifier, category));
@@ -26,6 +26,9 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const ConnectedImages = connect(mapStateToProps, mapDispatchToProps)(Images);
+const ConnectedImages = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Images);
 
 export default ConnectedImages;

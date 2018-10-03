@@ -16,8 +16,7 @@ const images = (state = {}, action) => {
     case CREATE_IMAGE:
       return {
         ...state,
-        images: action.image,
-        imageByteStrings: action.imageByteStrings
+        images: action.images
       };
     case DELETE_IMAGE:
       return state.filter(image => {
@@ -82,12 +81,7 @@ const images = (state = {}, action) => {
         images: images
       };
     case SORT_IMAGES:
-      //images = state.images;
-      //images[action.index].visible = action.value;
-
-      console.log('HAHAHA');
       let sortedImages = [...state.images];
-      console.log(sortedImages);
       sortedImages.sort(function(a, b) {
         if (a.category === null) {
           return -1;

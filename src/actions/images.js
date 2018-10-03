@@ -9,10 +9,9 @@ import {
   SORT_IMAGES
 } from '../constants';
 
-export const createImageAction = (image, imageByteStrings) => ({
+export const createImageAction = images => ({
   type: CREATE_IMAGE,
-  image,
-  imageByteStrings
+  images
 });
 
 export const updateImageCategoryAction = (identifier, category) => ({

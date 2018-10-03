@@ -5,7 +5,6 @@ import Image from '../Image/Image';
 import withDragDropContext from '../DragDropContext/DragDropContext';
 import styles from './Images.css';
 import { withStyles } from 'material-ui/styles/index';
-import { database } from '../../database';
 
 class Images extends Component {
   constructor(props) {
@@ -91,12 +90,6 @@ class Images extends Component {
     }
   };
 
-  findImage = checksum => {
-    database.images.get(checksum).then(image => {
-      return image.data;
-    });
-  };
-
   render() {
     let counter = -1;
 
@@ -129,7 +122,6 @@ class Images extends Component {
                   identifier={sample.identifier}
                   findCategory={this.props.findCategory}
                   updateImageCategory={this.props.updateImageCategory}
-                  pathname={this.props.imageByteStrings[sample.identifier]}
                   probability={sample.probability}
                 />
               </GridListTile>
