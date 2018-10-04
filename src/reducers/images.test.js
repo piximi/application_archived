@@ -7,20 +7,20 @@ describe('images', () => {
   });
 
   it('should CREATE_IMAGE', () => {
-    const image = {
-      pathname: 'example.png'
+    const testImage = {
+      filename: './public/images/subpopulation/metaphase/7_3338_191.png'
     };
 
     expect(
-      images([], {
-        type: CREATE_IMAGE,
-        image
-      })
+      images(
+        {},
+        {
+          type: CREATE_IMAGE,
+          images: testImage
+        }
+      )
     ).toEqual({
-      imageByteStrings: undefined,
-      images: {
-        pathname: 'example.png'
-      }
+      images: testImage
     });
   });
 

@@ -26,12 +26,15 @@ registerServiceWorker();
 
 function initializeDatabase() {
   databaseAPI.database.version(1).stores({
-    images: '&checksum, data'
+    images: '&checksum, bytes'
   });
-  // Save images in indexedDB
-  for (let key in dataImages.imageByteStrings) {
-    databaseAPI.saveToDatabase(key, dataImages.imageByteStrings[key]);
-  }
+  const imageDataIndexedDB = dataImages.images.map(image => {
+    return {
+      checksum: image.identifier,
+      bytes: dataImages.imageByteStrings[image.identifier]
+    };
+  });
+  databaseAPI.saveData(imageDataIndexedDB);
 }
 
 function initializeRedux() {

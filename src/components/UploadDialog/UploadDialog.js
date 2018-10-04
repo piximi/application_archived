@@ -17,41 +17,17 @@ class UploadDialog extends Component {
     super(props);
     this.images = [];
     this.state = {
-      imageDataArray: [],
-      imageDataMap: {},
-      doneReading: false
+      images: []
     };
   }
 
   onClickUploadButton = () => {
-    for (let key in this.state.imageDataMap) {
-      databaseAPI.saveToDatabase(key, this.state.imageDataMap[key]);
-    }
-    this.saveToReduxStore(this.state.imageDataArray);
-    this.setState({ doneReading: false, imageDataArray: [], imageDataMap: {} });
     this.props.onClose();
-  };
-
-  onClickCancelButton = () => {
-    this.setState({ doneReading: false, imageDataArray: [], imageDataMap: {} });
-    this.props.onClose();
-  };
-  // Save image byte string to inxdexedDB
-  saveToDatabase = (checksum, imageData) => {
-    databaseAPI.saveToDatabase(checksum, imageData);
-  };
-
-  //Save image data to Redux store
-  saveToReduxStore = image => {
-    this.props.createImageAction(image);
-  };
-
-  onChange = () => e => {
-    const images = e.target.files;
+    const images = this.state.images;
     const numberImages = images.length;
     let counter = 0;
-    let imagesArray = [];
-    let imagesMap = {};
+    let imageDataReduxStore = [];
+    let imageDataIndexedDB = [];
 
     // Read read data from uploaded files
     for (let image of images) {
@@ -67,26 +43,37 @@ class UploadDialog extends Component {
             category: null,
             probability: null,
             visible: true,
-            identifier: String(checksum),
+            identifier: checksum,
             filename: pathname
           };
-          imagesArray.push(image);
-          imagesMap[String(checksum)] = imageData;
+          imageDataIndexedDB.push({ checksum: checksum, bytes: imageData }),
+            imageDataReduxStore.push(image);
           counter = counter + 1;
 
           if (counter === numberImages) {
-            this.setState({
-              doneReading: true,
-              imageDataArray: imagesArray,
-              imageDataMap: imagesMap
-            });
-            imagesArray = [];
-            imagesMap = {};
+            databaseAPI.saveData(imageDataIndexedDB, imageDataReduxStore);
+            imageDataIndexedDB = {};
+            imageDataReduxStore = [];
           }
         };
       })(image);
       reader.readAsDataURL(image);
     }
+  };
+
+  onClickCancelButton = () => {
+    this.setState({ images: [] });
+    this.props.onClose();
+  };
+
+  //Save image data to Redux store
+  saveToReduxStore = image => {
+    this.props.createImageAction(image);
+  };
+
+  onChange = () => e => {
+    const images = e.target.files;
+    this.setState({ images: images });
   };
 
   _addDirectory(node) {
@@ -119,11 +106,7 @@ class UploadDialog extends Component {
             Cancel
           </Button>
 
-          <Button
-            disabled={!this.state.doneReading}
-            onClick={() => this.onClickUploadButton()}
-            color="primary"
-          >
+          <Button onClick={() => this.onClickUploadButton()} color="primary">
             Upload
           </Button>
         </DialogActions>

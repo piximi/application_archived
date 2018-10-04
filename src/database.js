@@ -1,12 +1,15 @@
 import Dexie from 'dexie';
+import { store } from './index';
+import { addImages } from './actions/images';
 
 const database = new Dexie('cyto');
-
-async function saveToDatabase(checksum, imageData) {
-  database.images.put({
-    checksum: checksum,
-    data: imageData
+// Save to database and when finished update Redux store
+async function saveData(imageDataIndexedDB, imageDataReduxStore = null) {
+  database.images.bulkPut(imageDataIndexedDB).then(function() {
+    if (imageDataReduxStore != null) {
+      store.dispatch(addImages(imageDataReduxStore));
+    }
   });
 }
 
-export { saveToDatabase, database };
+export { saveData, database };

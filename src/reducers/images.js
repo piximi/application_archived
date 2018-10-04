@@ -11,7 +11,6 @@ import {
 
 const images = (state = {}, action) => {
   let images = [];
-
   switch (action.type) {
     case CREATE_IMAGE:
       return {

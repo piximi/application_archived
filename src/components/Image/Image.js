@@ -36,18 +36,18 @@ class Image extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      externalData: null
+      src: null
     };
     this.asyncDatabaseRequest = this.asyncDatabaseRequest.bind(this);
   }
 
   static getDerivedStateFromProps(props, state) {
-    // Store prevId in state so we can compare when props change.
+    // Store previousChecksum in state so we can compare when props change.
     // Clear out previously-loaded data (so we don't render stale stuff).
-    if (props.checksum !== state.prevId) {
+    if (props.checksum !== state.previousChecksum) {
       return {
-        externalData: null,
-        prevId: props.checksum
+        src: null,
+        previousChecksum: props.checksum
       };
     }
     // No state update necessary
@@ -59,7 +59,7 @@ class Image extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.state.externalData === null) {
+    if (this.state.src === null) {
       this.asyncDatabaseRequest(this.props.checksum);
     }
   }
@@ -71,11 +71,11 @@ class Image extends Component {
   }
 
   asyncDatabaseRequest(checksum) {
-    let alsoThis = this;
-    databaseAPI.database.images.get(String(checksum)).then(function(result) {
+    const that = this;
+    databaseAPI.database.images.get(checksum).then(function(result) {
       if (result) {
-        alsoThis._asyncRequest = null;
-        alsoThis.setState({ externalData: result.data });
+        that._asyncRequest = null;
+        that.setState({ src: result.bytes });
       }
     });
   }
@@ -100,11 +100,7 @@ class Image extends Component {
     return connectDragSource(
       <div>
         <GridListTile component="div">
-          <img
-            alt="foo"
-            className={classes.image}
-            src={this.state.externalData}
-          />
+          <img alt="foo" className={classes.image} src={this.state.src} />
           <GridListTileBar
             title={probability == null ? null : String(probability).slice(0, 8)}
             actionIcon={
