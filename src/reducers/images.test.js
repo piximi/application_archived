@@ -1,12 +1,12 @@
 import images from './images';
-import { CREATE_IMAGE, DELETE_IMAGE } from '../constants';
+import { ADD_IMAGES, DELETE_IMAGE } from '../constants';
 
 describe('images', () => {
   it('should return the initial state', () => {
     expect(images(undefined, {})).toEqual({});
   });
 
-  it('should CREATE_IMAGE', () => {
+  it('should ADD_IMAGES', () => {
     const testImage = {
       filename: './public/images/subpopulation/metaphase/7_3338_191.png'
     };
@@ -15,7 +15,7 @@ describe('images', () => {
       images(
         {},
         {
-          type: CREATE_IMAGE,
+          type: ADD_IMAGES,
           images: testImage
         }
       )

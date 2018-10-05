@@ -39,6 +39,17 @@ class Sidebar extends Component {
     settingsDialogOpen: false
   };
 
+  readDataFromCytoFile = e => {
+    const that = this;
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const text = reader.result;
+      const data = JSON.parse(text);
+      that.props.updateStore(data);
+    };
+    reader.readAsText(e.target.files[0]);
+  };
+
   closeHelpDialog = () => {
     this.setState({
       helpDialogOpen: false
@@ -80,7 +91,6 @@ class Sidebar extends Component {
       categories,
       classes,
       images,
-      open,
       settings,
       toggleModelCollapse,
       toggled,
@@ -110,14 +120,13 @@ class Sidebar extends Component {
               <FolderOpenIcon />
             </ListItemIcon>
             <ListItemText inset primary="Open..." />
-
             <input
               style={{ display: 'none' }}
               type="file"
               accept=".cyto"
               name="file"
               id="file"
-              onChange={e => open(e.target.files)}
+              onChange={e => this.readDataFromCytoFile(e)}
             />
           </ListItem>
 
@@ -163,12 +172,21 @@ class Sidebar extends Component {
               <ListItemText primary="Fit" />
             </ListItem>
 
-            <ListItem dense button onClick={() => onClick(images, categories)}>
+            <ListItem dense button component="label">
               <ListItemIcon>
                 <OpenInBrowserIcon />
               </ListItemIcon>
 
               <ListItemText primary="Import Weights" />
+
+              <input
+                style={{ display: 'none' }}
+                type="file"
+                accept="*"
+                name="file"
+                id="file"
+                onChange={e => API.importWeights(e.target.files)}
+              />
             </ListItem>
 
             <ListItem dense button onClick={() => API.exportWeights()}>

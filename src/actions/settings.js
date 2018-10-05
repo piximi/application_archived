@@ -10,7 +10,7 @@ import {
   UPDATE_SETTING_COLUMNS
 } from '../constants';
 
-export const updateSettingColumns = columns => ({
+export const updateSettingColumnsAction = columns => ({
   type: UPDATE_SETTING_COLUMNS,
   columns
 });

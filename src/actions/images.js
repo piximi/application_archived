@@ -1,6 +1,5 @@
 import {
   ADD_IMAGES,
-  CREATE_IMAGE,
   DELETE_IMAGE,
   UPDATE_IMAGE_VISIBILTY,
   UPDATE_IMAGE_CATEGORY,
@@ -9,8 +8,8 @@ import {
   SORT_IMAGES
 } from '../constants';
 
-export const createImageAction = images => ({
-  type: CREATE_IMAGE,
+export const addImagesAction = images => ({
+  type: ADD_IMAGES,
   images
 });
 
@@ -36,12 +35,7 @@ export const deleteImageAction = identifier => ({
   identifier
 });
 
-export const addImages = images => ({
-  type: ADD_IMAGES,
-  images
-});
-
-export const updateImageVisibility = (index, value) => ({
+export const updateImageVisibilityAction = (index, value) => ({
   type: UPDATE_IMAGE_VISIBILTY,
   index,
   value

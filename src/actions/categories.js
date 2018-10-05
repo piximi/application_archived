@@ -6,7 +6,7 @@ import {
   UPDATE_CATEGORY_VISIBILITY
 } from '../constants';
 
-export const addCategories = categories => ({
+export const addCategoriesAction = categories => ({
   type: ADD_CATEGORIES,
   categories
 });

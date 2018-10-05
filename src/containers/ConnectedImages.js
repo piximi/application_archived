@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import {
-  createImageAction,
+  addImagesAction,
   updateImageCategoryAction,
   updateImageProbability
 } from '../actions/images';
@@ -16,8 +16,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    createImageAction: image => {
-      dispatch(createImageAction(image));
+    addImagesAction: image => {
+      dispatch(addImagesAction(image));
     },
     updateImageCategory: (identifier, category) => {
       dispatch(updateImageCategoryAction(identifier, category));

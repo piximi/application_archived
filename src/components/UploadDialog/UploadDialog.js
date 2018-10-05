@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import hash from 'string-hash';
 import styles from './UploadDialog.css';
 import { withStyles } from 'material-ui/styles/index';
 import * as databaseAPI from '../../database';
@@ -12,53 +11,61 @@ import {
   DialogTitle
 } from 'material-ui';
 
+function createImage(pathname) {
+  return {
+    category: null,
+    probability: null,
+    visible: true,
+    identifier: pathname,
+    filename: pathname
+  };
+}
+
+const readFile = (currentFile, that) => {
+  const pathname = currentFile.webkitRelativePath;
+  return e => {
+    const bytes = e.target.result;
+    const image = createImage(pathname);
+    that.imageData.imageDataIndexedDB.push({
+      checksum: pathname,
+      bytes: bytes
+    });
+    that.imageData.imageDataReduxStore.push(image);
+    that.counter = that.counter + 1;
+    if (that.counter === that.state.imageFiles.length) {
+      databaseAPI.saveData(
+        that.imageData.imageDataIndexedDB,
+        that.imageData.imageDataReduxStore
+      );
+      that.imageData = {};
+      that.counter = 0;
+    }
+  };
+};
+
 class UploadDialog extends Component {
   constructor(props) {
     super(props);
-    this.images = [];
+    this.imageFiles = [];
+    this.imageData = { imageDataReduxStore: [], imageDataIndexedDB: [] };
+    this.counter = 0;
     this.state = {
       images: []
     };
   }
 
-  onClickUploadButton = () => {
-    this.props.onClose();
-    const images = this.state.images;
-    const numberImages = images.length;
-    let counter = 0;
-    let imageDataReduxStore = [];
-    let imageDataIndexedDB = [];
-
-    // Read read data from uploaded files
-    for (let image of images) {
+  uploadImages = () => {
+    let that = this;
+    for (let imageFile of this.state.imageFiles) {
       const reader = new FileReader();
-      reader.onload = (myFile => {
-        const pathname = myFile.webkitRelativePath;
-        return e => {
-          // Create unique identifier for image
-          const checksum = hash(e.target.result);
-          const imageData = e.target.result;
-          // Create image
-          const image = {
-            category: null,
-            probability: null,
-            visible: true,
-            identifier: checksum,
-            filename: pathname
-          };
-          imageDataIndexedDB.push({ checksum: checksum, bytes: imageData }),
-            imageDataReduxStore.push(image);
-          counter = counter + 1;
-
-          if (counter === numberImages) {
-            databaseAPI.saveData(imageDataIndexedDB, imageDataReduxStore);
-            imageDataIndexedDB = {};
-            imageDataReduxStore = [];
-          }
-        };
-      })(image);
-      reader.readAsDataURL(image);
+      reader.onload = readFile(imageFile, that);
+      reader.readAsDataURL(imageFile, that);
     }
+  };
+
+  onClickUploadButton = () => {
+    this.uploadImages();
+    this.props.onClose();
   };
 
   onClickCancelButton = () => {
@@ -66,14 +73,9 @@ class UploadDialog extends Component {
     this.props.onClose();
   };
 
-  //Save image data to Redux store
-  saveToReduxStore = image => {
-    this.props.createImageAction(image);
-  };
-
   onChange = () => e => {
-    const images = e.target.files;
-    this.setState({ images: images });
+    const imageFiles = e.target.files;
+    this.setState({ imageFiles: imageFiles });
   };
 
   _addDirectory(node) {
