@@ -73,6 +73,9 @@ When you fork a project in order to propose changes to the original repository, 
 
 Now, you can keep your fork synced with the upstream repository with a few Git commands. 
 
+1. To pull from the original CYTO AI repository use: ``` git pull upstream master ```
+2. To push to your own fork use: ``` git push origin master ```
+
 ## Code of Conduct
 
 ### Our Pledge
