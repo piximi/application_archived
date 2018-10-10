@@ -16,7 +16,6 @@ const images = (state = {}, action) => {
         ...state,
         images: action.images
       };
-
     case DELETE_IMAGE:
       return state.filter(image => {
         return image.identifier !== action.identifier;

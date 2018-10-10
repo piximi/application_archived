@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styles from './UploadDialog.css';
 import { withStyles } from 'material-ui/styles/index';
+import hash from 'string-hash';
 import * as databaseAPI from '../../database';
 
 import {
@@ -11,12 +12,12 @@ import {
   DialogTitle
 } from 'material-ui';
 
-function createImage(pathname) {
+function createImage(pathname, checksum) {
   return {
     category: null,
     probability: null,
     visible: true,
-    identifier: pathname,
+    identifier: checksum,
     filename: pathname
   };
 }
@@ -25,9 +26,10 @@ const readFile = (currentFile, that) => {
   const pathname = currentFile.webkitRelativePath;
   return e => {
     const bytes = e.target.result;
-    const image = createImage(pathname);
+    const checksum = hash(bytes);
+    const image = createImage(pathname, checksum);
     that.imageData.imageDataIndexedDB.push({
-      checksum: pathname,
+      checksum: checksum,
       bytes: bytes
     });
     that.imageData.imageDataReduxStore.push(image);
@@ -37,13 +39,13 @@ const readFile = (currentFile, that) => {
         that.imageData.imageDataIndexedDB,
         that.imageData.imageDataReduxStore
       );
-      that.imageData = {};
+      this.imageData = { imageDataReduxStore: [], imageDataIndexedDB: [] };
       that.counter = 0;
     }
   };
 };
 
-class UploadDialog extends Component {
+export class UploadDialog extends Component {
   constructor(props) {
     super(props);
     this.imageFiles = [];
