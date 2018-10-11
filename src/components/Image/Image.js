@@ -72,7 +72,7 @@ class Image extends Component {
 
   asyncDatabaseRequest(checksum) {
     const that = this;
-    databaseAPI.database.images.get(checksum).then(function(result) {
+    databaseAPI.indexeddb.images.get(checksum).then(function(result) {
       if (result) {
         that._asyncRequest = null;
         that.setState({ src: result.bytes });
