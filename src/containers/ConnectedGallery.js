@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import Gallery from '../components/Gallery/Gallery';
 import {
   toggleUploadDialogAction,
-  updateSettingColumns
+  updateSettingColumnsAction
 } from '../actions/settings';
 import { sortImages } from '../actions/images';
 
@@ -12,9 +12,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateSettingColumns: event => {
+    updateSettingColumnsAction: event => {
       const columns = event.target.value;
-      dispatch(updateSettingColumns(columns));
+      dispatch(updateSettingColumnsAction(columns));
     },
     sortImages: () => {
       dispatch(sortImages());
@@ -25,6 +25,9 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const ConnectedGallery = connect(mapStateToProps, mapDispatchToProps)(Gallery);
+const ConnectedGallery = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Gallery);
 
 export default ConnectedGallery;

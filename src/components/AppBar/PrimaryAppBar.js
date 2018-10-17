@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styles from './PrimaryAppBar.css';
 import { withStyles } from 'material-ui/styles/index';
-import { AppBar, IconButton, Toolbar, Tooltip, Typography } from 'material-ui';
+import { AppBar, IconButton, Toolbar, Typography } from 'material-ui';
 import classNames from 'classnames';
 import MenuIcon from '@material-ui/icons/Menu';
 
@@ -17,35 +17,19 @@ class PrimaryAppBar extends Component {
         })}
         color="default"
       >
-        <Toolbar className={classes.toolBar} disableGutters={true}>
-          <Toolbar
-            // className={classNames(toggled? classes.hide:classes.appBarLeft)}
-            className={classes.appBarLeft}
-            disableGutters={true}
+        <Toolbar disableGutters={!toggled}>
+          <IconButton
+            aria-label="open sidebar"
+            className={classNames(classes.menuButton, toggled && classes.hide)}
+            color="inherit"
+            onClick={toggle}
           >
-            <Tooltip title={(toggled ? 'Hide ' : 'Show ') + 'sidebar'}>
-              <IconButton
-                aria-label="open sidebar"
-                className={classNames(classes.menuButton)}
-                color="inherit"
-                onClick={toggle}
-              >
-                <MenuIcon />
-              </IconButton>
-            </Tooltip>
+            <MenuIcon />
+          </IconButton>
 
-            <Typography variant="title" color="inherit">
-              <img
-                alt="logo"
-                height="50px"
-                src="https://cyto.ai/images/logo.png"
-              />
-            </Typography>
-          </Toolbar>
-
-          <Toolbar className={classes.appBarCenter} />
-
-          <Toolbar className={classes.appBarRight} />
+          <Typography variant="title" color="inherit">
+            Cyto
+          </Typography>
         </Toolbar>
       </AppBar>
     );

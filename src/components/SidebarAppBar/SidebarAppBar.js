@@ -24,11 +24,7 @@ class SidebarAppBar extends Component {
           </Tooltip>
 
           <Typography variant="title" color="inherit">
-            <img
-              alt="foo"
-              height="50px"
-              src="https://cyto.ai/images/logo.png"
-            />
+            Cyto
           </Typography>
         </Toolbar>
       </AppBar>
