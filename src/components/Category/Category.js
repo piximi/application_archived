@@ -8,11 +8,10 @@ import {
 } from 'material-ui';
 import LabelIcon from '@material-ui/icons/Label';
 import LabelOutlineIcon from '@material-ui/icons/LabelOutline';
-import DeleteIcon from '@material-ui/icons/Delete';
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import { DropTarget } from 'react-dnd';
 import styles from './Category.css';
 import { withStyles } from 'material-ui/styles/index';
-import ConnectedDeleteCategoryDialog from '../../containers/ConnectedDeleteCategoryDialog';
 
 const spec = {
   drop(props, monitor, component) {
@@ -32,12 +31,19 @@ function collect(connect, monitor) {
 
 class Category extends Component {
   state = {
-    deleteCategoryDialogOpen: false
+    deleteCategoryDialogOpen: false,
+    animateOnDrop: null
   };
 
   toggleDeleteCategoryDialog = () => {
     this.setState({
       deleteCategoryDialogOpen: !this.state.deleteCategoryDialogOpen
+    });
+  };
+
+  onDropAnimation = () => {
+    this.setState({
+      animateOnDrop: !this.state.animateOnDrop
     });
   };
 
@@ -49,19 +55,27 @@ class Category extends Component {
       connectDropTarget,
       description,
       images,
-      visible
+      visible,
+      classes
     } = this.props;
 
     return connectDropTarget(
-      <div>
+      <div
+        onDrop={this.onDropAnimation}
+        className={
+          this.state.animateOnDrop !== null
+            ? this.state.animateOnDrop
+              ? classes.onDropPulse
+              : classes.onDropPulse2
+            : null
+        }
+      >
         <ListItem
           dense
           button
           onClick={() => updateCategoryVisibility(identifier, images, !visible)}
           classes={{
-            root: this.props.isOver
-              ? this.props.classes.isOver
-              : this.props.classes.isNotOver
+            root: this.props.isOver ? classes.isOver : null
           }}
         >
           <ListItemIcon>
@@ -75,23 +89,13 @@ class Category extends Component {
           <ListItemText primary={description} />
 
           <ListItemSecondaryAction>
-            <Tooltip id="tooltip-icon" title="Delete category">
-              <ListItemIcon
-                onClick={this.toggleDeleteCategoryDialog}
-                classes={{ root: this.props.classes.icon }}
-              >
-                <DeleteIcon />
+            <Tooltip id="tooltip-icon" title="Category settings">
+              <ListItemIcon classes={{ root: classes.icon }}>
+                <MoreHorizIcon />
               </ListItemIcon>
             </Tooltip>
           </ListItemSecondaryAction>
         </ListItem>
-
-        <ConnectedDeleteCategoryDialog
-          description={description}
-          identifier={identifier}
-          onClose={this.toggleDeleteCategoryDialog}
-          open={this.state.deleteCategoryDialogOpen}
-        />
       </div>
     );
   }
