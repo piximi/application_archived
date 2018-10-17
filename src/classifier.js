@@ -26,9 +26,7 @@ let VALIDATIONSET_RATIO = 0.3;
 
 async function loadNetwork(num_classes) {
   //get Prelaoded model of MobileNet
-  const preLoadedmodel = await tensorflow.loadModel(
-    'https://weights.cyto.ai/mobilenet/model.json'
-  );
+  const preLoadedmodel = await tensorflow.loadModel('indexeddb://my-model-1');
 
   //get some intermediate layer
   const layer = preLoadedmodel.getLayer('conv_pw_13_relu');
@@ -390,4 +388,24 @@ async function trainOnRun(images, categories) {
   return null;
 }
 
-export { trainOnRun };
+async function exportWeights() {
+  const preLoadedmodel = await tensorflow.loadModel('indexeddb://my-model-1');
+  const exportedModel = await preLoadedmodel.save('downloads://my-model-1');
+  console.log(exportedModel);
+}
+
+async function importWeights(files) {
+  console.log(files[0]);
+  fetch('https://weights.cyto.ai/mobilenet/model.json')
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(myJson) {
+      const jsonString = JSON.stringify(myJson);
+      const file = new File([jsonString], 'fooo', { type: 'application/json' });
+      console.log(file);
+      tensorflow.loadModel(tensorflow.io.browserFiles([file]));
+    });
+}
+
+export { trainOnRun, exportWeights, importWeights };

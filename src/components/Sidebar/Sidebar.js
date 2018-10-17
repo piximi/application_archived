@@ -15,6 +15,7 @@ import HelpDialog from '../HelpDialog/HelpDialog';
 import SettingsIcon from '@material-ui/icons/Settings';
 import FeedbackIcon from '@material-ui/icons/Feedback';
 import FolderOpenIcon from '@material-ui/icons/FolderOpen';
+import OpenInBrowserIcon from '@material-ui/icons/OpenInBrowser';
 import HelpIcon from '@material-ui/icons/Help';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -36,6 +37,17 @@ class Sidebar extends Component {
     modelListCollapsed: false,
     sendFeedbackDialogOpen: false,
     settingsDialogOpen: false
+  };
+
+  readDataFromCytoFile = e => {
+    const that = this;
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const text = reader.result;
+      const data = JSON.parse(text);
+      that.props.updateStore(data);
+    };
+    reader.readAsText(e.target.files[0]);
   };
 
   closeHelpDialog = () => {
@@ -79,7 +91,6 @@ class Sidebar extends Component {
       categories,
       classes,
       images,
-      open,
       settings,
       toggleModelCollapse,
       toggled,
@@ -109,14 +120,13 @@ class Sidebar extends Component {
               <FolderOpenIcon />
             </ListItemIcon>
             <ListItemText inset primary="Open..." />
-
             <input
               style={{ display: 'none' }}
               type="file"
               accept=".cyto"
               name="file"
               id="file"
-              onChange={e => open(e.target.files)}
+              onChange={e => this.readDataFromCytoFile(e)}
             />
           </ListItem>
 
@@ -160,6 +170,31 @@ class Sidebar extends Component {
               </ListItemIcon>
 
               <ListItemText primary="Fit" />
+            </ListItem>
+
+            <ListItem dense button component="label">
+              <ListItemIcon>
+                <OpenInBrowserIcon />
+              </ListItemIcon>
+
+              <ListItemText primary="Import Weights" />
+
+              <input
+                style={{ display: 'none' }}
+                type="file"
+                accept="*"
+                name="file"
+                id="file"
+                onChange={e => API.importWeights(e.target.files)}
+              />
+            </ListItem>
+
+            <ListItem dense button onClick={() => API.exportWeights()}>
+              <ListItemIcon>
+                <SaveIcon />
+              </ListItemIcon>
+
+              <ListItemText primary="Save Weights" />
             </ListItem>
           </Collapse>
         </List>

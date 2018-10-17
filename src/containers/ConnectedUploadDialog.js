@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-
 import { toggleUploadDialogAction } from '../actions/settings';
 import UploadDialog from '../components/UploadDialog/UploadDialog';
 
@@ -15,8 +14,9 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const ConnectedUploadDialog = connect(mapStateToProps, mapDispatchToProps)(
-  UploadDialog
-);
+const ConnectedUploadDialog = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(UploadDialog);
 
 export default ConnectedUploadDialog;

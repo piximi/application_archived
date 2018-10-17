@@ -1,8 +1,7 @@
 import {
-  CREATE_IMAGE,
+  ADD_IMAGES,
   DELETE_IMAGE,
   UPDATE_IMAGE_CATEGORY,
-  ADD_IMAGES,
   UPDATE_PROBABILITY,
   UPDATE_IMAGES_HAVING_CERTAIN_CATEGORY,
   UPDATE_IMAGE_VISIBILTY,
@@ -11,13 +10,11 @@ import {
 
 const images = (state = {}, action) => {
   let images = [];
-
   switch (action.type) {
-    case CREATE_IMAGE:
+    case ADD_IMAGES:
       return {
         ...state,
-        images: action.image,
-        imageByteStrings: action.imageByteStrings
+        images: action.images
       };
     case DELETE_IMAGE:
       return state.filter(image => {
@@ -68,11 +65,7 @@ const images = (state = {}, action) => {
         ...state,
         images: images
       };
-    case ADD_IMAGES:
-      return {
-        ...state,
-        images: action.images
-      };
+
     case UPDATE_IMAGE_VISIBILTY:
       images = state.images;
       images[action.index].visible = action.value;
@@ -82,12 +75,7 @@ const images = (state = {}, action) => {
         images: images
       };
     case SORT_IMAGES:
-      //images = state.images;
-      //images[action.index].visible = action.value;
-
-      console.log('HAHAHA');
       let sortedImages = [...state.images];
-      console.log(sortedImages);
       sortedImages.sort(function(a, b) {
         if (a.category === null) {
           return -1;

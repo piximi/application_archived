@@ -15,7 +15,7 @@ import {
 } from '../actions/settings';
 
 import {
-  updateImageVisibility,
+  updateImageVisibilityAction,
   updateImagesHavingCertainCategory
 } from '../actions/images';
 
@@ -49,7 +49,7 @@ const mapDispatchToProps = (dispatch, props) => {
       dispatch(updateCategoryVisibilityAction(identifier));
       for (let index in images.images) {
         if (images.images[index].category === identifier) {
-          dispatch(updateImageVisibility(index, value));
+          dispatch(updateImageVisibilityAction(index, value));
         }
       }
     },

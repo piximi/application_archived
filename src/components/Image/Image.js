@@ -7,7 +7,7 @@ import {
 import React, { Component } from 'react';
 import { DragSource } from 'react-dnd';
 import styles from './Image.css';
-import { database } from '../../database';
+import * as databaseAPI from '../../database';
 import LabelIcon from '@material-ui/icons/Label';
 
 const source = {
@@ -20,7 +20,6 @@ const source = {
   endDrag(props, monitor, component) {
     if (monitor.didDrop()) {
       const category = monitor.getDropResult().category;
-
       props.updateImageCategory(props.identifier, category);
     }
   }
@@ -36,19 +35,56 @@ function collect(connect, monitor) {
 class Image extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      data: ''
+      src: null
     };
+    this.asyncDatabaseRequest = this.asyncDatabaseRequest.bind(this);
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    // Store previousChecksum in state so we can compare when props change.
+    // Clear out previously-loaded data (so we don't render stale stuff).
+    if (props.checksum !== state.previousChecksum) {
+      return {
+        src: null,
+        previousChecksum: props.checksum
+      };
+    }
+    // No state update necessary
+    return null;
+  }
+
+  componentDidMount() {
+    this.asyncDatabaseRequest(this.props.checksum);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.src === null) {
+      this.asyncDatabaseRequest(this.props.checksum);
+    }
+  }
+
+  componentWillUnmount() {
+    if (this._asyncRequest) {
+      this._asyncRequest.cancel();
+    }
+  }
+
+  asyncDatabaseRequest(checksum) {
+    const that = this;
+    databaseAPI.indexeddb.images.get(checksum).then(function(result) {
+      if (result) {
+        that._asyncRequest = null;
+        that.setState({ src: result.bytes });
+      }
+    });
   }
 
   render() {
     const {
-      checksum,
       category,
       connectDragSource,
       findCategory,
-      pathname,
       classes,
       probability
     } = this.props;
@@ -61,17 +97,10 @@ class Image extends Component {
       color = 'rgba(0, 0, 0, 0.4)';
     }
 
-    // TODO: make this work
-    database.images.get(checksum).then(image => {
-      // this.setState({
-      //   data: image.data
-      // });
-    });
-
     return connectDragSource(
-      <div className={classes.foo}>
+      <div>
         <GridListTile component="div">
-          <img alt="foo" className={classes.image} src={pathname} />
+          <img alt="foo" className={classes.image} src={this.state.src} />
           <GridListTileBar
             title={probability == null ? null : String(probability).slice(0, 8)}
             actionIcon={
