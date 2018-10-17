@@ -16,13 +16,23 @@ const styles = theme => ({
   appBarShiftLeft: {
     marginLeft: drawerWidth
   },
+  toolBar: {
+    justifyContent: 'space-between'
+  },
   menuButton: {
     marginLeft: 12,
     marginRight: 20
   },
   hide: {
     display: 'none'
-  }
+  },
+  appBarLeft: {
+    width: drawerWidth
+  },
+  appBarCenter: {
+    flexGrow: 1
+  },
+  appBarRight: {}
 });
 
 export default styles;
