@@ -28,7 +28,7 @@ import SettingsDialog from '../SettingsDialog/SettingsDialog';
 import SidebarAppBar from '../SidebarAppBar/SidebarAppBar';
 
 const onClick = (images, categories) => {
-  return API.trainOnRun(images, categories);
+  return API.fitAndPredict(images, categories);
 };
 
 class Sidebar extends Component {
