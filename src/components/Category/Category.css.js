@@ -37,13 +37,9 @@ const styles = theme => ({
       background: listPulseBackgroundColour,
       opacity: listPulseOpacity
     },
-    '95%': {
+    '100%': {
       webkitBoxShadow: listPulseEndBoxStyle,
       boxShadow: listPulseEndBoxStyle
-    },
-    '100%': {
-      webkitBoxShadow: listPulseStartBoxStyle,
-      boxShadow: listPulseStartBoxStyle
     }
   },
   '@keyframes pulse2': {
@@ -55,13 +51,9 @@ const styles = theme => ({
       background: listPulseBackgroundColour,
       opacity: listPulseOpacity
     },
-    '95%': {
+    '100%': {
       webkitBoxShadow: listPulseEndBoxStyle,
       boxShadow: listPulseEndBoxStyle
-    },
-    '100%': {
-      webkitBoxShadow: listPulseStartBoxStyle,
-      boxShadow: listPulseStartBoxStyle
     }
   }
 });
