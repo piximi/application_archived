@@ -53,7 +53,7 @@ async function initializeModel() {
   const preloadedModel = await tensorflow.loadModel(
     'https://weights.cyto.ai/mobilenet/model.json'
   );
-  await preloadedModel.save('indexeddb://my-model-1');
+  await preloadedModel.save('indexeddb://classifier');
 }
 
 export { store };

@@ -8,7 +8,8 @@ import {
   TOGGLE_SIDEBAR,
   TOGGLE_UPLOAD_DIALOG,
   UPDATE_SETTING_COLUMNS,
-  UPDATE_SETTING_SIDEBAR_OPEN
+  UPDATE_SETTING_SIDEBAR_OPEN,
+  UPDATE_ZOOM_LEVEL
 } from '../constants';
 
 const settings = (state = {}, action) => {
@@ -86,6 +87,12 @@ const settings = (state = {}, action) => {
       };
     default:
       return state;
+
+    case UPDATE_ZOOM_LEVEL:
+      return {
+        ...state,
+        zoomLevel: action.value
+      };
   }
 };
 

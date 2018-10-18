@@ -4,10 +4,15 @@ import { withStyles } from 'material-ui/styles/index';
 import { AppBar, IconButton, Toolbar, Typography } from 'material-ui';
 import classNames from 'classnames';
 import MenuIcon from '@material-ui/icons/Menu';
+import Slider from '@material-ui/lab/Slider';
 
 class PrimaryAppBar extends Component {
+  handleChange = (event, value) => {
+    this.props.changeZoomLevel(value);
+  };
+
   render() {
-    const { classes, toggle, toggled } = this.props;
+    const { classes, toggle, toggled, zoomLevel } = this.props;
 
     return (
       <AppBar
@@ -30,6 +35,21 @@ class PrimaryAppBar extends Component {
           <Typography variant="title" color="inherit">
             Cyto
           </Typography>
+          <div
+            style={{
+              position: 'absolute',
+              right: '5%',
+              width: '10%'
+            }}
+          >
+            <Slider
+              step={5}
+              classes={{ container: styles.slider }}
+              value={zoomLevel}
+              aria-labelledby="label"
+              onChange={this.handleChange}
+            />
+          </div>
         </Toolbar>
       </AppBar>
     );

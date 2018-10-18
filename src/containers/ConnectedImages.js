@@ -10,7 +10,8 @@ const mapStateToProps = state => {
   return {
     images: state.images.images,
     categories: state.categories,
-    imageByteStrings: state.images.imageByteStrings
+    imageByteStrings: state.images.imageByteStrings,
+    zoomLevel: state.settings.zoomLevel
   };
 };
 

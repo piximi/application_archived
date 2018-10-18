@@ -1,10 +1,14 @@
 import { connect } from 'react-redux';
-
 import { fitClassifierAction } from '../actions/classifier';
+import { updateZoomLevelAction } from '../actions/settings';
 import Application from '../components/Application/Application';
+import { toggleUploadDialogAction } from '../actions/settings';
 
 const mapStateToProps = state => {
-  return state;
+  return {
+    ...state,
+    imagesMetaData: state.images.images.filter(image => image.visible === true)
+  };
 };
 
 const mapDispatchToProps = (dispatch, props) => {
@@ -12,6 +16,14 @@ const mapDispatchToProps = (dispatch, props) => {
     fit: () => {
       const pathname = '';
       dispatch(fitClassifierAction(pathname));
+    },
+
+    changeZoomLevel: value => {
+      dispatch(updateZoomLevelAction(value));
+    },
+
+    toggleUploadDialog: () => {
+      dispatch(toggleUploadDialogAction());
     }
   };
 };

@@ -17,6 +17,7 @@ function createImage(pathname, checksum) {
     category: null,
     probability: null,
     visible: true,
+    isSelected: false,
     identifier: checksum,
     filename: pathname
   };
