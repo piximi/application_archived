@@ -25,7 +25,7 @@ ReactDOM.render(
 registerServiceWorker();
 
 function initializeDatabase() {
-  databaseAPI.database.version(1).stores({
+  databaseAPI.indexeddb.version(1).stores({
     images: '&checksum, bytes'
   });
   const imageDataIndexedDB = dataImages.images.map(image => {

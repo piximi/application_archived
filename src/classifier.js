@@ -408,4 +408,8 @@ async function importWeights(files) {
     });
 }
 
-export { trainOnRun, exportWeights, importWeights };
+function fitAndPredict() {
+  return null;
+}
+
+export { trainOnRun, fitAndPredict, exportWeights, importWeights };

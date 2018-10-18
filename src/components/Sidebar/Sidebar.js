@@ -112,7 +112,7 @@ class Sidebar extends Component {
       >
         <div className={classes.drawerHeader} />
 
-        <SidebarAppBar toggle={toggle} />
+        <SidebarAppBar toggle={toggle} toggled={toggled} />
 
         <List dense>
           <ListItem button component="label">
