@@ -12,7 +12,6 @@
     "ajv": "^6.5.1",
     "classnames": "^2.2.5",
     "dexie": "^2.0.4",
-    "flow-bin": "^0.75.0",
     "gh-pages": "^1.1.0",
     "husky": "^0.14.3",
     "lint-staged": "^7.1.0",
@@ -67,6 +66,7 @@
     "babel-runtime": "^6.26.0",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.6.0",
+    "flow-bin": "^0.75.0",
     "react-redux": "^5.0.7",
     "redux": "^4.0.1"
   },
