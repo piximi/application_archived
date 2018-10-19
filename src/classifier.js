@@ -26,7 +26,7 @@ let VALIDATIONSET_RATIO = 0.3;
 
 async function loadNetwork(num_classes) {
   //get Prelaoded model of MobileNet
-  const preLoadedmodel = await tensorflow.loadModel('indexeddb://my-model-1');
+  const preLoadedmodel = await tensorflow.loadModel('indexeddb://classifier');
 
   //get some intermediate layer
   const layer = preLoadedmodel.getLayer('conv_pw_13_relu');
@@ -141,8 +141,6 @@ async function predict(modelDict, datasetObj) {
 
       // Returns the index with the maximum probability. This number corresponds
       // to the class the model thinks is the most probable given the input.
-      //console.log(img.identifier)
-      //predictions.as1D().print();
       passResults(img.identifier, predictions.as1D());
     }
     //return predictions//.as1D().argMax();
@@ -346,24 +344,19 @@ function getCategoryIndex(categoryId, categories) {
 }
 
 function passResults(imgId, predictions) {
-  //console.log(imgId);
   let predictionsArray = predictions.dataSync();
-  //console.log(predictionsArray);
   let index = indexMap[predictionsArray.indexOf(Math.max(...predictionsArray))];
-  //console.log(index);
   let category = store.getState().categories[index].identifier;
-  //console.log(category);
   store.dispatch(updateImageCategoryAction(imgId, category));
   let probability = predictionsArray[index];
   store.dispatch(updateImageProbability(imgId, probability));
 }
 
-async function trainOnRun(images, categories) {
+async function fitAndPredict(images, categories) {
   indexMap = {};
   counter = 0;
   categoryIndexArray = [];
 
-  console.log(categoryIndexArray);
   const imageTags = images.images.map(observation => {
     let categoryIndex = getCategoryIndex(observation.category, categories);
 
@@ -380,7 +373,6 @@ async function trainOnRun(images, categories) {
     image.src = images.imageByteStrings[observation.identifier];
     return image;
   });
-  console.log(indexMap);
 
   const dataset = new Dataset();
   dataset.loadFromArray(imageTags);
@@ -389,27 +381,25 @@ async function trainOnRun(images, categories) {
 }
 
 async function exportWeights() {
-  const preLoadedmodel = await tensorflow.loadModel('indexeddb://my-model-1');
-  const exportedModel = await preLoadedmodel.save('downloads://my-model-1');
-  console.log(exportedModel);
+  const preLoadedmodel = await tensorflow.loadModel('indexeddb://classifier');
+  await preLoadedmodel.save('downloads://classifier');
 }
 
-async function importWeights(files) {
-  console.log(files[0]);
+async function importWeights(weightsFile) {
   fetch('https://weights.cyto.ai/mobilenet/model.json')
     .then(function(response) {
       return response.json();
     })
     .then(function(myJson) {
       const jsonString = JSON.stringify(myJson);
-      const file = new File([jsonString], 'fooo', { type: 'application/json' });
-      console.log(file);
-      tensorflow.loadModel(tensorflow.io.browserFiles([file]));
+      const modelFile = new File([jsonString], 'classifier', {
+        type: 'application/json'
+      });
+      // TODO Make this working
+      tensorflow.loadModel(
+        tensorflow.io.browserFiles([modelFile, weightsFile])
+      );
     });
 }
 
-function fitAndPredict() {
-  return null;
-}
-
-export { trainOnRun, fitAndPredict, exportWeights, importWeights };
+export { fitAndPredict, exportWeights, importWeights };

@@ -70,6 +70,19 @@ const styles = theme => ({
     position: 'absolute',
     bottom: theme.spacing.unit * 2,
     right: theme.spacing.unit * 2
+  },
+
+  tagStyle: {
+    display: 'inline',
+    padding: '.2em .6em .3em',
+    fontSize: '75%',
+    fontWeight: '600',
+    lineHeight: '1',
+    color: 'yellow',
+    textAlign: 'center',
+    whiteSpace: 'nowrap',
+    verticalAlign: 'baseline',
+    borderRadius: '.25em'
   }
 });
 

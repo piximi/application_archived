@@ -26,13 +26,15 @@ const styles = theme => ({
   hide: {
     display: 'none'
   },
-  appBarLeft: {
-    width: drawerWidth
-  },
-  appBarCenter: {
-    flexGrow: 1
-  },
-  appBarRight: {}
+
+  slider: {
+    root: {
+      width: 10
+    },
+    slider: {
+      padding: '22px 0px'
+    }
+  }
 });
 
 export default styles;

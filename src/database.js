@@ -28,4 +28,8 @@ async function saveData(imageDataIndexedDB, imageDataReduxStore = null) {
     });
 }
 
-export { saveData, indexeddb };
+function filter(images, checksum) {
+  return images.filter(image => image.checksum === 0);
+}
+
+export { saveData, indexeddb, filter };

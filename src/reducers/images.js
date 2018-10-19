@@ -74,6 +74,7 @@ const images = (state = {}, action) => {
         ...state,
         images: images
       };
+
     case SORT_IMAGES:
       let sortedImages = [...state.images];
       sortedImages.sort(function(a, b) {
@@ -87,7 +88,6 @@ const images = (state = {}, action) => {
           return a.category < b.category ? -1 : 1;
         }
       });
-      console.log(sortedImages);
 
       return {
         ...state,
