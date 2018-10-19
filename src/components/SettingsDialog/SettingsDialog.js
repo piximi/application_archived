@@ -4,7 +4,9 @@ import { withStyles } from 'material-ui/styles/index';
 import { Dialog } from 'material-ui';
 import Settings from '../Settings/Settings';
 
-class SettingsDialog extends Component {
+type Properties = {};
+
+class SettingsDialog extends Component<Properties> {
   state = {
     tab: 0
   };

@@ -25,7 +25,9 @@ const tagStyle = {
   borderRadius: '.25em'
 };
 
-class Application extends Component {
+type Properties = {};
+
+class Application extends Component<Properties> {
   constructor(props) {
     super(props);
 

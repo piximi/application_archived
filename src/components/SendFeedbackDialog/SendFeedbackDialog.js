@@ -3,7 +3,9 @@ import styles from './SendFeedbackDialog.css';
 import { withStyles } from 'material-ui/styles/index';
 import { Button, Dialog, DialogActions, DialogContent } from 'material-ui';
 
-class SendFeedbackDialog extends Component {
+type Properties = {};
+
+class SendFeedbackDialog extends Component<Properties> {
   render() {
     const { classes, onClose, open } = this.props;
 

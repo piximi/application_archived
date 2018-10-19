@@ -13,7 +13,9 @@ import {
 import LabelIcon from '@material-ui/icons/Label';
 import ColorPicker from '../ColorPicker/ColorPicker';
 
-class CreateCategoryDialog extends Component {
+type Properties = {};
+
+class CreateCategoryDialog extends Component<Properties> {
   state = {
     anchor: null,
     color: '#FF0000',

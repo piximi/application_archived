@@ -5,7 +5,9 @@ import { AppBar, IconButton, Toolbar, Tooltip, Typography } from 'material-ui';
 import classNames from 'classnames';
 import MenuIcon from '@material-ui/icons/Menu';
 
-class SidebarAppBar extends Component {
+type Properties = {};
+
+class SidebarAppBar extends Component<Properties> {
   render() {
     const { classes, toggle, toggled } = this.props;
 

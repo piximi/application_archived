@@ -29,7 +29,9 @@ function collect(connect, monitor) {
   };
 }
 
-class Category extends Component {
+type Properties = {};
+
+class Category extends Component<Properties> {
   state = {
     deleteCategoryDialogOpen: false,
     animateOnDrop: null

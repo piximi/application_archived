@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 import Lightbox from 'react-images';
 import Image from './Image.js';
 
-class Gallery extends Component {
+type Properties = {};
+
+class Gallery extends Component<Properties> {
   constructor(props) {
     super(props);
 

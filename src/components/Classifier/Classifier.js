@@ -3,14 +3,15 @@ import styles from './Classifier.css.js';
 import { withStyles } from 'material-ui/styles';
 import { Grid } from 'material-ui';
 import HTML5Backend from 'react-dnd-html5-backend';
-import TouchBackebd from 'react-dnd-touch-backend';
 import { DragDropContextProvider } from 'react-dnd';
 import * as API from '../../classifier';
 import ConnectedGallery from '../../containers/ConnectedGallery';
 import ConnectedPrimary from '../../containers/ConnectedPrimary';
 import ConnectedSidebar from '../../containers/ConnectedSidebar';
 
-class Classifier extends Component {
+type Properties = {};
+
+class Classifier extends Component<Properties> {
   save = () => {
     console.log('save');
   };

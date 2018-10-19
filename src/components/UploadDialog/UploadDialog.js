@@ -46,7 +46,9 @@ const readFile = (currentFile, that) => {
   };
 };
 
-export class UploadDialog extends Component {
+type Properties = {};
+
+export class UploadDialog extends Component<Properties> {
   constructor(props) {
     super(props);
     this.imageFiles = [];

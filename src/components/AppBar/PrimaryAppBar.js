@@ -6,7 +6,9 @@ import classNames from 'classnames';
 import MenuIcon from '@material-ui/icons/Menu';
 import Slider from '@material-ui/lab/Slider';
 
-class PrimaryAppBar extends Component {
+type Properties = {};
+
+class PrimaryAppBar extends Component<Properties> {
   handleChange = (event, value) => {
     this.props.changeZoomLevel(value);
   };
