@@ -62,7 +62,8 @@ class Image extends Component {
   thumbnailStyle() {
     if (this.props.thumbnailStyle) return this.props.thumbnailStyle.call(this);
 
-    var rotationTransformValue = undefined;
+    let rotationTransformValue = undefined;
+
     switch (this.props.item.orientation) {
       case 3:
         rotationTransformValue = 'rotate(180deg)';
@@ -85,7 +86,11 @@ class Image extends Component {
       case 7:
         rotationTransformValue = 'rotate(90deg) rotateY(180deg)';
         break;
+      default:
+        rotationTransformValue = undefined;
+        break;
     }
+
     if (this.props.item.isSelected) {
       var ratio = this.props.item.scaletwidth / this.props.height;
       var height = 0;

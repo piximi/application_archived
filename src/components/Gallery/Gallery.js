@@ -159,16 +159,17 @@ class Gallery extends Component {
   }
 
   calculateCutOff(len, delta, items) {
-    var cutoff = [];
-    var cutsum = 0;
-    for (var i in items) {
-      var item = items[i];
-      var fractOfLen = item.scaletwidth / len;
+    let i;
+    let cutoff = [];
+    let cutsum = 0;
+    for (i in items) {
+      let item = items[i];
+      let fractOfLen = item.scaletwidth / len;
       cutoff[i] = Math.floor(fractOfLen * delta);
       cutsum += cutoff[i];
     }
 
-    var stillToCutOff = delta - cutsum;
+    let stillToCutOff = delta - cutsum;
     while (stillToCutOff > 0) {
       for (i in cutoff) {
         cutoff[i]++;
@@ -180,26 +181,27 @@ class Gallery extends Component {
   }
 
   buildImageRow(items, containerWidth) {
-    var row = [];
-    var len = 0;
-    var imgMargin = 2 * this.props.margin;
+    let item;
+    let row = [];
+    let len = 0;
+    let imgMargin = 2 * this.props.margin;
     while (items.length > 0 && len < containerWidth) {
-      var item = items.shift();
+      item = items.shift();
       row.push(item);
       len += item.scaletwidth + imgMargin;
     }
 
-    var delta = len - containerWidth;
+    let delta = len - containerWidth;
     if (row.length > 0 && delta > 0) {
-      var cutoff = this.calculateCutOff(len, delta, row);
-      for (var i in row) {
-        var pixelsToRemove = cutoff[i];
+      let cutoff = this.calculateCutOff(len, delta, row);
+      for (let i in row) {
+        let pixelsToRemove = cutoff[i];
         item = row[i];
         item.marginLeft = -Math.abs(Math.floor(pixelsToRemove / 2));
         item.vwidth = item.scaletwidth - pixelsToRemove;
       }
     } else {
-      for (var j in row) {
+      for (let j in row) {
         item = row[j];
         item.marginLeft = 0;
         item.vwidth = item.scaletwidth;
@@ -218,13 +220,13 @@ class Gallery extends Component {
     if (!images) return [];
     if (containerWidth === 0) return [];
 
-    var items = images.slice();
-    for (var t in items) {
+    let items = images.slice();
+    for (let t in items) {
       this.setThumbScale(items[t]);
     }
 
-    var thumbs = [];
-    var rows = [];
+    let thumbs = [];
+    let rows = [];
     while (items.length > 0) {
       rows.push(this.buildImageRow(items, containerWidth));
     }
@@ -245,7 +247,7 @@ class Gallery extends Component {
   }
 
   render() {
-    var images = this.state.thumbnails.map((item, idx) => {
+    let images = this.state.thumbnails.map((item, idx) => {
       return (
         <Image
           key={'Image-' + idx + '-' + item.src}
@@ -262,7 +264,7 @@ class Gallery extends Component {
         />
       );
     });
-    var resizeIframeStyles = {
+    let resizeIframeStyles = {
       height: 0,
       margin: 0,
       padding: 0,
@@ -285,6 +287,7 @@ class Gallery extends Component {
             c.contentWindow &&
             c.contentWindow.addEventListener('resize', this.onResize)
           }
+          title="gallery"
         />
         {images}
         <Lightbox
