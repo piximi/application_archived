@@ -7,7 +7,7 @@ import { toggleUploadDialogAction } from '../actions/settings';
 const mapStateToProps = state => {
   return {
     ...state,
-    imagesMetaData: state.images.images.filter(image => image.visible === true)
+    imagesMetadata: state.images.images.filter(image => image.visible === true)
   };
 };
 

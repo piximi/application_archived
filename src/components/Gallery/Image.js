@@ -1,14 +1,82 @@
 import PropTypes from 'prop-types';
+import { DragSource } from 'react-dnd';
 import React, { Component } from 'react';
 import CheckButton from './CheckButton.js';
+import * as databaseAPI from '../../database';
+
+const source = {
+  beginDrag(props) {
+    return {
+      identifier: props.item.identifier,
+      category: props.item.category
+    };
+  },
+  endDrag(props, monitor, component) {
+    if (monitor.didDrop()) {
+      const category = monitor.getDropResult().category;
+      props.updateImageCategory(props.item.identifier, category);
+    }
+  }
+};
+
+function collect(connect, monitor) {
+  return {
+    connectDragSource: connect.dragSource(),
+    isDragging: monitor.isDragging()
+  };
+}
 
 class Image extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      hover: true
+      src: null,
+      hover: true,
+      selected: false
     };
+
+    this.asyncDatabaseRequest = this.asyncDatabaseRequest.bind(this);
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    // Store previousChecksum in state so we can compare when props change.
+    // Clear out previously-loaded data (so we don't render stale stuff).
+
+    if (props.item.identifier !== state.previousChecksum) {
+      return {
+        src: null,
+        previousChecksum: props.item.identifier
+      };
+    }
+    // No state update necessary
+    return null;
+  }
+
+  componentDidMount() {
+    this.asyncDatabaseRequest(this.props.item.identifier);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.src === null) {
+      this.asyncDatabaseRequest(this.props.item.identifier);
+    }
+  }
+
+  componentWillUnmount() {
+    if (this._asyncRequest) {
+      this._asyncRequest.cancel();
+    }
+  }
+
+  asyncDatabaseRequest(checksum) {
+    const that = this;
+    databaseAPI.indexeddb.images.get(checksum).then(function(result) {
+      if (result) {
+        that._asyncRequest = null;
+        that.setState({ src: result.bytes });
+      }
+    });
   }
 
   tagStyle() {
@@ -27,6 +95,13 @@ class Image extends Component {
       borderRadius: '.25em'
     };
   }
+
+  onSelectImage = (index, e) => {
+    this.setState({
+      selected: true
+    });
+    this.props.onSelectImage(index, e);
+  };
 
   tileViewportStyle() {
     if (this.props.tileViewportStyle)
@@ -137,13 +212,24 @@ class Image extends Component {
         hoverColor={'rgba(255, 255, 255, 1)'}
         isSelected={this.props.item.isSelected}
         isSelectable={this.props.isSelectable}
-        onClick={this.props.isSelectable ? this.props.onSelectImage : null}
+        onClick={this.props.isSelectable ? this.onSelectImage : null}
         parentHover={this.state.hover}
       />
     );
   }
 
+  onClick = e => {
+    this.setState({
+      selected: !this.state.selected
+    });
+
+    this.props.onClick
+      ? e => this.props.onClick.call(this, this.props.index, e)
+      : null;
+  };
+
   render() {
+    const { connectDragSource } = this.props;
     var alt = this.props.item.alt ? this.props.item.alt : '';
     var tags =
       typeof this.props.item.tags === 'undefined' ? (
@@ -186,7 +272,7 @@ class Image extends Component {
         </div>
       );
 
-    return (
+    return connectDragSource(
       <div
         className="tile"
         key={'tile-' + this.props.index}
@@ -256,15 +342,11 @@ class Image extends Component {
           className="tile-viewport"
           style={this.tileViewportStyle()}
           key={'tile-viewport-' + this.props.index}
-          onClick={
-            this.props.onClick
-              ? e => this.props.onClick.call(this, this.props.index, e)
-              : null
-          }
+          onClick={e => this.onClick()}
         >
           <img
             key={'img-' + this.props.index}
-            src={this.props.item.thumbnail}
+            src={this.state.src}
             alt={alt}
             title={this.props.item.caption}
             style={this.thumbnailStyle()}
@@ -311,4 +393,4 @@ Image.defaultProps = {
   hover: false
 };
 
-export default Image;
+export default DragSource('Image', source, collect)(Image);
