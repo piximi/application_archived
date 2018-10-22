@@ -223,9 +223,9 @@ class Image extends Component {
       selected: !this.state.selected
     });
 
-    this.props.onClick
-      ? e => this.props.onClick.call(this, this.props.index, e)
-      : null;
+    if (this.props.onClick) {
+      this.props.onClick.call(this, this.props.index, e);
+    }
   };
 
   render() {
