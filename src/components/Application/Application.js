@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import { Button, Tooltip } from 'material-ui';
 import AddIcon from '@material-ui/icons/Add';
@@ -7,123 +8,47 @@ import classNames from 'classnames';
 import ConnectedSidebar from '../../containers/ConnectedSidebar';
 import PrimaryAppBar from '../AppBar/PrimaryAppBar';
 import HTML5Backend from 'react-dnd-html5-backend';
-import { DragDropContextProvider } from 'react-dnd';
+import { DragDropContext } from 'react-dnd';
 import Gallery from '../Gallery/Gallery';
-import * as databaseAPI from '../../database';
 import ConnectedUploadDialog from '../../containers/ConnectedUploadDialog';
 
-const tagStyle = {
-  display: 'inline',
-  padding: '.2em .6em .3em',
-  fontSize: '75%',
-  fontWeight: '600',
-  lineHeight: '1',
-  color: 'yellow',
-  textAlign: 'center',
-  whiteSpace: 'nowrap',
-  verticalAlign: 'baseline',
-  borderRadius: '.25em'
-};
-
-type Properties = {};
-
-class Application extends Component<Properties> {
+class Application extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       open: true,
-      previousImagesMetadata: null,
-      collection: []
+      images: [],
+      imagesMetaData: {}
     };
-
-    this.asyncDatabaseRequest = this.asyncDatabaseRequest.bind(this);
   }
 
-  static getDerivedStateFromProps(props, state) {
-    console.log('Derived called');
-    // Store previousChecksum in state so we can compare when props change.
-    // Clear out previously-loaded data (so we don't render stale stuff).
-    if (props.imagesMetaData !== state.previousImagesMetadata) {
-      console.log('Derived state is different');
-      console.log(props.imagesMetaData);
-      console.log('--------------------------');
-      console.log(state.previousImagesMetadata);
-      return {
-        images: null,
-        previousImagesMetadata: props.imagesMetaData
-      };
-    }
-    // No state update necessary
-    return null;
-  }
-
-  componentDidMount() {
-    console.log('Component did mount');
-    this.asyncDatabaseRequest(this.props.imagesMetaData);
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (this.state.images === null) {
-      console.log('Component did update');
-      this.asyncDatabaseRequest(this.props.imagesMetaData);
-    }
-  }
-
-  componentWillUnmount() {
-    if (this._asyncRequest) {
-      this._asyncRequest.cancel();
-    }
-  }
-
-  filter = (images, checksum) => {
-    return images.filter(image => image.checksum === checksum)[0].bytes;
-  };
-
-  // FIXME: very inefficient
-  asyncDatabaseRequest(imagesMetadata) {
-    console.log('Request Called');
-    const that = this;
-
-    databaseAPI.indexeddb.images.toArray().then(function(result) {
-      if (result) {
-        that._asyncRequest = null;
-        that.createImageCollection(result, imagesMetadata);
-      }
-    });
-  }
-
-  createImageCollection = (collection, imagesMetadata) => {
-    let empty = collection.length === 0;
-    let category = [{ value: 'unlabeled', title: 'Category' }];
-    let src = '';
+  createImageCollection = () => {
+    let identifier = null;
+    let category = null;
     let categoryColor = 'white';
 
-    const IMAGES = imagesMetadata.map(imageMetadata => {
-      if (!empty) {
-        var filtered = this.filter(collection, imageMetadata.identifier);
-        src = filtered;
-        category = this.findCategory(imageMetadata.category);
-
-        if (category != null) {
-          if (category.color != null) {
-            categoryColor = category.color;
-          }
+    const IMAGES = this.props.imagesMetadata.map(imageMetadata => {
+      categoryColor = 'white';
+      identifier = imageMetadata.identifier;
+      category = this.findCategory(imageMetadata.category);
+      if (category != null) {
+        if (category.color != null) {
+          categoryColor = category.color;
+          category = category.identifier;
         }
       }
+
       return {
-        src: src,
-        thumbnail: src,
+        identifier: identifier,
         thumbnailWidth: 180,
         thumbnailHeight: 180,
         isSelected: false,
+        category: category,
         color: categoryColor
       };
     });
 
-    this.setState({
-      images: IMAGES
-    });
+    return IMAGES;
   };
 
   onClick = () => {
@@ -137,11 +62,10 @@ class Application extends Component<Properties> {
   };
 
   onSelectImage(index, image) {
-    var images = this.state.images.slice();
-    var img = images[index];
+    let images = this.state.images.slice();
+    let img = images[index];
     if (img.hasOwnProperty('isSelected')) img.isSelected = !img.isSelected;
     else img.isSelected = true;
-
     this.setState({
       images: images
     });
@@ -154,57 +78,58 @@ class Application extends Component<Properties> {
       changeZoomLevel
     } = this.props;
 
-    let myGalllery =
-      this.state.images == null ? null : (
-        <Gallery
-          images={this.state.images}
-          onSelectImage={this.onSelectImage}
-          tagStyle={tagStyle}
-          showLightboxThumbnails={true}
-        />
-      );
+    const IMAGES = this.createImageCollection();
     return (
-      <DragDropContextProvider backend={HTML5Backend}>
-        <div className={classes.appFrame}>
-          <PrimaryAppBar
-            toggle={this.onClick}
-            toggled={this.state.open}
-            changeZoomLevel={changeZoomLevel}
-            zoomLevel={settings.zoomLevel}
+      <div className={classes.appFrame}>
+        <PrimaryAppBar
+          toggle={this.onClick}
+          toggled={this.state.open}
+          changeZoomLevel={changeZoomLevel}
+          zoomLevel={settings.zoomLevel}
+        />
+
+        <ConnectedSidebar toggle={this.onClick} toggled={this.state.open} />
+
+        <main
+          className={classNames(classes.content, classes.contentLeft, {
+            [classes.contentShift]: this.state.open,
+            [classes.contentShiftLeft]: this.state.open
+          })}
+        >
+          <div className={classes.drawerHeader} />
+
+          <Gallery
+            enableLightbox={false}
+            images={IMAGES}
+            onSelectImage={this.onSelectImage}
           />
 
-          <ConnectedSidebar toggle={this.onClick} toggled={this.state.open} />
+          <Tooltip id="tooltip-fab" title="Upload new image">
+            <Button
+              style={{ position: 'fixed' }}
+              variant="fab"
+              color="secondary"
+              className={classes.fab}
+              onClick={toggleUploadDialog}
+            >
+              <AddIcon />
+            </Button>
+          </Tooltip>
+        </main>
 
-          <main
-            className={classNames(classes.content, classes.contentLeft, {
-              [classes.contentShift]: this.state.open,
-              [classes.contentShiftLeft]: this.state.open
-            })}
-          >
-            <div className={classes.drawerHeader} />
-            {myGalllery}
-
-            <Tooltip id="tooltip-fab" title="Upload new image">
-              <Button
-                style={{ position: 'fixed' }}
-                variant="fab"
-                color="secondary"
-                className={classes.fab}
-                onClick={toggleUploadDialog}
-              >
-                <AddIcon />
-              </Button>
-            </Tooltip>
-          </main>
-
-          <ConnectedUploadDialog
-            onClose={toggleUploadDialog}
-            open={settings.upload.toggled}
-          />
-        </div>
-      </DragDropContextProvider>
+        <ConnectedUploadDialog
+          onClose={toggleUploadDialog}
+          open={settings.upload.toggled}
+        />
+      </div>
     );
   }
 }
 
-export default withStyles(styles, { withTheme: true })(Application);
+Application.propTypes = {
+  name: PropTypes.string
+};
+
+export default DragDropContext(HTML5Backend)(
+  withStyles(styles, { withTheme: true })(Application)
+);

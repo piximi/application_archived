@@ -8,7 +8,6 @@ import {
 } from 'material-ui';
 import AddIcon from '@material-ui/icons/Add';
 import { withStyles } from 'material-ui/styles';
-import withDragDropContext from '../DragDropContext/DragDropContext';
 import styles from './Categories.css';
 import Category from '../Category/Category';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
@@ -90,6 +89,4 @@ class Categories extends Component<Properties> {
   }
 }
 
-export default withDragDropContext(
-  withStyles(styles, { withTheme: true })(Categories)
-);
+export default withStyles(styles, { withTheme: true })(Categories);

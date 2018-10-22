@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import Lightbox from 'react-images';
-import Image from './Image.js';
+import ConnectedImage from '../../containers/ConnectedImage';
 
 type Properties = {};
 
@@ -251,7 +251,7 @@ class Gallery extends Component<Properties> {
   render() {
     let images = this.state.thumbnails.map((item, idx) => {
       return (
-        <Image
+        <ConnectedImage
           key={'Image-' + idx + '-' + item.src}
           item={item}
           index={idx}
@@ -322,10 +322,8 @@ Gallery.displayName = 'Gallery';
 Gallery.propTypes = {
   images: PropTypes.arrayOf(
     PropTypes.shape({
-      src: PropTypes.string.isRequired,
       nano: PropTypes.string,
       alt: PropTypes.string,
-      thumbnail: PropTypes.string.isRequired,
       srcset: PropTypes.array,
       caption: PropTypes.string,
       tags: PropTypes.arrayOf(
