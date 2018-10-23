@@ -2,10 +2,9 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import Lightbox from 'react-images';
 import ConnectedImage from '../../containers/ConnectedImage';
+import { SelectableGroup } from 'react-selectable-fast';
 
-type Properties = {};
-
-class Gallery extends Component<Properties> {
+class Gallery extends Component {
   constructor(props) {
     super(props);
 
@@ -291,7 +290,26 @@ class Gallery extends Component<Properties> {
           }
           title="gallery"
         />
-        {images}
+
+        <SelectableGroup
+          className="main"
+          clickClassName="tick"
+          enableDeselect
+          tolerance={this.state.tolerance}
+          globalMouse={this.state.isGlobal}
+          allowClickWithoutSelected={false}
+          duringSelection={this.handleSelecting}
+          onSelectionClear={this.handleSelectionClear}
+          onSelectionFinish={this.handleSelectionFinish}
+          ignoreList={[
+            '.not-selectable',
+            '.item:nth-child(10)',
+            '.item:nth-child(27)'
+          ]}
+        >
+          {images}
+        </SelectableGroup>
+
         <Lightbox
           images={this.props.images}
           backdropClosesModal={this.props.backdropClosesModal}

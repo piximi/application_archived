@@ -3,3 +3,62 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.main {
+  padding: 0 10px;
+  border: 1px solid darkcyan;
+  overflow: hidden;
+  height: 100vh;
+  overflow: scroll;
+  position: relative;
+}
+
+.selectable-selectbox {
+  z-index: 9000;
+  position: absolute;
+  cursor: default;
+  background: none;
+  border: 1px dashed grey;
+  background-color: red;
+  padding: none;
+}
+
+.item {
+  background: red;
+  border: 20px solid rebeccapurple;
+}
+
+.item.selected {
+  background: rebeccapurple;
+  color: white;
+  border: 20px solid blue;
+}
+.item.selecting {
+  border: 20px solid rebeccapurple;
+}
+.not-selectable {
+}
+.counter {
+  color: #009688;
+}
+.selectable-button {
+  display: inline-block;
+  margin: 0 3px 10px 3px;
+}
+.in-selection-mode .item {
+  cursor: pointer;
+}
+button {
+  display: inline-block;
+  position: relative;
+  width: 121px;
+  height: 32px;
+  line-height: 32px;
+  border-radius: 2px;
+  font-size: 0.9em;
+  background-color: #4285f4;
+  color: #fff;
+  border: none;
+  outline: none;
+  padding: 0;
+}

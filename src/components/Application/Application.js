@@ -130,6 +130,4 @@ Application.propTypes = {
   name: PropTypes.string
 };
 
-export default DragDropContext(HTML5Backend)(
-  withStyles(styles, { withTheme: true })(Application)
-);
+export default withStyles(styles, { withTheme: true })(Application);

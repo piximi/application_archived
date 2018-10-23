@@ -3,6 +3,7 @@ import { DragSource } from 'react-dnd';
 import React, { Component } from 'react';
 import CheckButton from './CheckButton.js';
 import * as databaseAPI from '../../database';
+import { createSelectable } from 'react-selectable-fast';
 
 const source = {
   beginDrag(props) {
@@ -37,6 +38,7 @@ class Image extends Component {
     };
 
     this.asyncDatabaseRequest = this.asyncDatabaseRequest.bind(this);
+    this.myRef = React.createRef();
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -272,12 +274,17 @@ class Image extends Component {
         </div>
       );
 
-    return connectDragSource(
+    return (
       <div
-        className="tile"
+        ref={this.props.selectableRef}
+        className={`
+      item
+      ${this.props.selecting && 'selecting'}
+      ${this.props.selected && 'selected'}
+    `}
         key={'tile-' + this.props.index}
-        onMouseEnter={e => this.setState({ hover: true })}
-        onMouseLeave={e => this.setState({ hover: false })}
+        //onMouseEnter={e => this.setState({ hover: true })}
+        //onMouseLeave={e => this.setState({ hover: false })}
         style={{
           margin: this.props.margin,
           WebkitUserSelect: 'none',
@@ -393,4 +400,4 @@ Image.defaultProps = {
   hover: false
 };
 
-export default DragSource('Image', source, collect)(Image);
+export default createSelectable(Image);

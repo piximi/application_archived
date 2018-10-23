@@ -38,6 +38,7 @@
     "react-images": "latest",
     "react-lazyload": "^2.3.0",
     "react-scripts": "1.1.4",
+    "react-selectable-fast": "^2.1.2",
     "react-transition-group": "^2.5.0",
     "reselect": "^3.0.1",
     "source-map-explorer": "^1.6.0",
