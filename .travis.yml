@@ -1,11 +1,11 @@
-# deploy:
-#   github-token: "$GITHUB_TOKEN"
-#   local-dir: build
-#   keep-history: true
-#   on:
-#     branch: master
-#   provider: pages
-#   skip-cleanup: true
+deploy:
+  github-token: "$GITHUB_TOKEN"
+  local-dir: build
+  keep-history: true
+  on:
+    branch: master
+  provider: pages
+  skip-cleanup: true
 env:
   global:
     secure: iabyEFI/1lqFCppjHKwgEz3L7c3UkI6iXPPqyoKUfvTLpomYJHO9M5lblx5tzJBvJuhLQhslHFt/SH+1TpGBFOrGmXMMTI754HKNG9ExqVmDgeRQivQls1iROSQ7Q8WhdczMBy024ggW3ekxpsp2aOjmWaj8d6A2ZE+9+aD/iU7I8IntBiZhSy/1ZdNLrXZ3igL5qRzJxOdorGhjjfNcEwm4MIHCnTW/swzvXXnzgLS+sPECn9lPHqowamjblG16YGHkmH0gy4z2eKWVf9H4ZCRCU/IhSYhWfMq2klSP25AtjWO4j0vjqcbl3j7SGtwUAi4YtNl2/VNoWV6EIIiEJJUCjPVbdU+qdXsRdOLl9Afil2Imjjq7NsL30D/d84iwtY6IGymVgTx7IftqBUEyUPjnBHZleQEfMLqv3hlR+mX254Q5wV/HCfS04OuwiLVugLQXpJW+oLeFXAn83R/o1JYNr/BDteCMYaS4bToHCqXpGFGHyqzAp+UdgL7SZdbmW5M6gC9slqcBEaOAdrvX0D35kY5dD2X7sHeSypy4zRIVlQIwH4YROOuXPEsrocO+3TyWE60wgdQZuZcEAy/jobjbyprfxb42Z87DD4JJ87N7b5nbgIU5WB2RmJ7Prmb0e88gSD09UTybq8dXYpOpsj+nsHaMln8sJ443NvQqQnA=
