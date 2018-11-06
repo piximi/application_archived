@@ -1,17 +1,19 @@
 deploy:
-  github-token: "$GITHUB_TOKEN"
+  provider: gcs
+  access_key_id: GOOGAPI2JYRMRONGVOXT
+  secret_access_key:
+    secure: mUOcPS2dnIWo7pO+/iTLybEAmXwDy1BJkYtF33yizPyOAgbkLpsroqOkTnaqHCwowAVJwwVBnTcV/Li8cs4KUMLp+xAFWL4ElBkuyubOUEqinJSX+38tQ6CvkEo8IPjeDOktip/MasbsRCo8AxKkIj8sOTR4AFpfh6Roy+/BBCYOQbZOJz5tI1yIQW416fl/6QDNxDhwV/wPlr6VUAFj32Qj2JnMxRflSvfnFmS2RGFvqjoeGTSl9IaWdiISU1U+uV+kZdOkTb33sGyz1ePWaPPySWUXZi7ANOOyQzqK4EEItCvCc7bytUF6kNFkI8cWFUCJigVoWxKzj3B57YDzBgRWy/UyTheGefCJJhl5A3FKzpwko7WUZ0uJtiL/A8UjhevjJ50cMoettRcXawgC8bIpf0AyRJRH8x6AKWZZ5a95rka3GWCqjEuL6cesBkHYnsnRMQzayprHruL2qryWjQZs3QoQRhbybtq+HdOV4rT34vLE10zDTNt175GcHm+P1OYmo6jBKeIR8lmgkphoNjoEr07CCF4dRCsSXBJ0Go9oWfCZNJ0N8aZWjpNeBs/wfJFaacAl/LvfJ+oU/EtNPcNxCud11CzlOJEHvb7ldF78BnnpQTN7QVMssv2KqXNwZjCPjpPNdoXNfBdVKUpGfXxl8NkHpKRk0gdzk5TVH/0=
+  bucket: application-cyto-ai
   local-dir: build
-  keep-history: true
   on:
-    branch: master
-  provider: pages
-  skip-cleanup: true
+    repo: cytoai/cyto
+  skip_cleanup: true
 env:
   global:
     secure: iabyEFI/1lqFCppjHKwgEz3L7c3UkI6iXPPqyoKUfvTLpomYJHO9M5lblx5tzJBvJuhLQhslHFt/SH+1TpGBFOrGmXMMTI754HKNG9ExqVmDgeRQivQls1iROSQ7Q8WhdczMBy024ggW3ekxpsp2aOjmWaj8d6A2ZE+9+aD/iU7I8IntBiZhSy/1ZdNLrXZ3igL5qRzJxOdorGhjjfNcEwm4MIHCnTW/swzvXXnzgLS+sPECn9lPHqowamjblG16YGHkmH0gy4z2eKWVf9H4ZCRCU/IhSYhWfMq2klSP25AtjWO4j0vjqcbl3j7SGtwUAi4YtNl2/VNoWV6EIIiEJJUCjPVbdU+qdXsRdOLl9Afil2Imjjq7NsL30D/d84iwtY6IGymVgTx7IftqBUEyUPjnBHZleQEfMLqv3hlR+mX254Q5wV/HCfS04OuwiLVugLQXpJW+oLeFXAn83R/o1JYNr/BDteCMYaS4bToHCqXpGFGHyqzAp+UdgL7SZdbmW5M6gC9slqcBEaOAdrvX0D35kY5dD2X7sHeSypy4zRIVlQIwH4YROOuXPEsrocO+3TyWE60wgdQZuZcEAy/jobjbyprfxb42Z87DD4JJ87N7b5nbgIU5WB2RmJ7Prmb0e88gSD09UTybq8dXYpOpsj+nsHaMln8sJ443NvQqQnA=
 language: node_js
 node_js:
-  - "9"
+  - '9'
 script:
   - npm install
   - npm test

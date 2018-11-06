@@ -73,7 +73,7 @@
     "react-redux": "^5.0.7",
     "redux": "^4.0.1"
   },
-  "homepage": "http://cyto.ai/cyto/",
+  "homepage": "https://application.cyto.ai",
   "lint-staged": {
     "src/**/*.{js,jsx,json,css}": [
       "prettier --single-quote --write",
