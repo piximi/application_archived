@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import styles from './SendFeedbackDialog.css';
-import { withStyles } from 'material-ui/styles/index';
-import { Button, Dialog, DialogActions, DialogContent } from 'material-ui';
+import { withStyles } from '@material-ui/core/styles';
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent
+} from '@material-ui/core';
 
 type Properties = {};
 

@@ -6,10 +6,10 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText
-} from 'material-ui';
+} from '@material-ui/core';
 import React, { Component } from 'react';
 import styles from './Sidebar.css';
-import { withStyles } from 'material-ui/styles/index';
+import { withStyles } from '@material-ui/core/styles';
 import ConnectedCategories from '../../containers/ConnectedCategories';
 import HelpDialog from '../HelpDialog/HelpDialog';
 import SettingsIcon from '@material-ui/icons/Settings';

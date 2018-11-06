@@ -5,9 +5,9 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText
-} from 'material-ui';
+} from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 import styles from './Categories.css';
 import Category from '../Category/Category';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';

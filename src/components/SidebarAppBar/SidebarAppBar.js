@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import styles from './SidebarAppBar.css';
-import { withStyles } from 'material-ui/styles/index';
-import { AppBar, IconButton, Toolbar, Tooltip, Typography } from 'material-ui';
+import { withStyles } from '@material-ui/core/styles';
+import {
+  AppBar,
+  IconButton,
+  Toolbar,
+  Tooltip,
+  Typography
+} from '@material-ui/core';
 import classNames from 'classnames';
 import MenuIcon from '@material-ui/icons/Menu';
 

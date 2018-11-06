@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './SettingsDialogTabContainer.css';
-import { withStyles } from 'material-ui/styles/index';
-import { Typography } from 'material-ui';
+import { withStyles } from '@material-ui/core/styles';
+import { Typography } from '@material-ui/core';
 
 const SettingsDialogTabContainer = ({ children }) => {
   return (

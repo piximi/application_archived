@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styles from './CreateCategoryDialog.css';
-import { withStyles } from 'material-ui/styles/index';
+import { withStyles } from '@material-ui/core/styles';
 import {
   Button,
   Dialog,
@@ -9,7 +9,7 @@ import {
   IconButton,
   TextField,
   Popover
-} from 'material-ui';
+} from '@material-ui/core';
 import LabelIcon from '@material-ui/icons/Label';
 import ColorPicker from '../ColorPicker/ColorPicker';
 

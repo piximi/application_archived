@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import styles from './HelpDialog.css';
-import { withStyles } from 'material-ui/styles/index';
+import { withStyles } from '@material-ui/core/styles';
 import {
   Button,
   Dialog,
   DialogActions,
   DialogContent,
   DialogContentText
-} from 'material-ui';
+} from '@material-ui/core';
 
 type Properties = {};
 
