@@ -17,13 +17,6 @@ const Items = props => {
 
   const cellRenderer = function({ columnIndex, key, rowIndex, style }) {
     let newStyle = { ...style };
-    // if( typeof cellRenderer.index === 'undefined' ) {
-    //     cellRenderer.index = -1;
-    // }
-    // if(cellRenderer.index === length-1){
-    //     cellRenderer.index = 0
-    // }
-    //     else cellRenderer.index++
     const newPicturesPerRow = picturesPerRow > length ? length : picturesPerRow;
     const index = newPicturesPerRow * rowIndex - 1 + columnIndex + 1;
     if (index > length - 1) {
