@@ -104,5 +104,5 @@ class Category extends Component<Properties> {
 }
 
 export default withStyles(styles, { withTheme: true })(
-  DropTarget('Image', spec, collect)(Category)
+  DropTarget('SelectedItems', spec, collect)(Category)
 );

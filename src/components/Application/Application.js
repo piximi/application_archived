@@ -11,6 +11,9 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContext } from 'react-dnd';
 import Gallery from '../Gallery/Gallery';
 import ConnectedUploadDialog from '../../containers/ConnectedUploadDialog';
+import VirtualizedGallery from '../VirtualizedGallery/Gallery';
+import { imgs } from '../VirtualizedGallery/testImgs';
+import * as databaseAPI from '../../database';
 
 class Application extends Component {
   constructor(props) {
@@ -26,7 +29,6 @@ class Application extends Component {
     let identifier = null;
     let category = null;
     let categoryColor = 'white';
-
     const IMAGES = this.props.imagesMetadata.map(imageMetadata => {
       categoryColor = 'white';
       identifier = imageMetadata.identifier;
@@ -37,9 +39,8 @@ class Application extends Component {
           category = category.identifier;
         }
       }
-
       return {
-        identifier: identifier,
+        id: identifier,
         thumbnailWidth: 180,
         thumbnailHeight: 180,
         isSelected: false,
@@ -47,7 +48,6 @@ class Application extends Component {
         color: categoryColor
       };
     });
-
     return IMAGES;
   };
 
@@ -70,6 +70,16 @@ class Application extends Component {
       images: images
     });
   }
+
+  asyncDatabaseRequest(id, that) {
+    databaseAPI.indexeddb.images.get(id).then(function(result) {
+      if (result) {
+        that._asyncRequest = null;
+        that.setState({ src: result.bytes });
+      }
+    });
+  }
+
   render() {
     const {
       classes,
@@ -79,6 +89,7 @@ class Application extends Component {
     } = this.props;
 
     const IMAGES = this.createImageCollection();
+    console.log(IMAGES);
     return (
       <div className={classes.appFrame}>
         <PrimaryAppBar
@@ -87,9 +98,7 @@ class Application extends Component {
           changeZoomLevel={changeZoomLevel}
           zoomLevel={settings.zoomLevel}
         />
-
         <ConnectedSidebar toggle={this.onClick} toggled={this.state.open} />
-
         <main
           className={classNames(classes.content, classes.contentLeft, {
             [classes.contentShift]: this.state.open,
@@ -98,10 +107,11 @@ class Application extends Component {
         >
           <div className={classes.drawerHeader} />
 
-          <Gallery
-            enableLightbox={false}
+          <VirtualizedGallery
             images={IMAGES}
-            onSelectImage={this.onSelectImage}
+            imagesPerRow={30}
+            decreaseWidth={this.state.open ? 240 : 0}
+            asyncImgLoadingFunc={this.asyncDatabaseRequest}
           />
 
           <Tooltip id="tooltip-fab" title="Upload new image">
@@ -116,7 +126,6 @@ class Application extends Component {
             </Button>
           </Tooltip>
         </main>
-
         <ConnectedUploadDialog
           onClose={toggleUploadDialog}
           open={settings.upload.toggled}

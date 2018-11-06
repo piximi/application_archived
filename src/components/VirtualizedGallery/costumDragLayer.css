@@ -1,0 +1,39 @@
+div#drag-layer img {
+  width: 64px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
+  position: absolute;
+  opacity: 0.5;
+  margin: 16px;
+}
+
+div#drag-layer img:nth-child(1) {
+  transform: rotate(-9deg);
+  z-index: 0;
+}
+
+div#drag-layer img:nth-child(2) {
+  transform: rotate(-5deg);
+  z-index: 2;
+}
+
+div#drag-layer img:nth-child(3) {
+  transform: rotate(7deg);
+  z-index: 3;
+}
+
+div#drag-layer img:nth-child(4) {
+  z-index: 4;
+}
+
+div#drag-layer span {
+  font: 0.5em sans-serif;
+  background-color: #ff0000;
+  padding: 8px;
+  border-radius: 64px;
+  min-width: 8px;
+  min-height: 8px;
+  z-index: 5;
+  position: absolute;
+  color: #ffffff;
+  text-align: center;
+}
