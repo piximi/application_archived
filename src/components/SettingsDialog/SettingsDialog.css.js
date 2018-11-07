@@ -1,6 +1,6 @@
 const styles = theme => ({
   root: {
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: '#FFFFFF',
     flexGrow: 1
   },
   settingsDialog: {}

@@ -21,12 +21,12 @@ const styles = theme => ({
     position: 'relative'
   },
   primaryToolbar: {
-    backgroundColor: theme.palette.background.default
+    backgroundColor: '#FFFFFF'
   },
   content: {
     height: '100%',
     flexGrow: 1,
-    backgroundColor: theme.palette.background.default,
+    backgroundColor: '#FFFFFF',
     padding: theme.spacing.unit * 3,
     minWidth: 0 // So the Typography noWrap works
   },
