@@ -15,10 +15,17 @@ ul > li {
 }
 
 .selected {
+  border: 2px solid;
+  border-radius: 4px;
+  border-color: #4a90e2;
   display: table;
 }
 
 .unselected {
+  border: 2px solid;
+  border-radius: 4px;
+  border-color: transparent;
+
   display: table;
 }
 

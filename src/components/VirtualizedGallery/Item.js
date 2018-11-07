@@ -102,13 +102,12 @@ class Item extends Component {
           alt="foo"
           src={this.state.src === null ? imgSrc : this.state.src}
           style={{
-            border: imgSelected
-              ? '0.2rem solid rgb(41, 107, 210)'
-              : '0.2rem solid white',
+            padding: '3%',
+            verticalAlign: 'bottom',
             backgroundColor: 'white',
-            minWidth: 0.9 * containerStyle.width,
-            maxWidth: 0.9 * containerStyle.width,
-            maxHeight: 0.9 * containerStyle.height,
+            minWidth: 0.85 * containerStyle.width,
+            maxWidth: 0.85 * containerStyle.width,
+            maxHeight: 0.85 * containerStyle.height,
             objectFit: 'contain'
           }}
         />
