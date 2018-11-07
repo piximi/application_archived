@@ -85,7 +85,7 @@ class Gallery extends Component {
     } else this.setState({ selected: [imgId] });
   };
 
-  setCrrentlyDraggedItem = value => {
+  setCurrentlyDraggedItem = value => {
     // if item is dragged value = imgId otherwise value = null
     this.setState({ currentlyDraggedItem: value });
   };
@@ -120,7 +120,7 @@ class Gallery extends Component {
           asyncImgLoadingFunc={asyncImgLoadingFunc}
           selectItem={this.selectItem}
           selectedItems={this.state.selected}
-          ondrag={this.setCrrentlyDraggedItem}
+          ondrag={this.setCurrentlyDraggedItem}
         />
       </div>
     );

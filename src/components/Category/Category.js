@@ -7,7 +7,7 @@ import {
   Tooltip
 } from '@material-ui/core';
 import LabelIcon from '@material-ui/icons/Label';
-import LabelOutlineIcon from '@material-ui/icons/LabelOutline';
+import LabelOutlinedIcon from '@material-ui/icons/LabelOutlined';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import { DropTarget } from 'react-dnd';
 import styles from './Category.css';
@@ -60,7 +60,6 @@ class Category extends Component<Properties> {
       visible,
       classes
     } = this.props;
-    console.log(classes);
 
     return connectDropTarget(
       <div
@@ -85,7 +84,7 @@ class Category extends Component<Properties> {
             {visible ? (
               <LabelIcon style={{ color: color }} />
             ) : (
-              <LabelOutlineIcon style={{ color: color }} />
+              <LabelOutlinedIcon style={{ color: color }} />
             )}
           </ListItemIcon>
 
