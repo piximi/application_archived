@@ -8,10 +8,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 type Properties = {};
 
 class PrimaryAppBar extends Component<Properties> {
-  handleChange = (event, value) => {
-    this.props.changeZoomLevel(value);
-  };
-
   render() {
     const { classes, toggle, toggled } = this.props;
 
