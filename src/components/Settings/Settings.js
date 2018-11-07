@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styles from './Settings.css';
-import { withStyles } from 'material-ui/styles/index';
+import { withStyles } from '@material-ui/core/styles';
 import {
   AppBar,
   Collapse,
@@ -14,7 +14,7 @@ import {
   Switch,
   Toolbar,
   Typography
-} from 'material-ui';
+} from '@material-ui/core';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';

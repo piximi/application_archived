@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 import styles from './UploadDialog.css';
-import { withStyles } from 'material-ui/styles/index';
+import { withStyles } from '@material-ui/core/styles';
 import hash from 'string-hash';
 import * as databaseAPI from '../../database';
-
 import {
   Button,
   Dialog,
   DialogActions,
   DialogContent,
   DialogTitle
-} from 'material-ui';
+} from '@material-ui/core';
 
 function createImage(pathname, checksum) {
   return {

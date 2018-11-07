@@ -6,7 +6,7 @@ import { createStore } from 'redux';
 import data from '../images/mnist';
 import reducer from '../reducers';
 import dataImages from '../images/stock';
-import { Divider, Drawer } from 'material-ui';
+import { Divider, Drawer } from '@material-ui/core';
 
 const fixture = {
   categories: data.categories,

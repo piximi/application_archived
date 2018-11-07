@@ -1,4 +1,4 @@
-import { withStyles } from 'material-ui';
+import { withStyles } from '@material-ui/core/styles';
 import React, { Component } from 'react';
 import styles from './ColorPicker.css';
 import { CirclePicker } from 'react-color';
