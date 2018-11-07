@@ -10,7 +10,7 @@ import PrimaryAppBar from '../AppBar/PrimaryAppBar';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContext } from 'react-dnd';
 import ConnectedUploadDialog from '../../containers/ConnectedUploadDialog';
-import VirtualizedGallery from '../VirtualizedGallery/Gallery';
+import VirtualizedGallery from '../Gallery/Gallery';
 import * as databaseAPI from '../../database';
 
 class Application extends Component {
@@ -107,7 +107,7 @@ class Application extends Component {
           <VirtualizedGallery
             images={IMAGES}
             imagesPerRow={10}
-            decreaseWidth={this.state.open ? 240 : 0}
+            decreaseWidth={this.state.open ? 240 + 10 : 0}
             asyncImgLoadingFunc={this.asyncDatabaseRequest}
           />
 

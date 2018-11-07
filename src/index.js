@@ -7,7 +7,7 @@ import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import data from './images/subpopulation_small';
-import dataImages from './images/subpop';
+import dataImages from './images/BBC021';
 import reducer from './reducers';
 import * as databaseAPI from './database';
 
