@@ -4,7 +4,6 @@ import { withStyles } from '@material-ui/core/styles';
 import { AppBar, IconButton, Toolbar, Typography } from '@material-ui/core';
 import classNames from 'classnames';
 import MenuIcon from '@material-ui/icons/Menu';
-import Slider from '@material-ui/lab/Slider';
 
 type Properties = {};
 
@@ -14,7 +13,7 @@ class PrimaryAppBar extends Component<Properties> {
   };
 
   render() {
-    const { classes, toggle, toggled, zoomLevel } = this.props;
+    const { classes, toggle, toggled } = this.props;
 
     return (
       <AppBar
@@ -37,21 +36,6 @@ class PrimaryAppBar extends Component<Properties> {
           <Typography variant="title" color="inherit">
             Cyto
           </Typography>
-          <div
-            style={{
-              position: 'absolute',
-              right: '5%',
-              width: '10%'
-            }}
-          >
-            <Slider
-              step={5}
-              classes={{ container: styles.slider }}
-              value={zoomLevel}
-              aria-labelledby="label"
-              onChange={this.handleChange}
-            />
-          </div>
         </Toolbar>
       </AppBar>
     );
