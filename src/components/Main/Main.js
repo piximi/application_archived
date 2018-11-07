@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Main.css';
-import { withStyles } from 'material-ui/styles/index';
+import { withStyles } from '@material-ui/core/styles';
 
 const Main = ({ classes }) => {
   return (

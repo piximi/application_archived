@@ -1,8 +1,8 @@
-import { AppBar, IconButton, Toolbar, Typography } from 'material-ui';
 import React from 'react';
-import styles from './Primary.css';
-import { withStyles } from 'material-ui/styles/index';
+import { AppBar, IconButton, Toolbar, Typography } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
+import styles from './Primary.css';
+import { withStyles } from '@material-ui/core/styles';
 
 const Primary = ({
   classes,

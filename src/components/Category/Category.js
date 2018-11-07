@@ -5,13 +5,13 @@ import {
   ListItemSecondaryAction,
   ListItemText,
   Tooltip
-} from 'material-ui';
+} from '@material-ui/core';
 import LabelIcon from '@material-ui/icons/Label';
 import LabelOutlineIcon from '@material-ui/icons/LabelOutline';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import { DropTarget } from 'react-dnd';
 import styles from './Category.css';
-import { withStyles } from 'material-ui/styles/index';
+import { withStyles } from '@material-ui/core/styles';
 
 const spec = {
   drop(props, monitor, component) {
@@ -60,6 +60,7 @@ class Category extends Component<Properties> {
       visible,
       classes
     } = this.props;
+    console.log(classes);
 
     return connectDropTarget(
       <div
