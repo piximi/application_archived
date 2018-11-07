@@ -15,8 +15,6 @@ ul > li {
 }
 
 .selected {
-  border: 0.2rem solid;
-  border-color: rgb(41, 107, 210);
   display: table;
 }
 

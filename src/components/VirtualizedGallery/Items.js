@@ -52,10 +52,10 @@ const Items = props => {
             columnWidth={columnWidth}
             height={height}
             rowCount={rowCount}
-            rowHeight={200}
+            rowHeight={125}
             width={calculatedWidth}
             style={{ outline: 'none' }}
-            overscanColumnCount={50}
+            overscanColumnCount={1}
           />
         );
       }}

@@ -25,6 +25,7 @@ function createImage(pathname, checksum) {
 
 const readFile = (currentFile, that) => {
   const pathname = currentFile.webkitRelativePath;
+  if (pathname.includes('.DS_Store')) console.log(pathname);
   return e => {
     const bytes = e.target.result;
     const checksum = hash(bytes);

@@ -87,7 +87,6 @@ class Application extends Component {
     } = this.props;
 
     const IMAGES = this.createImageCollection();
-    console.log(IMAGES);
     return (
       <div className={classes.appFrame}>
         <PrimaryAppBar
@@ -107,7 +106,7 @@ class Application extends Component {
 
           <VirtualizedGallery
             images={IMAGES}
-            imagesPerRow={30}
+            imagesPerRow={10}
             decreaseWidth={this.state.open ? 240 : 0}
             asyncImgLoadingFunc={this.asyncDatabaseRequest}
           />
