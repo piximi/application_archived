@@ -10,7 +10,7 @@ import PrimaryAppBar from '../AppBar/PrimaryAppBar';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContext } from 'react-dnd';
 import ConnectedUploadDialog from '../../containers/ConnectedUploadDialog';
-import VirtualizedGallery from '../VirtualizedGallery/Gallery';
+import VirtualizedGallery from '../Gallery/Gallery';
 import * as databaseAPI from '../../database';
 
 class Application extends Component {
