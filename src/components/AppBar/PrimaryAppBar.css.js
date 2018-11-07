@@ -2,6 +2,9 @@ const drawerWidth = 240;
 
 const styles = theme => ({
   appBar: {
+    backgroundColor: 'transparent',
+    borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
+    boxShadow: 'none',
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
