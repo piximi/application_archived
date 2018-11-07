@@ -60,7 +60,6 @@ class Category extends Component<Properties> {
       visible,
       classes
     } = this.props;
-    console.log(classes);
 
     return connectDropTarget(
       <div
