@@ -20,13 +20,9 @@ const styles = theme => ({
   drawerPaper: {
     position: 'relative'
   },
-  primaryToolbar: {
-    backgroundColor: '#FFFFFF'
-  },
   content: {
     height: '100%',
     flexGrow: 1,
-    backgroundColor: '#FFFFFF',
     padding: theme.spacing.unit * 3,
     minWidth: 0 // So the Typography noWrap works
   },

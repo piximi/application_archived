@@ -2,7 +2,7 @@ const drawerWidth = 240;
 
 const styles = theme => ({
   appBar: {
-    backgroundColor: 'transparent',
+    backgroundColor: 'rgba(0, 0, 0, 0)',
     borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
     boxShadow: 'none',
     position: 'absolute',
