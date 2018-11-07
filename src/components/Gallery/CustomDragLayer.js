@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { DragLayer } from 'react-dnd';
-import './customDragLayer.css';
+import './CustomDragLayer.css';
 
 const layerStyles = {
   position: 'fixed',

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './Gallery.css';
 import Items from './Items.js';
 import SelectionBox from './SelectionBox.js';
-import CustomDragLayer from './customDragLayer';
+import CustomDragLayer from './CustomDragLayer';
 import { collisionDetection } from './helper.js';
 
 class Gallery extends Component {
