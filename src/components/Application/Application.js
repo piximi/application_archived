@@ -102,16 +102,18 @@ class Application extends Component {
             [classes.contentShiftLeft]: this.state.open
           })}
         >
+          <div className={classes.drawerHeader} />
+
           <VirtualizedGallery
             images={IMAGES}
             imagesPerRow={10}
-            decreaseWidth={this.state.open ? 240 + 30 : 0}
+            decreaseWidth={this.state.open ? 240 + 10 : 0}
             asyncImgLoadingFunc={this.asyncDatabaseRequest}
           />
 
           <Tooltip id="tooltip-fab" title="Upload new image">
             <Button
-              style={{ position: 'fixed', zIndex: 10001 }}
+              style={{ position: 'fixed', zIndex: 1202 }}
               variant="fab"
               color="secondary"
               className={classes.fab}
