@@ -6,7 +6,8 @@ const StyledCategory = styled.div`
     &:hover {
         background: ${props =>
           Color(props.color)
-            .saturate(0.5)
+            .saturate(0.1)
+            .lighten(0.99)
             .lighten(0.99)
             .string()}};
     };

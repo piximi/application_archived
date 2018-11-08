@@ -18,19 +18,19 @@ const pulseAnimation = color => {
   return keyframes`
   0% {
     box-shadow: 0px 0px 0px 0px ${Color(color)
-      .alpha(0.6)
+      .alpha(0.3)
       .string()};
   }
   10% {
     background-color: ${Color(color)
-      .alpha(0.6)
+      .alpha(0.3)
       .string()};
   }
   70% {
     background-color: ${Color(color)
       .alpha(0)
       .string()};
-    box-shadow: 0px 0px 30px 30px ${Color(color)
+    box-shadow: 0px 0px 15px 15px ${Color(color)
       .alpha(0.0)
       .string()};
   }
@@ -46,19 +46,19 @@ const pulseAnimation2 = color => {
   return keyframes`
   0% {
     box-shadow: 0px 0px 0px 0px ${Color(color)
-      .alpha(0.6)
+      .alpha(0.3)
       .string()};
   }
   10% {
     background-color: ${Color(color)
-      .alpha(0.6)
+      .alpha(0.3)
       .string()};
   }
   70% {
     background-color: ${Color(color)
       .alpha(0)
       .string()};
-    box-shadow: 0px 0px 31px 31px ${Color(color)
+    box-shadow: 0px 0px 16px 16px ${Color(color)
       .alpha(0.0)
       .string()};
   }
