@@ -107,7 +107,7 @@ class Application extends Component {
           <VirtualizedGallery
             images={IMAGES}
             imagesPerRow={10}
-            decreaseWidth={this.state.open ? 240 + 10 : 0}
+            decreaseWidth={this.state.open ? 240 + 24 : 0}
             asyncImgLoadingFunc={this.asyncDatabaseRequest}
           />
 
