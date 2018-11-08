@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './Gallery.css';
 import Items from './Items.js';
-import Selectionbox from './Selectionbox.js';
-import CustomDragLayer from './costumDragLayer';
+import SelectionBox from './SelectionBox.js';
+import CustomDragLayer from './CustomDragLayer';
 import { collisionDetection } from './helper.js';
 
 class Gallery extends Component {
@@ -12,13 +12,13 @@ class Gallery extends Component {
     this.state = {
       selected: [],
       collisions: [],
-      selectionboxCoordinates: {
+      selectionBoxCoordinates: {
         x1: 0,
         x2: 0,
         y1: 0,
         y2: 0
       },
-      selectionboxVisibility: 'hidden',
+      selectionBoxVisibility: 'hidden',
       currentlyDraggedItem: null,
       shiftKeyPressed: false
     };
@@ -32,29 +32,29 @@ class Gallery extends Component {
   onmousedown = e => {
     // Only activate selection box when not dragging on a selectable item
     if (e.target.getAttribute('type') !== 'selectableElement') {
-      this.setState({ selectionboxVisibility: 'visible' });
-      let currentSelectionboxCoordinates = {
-        ...this.state.selectionboxCoordinates
+      this.setState({ selectionBoxVisibility: 'visible' });
+      let currentselectionBoxCoordinates = {
+        ...this.state.selectionBoxCoordinates
       };
-      currentSelectionboxCoordinates.x1 = e.clientX; //Set the initial X
-      currentSelectionboxCoordinates.y1 = e.clientY; //Set the initial Y
+      currentselectionBoxCoordinates.x1 = e.clientX; //Set the initial X
+      currentselectionBoxCoordinates.y1 = e.clientY; //Set the initial Y
       this.setState({
-        selectionboxCoordinates: currentSelectionboxCoordinates
+        selectionBoxCoordinates: currentselectionBoxCoordinates
       });
     }
   };
 
   onmousemove = e => {
     // Always update coordinates based on mouse position
-    let currentSelectionboxCoordinates = {
-      ...this.state.selectionboxCoordinates
+    let currentselectionBoxCoordinates = {
+      ...this.state.selectionBoxCoordinates
     };
-    currentSelectionboxCoordinates.x2 = e.clientX;
-    currentSelectionboxCoordinates.y2 = e.clientY;
-    this.setState({ selectionboxCoordinates: currentSelectionboxCoordinates });
+    currentselectionBoxCoordinates.x2 = e.clientX;
+    currentselectionBoxCoordinates.y2 = e.clientY;
+    this.setState({ selectionBoxCoordinates: currentselectionBoxCoordinates });
     // Only check for collisions if selection box is active
-    if (this.state.selectionboxVisibility === 'visible') {
-      const collisions = collisionDetection(currentSelectionboxCoordinates);
+    if (this.state.selectionBoxVisibility === 'visible') {
+      const collisions = collisionDetection(currentselectionBoxCoordinates);
       this.setState({ selected: collisions, collisions: collisions });
     }
   };
@@ -69,7 +69,7 @@ class Gallery extends Component {
       this.setState({ selected: [] });
     }
     // Hide selection box und reset collisions
-    this.setState({ selectionboxVisibility: 'hidden', collisions: [] });
+    this.setState({ selectionBoxVisibility: 'hidden', collisions: [] });
   };
 
   selectItem = imgId => {
@@ -85,7 +85,7 @@ class Gallery extends Component {
     } else this.setState({ selected: [imgId] });
   };
 
-  setCrrentlyDraggedItem = value => {
+  setCurrentlyDraggedItem = value => {
     // if item is dragged value = imgId otherwise value = null
     this.setState({ currentlyDraggedItem: value });
   };
@@ -109,9 +109,9 @@ class Gallery extends Component {
         onMouseUp={this.onmouseup}
       >
         <CustomDragLayer draggedItem={this.state.currentlyDraggedItem} />
-        <Selectionbox
-          selectionboxCoordinates={this.state.selectionboxCoordinates}
-          visibility={this.state.selectionboxVisibility}
+        <SelectionBox
+          selectionBoxCoordinates={this.state.selectionBoxCoordinates}
+          visibility={this.state.selectionBoxVisibility}
         />
         <Items
           images={images}
@@ -120,7 +120,7 @@ class Gallery extends Component {
           asyncImgLoadingFunc={asyncImgLoadingFunc}
           selectItem={this.selectItem}
           selectedItems={this.state.selected}
-          ondrag={this.setCrrentlyDraggedItem}
+          ondrag={this.setCurrentlyDraggedItem}
         />
       </div>
     );

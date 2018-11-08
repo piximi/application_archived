@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Gallery.css';
 import { reCalc } from './helper';
 
-class Selectionbox extends Component {
+class SelectionBox extends Component {
   constructor() {
     super();
     this.state = {
@@ -18,7 +18,7 @@ class Selectionbox extends Component {
   }
 
   static getDerivedStateFromProps(props, state) {
-    const styleFromBoxCoordinates = reCalc(props.selectionboxCoordinates);
+    const styleFromBoxCoordinates = reCalc(props.selectionBoxCoordinates);
     let style = { ...state.style };
     style = {
       ...style,
@@ -33,4 +33,4 @@ class Selectionbox extends Component {
   }
 }
 
-export default Selectionbox;
+export default SelectionBox;
