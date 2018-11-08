@@ -111,7 +111,7 @@ class Application extends Component {
 
           <Tooltip id="tooltip-fab" title="Upload new image">
             <Button
-              style={{ position: 'fixed' }}
+              style={{ position: 'fixed', zIndex: 10001 }}
               variant="fab"
               color="secondary"
               className={classes.fab}
