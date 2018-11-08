@@ -102,13 +102,11 @@ class Item extends Component {
           alt="foo"
           src={this.state.src === null ? imgSrc : this.state.src}
           style={{
-            padding: '3%',
+            padding: '2px 2px 1px',
             verticalAlign: 'bottom',
-            backgroundColor: 'white',
-            minWidth: 0.85 * containerStyle.width,
-            maxWidth: 0.85 * containerStyle.width,
-            maxHeight: 0.85 * containerStyle.height,
-            objectFit: 'contain'
+            backgroundColor: 'transparent',
+            width: 0.9 * containerStyle.width,
+            maxHeight: 0.9 * containerStyle.height
           }}
         />
         <div style={{ position: 'absolute', backgroundColor: 'red' }}> </div>
