@@ -8,7 +8,7 @@ div#drag-layer img {
 
 div#drag-layer img:nth-child(1) {
   transform: rotate(-9deg);
-  z-index: 0;
+  z-index: 3;
 }
 
 div#drag-layer img:nth-child(2) {
@@ -18,11 +18,11 @@ div#drag-layer img:nth-child(2) {
 
 div#drag-layer img:nth-child(3) {
   transform: rotate(7deg);
-  z-index: 3;
+  z-index: 1;
 }
 
 div#drag-layer img:nth-child(4) {
-  z-index: 4;
+  z-index: 0;
 }
 
 div#drag-layer span {

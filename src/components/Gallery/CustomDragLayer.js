@@ -39,15 +39,18 @@ class CustomDragLayer extends React.Component {
   renderItem(type, item) {
     const list = document.getElementsByClassName('selected');
     let imgSources = [];
+    let draggedIndex = 0;
     for (let i = 0; i < list.length; i = i + 1) {
       const element = list[i];
       const imgElement = list[i].firstChild;
       let img = <img key={'draglayerImg' + i} src={imgElement.src} alt="foo" />;
       imgSources.push(img);
-      if (element.listId === this.props.draggedItem) {
-        swapArrayElements(imgSources, 0, i);
+      if (element.getAttribute('imgid') === item.item.id) {
+        draggedIndex = i;
       }
     }
+    swapArrayElements(imgSources, draggedIndex, 0);
+
     return (
       <div id="drag-layer">
         {imgSources} <span>{list.length}</span>{' '}

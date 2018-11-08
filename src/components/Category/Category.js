@@ -7,9 +7,10 @@ import {
   Tooltip
 } from '@material-ui/core';
 import LabelIcon from '@material-ui/icons/Label';
-import LabelOutlineIcon from '@material-ui/icons/LabelOutline';
+import LabelOutlinedIcon from '@material-ui/icons/LabelOutlined';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import { DropTarget } from 'react-dnd';
+import StyledCategory from './StyledCategory';
 import styles from './Category.css';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -61,14 +62,16 @@ class Category extends Component<Properties> {
       classes
     } = this.props;
 
-    return connectDropTarget(
-      <div
+    return (
+      <StyledCategory
+        ref={instance => connectDropTarget(instance)}
+        color={color}
         onDrop={this.onDropAnimation}
         className={
           this.state.animateOnDrop !== null
             ? this.state.animateOnDrop
-              ? classes.onDropPulse
-              : classes.onDropPulse2
+              ? 'onDropPulse'
+              : 'onDropPulse2'
             : null
         }
       >
@@ -84,7 +87,7 @@ class Category extends Component<Properties> {
             {visible ? (
               <LabelIcon style={{ color: color }} />
             ) : (
-              <LabelOutlineIcon style={{ color: color }} />
+              <LabelOutlinedIcon style={{ color: color }} />
             )}
           </ListItemIcon>
 
@@ -98,7 +101,7 @@ class Category extends Component<Properties> {
             </Tooltip>
           </ListItemSecondaryAction>
         </ListItem>
-      </div>
+      </StyledCategory>
     );
   }
 }
