@@ -1,6 +1,19 @@
 import React from 'react';
 import Item from './Item';
-import { Grid, AutoSizer } from 'react-virtualized';
+import {
+  CellMeasurer,
+  CellMeasurerCache,
+  Grid,
+  AutoSizer
+} from 'react-virtualized';
+
+// In this example, average cell height is assumed to be about 50px.
+// This value will be used for the initial `Grid` layout.
+// Width is not dynamic.
+const cache = new CellMeasurerCache({
+  defaultHeight: 150,
+  fixedWidth: true
+});
 
 const Items = props => {
   const onmousedown = imgId => {
@@ -15,7 +28,7 @@ const Items = props => {
     rowCount = rowCount + 1;
   }
 
-  const cellRenderer = function({ columnIndex, key, rowIndex, style }) {
+  const cellRenderer = function({ columnIndex, key, rowIndex, style, parent }) {
     let newStyle = { ...style };
     const newPicturesPerRow = picturesPerRow > length ? length : picturesPerRow;
     const index = newPicturesPerRow * rowIndex - 1 + columnIndex + 1;
@@ -23,17 +36,27 @@ const Items = props => {
       return;
     }
     return (
-      <div key={key} style={newStyle}>
-        <Item
-          item={props.images[index]}
-          containerStyle={style}
-          key={key}
-          selectedItems={props.selectedItems}
-          onmousedown={onmousedown}
-          ondrag={props.ondrag}
-          asyncImgLoadingFunc={props.asyncImgLoadingFunc}
-        />
-      </div>
+      <CellMeasurer
+        cache={cache}
+        columnIndex={columnIndex}
+        key={key}
+        parent={parent}
+        rowIndex={rowIndex}
+      >
+        {({ measure }) => (
+          <div key={key} style={newStyle}>
+            <Item
+              item={props.images[index]}
+              containerStyle={style}
+              key={key}
+              selectedItems={props.selectedItems}
+              onmousedown={onmousedown}
+              ondrag={props.ondrag}
+              asyncImgLoadingFunc={props.asyncImgLoadingFunc}
+            />
+          </div>
+        )}
+      </CellMeasurer>
     );
   };
 
@@ -55,7 +78,6 @@ const Items = props => {
             rowHeight={150}
             width={calculatedWidth}
             style={{ outline: 'none' }}
-            overscanColumnCount={1}
           />
         );
       }}
