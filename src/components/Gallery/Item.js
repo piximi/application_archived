@@ -110,7 +110,6 @@ class Item extends Component {
             maxHeight: 0.9 * containerStyle.height
           }}
         />
-        <div style={{ position: 'absolute', backgroundColor: 'red' }}> </div>
       </div>
     );
   }

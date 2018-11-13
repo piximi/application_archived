@@ -18,36 +18,51 @@ class Application extends Component {
     super(props);
     this.state = {
       open: true,
-      images: [],
-      imagesMetaData: {}
+      imgSources: null
     };
+    this.asyncDatabaseRequest = this.asyncDatabaseRequest.bind(this);
   }
 
-  createImageCollection = () => {
-    let identifier = null;
-    let category = null;
-    let categoryColor = 'white';
-    const IMAGES = this.props.imagesMetadata.map(imageMetadata => {
-      categoryColor = 'white';
-      identifier = imageMetadata.identifier;
-      category = this.findCategory(imageMetadata.category);
-      if (category != null) {
-        if (category.color != null) {
-          categoryColor = category.color;
-          category = category.identifier;
-        }
-      }
+  static getDerivedStateFromProps(props, state) {
+    if (
+      JSON.stringify(props.imagesMetadata) !==
+      JSON.stringify(state.prevImagesMetadata)
+    ) {
       return {
-        id: identifier,
-        thumbnailWidth: 180,
-        thumbnailHeight: 180,
-        isSelected: false,
-        category: category,
-        color: categoryColor
+        imgSources: null,
+        prevImagesMetadata: props.imagesMetadata
       };
-    });
-    return IMAGES;
-  };
+    }
+    return null;
+  }
+
+  componentDidMount() {
+    this.asyncDatabaseRequest();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.imgSources === null) {
+      this.asyncDatabaseRequest();
+    }
+  }
+
+  componentWillUnmount() {
+    if (this._asyncRequest) {
+      this._asyncRequest.cancel();
+    }
+  }
+
+  asyncDatabaseRequest() {
+    let imgSources = {};
+    const collection = databaseAPI.indexeddb.images.toCollection();
+    collection
+      .each(entry => {
+        imgSources[entry.checksum] = entry.bytes;
+      })
+      .then(() => {
+        this.setState({ imgSources: imgSources });
+      });
+  }
 
   onClick = () => {
     this.setState({ open: !this.state.open });
@@ -69,14 +84,36 @@ class Application extends Component {
     });
   }
 
-  asyncDatabaseRequest(id, that) {
-    databaseAPI.indexeddb.images.get(id).then(function(result) {
-      if (result) {
-        that._asyncRequest = null;
-        that.setState({ src: result.bytes });
+  createImageCollection = () => {
+    let identifier = null;
+    let category = null;
+    let categoryColor = 'white';
+    let src = null;
+    const IMAGES = this.props.imagesMetadata.map(imageMetadata => {
+      categoryColor = 'white';
+      identifier = imageMetadata.identifier;
+      category = this.findCategory(imageMetadata.category);
+      if (category != null) {
+        if (category.color != null) {
+          categoryColor = category.color;
+          category = category.identifier;
+        }
       }
+      if (this.state.imgSources !== null) {
+        src = this.state.imgSources[identifier];
+      }
+      return {
+        src: src,
+        id: identifier,
+        thumbnailWidth: 180,
+        thumbnailHeight: 180,
+        isSelected: false,
+        category: category,
+        color: categoryColor
+      };
     });
-  }
+    return IMAGES;
+  };
 
   render() {
     const {
@@ -108,7 +145,6 @@ class Application extends Component {
             images={IMAGES}
             imagesPerRow={10}
             decreaseWidth={this.state.open ? 240 + 24 : 24}
-            asyncImgLoadingFunc={this.asyncDatabaseRequest}
           />
 
           <Tooltip id="tooltip-fab" title="Upload new image">
