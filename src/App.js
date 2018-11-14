@@ -11,6 +11,9 @@ import styles from './App.css.js';
 const theme = createMuiTheme({
   palette: {
     type: 'light'
+  },
+  typography: {
+    useNextVariants: true
   }
 });
 
