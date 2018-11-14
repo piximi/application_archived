@@ -372,6 +372,7 @@ async function fitAndPredict(images, categories) {
     image.category = getCategoryIndex(observation.category, categories);
     databaseAPI.find(image.identifier).then(entry => {
       image.src = entry.bytes;
+      console.log(entry);
     });
     return image;
   });
