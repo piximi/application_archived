@@ -7,6 +7,7 @@ import {
   TOGGLE_MODEL_COLLAPSE,
   TOGGLE_SIDEBAR,
   TOGGLE_UPLOAD_DIALOG,
+  TOOGLE_NEW_IMAGES_EVENT,
   UPDATE_SETTING_COLUMNS,
   UPDATE_ZOOM_LEVEL
 } from '../constants';
@@ -53,4 +54,8 @@ export const toggleUploadDialogAction = () => ({
 export const updateZoomLevelAction = value => ({
   type: UPDATE_ZOOM_LEVEL,
   value
+});
+
+export const toggleNewImagesEventAction = () => ({
+  type: TOOGLE_NEW_IMAGES_EVENT
 });

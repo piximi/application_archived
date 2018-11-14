@@ -60,6 +60,7 @@ export class UploadDialog extends Component<Properties> {
   }
 
   uploadImages = () => {
+    this.props.toggleNewImagesEvent();
     let that = this;
     for (let imageFile of this.state.imageFiles) {
       const reader = new FileReader();

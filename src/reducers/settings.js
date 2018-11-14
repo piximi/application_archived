@@ -7,6 +7,7 @@ import {
   TOGGLE_MODEL_COLLAPSE,
   TOGGLE_SIDEBAR,
   TOGGLE_UPLOAD_DIALOG,
+  TOOGLE_NEW_IMAGES_EVENT,
   UPDATE_SETTING_COLUMNS,
   UPDATE_SETTING_SIDEBAR_OPEN,
   UPDATE_ZOOM_LEVEL
@@ -14,6 +15,11 @@ import {
 
 const settings = (state = {}, action) => {
   switch (action.type) {
+    case TOOGLE_NEW_IMAGES_EVENT:
+      return {
+        ...state,
+        uploadedNewImagesEvent: !state.uploadedNewImagesEvent
+      };
     case TOGGLE_CREATE_CATEGORY_DIALOG:
       return {
         ...state,

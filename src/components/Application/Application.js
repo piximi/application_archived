@@ -24,10 +24,12 @@ class Application extends Component {
   }
 
   static getDerivedStateFromProps(props, state) {
-    if (props.imagesMetadata.length !== state.prevImagesMetadata) {
+    if (
+      props.settings.uploadedNewImagesEvent !== state.prevUploadedNewImagesEvent
+    ) {
       return {
         imgSources: null,
-        prevImagesMetadata: props.imagesMetadata.length
+        prevUploadedNewImagesEvent: props.settings.uploadedNewImagesEvent
       };
     }
     return null;
@@ -120,6 +122,8 @@ class Application extends Component {
       changeZoomLevel,
       updateImageCategory
     } = this.props;
+
+    console.log(this.props.settings);
 
     const IMAGES = this.createImageCollection();
     return (
