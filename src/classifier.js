@@ -4,6 +4,7 @@ import {
   updateImageCategoryAction,
   updateImageProbability
 } from './actions/images';
+import * as databaseAPI from './database';
 
 let indexMap = {};
 let categoryIndexArray = [];
@@ -356,7 +357,6 @@ async function fitAndPredict(images, categories) {
   indexMap = {};
   counter = 0;
   categoryIndexArray = [];
-
   const imageTags = images.images.map(observation => {
     let categoryIndex = getCategoryIndex(observation.category, categories);
 
@@ -370,10 +370,11 @@ async function fitAndPredict(images, categories) {
     let image = new Image();
     image.identifier = observation.identifier;
     image.category = getCategoryIndex(observation.category, categories);
-    image.src = images.imageByteStrings[observation.identifier];
+    databaseAPI.find(image.identifier).then(entry => {
+      image.src = entry.bytes;
+    });
     return image;
   });
-
   const dataset = new Dataset();
   dataset.loadFromArray(imageTags);
   await run(dataset);
