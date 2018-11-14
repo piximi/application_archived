@@ -361,28 +361,7 @@ async function fitAndPredict(images, categories) {
       imgSources[entry.checksum] = entry.bytes;
     })
     .then(() => {
-      indexMap = {};
-      counter = 0;
-      categoryIndexArray = [];
-      const imageTags = images.images.map(observation => {
-        let categoryIndex = getCategoryIndex(observation.category, categories);
-
-        // Create Index Map
-        if (
-          !categoryIndexArray.includes(categoryIndex) &&
-          categoryIndex !== null
-        ) {
-          categoryIndexArray.push(categoryIndex);
-          indexMap[counter] = categoryIndex;
-          counter++;
-        }
-
-        let image = new Image();
-        image.identifier = observation.identifier;
-        image.category = getCategoryIndex(observation.category, categories);
-        image.src = imgSources[image.identifier];
-        return image;
-      });
+      const imageTags = createImageTags(images, imgSources, categories);
       const dataset = new Dataset();
       dataset.loadFromArray(imageTags);
       run(dataset);
@@ -410,6 +389,29 @@ async function importWeights(weightsFile) {
         tensorflow.io.browserFiles([modelFile, weightsFile])
       );
     });
+}
+
+function createImageTags(images, imgSources, categories) {
+  indexMap = {};
+  counter = 0;
+  categoryIndexArray = [];
+  const imageTags = images.images.map(observation => {
+    let categoryIndex = getCategoryIndex(observation.category, categories);
+
+    // Create Index Map
+    if (!categoryIndexArray.includes(categoryIndex) && categoryIndex !== null) {
+      categoryIndexArray.push(categoryIndex);
+      indexMap[counter] = categoryIndex;
+      counter++;
+    }
+
+    let image = new Image();
+    image.identifier = observation.identifier;
+    image.category = getCategoryIndex(observation.category, categories);
+    image.src = imgSources[image.identifier];
+    return image;
+  });
+  return imageTags;
 }
 
 export { fitAndPredict, exportWeights, importWeights };
