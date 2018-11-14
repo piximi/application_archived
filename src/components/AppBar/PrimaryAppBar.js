@@ -5,9 +5,7 @@ import { AppBar, IconButton, Toolbar, Typography } from '@material-ui/core';
 import classNames from 'classnames';
 import MenuIcon from '@material-ui/icons/Menu';
 
-type Properties = {};
-
-class PrimaryAppBar extends Component<Properties> {
+class PrimaryAppBar extends Component {
   render() {
     const { classes, toggle, toggled } = this.props;
 
