@@ -354,32 +354,40 @@ function passResults(imgId, predictions) {
 }
 
 async function fitAndPredict(images, categories) {
-  indexMap = {};
-  counter = 0;
-  categoryIndexArray = [];
-  const imageTags = images.images.map(observation => {
-    let categoryIndex = getCategoryIndex(observation.category, categories);
+  let imgSources = {};
+  const collection = databaseAPI.indexeddb.images.toCollection();
+  collection
+    .each(entry => {
+      imgSources[entry.checksum] = entry.bytes;
+    })
+    .then(() => {
+      indexMap = {};
+      counter = 0;
+      categoryIndexArray = [];
+      const imageTags = images.images.map(observation => {
+        let categoryIndex = getCategoryIndex(observation.category, categories);
 
-    // Create Index Map
-    if (!categoryIndexArray.includes(categoryIndex) && categoryIndex !== null) {
-      categoryIndexArray.push(categoryIndex);
-      indexMap[counter] = categoryIndex;
-      counter++;
-    }
+        // Create Index Map
+        if (
+          !categoryIndexArray.includes(categoryIndex) &&
+          categoryIndex !== null
+        ) {
+          categoryIndexArray.push(categoryIndex);
+          indexMap[counter] = categoryIndex;
+          counter++;
+        }
 
-    let image = new Image();
-    image.identifier = observation.identifier;
-    image.category = getCategoryIndex(observation.category, categories);
-    databaseAPI.find(image.identifier).then(entry => {
-      image.src = entry.bytes;
-      console.log(entry);
+        let image = new Image();
+        image.identifier = observation.identifier;
+        image.category = getCategoryIndex(observation.category, categories);
+        image.src = imgSources[image.identifier];
+        return image;
+      });
+      const dataset = new Dataset();
+      dataset.loadFromArray(imageTags);
+      run(dataset);
+      return null;
     });
-    return image;
-  });
-  const dataset = new Dataset();
-  dataset.loadFromArray(imageTags);
-  await run(dataset);
-  return null;
 }
 
 async function exportWeights() {
