@@ -122,9 +122,6 @@ class Application extends Component {
       changeZoomLevel,
       updateImageCategory
     } = this.props;
-
-    console.log(this.props.settings);
-
     const IMAGES = this.createImageCollection();
     return (
       <div className={classes.appFrame}>
