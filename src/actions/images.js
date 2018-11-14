@@ -13,10 +13,13 @@ export const addImagesAction = images => ({
   images
 });
 
-export const updateImageCategoryAction = (identifier, category) => ({
+export const updateImageCategoryAction = (
+  imgIdentifier,
+  categoryIdentifier
+) => ({
   type: UPDATE_IMAGE_CATEGORY,
-  identifier,
-  category
+  imgIdentifier,
+  categoryIdentifier
 });
 
 export const updateImageProbability = (identifier, probability) => ({

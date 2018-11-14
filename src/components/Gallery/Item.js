@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { DragSource } from 'react-dnd';
 import { getEmptyImage } from 'react-dnd-html5-backend';
+import LabelOutlinedIcon from '@material-ui/icons/LabelOutlined';
+import LabelIcon from '@material-ui/icons/Label';
 
 const itemSource = {
   beginDrag(props) {
@@ -16,6 +18,13 @@ const itemSource = {
   endDrag(props, monitor, component) {
     // Set dragged item to null
     props.ondrag(null);
+    if (monitor.getDropResult() !== null) {
+      const categoryIdentifier = monitor.getDropResult().categoryIdentifier;
+      const selectedItemsIdentifiers = monitor.getDropResult().selectedItems;
+      for (let selectedItemIdentifier of selectedItemsIdentifiers) {
+        props.callOnDragEnd(selectedItemIdentifier, categoryIdentifier);
+      }
+    }
     if (!monitor.didDrop()) {
       return;
     }
@@ -97,13 +106,20 @@ class Item extends Component {
         onMouseDown={() => onmousedown(imgId)}
         className={imgSelected ? 'selected' : 'unselected'}
       >
+        <div style={{ position: 'absolute', padding: '4px 4px 2px' }}>
+          {item.category == null ? (
+            <LabelOutlinedIcon style={{ color: item.color }} />
+          ) : (
+            <LabelIcon style={{ color: item.color }} />
+          )}
+        </div>
         <img
           key={'img' + imgId}
           type={'selectableElement'}
           alt="foo"
           src={this.state.src === null ? imgSrc : this.state.src}
           style={{
-            padding: '2px 2px 1px',
+            padding: '2px 2px 2px',
             verticalAlign: 'bottom',
             backgroundColor: 'transparent',
             width: 0.9 * containerStyle.width,

@@ -17,7 +17,7 @@ function createImage(pathname, checksum) {
     probability: null,
     visible: true,
     isSelected: false,
-    identifier: checksum,
+    identifier: String(checksum),
     filename: pathname
   };
 }
@@ -60,6 +60,7 @@ export class UploadDialog extends Component<Properties> {
   }
 
   uploadImages = () => {
+    this.props.toggleNewImagesEvent();
     let that = this;
     for (let imageFile of this.state.imageFiles) {
       const reader = new FileReader();

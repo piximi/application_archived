@@ -53,6 +53,7 @@ const Items = props => {
               onmousedown={onmousedown}
               ondrag={props.ondrag}
               asyncImgLoadingFunc={props.asyncImgLoadingFunc}
+              callOnDragEnd={props.callOnDragEnd}
             />
           </div>
         )}

@@ -22,10 +22,10 @@ const images = (state = {}, action) => {
       });
     case UPDATE_IMAGE_CATEGORY:
       images = state.images.map(image => {
-        if (image.identifier === action.identifier) {
+        if (image.identifier === action.imgIdentifier) {
           return {
             ...image,
-            category: action.category
+            category: action.categoryIdentifier
           };
         } else {
           return image;

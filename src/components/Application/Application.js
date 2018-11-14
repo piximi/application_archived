@@ -25,12 +25,11 @@ class Application extends Component {
 
   static getDerivedStateFromProps(props, state) {
     if (
-      JSON.stringify(props.imagesMetadata) !==
-      JSON.stringify(state.prevImagesMetadata)
+      props.settings.uploadedNewImagesEvent !== state.prevUploadedNewImagesEvent
     ) {
       return {
         imgSources: null,
-        prevImagesMetadata: props.imagesMetadata
+        prevUploadedNewImagesEvent: props.settings.uploadedNewImagesEvent
       };
     }
     return null;
@@ -120,9 +119,9 @@ class Application extends Component {
       classes,
       settings,
       toggleUploadDialog,
-      changeZoomLevel
+      changeZoomLevel,
+      updateImageCategory
     } = this.props;
-
     const IMAGES = this.createImageCollection();
     return (
       <div className={classes.appFrame}>
@@ -145,6 +144,7 @@ class Application extends Component {
             images={IMAGES}
             imagesPerRow={10}
             decreaseWidth={this.state.open ? 240 + 24 : 24}
+            callOnDragEnd={updateImageCategory}
           />
 
           <Tooltip id="tooltip-fab" title="Upload new image">

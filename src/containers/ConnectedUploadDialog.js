@@ -1,5 +1,8 @@
 import { connect } from 'react-redux';
-import { toggleUploadDialogAction } from '../actions/settings';
+import {
+  toggleUploadDialogAction,
+  toggleNewImagesEventAction
+} from '../actions/settings';
 import UploadDialog from '../components/UploadDialog/UploadDialog';
 
 const mapStateToProps = state => {
@@ -10,6 +13,9 @@ const mapDispatchToProps = dispatch => {
   return {
     toggleUploadDialog: () => {
       dispatch(toggleUploadDialogAction());
+    },
+    toggleNewImagesEvent: () => {
+      dispatch(toggleNewImagesEventAction());
     }
   };
 };
