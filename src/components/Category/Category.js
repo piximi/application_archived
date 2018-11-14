@@ -16,9 +16,12 @@ import { withStyles } from '@material-ui/core/styles';
 
 const spec = {
   drop(props, monitor, component) {
+    const selectedItems = monitor.getItem().selectedItems;
+    const categoryIdentifer = props.identifier;
     return {
-      category: props.identifier,
-      color: props.color
+      categoryIdentifier: categoryIdentifer,
+      color: props.color,
+      selectedItems: selectedItems
     };
   }
 };

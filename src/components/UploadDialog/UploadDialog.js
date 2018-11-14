@@ -17,7 +17,7 @@ function createImage(pathname, checksum) {
     probability: null,
     visible: true,
     isSelected: false,
-    identifier: checksum,
+    identifier: String(checksum),
     filename: pathname
   };
 }

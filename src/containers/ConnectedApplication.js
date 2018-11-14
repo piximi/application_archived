@@ -3,6 +3,11 @@ import { fitClassifierAction } from '../actions/classifier';
 import { updateZoomLevelAction } from '../actions/settings';
 import Application from '../components/Application/Application';
 import { toggleUploadDialogAction } from '../actions/settings';
+import {
+  updateImageCategoryAction,
+  // TODO update Image Probability rename
+  updateImageProbability
+} from '../actions/images';
 
 const mapStateToProps = state => {
   return {
@@ -24,6 +29,11 @@ const mapDispatchToProps = (dispatch, props) => {
 
     toggleUploadDialog: () => {
       dispatch(toggleUploadDialogAction());
+    },
+
+    updateImageCategory: (imgIdentifier, categoryIdentifier) => {
+      dispatch(updateImageCategoryAction(imgIdentifier, categoryIdentifier));
+      dispatch(updateImageProbability(imgIdentifier, null));
     }
   };
 };

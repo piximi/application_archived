@@ -99,7 +99,8 @@ class Gallery extends Component {
       images,
       imagesPerRow,
       asyncImgLoadingFunc,
-      decreaseWidth
+      decreaseWidth,
+      callOnDragEnd
     } = this.props;
     return (
       <div
@@ -121,6 +122,7 @@ class Gallery extends Component {
           selectItem={this.selectItem}
           selectedItems={this.state.selected}
           ondrag={this.setCurrentlyDraggedItem}
+          callOnDragEnd={callOnDragEnd}
         />
       </div>
     );
