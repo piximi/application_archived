@@ -397,14 +397,12 @@ function createImageTags(images, imgSources, categories) {
   categoryIndexArray = [];
   const imageTags = images.images.map(observation => {
     let categoryIndex = getCategoryIndex(observation.category, categories);
-
     // Create Index Map
     if (!categoryIndexArray.includes(categoryIndex) && categoryIndex !== null) {
       categoryIndexArray.push(categoryIndex);
       indexMap[counter] = categoryIndex;
       counter++;
     }
-
     let image = new Image();
     image.identifier = observation.identifier;
     image.category = getCategoryIndex(observation.category, categories);

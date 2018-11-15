@@ -1,6 +1,7 @@
 import Dexie from 'dexie';
 import { store } from './index';
 import { addImagesAction } from './actions/images';
+import { toggleNewImagesEventAction } from './actions/settings';
 
 const indexeddb = new Dexie('cyto');
 // Save to database and when finished update Redux store
@@ -11,6 +12,8 @@ async function saveData(imageDataIndexedDB, imageDataReduxStore = null) {
       if (imageDataReduxStore != null) {
         try {
           store.dispatch(addImagesAction(imageDataReduxStore));
+          store.dispatch(toggleNewImagesEventAction());
+          console.log(true);
         } catch (e) {
           console.error(
             e,
