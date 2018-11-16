@@ -3,15 +3,19 @@ import {
   ListItem,
   ListItemIcon,
   ListItemSecondaryAction,
-  ListItemText,
-  Tooltip
+  ListItemText
 } from '@material-ui/core';
 import LabelIcon from '@material-ui/icons/Label';
 import LabelOutlinedIcon from '@material-ui/icons/LabelOutlined';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+import MenuItem from '@material-ui/core/MenuItem';
+import MenuList from '@material-ui/core/MenuList';
+import IconButton from '@material-ui/core/IconButton';
 import { DropTarget } from 'react-dnd';
 import StyledCategory from './StyledCategory';
 import styles from './Category.css';
+import Paper from '@material-ui/core/Paper';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import { withStyles } from '@material-ui/core/styles';
 
 const spec = {
@@ -33,17 +37,22 @@ function collect(connect, monitor) {
   };
 }
 
-type Properties = {};
-
-class Category extends Component<Properties> {
+class Category extends Component {
   state = {
     deleteCategoryDialogOpen: false,
+    editCategoryMenuOpen: false,
     animateOnDrop: null
   };
 
   toggleDeleteCategoryDialog = () => {
     this.setState({
       deleteCategoryDialogOpen: !this.state.deleteCategoryDialogOpen
+    });
+  };
+
+  toggleCategoryMenuOpen = () => {
+    this.setState({
+      editCategoryMenuOpen: !this.state.editCategoryMenuOpen
     });
   };
 
@@ -64,6 +73,7 @@ class Category extends Component<Properties> {
       visible,
       classes
     } = this.props;
+    const { editCategoryMenuOpen } = this.state;
 
     return (
       <StyledCategory
@@ -78,32 +88,60 @@ class Category extends Component<Properties> {
             : null
         }
       >
-        <ListItem
-          dense
-          button
-          onClick={() => updateCategoryVisibility(identifier, images, !visible)}
-          classes={{
-            root: this.props.isOver ? classes.isOver : null
-          }}
+        <ClickAwayListener
+          onClickAway={() => this.setState({ editCategoryMenuOpen: false })}
         >
-          <ListItemIcon>
-            {visible ? (
-              <LabelIcon style={{ color: color }} />
-            ) : (
-              <LabelOutlinedIcon style={{ color: color }} />
-            )}
-          </ListItemIcon>
-
-          <ListItemText primary={description} />
-
-          <ListItemSecondaryAction>
-            <Tooltip id="tooltip-icon" title="Category settings">
-              <ListItemIcon classes={{ root: classes.icon }}>
+          <ListItem
+            dense
+            style={{ cursor: 'pointer' }}
+            classes={{
+              root: this.props.isOver ? classes.isOver : null
+            }}
+          >
+            <ListItemIcon
+              onClick={() =>
+                updateCategoryVisibility(identifier, images, !visible)
+              }
+            >
+              {visible ? (
+                <LabelIcon style={{ color: color }} />
+              ) : (
+                <LabelOutlinedIcon style={{ color: color }} />
+              )}
+            </ListItemIcon>
+            <ListItemText primary={description} />
+            <ListItemSecondaryAction>
+              <IconButton onClick={this.toggleCategoryMenuOpen}>
                 <MoreHorizIcon />
-              </ListItemIcon>
-            </Tooltip>
-          </ListItemSecondaryAction>
-        </ListItem>
+              </IconButton>
+            </ListItemSecondaryAction>
+            {editCategoryMenuOpen ? (
+              <Paper
+                style={{
+                  position: 'absolute',
+                  left: '140px',
+                  top: '46px',
+                  zIndex: 1
+                }}
+              >
+                <MenuList>
+                  <MenuItem className={classes.menuItem}>
+                    <ListItemText
+                      classes={{ primary: classes.primary }}
+                      primary="Edit"
+                    />
+                  </MenuItem>
+                  <MenuItem className={classes.menuItem}>
+                    <ListItemText
+                      classes={{ primary: classes.primary }}
+                      primary="Delete"
+                    />
+                  </MenuItem>
+                </MenuList>
+              </Paper>
+            ) : null}
+          </ListItem>
+        </ClickAwayListener>
       </StyledCategory>
     );
   }
