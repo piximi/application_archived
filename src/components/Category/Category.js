@@ -3,16 +3,20 @@ import {
   ListItem,
   ListItemIcon,
   ListItemSecondaryAction,
-  ListItemText,
-  Tooltip
+  ListItemText
 } from '@material-ui/core';
 import LabelIcon from '@material-ui/icons/Label';
 import LabelOutlinedIcon from '@material-ui/icons/LabelOutlined';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+import MenuItem from '@material-ui/core/MenuItem';
+import MenuList from '@material-ui/core/MenuList';
+import IconButton from '@material-ui/core/IconButton';
 import { DropTarget } from 'react-dnd';
 import StyledCategory from './StyledCategory';
 import styles from './Category.css';
+import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
+import Popover from '@material-ui/core/Popover';
 
 const spec = {
   drop(props, monitor, component) {
@@ -33,12 +37,11 @@ function collect(connect, monitor) {
   };
 }
 
-type Properties = {};
-
-class Category extends Component<Properties> {
+class Category extends Component {
   state = {
     deleteCategoryDialogOpen: false,
-    animateOnDrop: null
+    animateOnDrop: null,
+    anchorEl: null
   };
 
   toggleDeleteCategoryDialog = () => {
@@ -53,6 +56,18 @@ class Category extends Component<Properties> {
     });
   };
 
+  handleClick = event => {
+    this.setState({
+      anchorEl: event.currentTarget
+    });
+  };
+
+  handleClose = () => {
+    this.setState({
+      anchorEl: null
+    });
+  };
+
   render() {
     const {
       identifier,
@@ -64,6 +79,8 @@ class Category extends Component<Properties> {
       visible,
       classes
     } = this.props;
+    const { anchorEl } = this.state;
+    const open = Boolean(anchorEl);
 
     return (
       <StyledCategory
@@ -80,29 +97,56 @@ class Category extends Component<Properties> {
       >
         <ListItem
           dense
-          button
-          onClick={() => updateCategoryVisibility(identifier, images, !visible)}
+          style={{ cursor: 'pointer' }}
           classes={{
             root: this.props.isOver ? classes.isOver : null
           }}
         >
-          <ListItemIcon>
+          <ListItemIcon
+            onClick={() =>
+              updateCategoryVisibility(identifier, images, !visible)
+            }
+          >
             {visible ? (
               <LabelIcon style={{ color: color }} />
             ) : (
               <LabelOutlinedIcon style={{ color: color }} />
             )}
           </ListItemIcon>
-
           <ListItemText primary={description} />
-
           <ListItemSecondaryAction>
-            <Tooltip id="tooltip-icon" title="Category settings">
-              <ListItemIcon classes={{ root: classes.icon }}>
-                <MoreHorizIcon />
-              </ListItemIcon>
-            </Tooltip>
+            <IconButton onClick={this.handleClick}>
+              <MoreHorizIcon />
+            </IconButton>
           </ListItemSecondaryAction>
+
+          <Popover
+            id="simple-popper"
+            open={open}
+            onClose={this.handleClose}
+            anchorReference="anchorPosition"
+            anchorPosition={{
+              top: open ? anchorEl.getBoundingClientRect().bottom - 10 : null,
+              left: open ? anchorEl.getBoundingClientRect().left : null
+            }}
+          >
+            <Paper>
+              <MenuList>
+                <MenuItem className={classes.menuItem}>
+                  <ListItemText
+                    classes={{ primary: classes.primary }}
+                    primary="Edit"
+                  />
+                </MenuItem>
+                <MenuItem className={classes.menuItem}>
+                  <ListItemText
+                    classes={{ primary: classes.primary }}
+                    primary="Delete"
+                  />
+                </MenuItem>
+              </MenuList>
+            </Paper>
+          </Popover>
         </ListItem>
       </StyledCategory>
     );

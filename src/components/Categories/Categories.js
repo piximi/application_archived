@@ -56,17 +56,19 @@ class Categories extends Component<Properties> {
           </ListItem>
 
           <Collapse in={!this.state.collapsed} timeout="auto" unmountOnExit>
-            {categories.map(category => (
+            {categories.map((category, index) => (
               <Category
                 categories={categories}
                 identifier={category.identifier}
                 key={category.identifier}
+                index={index}
                 description={category.description}
                 visible={category.visible}
                 color={category.color}
                 images={images}
                 updateCategoryVisibility={updateCategoryVisibility}
                 connectDropTarget={connectDropTarget}
+                editCategory={this.toggleCreateCategoryDialog}
               />
             ))}
 
