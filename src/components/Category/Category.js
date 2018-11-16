@@ -15,8 +15,8 @@ import { DropTarget } from 'react-dnd';
 import StyledCategory from './StyledCategory';
 import styles from './Category.css';
 import Paper from '@material-ui/core/Paper';
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import { withStyles } from '@material-ui/core/styles';
+import Popover from '@material-ui/core/Popover';
 
 const spec = {
   drop(props, monitor, component) {
@@ -40,8 +40,8 @@ function collect(connect, monitor) {
 class Category extends Component {
   state = {
     deleteCategoryDialogOpen: false,
-    editCategoryMenuOpen: false,
-    animateOnDrop: null
+    animateOnDrop: null,
+    anchorEl: null
   };
 
   toggleDeleteCategoryDialog = () => {
@@ -50,15 +50,21 @@ class Category extends Component {
     });
   };
 
-  toggleCategoryMenuOpen = () => {
-    this.setState({
-      editCategoryMenuOpen: !this.state.editCategoryMenuOpen
-    });
-  };
-
   onDropAnimation = () => {
     this.setState({
       animateOnDrop: !this.state.animateOnDrop
+    });
+  };
+
+  handleClick = event => {
+    this.setState({
+      anchorEl: event.currentTarget
+    });
+  };
+
+  handleClose = () => {
+    this.setState({
+      anchorEl: null
     });
   };
 
@@ -73,7 +79,8 @@ class Category extends Component {
       visible,
       classes
     } = this.props;
-    const { editCategoryMenuOpen } = this.state;
+    const { anchorEl } = this.state;
+    const open = Boolean(anchorEl);
 
     return (
       <StyledCategory
@@ -88,60 +95,59 @@ class Category extends Component {
             : null
         }
       >
-        <ClickAwayListener
-          onClickAway={() => this.setState({ editCategoryMenuOpen: false })}
+        <ListItem
+          dense
+          style={{ cursor: 'pointer' }}
+          classes={{
+            root: this.props.isOver ? classes.isOver : null
+          }}
         >
-          <ListItem
-            dense
-            style={{ cursor: 'pointer' }}
-            classes={{
-              root: this.props.isOver ? classes.isOver : null
+          <ListItemIcon
+            onClick={() =>
+              updateCategoryVisibility(identifier, images, !visible)
+            }
+          >
+            {visible ? (
+              <LabelIcon style={{ color: color }} />
+            ) : (
+              <LabelOutlinedIcon style={{ color: color }} />
+            )}
+          </ListItemIcon>
+          <ListItemText primary={description} />
+          <ListItemSecondaryAction>
+            <IconButton onClick={this.handleClick}>
+              <MoreHorizIcon />
+            </IconButton>
+          </ListItemSecondaryAction>
+
+          <Popover
+            id="simple-popper"
+            open={open}
+            onClose={this.handleClose}
+            anchorReference="anchorPosition"
+            anchorPosition={{
+              top: open ? anchorEl.getBoundingClientRect().bottom - 10 : null,
+              left: open ? anchorEl.getBoundingClientRect().left : null
             }}
           >
-            <ListItemIcon
-              onClick={() =>
-                updateCategoryVisibility(identifier, images, !visible)
-              }
-            >
-              {visible ? (
-                <LabelIcon style={{ color: color }} />
-              ) : (
-                <LabelOutlinedIcon style={{ color: color }} />
-              )}
-            </ListItemIcon>
-            <ListItemText primary={description} />
-            <ListItemSecondaryAction>
-              <IconButton onClick={this.toggleCategoryMenuOpen}>
-                <MoreHorizIcon />
-              </IconButton>
-            </ListItemSecondaryAction>
-            {editCategoryMenuOpen ? (
-              <Paper
-                style={{
-                  position: 'absolute',
-                  left: '140px',
-                  top: '46px',
-                  zIndex: 1
-                }}
-              >
-                <MenuList>
-                  <MenuItem className={classes.menuItem}>
-                    <ListItemText
-                      classes={{ primary: classes.primary }}
-                      primary="Edit"
-                    />
-                  </MenuItem>
-                  <MenuItem className={classes.menuItem}>
-                    <ListItemText
-                      classes={{ primary: classes.primary }}
-                      primary="Delete"
-                    />
-                  </MenuItem>
-                </MenuList>
-              </Paper>
-            ) : null}
-          </ListItem>
-        </ClickAwayListener>
+            <Paper>
+              <MenuList>
+                <MenuItem className={classes.menuItem}>
+                  <ListItemText
+                    classes={{ primary: classes.primary }}
+                    primary="Edit"
+                  />
+                </MenuItem>
+                <MenuItem className={classes.menuItem}>
+                  <ListItemText
+                    classes={{ primary: classes.primary }}
+                    primary="Delete"
+                  />
+                </MenuItem>
+              </MenuList>
+            </Paper>
+          </Popover>
+        </ListItem>
       </StyledCategory>
     );
   }
