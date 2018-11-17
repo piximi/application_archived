@@ -39,7 +39,7 @@ const readFile = (currentFile, that) => {
         that.imageData.imageDataIndexedDB,
         that.imageData.imageDataReduxStore
       );
-      this.imageData = { imageDataReduxStore: [], imageDataIndexedDB: [] };
+      that.imageData = { imageDataReduxStore: [], imageDataIndexedDB: [] };
       that.counter = 0;
     }
   };
