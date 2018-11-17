@@ -86,10 +86,10 @@ class Application extends Component {
   createImageCollection = () => {
     let identifier = null;
     let category = null;
-    let categoryColor = null;
+    let categoryColor = 'white';
     let src = null;
     const IMAGES = this.props.imagesMetadata.map(imageMetadata => {
-      categoryColor = '#999999';
+      categoryColor = 'white';
       identifier = imageMetadata.identifier;
       category = this.findCategory(imageMetadata.category);
       if (category != null) {
@@ -122,7 +122,6 @@ class Application extends Component {
       changeZoomLevel,
       updateImageCategory
     } = this.props;
-
     const IMAGES = this.createImageCollection();
     return (
       <div className={classes.appFrame}>

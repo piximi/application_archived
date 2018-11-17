@@ -27,7 +27,7 @@ class PrimaryAppBar extends Component {
             <MenuIcon />
           </IconButton>
 
-          <Typography variant="title" color="inherit">
+          <Typography variant="h6" color="inherit">
             Cyto
           </Typography>
         </Toolbar>

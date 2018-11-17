@@ -102,9 +102,10 @@ class Gallery extends Component {
       decreaseWidth,
       callOnDragEnd
     } = this.props;
+
     return (
       <div
-        className="container"
+        className="container noselect"
         onMouseDown={this.onmousedown}
         onMouseMove={this.onmousemove}
         onMouseUp={this.onmouseup}
