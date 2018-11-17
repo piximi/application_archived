@@ -6,19 +6,25 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import data from './images/subpopulation_small';
+import data from './images/BBC021';
 import dataImages from './images/BBC021';
 import reducer from './reducers';
 import * as databaseAPI from './database';
+import { PersistGate } from 'redux-persist/es/integration/react';
+import { persistStore, persistReducer } from 'redux-persist';
+import sessionStorage from 'redux-persist/lib/storage/session';
+import autoMergeLevel2 from 'redux-persist/es/stateReconciler/autoMergeLevel2';
 
 // Initialization
 initializeDatabase();
-const store = initializeRedux();
+const { store, persistor } = initializeRedux();
 initializeModel();
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <PersistGate loading={null} persistor={persistor}>
+      <App />
+    </PersistGate>
   </Provider>,
   document.getElementById('root')
 );
@@ -38,6 +44,14 @@ function initializeDatabase() {
 }
 
 function initializeRedux() {
+  const persistConfig = {
+    key: 'root',
+    storage: sessionStorage,
+    stateReconciler: autoMergeLevel2
+  };
+  const persistedReducer = persistReducer(persistConfig, reducer);
+
+  // TODO: start with empty project in the future
   const demo = {
     categories: data.categories,
     images: {
@@ -45,8 +59,10 @@ function initializeRedux() {
     },
     settings: data.settings
   };
-  const store = createStore(reducer, demo);
-  return store;
+
+  const store = createStore(persistedReducer, demo);
+  const persistor = persistStore(store);
+  return { store, persistor };
 }
 
 async function initializeModel() {

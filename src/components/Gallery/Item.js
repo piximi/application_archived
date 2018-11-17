@@ -6,6 +6,7 @@ import LabelIcon from '@material-ui/icons/Label';
 
 const itemSource = {
   beginDrag(props) {
+    //console.log(props);
     const imgId = props.item.id;
     // Set global dragged item to this item
     props.ondrag(imgId);

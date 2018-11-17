@@ -31,7 +31,7 @@ class SidebarAppBar extends Component<Properties> {
             </IconButton>
           </Tooltip>
 
-          <Typography variant="title" color="inherit">
+          <Typography variant="h6" color="inherit">
             Cyto
           </Typography>
         </Toolbar>

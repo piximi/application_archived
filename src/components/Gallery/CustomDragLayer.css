@@ -2,7 +2,7 @@ div#drag-layer img {
   width: 64px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
   position: absolute;
-  opacity: 0.5;
+  opacity: 0.7;
   margin: 16px;
 }
 
