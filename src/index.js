@@ -6,7 +6,7 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import data from './images/subpopulation_small';
+import data from './images/BBC021';
 import dataImages from './images/BBC021';
 import reducer from './reducers';
 import * as databaseAPI from './database';
