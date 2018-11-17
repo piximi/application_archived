@@ -17,6 +17,7 @@ import styles from './Category.css';
 import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
 import Popover from '@material-ui/core/Popover';
+import ConnectedEditCategoryDialog from '../../containers/ConnectedEditCategoryDialog';
 
 const spec = {
   drop(props, monitor, component) {
@@ -39,9 +40,16 @@ function collect(connect, monitor) {
 
 class Category extends Component {
   state = {
+    editCategoryDialogToggled: false,
     deleteCategoryDialogOpen: false,
     animateOnDrop: null,
     anchorEl: null
+  };
+
+  toggleEditCategoryDialog = () => {
+    this.setState({
+      editCategoryDialogToggled: !this.state.editCategoryDialogToggled
+    });
   };
 
   toggleDeleteCategoryDialog = () => {
@@ -50,9 +58,9 @@ class Category extends Component {
     });
   };
 
-  onDropAnimation = () => {
+  handleClose = () => {
     this.setState({
-      animateOnDrop: !this.state.animateOnDrop
+      anchorEl: null
     });
   };
 
@@ -62,9 +70,9 @@ class Category extends Component {
     });
   };
 
-  handleClose = () => {
+  onDropAnimation = () => {
     this.setState({
-      anchorEl: null
+      animateOnDrop: !this.state.animateOnDrop
     });
   };
 
@@ -79,76 +87,92 @@ class Category extends Component {
       visible,
       classes
     } = this.props;
-    const { anchorEl } = this.state;
+
+    const { anchorEl, editCategoryDialogToggled } = this.state;
     const open = Boolean(anchorEl);
 
     return (
-      <StyledCategory
-        ref={instance => connectDropTarget(instance)}
-        color={color}
-        onDrop={this.onDropAnimation}
-        className={
-          this.state.animateOnDrop !== null
-            ? this.state.animateOnDrop
-              ? 'onDropPulse'
-              : 'onDropPulse2'
-            : null
-        }
-      >
-        <ListItem
-          dense
-          style={{ cursor: 'pointer' }}
-          classes={{
-            root: this.props.isOver ? classes.isOver : null
-          }}
+      <React.Fragment>
+        <StyledCategory
+          ref={instance => connectDropTarget(instance)}
+          color={color}
+          onDrop={this.onDropAnimation}
+          className={
+            this.state.animateOnDrop !== null
+              ? this.state.animateOnDrop
+                ? 'onDropPulse'
+                : 'onDropPulse2'
+              : null
+          }
         >
-          <ListItemIcon
-            onClick={() =>
-              updateCategoryVisibility(identifier, images, !visible)
-            }
-          >
-            {visible ? (
-              <LabelIcon style={{ color: color }} />
-            ) : (
-              <LabelOutlinedIcon style={{ color: color }} />
-            )}
-          </ListItemIcon>
-          <ListItemText primary={description} />
-          <ListItemSecondaryAction>
-            <IconButton onClick={this.handleClick}>
-              <MoreHorizIcon />
-            </IconButton>
-          </ListItemSecondaryAction>
-
-          <Popover
-            id="simple-popper"
-            open={open}
-            onClose={this.handleClose}
-            anchorReference="anchorPosition"
-            anchorPosition={{
-              top: open ? anchorEl.getBoundingClientRect().bottom - 10 : null,
-              left: open ? anchorEl.getBoundingClientRect().left : null
+          <ListItem
+            dense
+            style={{ cursor: 'pointer' }}
+            classes={{
+              root: this.props.isOver ? classes.isOver : null
             }}
           >
-            <Paper>
-              <MenuList>
-                <MenuItem className={classes.menuItem}>
-                  <ListItemText
-                    classes={{ primary: classes.primary }}
-                    primary="Edit"
-                  />
-                </MenuItem>
-                <MenuItem className={classes.menuItem}>
-                  <ListItemText
-                    classes={{ primary: classes.primary }}
-                    primary="Delete"
-                  />
-                </MenuItem>
-              </MenuList>
-            </Paper>
-          </Popover>
-        </ListItem>
-      </StyledCategory>
+            <ListItemIcon
+              onClick={() =>
+                updateCategoryVisibility(identifier, images, !visible)
+              }
+            >
+              {visible ? (
+                <LabelIcon style={{ color: color }} />
+              ) : (
+                <LabelOutlinedIcon style={{ color: color }} />
+              )}
+            </ListItemIcon>
+            <ListItemText primary={description} />
+            <ListItemSecondaryAction>
+              <IconButton onClick={this.handleClick}>
+                <MoreHorizIcon />
+              </IconButton>
+            </ListItemSecondaryAction>
+
+            <Popover
+              id="simple-popper"
+              open={open}
+              onClose={this.handleClose}
+              anchorReference="anchorPosition"
+              anchorPosition={{
+                top: open ? anchorEl.getBoundingClientRect().bottom - 10 : 0,
+                left: open ? anchorEl.getBoundingClientRect().left : 0
+              }}
+            >
+              <Paper>
+                <MenuList>
+                  <MenuItem
+                    onClick={() => {
+                      this.toggleEditCategoryDialog();
+                      this.setState({ anchorEl: null });
+                    }}
+                    className={classes.menuItem}
+                  >
+                    <ListItemText
+                      classes={{ primary: classes.primary }}
+                      primary="Edit"
+                    />
+                  </MenuItem>
+                  <MenuItem className={classes.menuItem}>
+                    <ListItemText
+                      classes={{ primary: classes.primary }}
+                      primary="Delete"
+                    />
+                  </MenuItem>
+                </MenuList>
+              </Paper>
+            </Popover>
+          </ListItem>
+        </StyledCategory>
+        <ConnectedEditCategoryDialog
+          onClose={this.toggleEditCategoryDialog}
+          open={editCategoryDialogToggled}
+          categoryId={identifier}
+          description={description}
+          color={color}
+        />
+      </React.Fragment>
     );
   }
 }

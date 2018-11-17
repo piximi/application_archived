@@ -3,6 +3,7 @@ import {
   CREATE_CATEGORY,
   DELETE_CATEGORY,
   UPDATE_CATEGORY_DESCRIPTION,
+  UPDATE_CATEGORY_COLOR,
   UPDATE_CATEGORY_VISIBILITY
 } from '../constants';
 
@@ -23,6 +24,17 @@ const categories = (state = [], action) => {
           return {
             ...category,
             description: action.description
+          };
+        } else {
+          return category;
+        }
+      });
+    case UPDATE_CATEGORY_COLOR:
+      return state.map(category => {
+        if (category.identifier === action.identifier) {
+          return {
+            ...category,
+            color: action.color
           };
         } else {
           return category;

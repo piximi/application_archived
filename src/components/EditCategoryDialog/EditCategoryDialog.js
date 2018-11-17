@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from './CreateCategoryDialog.css';
+import styles from './EditCategoryDialog.css';
 import { withStyles } from '@material-ui/core/styles';
 import {
   Button,
@@ -13,12 +13,19 @@ import {
 import LabelIcon from '@material-ui/icons/Label';
 import ColorPicker from '../ColorPicker/ColorPicker';
 
-class CreateCategoryDialog extends Component {
+class EditCategoryDialog extends Component {
   state = {
     anchor: null,
     color: '#FF0000',
     description: ''
   };
+
+  componentDidMount() {
+    this.setState({
+      color: this.props.color,
+      description: this.props.description
+    });
+  }
 
   onColorChange = (color, event) => {
     this.setState({
@@ -48,8 +55,7 @@ class CreateCategoryDialog extends Component {
   };
 
   render() {
-    const { classes, createCategory, onClose, open } = this.props;
-
+    const { classes, updateCategory, onClose, open, categoryId } = this.props;
     return (
       <Dialog open={open} onClose={onClose}>
         <DialogContent>
@@ -79,14 +85,18 @@ class CreateCategoryDialog extends Component {
           <Button color="primary" onClick={onClose}>
             Cancel
           </Button>
-
           <Button
             color="primary"
-            onClick={() =>
-              createCategory(this.state.color, this.state.description)
-            }
+            onClick={() => {
+              onClose();
+              updateCategory(
+                categoryId,
+                this.state.description,
+                this.state.color
+              );
+            }}
           >
-            Create category
+            Save
           </Button>
         </DialogActions>
 
@@ -112,4 +122,4 @@ class CreateCategoryDialog extends Component {
   }
 }
 
-export default withStyles(styles, { withTheme: true })(CreateCategoryDialog);
+export default withStyles(styles, { withTheme: true })(EditCategoryDialog);

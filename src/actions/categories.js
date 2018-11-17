@@ -3,7 +3,8 @@ import {
   CREATE_CATEGORY,
   DELETE_CATEGORY,
   UPDATE_CATEGORY_DESCRIPTION,
-  UPDATE_CATEGORY_VISIBILITY
+  UPDATE_CATEGORY_VISIBILITY,
+  UPDATE_CATEGORY_COLOR
 } from '../constants';
 
 export const addCategoriesAction = categories => ({
@@ -25,6 +26,12 @@ export const updateCategoryDescriptionAction = (identifier, description) => ({
   type: UPDATE_CATEGORY_DESCRIPTION,
   identifier,
   description
+});
+
+export const updateCategoryColorAction = (identifier, color) => ({
+  type: UPDATE_CATEGORY_COLOR,
+  identifier,
+  color
 });
 
 export const updateCategoryVisibilityAction = (identifier, value) => ({

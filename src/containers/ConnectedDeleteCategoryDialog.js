@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-
 import { toggleDeleteCategoryDialogAction } from '../actions/settings';
 import DeleteCategoryDialog from '../components/DeleteCategoryDialog/DeleteCategoryDialog';
 import { deleteCategoryAction } from '../actions/categories';

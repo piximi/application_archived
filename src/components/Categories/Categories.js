@@ -14,9 +14,7 @@ import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ConnectedCreateCategoryDialog from '../../containers/ConnectedCreateCategoryDialog';
 
-type Properties = {};
-
-class Categories extends Component<Properties> {
+class Categories extends Component {
   state = {
     collapsed: false,
     createCategoryDialogToggled: false

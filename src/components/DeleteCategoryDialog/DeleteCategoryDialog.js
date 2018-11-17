@@ -10,9 +10,7 @@ import {
   DialogTitle
 } from '@material-ui/core';
 
-type Properties = {};
-
-class DeleteCategoryDialog extends Component<Properties> {
+class DeleteCategoryDialog extends Component {
   render() {
     const { deleteCategory, description, open, onClose } = this.props;
 
