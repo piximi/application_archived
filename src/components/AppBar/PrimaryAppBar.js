@@ -30,11 +30,9 @@ class PrimaryAppBar extends Component {
             <MenuIcon />
           </IconButton>
 
-          <Grid container className={classes.root} spacing={16}>
-            <Grid item>
-              <Logo />
-            </Grid>
+          <Logo />
 
+          <Grid container className={classes.root} spacing={16}>
             <Grid item xs={2} />
 
             <Grid item xs={4}>
