@@ -15,6 +15,7 @@ class Search extends Component {
           className={classNames(classes.input)}
           disableUnderline
           id="input-with-icon-adornment"
+          placeholder="Search your images"
           startAdornment={
             <InputAdornment position="start">
               <SearchIcon />
