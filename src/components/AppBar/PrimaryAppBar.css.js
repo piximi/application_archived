@@ -29,7 +29,10 @@ const styles = theme => ({
   hide: {
     display: 'none'
   },
-
+  search: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit
+  },
   slider: {
     root: {
       width: 10
