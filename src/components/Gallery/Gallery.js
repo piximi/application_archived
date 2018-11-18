@@ -103,6 +103,9 @@ class Gallery extends Component {
       callOnDragEnd
     } = this.props;
 
+    // Check if no images are visible or available
+    if (images.length === 0) return null;
+
     return (
       <div
         className="container noselect"
