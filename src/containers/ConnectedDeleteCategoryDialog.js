@@ -10,13 +10,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    deleteCategory: event => {
-      const identifier = props.identifier;
-
-      dispatch(deleteCategoryAction(identifier));
-
-      dispatch(updateImagesHavingCertainCategory(identifier));
-
+    deleteCategory: categoryIdentifier => {
+      dispatch(deleteCategoryAction(categoryIdentifier));
+      dispatch(updateImagesHavingCertainCategory(categoryIdentifier));
       dispatch(toggleDeleteCategoryDialogAction());
     },
     toggleDeleteCategoryDialog: () => {

@@ -18,6 +18,7 @@ import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
 import Popover from '@material-ui/core/Popover';
 import ConnectedEditCategoryDialog from '../../containers/ConnectedEditCategoryDialog';
+import ConnectedDeleteCategoryDialog from '../../containers/ConnectedDeleteCategoryDialog';
 
 const spec = {
   drop(props, monitor, component) {
@@ -88,7 +89,11 @@ class Category extends Component {
       classes
     } = this.props;
 
-    const { anchorEl, editCategoryDialogToggled } = this.state;
+    const {
+      anchorEl,
+      editCategoryDialogToggled,
+      deleteCategoryDialogOpen
+    } = this.state;
     const open = Boolean(anchorEl);
 
     return (
@@ -154,7 +159,13 @@ class Category extends Component {
                       primary="Edit"
                     />
                   </MenuItem>
-                  <MenuItem className={classes.menuItem}>
+                  <MenuItem
+                    onClick={() => {
+                      this.toggleDeleteCategoryDialog();
+                      this.setState({ anchorEl: null });
+                    }}
+                    className={classes.menuItem}
+                  >
                     <ListItemText
                       classes={{ primary: classes.primary }}
                       primary="Delete"
@@ -171,6 +182,12 @@ class Category extends Component {
           categoryId={identifier}
           description={description}
           color={color}
+        />
+        <ConnectedDeleteCategoryDialog
+          categoryIdentifier={identifier}
+          description={description}
+          open={deleteCategoryDialogOpen}
+          onClose={this.toggleDeleteCategoryDialog}
         />
       </React.Fragment>
     );
