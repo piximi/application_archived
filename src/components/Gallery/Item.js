@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { DragSource } from 'react-dnd';
 import { getEmptyImage } from 'react-dnd-html5-backend';
-import LabelOutlinedIcon from '@material-ui/icons/LabelOutlined';
 import LabelIcon from '@material-ui/icons/Label';
 
 const itemSource = {
