@@ -6,7 +6,6 @@ import LabelIcon from '@material-ui/icons/Label';
 
 const itemSource = {
   beginDrag(props) {
-    //console.log(props);
     const imgId = props.item.id;
     // Set global dragged item to this item
     props.ondrag(imgId);
@@ -16,7 +15,10 @@ const itemSource = {
     };
   },
   endDrag(props, monitor, component) {
-    // Set dragged item to null
+    var audio = new Audio('/src/winxp.mp3');
+    console.log(audio);
+    audio.play();
+
     props.ondrag(null);
     if (monitor.getDropResult() !== null) {
       const categoryIdentifier = monitor.getDropResult().categoryIdentifier;

@@ -5,15 +5,12 @@ let VALIDATIONSET_RATIO = 0.3;
 class Dataset {
   constructor() {
     this.numClasses = 0;
-
     this.trainingSet = [];
     this.trainingSetShuffledIndices = [];
     this.trainingSetIndex = 0;
-
     this.validationSet = [];
     this.validationSetIndex = 0;
     this.validationSetShuffledIndices = [];
-
     this.predictionSet = [];
   }
 

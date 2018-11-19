@@ -4,14 +4,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import styles from './Primary.css';
 import { withStyles } from '@material-ui/core/styles';
 
-const Primary = ({
-  classes,
-  train,
-  sortImages,
-  upload,
-  updateSettingSidebarOpen,
-  toggleSidebar
-}) => {
+const Primary = ({ classes, toggleSidebar }) => {
   return (
     <AppBar position="fixed" className={classes.appBar} color="default">
       <Toolbar>

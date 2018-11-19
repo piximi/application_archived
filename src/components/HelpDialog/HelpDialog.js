@@ -9,9 +9,7 @@ import {
   DialogContentText
 } from '@material-ui/core';
 
-type Properties = {};
-
-class HelpDialog extends Component<Properties> {
+class HelpDialog extends Component {
   render() {
     const { onClose, open } = this.props;
 
