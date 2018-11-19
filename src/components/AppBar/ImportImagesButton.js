@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import styles from './UploadButton.css';
+import styles from './ImportImagesButton.css';
 import { withStyles } from '@material-ui/core/styles';
 import { Button } from '@material-ui/core';
 import classNames from 'classnames';
 import AddPhotoAlternateIcon from '@material-ui/icons/AddPhotoAlternate';
 
-class UploadButton extends Component {
+class ImportImagesButton extends Component {
   render() {
     const { classes, toggleUploadDialog } = this.props;
 
@@ -21,4 +21,4 @@ class UploadButton extends Component {
   }
 }
 
-export default withStyles(styles, { withTheme: true })(UploadButton);
+export default withStyles(styles, { withTheme: true })(ImportImagesButton);
