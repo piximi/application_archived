@@ -138,6 +138,7 @@ class Application extends Component {
           toggled={this.state.open}
           changeZoomLevel={changeZoomLevel}
           zoomLevel={settings.zoomLevel}
+          toggleUploadDialog={toggleUploadDialog}
         />
         <ConnectedSidebar
           toggle={this.onClick}
@@ -186,18 +187,6 @@ class Application extends Component {
               ) : (
                 <LabelOutlinedIcon />
               )}
-            </Button>
-          </Tooltip>
-
-          <Tooltip id="tooltip-fab" title="Upload new image">
-            <Button
-              style={{ position: 'fixed', zIndex: 1202 }}
-              variant="fab"
-              color="secondary"
-              className={classes.fab}
-              onClick={toggleUploadDialog}
-            >
-              <AddIcon />
             </Button>
           </Tooltip>
         </main>

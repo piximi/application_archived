@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import styles from './PrimaryAppBar.css';
 import { withStyles } from '@material-ui/core/styles';
-import { AppBar, IconButton, Toolbar, Typography } from '@material-ui/core';
+import { AppBar, Grid, IconButton, Toolbar } from '@material-ui/core';
 import classNames from 'classnames';
 import MenuIcon from '@material-ui/icons/Menu';
+import Search from './Search';
+import Logo from './Logo';
+import UploadButton from './UploadButton';
 
 class PrimaryAppBar extends Component {
   render() {
-    const { classes, toggle, toggled } = this.props;
+    const { classes, toggle, toggled, toggleUploadDialog } = this.props;
 
     return (
       <AppBar
@@ -27,9 +30,19 @@ class PrimaryAppBar extends Component {
             <MenuIcon />
           </IconButton>
 
-          <Typography variant="h6" color="inherit">
-            Cyto
-          </Typography>
+          <Logo />
+
+          <Grid container className={classes.root} spacing={16}>
+            <Grid item xs={2} />
+
+            <Grid item xs={4}>
+              <Search />
+            </Grid>
+
+            <Grid item>
+              <UploadButton toggleUploadDialog={toggleUploadDialog} />
+            </Grid>
+          </Grid>
         </Toolbar>
       </AppBar>
     );
