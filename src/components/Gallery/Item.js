@@ -109,9 +109,7 @@ class Item extends Component {
         <div style={{ position: 'absolute', margin: '4px 4px 2px' }}>
           <LabelIcon
             style={{
-              color: item.color,
-              border: '1rem solid',
-              border: '0'
+              color: item.color
             }}
           />
         </div>
