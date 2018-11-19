@@ -3,9 +3,11 @@ import styles from './CreateCategoryDialog.css';
 import { withStyles } from '@material-ui/core/styles';
 import {
   Button,
+  ButtonBase,
   Dialog,
   DialogActions,
   DialogContent,
+  Grid,
   IconButton,
   TextField,
   Popover
@@ -54,24 +56,29 @@ class CreateCategoryDialog extends Component {
       <Dialog open={open} onClose={onClose}>
         <DialogContent>
           <div className={classes.margin}>
-            <IconButton
-              aria-haspopup="true"
-              aria-owns={this.state.anchor ? 'create-category-color' : null}
-              disableRipple
-              onClick={this.openCreateCategoryColorMenu}
-              style={{
-                color: this.state.color
-              }}
-            >
-              <LabelIcon />
-            </IconButton>
+            <Grid container spacing={8} alignItems="flex-end">
+              <Grid item>
+                <ButtonBase
+                  aria-haspopup="true"
+                  aria-owns={this.state.anchor ? 'create-category-color' : null}
+                  onClick={this.openCreateCategoryColorMenu}
+                  style={{
+                    color: this.state.color
+                  }}
+                >
+                  <LabelIcon />
+                </ButtonBase>
+              </Grid>
 
-            <TextField
-              id="create-category-description"
-              label="Description"
-              onChange={this.onDescriptionChange}
-              value={this.state.description}
-            />
+              <Grid item>
+                <TextField
+                  id="create-category-description"
+                  label="Description"
+                  onChange={this.onDescriptionChange}
+                  value={this.state.description}
+                />
+              </Grid>
+            </Grid>
           </div>
         </DialogContent>
 
