@@ -5,7 +5,8 @@ import {
   createCategoryAction,
   deleteCategoryAction,
   updateCategoryDescriptionAction,
-  updateCategoryVisibilityAction
+  updateCategoryVisibilityAction,
+  displayThisCategoryOnlyAction
 } from '../actions/categories';
 import {
   toggleDeleteCategoryDialogAction,
@@ -73,7 +74,19 @@ const mapDispatchToProps = (dispatch, props) => {
       dispatch(closeCreateCategoryDialogAction({}));
     },
 
-    toggleCategoriesCollapse: () => dispatch(toggleCategoriesCollapseAction())
+    toggleCategoriesCollapse: () => dispatch(toggleCategoriesCollapseAction()),
+
+    displayThisCategoryOnly: (identifier, images) => {
+      dispatch(displayThisCategoryOnlyAction(identifier));
+
+      for (let index in images.images) {
+        if (images.images[index].category === identifier) {
+          dispatch(updateImageVisibilityAction(index, true));
+        } else {
+          dispatch(updateImageVisibilityAction(index, false));
+        }
+      }
+    }
   };
 };
 
