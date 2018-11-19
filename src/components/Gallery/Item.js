@@ -106,12 +106,14 @@ class Item extends Component {
         onMouseDown={() => onmousedown(imgId)}
         className={imgSelected ? 'selected' : 'unselected'}
       >
-        <div style={{ position: 'absolute', padding: '4px 4px 2px' }}>
-          {item.category == null ? (
-            <LabelOutlinedIcon style={{ color: item.color }} />
-          ) : (
-            <LabelIcon style={{ color: item.color }} />
-          )}
+        <div style={{ position: 'absolute', margin: '4px 4px 2px' }}>
+          <LabelIcon
+            style={{
+              color: item.color,
+              border: '1rem solid',
+              border: '0'
+            }}
+          />
         </div>
         <img
           key={'img' + imgId}
