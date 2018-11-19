@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { DragSource } from 'react-dnd';
 import { getEmptyImage } from 'react-dnd-html5-backend';
-import LabelOutlinedIcon from '@material-ui/icons/LabelOutlined';
 import LabelIcon from '@material-ui/icons/Label';
 
 const itemSource = {
@@ -108,12 +107,12 @@ class Item extends Component {
         onMouseDown={() => onmousedown(imgId)}
         className={imgSelected ? 'selected' : 'unselected'}
       >
-        <div style={{ position: 'absolute', padding: '4px 4px 2px' }}>
-          {item.category == null ? (
-            <LabelOutlinedIcon style={{ color: item.color }} />
-          ) : (
-            <LabelIcon style={{ color: item.color }} />
-          )}
+        <div style={{ position: 'absolute', margin: '4px 4px 2px' }}>
+          <LabelIcon
+            style={{
+              color: item.color
+            }}
+          />
         </div>
         <img
           key={'img' + imgId}
