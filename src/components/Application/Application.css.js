@@ -74,15 +74,13 @@ const styles = theme => ({
     background: 'rgba(200,200,200,1)',
     position: 'absolute',
     bottom: theme.spacing.unit * 2,
-    right: theme.spacing.unit * 3,
-    transform: 'translate(-100%,0)'
+    right: theme.spacing.unit * 2
   },
   unlabeledUntoggled: {
     background: 'rgba(200,50,50,1)',
     position: 'absolute',
     bottom: theme.spacing.unit * 2,
-    right: theme.spacing.unit * 3,
-    transform: 'translate(-100%,0)'
+    right: theme.spacing.unit * 2
   },
   tagStyle: {
     display: 'inline',
