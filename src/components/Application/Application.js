@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import { Button, Tooltip } from '@material-ui/core';
+import AddIcon from '@material-ui/icons/Add';
+import LabelOffOutlinedIcon from '@material-ui/icons/LabelOffOutlined';
+import LabelOutlinedIcon from '@material-ui/icons/LabelOutlined';
 import styles from './Application.css';
 import classNames from 'classnames';
 import ConnectedSidebar from '../../containers/ConnectedSidebar';
@@ -16,7 +20,8 @@ class Application extends Component {
     super(props);
     this.state = {
       open: true,
-      imgSources: null
+      imgSources: null,
+      displayUnlabeled: true
     };
     this.asyncDatabaseRequest = this.asyncDatabaseRequest.bind(this);
   }
@@ -118,8 +123,10 @@ class Application extends Component {
       settings,
       toggleUploadDialog,
       changeZoomLevel,
-      updateImageCategory
+      updateImageCategory,
+      updateUnlabeledVisibility
     } = this.props;
+    console.log(this.state.displayUnlabeled);
     const IMAGES = this.createImageCollection();
     return (
       <div className={classes.appFrame}>
@@ -146,6 +153,35 @@ class Application extends Component {
             decreaseWidth={this.state.open ? 240 + 24 : 24}
             callOnDragEnd={updateImageCategory}
           />
+          <Tooltip
+            title={
+              (this.state.displayUnlabeled ? 'Hide' : 'Show') +
+              ' unlabeled images'
+            }
+          >
+            <Button
+              style={{ position: 'fixed', zIndex: 1202 }}
+              variant="fab"
+              color="secondary"
+              className={
+                this.state.displayUnlabeled
+                  ? classes.unlabeledToggled
+                  : classes.unlabeledUntoggled
+              }
+              onClick={() => {
+                updateUnlabeledVisibility();
+                this.setState({
+                  displayUnlabeled: !this.state.displayUnlabeled
+                });
+              }}
+            >
+              {this.state.displayUnlabeled ? (
+                <LabelOffOutlinedIcon />
+              ) : (
+                <LabelOutlinedIcon />
+              )}
+            </Button>
+          </Tooltip>
         </main>
         <ConnectedUploadDialog
           onClose={toggleUploadDialog}
