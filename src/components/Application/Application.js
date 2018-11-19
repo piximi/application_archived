@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { Button, Tooltip } from '@material-ui/core';
-import AddIcon from '@material-ui/icons/Add';
 import LabelOffOutlinedIcon from '@material-ui/icons/LabelOffOutlined';
 import LabelOutlinedIcon from '@material-ui/icons/LabelOutlined';
 import styles from './Application.css';
