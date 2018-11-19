@@ -3,7 +3,7 @@ import styles from './UploadButton.css';
 import { withStyles } from '@material-ui/core/styles';
 import { Button } from '@material-ui/core';
 import classNames from 'classnames';
-import CloudUploadOutlinedIcon from '@material-ui/icons/CloudUploadOutlined';
+import AddPhotoAlternateIcon from '@material-ui/icons/AddPhotoAlternate';
 
 class UploadButton extends Component {
   render() {
@@ -14,8 +14,8 @@ class UploadButton extends Component {
         className={classNames(classes.button)}
         onClick={toggleUploadDialog}
       >
-        <CloudUploadOutlinedIcon className={classNames(classes.icon)} />
-        Upload images
+        <AddPhotoAlternateIcon className={classNames(classes.icon)} />
+        Import images
       </Button>
     );
   }
