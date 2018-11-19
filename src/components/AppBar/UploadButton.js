@@ -7,10 +7,13 @@ import CloudUploadOutlinedIcon from '@material-ui/icons/CloudUploadOutlined';
 
 class UploadButton extends Component {
   render() {
-    const { classes } = this.props;
+    const { classes, toggleUploadDialog } = this.props;
 
     return (
-      <Button className={classNames(classes.button)}>
+      <Button
+        className={classNames(classes.button)}
+        onClick={toggleUploadDialog}
+      >
         <CloudUploadOutlinedIcon className={classNames(classes.icon)} />
         Upload images
       </Button>

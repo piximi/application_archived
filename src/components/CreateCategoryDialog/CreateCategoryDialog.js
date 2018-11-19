@@ -8,7 +8,6 @@ import {
   DialogActions,
   DialogContent,
   Grid,
-  IconButton,
   TextField,
   Popover
 } from '@material-ui/core';

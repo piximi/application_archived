@@ -10,7 +10,7 @@ import UploadButton from './UploadButton';
 
 class PrimaryAppBar extends Component {
   render() {
-    const { classes, toggle, toggled } = this.props;
+    const { classes, toggle, toggled, toggleUploadDialog } = this.props;
 
     return (
       <AppBar
@@ -40,7 +40,7 @@ class PrimaryAppBar extends Component {
             </Grid>
 
             <Grid item>
-              <UploadButton />
+              <UploadButton toggleUploadDialog={toggleUploadDialog} />
             </Grid>
           </Grid>
         </Toolbar>

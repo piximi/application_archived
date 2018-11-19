@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { Button, Tooltip } from '@material-ui/core';
-import AddIcon from '@material-ui/icons/Add';
 import styles from './Application.css';
 import classNames from 'classnames';
 import ConnectedSidebar from '../../containers/ConnectedSidebar';
@@ -130,7 +128,9 @@ class Application extends Component {
           toggled={this.state.open}
           changeZoomLevel={changeZoomLevel}
           zoomLevel={settings.zoomLevel}
+          toggleUploadDialog={toggleUploadDialog}
         />
+
         <ConnectedSidebar toggle={this.onClick} toggled={this.state.open} />
         <main
           className={classNames(classes.content, classes.contentLeft, {
@@ -146,18 +146,6 @@ class Application extends Component {
             decreaseWidth={this.state.open ? 240 + 24 : 24}
             callOnDragEnd={updateImageCategory}
           />
-
-          <Tooltip id="tooltip-fab" title="Upload new image">
-            <Button
-              style={{ position: 'fixed', zIndex: 1202 }}
-              variant="fab"
-              color="secondary"
-              className={classes.fab}
-              onClick={toggleUploadDialog}
-            >
-              <AddIcon />
-            </Button>
-          </Tooltip>
         </main>
         <ConnectedUploadDialog
           onClose={toggleUploadDialog}
