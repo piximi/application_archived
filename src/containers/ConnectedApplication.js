@@ -6,7 +6,8 @@ import { toggleUploadDialogAction } from '../actions/settings';
 import {
   updateImageCategoryAction,
   // TODO update Image Probability rename
-  updateImageProbability
+  updateImageProbability,
+  updateUnlabeledVisibilityAction
 } from '../actions/images';
 
 const mapStateToProps = state => {
@@ -34,6 +35,10 @@ const mapDispatchToProps = (dispatch, props) => {
     updateImageCategory: (imgIdentifier, categoryIdentifier) => {
       dispatch(updateImageCategoryAction(imgIdentifier, categoryIdentifier));
       dispatch(updateImageProbability(imgIdentifier, null));
+    },
+
+    updateUnlabeledVisibility: () => {
+      dispatch(updateUnlabeledVisibilityAction());
     }
   };
 };

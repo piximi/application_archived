@@ -67,7 +67,23 @@ const styles = theme => ({
     bottom: theme.spacing.unit * 2,
     right: theme.spacing.unit * 2
   },
-
+  unlabeledToggled: {
+    '&:hover': {
+      background: 'rgba(150,150,150,1)'
+    },
+    background: 'rgba(200,200,200,1)',
+    position: 'absolute',
+    bottom: theme.spacing.unit * 2,
+    right: theme.spacing.unit * 3,
+    transform: 'translate(-100%,0)'
+  },
+  unlabeledUntoggled: {
+    background: 'rgba(200,50,50,1)',
+    position: 'absolute',
+    bottom: theme.spacing.unit * 2,
+    right: theme.spacing.unit * 3,
+    transform: 'translate(-100%,0)'
+  },
   tagStyle: {
     display: 'inline',
     padding: '.2em .6em .3em',
