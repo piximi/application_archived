@@ -117,6 +117,10 @@ class Application extends Component {
     return IMAGES;
   };
 
+  setUnlabelledVisibility = value => {
+    this.setState({ displayUnlabeled: value });
+  };
+
   render() {
     const {
       classes,
@@ -126,7 +130,6 @@ class Application extends Component {
       updateImageCategory,
       updateUnlabeledVisibility
     } = this.props;
-    console.log(this.state.displayUnlabeled);
     const IMAGES = this.createImageCollection();
     return (
       <div className={classes.appFrame}>
@@ -136,7 +139,11 @@ class Application extends Component {
           changeZoomLevel={changeZoomLevel}
           zoomLevel={settings.zoomLevel}
         />
-        <ConnectedSidebar toggle={this.onClick} toggled={this.state.open} />
+        <ConnectedSidebar
+          toggle={this.onClick}
+          toggled={this.state.open}
+          setUnlabelledVisibility={this.setUnlabelledVisibility}
+        />
         <main
           className={classNames(classes.content, classes.contentLeft, {
             [classes.contentShift]: this.state.open,
