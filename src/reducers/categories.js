@@ -2,6 +2,7 @@ import {
   ADD_CATEGORIES,
   CREATE_CATEGORY,
   DELETE_CATEGORY,
+  DISPLAY_THIS_CATEGORY_ONLY,
   UPDATE_CATEGORY_DESCRIPTION,
   UPDATE_CATEGORY_COLOR,
   UPDATE_CATEGORY_VISIBILITY
@@ -49,6 +50,20 @@ const categories = (state = [], action) => {
           };
         } else {
           return category;
+        }
+      });
+    case DISPLAY_THIS_CATEGORY_ONLY:
+      return state.map(category => {
+        if (category.identifier === action.identifier) {
+          return {
+            ...category,
+            visible: true
+          };
+        } else {
+          return {
+            ...category,
+            visible: false
+          };
         }
       });
     default:

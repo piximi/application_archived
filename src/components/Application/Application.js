@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import { Button, Tooltip } from '@material-ui/core';
+import LabelOffOutlinedIcon from '@material-ui/icons/LabelOffOutlined';
+import LabelOutlinedIcon from '@material-ui/icons/LabelOutlined';
 import styles from './Application.css';
 import classNames from 'classnames';
 import ConnectedSidebar from '../../containers/ConnectedSidebar';
@@ -16,7 +19,8 @@ class Application extends Component {
     super(props);
     this.state = {
       open: true,
-      imgSources: null
+      imgSources: null,
+      displayUnlabeled: true
     };
     this.asyncDatabaseRequest = this.asyncDatabaseRequest.bind(this);
   }
@@ -112,13 +116,18 @@ class Application extends Component {
     return IMAGES;
   };
 
+  setUnlabelledVisibility = value => {
+    this.setState({ displayUnlabeled: value });
+  };
+
   render() {
     const {
       classes,
       settings,
       toggleUploadDialog,
       changeZoomLevel,
-      updateImageCategory
+      updateImageCategory,
+      updateUnlabeledVisibility
     } = this.props;
     const IMAGES = this.createImageCollection();
     return (
@@ -130,8 +139,11 @@ class Application extends Component {
           zoomLevel={settings.zoomLevel}
           toggleUploadDialog={toggleUploadDialog}
         />
-
-        <ConnectedSidebar toggle={this.onClick} toggled={this.state.open} />
+        <ConnectedSidebar
+          toggle={this.onClick}
+          toggled={this.state.open}
+          setUnlabelledVisibility={this.setUnlabelledVisibility}
+        />
         <main
           className={classNames(classes.content, classes.contentLeft, {
             [classes.contentShift]: this.state.open,
@@ -146,6 +158,35 @@ class Application extends Component {
             decreaseWidth={this.state.open ? 240 + 24 : 24}
             callOnDragEnd={updateImageCategory}
           />
+          <Tooltip
+            title={
+              (this.state.displayUnlabeled ? 'Hide' : 'Show') +
+              ' unlabeled images'
+            }
+          >
+            <Button
+              style={{ position: 'fixed', zIndex: 1202 }}
+              variant="fab"
+              color="secondary"
+              className={
+                this.state.displayUnlabeled
+                  ? classes.unlabeledToggled
+                  : classes.unlabeledUntoggled
+              }
+              onClick={() => {
+                updateUnlabeledVisibility();
+                this.setState({
+                  displayUnlabeled: !this.state.displayUnlabeled
+                });
+              }}
+            >
+              {this.state.displayUnlabeled ? (
+                <LabelOffOutlinedIcon />
+              ) : (
+                <LabelOutlinedIcon />
+              )}
+            </Button>
+          </Tooltip>
         </main>
         <ConnectedUploadDialog
           onClose={toggleUploadDialog}
