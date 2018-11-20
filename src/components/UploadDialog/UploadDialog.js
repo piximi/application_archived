@@ -16,7 +16,6 @@ function createImage(pathname, checksum) {
     category: null,
     probability: null,
     visible: true,
-    isSelected: false,
     identifier: String(checksum),
     filename: pathname
   };
@@ -59,9 +58,14 @@ export class UploadDialog extends Component {
   uploadImages = () => {
     let that = this;
     for (let imageFile of this.state.imageFiles) {
-      const reader = new FileReader();
-      reader.onload = readFile(imageFile, that);
-      reader.readAsDataURL(imageFile, that);
+      if (imageFile.name !== '.DS_Store') {
+        console.log(true);
+        const reader = new FileReader();
+        reader.onload = readFile(imageFile, that);
+        reader.readAsDataURL(imageFile, that);
+      } else {
+        console.log(false);
+      }
     }
   };
 

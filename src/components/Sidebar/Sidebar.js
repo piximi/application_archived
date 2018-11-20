@@ -22,18 +22,18 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import SaveIcon from '@material-ui/icons/Save';
 import * as API from '../../classifier';
-import Download from '@axetroy/react-download';
 import SendFeedbackDialog from '../SendFeedbackDialog/SendFeedbackDialog';
 import SettingsDialog from '../SettingsDialog/SettingsDialog';
 import SidebarAppBar from '../SidebarAppBar/SidebarAppBar';
+import json2csv from 'json2csv';
+import csv from 'csvtojson';
+import fileDownload from 'js-file-download';
 
 const onClick = (images, categories) => {
   return API.fitAndPredict(images, categories);
 };
 
-type Properties = {};
-
-class Sidebar extends Component<Properties> {
+class Sidebar extends Component {
   state = {
     helpDialogOpen: false,
     modelListCollapsed: false,
@@ -88,6 +88,43 @@ class Sidebar extends Component<Properties> {
     });
   };
 
+  clickOnExportLabels = () => {
+    const Json2csvParser = json2csv.Parser;
+    const fields = ['filename', 'identifier', 'categoryName', 'category'];
+    const json2csvParser = new Json2csvParser({ fields });
+    const csv = json2csvParser.parse(this.props.images.images);
+    fileDownload(csv, 'labels.csv');
+  };
+
+  clickOnImportLabels = e => {
+    const that = this;
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const text = reader.result;
+      csv()
+        .fromString(text)
+        .subscribe(jsonObj => {
+          let categoryExists = false;
+          for (let category of that.props.categories) {
+            if (jsonObj.category === category.identifier) categoryExists = true;
+          }
+          if (!categoryExists) {
+            that.props.createCategory(
+              jsonObj.category,
+              jsonObj.categoryColor,
+              jsonObj.categoryName
+            );
+          }
+          that.props.updateImageCategory(
+            jsonObj.identifier,
+            jsonObj.category,
+            jsonObj.categoryName
+          );
+        });
+    };
+    reader.readAsText(e.target.files[0]);
+  };
+
   render() {
     const {
       categories,
@@ -98,12 +135,6 @@ class Sidebar extends Component<Properties> {
       toggled,
       toggle
     } = this.props;
-
-    const exportObject = {
-      settings: settings,
-      categories: categories,
-      images: images.images
-    };
 
     return (
       <Drawer
@@ -125,25 +156,19 @@ class Sidebar extends Component<Properties> {
             <input
               style={{ display: 'none' }}
               type="file"
-              accept=".cyto"
+              accept=".csv"
               name="file"
               id="file"
-              onChange={e => this.readDataFromCytoFile(e)}
+              onChange={e => this.clickOnImportLabels(e)}
             />
           </ListItem>
 
-          <Download
-            file="example.cyto"
-            content={JSON.stringify(exportObject, null, '\t')}
-          >
-            <ListItem button>
-              <ListItemIcon>
-                <SaveIcon />
-              </ListItemIcon>
-
-              <ListItemText inset primary="Save" />
-            </ListItem>
-          </Download>
+          <ListItem button onClick={this.clickOnExportLabels}>
+            <ListItemIcon>
+              <SaveIcon />
+            </ListItemIcon>
+            <ListItemText inset primary="Save labels" />
+          </ListItem>
         </List>
 
         <Divider />

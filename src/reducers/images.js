@@ -25,7 +25,8 @@ const images = (state = {}, action) => {
         if (image.identifier === action.imgIdentifier) {
           return {
             ...image,
-            category: action.categoryIdentifier
+            category: action.categoryIdentifier,
+            categoryName: action.categoryName
           };
         } else {
           return image;

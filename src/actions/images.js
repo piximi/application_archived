@@ -15,11 +15,13 @@ export const addImagesAction = images => ({
 
 export const updateImageCategoryAction = (
   imgIdentifier,
-  categoryIdentifier
+  categoryIdentifier,
+  categoryName
 ) => ({
   type: UPDATE_IMAGE_CATEGORY,
   imgIdentifier,
-  categoryIdentifier
+  categoryIdentifier,
+  categoryName
 });
 
 export const updateImageProbability = (identifier, probability) => ({

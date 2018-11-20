@@ -26,6 +26,7 @@ const spec = {
     const categoryIdentifer = props.identifier;
     return {
       categoryIdentifier: categoryIdentifer,
+      categoryName: props.description,
       color: props.color,
       selectedItems: selectedItems
     };

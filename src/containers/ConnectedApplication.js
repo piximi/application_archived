@@ -31,8 +31,14 @@ const mapDispatchToProps = (dispatch, props) => {
       dispatch(toggleUploadDialogAction());
     },
 
-    updateImageCategory: (imgIdentifier, categoryIdentifier) => {
-      dispatch(updateImageCategoryAction(imgIdentifier, categoryIdentifier));
+    updateImageCategory: (imgIdentifier, categoryIdentifier, categoryName) => {
+      dispatch(
+        updateImageCategoryAction(
+          imgIdentifier,
+          categoryIdentifier,
+          categoryName
+        )
+      );
       dispatch(updateImageProbability(imgIdentifier, null));
     }
   };

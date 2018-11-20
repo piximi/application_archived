@@ -14,16 +14,17 @@ const itemSource = {
     };
   },
   endDrag(props, monitor, component) {
-    var audio = new Audio('/src/winxp.mp3');
-    console.log(audio);
-    audio.play();
-
     props.ondrag(null);
     if (monitor.getDropResult() !== null) {
       const categoryIdentifier = monitor.getDropResult().categoryIdentifier;
+      const categoryName = monitor.getDropResult().categoryName;
       const selectedItemsIdentifiers = monitor.getDropResult().selectedItems;
       for (let selectedItemIdentifier of selectedItemsIdentifiers) {
-        props.callOnDragEnd(selectedItemIdentifier, categoryIdentifier);
+        props.callOnDragEnd(
+          selectedItemIdentifier,
+          categoryIdentifier,
+          categoryName
+        );
       }
     }
     if (!monitor.didDrop()) {
