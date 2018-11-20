@@ -38,6 +38,8 @@ class Categories extends Component {
     const {
       categories,
       updateCategoryVisibility,
+      setUnlabelledVisibility,
+      displayThisCategoryOnly,
       connectDropTarget,
       images
     } = this.props;
@@ -65,6 +67,8 @@ class Categories extends Component {
                 color={category.color}
                 images={images}
                 updateCategoryVisibility={updateCategoryVisibility}
+                displayThisCategoryOnly={displayThisCategoryOnly}
+                setUnlabelledVisibility={setUnlabelledVisibility}
                 connectDropTarget={connectDropTarget}
                 editCategory={this.toggleCreateCategoryDialog}
               />

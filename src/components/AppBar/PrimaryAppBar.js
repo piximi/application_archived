@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import MenuIcon from '@material-ui/icons/Menu';
 import Search from './Search';
 import Logo from './Logo';
-import UploadButton from './UploadButton';
+import ImportImagesButton from './ImportImagesButton';
 
 class PrimaryAppBar extends Component {
   render() {
@@ -40,7 +40,7 @@ class PrimaryAppBar extends Component {
             </Grid>
 
             <Grid item>
-              <UploadButton toggleUploadDialog={toggleUploadDialog} />
+              <ImportImagesButton toggleUploadDialog={toggleUploadDialog} />
             </Grid>
           </Grid>
         </Toolbar>

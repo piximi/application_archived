@@ -5,7 +5,8 @@ import {
   UPDATE_PROBABILITY,
   UPDATE_IMAGES_HAVING_CERTAIN_CATEGORY,
   UPDATE_IMAGE_VISIBILTY,
-  SORT_IMAGES
+  SORT_IMAGES,
+  UPDATE_UNLABELED_VISIBILITY
 } from '../constants';
 
 const images = (state = {}, action) => {
@@ -76,6 +77,21 @@ const images = (state = {}, action) => {
         images: images
       };
 
+    case UPDATE_UNLABELED_VISIBILITY:
+      images = state.images.map(image => {
+        if (image.category === null) {
+          return {
+            ...image,
+            visible: !image.visible
+          };
+        } else {
+          return image;
+        }
+      });
+      return {
+        ...state,
+        images: images
+      };
     case SORT_IMAGES:
       let sortedImages = [...state.images];
       sortedImages.sort(function(a, b) {

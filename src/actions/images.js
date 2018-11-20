@@ -5,6 +5,7 @@ import {
   UPDATE_IMAGE_CATEGORY,
   UPDATE_PROBABILITY,
   UPDATE_IMAGES_HAVING_CERTAIN_CATEGORY,
+  UPDATE_UNLABELED_VISIBILITY,
   SORT_IMAGES
 } from '../constants';
 
@@ -44,6 +45,11 @@ export const updateImageVisibilityAction = (index, value) => ({
   type: UPDATE_IMAGE_VISIBILTY,
   index,
   value
+});
+
+export const updateUnlabeledVisibilityAction = images => ({
+  type: UPDATE_UNLABELED_VISIBILITY,
+  images
 });
 
 export const sortImages = () => ({

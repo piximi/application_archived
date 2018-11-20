@@ -82,6 +82,8 @@ class Category extends Component {
     const {
       identifier,
       updateCategoryVisibility,
+      displayThisCategoryOnly,
+      setUnlabelledVisibility,
       color,
       connectDropTarget,
       description,
@@ -89,7 +91,6 @@ class Category extends Component {
       visible,
       classes
     } = this.props;
-
     const {
       anchorEl,
       editCategoryDialogToggled,
@@ -148,6 +149,19 @@ class Category extends Component {
             >
               <Paper>
                 <MenuList>
+                  <MenuItem
+                    onClick={() => {
+                      displayThisCategoryOnly(identifier, images);
+                      setUnlabelledVisibility(false);
+                      this.setState({ anchorEl: null });
+                    }}
+                    className={classes.menuItem}
+                  >
+                    <ListItemText
+                      classes={{ primary: classes.primary }}
+                      primary="Display this only"
+                    />
+                  </MenuItem>
                   <MenuItem
                     onClick={() => {
                       this.toggleEditCategoryDialog();

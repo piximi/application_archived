@@ -131,6 +131,7 @@ class Sidebar extends Component {
       classes,
       images,
       settings,
+      setUnlabelledVisibility,
       toggleModelCollapse,
       toggled,
       toggle
@@ -173,7 +174,9 @@ class Sidebar extends Component {
 
         <Divider />
 
-        <ConnectedCategories />
+        <ConnectedCategories
+          setUnlabelledVisibility={setUnlabelledVisibility}
+        />
 
         <Divider />
 

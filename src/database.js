@@ -13,7 +13,6 @@ async function saveData(imageDataIndexedDB, imageDataReduxStore = null) {
         try {
           store.dispatch(addImagesAction(imageDataReduxStore));
           store.dispatch(toggleNewImagesEventAction());
-          console.log(true);
         } catch (e) {
           console.error(
             e,
