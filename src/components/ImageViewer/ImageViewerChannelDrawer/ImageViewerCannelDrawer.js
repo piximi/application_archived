@@ -1,23 +1,22 @@
 import React, { Component } from 'react';
-import styles from './ImageViewer.css';
+import styles from './ImageViewerChannelDrawer.css';
 import { withStyles } from '@material-ui/core/styles';
+import { Drawer } from '@material-ui/core';
 
-class ImageViewerChannelDrawer extends React.Component {
+class ImageViewerChannelDrawer extends Component {
   render() {
-    const { classes } = this.props;
+    const { classes, onClose, open } = this.props;
 
     return (
       <Drawer
         anchor="right"
-        open={this.state.right}
-        onClose={this.toggleDrawer('right', false)}
+        className={classes.root}
+        onClose={onClose}
+        open={open}
       >
-        <div
-          tabIndex={0}
-          role="button"
-          onClick={this.toggleDrawer('right', false)}
-          onKeyDown={this.toggleDrawer('right', false)}
-        />
+        <div onClick={onClose} onKeyDown={onClose} role="button" tabIndex={0}>
+          <span>Channel</span>
+        </div>
       </Drawer>
     );
   }
