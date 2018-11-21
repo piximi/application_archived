@@ -128,6 +128,7 @@ class Item extends Component {
             }}
           />
         </div>
+
         <img
           key={'img' + imgId}
           type={'selectableElement'}
@@ -140,6 +141,7 @@ class Item extends Component {
             width: 0.9 * containerStyle.width,
             maxHeight: 0.9 * containerStyle.height
           }}
+          onClick={this.openImageViewerDialog}
         />
 
         <ImageViewerDialog
