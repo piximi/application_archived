@@ -3,6 +3,8 @@ import { DragSource } from 'react-dnd';
 import { getEmptyImage } from 'react-dnd-html5-backend';
 import LabelIcon from '@material-ui/icons/Label';
 import ImageViewerDialog from '../ImageViewerDialog/ImageViewerDialog';
+import styles from './Item.css';
+import { withStyles } from '@material-ui/core/styles';
 
 const itemSource = {
   beginDrag(props) {
@@ -103,6 +105,7 @@ class Item extends Component {
 
   render() {
     const {
+      classes,
       selectedItems,
       onmousedown,
       connectDragSource,
@@ -130,6 +133,7 @@ class Item extends Component {
         </div>
 
         <img
+          className={classes.image}
           key={'img' + imgId}
           type={'selectableElement'}
           alt="foo"
@@ -153,4 +157,6 @@ class Item extends Component {
   }
 }
 
-export default DragSource('SelectedItems', itemSource, collect)(Item);
+export default DragSource('SelectedItems', itemSource, collect)(
+  withStyles(styles, { withTheme: true })(Item)
+);
