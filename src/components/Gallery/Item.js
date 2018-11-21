@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { DragSource } from 'react-dnd';
 import { getEmptyImage } from 'react-dnd-html5-backend';
 import LabelIcon from '@material-ui/icons/Label';
-import ImageViewerDialog from '../ImageViewerDialog/ImageViewerDialog';
+import ImageViewerDialog from '../ImageViewer/ImageViewerDialog/ImageViewerDialog';
 import styles from './Item.css';
 import { withStyles } from '@material-ui/core/styles';
 
