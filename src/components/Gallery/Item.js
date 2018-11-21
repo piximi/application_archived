@@ -151,6 +151,7 @@ class Item extends Component {
         <ImageViewerDialog
           onClose={this.closeImageViewerDialog}
           open={this.state.imageViewerDialogOpen}
+          src={this.state.src}
         />
       </div>
     );

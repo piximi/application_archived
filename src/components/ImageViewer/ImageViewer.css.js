@@ -13,7 +13,11 @@ const styles = theme => ({
   },
   appbar: {
     backgroundColor: '#000',
-    boxShadow: 'none'
+    boxShadow: 'none',
+    width: '100%'
+  },
+  grow: {
+    flexGrow: 1
   }
 });
 
