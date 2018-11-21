@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styles from './ImageViewerExposureDrawer.css';
 import { withStyles } from '@material-ui/core/styles';
 import { Drawer } from '@material-ui/core';
+import ImageHistogram from '../ImageHistogram/ImageHistogram';
 
 class ImageViewerExposureDrawer extends Component {
   render() {
@@ -21,7 +22,7 @@ class ImageViewerExposureDrawer extends Component {
           role="button"
           tabIndex={0}
         >
-          <span>Exposure</span>
+          <ImageHistogram />
         </div>
       </Drawer>
     );
