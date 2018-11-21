@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { DragSource } from 'react-dnd';
 import { getEmptyImage } from 'react-dnd-html5-backend';
 import LabelIcon from '@material-ui/icons/Label';
+import ImageViewerDialog from '../ImageViewerDialog/ImageViewerDialog';
 
 const itemSource = {
   beginDrag(props) {
@@ -50,13 +51,13 @@ class Item extends Component {
     this.asyncDatabaseRequest = this.asyncDatabaseRequest.bind(this);
   }
 
-  closeSettingsDialog = () => {
+  closeImageViewerDialog = () => {
     this.setState({
       imageViewerDialogOpen: false
     });
   };
 
-  openSettingsDialog = () => {
+  openImageViewerDialog = () => {
     this.setState({
       imageViewerDialogOpen: true
     });
@@ -139,6 +140,11 @@ class Item extends Component {
             width: 0.9 * containerStyle.width,
             maxHeight: 0.9 * containerStyle.height
           }}
+        />
+
+        <ImageViewerDialog
+          onClose={this.closeImageViewerDialog}
+          open={this.state.imageViewerDialogOpen}
         />
       </div>
     );

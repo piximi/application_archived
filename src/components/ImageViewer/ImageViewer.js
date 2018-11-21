@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from './Settings.css';
+import styles from './ImageViewer.css';
 import { withStyles } from '@material-ui/core/styles';
 import { AppBar, Grid, IconButton, Toolbar } from '@material-ui/core';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
