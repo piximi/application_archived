@@ -10,11 +10,17 @@ class ImageViewerExposureDrawer extends Component {
     return (
       <Drawer
         anchor="right"
-        className={classes.root}
+        classes={{ paper: classes.paper }}
         onClose={onClose}
         open={open}
       >
-        <div onClick={onClose} onKeyDown={onClose} role="button" tabIndex={0}>
+        <div
+          className={classes.content}
+          onClick={onClose}
+          onKeyDown={onClose}
+          role="button"
+          tabIndex={0}
+        >
           <span>Exposure</span>
         </div>
       </Drawer>
