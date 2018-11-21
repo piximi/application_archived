@@ -41,11 +41,26 @@ function collect(connect, monitor) {
 class Item extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      src: null
+      src: null,
+      imageViewerDialogOpen: false
     };
+
     this.asyncDatabaseRequest = this.asyncDatabaseRequest.bind(this);
   }
+
+  closeSettingsDialog = () => {
+    this.setState({
+      imageViewerDialogOpen: false
+    });
+  };
+
+  openSettingsDialog = () => {
+    this.setState({
+      imageViewerDialogOpen: true
+    });
+  };
 
   static getDerivedStateFromProps(props, state) {
     // Store previousChecksum in state so we can compare when props change.
