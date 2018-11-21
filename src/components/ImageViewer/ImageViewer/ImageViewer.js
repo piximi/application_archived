@@ -5,7 +5,7 @@ import { AppBar, Grid, IconButton, Toolbar } from '@material-ui/core';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import EqualizerIcon from '@material-ui/icons/Equalizer';
 import ColorLensIcon from '@material-ui/icons/ColorLens';
-import ImageViewerChannelDrawer from '../ImageViewerChannelDrawer/ImageViewerCannelDrawer';
+import ImageViewerChannelDrawer from '../ImageViewerChannelDrawer/ImageViewerChannelDrawer';
 import ImageViewerExposureDrawer from '../ImageViewerExposureDrawer/ImageViewerExposureDrawer';
 
 class ImageViewer extends Component {
