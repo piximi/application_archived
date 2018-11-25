@@ -6,7 +6,7 @@ import ImageViewer from '../ImageViewer/ImageViewer';
 
 class ImageViewerDialog extends Component {
   render() {
-    const { classes, onClose, open } = this.props;
+    const { classes, onClose, open, src } = this.props;
 
     return (
       <Dialog
@@ -15,7 +15,7 @@ class ImageViewerDialog extends Component {
         open={open}
         onClose={onClose}
       >
-        <ImageViewer onClose={onClose} />
+        <ImageViewer onClose={onClose} src={src} />
       </Dialog>
     );
   }

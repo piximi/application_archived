@@ -27,7 +27,9 @@ class ImageViewer extends Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, src } = this.props;
+
+    console.log(src);
 
     return (
       <div className={classes.root}>
@@ -44,7 +46,7 @@ class ImageViewer extends Component {
           }}
         >
           <Grid item xs={4}>
-            <img src="https://via.placeholder.com/256" />
+            <img alt="foo" src={src} />
           </Grid>
         </Grid>
 
