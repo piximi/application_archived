@@ -4,7 +4,7 @@ const styles = theme => ({
     backgroundColor: '#000'
   },
   container: {
-    bottom: 0,
+    bottom: '16px',
     position: 'absolute',
     top: 0
   },
