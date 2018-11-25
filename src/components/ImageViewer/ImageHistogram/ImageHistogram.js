@@ -5,7 +5,7 @@ import { XYPlot, VerticalRectSeries } from 'react-vis';
 
 class ImageHistogram extends Component {
   render() {
-    const { classes, src } = this.props;
+    const { classes } = this.props;
 
     return (
       <XYPlot
