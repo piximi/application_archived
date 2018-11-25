@@ -34,16 +34,12 @@ class ImageViewer extends Component {
     return (
       <div className={classes.root}>
         <Grid
+          className={classes.container}
           container
           alignItems="center"
           direction="column"
           justify="center"
           spacing={24}
-          style={{
-            bottom: 0,
-            position: 'absolute',
-            top: 0
-          }}
         >
           <Grid item xs={4}>
             <img alt="foo" src={src} />

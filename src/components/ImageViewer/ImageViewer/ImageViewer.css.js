@@ -3,6 +3,11 @@ const styles = theme => ({
     flexGrow: 1,
     backgroundColor: '#000'
   },
+  container: {
+    bottom: 0,
+    position: 'absolute',
+    top: 0
+  },
   flex: {
     flex: 1
   },
