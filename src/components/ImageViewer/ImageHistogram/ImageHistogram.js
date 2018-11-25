@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styles from './ImageHistogram.css';
 import { withStyles } from '@material-ui/core/styles';
-import { XYPlot, XAxis, YAxis, VerticalRectSeries } from 'react-vis';
+import { XYPlot, VerticalRectSeries } from 'react-vis';
 
 class ImageHistogram extends Component {
   render() {
@@ -15,9 +15,6 @@ class ImageHistogram extends Component {
         height={300}
         stackBy="y"
       >
-        <XAxis />
-        <YAxis />
-
         <VerticalRectSeries
           data={[
             { x0: 1, x: 2, y: 10 },
