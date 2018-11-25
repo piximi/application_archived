@@ -1,6 +1,9 @@
 const styles = theme => ({
-  image: {
+  canvas: {
     width: '100%'
+  },
+  image: {
+    visibility: 'hidden'
   }
 });
 

@@ -32,13 +32,13 @@ class Image extends React.Component {
     return (
       <div>
         <canvas
-          className={classes.image}
+          className={classes.canvas}
           ref="canvas"
           height={this.props.height}
           width={this.props.width}
         />
 
-        <img ref="image" src={src} style={{ visibility: 'hidden' }} />
+        <img className={classes.image} ref="image" src={src} />
       </div>
     );
   }
