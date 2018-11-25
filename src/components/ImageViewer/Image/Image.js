@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styles from './Image.css';
 import { withStyles } from '@material-ui/core/styles';
 
-class Image extends React.Component {
+class Image extends Component {
   componentDidMount() {
     const canvas = this.refs.canvas;
 
@@ -38,7 +38,7 @@ class Image extends React.Component {
           width={this.props.width}
         />
 
-        <img className={classes.image} ref="image" src={src} />
+        <img alt="example" className={classes.image} ref="image" src={src} />
       </div>
     );
   }

@@ -30,8 +30,6 @@ class ImageViewer extends Component {
   render() {
     const { classes, src } = this.props;
 
-    console.log(src);
-
     return (
       <div className={classes.root}>
         <Grid
@@ -85,6 +83,7 @@ class ImageViewer extends Component {
         <ImageViewerExposureDrawer
           onClose={this.toggleExposureDrawer}
           open={this.state.exposureDrawerToggled}
+          src={src}
         />
       </div>
     );

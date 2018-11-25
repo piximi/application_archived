@@ -6,7 +6,7 @@ import ImageHistogram from '../ImageHistogram/ImageHistogram';
 
 class ImageViewerExposureDrawer extends Component {
   render() {
-    const { classes, onClose, open } = this.props;
+    const { classes, onClose, open, src } = this.props;
 
     return (
       <Drawer
@@ -22,7 +22,7 @@ class ImageViewerExposureDrawer extends Component {
           role="button"
           tabIndex={0}
         >
-          <ImageHistogram />
+          <ImageHistogram src={src} />
         </div>
       </Drawer>
     );
