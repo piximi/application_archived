@@ -62,7 +62,22 @@ class ImageViewer extends Component {
           </Toolbar>
         </AppBar>
 
-        <Grid container spacing={24} />
+        <Grid
+          container
+          alignItems="center"
+          direction="column"
+          justify="center"
+          spacing={24}
+          style={{
+            bottom: 0,
+            position: 'absolute',
+            top: 0
+          }}
+        >
+          <Grid item xs={4}>
+            <img src="https://via.placeholder.com/256" />
+          </Grid>
+        </Grid>
 
         <ImageViewerChannelDrawer
           onClose={this.toggleChannelDrawer}
