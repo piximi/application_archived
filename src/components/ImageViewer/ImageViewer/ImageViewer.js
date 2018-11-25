@@ -7,6 +7,7 @@ import EqualizerIcon from '@material-ui/icons/Equalizer';
 import ColorLensIcon from '@material-ui/icons/ColorLens';
 import ImageViewerChannelDrawer from '../ImageViewerChannelDrawer/ImageViewerChannelDrawer';
 import ImageViewerExposureDrawer from '../ImageViewerExposureDrawer/ImageViewerExposureDrawer';
+import Image from '../Image/Image';
 
 class ImageViewer extends Component {
   state = {
@@ -37,12 +38,11 @@ class ImageViewer extends Component {
           className={classes.container}
           container
           alignItems="center"
-          direction="column"
           justify="center"
           spacing={24}
         >
           <Grid item xs={4}>
-            <img alt="foo" src={src} />
+            <Image src={src} />
           </Grid>
         </Grid>
 
