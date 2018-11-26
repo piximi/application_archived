@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import styles from './UploadButton.css';
 import { withStyles } from '@material-ui/core/styles';
 import { Button } from '@material-ui/core';
 import classNames from 'classnames';
 import CloudUploadOutlinedIcon from '@material-ui/icons/CloudUploadOutlined';
 
-class UploadButton extends Component {
+class UploadButton extends PureComponent {
   render() {
     const { classes, toggleUploadDialog } = this.props;
 

@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import './Gallery.css';
 import { reCalc } from './helper';
 
-class SelectionBox extends Component {
+class SelectionBox extends PureComponent {
   constructor() {
     super();
     this.state = {

@@ -7,7 +7,7 @@ import {
   ListItemIcon,
   ListItemText
 } from '@material-ui/core';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import styles from './Sidebar.css';
 import { withStyles } from '@material-ui/core/styles';
 import ConnectedCategories from '../../containers/ConnectedCategories';
@@ -31,7 +31,7 @@ const onClick = (images, categories) => {
   return API.fitAndPredict(images, categories);
 };
 
-class Sidebar extends Component {
+class Sidebar extends PureComponent {
   state = {
     helpDialogOpen: false,
     modelListCollapsed: false,
@@ -84,17 +84,6 @@ class Sidebar extends Component {
     this.setState({
       settingsDialogOpen: true
     });
-  };
-
-  readDataFromCytoFile = e => {
-    const that = this;
-    const reader = new FileReader();
-    reader.onload = function(e) {
-      const text = reader.result;
-      const data = JSON.parse(text);
-      that.props.updateStore(data);
-    };
-    reader.readAsText(e.target.files[0]);
   };
 
   render() {

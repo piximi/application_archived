@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import styles from './PrimaryAppBar.css';
 import { withStyles } from '@material-ui/core/styles';
 import { AppBar, Grid, IconButton, Toolbar } from '@material-ui/core';
@@ -8,7 +8,7 @@ import Search from './Search';
 import Logo from './Logo';
 import ImportImagesButton from './ImportImagesButton';
 
-class PrimaryAppBar extends Component {
+class PrimaryAppBar extends PureComponent {
   render() {
     const { classes, toggle, toggled, toggleUploadDialog } = this.props;
 

@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { DragSource } from 'react-dnd';
 import { getEmptyImage } from 'react-dnd-html5-backend';
 import LabelIcon from '@material-ui/icons/Label';
+import ImageViewerDialog from '../ImageViewer/ImageViewerDialog/ImageViewerDialog';
+import styles from './Item.css';
+import { withStyles } from '@material-ui/core/styles';
 
 const itemSource = {
   beginDrag(props) {
@@ -44,11 +47,26 @@ function collect(connect, monitor) {
 class Item extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      src: null
+      src: null,
+      imageViewerDialogOpen: false
     };
+
     this.asyncDatabaseRequest = this.asyncDatabaseRequest.bind(this);
   }
+
+  closeImageViewerDialog = () => {
+    this.setState({
+      imageViewerDialogOpen: false
+    });
+  };
+
+  openImageViewerDialog = () => {
+    this.setState({
+      imageViewerDialogOpen: true
+    });
+  };
 
   static getDerivedStateFromProps(props, state) {
     // Store previousChecksum in state so we can compare when props change.
@@ -90,6 +108,7 @@ class Item extends Component {
 
   render() {
     const {
+      classes,
       selectedItems,
       onmousedown,
       connectDragSource,
@@ -115,7 +134,9 @@ class Item extends Component {
             }}
           />
         </div>
+
         <img
+          className={classes.image}
           key={'img' + imgId}
           type={'selectableElement'}
           alt="foo"
@@ -127,10 +148,19 @@ class Item extends Component {
             width: 0.9 * containerStyle.width,
             maxHeight: 0.9 * containerStyle.height
           }}
+          onClick={this.openImageViewerDialog}
+        />
+
+        <ImageViewerDialog
+          onClose={this.closeImageViewerDialog}
+          open={this.state.imageViewerDialogOpen}
+          src={imgSrc}
         />
       </div>
     );
   }
 }
 
-export default DragSource('SelectedItems', itemSource, collect)(Item);
+export default DragSource('SelectedItems', itemSource, collect)(
+  withStyles(styles, { withTheme: true })(Item)
+);

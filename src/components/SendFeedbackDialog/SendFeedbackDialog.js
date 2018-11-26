@@ -8,9 +8,7 @@ import {
   DialogContent
 } from '@material-ui/core';
 
-type Properties = {};
-
-class SendFeedbackDialog extends Component<Properties> {
+class SendFeedbackDialog extends Component {
   render() {
     const { classes, onClose, open } = this.props;
 
