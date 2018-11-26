@@ -47,12 +47,10 @@ function collect(connect, monitor) {
 class Item extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       src: null,
       imageViewerDialogOpen: false
     };
-
     this.asyncDatabaseRequest = this.asyncDatabaseRequest.bind(this);
   }
 
@@ -148,7 +146,7 @@ class Item extends Component {
             width: 0.9 * containerStyle.width,
             maxHeight: 0.9 * containerStyle.height
           }}
-          onClick={this.openImageViewerDialog}
+          onDoubleClick={this.openImageViewerDialog}
         />
 
         <ImageViewerDialog
