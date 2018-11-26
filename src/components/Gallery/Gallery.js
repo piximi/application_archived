@@ -20,7 +20,8 @@ class Gallery extends Component {
       },
       selectionBoxVisibility: 'hidden',
       currentlyDraggedItem: null,
-      shiftKeyPressed: false
+      shiftKeyPressed: false,
+      mouseDown: false
     };
   }
 
@@ -30,17 +31,20 @@ class Gallery extends Component {
   }
 
   onmousedown = e => {
+    let currentselectionBoxCoordinates = {
+      ...this.state.selectionBoxCoordinates
+    };
+    currentselectionBoxCoordinates.x1 = e.clientX; //Set the initial X
+    currentselectionBoxCoordinates.y1 = e.clientY; //Set the initial Y
+    currentselectionBoxCoordinates.x2 = e.clientX; //Set the initial X
+    currentselectionBoxCoordinates.y2 = e.clientY; //Set the initial Y
+    this.setState({
+      mouseDown: true,
+      selectionBoxCoordinates: currentselectionBoxCoordinates
+    });
     // Only activate selection box when not dragging on a selectable item
     if (e.target.getAttribute('type') !== 'selectableElement') {
       this.setState({ selectionBoxVisibility: 'visible' });
-      let currentselectionBoxCoordinates = {
-        ...this.state.selectionBoxCoordinates
-      };
-      currentselectionBoxCoordinates.x1 = e.clientX; //Set the initial X
-      currentselectionBoxCoordinates.y1 = e.clientY; //Set the initial Y
-      this.setState({
-        selectionBoxCoordinates: currentselectionBoxCoordinates
-      });
     }
   };
 
@@ -51,7 +55,11 @@ class Gallery extends Component {
     };
     currentselectionBoxCoordinates.x2 = e.clientX;
     currentselectionBoxCoordinates.y2 = e.clientY;
-    this.setState({ selectionBoxCoordinates: currentselectionBoxCoordinates });
+    if (this.state.mouseDown) {
+      this.setState({
+        selectionBoxCoordinates: currentselectionBoxCoordinates
+      });
+    }
     // Only check for collisions if selection box is active
     if (this.state.selectionBoxVisibility === 'visible') {
       const collisions = collisionDetection(currentselectionBoxCoordinates);
@@ -69,7 +77,11 @@ class Gallery extends Component {
       this.setState({ selected: [] });
     }
     // Hide selection box und reset collisions
-    this.setState({ selectionBoxVisibility: 'hidden', collisions: [] });
+    this.setState({
+      mouseDown: false,
+      selectionBoxVisibility: 'hidden',
+      collisions: []
+    });
   };
 
   selectItem = imgId => {
