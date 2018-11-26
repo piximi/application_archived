@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import styles from './Search.css';
 import { withStyles } from '@material-ui/core/styles';
 import { FormControl, Input, InputAdornment } from '@material-ui/core';
 import classNames from 'classnames';
 import ImageSearchIcon from '@material-ui/icons/ImageSearch';
 
-class Search extends Component {
+class Search extends PureComponent {
   render() {
     const { classes } = this.props;
 

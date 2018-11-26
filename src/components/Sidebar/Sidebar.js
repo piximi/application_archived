@@ -7,7 +7,7 @@ import {
   ListItemIcon,
   ListItemText
 } from '@material-ui/core';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import styles from './Sidebar.css';
 import { withStyles } from '@material-ui/core/styles';
 import ConnectedCategories from '../../containers/ConnectedCategories';
@@ -31,7 +31,7 @@ const onClick = (images, categories) => {
   return API.fitAndPredict(images, categories);
 };
 
-class Sidebar extends Component {
+class Sidebar extends PureComponent {
   state = {
     helpDialogOpen: false,
     modelListCollapsed: false,
