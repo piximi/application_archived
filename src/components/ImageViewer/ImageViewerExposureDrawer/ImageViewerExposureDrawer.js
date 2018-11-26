@@ -3,6 +3,8 @@ import styles from './ImageViewerExposureDrawer.css';
 import { withStyles } from '@material-ui/core/styles';
 import { Drawer } from '@material-ui/core';
 import ImageHistogram from '../ImageHistogram/ImageHistogram';
+import Brightness from '../Brightness/Brightness';
+import Contrast from '../Contrast/Contrast';
 
 class ImageViewerExposureDrawer extends Component {
   render() {
@@ -17,12 +19,15 @@ class ImageViewerExposureDrawer extends Component {
       >
         <div
           className={classes.content}
-          onClick={onClose}
           onKeyDown={onClose}
           role="button"
           tabIndex={0}
         >
           <ImageHistogram src={src} />
+
+          <Brightness />
+
+          <Contrast />
         </div>
       </Drawer>
     );
