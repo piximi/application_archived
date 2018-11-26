@@ -31,9 +31,7 @@ const onClick = (images, categories) => {
   return API.fitAndPredict(images, categories);
 };
 
-type Properties = {};
-
-class Sidebar extends Component<Properties> {
+class Sidebar extends Component {
   state = {
     helpDialogOpen: false,
     modelListCollapsed: false,

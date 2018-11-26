@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import styles from './SidebarAppBar.css';
 import { withStyles } from '@material-ui/core/styles';
 import {
@@ -11,9 +11,7 @@ import {
 import classNames from 'classnames';
 import MenuIcon from '@material-ui/icons/Menu';
 
-type Properties = {};
-
-class SidebarAppBar extends Component<Properties> {
+class SidebarAppBar extends PureComponent {
   render() {
     const { classes, toggle, toggled } = this.props;
 

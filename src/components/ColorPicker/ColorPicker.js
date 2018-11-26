@@ -3,9 +3,7 @@ import React, { Component } from 'react';
 import styles from './ColorPicker.css';
 import { CirclePicker } from 'react-color';
 
-type Properties = {};
-
-class ColorPicker extends Component<Properties> {
+class ColorPicker extends Component {
   render() {
     const { onChange } = this.props;
 

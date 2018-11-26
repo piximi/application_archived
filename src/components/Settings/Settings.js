@@ -19,9 +19,7 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-type Properties = {};
-
-class Settings extends Component<Properties> {
+class Settings extends Component {
   state = {
     classification: {
       collapsed: false
