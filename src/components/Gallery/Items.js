@@ -1,19 +1,6 @@
 import React from 'react';
 import Item from './Item';
-import {
-  CellMeasurer,
-  CellMeasurerCache,
-  Grid,
-  AutoSizer
-} from 'react-virtualized';
-
-// In this example, average cell height is assumed to be about 50px.
-// This value will be used for the initial `Grid` layout.
-// Width is not dynamic.
-const cache = new CellMeasurerCache({
-  defaultHeight: 150,
-  fixedWidth: true
-});
+import { Grid, AutoSizer } from 'react-virtualized';
 
 const Items = props => {
   const onmousedown = imgId => {
@@ -36,28 +23,18 @@ const Items = props => {
       return;
     }
     return (
-      <CellMeasurer
-        cache={cache}
-        columnIndex={columnIndex}
-        key={key}
-        parent={parent}
-        rowIndex={rowIndex}
-      >
-        {({ measure }) => (
-          <div key={key} style={newStyle}>
-            <Item
-              item={props.images[index]}
-              containerStyle={style}
-              key={key}
-              selectedItems={props.selectedItems}
-              onmousedown={onmousedown}
-              ondrag={props.ondrag}
-              asyncImgLoadingFunc={props.asyncImgLoadingFunc}
-              callOnDragEnd={props.callOnDragEnd}
-            />
-          </div>
-        )}
-      </CellMeasurer>
+      <div key={key} style={newStyle}>
+        <Item
+          item={props.images[index]}
+          containerStyle={style}
+          key={key}
+          selectedItems={props.selectedItems}
+          onmousedown={onmousedown}
+          ondrag={props.ondrag}
+          asyncImgLoadingFunc={props.asyncImgLoadingFunc}
+          callOnDragEnd={props.callOnDragEnd}
+        />
+      </div>
     );
   };
 
@@ -65,10 +42,7 @@ const Items = props => {
     <AutoSizer>
       {({ height, width }) => {
         const calculatedWidth = width - props.decreaseWidth;
-        const columnWidth =
-          picturesPerRow > length
-            ? calculatedWidth / length
-            : calculatedWidth / picturesPerRow;
+        const columnWidth = calculatedWidth / picturesPerRow;
         return (
           <Grid
             cellRenderer={cellRenderer}
