@@ -21,13 +21,11 @@ import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import SaveIcon from '@material-ui/icons/Save';
+import Save from '../Save/Save';
 import * as API from '../../classifier';
 import SendFeedbackDialog from '../SendFeedbackDialog/SendFeedbackDialog';
 import SettingsDialog from '../SettingsDialog/SettingsDialog';
 import SidebarAppBar from '../SidebarAppBar/SidebarAppBar';
-import json2csv from 'json2csv';
-import csv from 'csvtojson';
-import fileDownload from 'js-file-download';
 
 const onClick = (images, categories) => {
   return API.fitAndPredict(images, categories);
@@ -88,39 +86,13 @@ class Sidebar extends Component {
     });
   };
 
-  clickOnExportLabels = () => {
-    const Json2csvParser = json2csv.Parser;
-    const fields = ['filename', 'identifier', 'categoryName', 'category'];
-    const json2csvParser = new Json2csvParser({ fields });
-    const csv = json2csvParser.parse(this.props.images.images);
-    fileDownload(csv, 'labels.csv');
-  };
-
-  clickOnImportLabels = e => {
+  readDataFromCytoFile = e => {
     const that = this;
     const reader = new FileReader();
     reader.onload = function(e) {
       const text = reader.result;
-      csv()
-        .fromString(text)
-        .subscribe(jsonObj => {
-          let categoryExists = false;
-          for (let category of that.props.categories) {
-            if (jsonObj.category === category.identifier) categoryExists = true;
-          }
-          if (!categoryExists) {
-            that.props.createCategory(
-              jsonObj.category,
-              jsonObj.categoryColor,
-              jsonObj.categoryName
-            );
-          }
-          that.props.updateImageCategory(
-            jsonObj.identifier,
-            jsonObj.category,
-            jsonObj.categoryName
-          );
-        });
+      const data = JSON.parse(text);
+      that.props.updateStore(data);
     };
     reader.readAsText(e.target.files[0]);
   };
@@ -153,23 +125,21 @@ class Sidebar extends Component {
             <ListItemIcon>
               <FolderOpenIcon />
             </ListItemIcon>
-            <ListItemText inset primary="Open..." />
+            <ListItemText inset primary="Load Project" />
             <input
               style={{ display: 'none' }}
               type="file"
-              accept=".csv"
+              accept=".cyto"
               name="file"
               id="file"
-              onChange={e => this.clickOnImportLabels(e)}
+              onChange={this.readDataFromCytoFile}
             />
           </ListItem>
-
-          <ListItem button onClick={this.clickOnExportLabels}>
-            <ListItemIcon>
-              <SaveIcon />
-            </ListItemIcon>
-            <ListItemText inset primary="Save labels" />
-          </ListItem>
+          <Save
+            images={images.images}
+            settings={settings}
+            categories={categories}
+          />
         </List>
 
         <Divider />
@@ -208,7 +178,6 @@ class Sidebar extends Component {
               </ListItemIcon>
 
               <ListItemText primary="Import Weights" />
-
               <input
                 style={{ display: 'none' }}
                 type="file"
@@ -223,7 +192,6 @@ class Sidebar extends Component {
               <ListItemIcon>
                 <SaveIcon />
               </ListItemIcon>
-
               <ListItemText primary="Save Weights" />
             </ListItem>
           </Collapse>

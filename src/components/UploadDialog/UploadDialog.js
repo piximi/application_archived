@@ -11,14 +11,23 @@ import {
   DialogTitle
 } from '@material-ui/core';
 
-function createImage(pathname, checksum) {
-  return {
-    category: null,
-    probability: null,
-    visible: true,
-    identifier: String(checksum),
-    filename: pathname
+function createImage(bytes, pathname, checksum) {
+  let image = {};
+  let img = new Image();
+  img.onload = function() {
+    image['width'] = img.width;
+    image['height'] = img.height;
+    image['channels'] = 4; // This is true for PNG images
+    image['category'] = null;
+    image['probability'] = null;
+    image['visible'] = true;
+    image['identifier'] = String(checksum);
+    image['filename'] = pathname;
+    image['object_bounding_box_minimum_r'] = 0;
+    image['object_bounding_box_minimum_c'] = 0;
   };
+  img.src = bytes;
+  return image;
 }
 
 const readFile = (currentFile, that) => {
@@ -26,7 +35,7 @@ const readFile = (currentFile, that) => {
   return e => {
     const bytes = e.target.result;
     const checksum = hash(bytes);
-    const image = createImage(pathname, checksum);
+    const image = createImage(bytes, pathname, checksum);
     that.imageData.imageDataIndexedDB.push({
       checksum: checksum,
       bytes: bytes
@@ -58,14 +67,9 @@ export class UploadDialog extends Component {
   uploadImages = () => {
     let that = this;
     for (let imageFile of this.state.imageFiles) {
-      if (imageFile.name !== '.DS_Store') {
-        console.log(true);
-        const reader = new FileReader();
-        reader.onload = readFile(imageFile, that);
-        reader.readAsDataURL(imageFile, that);
-      } else {
-        console.log(false);
-      }
+      const reader = new FileReader();
+      reader.onload = readFile(imageFile, that);
+      reader.readAsDataURL(imageFile, that);
     }
   };
 
