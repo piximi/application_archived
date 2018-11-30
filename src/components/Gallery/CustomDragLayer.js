@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { DragLayer } from 'react-dnd';
 import './CustomDragLayer.css';
@@ -35,14 +35,14 @@ let swapArrayElements = function(arr, indexA, indexB) {
   arr[indexB] = temp;
 };
 
-class CustomDragLayer extends React.Component {
+class CustomDragLayer extends PureComponent {
   renderItem(type, item) {
     const list = document.getElementsByClassName('selected');
     let imgSources = [];
     let draggedIndex = 0;
     for (let i = 0; i < list.length; i = i + 1) {
       const element = list[i];
-      const imgElement = list[i].childNodes[1];
+      const imgElement = list[i].childNodes[2];
       let img = <img key={'draglayerImg' + i} src={imgElement.src} alt="foo" />;
       imgSources.push(img);
       if (element.getAttribute('imgid') === item.item.id) {

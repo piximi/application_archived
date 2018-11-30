@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { DragSource } from 'react-dnd';
 import { getEmptyImage } from 'react-dnd-html5-backend';
 import LabelIcon from '@material-ui/icons/Label';
 import ImageViewerDialog from '../ImageViewer/ImageViewerDialog/ImageViewerDialog';
+import Image from './Image';
 import styles from './Item.css';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -44,7 +45,7 @@ function collect(connect, monitor) {
   };
 }
 
-class Item extends Component {
+class Item extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -106,7 +107,6 @@ class Item extends Component {
 
   render() {
     const {
-      classes,
       selectedItems,
       onmousedown,
       connectDragSource,
@@ -118,7 +118,7 @@ class Item extends Component {
     const imgSelected = selectedItems.includes(imgId);
     return connectDragSource(
       <div
-        key={'li' + imgId}
+        key={'div' + imgId}
         name={'selectableElement'}
         type={'selectableElement'}
         imgid={imgId}
@@ -132,23 +132,12 @@ class Item extends Component {
             }}
           />
         </div>
-
-        <img
-          className={classes.image}
-          key={'img' + imgId}
-          type={'selectableElement'}
-          alt="foo"
+        <Image
           src={this.state.src === null ? imgSrc : this.state.src}
-          style={{
-            padding: '2px 2px 2px',
-            verticalAlign: 'bottom',
-            backgroundColor: 'transparent',
-            width: 0.9 * containerStyle.width,
-            maxHeight: 0.9 * containerStyle.height
-          }}
-          onDoubleClick={this.openImageViewerDialog}
+          key={'img' + imgId}
+          height={containerStyle.height}
+          width={0.9 * containerStyle.width}
         />
-
         <ImageViewerDialog
           onClose={this.closeImageViewerDialog}
           open={this.state.imageViewerDialogOpen}
