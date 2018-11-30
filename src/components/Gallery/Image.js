@@ -12,11 +12,12 @@ class Image extends Component {
     this.canvas = React.createRef();
   }
 
-  // Make sure component is updated
-  shouldComponentUpdate(nextProps, nextState) {
-    if (this.props.width === nextProps.width) {
-      return true;
-    }
+  componentDidMount() {
+    this.draw();
+  }
+
+  componentDidUpdate() {
+    this.draw();
   }
 
   // Set image data as state
@@ -31,7 +32,6 @@ class Image extends Component {
       imgWidth: width
     });
     image.style.height = '0px';
-    this.draw();
   };
 
   handleImageErrored() {
@@ -63,9 +63,9 @@ class Image extends Component {
 
   render() {
     const { src, openImageViewerDialog } = this.props;
-    this.draw();
     return (
       <React.Fragment>
+        {this.state.canvas}
         <canvas
           onDoubleClick={openImageViewerDialog}
           type={'selectableElement'}
