@@ -133,6 +133,7 @@ class Item extends PureComponent {
           />
         </div>
         <Image
+          openImageViewerDialog={this.openImageViewerDialog}
           src={this.state.src === null ? imgSrc : this.state.src}
           key={'img' + imgId}
           height={containerStyle.height}
