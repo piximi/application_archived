@@ -31,7 +31,7 @@ class Image extends PureComponent {
   render() {
     const { src, openImageViewerDialog } = this.props;
     return (
-      <div>
+      <React.Fragment>
         <canvas
           onDoubleClick={openImageViewerDialog}
           type={'selectableElement'}
@@ -48,7 +48,7 @@ class Image extends PureComponent {
           src={src}
           style={{ visibility: 'hidden' }}
         />
-      </div>
+      </React.Fragment>
     );
   }
 }
