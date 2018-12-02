@@ -52,7 +52,6 @@ class Item extends PureComponent {
       src: null,
       imageViewerDialogOpen: false
     };
-    this.asyncDatabaseRequest = this.asyncDatabaseRequest.bind(this);
   }
 
   closeImageViewerDialog = () => {
@@ -67,42 +66,10 @@ class Item extends PureComponent {
     });
   };
 
-  static getDerivedStateFromProps(props, state) {
-    // Store previousChecksum in state so we can compare when props change.
-    // Clear out previously-loaded data (so we don't render stale stuff).
-    if (props.item.id !== state.previousId) {
-      return {
-        src: null,
-        previousId: props.item.id
-      };
-    }
-    // No state update necessary
-    return null;
-  }
-
   componentDidMount() {
     this.props.connectDragPreview(getEmptyImage(), {
       captureDraggingState: true
     });
-    this.asyncDatabaseRequest(this.props.item.id);
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (this.state.src === null) {
-      this.asyncDatabaseRequest(this.props.item.id);
-    }
-  }
-
-  componentWillUnmount() {
-    if (this._asyncRequest) {
-      this._asyncRequest.cancel();
-    }
-  }
-
-  asyncDatabaseRequest(id) {
-    if (typeof this.props.asyncImgLoadingFunc === 'function') {
-      this.props.asyncImgLoadingFunc(id, this);
-    }
   }
 
   render() {

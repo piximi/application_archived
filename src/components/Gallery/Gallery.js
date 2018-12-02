@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import './Gallery.css';
 import Items from './Items.js';
@@ -6,7 +6,7 @@ import SelectionBox from './SelectionBox.js';
 import CustomDragLayer from './CustomDragLayer';
 import { collisionDetection } from './helper.js';
 
-class Gallery extends Component {
+class Gallery extends PureComponent {
   constructor() {
     super();
     this.state = {
@@ -107,13 +107,7 @@ class Gallery extends Component {
   };
 
   render() {
-    const {
-      images,
-      imagesPerRow,
-      asyncImgLoadingFunc,
-      decreaseWidth,
-      callOnDragEnd
-    } = this.props;
+    const { images, imagesPerRow, decreaseWidth, callOnDragEnd } = this.props;
 
     // Check if no images are visible or available
     if (images.length === 0) return null;
@@ -134,7 +128,6 @@ class Gallery extends Component {
           images={images}
           imagesPerRow={imagesPerRow}
           decreaseWidth={decreaseWidth}
-          asyncImgLoadingFunc={asyncImgLoadingFunc}
           selectItem={this.selectItem}
           selectedItems={this.state.selected}
           ondrag={this.setCurrentlyDraggedItem}
@@ -148,8 +141,7 @@ class Gallery extends Component {
 Gallery.propTypes = {
   images: PropTypes.array.isRequired,
   imagesPerRow: PropTypes.number,
-  decreaseWidth: PropTypes.number,
-  asyncImgLoadingFunc: PropTypes.func
+  decreaseWidth: PropTypes.number
 };
 
 Gallery.defaultProps = {

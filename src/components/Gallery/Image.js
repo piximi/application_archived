@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
-class Image extends Component {
+class Image extends PureComponent {
   constructor() {
     super();
     this.state = {
@@ -65,7 +65,6 @@ class Image extends Component {
     const { src, openImageViewerDialog } = this.props;
     return (
       <React.Fragment>
-        {this.state.canvas}
         <canvas
           onDoubleClick={openImageViewerDialog}
           type={'selectableElement'}

@@ -158,6 +158,7 @@ class Application extends Component {
             decreaseWidth={this.state.open ? 240 + 24 : 24}
             callOnDragEnd={updateImageCategory}
           />
+
           <Tooltip
             title={
               (this.state.displayUnlabeled ? 'Hide' : 'Show') +
