@@ -1,9 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { shallow } from 'enzyme';
 import Categories from './Categories';
 
-it('renders without crashing', () => {
-  // const div = document.createElement('div');
-  // ReactDOM.render(<Categories />, div);
-  // ReactDOM.unmountComponentAtNode(div);
+describe('Categories', () => {
+  it('should render correctly', () => {
+    const component = shallow(<Categories />);
+    expect(component).toMatchSnapshot();
+  });
 });

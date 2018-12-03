@@ -1,10 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import SidebarAppBar from './SidebarAppBar';
+import Save from './Save';
 
-describe('SidebarAppBar', () => {
+describe('Save', () => {
   it('should render correctly', () => {
-    const component = shallow(<SidebarAppBar />);
+    const component = shallow(<Save />);
     expect(component).toMatchSnapshot();
   });
 });

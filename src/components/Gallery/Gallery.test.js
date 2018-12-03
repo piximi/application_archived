@@ -1,10 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import SidebarAppBar from './SidebarAppBar';
+import Gallery from './Gallery';
 
-describe('SidebarAppBar', () => {
+describe('Gallery', () => {
   it('should render correctly', () => {
-    const component = shallow(<SidebarAppBar />);
+    const component = shallow(<Gallery images={[]} />);
     expect(component).toMatchSnapshot();
   });
 });

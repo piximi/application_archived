@@ -31,16 +31,16 @@ class Gallery extends PureComponent {
   }
 
   onmousedown = e => {
-    let currentselectionBoxCoordinates = {
+    let currentSelectionBoxCoordinates = {
       ...this.state.selectionBoxCoordinates
     };
-    currentselectionBoxCoordinates.x1 = e.clientX; //Set the initial X
-    currentselectionBoxCoordinates.y1 = e.clientY; //Set the initial Y
-    currentselectionBoxCoordinates.x2 = e.clientX; //Set the initial X
-    currentselectionBoxCoordinates.y2 = e.clientY; //Set the initial Y
+    currentSelectionBoxCoordinates.x1 = e.clientX; //Set the initial X
+    currentSelectionBoxCoordinates.y1 = e.clientY; //Set the initial Y
+    currentSelectionBoxCoordinates.x2 = e.clientX; //Set the initial X
+    currentSelectionBoxCoordinates.y2 = e.clientY; //Set the initial Y
     this.setState({
       mouseDown: true,
-      selectionBoxCoordinates: currentselectionBoxCoordinates
+      selectionBoxCoordinates: currentSelectionBoxCoordinates
     });
     // Only activate selection box when not dragging on a selectable item
     if (e.target.getAttribute('type') !== 'selectableElement') {
@@ -50,19 +50,19 @@ class Gallery extends PureComponent {
 
   onmousemove = e => {
     // Always update coordinates based on mouse position
-    let currentselectionBoxCoordinates = {
+    let currentSelectionBoxCoordinates = {
       ...this.state.selectionBoxCoordinates
     };
-    currentselectionBoxCoordinates.x2 = e.clientX;
-    currentselectionBoxCoordinates.y2 = e.clientY;
+    currentSelectionBoxCoordinates.x2 = e.clientX;
+    currentSelectionBoxCoordinates.y2 = e.clientY;
     if (this.state.mouseDown) {
       this.setState({
-        selectionBoxCoordinates: currentselectionBoxCoordinates
+        selectionBoxCoordinates: currentSelectionBoxCoordinates
       });
     }
     // Only check for collisions if selection box is active
     if (this.state.selectionBoxVisibility === 'visible') {
-      const collisions = collisionDetection(currentselectionBoxCoordinates);
+      const collisions = collisionDetection(currentSelectionBoxCoordinates);
       this.setState({ selected: collisions, collisions: collisions });
     }
   };

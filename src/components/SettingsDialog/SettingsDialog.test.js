@@ -1,3 +1,10 @@
-test('addition', () => {
-  expect(1 + 1).toBe(2);
+import React from 'react';
+import { shallow } from 'enzyme';
+import SettingsDialog from './SettingsDialog';
+
+describe('SettingsDialog', () => {
+  it('should render correctly', () => {
+    const component = shallow(<SettingsDialog />);
+    expect(component).toMatchSnapshot();
+  });
 });

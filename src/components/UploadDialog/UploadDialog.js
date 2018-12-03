@@ -106,16 +106,18 @@ export class UploadDialog extends Component {
     return (
       <Dialog open={open} onClose={onClose} TransitionComponent={Transition}>
         <DialogTitle id="form-dialog-title">
-          Upload file or directory
+          Upload directory with images
         </DialogTitle>
 
         <DialogContent>
-          <input
-            type="file"
-            accept="image/*"
-            ref={node => this._addDirectory(node)}
-            onChange={this.onChange()}
-          />
+          <Button>
+            <input
+              type="file"
+              accept="image/*"
+              ref={node => this._addDirectory(node)}
+              onChange={this.onChange()}
+            />
+          </Button>
         </DialogContent>
 
         <DialogActions>
