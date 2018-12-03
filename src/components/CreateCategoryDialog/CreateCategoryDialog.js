@@ -9,10 +9,15 @@ import {
   DialogContent,
   Grid,
   TextField,
-  Popover
+  Popover,
+  Zoom
 } from '@material-ui/core';
 import LabelIcon from '@material-ui/icons/Label';
 import ColorPicker from '../ColorPicker/ColorPicker';
+
+function Transition(props) {
+  return <Zoom {...props} />;
+}
 
 class CreateCategoryDialog extends Component {
   state = {
@@ -52,7 +57,7 @@ class CreateCategoryDialog extends Component {
     const { classes, createCategory, onClose, open } = this.props;
 
     return (
-      <Dialog open={open} onClose={onClose}>
+      <Dialog open={open} onClose={onClose} TransitionComponent={Transition}>
         <DialogContent>
           <div className={classes.margin}>
             <Grid container spacing={8} alignItems="flex-end">

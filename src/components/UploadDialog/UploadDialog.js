@@ -8,7 +8,8 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
-  DialogTitle
+  DialogTitle,
+  Zoom
 } from '@material-ui/core';
 
 function createImage(bytes, pathname, checksum) {
@@ -52,6 +53,10 @@ const readFile = (currentFile, that) => {
     }
   };
 };
+
+function Transition(props) {
+  return <Zoom {...props} />;
+}
 
 export class UploadDialog extends Component {
   constructor(props) {
@@ -99,7 +104,7 @@ export class UploadDialog extends Component {
     const { onClose, open } = this.props;
 
     return (
-      <Dialog open={open} onClose={onClose}>
+      <Dialog open={open} onClose={onClose} TransitionComponent={Transition}>
         <DialogTitle id="form-dialog-title">
           Upload file or directory
         </DialogTitle>

@@ -49,7 +49,6 @@ class Item extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      src: null,
       imageViewerDialogOpen: false
     };
   }
@@ -101,7 +100,7 @@ class Item extends PureComponent {
         </div>
         <Image
           openImageViewerDialog={this.openImageViewerDialog}
-          src={this.state.src === null ? imgSrc : this.state.src}
+          src={imgSrc}
           key={'img' + imgId}
           height={containerStyle.height}
           width={0.9 * containerStyle.width}
