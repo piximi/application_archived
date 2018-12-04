@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { Fab, Tooltip } from '@material-ui/core';
+import { Button, Tooltip } from '@material-ui/core';
 import LabelOffOutlinedIcon from '@material-ui/icons/LabelOffOutlined';
 import LabelOutlinedIcon from '@material-ui/icons/LabelOutlined';
 import styles from './Application.css';
@@ -165,8 +165,9 @@ class Application extends Component {
               ' unlabeled images'
             }
           >
-            <Fab
+            <Button
               style={{ position: 'fixed', zIndex: 1202 }}
+              variant="fab"
               color="secondary"
               className={
                 this.state.displayUnlabeled
@@ -185,7 +186,7 @@ class Application extends Component {
               ) : (
                 <LabelOutlinedIcon />
               )}
-            </Fab>
+            </Button>
           </Tooltip>
         </main>
         <ConnectedUploadDialog
