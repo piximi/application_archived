@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { AppBar, Grid, IconButton, Toolbar } from '@material-ui/core';
 import classNames from 'classnames';
 import MenuIcon from '@material-ui/icons/Menu';
-import Search from './Search';
+import ConnectedSearch from '../../containers/ConnectedSearch';
 import Logo from './Logo';
 import ImportImagesButton from './ImportImagesButton';
 
@@ -36,7 +36,7 @@ class PrimaryAppBar extends PureComponent {
             <Grid item xs={2} />
 
             <Grid item xs={4}>
-              <Search />
+              <ConnectedSearch />
             </Grid>
 
             <Grid item>
