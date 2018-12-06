@@ -9,11 +9,16 @@ class Search extends PureComponent {
   filterImages = searchText => {
     const images = this.props.images;
     images.forEach((image, i) => {
-      const match = this.compare(image.filename, searchText);
-      if (match) {
-        this.props.updateImageVisibility(i, true);
-      } else {
-        this.props.updateImageVisibility(i, false);
+      if (image.filename) {
+        const match = this.compare(
+          image.filename.toLowerCase(),
+          searchText.toLowerCase()
+        );
+        if (match) {
+          this.props.updateImageVisibility(i, true);
+        } else {
+          this.props.updateImageVisibility(i, false);
+        }
       }
     });
   };
