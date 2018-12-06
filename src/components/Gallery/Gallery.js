@@ -4,6 +4,7 @@ import './Gallery.css';
 import Items from './Items.js';
 import SelectionBox from './SelectionBox.js';
 import CustomDragLayer from './CustomDragLayer';
+import DeleteDropLayer from './DeleteDropLayer';
 import { collisionDetection } from './helper.js';
 
 class Gallery extends PureComponent {
@@ -133,6 +134,7 @@ class Gallery extends PureComponent {
           ondrag={this.setCurrentlyDraggedItem}
           callOnDragEnd={callOnDragEnd}
         />
+        <DeleteDropLayer draggedItem={this.state.currentlyDraggedItem} />
       </div>
     );
   }
