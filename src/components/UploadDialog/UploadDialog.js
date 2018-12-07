@@ -26,6 +26,8 @@ function createImage(bytes, pathname, checksum) {
     image['filename'] = pathname;
     image['object_bounding_box_minimum_r'] = 0;
     image['object_bounding_box_minimum_c'] = 0;
+    image['brightness'] = 100;
+    image['contrast'] = 100;
   };
   img.src = bytes;
   return image;

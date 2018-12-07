@@ -90,10 +90,12 @@ class Application extends Component {
     let category = null;
     let categoryColor = 'white';
     let src = null;
+    let brightness = 100;
     const IMAGES = this.props.imagesMetadata.map(imageMetadata => {
       categoryColor = 'white';
       identifier = imageMetadata.identifier;
       category = this.findCategory(imageMetadata.category);
+      brightness = imageMetadata.brightness;
       if (category != null) {
         if (category.color != null) {
           categoryColor = category.color;
@@ -106,11 +108,10 @@ class Application extends Component {
       return {
         src: src,
         id: identifier,
-        thumbnailWidth: 180,
-        thumbnailHeight: 180,
         isSelected: false,
         category: category,
-        color: categoryColor
+        color: categoryColor,
+        brightness: brightness
       };
     });
     return IMAGES;

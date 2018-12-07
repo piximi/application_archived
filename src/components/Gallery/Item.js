@@ -81,6 +81,7 @@ class Item extends PureComponent {
     } = this.props;
     const imgId = String(item.id);
     const imgSrc = item.src;
+    const brightness = item.brightness;
     const imgSelected = selectedItems.includes(imgId);
     return connectDragSource(
       <div
@@ -99,9 +100,10 @@ class Item extends PureComponent {
           />
         </div>
         <Image
+          key={'img' + imgId}
           openImageViewerDialog={this.openImageViewerDialog}
           src={imgSrc}
-          key={'img' + imgId}
+          brightness={brightness}
           height={containerStyle.height}
           width={0.9 * containerStyle.width}
         />
@@ -109,6 +111,8 @@ class Item extends PureComponent {
           onClose={this.closeImageViewerDialog}
           open={this.state.imageViewerDialogOpen}
           src={imgSrc}
+          imgId={imgId}
+          brightness={brightness}
         />
       </div>
     );

@@ -7,12 +7,14 @@ import EqualizerIcon from '@material-ui/icons/Equalizer';
 import ColorLensIcon from '@material-ui/icons/ColorLens';
 import ImageViewerChannelDrawer from '../ImageViewerChannelDrawer/ImageViewerChannelDrawer';
 import ImageViewerExposureDrawer from '../ImageViewerExposureDrawer/ImageViewerExposureDrawer';
-import Image from '../Image/Image';
+import Image from '../../Gallery/Image';
 
 class ImageViewer extends Component {
   state = {
     channelDrawerToggled: false,
-    exposureDrawerToggled: false
+    exposureDrawerToggled: false,
+    brightness: 100,
+    contrast: 100
   };
 
   toggleChannelDrawer = () => {
@@ -27,8 +29,21 @@ class ImageViewer extends Component {
     });
   };
 
+  setBrightness = value => {
+    this.setState({
+      brightness: value
+    });
+  };
+
+  setContrast = value => {
+    this.setState({
+      contrast: value
+    });
+  };
+
   render() {
-    const { classes, src } = this.props;
+    const { classes, src, imgIdentifier } = this.props;
+    const { brightness, contrast } = this.state;
 
     return (
       <div className={classes.root}>
@@ -40,7 +55,13 @@ class ImageViewer extends Component {
           spacing={24}
         >
           <Grid item xs={4}>
-            <Image src={src} />
+            <Image
+              src={src}
+              height={500}
+              width={500}
+              brightness={brightness}
+              contrast={contrast}
+            />
           </Grid>
         </Grid>
 
@@ -84,6 +105,11 @@ class ImageViewer extends Component {
           onClose={this.toggleExposureDrawer}
           open={this.state.exposureDrawerToggled}
           src={src}
+          imgIdentifier={imgIdentifier}
+          setBrightness={this.setBrightness}
+          setContrast={this.setContrast}
+          brightness={brightness}
+          contrast={contrast}
         />
       </div>
     );

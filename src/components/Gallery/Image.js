@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 
 class Image extends PureComponent {
   constructor() {
@@ -39,7 +40,7 @@ class Image extends PureComponent {
   }
 
   // Draw canvas
-  draw() {
+  draw = () => {
     if (this.state.imageStatus === 'loaded') {
       const canvas = this.canvas.current;
       const context = canvas.getContext('2d');
@@ -51,6 +52,15 @@ class Image extends PureComponent {
       );
       canvas.height = this.state.imgHeight * ratio;
       canvas.width = this.state.imgWidth * ratio;
+
+      // Apply filters to context
+      context.filter =
+        'brightness(' +
+        this.props.brightness +
+        '%)  contrast(' +
+        this.props.contrast +
+        '%)';
+
       context.drawImage(
         this.state.image,
         0,
@@ -59,7 +69,7 @@ class Image extends PureComponent {
         this.state.imgHeight * ratio
       );
     }
-  }
+  };
 
   render() {
     const { src, openImageViewerDialog } = this.props;
@@ -84,5 +94,18 @@ class Image extends PureComponent {
     );
   }
 }
+
+Image.propTypes = {
+  src: PropTypes.string,
+  height: PropTypes.number,
+  width: PropTypes.number,
+  brightness: PropTypes.number,
+  contrast: PropTypes.number
+};
+
+Image.defaultProps = {
+  brightness: 100,
+  contrast: 100
+};
 
 export default Image;

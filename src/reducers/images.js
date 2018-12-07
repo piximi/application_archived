@@ -5,8 +5,8 @@ import {
   UPDATE_PROBABILITY,
   UPDATE_IMAGES_HAVING_CERTAIN_CATEGORY,
   UPDATE_IMAGE_VISIBILTY,
-  SORT_IMAGES,
-  UPDATE_UNLABELED_VISIBILITY
+  UPDATE_UNLABELED_VISIBILITY,
+  UPDATE_IMAGE_BRIGHTNESS
 } from '../constants';
 
 const images = (state = {}, action) => {
@@ -92,24 +92,23 @@ const images = (state = {}, action) => {
         ...state,
         images: images
       };
-    case SORT_IMAGES:
-      let sortedImages = [...state.images];
-      sortedImages.sort(function(a, b) {
-        if (a.category === null) {
-          return -1;
-        } else if (b.category === null) {
-          return 1;
-        } else if (a.category === b.category) {
-          return 0;
+
+    case UPDATE_IMAGE_BRIGHTNESS:
+      images = state.images.map(image => {
+        if (image.identifier === action.imgId) {
+          return {
+            ...image,
+            brightness: action.value
+          };
         } else {
-          return a.category < b.category ? -1 : 1;
+          return image;
         }
       });
-
       return {
         ...state,
-        images: sortedImages
+        images: images
       };
+
     default:
       return state;
   }

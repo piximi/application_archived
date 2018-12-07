@@ -8,12 +8,22 @@ import Contrast from '../Contrast/Contrast';
 
 class ImageViewerExposureDrawer extends Component {
   render() {
-    const { classes, onClose, open, src } = this.props;
+    const {
+      classes,
+      onClose,
+      open,
+      src,
+      setBrightness,
+      brightness,
+      setContrast,
+      contrast
+    } = this.props;
 
     return (
       <Drawer
         anchor="right"
-        classes={{ paper: classes.paper }}
+        classes={{ paper: classes.drawerPaper }}
+        variant={'persistent'}
         onClose={onClose}
         open={open}
       >
@@ -25,9 +35,9 @@ class ImageViewerExposureDrawer extends Component {
         >
           <ImageHistogram src={src} />
 
-          <Brightness />
+          <Brightness brightness={brightness} setBrightness={setBrightness} />
 
-          <Contrast />
+          <Contrast contrast={contrast} setContrast={setContrast} />
         </div>
       </Drawer>
     );
