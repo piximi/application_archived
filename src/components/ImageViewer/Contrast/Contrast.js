@@ -14,7 +14,9 @@ class Contrast extends PureComponent {
 
     return (
       <div className={classes.root}>
-        <Typography id="label">Contrast</Typography>
+        <Typography style={{ color: 'white' }} id="label">
+          Contrast
+        </Typography>
 
         <Slider
           classes={{ container: classes.slider }}

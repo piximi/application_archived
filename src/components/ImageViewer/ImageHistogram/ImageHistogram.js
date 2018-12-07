@@ -1,38 +1,33 @@
 import React, { Component } from 'react';
-import styles from './ImageHistogram.css';
-import { withStyles } from '@material-ui/core/styles';
-import { XYPlot, VerticalRectSeries } from 'react-vis';
+//import styles from './ImageHistogram.css';
+//import '../node_modules/react-vis/dist/style.css';
+import {
+  XYPlot,
+  XAxis,
+  YAxis,
+  VerticalGridLines,
+  HorizontalGridLines,
+  AreaSeries
+} from 'react-vis';
 
 class ImageHistogram extends Component {
+  createPlottableData = imageData => {};
+
   render() {
-    const { classes } = this.props;
-
     return (
-      <XYPlot
-        className={classes.xyplot}
-        xDomain={[0, 7]}
-        width={300}
-        height={300}
-        stackBy="y"
-      >
-        <VerticalRectSeries
-          data={[
-            { x0: 1, x: 2, y: 10 },
-            { x0: 2, x: 4, y: 5 },
-            { x0: 5, x: 6, y: 15 }
-          ]}
-        />
-
-        <VerticalRectSeries
-          data={[
-            { x0: 1, x: 2, y: 12 },
-            { x0: 2, x: 4, y: 2 },
-            { x0: 5, x: 6, y: 15 }
-          ]}
+      <XYPlot width={300} height={300}>
+        <VerticalGridLines />
+        <HorizontalGridLines />
+        <XAxis />
+        <YAxis />
+        <AreaSeries
+          className="area-series-example"
+          curve="curveNatural"
+          data={[{ x: 1, y: 10 }, { x: 2, y: 5 }, { x: 3, y: 15 }]}
         />
       </XYPlot>
     );
   }
 }
 
-export default withStyles(styles, { withTheme: true })(ImageHistogram);
+export default ImageHistogram;

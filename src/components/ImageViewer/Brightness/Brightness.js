@@ -13,8 +13,11 @@ class Brightness extends PureComponent {
     const { classes, brightness } = this.props;
     return (
       <div className={classes.root}>
-        <Typography id="label">Brightness</Typography>
+        <Typography style={{ color: 'white' }} id="label">
+          Brightness
+        </Typography>
         <Slider
+          style={{ color: 'white' }}
           classes={{ container: classes.slider }}
           value={brightness}
           min={0}

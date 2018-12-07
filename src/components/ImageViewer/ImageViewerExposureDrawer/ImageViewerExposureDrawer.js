@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styles from './ImageViewerExposureDrawer.css';
 import { withStyles } from '@material-ui/core/styles';
-import { Drawer } from '@material-ui/core';
+import { Drawer, Button } from '@material-ui/core';
 import ImageHistogram from '../ImageHistogram/ImageHistogram';
 import Brightness from '../Brightness/Brightness';
 import Contrast from '../Contrast/Contrast';
@@ -22,11 +22,13 @@ class ImageViewerExposureDrawer extends Component {
     return (
       <Drawer
         anchor="right"
-        classes={{ paper: classes.drawerPaper }}
+        style={{ backgroundColor: '#202124' }}
+        classes={{ paper: classes.paper }}
         variant={'persistent'}
         onClose={onClose}
         open={open}
       >
+        =
         <div
           className={classes.content}
           onKeyDown={onClose}
