@@ -26,6 +26,7 @@ import * as API from '../../classifier';
 import SendFeedbackDialog from '../SendFeedbackDialog/SendFeedbackDialog';
 import SettingsDialog from '../SettingsDialog/SettingsDialog';
 import SidebarAppBar from '../SidebarAppBar/SidebarAppBar';
+import OpenDialog from '../OpenDialog/OpenDialog';
 
 const onClick = (images, categories) => {
   return API.fitAndPredict(images, categories);
@@ -33,6 +34,7 @@ const onClick = (images, categories) => {
 
 class Sidebar extends PureComponent {
   state = {
+    openDialogOpen: false,
     helpDialogOpen: false,
     modelListCollapsed: false,
     sendFeedbackDialogOpen: false,
@@ -48,6 +50,18 @@ class Sidebar extends PureComponent {
       that.props.updateStore(data);
     };
     reader.readAsText(e.target.files[0]);
+  };
+
+  openOpenDialog = () => {
+    this.setState({
+      openDialogOpen: true
+    });
+  };
+
+  closeOpenDialog = () => {
+    this.setState({
+      openDialogOpen: false
+    });
   };
 
   closeHelpDialog = () => {
@@ -110,7 +124,7 @@ class Sidebar extends PureComponent {
         <SidebarAppBar toggle={toggle} toggled={toggled} />
 
         <List dense>
-          <ListItem button component="label">
+          <ListItem dense button>
             <ListItemIcon>
               <FolderOpenIcon />
             </ListItemIcon>
@@ -124,6 +138,19 @@ class Sidebar extends PureComponent {
               onChange={this.readDataFromCytoFile}
             />
           </ListItem>
+
+          <ListItem dense button onClick={this.openOpenDialog}>
+            <ListItemIcon>
+              <FolderOpenIcon />
+            </ListItemIcon>
+            <ListItemText inset primary="Open sample" />
+          </ListItem>
+
+          <OpenDialog
+            open={this.state.openDialogOpen}
+            onClose={this.state.closeOpenDialog}
+          />
+
           <Save
             images={images.images}
             settings={settings}

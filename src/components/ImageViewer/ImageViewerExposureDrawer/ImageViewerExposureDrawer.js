@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styles from './ImageViewerExposureDrawer.css';
 import { withStyles } from '@material-ui/core/styles';
-import { Drawer, Button } from '@material-ui/core';
+import { Drawer } from '@material-ui/core';
 import ImageHistogram from '../ImageHistogram/ImageHistogram';
 import Brightness from '../Brightness/Brightness';
 import Contrast from '../Contrast/Contrast';
