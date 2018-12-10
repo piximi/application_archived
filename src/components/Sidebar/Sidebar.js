@@ -62,8 +62,6 @@ class Sidebar extends PureComponent {
     this.setState({
       openDialogOpen: false
     });
-
-    debugger;
   };
 
   closeHelpDialog = () => {
