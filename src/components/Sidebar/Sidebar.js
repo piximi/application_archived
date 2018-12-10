@@ -114,7 +114,7 @@ class Sidebar extends PureComponent {
             <ListItemIcon>
               <FolderOpenIcon />
             </ListItemIcon>
-            <ListItemText inset primary="Load Project" />
+            <ListItemText inset primary="Open..." />
             <input
               style={{ display: 'none' }}
               type="file"
