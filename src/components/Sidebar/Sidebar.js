@@ -62,6 +62,8 @@ class Sidebar extends PureComponent {
     this.setState({
       openDialogOpen: false
     });
+
+    debugger;
   };
 
   closeHelpDialog = () => {
@@ -148,7 +150,7 @@ class Sidebar extends PureComponent {
 
           <OpenDialog
             open={this.state.openDialogOpen}
-            onClose={this.state.closeOpenDialog}
+            onClose={this.closeOpenDialog}
           />
 
           <Save

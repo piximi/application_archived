@@ -6,25 +6,41 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
+  DialogTitle,
+  IconButton,
   List,
   ListItem,
   ListItemAvatar,
-  ListItemText
+  ListItemText,
+  Typography
 } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import CIFAR10 from './CIFAR-10.png';
 import CIFAR100 from './CIFAR-100.png';
 import MNIST from './MNIST.png';
+import CloseIcon from '@material-ui/icons/Close';
 
 class OpenDialog extends Component {
   render() {
-    const { classes, open } = this.props;
+    const { classes, open, onClose } = this.props;
 
     return (
       <Dialog fullWidth={true} maxWidth="sm" open={open}>
+        <DialogTitle disableTypography className={classes.dialogTitle}>
+          <Typography variant="h6">&nbsp;</Typography>
+
+          <IconButton
+            aria-label="Close"
+            className={classes.closeButton}
+            onClick={onClose}
+          >
+            <CloseIcon />
+          </IconButton>
+        </DialogTitle>
+
         <DialogContent classes={{ root: classes.dialogContent }}>
           <List>
-            <ListItem button>
+            <ListItem button onClick={onClose}>
               <ListItemAvatar>
                 <Avatar src={CIFAR10}>
                   <AddIcon />
@@ -36,7 +52,7 @@ class OpenDialog extends Component {
               />
             </ListItem>
 
-            <ListItem button>
+            <ListItem button onClick={onClose}>
               <ListItemAvatar>
                 <Avatar src={CIFAR100}>
                   <AddIcon />
@@ -48,7 +64,7 @@ class OpenDialog extends Component {
               />
             </ListItem>
 
-            <ListItem button>
+            <ListItem button onClick={onClose}>
               <ListItemAvatar>
                 <Avatar src={MNIST}>
                   <AddIcon />
