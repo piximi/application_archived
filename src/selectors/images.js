@@ -2,7 +2,6 @@
 // import { createSelector } from 'reselect';
 
 export const getVisibleImages = images => {
-  console.log(images);
   let result = {};
   for (let key in images) {
     if (images[key].visible) result[key] = images[key];

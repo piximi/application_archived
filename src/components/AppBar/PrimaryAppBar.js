@@ -10,7 +10,7 @@ import ImportImagesButton from './ImportImagesButton';
 
 class PrimaryAppBar extends PureComponent {
   render() {
-    const { classes, toggle, toggled, toggleUploadDialog } = this.props;
+    const { classes, toggle, toggled } = this.props;
 
     return (
       <AppBar
@@ -40,7 +40,7 @@ class PrimaryAppBar extends PureComponent {
             </Grid>
 
             <Grid item>
-              <ImportImagesButton toggleUploadDialog={toggleUploadDialog} />
+              <ImportImagesButton />
             </Grid>
           </Grid>
         </Toolbar>

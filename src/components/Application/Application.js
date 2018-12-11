@@ -10,7 +10,6 @@ import ConnectedSidebar from '../../containers/ConnectedSidebar';
 import PrimaryAppBar from '../AppBar/PrimaryAppBar';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContext } from 'react-dnd';
-import ConnectedUploadDialog from '../../containers/ConnectedUploadDialog';
 import Gallery from '../Gallery/Gallery';
 
 class Application extends Component {
@@ -63,8 +62,6 @@ class Application extends Component {
     const {
       classes,
       settings,
-      toggleUploadDialog,
-      changeZoomLevel,
       updateImageCategory,
       updateUnlabeledVisibility
     } = this.props;
@@ -74,9 +71,7 @@ class Application extends Component {
         <PrimaryAppBar
           toggle={this.onClick}
           toggled={this.state.open}
-          changeZoomLevel={changeZoomLevel}
           zoomLevel={settings.zoomLevel}
-          toggleUploadDialog={toggleUploadDialog}
         />
         <ConnectedSidebar
           toggle={this.onClick}
@@ -94,7 +89,7 @@ class Application extends Component {
           <Gallery
             images={IMAGES}
             imagesPerRow={10}
-            decreaseWidth={this.state.open ? 240 + 24 : 24}
+            decreaseWidth={this.state.open ? 280 + 24 : 24}
             callOnDragEnd={updateImageCategory}
           />
 
@@ -128,10 +123,6 @@ class Application extends Component {
             </Button>
           </Tooltip>
         </main>
-        <ConnectedUploadDialog
-          onClose={toggleUploadDialog}
-          open={settings.upload.toggled}
-        />
       </div>
     );
   }

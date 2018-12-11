@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { toggleDeleteCategoryDialogAction } from '../actions/settings';
 import DeleteCategoryDialog from '../components/DeleteCategoryDialog/DeleteCategoryDialog';
 import { deleteCategoryAction } from '../actions/categories';
 import { updateImagesHavingCertainCategoryAction } from '../actions/images';
@@ -13,10 +12,6 @@ const mapDispatchToProps = (dispatch, props) => {
     deleteCategory: categoryIdentifier => {
       dispatch(deleteCategoryAction(categoryIdentifier));
       dispatch(updateImagesHavingCertainCategoryAction(categoryIdentifier));
-      dispatch(toggleDeleteCategoryDialogAction());
-    },
-    toggleDeleteCategoryDialog: () => {
-      dispatch(toggleDeleteCategoryDialogAction());
     }
   };
 };

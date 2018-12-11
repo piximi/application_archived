@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import { fitClassifierAction } from '../actions/classifier';
 import Application from '../components/Application/Application';
-import { toggleUploadDialogAction } from '../actions/settings';
 import {
   updateImageCategoryAction,
   updateImageProbabilityAction,
@@ -22,11 +21,6 @@ const mapDispatchToProps = (dispatch, props) => {
       const pathname = '';
       dispatch(fitClassifierAction(pathname));
     },
-
-    toggleUploadDialog: () => {
-      dispatch(toggleUploadDialogAction());
-    },
-
     updateImageCategory: (imgIdentifier, categoryIdentifier, categoryName) => {
       dispatch(
         updateImageCategoryAction(

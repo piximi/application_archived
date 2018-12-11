@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { toggleModelCollapseAction } from '../actions/settings';
 import Sidebar from '../components/Sidebar/Sidebar';
 import {
   addImagesAction,
@@ -17,7 +16,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    toggleModelCollapse: () => dispatch(toggleModelCollapseAction()),
     updateStore: data => {
       dispatch(addImagesAction(data.images));
       dispatch(addCategoriesAction(data.categories));
