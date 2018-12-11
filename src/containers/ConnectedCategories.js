@@ -4,10 +4,6 @@ import {
   updateCategoryVisibilityAction,
   displayThisCategoryOnlyAction
 } from '../actions/categories';
-import {
-  toggleDeleteCategoryDialogAction,
-  toggleCreateCategoryDialogAction
-} from '../actions/settings';
 
 import {
   updateImageVisibilityAction,
@@ -27,11 +23,6 @@ const mapDispatchToProps = (dispatch, props) => {
       dispatch(deleteCategoryAction(identifier));
       dispatch(updateImagesHavingCertainCategory(identifier));
     },
-
-    toggleDeleteCategoryDialog: () => {
-      dispatch(toggleDeleteCategoryDialogAction());
-    },
-
     updateCategoryVisibility: (identifier, images, value) => {
       dispatch(updateCategoryVisibilityAction(identifier));
       for (let index in images.images) {
@@ -40,11 +31,6 @@ const mapDispatchToProps = (dispatch, props) => {
         }
       }
     },
-
-    toggleCreateCategoryDialog: () => {
-      dispatch(toggleCreateCategoryDialogAction());
-    },
-
     displayThisCategoryOnly: (identifier, images) => {
       dispatch(displayThisCategoryOnlyAction(identifier));
 
