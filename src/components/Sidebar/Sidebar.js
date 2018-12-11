@@ -37,12 +37,6 @@ class Sidebar extends PureComponent {
     reader.readAsText(e.target.files[0]);
   };
 
-  closeSendFeedbackDialog = () => {
-    this.setState({
-      sendFeedbackDialogOpen: false
-    });
-  };
-
   render() {
     const {
       categories,
