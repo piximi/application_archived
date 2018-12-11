@@ -1,5 +1,4 @@
 import {
-  Collapse,
   Divider,
   Drawer,
   List,
@@ -15,28 +14,18 @@ import HelpDialog from '../HelpDialog/HelpDialog';
 import SettingsIcon from '@material-ui/icons/Settings';
 import FeedbackIcon from '@material-ui/icons/Feedback';
 import FolderOpenIcon from '@material-ui/icons/FolderOpen';
-import OpenInBrowserIcon from '@material-ui/icons/OpenInBrowser';
 import HelpIcon from '@material-ui/icons/Help';
-import ExpandLessIcon from '@material-ui/icons/ExpandLess';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
-import SaveIcon from '@material-ui/icons/Save';
 import Save from '../Save/Save';
-import * as API from '../../classifier';
 import SendFeedbackDialog from '../SendFeedbackDialog/SendFeedbackDialog';
 import SettingsDialog from '../SettingsDialog/SettingsDialog';
 import SidebarAppBar from '../SidebarAppBar/SidebarAppBar';
 import OpenDialog from '../OpenDialog/OpenDialog';
-
-const onClick = (images, categories) => {
-  return API.fitAndPredict(images, categories);
-};
+import ModelList from '../ModelList/ModelList';
 
 class Sidebar extends PureComponent {
   state = {
     openDialogOpen: false,
     helpDialogOpen: false,
-    modelListCollapsed: false,
     sendFeedbackDialogOpen: false,
     settingsDialogOpen: false
   };
@@ -50,13 +39,6 @@ class Sidebar extends PureComponent {
       that.props.updateStore(data);
     };
     reader.readAsText(e.target.files[0]);
-  };
-
-  collapseModelList = () => {
-    this.setState({
-      ...this.state,
-      modelListCollapsed: !this.state.modelListCollapsed
-    });
   };
 
   openOpenDialog = () => {
@@ -166,56 +148,7 @@ class Sidebar extends PureComponent {
 
         <Divider />
 
-        <List dense>
-          <ListItem button onClick={this.collapseModelList}>
-            <ListItemIcon>
-              {!this.state.modelListCollapsed ? (
-                <ExpandLessIcon />
-              ) : (
-                <ExpandMoreIcon />
-              )}
-            </ListItemIcon>
-
-            <ListItemText inset primary="Model" />
-          </ListItem>
-
-          <Collapse
-            in={!this.state.modelListCollapsed}
-            timeout="auto"
-            unmountOnExit
-          >
-            <ListItem dense button onClick={() => onClick(images, categories)}>
-              <ListItemIcon>
-                <PlayCircleOutlineIcon />
-              </ListItemIcon>
-
-              <ListItemText primary="Fit" />
-            </ListItem>
-
-            <ListItem dense button component="label">
-              <ListItemIcon>
-                <OpenInBrowserIcon />
-              </ListItemIcon>
-
-              <ListItemText primary="Import Weights" />
-              <input
-                style={{ display: 'none' }}
-                type="file"
-                accept="*"
-                name="file"
-                id="file"
-                onChange={e => API.importWeights(e.target.files)}
-              />
-            </ListItem>
-
-            <ListItem dense button onClick={() => API.exportWeights()}>
-              <ListItemIcon>
-                <SaveIcon />
-              </ListItemIcon>
-              <ListItemText primary="Save Weights" />
-            </ListItem>
-          </Collapse>
-        </List>
+        <ModelList categories={categories} images={images} />
 
         <Divider />
 
