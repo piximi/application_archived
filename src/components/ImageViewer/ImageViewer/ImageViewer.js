@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import styles from './ImageViewer.css';
 import { withStyles } from '@material-ui/core/styles';
 import { AppBar, Grid, IconButton, Toolbar } from '@material-ui/core';
@@ -9,7 +9,7 @@ import ImageViewerChannelDrawer from '../ImageViewerChannelDrawer/ImageViewerCha
 import ImageViewerExposureDrawer from '../ImageViewerExposureDrawer/ImageViewerExposureDrawer';
 import Image from '../../Gallery/Image';
 
-class ImageViewer extends Component {
+class ImageViewer extends PureComponent {
   state = {
     channelDrawerToggled: false,
     exposureDrawerToggled: false,

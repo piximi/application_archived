@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import styles from './UploadDialog.css';
 import { withStyles } from '@material-ui/core/styles';
 import hash from 'string-hash';
-import * as databaseAPI from '../../database';
 import {
   Button,
   Dialog,
@@ -11,11 +10,17 @@ import {
   DialogTitle,
   Zoom
 } from '@material-ui/core';
+import { store } from '../../index';
+import { addImagesAction } from '../../actions/images';
+import { toggleNewImagesEventAction } from '../../actions/settings';
 
-function createImage(bytes, pathname, checksum) {
+const validFileExtensions = ['png'];
+
+function createImage(bytes, pathname, checksum, currentFile) {
   let image = {};
   let img = new Image();
   img.onload = function() {
+    image['src'] = bytes;
     image['width'] = img.width;
     image['height'] = img.height;
     image['channels'] = 4; // This is true for PNG images
@@ -33,23 +38,21 @@ function createImage(bytes, pathname, checksum) {
   return image;
 }
 
-const readFile = (currentFile, that) => {
+const readFile = (currentFile, that, noImageFiles) => {
   const pathname = currentFile.webkitRelativePath;
   return e => {
     const bytes = e.target.result;
     const checksum = hash(bytes);
-    const image = createImage(bytes, pathname, checksum);
+    const image = createImage(bytes, pathname, checksum, currentFile);
     that.imageData.imageDataIndexedDB.push({
       checksum: checksum,
       bytes: bytes
     });
     that.imageData.imageDataReduxStore.push(image);
     that.counter = that.counter + 1;
-    if (that.counter === that.state.imageFiles.length) {
-      databaseAPI.saveData(
-        that.imageData.imageDataIndexedDB,
-        that.imageData.imageDataReduxStore
-      );
+    if (that.counter === noImageFiles) {
+      store.dispatch(addImagesAction(that.imageData.imageDataReduxStore));
+      store.dispatch(toggleNewImagesEventAction());
       that.imageData = { imageDataReduxStore: [], imageDataIndexedDB: [] };
       that.counter = 0;
     }
@@ -72,10 +75,17 @@ export class UploadDialog extends Component {
   }
 
   uploadImages = () => {
-    let that = this;
+    const that = this;
+    let imageFiles = [];
     for (let imageFile of this.state.imageFiles) {
+      const fileExtension = imageFile.name.split('.').pop();
+      if (validFileExtensions.includes(fileExtension))
+        imageFiles.push(imageFile);
+    }
+    const noImageFiles = imageFiles.length;
+    for (let imageFile of imageFiles) {
       const reader = new FileReader();
-      reader.onload = readFile(imageFile, that);
+      reader.onload = readFile(imageFile, that, noImageFiles);
       reader.readAsDataURL(imageFile, that);
     }
   };

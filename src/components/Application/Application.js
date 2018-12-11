@@ -12,57 +12,14 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContext } from 'react-dnd';
 import ConnectedUploadDialog from '../../containers/ConnectedUploadDialog';
 import VirtualizedGallery from '../Gallery/Gallery';
-import * as databaseAPI from '../../database';
 
 class Application extends Component {
   constructor(props) {
     super(props);
     this.state = {
       open: true,
-      imgSources: null,
       displayUnlabeled: true
     };
-    this.asyncDatabaseRequest = this.asyncDatabaseRequest.bind(this);
-  }
-
-  static getDerivedStateFromProps(props, state) {
-    if (
-      props.settings.uploadedNewImagesEvent !== state.prevUploadedNewImagesEvent
-    ) {
-      return {
-        imgSources: null,
-        prevUploadedNewImagesEvent: props.settings.uploadedNewImagesEvent
-      };
-    }
-    return null;
-  }
-
-  componentDidMount() {
-    this.asyncDatabaseRequest();
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (this.state.imgSources === null) {
-      this.asyncDatabaseRequest();
-    }
-  }
-
-  componentWillUnmount() {
-    if (this._asyncRequest) {
-      this._asyncRequest.cancel();
-    }
-  }
-
-  asyncDatabaseRequest() {
-    let imgSources = {};
-    const collection = databaseAPI.indexeddb.images.toCollection();
-    collection
-      .each(entry => {
-        imgSources[entry.checksum] = entry.bytes;
-      })
-      .then(() => {
-        this.setState({ imgSources: imgSources });
-      });
   }
 
   onClick = () => {
@@ -96,15 +53,16 @@ class Application extends Component {
       identifier = imageMetadata.identifier;
       category = this.findCategory(imageMetadata.category);
       brightness = imageMetadata.brightness;
+      src = imageMetadata.src;
       if (category != null) {
         if (category.color != null) {
           categoryColor = category.color;
           category = category.identifier;
         }
       }
-      if (this.state.imgSources !== null) {
-        src = this.state.imgSources[identifier];
-      }
+      // if (this.state.imgSources !== null) {
+      //   src = this.state.imgSources[identifier];
+      // }
       return {
         src: src,
         id: identifier,

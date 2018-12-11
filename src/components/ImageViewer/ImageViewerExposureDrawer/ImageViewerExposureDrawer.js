@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import styles from './ImageViewerExposureDrawer.css';
 import { withStyles } from '@material-ui/core/styles';
-import { Drawer, Button } from '@material-ui/core';
+import { Drawer } from '@material-ui/core';
 import ImageHistogram from '../ImageHistogram/ImageHistogram';
 import Brightness from '../Brightness/Brightness';
 import Contrast from '../Contrast/Contrast';
 
-class ImageViewerExposureDrawer extends Component {
+class ImageViewerExposureDrawer extends PureComponent {
   render() {
     const {
       classes,

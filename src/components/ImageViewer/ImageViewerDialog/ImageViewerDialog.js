@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import styles from './ImageViewerDialog.css';
 import { withStyles } from '@material-ui/core/styles';
 import { Dialog } from '@material-ui/core';
 import ImageViewer from '../ImageViewer/ImageViewer';
 
-class ImageViewerDialog extends Component {
+class ImageViewerDialog extends PureComponent {
   render() {
     const { classes, onClose, open, src } = this.props;
 

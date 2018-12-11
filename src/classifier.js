@@ -5,7 +5,6 @@ import {
   updateImageProbability
 } from './actions/images';
 import Dataset from './dataset';
-import * as databaseAPI from './database';
 
 let indexMap = {};
 let categoryIndexArray = [];
@@ -182,20 +181,27 @@ function passResults(imgId, predictions) {
   store.dispatch(updateImageProbability(imgId, probability));
 }
 
+// TODO: Make it work with Redux
+
 async function fitAndPredict(images, categories) {
-  let imgSources = {};
-  const collection = databaseAPI.indexeddb.images.toCollection();
-  collection
-    .each(entry => {
-      imgSources[entry.checksum] = entry.bytes;
-    })
-    .then(() => {
-      const imageTags = createImageTags(images, imgSources, categories);
-      const dataset = new Dataset();
-      dataset.loadFromArray(imageTags);
-      run(dataset);
-      return null;
-    });
+  //const collection = databaseAPI.indexeddb.images.toCollection();
+  const imageTags = createImageTags(images, categories);
+  const dataset = new Dataset();
+  dataset.loadFromArray(imageTags);
+  run(dataset);
+  return null;
+
+  // collection
+  //   .each(entry => {
+  //     imgSources[entry.checksum] = entry.bytes;
+  //   })
+  //   .then(() => {
+  //     const imageTags = createImageTags(images, imgSources, categories);
+  //     const dataset = new Dataset();
+  //     dataset.loadFromArray(imageTags);
+  //     run(dataset);
+  //     return null;
+  //   });
 }
 
 async function exportWeights() {
@@ -220,10 +226,29 @@ async function importWeights(weightsFile) {
     });
 }
 
-function createImageTags(images, imgSources, categories) {
+function createImageTags(images, categories) {
   indexMap = {};
   counter = 0;
   categoryIndexArray = [];
+
+  // console.log(images.images)
+  // const imageTags = images.images.redcuce((imageTags, observation) => {
+  //   let categoryIndex = getCategoryIndex(observation.category, categories);
+  //   if (!categoryIndexArray.includes(categoryIndex) && categoryIndex !== null) {
+  //     categoryIndexArray.push(categoryIndex);
+  //     indexMap[counter] = categoryIndex;
+  //     counter++;
+  //   }
+  //   let image = new Image();
+  //   image.identifier = observation.identifier;
+  //   image.category = getCategoryIndex(observation.category, categories);
+  //   image.src = observation.src;
+  //   if(observation.src) imageTags.push(image)
+
+  // }, [])
+
+  // return imageTags
+
   const imageTags = images.images.map(observation => {
     let categoryIndex = getCategoryIndex(observation.category, categories);
     // Create Index Map
@@ -235,7 +260,7 @@ function createImageTags(images, imgSources, categories) {
     let image = new Image();
     image.identifier = observation.identifier;
     image.category = getCategoryIndex(observation.category, categories);
-    image.src = imgSources[image.identifier];
+    image.src = observation.src;
     return image;
   });
   return imageTags;
