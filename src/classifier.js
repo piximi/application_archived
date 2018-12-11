@@ -2,7 +2,7 @@ import * as tensorflow from '@tensorflow/tfjs';
 import { store } from './index';
 import {
   updateImageCategoryAction,
-  updateImageProbability
+  updateImageProbabilityAction
 } from './actions/images';
 import Dataset from './dataset';
 
@@ -178,7 +178,7 @@ function passResults(imgId, predictions) {
   let category = store.getState().categories[index].identifier;
   store.dispatch(updateImageCategoryAction(imgId, category));
   let probability = predictionsArray[index];
-  store.dispatch(updateImageProbability(imgId, probability));
+  store.dispatch(updateImageProbabilityAction(imgId, probability));
 }
 
 // TODO: Make it work with Redux

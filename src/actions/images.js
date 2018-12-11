@@ -1,19 +1,19 @@
 import {
   ADD_IMAGES,
-  DELETE_IMAGE,
-  UPDATE_IMAGE_VISIBILTY,
   UPDATE_IMAGE_CATEGORY,
-  UPDATE_PROBABILITY,
-  UPDATE_IMAGES_HAVING_CERTAIN_CATEGORY,
+  UPDATE_IMAGE_VISIBILTY,
   UPDATE_UNLABELED_VISIBILITY,
-  UPDATE_IMAGE_BRIGHTNESS
+  UPDATE_IMAGES_HAVING_CERTAIN_CATEGORY,
+  UPDATE_PROBABILITY
 } from '../constants';
 
+// Call to add images to the store
 export const addImagesAction = images => ({
   type: ADD_IMAGES,
   images
 });
 
+// Call to update the category of an image
 export const updateImageCategoryAction = (
   imgIdentifier,
   categoryIdentifier,
@@ -25,35 +25,28 @@ export const updateImageCategoryAction = (
   categoryName
 });
 
-export const updateImageProbability = (identifier, probability) => ({
-  type: UPDATE_PROBABILITY,
-  identifier,
-  probability
-});
-
-export const updateImagesHavingCertainCategory = category => ({
-  type: UPDATE_IMAGES_HAVING_CERTAIN_CATEGORY,
-  category
-});
-
-export const deleteImageAction = identifier => ({
-  type: DELETE_IMAGE,
-  identifier
-});
-
-export const updateImageVisibilityAction = (index, value) => ({
+// Call to update the visibility of an image
+export const updateImageVisibilityAction = (imgIdentifier, value) => ({
   type: UPDATE_IMAGE_VISIBILTY,
-  index,
+  imgIdentifier,
   value
 });
 
+// Call to toggle the visibility of unlabeled images
 export const updateUnlabeledVisibilityAction = images => ({
   type: UPDATE_UNLABELED_VISIBILITY,
   images
 });
 
-export const updateImageBrightnessAction = (imgId, value) => ({
-  type: UPDATE_IMAGE_BRIGHTNESS,
-  imgId,
-  value
+// Call to update images with a certain category, set category to null
+export const updateImagesHavingCertainCategoryAction = categoryIdentifier => ({
+  type: UPDATE_IMAGES_HAVING_CERTAIN_CATEGORY,
+  categoryIdentifier
+});
+
+// Call to update the image probalbilty
+export const updateImageProbabilityAction = (imgIdentifier, probability) => ({
+  type: UPDATE_PROBABILITY,
+  imgIdentifier,
+  probability
 });

@@ -11,7 +11,7 @@ import PrimaryAppBar from '../AppBar/PrimaryAppBar';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContext } from 'react-dnd';
 import ConnectedUploadDialog from '../../containers/ConnectedUploadDialog';
-import VirtualizedGallery from '../Gallery/Gallery';
+import Gallery from '../Gallery/Gallery';
 
 class Application extends Component {
   constructor(props) {
@@ -43,34 +43,14 @@ class Application extends Component {
   }
 
   createImageCollection = () => {
-    let identifier = null;
-    let category = null;
-    let categoryColor = 'white';
-    let src = null;
-    let brightness = 100;
-    const IMAGES = this.props.imagesMetadata.map(imageMetadata => {
-      categoryColor = 'white';
-      identifier = imageMetadata.identifier;
-      category = this.findCategory(imageMetadata.category);
-      brightness = imageMetadata.brightness;
-      src = imageMetadata.src;
-      if (category != null) {
-        if (category.color != null) {
-          categoryColor = category.color;
-          category = category.identifier;
-        }
+    const IMAGES = Object.values(this.props.images).map(image => {
+      let category = this.findCategory(image.category);
+      let categoryColor = 'white';
+      if (category !== undefined) {
+        categoryColor = category.color;
+        category = category.identifier;
       }
-      // if (this.state.imgSources !== null) {
-      //   src = this.state.imgSources[identifier];
-      // }
-      return {
-        src: src,
-        id: identifier,
-        isSelected: false,
-        category: category,
-        color: categoryColor,
-        brightness: brightness
-      };
+      return { ...image, category: category, color: categoryColor };
     });
     return IMAGES;
   };
@@ -111,7 +91,7 @@ class Application extends Component {
         >
           <div className={classes.drawerHeader} />
 
-          <VirtualizedGallery
+          <Gallery
             images={IMAGES}
             imagesPerRow={10}
             decreaseWidth={this.state.open ? 240 + 24 : 24}

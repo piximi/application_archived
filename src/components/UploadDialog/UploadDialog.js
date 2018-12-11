@@ -12,7 +12,6 @@ import {
 } from '@material-ui/core';
 import { store } from '../../index';
 import { addImagesAction } from '../../actions/images';
-import { toggleNewImagesEventAction } from '../../actions/settings';
 
 const validFileExtensions = ['png'];
 
@@ -20,6 +19,7 @@ function createImage(bytes, pathname, checksum, currentFile) {
   let image = {};
   let img = new Image();
   img.onload = function() {
+    image['id'] = checksum;
     image['src'] = bytes;
     image['width'] = img.width;
     image['height'] = img.height;
@@ -27,8 +27,7 @@ function createImage(bytes, pathname, checksum, currentFile) {
     image['category'] = null;
     image['probability'] = null;
     image['visible'] = true;
-    image['identifier'] = String(checksum);
-    image['filename'] = pathname;
+    image['pathname'] = pathname;
     image['object_bounding_box_minimum_r'] = 0;
     image['object_bounding_box_minimum_c'] = 0;
     image['brightness'] = 100;
@@ -42,18 +41,13 @@ const readFile = (currentFile, that, noImageFiles) => {
   const pathname = currentFile.webkitRelativePath;
   return e => {
     const bytes = e.target.result;
-    const checksum = hash(bytes);
+    const checksum = String(hash(bytes));
     const image = createImage(bytes, pathname, checksum, currentFile);
-    that.imageData.imageDataIndexedDB.push({
-      checksum: checksum,
-      bytes: bytes
-    });
-    that.imageData.imageDataReduxStore.push(image);
+    that.imageData[checksum] = image;
     that.counter = that.counter + 1;
     if (that.counter === noImageFiles) {
-      store.dispatch(addImagesAction(that.imageData.imageDataReduxStore));
-      store.dispatch(toggleNewImagesEventAction());
-      that.imageData = { imageDataReduxStore: [], imageDataIndexedDB: [] };
+      store.dispatch(addImagesAction(that.imageData));
+      that.imageData = {};
       that.counter = 0;
     }
   };
@@ -67,7 +61,7 @@ export class UploadDialog extends Component {
   constructor(props) {
     super(props);
     this.imageFiles = [];
-    this.imageData = { imageDataReduxStore: [], imageDataIndexedDB: [] };
+    this.imageData = {};
     this.counter = 0;
     this.state = {
       images: []

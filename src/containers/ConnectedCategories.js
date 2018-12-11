@@ -17,7 +17,7 @@ import {
 
 import {
   updateImageVisibilityAction,
-  updateImagesHavingCertainCategory
+  updateImagesHavingCertainCategoryAction
 } from '../actions/images';
 
 import Categories from '../components/Categories/Categories';
@@ -33,7 +33,7 @@ const mapDispatchToProps = (dispatch, props) => {
     deleteCategory: event => {
       const identifier = props.identifier;
       dispatch(deleteCategoryAction(identifier));
-      dispatch(updateImagesHavingCertainCategory(identifier));
+      dispatch(updateImagesHavingCertainCategoryAction(identifier));
     },
 
     toggleDeleteCategoryDialog: () => {
@@ -48,9 +48,9 @@ const mapDispatchToProps = (dispatch, props) => {
 
     updateCategoryVisibility: (identifier, images, value) => {
       dispatch(updateCategoryVisibilityAction(identifier));
-      for (let index in images.images) {
-        if (images.images[index].category === identifier) {
-          dispatch(updateImageVisibilityAction(index, value));
+      for (let key in images.images) {
+        if (images.images[key].category === identifier) {
+          dispatch(updateImageVisibilityAction(key, value));
         }
       }
     },
@@ -79,11 +79,11 @@ const mapDispatchToProps = (dispatch, props) => {
     displayThisCategoryOnly: (identifier, images) => {
       dispatch(displayThisCategoryOnlyAction(identifier));
 
-      for (let index in images.images) {
-        if (images.images[index].category === identifier) {
-          dispatch(updateImageVisibilityAction(index, true));
+      for (let key in images.images) {
+        if (images.images[key].category === identifier) {
+          dispatch(updateImageVisibilityAction(key, true));
         } else {
-          dispatch(updateImageVisibilityAction(index, false));
+          dispatch(updateImageVisibilityAction(key, false));
         }
       }
     }

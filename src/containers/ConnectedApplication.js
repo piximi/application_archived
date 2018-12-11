@@ -1,19 +1,18 @@
 import { connect } from 'react-redux';
 import { fitClassifierAction } from '../actions/classifier';
-import { updateZoomLevelAction } from '../actions/settings';
 import Application from '../components/Application/Application';
 import { toggleUploadDialogAction } from '../actions/settings';
 import {
   updateImageCategoryAction,
-  // TODO update Image Probability rename
-  updateImageProbability,
+  updateImageProbabilityAction,
   updateUnlabeledVisibilityAction
 } from '../actions/images';
+import { getVisibleImages } from '../selectors/images';
 
 const mapStateToProps = state => {
   return {
     ...state,
-    imagesMetadata: state.images.images.filter(image => image.visible === true)
+    images: getVisibleImages(state.images.images)
   };
 };
 
@@ -22,10 +21,6 @@ const mapDispatchToProps = (dispatch, props) => {
     fit: () => {
       const pathname = '';
       dispatch(fitClassifierAction(pathname));
-    },
-
-    changeZoomLevel: value => {
-      dispatch(updateZoomLevelAction(value));
     },
 
     toggleUploadDialog: () => {
@@ -40,7 +35,7 @@ const mapDispatchToProps = (dispatch, props) => {
           categoryName
         )
       );
-      dispatch(updateImageProbability(imgIdentifier, null));
+      dispatch(updateImageProbabilityAction(imgIdentifier, null));
     },
 
     updateUnlabeledVisibility: () => {
