@@ -10,16 +10,15 @@ import React, { PureComponent } from 'react';
 import styles from './Sidebar.css';
 import { withStyles } from '@material-ui/core/styles';
 import ConnectedCategories from '../../containers/ConnectedCategories';
-import HelpDialog from '../HelpDialog/HelpDialog';
 import FeedbackIcon from '@material-ui/icons/Feedback';
 import FolderOpenIcon from '@material-ui/icons/FolderOpen';
-import HelpIcon from '@material-ui/icons/Help';
 import Save from '../Save/Save';
 import SendFeedbackDialog from '../SendFeedbackDialog/SendFeedbackDialog';
 import SidebarAppBar from '../SidebarAppBar/SidebarAppBar';
 import ModelList from '../ModelList/ModelList';
 import SettingsListItem from '../SettingsListItem/SettingsListItem';
 import OpenSampleListItem from '../OpenSampleListItem/OpenSampleListItem';
+import HelpListItem from '../HelpListItem/HelpListItem';
 
 class Sidebar extends PureComponent {
   state = {
@@ -39,21 +38,9 @@ class Sidebar extends PureComponent {
     reader.readAsText(e.target.files[0]);
   };
 
-  closeHelpDialog = () => {
-    this.setState({
-      helpDialogOpen: false
-    });
-  };
-
   closeSendFeedbackDialog = () => {
     this.setState({
       sendFeedbackDialogOpen: false
-    });
-  };
-
-  openHelpDialog = () => {
-    this.setState({
-      helpDialogOpen: true
     });
   };
 
@@ -131,23 +118,12 @@ class Sidebar extends PureComponent {
             <ListItemText primary="Send feedback" />
           </ListItem>
 
-          <ListItem dense button onClick={this.openHelpDialog}>
-            <ListItemIcon>
-              <HelpIcon />
-            </ListItemIcon>
-
-            <ListItemText primary="Help" />
-          </ListItem>
+          <HelpListItem />
         </List>
 
         <SendFeedbackDialog
           onClose={this.closeSendFeedbackDialog}
           open={this.state.sendFeedbackDialogOpen}
-        />
-
-        <HelpDialog
-          onClose={this.closeHelpDialog}
-          open={this.state.helpDialogOpen}
         />
       </Drawer>
     );
