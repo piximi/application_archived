@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from './OpenDialog.css';
+import styles from './OpenSampleDialog.css';
 import { withStyles } from '@material-ui/core/styles';
 import {
   Avatar,
@@ -20,7 +20,7 @@ import CIFAR100 from './CIFAR-100.png';
 import MNIST from './MNIST.png';
 import CloseIcon from '@material-ui/icons/Close';
 
-class OpenDialog extends Component {
+class OpenSampleDialog extends Component {
   render() {
     const { classes, open, onClose } = this.props;
 
@@ -83,4 +83,4 @@ class OpenDialog extends Component {
   }
 }
 
-export default withStyles(styles, { withTheme: true })(OpenDialog);
+export default withStyles(styles, { withTheme: true })(OpenSampleDialog);

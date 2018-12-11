@@ -11,20 +11,18 @@ import styles from './Sidebar.css';
 import { withStyles } from '@material-ui/core/styles';
 import ConnectedCategories from '../../containers/ConnectedCategories';
 import HelpDialog from '../HelpDialog/HelpDialog';
-import SettingsIcon from '@material-ui/icons/Settings';
 import FeedbackIcon from '@material-ui/icons/Feedback';
 import FolderOpenIcon from '@material-ui/icons/FolderOpen';
 import HelpIcon from '@material-ui/icons/Help';
 import Save from '../Save/Save';
 import SendFeedbackDialog from '../SendFeedbackDialog/SendFeedbackDialog';
-import SettingsDialog from '../SettingsDialog/SettingsDialog';
 import SidebarAppBar from '../SidebarAppBar/SidebarAppBar';
-import OpenDialog from '../OpenDialog/OpenDialog';
 import ModelList from '../ModelList/ModelList';
+import SettingsListItem from '../SettingsListItem/SettingsListItem';
+import OpenSampleListItem from '../OpenSampleListItem/OpenSampleListItem';
 
 class Sidebar extends PureComponent {
   state = {
-    openDialogOpen: false,
     helpDialogOpen: false,
     sendFeedbackDialogOpen: false,
     settingsDialogOpen: false
@@ -41,18 +39,6 @@ class Sidebar extends PureComponent {
     reader.readAsText(e.target.files[0]);
   };
 
-  openOpenDialog = () => {
-    this.setState({
-      openDialogOpen: true
-    });
-  };
-
-  closeOpenDialog = () => {
-    this.setState({
-      openDialogOpen: false
-    });
-  };
-
   closeHelpDialog = () => {
     this.setState({
       helpDialogOpen: false
@@ -65,21 +51,9 @@ class Sidebar extends PureComponent {
     });
   };
 
-  closeSettingsDialog = () => {
-    this.setState({
-      settingsDialogOpen: false
-    });
-  };
-
   openHelpDialog = () => {
     this.setState({
       helpDialogOpen: true
-    });
-  };
-
-  openSettingsDialog = () => {
-    this.setState({
-      settingsDialogOpen: true
     });
   };
 
@@ -121,17 +95,7 @@ class Sidebar extends PureComponent {
             />
           </ListItem>
 
-          <ListItem dense button onClick={this.openOpenDialog}>
-            <ListItemIcon>
-              <FolderOpenIcon />
-            </ListItemIcon>
-            <ListItemText inset primary="Open sample" />
-          </ListItem>
-
-          <OpenDialog
-            open={this.state.openDialogOpen}
-            onClose={this.closeOpenDialog}
-          />
+          <OpenSampleListItem />
 
           <Save
             images={images.images}
@@ -153,13 +117,7 @@ class Sidebar extends PureComponent {
         <Divider />
 
         <List dense>
-          <ListItem dense button onClick={this.openSettingsDialog}>
-            <ListItemIcon>
-              <SettingsIcon />
-            </ListItemIcon>
-
-            <ListItemText primary="Settings" />
-          </ListItem>
+          <SettingsListItem />
 
           <ListItem
             button
@@ -181,11 +139,6 @@ class Sidebar extends PureComponent {
             <ListItemText primary="Help" />
           </ListItem>
         </List>
-
-        <SettingsDialog
-          onClose={this.closeSettingsDialog}
-          open={this.state.settingsDialogOpen}
-        />
 
         <SendFeedbackDialog
           onClose={this.closeSendFeedbackDialog}
