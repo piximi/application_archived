@@ -93,7 +93,6 @@ const settings = (state = {}, action) => {
       };
     default:
       return state;
-
     case UPDATE_ZOOM_LEVEL:
       return {
         ...state,

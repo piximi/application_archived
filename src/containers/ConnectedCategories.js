@@ -1,17 +1,11 @@
 import { connect } from 'react-redux';
-import uuidv4 from 'uuid';
-import randomcolor from 'randomcolor';
 import {
-  createCategoryAction,
   deleteCategoryAction,
-  updateCategoryDescriptionAction,
   updateCategoryVisibilityAction,
   displayThisCategoryOnlyAction
 } from '../actions/categories';
 import {
   toggleDeleteCategoryDialogAction,
-  closeCreateCategoryDialogAction,
-  toggleCategoriesCollapseAction,
   toggleCreateCategoryDialogAction
 } from '../actions/settings';
 
@@ -21,8 +15,6 @@ import {
 } from '../actions/images';
 
 import Categories from '../components/Categories/Categories';
-
-let index = 0;
 
 const mapStateToProps = (state, props) => {
   return state;
@@ -40,12 +32,6 @@ const mapDispatchToProps = (dispatch, props) => {
       dispatch(toggleDeleteCategoryDialogAction());
     },
 
-    updateCategoryDescription: event => {
-      const identifier = props.identifier;
-      const description = event.target.value;
-      dispatch(updateCategoryDescriptionAction(identifier, description));
-    },
-
     updateCategoryVisibility: (identifier, images, value) => {
       dispatch(updateCategoryVisibilityAction(identifier));
       for (let index in images.images) {
@@ -58,23 +44,6 @@ const mapDispatchToProps = (dispatch, props) => {
     toggleCreateCategoryDialog: () => {
       dispatch(toggleCreateCategoryDialogAction());
     },
-
-    closeCreateCategoryDialog: (action, element) => {
-      if (action === 'Create') {
-        const categoryName = element.value;
-        const category = {
-          color: randomcolor(),
-          description: categoryName,
-          identifier: uuidv4(),
-          index: index++,
-          visible: true
-        };
-        dispatch(createCategoryAction(category));
-      }
-      dispatch(closeCreateCategoryDialogAction({}));
-    },
-
-    toggleCategoriesCollapse: () => dispatch(toggleCategoriesCollapseAction()),
 
     displayThisCategoryOnly: (identifier, images) => {
       dispatch(displayThisCategoryOnlyAction(identifier));

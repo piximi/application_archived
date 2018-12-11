@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import { fitClassifierAction } from '../actions/classifier';
-import { updateZoomLevelAction } from '../actions/settings';
 import Application from '../components/Application/Application';
 import { toggleUploadDialogAction } from '../actions/settings';
 import {
@@ -22,10 +21,6 @@ const mapDispatchToProps = (dispatch, props) => {
     fit: () => {
       const pathname = '';
       dispatch(fitClassifierAction(pathname));
-    },
-
-    changeZoomLevel: value => {
-      dispatch(updateZoomLevelAction(value));
     },
 
     toggleUploadDialog: () => {

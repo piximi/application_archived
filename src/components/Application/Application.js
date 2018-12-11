@@ -126,7 +126,6 @@ class Application extends Component {
       classes,
       settings,
       toggleUploadDialog,
-      changeZoomLevel,
       updateImageCategory,
       updateUnlabeledVisibility
     } = this.props;
@@ -136,7 +135,6 @@ class Application extends Component {
         <PrimaryAppBar
           toggle={this.onClick}
           toggled={this.state.open}
-          changeZoomLevel={changeZoomLevel}
           zoomLevel={settings.zoomLevel}
           toggleUploadDialog={toggleUploadDialog}
         />

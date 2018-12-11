@@ -52,6 +52,13 @@ class Sidebar extends PureComponent {
     reader.readAsText(e.target.files[0]);
   };
 
+  collapseModelList = () => {
+    this.setState({
+      ...this.state,
+      modelListCollapsed: !this.state.modelListCollapsed
+    });
+  };
+
   openOpenDialog = () => {
     this.setState({
       openDialogOpen: true
@@ -88,12 +95,6 @@ class Sidebar extends PureComponent {
     });
   };
 
-  openSendFeedbackDialog = () => {
-    this.setState({
-      sendFeedbackDialogOpen: true
-    });
-  };
-
   openSettingsDialog = () => {
     this.setState({
       settingsDialogOpen: true
@@ -107,7 +108,6 @@ class Sidebar extends PureComponent {
       images,
       settings,
       setUnlabelledVisibility,
-      toggleModelCollapse,
       toggled,
       toggle
     } = this.props;
@@ -167,9 +167,9 @@ class Sidebar extends PureComponent {
         <Divider />
 
         <List dense>
-          <ListItem button onClick={toggleModelCollapse}>
+          <ListItem button onClick={this.collapseModelList}>
             <ListItemIcon>
-              {!settings.model.collapsed ? (
+              {!this.state.modelListCollapsed ? (
                 <ExpandLessIcon />
               ) : (
                 <ExpandMoreIcon />
@@ -179,7 +179,11 @@ class Sidebar extends PureComponent {
             <ListItemText inset primary="Model" />
           </ListItem>
 
-          <Collapse in={!settings.model.collapsed} timeout="auto" unmountOnExit>
+          <Collapse
+            in={!this.state.modelListCollapsed}
+            timeout="auto"
+            unmountOnExit
+          >
             <ListItem dense button onClick={() => onClick(images, categories)}>
               <ListItemIcon>
                 <PlayCircleOutlineIcon />
