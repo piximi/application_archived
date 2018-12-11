@@ -151,7 +151,7 @@ class Application extends Component {
           <VirtualizedGallery
             images={IMAGES}
             imagesPerRow={10}
-            decreaseWidth={this.state.open ? 240 + 24 : 24}
+            decreaseWidth={this.state.open ? 280 + 24 : 24}
             callOnDragEnd={updateImageCategory}
           />
 
