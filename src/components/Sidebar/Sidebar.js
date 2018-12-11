@@ -13,7 +13,6 @@ import ConnectedCategories from '../../containers/ConnectedCategories';
 import FeedbackIcon from '@material-ui/icons/Feedback';
 import FolderOpenIcon from '@material-ui/icons/FolderOpen';
 import Save from '../Save/Save';
-import SendFeedbackDialog from '../SendFeedbackDialog/SendFeedbackDialog';
 import SidebarAppBar from '../SidebarAppBar/SidebarAppBar';
 import ModelList from '../ModelList/ModelList';
 import SettingsListItem from '../SettingsListItem/SettingsListItem';
@@ -120,11 +119,6 @@ class Sidebar extends PureComponent {
 
           <HelpListItem />
         </List>
-
-        <SendFeedbackDialog
-          onClose={this.closeSendFeedbackDialog}
-          open={this.state.sendFeedbackDialogOpen}
-        />
       </Drawer>
     );
   }
