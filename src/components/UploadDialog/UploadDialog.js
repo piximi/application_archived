@@ -13,6 +13,7 @@ import {
 import { store } from '../../index';
 import { addImagesAction } from '../../actions/images';
 
+// Add valid file formats here
 const validFileExtensions = ['png'];
 
 function createImage(bytes, pathname, checksum, currentFile) {
@@ -71,6 +72,8 @@ export class UploadDialog extends Component {
   uploadImages = () => {
     const that = this;
     let imageFiles = [];
+
+    // Check images for correct file format
     for (let imageFile of this.state.imageFiles) {
       const fileExtension = imageFile.name.split('.').pop();
       if (validFileExtensions.includes(fileExtension))

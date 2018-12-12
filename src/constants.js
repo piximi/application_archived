@@ -42,11 +42,11 @@ export const TOOGLE_NEW_IMAGES_EVENT = 'TOOGLE_NEW_IMAGES_EVENT';
 export const fields = [
   {
     label: 'image_checksum',
-    value: 'identifier'
+    value: 'id'
   },
   {
     label: 'image_pathname',
-    value: 'filename'
+    value: 'pathname'
   },
   {
     label: 'image_shape_t',

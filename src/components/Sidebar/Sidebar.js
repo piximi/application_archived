@@ -42,7 +42,6 @@ class Sidebar extends PureComponent {
       categories,
       classes,
       images,
-      settings,
       setUnlabelledVisibility,
       toggled,
       toggle
@@ -77,11 +76,7 @@ class Sidebar extends PureComponent {
 
           <OpenSampleListItem />
 
-          <Save
-            images={images.images}
-            settings={settings}
-            categories={categories}
-          />
+          <Save images={images.images} categories={categories} />
         </List>
 
         <Divider />
