@@ -39,7 +39,6 @@ class Save extends Component {
   };
 
   clickOnExportProject = () => {
-    console.log(this.props.images);
     const exportObject = {
       images: this.props.images,
       categories: this.props.categories,
