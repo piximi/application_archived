@@ -37,8 +37,7 @@ function initializeRedux() {
 
   // TODO: start with empty project in the future
   const demo = {
-    categories: data.categories,
-    settings: data.settings
+    categories: data.categories
   };
 
   const store = createStore(persistedReducer, demo);
