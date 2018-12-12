@@ -30,7 +30,7 @@ class SidebarAppBar extends PureComponent {
           </Tooltip>
 
           <Typography variant="h6" color="inherit">
-            Cyto
+            Logo
           </Typography>
         </Toolbar>
       </AppBar>

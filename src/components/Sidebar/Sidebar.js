@@ -60,20 +60,22 @@ class Sidebar extends PureComponent {
         <SidebarAppBar toggle={toggle} toggled={toggled} />
 
         <List dense>
-          <ListItem dense button>
-            <ListItemIcon>
-              <FolderOpenIcon />
-            </ListItemIcon>
-            <ListItemText inset primary="Open..." />
-            <input
-              style={{ display: 'none' }}
-              type="file"
-              accept=".cyto"
-              name="file"
-              id="file"
-              onChange={this.readDataFromCytoFile}
-            />
-          </ListItem>
+          <input
+            style={{ display: 'none' }}
+            type="file"
+            accept=".cyto"
+            name="file"
+            id="open-project"
+            onChange={this.readDataFromCytoFile}
+          />
+          <label htmlFor="open-project">
+            <ListItem dense button>
+              <ListItemIcon>
+                <FolderOpenIcon />
+              </ListItemIcon>
+              <ListItemText inset primary="Open..." />
+            </ListItem>
+          </label>
 
           <OpenSampleListItem />
 

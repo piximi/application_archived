@@ -1,11 +1,11 @@
 import React, { PureComponent } from 'react';
 import { DragSource } from 'react-dnd';
 import { getEmptyImage } from 'react-dnd-html5-backend';
-import LabelIcon from '@material-ui/icons/Label';
 import ImageViewerDialog from '../ImageViewer/ImageViewerDialog/ImageViewerDialog';
 import Image from './Image';
 import styles from './Item.css';
 import { withStyles } from '@material-ui/core/styles';
+import ItemLabel from '../ItemLabel/ItemLabel';
 
 const itemSource = {
   beginDrag(props) {
@@ -92,13 +92,7 @@ class Item extends PureComponent {
         onMouseDown={() => onmousedown(imgId)}
         className={imgSelected ? 'selected' : 'unselected'}
       >
-        <div style={{ position: 'absolute', margin: '4px 4px 2px' }}>
-          <LabelIcon
-            style={{
-              color: item.color
-            }}
-          />
-        </div>
+        <ItemLabel color={item.color} />
         <Image
           key={'img' + imgId}
           openImageViewerDialog={this.openImageViewerDialog}
