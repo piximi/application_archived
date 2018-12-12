@@ -87,7 +87,6 @@ class Category extends PureComponent {
       color,
       connectDropTarget,
       description,
-      images,
       visible,
       classes
     } = this.props;
@@ -120,9 +119,7 @@ class Category extends PureComponent {
             }}
           >
             <ListItemIcon
-              onClick={() =>
-                updateCategoryVisibility(identifier, images, !visible)
-              }
+              onClick={() => updateCategoryVisibility(identifier, !visible)}
             >
               {visible ? (
                 <LabelIcon style={{ color: color }} />
