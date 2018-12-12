@@ -1,6 +1,10 @@
 const styles = theme => ({
   iconButton: {
-    position: 'absolute'
+    padding: '8px',
+    position: 'absolute',
+    '&:hover': {
+      background: 'none'
+    }
   }
 });
 
