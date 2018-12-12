@@ -7,6 +7,7 @@ import {
 
 import {
   updateImageVisibilityAction,
+  onlyShowImagesWithCertainCategory,
   updateImagesHavingCertainCategoryAction
 } from '../actions/images';
 
@@ -31,16 +32,9 @@ const mapDispatchToProps = (dispatch, props) => {
         }
       }
     },
-    displayThisCategoryOnly: (identifier, images) => {
+    displayThisCategoryOnly: identifier => {
       dispatch(displayThisCategoryOnlyAction(identifier));
-
-      for (let key in images.images) {
-        if (images.images[key].category === identifier) {
-          dispatch(updateImageVisibilityAction(key, true));
-        } else {
-          dispatch(updateImageVisibilityAction(key, false));
-        }
-      }
+      dispatch(onlyShowImagesWithCertainCategory(identifier));
     }
   };
 };

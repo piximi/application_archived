@@ -151,7 +151,7 @@ class Category extends PureComponent {
                 <MenuList>
                   <MenuItem
                     onClick={() => {
-                      displayThisCategoryOnly(identifier, images);
+                      displayThisCategoryOnly(identifier);
                       setUnlabelledVisibility(false);
                       this.setState({ anchorEl: null });
                     }}

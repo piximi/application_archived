@@ -4,6 +4,7 @@ import {
   UPDATE_IMAGE_VISIBILTY,
   UPDATE_UNLABELED_VISIBILITY,
   UPDATE_IMAGES_HAVING_CERTAIN_CATEGORY,
+  ONLY_SHOW_IMAGES_WITH_CERTAIN_CATEGORY,
   UPDATE_PROBABILITY
 } from '../constants';
 
@@ -48,6 +49,18 @@ const images = (state = {}, action) => {
         ...state,
         images: images
       };
+
+    // Call to make only images with a certain category visible
+    case ONLY_SHOW_IMAGES_WITH_CERTAIN_CATEGORY:
+      images = { ...state.images };
+      for (let key in images) {
+        if (images[key].category === action.categoryIdentifier) {
+          images[key].visible = true;
+        } else {
+          images[key].visible = false;
+        }
+      }
+      return { ...state, images: images };
 
     // Call to update images that have a certain category, helpful when a category was deleted
     case UPDATE_IMAGES_HAVING_CERTAIN_CATEGORY:

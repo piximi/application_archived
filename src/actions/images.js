@@ -4,6 +4,7 @@ import {
   UPDATE_IMAGE_VISIBILTY,
   UPDATE_UNLABELED_VISIBILITY,
   UPDATE_IMAGES_HAVING_CERTAIN_CATEGORY,
+  ONLY_SHOW_IMAGES_WITH_CERTAIN_CATEGORY,
   UPDATE_PROBABILITY
 } from '../constants';
 
@@ -36,6 +37,12 @@ export const updateImageVisibilityAction = (imgIdentifier, value) => ({
 export const updateUnlabeledVisibilityAction = images => ({
   type: UPDATE_UNLABELED_VISIBILITY,
   images
+});
+
+// Call to only show images of a certain category
+export const onlyShowImagesWithCertainCategory = categoryIdentifier => ({
+  type: ONLY_SHOW_IMAGES_WITH_CERTAIN_CATEGORY,
+  categoryIdentifier
 });
 
 // Call to update images with a certain category, set category to null
