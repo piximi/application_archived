@@ -23,13 +23,11 @@ const itemSource = {
       const categoryIdentifier = monitor.getDropResult().categoryIdentifier;
       const categoryName = monitor.getDropResult().categoryName;
       const selectedItemsIdentifiers = monitor.getDropResult().selectedItems;
-      for (let selectedItemIdentifier of selectedItemsIdentifiers) {
-        props.callOnDragEnd(
-          selectedItemIdentifier,
-          categoryIdentifier,
-          categoryName
-        );
-      }
+      props.callOnDragEnd(
+        selectedItemsIdentifiers,
+        categoryIdentifier,
+        categoryName
+      );
     }
     if (!monitor.didDrop()) {
       return;

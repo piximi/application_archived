@@ -1,13 +1,12 @@
 import { connect } from 'react-redux';
 import {
-  deleteCategoryAction,
   updateCategoryVisibilityAction,
   displayThisCategoryOnlyAction
 } from '../actions/categories';
 
 import {
-  updateImageVisibilityAction,
-  updateImagesHavingCertainCategoryAction
+  updateImageVisibilityBasedOnCategoryAction,
+  onlyShowImagesWithCertainCategoryAction
 } from '../actions/images';
 
 import Categories from '../components/Categories/Categories';
@@ -18,29 +17,14 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    deleteCategory: event => {
-      const identifier = props.identifier;
-      dispatch(deleteCategoryAction(identifier));
-      dispatch(updateImagesHavingCertainCategoryAction(identifier));
-    },
-    updateCategoryVisibility: (identifier, images, value) => {
+    updateCategoryVisibility: (identifier, value) => {
       dispatch(updateCategoryVisibilityAction(identifier));
-      for (let key in images.images) {
-        if (images.images[key].category === identifier) {
-          dispatch(updateImageVisibilityAction(key, value));
-        }
-      }
+      dispatch(updateImageVisibilityBasedOnCategoryAction(identifier, value));
     },
-    displayThisCategoryOnly: (identifier, images) => {
-      dispatch(displayThisCategoryOnlyAction(identifier));
 
-      for (let key in images.images) {
-        if (images.images[key].category === identifier) {
-          dispatch(updateImageVisibilityAction(key, true));
-        } else {
-          dispatch(updateImageVisibilityAction(key, false));
-        }
-      }
+    displayThisCategoryOnly: identifier => {
+      dispatch(displayThisCategoryOnlyAction(identifier));
+      dispatch(onlyShowImagesWithCertainCategoryAction(identifier));
     }
   };
 };

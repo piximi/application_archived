@@ -7,7 +7,6 @@ import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import data from './images/BBC021';
-import dataImages from './images/BBC021';
 import reducer from './reducers';
 import { PersistGate } from 'redux-persist/es/integration/react';
 import { persistStore, persistReducer } from 'redux-persist';
@@ -38,11 +37,7 @@ function initializeRedux() {
 
   // TODO: start with empty project in the future
   const demo = {
-    categories: data.categories,
-    images: {
-      images: dataImages.images
-    },
-    settings: data.settings
+    categories: data.categories
   };
 
   const store = createStore(persistedReducer, demo);

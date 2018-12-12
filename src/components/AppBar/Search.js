@@ -7,20 +7,22 @@ import ImageSearchIcon from '@material-ui/icons/ImageSearch';
 
 class Search extends PureComponent {
   filterImages = searchText => {
-    const images = this.props.images;
-    images.forEach((image, i) => {
-      if (image.filename) {
+    let images = { ...this.props.images };
+    for (let key in images) {
+      const pathname = images[key].pathname;
+      if (pathname) {
         const match = this.compare(
-          image.filename.toLowerCase(),
+          pathname.toLowerCase(),
           searchText.toLowerCase()
         );
         if (match) {
-          this.props.updateImageVisibility(i, true);
+          images[key].visible = true;
         } else {
-          this.props.updateImageVisibility(i, false);
+          images[key].visible = false;
         }
       }
-    });
+    }
+    this.props.updateImageVisibility(images);
   };
 
   compare(a, b) {

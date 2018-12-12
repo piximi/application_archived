@@ -61,18 +61,13 @@ class Application extends Component {
   render() {
     const {
       classes,
-      settings,
       updateImageCategory,
       updateUnlabeledVisibility
     } = this.props;
     const IMAGES = this.createImageCollection();
     return (
       <div className={classes.appFrame}>
-        <PrimaryAppBar
-          toggle={this.onClick}
-          toggled={this.state.open}
-          zoomLevel={settings.zoomLevel}
-        />
+        <PrimaryAppBar toggle={this.onClick} toggled={this.state.open} />
         <ConnectedSidebar
           toggle={this.onClick}
           toggled={this.state.open}

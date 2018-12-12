@@ -18,10 +18,16 @@ export const UPDATE_PROBABILITY = 'UPDATE_PROBABILITY';
 
 export const UPDATE_IMAGE_CATEGORY = 'UPDATE_IMAGE_CATEGORY';
 
-export const UPDATE_IMAGES_HAVING_CERTAIN_CATEGORY =
-  'UPDATE_IMAGES_HAVING_CERTAIN_CATEGORY';
+export const SET_IMAGE_CATEGORY_TO_NULL_BASED_ON_CATEGORY =
+  'SET_IMAGE_CATEGORY_TO_NULL_BASED_ON_CATEGORY';
 
-export const UPDATE_IMAGE_VISIBILTY = 'UPDATE_IMAGE_VISIBILTY';
+export const UPDATE_IMAGE_VISIBILITY = 'UPDATE_IMAGE_VISIBILITY';
+
+export const UPDATE_IMAGE_VISIBILTY_BASED_ON_CATEGORY =
+  'UPDATE_IMAGE_VISIBILTY_BASED_ON_CATEGORY';
+
+export const ONLY_SHOW_IMAGES_WITH_CERTAIN_CATEGORY =
+  'ONLY_SHOW_IMAGES_WITH_CERTAIN_CATEGORY';
 
 export const UPDATE_UNLABELED_VISIBILITY = 'UPDATE_UNLABELED_VISIBILITY';
 
@@ -42,11 +48,11 @@ export const TOOGLE_NEW_IMAGES_EVENT = 'TOOGLE_NEW_IMAGES_EVENT';
 export const fields = [
   {
     label: 'image_checksum',
-    value: 'identifier'
+    value: 'id'
   },
   {
     label: 'image_pathname',
-    value: 'filename'
+    value: 'pathname'
   },
   {
     label: 'image_shape_t',
