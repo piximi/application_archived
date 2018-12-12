@@ -6,7 +6,8 @@ import {
   UPDATE_IMAGE_VISIBILTY_BASED_ON_CATEGORY,
   UPDATE_UNLABELED_VISIBILITY,
   ONLY_SHOW_IMAGES_WITH_CERTAIN_CATEGORY,
-  UPDATE_PROBABILITY
+  UPDATE_PROBABILITY,
+  UPDATE_CATEGORY_AND_PROBABILITY
 } from '../constants';
 
 // Call to add images to the store
@@ -65,4 +66,10 @@ export const updateImageProbabilityAction = (imgIdentifiers, probability) => ({
   type: UPDATE_PROBABILITY,
   imgIdentifiers,
   probability
+});
+
+//Call to set predictions
+export const updateCategoryAndProbabilityAction = predictions => ({
+  type: UPDATE_CATEGORY_AND_PROBABILITY,
+  predictions
 });

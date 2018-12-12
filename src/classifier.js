@@ -1,10 +1,9 @@
 import * as tensorflow from '@tensorflow/tfjs';
 import { store } from './index';
-import {
-  updateImageCategoryAction,
-  updateImageProbabilityAction
-} from './actions/images';
+import { updateCategoryAndProbabilityAction } from './actions/images';
 import Dataset from './dataset';
+
+var result = {};
 
 let indexMap = {};
 let categoryIndexArray = [];
@@ -157,6 +156,8 @@ async function run(datasetObj) {
     console.log('Predicting!');
     alert('Predicting');
     await predict(model, datasetObj);
+    console.log(result);
+    store.dispatch(updateCategoryAndProbabilityAction(result));
   }
 }
 
@@ -176,9 +177,12 @@ function passResults(imgId, predictions) {
   let predictionsArray = predictions.dataSync();
   let index = indexMap[predictionsArray.indexOf(Math.max(...predictionsArray))];
   let category = store.getState().categories[index].identifier;
-  store.dispatch(updateImageCategoryAction(imgId, category));
   let probability = predictionsArray[index];
-  store.dispatch(updateImageProbabilityAction(imgId, probability));
+
+  result[imgId] = { category: category, probability: probability };
+
+  //store.dispatch(updateImageCategoryAction(imgId, category));
+  //store.dispatch(updateImageProbabilityAction(imgId, probability));
 }
 
 // TODO: Make it work with Redux

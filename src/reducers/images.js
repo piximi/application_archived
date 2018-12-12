@@ -6,7 +6,8 @@ import {
   UPDATE_UNLABELED_VISIBILITY,
   SET_IMAGE_CATEGORY_TO_NULL_BASED_ON_CATEGORY,
   ONLY_SHOW_IMAGES_WITH_CERTAIN_CATEGORY,
-  UPDATE_PROBABILITY
+  UPDATE_PROBABILITY,
+  UPDATE_CATEGORY_AND_PROBABILITY
 } from '../constants';
 
 const images = (state = {}, action) => {
@@ -87,11 +88,20 @@ const images = (state = {}, action) => {
       }
       return { ...state, images: images };
 
-    // Call to update the image probability, helpful for setting probablility after prediction and relabeling
+    // Call to update the image probability, helpful for relabeling
     case UPDATE_PROBABILITY:
       images = { ...state.images };
       for (let imgIdentifier of action.imgIdentifiers) {
         images[imgIdentifier].probability = action.probability;
+      }
+      return { ...state, images: images };
+
+    // Call to update image category and probability, helpful for setting predictions
+    case UPDATE_CATEGORY_AND_PROBABILITY:
+      images = { ...state.images };
+      for (let key in action.predictions) {
+        images[key].category = action.predictions[key].category;
+        images[key].probability = action.predictions[key].probability;
       }
       return { ...state, images: images };
 

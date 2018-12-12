@@ -64,7 +64,9 @@ class Application extends Component {
       updateImageCategory,
       updateUnlabeledVisibility
     } = this.props;
+
     const IMAGES = this.createImageCollection();
+
     return (
       <div className={classes.appFrame}>
         <PrimaryAppBar toggle={this.onClick} toggled={this.state.open} />

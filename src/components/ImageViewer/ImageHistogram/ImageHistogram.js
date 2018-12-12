@@ -26,7 +26,6 @@ class ImageHistogram extends PureComponent {
       ).data;
       const data = this.createPlottableData(imageData);
       this.setState({ data: data });
-      console.log(true);
     };
     image.src = this.props.src;
   }
