@@ -1,19 +1,9 @@
 const styles = theme => ({
   button: {
-    textTransform: 'none',
-    fontSize: '1rem',
-    borderRadius: theme.spacing.unit,
-    padding: theme.spacing.unit,
-    fontWeight: 'inherit',
-    letterSpacing: 'inherit'
+    padding: '8px'
   },
   icon: {
-    paddingRight: theme.spacing.unit,
-    paddingTop: '4px',
-    paddingBottom: '4px'
-  },
-  margin: {
-    margin: theme.spacing.unit
+    padding: '4px 8px'
   }
 });
 

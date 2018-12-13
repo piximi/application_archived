@@ -23,13 +23,11 @@ class DeleteButton extends PureComponent {
     return (
       <React.Fragment>
         <Button
-          size="small"
-          color="secondary"
-          aria-label="Add"
-          className={classes.margin}
+          aria-label="delete-image"
+          classes={{ root: classes.button }}
           onClick={this.toggle}
         >
-          <Delete className={classNames(classes.icon)} />
+          <Delete classes={{ root: classes.icon }} />
         </Button>
 
         <ConnectedDeleteImageDialog
