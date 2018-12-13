@@ -40,7 +40,7 @@ class PrimaryAppBar extends PureComponent {
               <ConnectedSearch />
             </Grid>
 
-            <Grid item>
+            <Grid item style={{ flexGrow: 1 }}>
               <ImportImagesButton />
             </Grid>
 
