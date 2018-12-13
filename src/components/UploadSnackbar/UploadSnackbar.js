@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import styles from './UploadSnackbar.css';
 import { withStyles } from '@material-ui/core/styles';
 import { Snackbar } from '@material-ui/core';
+import UploadSnackbarContent from '../UploadSnackbarContent/UploadSnackbarContent';
 
 class UploadSnackbar extends PureComponent {
   render() {
@@ -14,7 +15,9 @@ class UploadSnackbar extends PureComponent {
         message={<span id="message-id">&nbsp;</span>}
         onClose={onClose}
         open={open}
-      />
+      >
+        <UploadSnackbarContent />
+      </Snackbar>
     );
   }
 }
