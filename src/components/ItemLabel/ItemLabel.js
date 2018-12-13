@@ -11,8 +11,6 @@ class ItemLabel extends PureComponent {
   };
 
   onClick = event => {
-    console.log(event.currentTarget);
-
     this.setState({ anchorEl: event.currentTarget });
   };
 

@@ -7,7 +7,8 @@ import {
   SET_IMAGE_CATEGORY_TO_NULL_BASED_ON_CATEGORY,
   ONLY_SHOW_IMAGES_WITH_CERTAIN_CATEGORY,
   UPDATE_PROBABILITY,
-  UPDATE_CATEGORY_AND_PROBABILITY
+  UPDATE_CATEGORY_AND_PROBABILITY,
+  DELETE_IMAGES
 } from '../constants';
 
 const images = (state = {}, action) => {
@@ -102,6 +103,13 @@ const images = (state = {}, action) => {
       for (let key in action.predictions) {
         images[key].category = action.predictions[key].category;
         images[key].probability = action.predictions[key].probability;
+      }
+      return { ...state, images: images };
+
+    case DELETE_IMAGES:
+      images = { ...state.images };
+      for (let imgIdentifier of action.imgIdentifiers) {
+        delete images[imgIdentifier];
       }
       return { ...state, images: images };
 

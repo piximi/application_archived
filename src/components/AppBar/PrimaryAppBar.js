@@ -7,10 +7,11 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ConnectedSearch from '../../containers/ConnectedSearch';
 import Logo from './Logo';
 import ImportImagesButton from './ImportImagesButton';
+import DeleteButton from './DeleteButton';
 
 class PrimaryAppBar extends PureComponent {
   render() {
-    const { classes, toggle, toggled } = this.props;
+    const { classes, toggle, toggled, selectedImages } = this.props;
 
     return (
       <AppBar
@@ -41,6 +42,10 @@ class PrimaryAppBar extends PureComponent {
 
             <Grid item>
               <ImportImagesButton />
+            </Grid>
+
+            <Grid item>
+              <DeleteButton selectedImages={selectedImages} />
             </Grid>
           </Grid>
         </Toolbar>

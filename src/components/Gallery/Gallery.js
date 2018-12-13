@@ -82,6 +82,7 @@ class Gallery extends PureComponent {
       selectionBoxVisibility: 'hidden',
       collisions: []
     });
+    this.props.setSelectedImages(this.state.selected);
   };
 
   selectItem = imgId => {
@@ -95,6 +96,7 @@ class Gallery extends PureComponent {
       copySelected.push(imgId);
       this.setState({ selected: copySelected });
     } else this.setState({ selected: [imgId] });
+    this.props.setSelectedImages(this.state.selected);
   };
 
   setCurrentlyDraggedItem = value => {

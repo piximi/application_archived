@@ -16,10 +16,15 @@ class Application extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      selectedImages: [],
       open: true,
       displayUnlabeled: true
     };
   }
+
+  setSelectedImages = selectedImages => {
+    this.setState({ selectedImages: selectedImages });
+  };
 
   onClick = () => {
     this.setState({ open: !this.state.open });
@@ -65,11 +70,17 @@ class Application extends Component {
       updateUnlabeledVisibility
     } = this.props;
 
+    const { selectedImages } = this.state;
+
     const IMAGES = this.createImageCollection();
 
     return (
       <div className={classes.appFrame}>
-        <PrimaryAppBar toggle={this.onClick} toggled={this.state.open} />
+        <PrimaryAppBar
+          selectedImages={selectedImages}
+          toggle={this.onClick}
+          toggled={this.state.open}
+        />
         <ConnectedSidebar
           toggle={this.onClick}
           toggled={this.state.open}
@@ -88,6 +99,7 @@ class Application extends Component {
             imagesPerRow={10}
             decreaseWidth={this.state.open ? 280 + 24 : 24}
             callOnDragEnd={updateImageCategory}
+            setSelectedImages={this.setSelectedImages}
           />
 
           <Tooltip

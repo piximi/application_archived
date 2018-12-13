@@ -7,7 +7,8 @@ import {
   UPDATE_UNLABELED_VISIBILITY,
   ONLY_SHOW_IMAGES_WITH_CERTAIN_CATEGORY,
   UPDATE_PROBABILITY,
-  UPDATE_CATEGORY_AND_PROBABILITY
+  UPDATE_CATEGORY_AND_PROBABILITY,
+  DELETE_IMAGES
 } from '../constants';
 
 // Call to add images to the store
@@ -72,4 +73,10 @@ export const updateImageProbabilityAction = (imgIdentifiers, probability) => ({
 export const updateCategoryAndProbabilityAction = predictions => ({
   type: UPDATE_CATEGORY_AND_PROBABILITY,
   predictions
+});
+
+// Call to delete images
+export const deleteImagesAction = imgIdentifiers => ({
+  type: DELETE_IMAGES,
+  imgIdentifiers
 });
