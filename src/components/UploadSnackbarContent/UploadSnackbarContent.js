@@ -1,17 +1,37 @@
 import React, { PureComponent } from 'react';
 import styles from './UploadSnackbarContent.css';
 import { withStyles } from '@material-ui/core/styles';
-import { SnackbarContent } from '@material-ui/core';
+import {
+  Card,
+  CardContent,
+  LinearProgress,
+  Typography,
+  CardMedia
+} from '@material-ui/core';
+import example from './example.png';
 
 class UploadSnackbarContent extends PureComponent {
   render() {
     const { classes } = this.props;
 
     return (
-      <SnackbarContent
-        classes={{ root: classes.snackbarContent }}
-        message={<span>&nbsp;</span>}
-      />
+      <Card classes={{ root: classes.card }}>
+        <CardMedia classes={{ root: classes.cardMedia }} image={example} />
+
+        <div className={classes.details}>
+          <CardContent classes={{ root: classes.cardContent }}>
+            <Typography component="h5" variant="h5">
+              &nbsp;
+            </Typography>
+          </CardContent>
+
+          <div className={classes.controls}>
+            <span>&nbsp;</span>
+          </div>
+
+          <LinearProgress variant="determinate" value={0} />
+        </div>
+      </Card>
     );
   }
 }
