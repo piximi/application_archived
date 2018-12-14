@@ -109,7 +109,7 @@ class Application extends Component {
             }
           >
             <Fab
-              style={{ position: 'fixed', zIndex: 1202 }}
+              style={{ position: 'fixed' }}
               color="secondary"
               className={
                 this.state.displayUnlabeled

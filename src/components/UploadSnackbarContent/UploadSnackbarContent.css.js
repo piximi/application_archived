@@ -6,7 +6,8 @@ const styles = theme => ({
     flex: '1 0 auto'
   },
   cardMedia: {
-    width: 151
+    height: 128,
+    width: 128
   },
   details: {
     display: 'flex',

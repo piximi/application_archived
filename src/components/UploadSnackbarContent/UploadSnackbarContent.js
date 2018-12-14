@@ -25,9 +25,7 @@ class UploadSnackbarContent extends PureComponent {
             </Typography>
           </CardContent>
 
-          <div className={classes.controls}>
-            <span>&nbsp;</span>
-          </div>
+          <div className={classes.controls} />
 
           <LinearProgress variant="determinate" value={0} />
         </div>
