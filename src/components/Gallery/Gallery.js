@@ -96,9 +96,11 @@ class Gallery extends PureComponent {
       let copySelected = [...this.state.selected];
       copySelected.push(imgId);
       this.setState({ selected: copySelected });
-    } else this.setState({ selected: [imgId] });
-
-    this.props.setSelectedImages(this.state.selected);
+      this.props.setSelectedImages(copySelected);
+    } else {
+      this.props.setSelectedImages([imgId]);
+      this.setState({ selected: [imgId] });
+    }
   };
 
   setCurrentlyDraggedItem = value => {

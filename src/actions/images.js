@@ -8,6 +8,8 @@ import {
   ONLY_SHOW_IMAGES_WITH_CERTAIN_CATEGORY,
   UPDATE_PROBABILITY,
   UPDATE_CATEGORY_AND_PROBABILITY,
+  UPDATE_BRIGHTNESS,
+  UPDATE_BRIGHTNESS_FOR_ALL_IMAGES,
   DELETE_IMAGES
 } from '../constants';
 
@@ -73,6 +75,19 @@ export const updateImageProbabilityAction = (imgIdentifiers, probability) => ({
 export const updateCategoryAndProbabilityAction = predictions => ({
   type: UPDATE_CATEGORY_AND_PROBABILITY,
   predictions
+});
+
+// Call to update image brightness
+export const updateBrightnessAction = (imgIdentifier, brightness) => ({
+  type: UPDATE_BRIGHTNESS,
+  imgIdentifier,
+  brightness
+});
+
+// Call to update image brightness for all images
+export const updateBrightnessForAllImagesAction = brightness => ({
+  type: UPDATE_BRIGHTNESS_FOR_ALL_IMAGES,
+  brightness
 });
 
 // Call to delete images

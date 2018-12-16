@@ -8,6 +8,8 @@ import {
   ONLY_SHOW_IMAGES_WITH_CERTAIN_CATEGORY,
   UPDATE_PROBABILITY,
   UPDATE_CATEGORY_AND_PROBABILITY,
+  UPDATE_BRIGHTNESS,
+  UPDATE_BRIGHTNESS_FOR_ALL_IMAGES,
   DELETE_IMAGES
 } from '../constants';
 
@@ -106,6 +108,21 @@ const images = (state = {}, action) => {
       }
       return { ...state, images: images };
 
+    // Call to update brightness of one specific image
+    case UPDATE_BRIGHTNESS:
+      images = { ...state.images };
+      images[action.imgIdentifier].brightness = action.brightness;
+      return { ...state, images: images };
+
+    // Call to update brightness of all images, helpful for imageViewer set brightness component
+    case UPDATE_BRIGHTNESS_FOR_ALL_IMAGES:
+      images = { ...state.images };
+      for (let key in images) {
+        images[key].brightness = action.brightness;
+      }
+      return { ...state, images: images };
+
+    // Call to delete images from store
     case DELETE_IMAGES:
       images = { ...state.images };
       for (let imgIdentifier of action.imgIdentifiers) {
