@@ -12,6 +12,7 @@ import {
 } from '@material-ui/core';
 import { store } from '../../index';
 import { addImagesAction } from '../../actions/images';
+import UploadSnackbar from '../UploadSnackbar/UploadSnackbar';
 
 // Add valid file formats here
 const validFileExtensions = ['png'];
@@ -65,9 +66,17 @@ export class UploadDialog extends Component {
     this.imageData = {};
     this.counter = 0;
     this.state = {
-      images: []
+      images: [],
+      snackbar: false
     };
   }
+
+  toggleSnackbar = () => {
+    this.setState({
+      ...this.state,
+      snackbar: !this.state.snackbar
+    });
+  };
 
   uploadImages = () => {
     const that = this;
@@ -90,6 +99,7 @@ export class UploadDialog extends Component {
   onClickUploadButton = () => {
     this.uploadImages();
     this.props.onClose();
+    this.toggleSnackbar();
   };
 
   onClickCancelButton = () => {
@@ -113,32 +123,39 @@ export class UploadDialog extends Component {
     const { onClose, open } = this.props;
 
     return (
-      <Dialog open={open} onClose={onClose} TransitionComponent={Transition}>
-        <DialogTitle id="form-dialog-title">
-          Upload directory with images
-        </DialogTitle>
+      <React.Fragment>
+        <Dialog open={open} onClose={onClose} TransitionComponent={Transition}>
+          <DialogTitle id="form-dialog-title">
+            Upload directory with images
+          </DialogTitle>
 
-        <DialogContent>
-          <Button>
-            <input
-              type="file"
-              accept="image/*"
-              ref={node => this._addDirectory(node)}
-              onChange={this.onChange()}
-            />
-          </Button>
-        </DialogContent>
+          <DialogContent>
+            <Button>
+              <input
+                type="file"
+                accept="image/*"
+                ref={node => this._addDirectory(node)}
+                onChange={this.onChange()}
+              />
+            </Button>
+          </DialogContent>
 
-        <DialogActions>
-          <Button onClick={() => this.onClickCancelButton()} color="primary">
-            Cancel
-          </Button>
+          <DialogActions>
+            <Button onClick={() => this.onClickCancelButton()} color="primary">
+              Cancel
+            </Button>
 
-          <Button onClick={() => this.onClickUploadButton()} color="primary">
-            Upload
-          </Button>
-        </DialogActions>
-      </Dialog>
+            <Button onClick={() => this.onClickUploadButton()} color="primary">
+              Upload
+            </Button>
+          </DialogActions>
+        </Dialog>
+
+        <UploadSnackbar
+          open={this.state.snackbar}
+          onClose={this.toggleSnackbar}
+        />
+      </React.Fragment>
     );
   }
 }
