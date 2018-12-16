@@ -10,6 +10,8 @@ import {
   UPDATE_CATEGORY_AND_PROBABILITY,
   UPDATE_BRIGHTNESS,
   UPDATE_BRIGHTNESS_FOR_ALL_IMAGES,
+  UPDATE_CONTRAST,
+  UPDATE_CONTRAST_FOR_ALL_IMAGES,
   DELETE_IMAGES
 } from '../constants';
 
@@ -82,6 +84,19 @@ export const updateBrightnessAction = (imgIdentifier, brightness) => ({
   type: UPDATE_BRIGHTNESS,
   imgIdentifier,
   brightness
+});
+
+// Call to update image contrast for all images
+export const updateContrastForAllImagesAction = contrast => ({
+  type: UPDATE_CONTRAST_FOR_ALL_IMAGES,
+  contrast
+});
+
+// Call to update image contrast
+export const updateContrastAction = (imgIdentifier, contrast) => ({
+  type: UPDATE_CONTRAST,
+  imgIdentifier,
+  contrast
 });
 
 // Call to update image brightness for all images

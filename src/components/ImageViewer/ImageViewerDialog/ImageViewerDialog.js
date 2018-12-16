@@ -2,12 +2,11 @@ import React, { PureComponent } from 'react';
 import styles from './ImageViewerDialog.css';
 import { withStyles } from '@material-ui/core/styles';
 import { Dialog } from '@material-ui/core';
-import ImageViewer from '../ImageViewer/ImageViewer';
+import ConnectedImageViewer from '../../../containers/ConnectedImageViewer';
 
 class ImageViewerDialog extends PureComponent {
   render() {
-    const { classes, onClose, open, src } = this.props;
-
+    const { classes, onClose, open, src, imgIdentifier } = this.props;
     return (
       <Dialog
         className={classes.settingsDialog}
@@ -15,7 +14,11 @@ class ImageViewerDialog extends PureComponent {
         open={open}
         onClose={onClose}
       >
-        <ImageViewer onClose={onClose} src={src} />
+        <ConnectedImageViewer
+          imgIdentifier={imgIdentifier}
+          src={src}
+          onClose={onClose}
+        />
       </Dialog>
     );
   }

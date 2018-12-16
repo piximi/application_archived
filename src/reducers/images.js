@@ -10,6 +10,8 @@ import {
   UPDATE_CATEGORY_AND_PROBABILITY,
   UPDATE_BRIGHTNESS,
   UPDATE_BRIGHTNESS_FOR_ALL_IMAGES,
+  UPDATE_CONTRAST,
+  UPDATE_CONTRAST_FOR_ALL_IMAGES,
   DELETE_IMAGES
 } from '../constants';
 
@@ -119,6 +121,20 @@ const images = (state = {}, action) => {
       images = { ...state.images };
       for (let key in images) {
         images[key].brightness = action.brightness;
+      }
+      return { ...state, images: images };
+
+    // Call to update contrast of one specific image
+    case UPDATE_CONTRAST:
+      images = { ...state.images };
+      images[action.imgIdentifier].contrast = action.contrast;
+      return { ...state, images: images };
+
+    // Call to update contrast of all images, helpful for imageViewer set contrast component
+    case UPDATE_CONTRAST_FOR_ALL_IMAGES:
+      images = { ...state.images };
+      for (let key in images) {
+        images[key].contrast = action.contrast;
       }
       return { ...state, images: images };
 
