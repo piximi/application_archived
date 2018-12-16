@@ -25,8 +25,6 @@ class Gallery extends PureComponent {
     };
   }
 
-  static getDerivedStateFromProps(props, state) {}
-
   componentDidMount() {
     document.addEventListener('keydown', this.keyEvent);
     document.addEventListener('keyup', this.keyEvent);
