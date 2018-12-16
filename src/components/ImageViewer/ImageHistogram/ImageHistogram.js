@@ -7,7 +7,8 @@ class ImageHistogram extends PureComponent {
     super();
     this.canvas = React.createRef();
     this.state = {
-      data: []
+      data: [],
+      max: 0
     };
   }
 
@@ -31,15 +32,27 @@ class ImageHistogram extends PureComponent {
   }
 
   createPlottableData = imageData => {
+    let intensityMap = {};
     let data = [];
-    imageData.forEach((pixelIntensity, index) => {
-      data.push({ x: index, y: pixelIntensity });
+    let max = 0;
+    imageData.forEach(pixelIntensity => {
+      if (pixelIntensity in intensityMap) {
+        intensityMap[pixelIntensity] = intensityMap[pixelIntensity] + 1;
+        if (intensityMap[pixelIntensity] > max) {
+          max = intensityMap[pixelIntensity];
+        }
+      } else intensityMap[pixelIntensity] = 0;
     });
+
+    for (let pixelIntensity in intensityMap) {
+      data.push({ x: pixelIntensity, y: intensityMap[pixelIntensity] });
+    }
+    this.setState({ max: max });
     return data;
   };
 
   render() {
-    const { data } = this.state;
+    const { data, max } = this.state;
     return (
       <React.Fragment>
         <canvas
@@ -48,12 +61,7 @@ class ImageHistogram extends PureComponent {
           height={300}
           width={300}
         />
-        <XYPlot
-          width={300}
-          height={300}
-          yDomain={[0, 255]}
-          xDomain={[0, 17000]}
-        >
+        <XYPlot width={300} height={300} yDomain={[0, max]} xDomain={[0, 256]}>
           <VerticalBarSeries style={{ strokeWidth: 2 }} data={data} />
           <XAxis />
           <YAxis />

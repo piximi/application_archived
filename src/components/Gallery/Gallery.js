@@ -145,7 +145,9 @@ class Gallery extends PureComponent {
 Gallery.propTypes = {
   images: PropTypes.array.isRequired,
   imagesPerRow: PropTypes.number,
-  decreaseWidth: PropTypes.number
+  decreaseWidth: PropTypes.number,
+  setSelectedImages: PropTypes.func,
+  callOnDragEnd: PropTypes.func
 };
 
 Gallery.defaultProps = {
