@@ -64,6 +64,7 @@ class Gallery extends PureComponent {
     if (this.state.selectionBoxVisibility === 'visible') {
       const collisions = collisionDetection(currentSelectionBoxCoordinates);
       this.setState({ selected: collisions, collisions: collisions });
+      this.props.setSelectedImages(collisions);
     }
   };
 
@@ -74,8 +75,8 @@ class Gallery extends PureComponent {
       this.state.collisions.length === 0
     ) {
       // if so unselect all items
-      this.props.setSelectedImages(this.state.selected);
       this.setState({ selected: [] });
+      this.props.setSelectedImages([]);
     }
     // Hide selection box und reset collisions
     this.setState({
@@ -83,7 +84,6 @@ class Gallery extends PureComponent {
       selectionBoxVisibility: 'hidden',
       collisions: []
     });
-    this.props.setSelectedImages(this.state.selected);
   };
 
   selectItem = imgId => {
