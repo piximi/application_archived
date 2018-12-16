@@ -20,9 +20,7 @@ class ItemLabel extends PureComponent {
 
   render() {
     const { classes, color } = this.props;
-
     const { anchorEl } = this.state;
-
     const open = Boolean(anchorEl);
 
     return (

@@ -25,6 +25,8 @@ class Gallery extends PureComponent {
     };
   }
 
+  static getDerivedStateFromProps(props, state) {}
+
   componentDidMount() {
     document.addEventListener('keydown', this.keyEvent);
     document.addEventListener('keyup', this.keyEvent);
@@ -74,6 +76,7 @@ class Gallery extends PureComponent {
       this.state.collisions.length === 0
     ) {
       // if so unselect all items
+      this.props.setSelectedImages(this.state.selected);
       this.setState({ selected: [] });
     }
     // Hide selection box und reset collisions
@@ -96,6 +99,7 @@ class Gallery extends PureComponent {
       copySelected.push(imgId);
       this.setState({ selected: copySelected });
     } else this.setState({ selected: [imgId] });
+
     this.props.setSelectedImages(this.state.selected);
   };
 

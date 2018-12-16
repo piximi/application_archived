@@ -11,7 +11,13 @@ import DeleteButton from './DeleteButton';
 
 class PrimaryAppBar extends PureComponent {
   render() {
-    const { classes, toggle, toggled, selectedImages } = this.props;
+    const {
+      classes,
+      toggle,
+      toggled,
+      selectedImages,
+      setSelectedImages
+    } = this.props;
 
     return (
       <AppBar
@@ -45,7 +51,10 @@ class PrimaryAppBar extends PureComponent {
             </Grid>
 
             <Grid item>
-              <DeleteButton selectedImages={selectedImages} />
+              <DeleteButton
+                selectedImages={selectedImages}
+                setSelectedImages={setSelectedImages}
+              />
             </Grid>
           </Grid>
         </Toolbar>

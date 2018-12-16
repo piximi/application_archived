@@ -18,7 +18,7 @@ class DeleteButton extends PureComponent {
   };
 
   render() {
-    const { classes, selectedImages } = this.props;
+    const { classes, selectedImages, setSelectedImages } = this.props;
 
     return (
       <React.Fragment>
@@ -26,6 +26,7 @@ class DeleteButton extends PureComponent {
           <Delete className={classNames(classes.icon)} />
         </Button>
         <ConnectedDeleteImageDialog
+          setSelectedImages={setSelectedImages}
           selectedImages={selectedImages}
           onClose={this.toggle}
           open={this.state.open}

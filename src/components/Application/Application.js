@@ -78,6 +78,7 @@ class Application extends Component {
       <div className={classes.appFrame}>
         <PrimaryAppBar
           selectedImages={selectedImages}
+          setSelectedImages={this.setSelectedImages}
           toggle={this.onClick}
           toggled={this.state.open}
         />
@@ -96,6 +97,7 @@ class Application extends Component {
 
           <Gallery
             images={IMAGES}
+            selectedImages={selectedImages}
             imagesPerRow={10}
             decreaseWidth={this.state.open ? 280 + 24 : 24}
             callOnDragEnd={updateImageCategory}

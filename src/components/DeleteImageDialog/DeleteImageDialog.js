@@ -21,6 +21,7 @@ export class DeleteImageDialog extends Component {
   };
 
   onClickDeleteButton = () => {
+    this.props.setSelectedImages([]);
     this.props.deleteImages(this.props.selectedImages);
     this.props.onClose();
   };
