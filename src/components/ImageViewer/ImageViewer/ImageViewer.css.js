@@ -19,8 +19,17 @@ const styles = theme => ({
   globalButton: {
     marginLeft: -12,
     marginRight: 20,
-    color: 'blue'
+    color: '#2196f3'
   },
+
+  saveButton: {
+    left: 'calc(100% - 560px)'
+  },
+
+  undoButton: {
+    left: 'calc(100% - 580px)'
+  },
+
   appbar: {
     backgroundColor: '#000',
     boxShadow: 'none',
@@ -28,9 +37,6 @@ const styles = theme => ({
   },
   grow: {
     flexGrow: 1
-  },
-  saveButton: {
-    left: 'calc(100% - 500px)'
   }
 });
 

@@ -1,7 +1,14 @@
 import React, { PureComponent } from 'react';
 import styles from './ImageViewer.css';
 import { withStyles } from '@material-ui/core/styles';
-import { AppBar, Grid, IconButton, Toolbar, Button } from '@material-ui/core';
+import {
+  AppBar,
+  Grid,
+  IconButton,
+  Toolbar,
+  Button,
+  Tooltip
+} from '@material-ui/core';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import EqualizerIcon from '@material-ui/icons/Equalizer';
 import ColorLensIcon from '@material-ui/icons/ColorLens';
@@ -14,7 +21,7 @@ class ImageViewer extends PureComponent {
   state = {
     applySettingsGlobally: false,
     channelDrawerToggled: false,
-    exposureDrawerToggled: false,
+    exposureDrawerToggled: true,
     brightness: 100,
     contrast: 100
   };
@@ -60,6 +67,14 @@ class ImageViewer extends PureComponent {
       : this.props.saveEdits(imgIdentifier, brightness, contrast);
   };
 
+  undoEdits = () => {
+    const initialBrightness = this.props.images[this.props.imgIdentifier]
+      .brightness;
+    const initialContrast = this.props.images[this.props.imgIdentifier]
+      .contrast;
+    this.setState({ brightness: initialBrightness, contrast: initialContrast });
+  };
+
   render() {
     const { classes, src, imgIdentifier } = this.props;
     const { brightness, contrast, applySettingsGlobally } = this.state;
@@ -95,20 +110,34 @@ class ImageViewer extends PureComponent {
               <ArrowBackIcon />
             </IconButton>
 
-            <IconButton
-              onClick={() =>
-                this.setState({ applySettingsGlobally: !applySettingsGlobally })
-              }
-              className={
-                applySettingsGlobally
-                  ? classes.globalButton
-                  : classes.menuButton
-              }
-              color="inherit"
-              aria-label="Menu"
-            >
-              <PublicIcon />
-            </IconButton>
+            <Tooltip title="Apply settings globally">
+              <IconButton
+                onClick={() =>
+                  this.setState({
+                    applySettingsGlobally: !applySettingsGlobally
+                  })
+                }
+                className={
+                  applySettingsGlobally
+                    ? classes.globalButton
+                    : classes.menuButton
+                }
+                color="inherit"
+                aria-label="Menu"
+              >
+                <PublicIcon />
+              </IconButton>
+            </Tooltip>
+
+            {this.state.exposureDrawerToggled ? (
+              <Button
+                variant="contained"
+                className={classes.undoButton}
+                onClick={this.undoEdits}
+              >
+                Undo
+              </Button>
+            ) : null}
 
             {this.state.exposureDrawerToggled ? (
               <Button
