@@ -20,8 +20,8 @@ class Contrast extends PureComponent {
 
         <Slider
           classes={{ container: classes.slider }}
-          min={0}
-          max={200}
+          min={50}
+          max={300}
           step={0.1}
           value={contrast}
           aria-labelledby="label"
