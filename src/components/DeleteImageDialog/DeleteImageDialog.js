@@ -29,14 +29,20 @@ export class DeleteImageDialog extends Component {
   render() {
     const { onClose, open, selectedImages } = this.props;
     const noSelectedImages = selectedImages.length;
-    const title =
+    let title =
       noSelectedImages > 0
         ? 'Do you want to delete the ' + noSelectedImages + ' selected images?'
         : 'Please select images before clicking on this button';
-    const text =
+    let text =
       noSelectedImages > 0
         ? 'Please confirm that you want to delete the currently selected images'
         : null;
+
+    if (noSelectedImages === 1) {
+      title = 'Do you want to delete the selected image';
+      text = 'Please confirm you want to delete this image';
+    }
+
     return (
       <Dialog open={open} onClose={onClose} TransitionComponent={Transition}>
         <DialogTitle id="form-dialog-title">{title}</DialogTitle>

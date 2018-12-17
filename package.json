@@ -11,6 +11,7 @@
     "ajv": "^6.5.5",
     "classnames": "^2.2.5",
     "color": "^3.1.0",
+    "d3": "^5.7.0",
     "dexie": "^2.0.4",
     "js-file-download": "^0.4.4",
     "json2csv": "^4.3.1",

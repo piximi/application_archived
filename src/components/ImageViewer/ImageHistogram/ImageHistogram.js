@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
-import '../../../../node_modules/react-vis/dist/style.css';
-import { XYPlot, XAxis, YAxis, VerticalBarSeries } from 'react-vis';
+import * as d3 from 'd3';
 
 class ImageHistogram extends PureComponent {
   constructor(props) {
@@ -10,6 +9,7 @@ class ImageHistogram extends PureComponent {
       data: [],
       max: 0
     };
+    this.createHistogram = this.createHistogram.bind(this);
   }
 
   componentDidMount() {
@@ -26,33 +26,112 @@ class ImageHistogram extends PureComponent {
         img.height
       ).data;
       const data = this.createPlottableData(imageData);
+      // Create Histogram
+      this.createHistogram(data);
       this.setState({ data: data });
     };
     image.src = this.props.src;
   }
 
-  createPlottableData = imageData => {
-    let intensityMap = {};
-    let data = [];
-    let max = 0;
-    imageData.forEach(pixelIntensity => {
-      if (pixelIntensity in intensityMap) {
-        intensityMap[pixelIntensity] = intensityMap[pixelIntensity] + 1;
-        if (intensityMap[pixelIntensity] > max) {
-          max = intensityMap[pixelIntensity];
-        }
-      } else intensityMap[pixelIntensity] = 0;
-    });
+  componentDidUpdate() {
+    this.createHistogram(this.state.data);
+  }
 
-    for (let pixelIntensity in intensityMap) {
-      data.push({ x: pixelIntensity, y: intensityMap[pixelIntensity] });
+  createPlottableData(imageData) {
+    let rD = {},
+      gD = {},
+      bD = {};
+    for (var i = 0; i < 256; i++) {
+      rD[i] = 0;
+      gD[i] = 0;
+      bD[i] = 0;
     }
-    this.setState({ max: max });
-    return data;
-  };
+    for (var j = 0; j < imageData.length; j += 4) {
+      rD[imageData[j]]++;
+      gD[imageData[j + 1]]++;
+      bD[imageData[j + 2]]++;
+    }
+    return { rD, gD, bD };
+  }
+
+  createHistogram(imgData) {
+    let W = 300;
+    let H = 300;
+    const svg = d3.select(this.node);
+    const margin = { top: 20, right: 44, bottom: 20, left: 0 };
+    const width = W - margin.left - margin.right;
+    const height = H - margin.top - margin.bottom;
+    let yAxis = true;
+    let q = document.querySelector('svg');
+    q.style.width = width;
+    q.style.height = height;
+    if (yAxis) {
+      d3.selectAll('g.y-axis').remove();
+    }
+    function graphComponent(imgData, color) {
+      d3.selectAll('.bar-' + color).remove();
+      var data = Object.keys(imgData).map(function(key) {
+        return { freq: imgData[key], idx: +key };
+      });
+      var x = d3
+        .scaleLinear()
+        .range([0, width])
+        .domain([
+          0,
+          d3.max(data, function(d) {
+            return d.idx;
+          })
+        ]);
+      var y = d3
+        .scaleLinear()
+        .range([height, 0])
+        .domain([
+          0,
+          d3.max(data, function(d) {
+            return d.freq;
+          })
+        ]);
+      var g = svg
+        .append('g')
+        .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+      if (!yAxis) {
+        yAxis = true;
+        g.append('g')
+          .attr('class', 'y-axis')
+          .attr('transform', 'translate(' + -5 + ',0)')
+          .call(
+            d3
+              .axisLeft(y)
+              .ticks(10)
+              .tickSizeInner(10)
+              .tickSizeOuter(2)
+          );
+      }
+
+      g.selectAll('.bar-' + color)
+        .data(data)
+        .enter()
+        .append('rect')
+        .attr('class', 'bar-' + color)
+        .attr('fill', color)
+        .attr('x', function(d) {
+          return x(d.idx);
+        })
+        .attr('y', function(d) {
+          return y(d.freq);
+        })
+        .attr('width', 2)
+        .attr('opacity', 0.8)
+        .attr('height', function(d) {
+          return height - y(d.freq);
+        });
+    }
+    graphComponent(imgData.gD, 'green');
+    graphComponent(imgData.bD, 'blue');
+    graphComponent(imgData.rD, 'red');
+  }
 
   render() {
-    const { data, max } = this.state;
     return (
       <React.Fragment>
         <canvas
@@ -61,11 +140,12 @@ class ImageHistogram extends PureComponent {
           height={300}
           width={300}
         />
-        <XYPlot width={300} height={300} yDomain={[0, max]} xDomain={[0, 256]}>
-          <VerticalBarSeries style={{ strokeWidth: 2 }} data={data} />
-          <XAxis />
-          <YAxis />
-        </XYPlot>
+        <svg
+          style={{ margin: '20px' }}
+          ref={node => (this.node = node)}
+          width={300}
+          height={300}
+        />
       </React.Fragment>
     );
   }
