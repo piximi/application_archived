@@ -1,11 +1,11 @@
 import React, { PureComponent } from 'react';
 import { DragSource } from 'react-dnd';
 import { getEmptyImage } from 'react-dnd-html5-backend';
-import LabelIcon from '@material-ui/icons/Label';
 import ImageViewerDialog from '../ImageViewer/ImageViewerDialog/ImageViewerDialog';
 import Image from './Image';
 import styles from './Item.css';
 import { withStyles } from '@material-ui/core/styles';
+import ItemLabel from '../ItemLabel/ItemLabel';
 
 const itemSource = {
   beginDrag(props) {
@@ -23,13 +23,11 @@ const itemSource = {
       const categoryIdentifier = monitor.getDropResult().categoryIdentifier;
       const categoryName = monitor.getDropResult().categoryName;
       const selectedItemsIdentifiers = monitor.getDropResult().selectedItems;
-      for (let selectedItemIdentifier of selectedItemsIdentifiers) {
-        props.callOnDragEnd(
-          selectedItemIdentifier,
-          categoryIdentifier,
-          categoryName
-        );
-      }
+      props.callOnDragEnd(
+        selectedItemsIdentifiers,
+        categoryIdentifier,
+        categoryName
+      );
     }
     if (!monitor.didDrop()) {
       return;
@@ -81,6 +79,8 @@ class Item extends PureComponent {
     } = this.props;
     const imgId = String(item.id);
     const imgSrc = item.src;
+    const brightness = item.brightness;
+    const contrast = item.contrast;
     const imgSelected = selectedItems.includes(imgId);
     return connectDragSource(
       <div
@@ -91,17 +91,13 @@ class Item extends PureComponent {
         onMouseDown={() => onmousedown(imgId)}
         className={imgSelected ? 'selected' : 'unselected'}
       >
-        <div style={{ position: 'absolute', margin: '4px 4px 2px' }}>
-          <LabelIcon
-            style={{
-              color: item.color
-            }}
-          />
-        </div>
+        <ItemLabel color={item.color} />
         <Image
+          key={'img' + imgId}
           openImageViewerDialog={this.openImageViewerDialog}
           src={imgSrc}
-          key={'img' + imgId}
+          brightness={brightness}
+          contrast={contrast}
           height={containerStyle.height}
           width={0.9 * containerStyle.width}
         />
@@ -109,6 +105,8 @@ class Item extends PureComponent {
           onClose={this.closeImageViewerDialog}
           open={this.state.imageViewerDialogOpen}
           src={imgSrc}
+          imgIdentifier={imgId}
+          brightness={brightness}
         />
       </div>
     );

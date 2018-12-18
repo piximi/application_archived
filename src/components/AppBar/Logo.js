@@ -7,7 +7,7 @@ class Logo extends PureComponent {
   render() {
     return (
       <Typography variant="h6" color="inherit">
-        Cyto
+        Logo
       </Typography>
     );
   }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { Button, Tooltip } from '@material-ui/core';
+import { Fab, Tooltip } from '@material-ui/core';
 import LabelOffOutlinedIcon from '@material-ui/icons/LabelOffOutlined';
 import LabelOutlinedIcon from '@material-ui/icons/LabelOutlined';
 import styles from './Application.css';
@@ -10,60 +10,21 @@ import ConnectedSidebar from '../../containers/ConnectedSidebar';
 import PrimaryAppBar from '../AppBar/PrimaryAppBar';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContext } from 'react-dnd';
-import ConnectedUploadDialog from '../../containers/ConnectedUploadDialog';
-import VirtualizedGallery from '../Gallery/Gallery';
-import * as databaseAPI from '../../database';
+import Gallery from '../Gallery/Gallery';
 
 class Application extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      selectedImages: [],
       open: true,
-      imgSources: null,
       displayUnlabeled: true
     };
-    this.asyncDatabaseRequest = this.asyncDatabaseRequest.bind(this);
   }
 
-  static getDerivedStateFromProps(props, state) {
-    if (
-      props.settings.uploadedNewImagesEvent !== state.prevUploadedNewImagesEvent
-    ) {
-      return {
-        imgSources: null,
-        prevUploadedNewImagesEvent: props.settings.uploadedNewImagesEvent
-      };
-    }
-    return null;
-  }
-
-  componentDidMount() {
-    this.asyncDatabaseRequest();
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (this.state.imgSources === null) {
-      this.asyncDatabaseRequest();
-    }
-  }
-
-  componentWillUnmount() {
-    if (this._asyncRequest) {
-      this._asyncRequest.cancel();
-    }
-  }
-
-  asyncDatabaseRequest() {
-    let imgSources = {};
-    const collection = databaseAPI.indexeddb.images.toCollection();
-    collection
-      .each(entry => {
-        imgSources[entry.checksum] = entry.bytes;
-      })
-      .then(() => {
-        this.setState({ imgSources: imgSources });
-      });
-  }
+  setSelectedImages = selectedImages => {
+    this.setState({ selectedImages: selectedImages });
+  };
 
   onClick = () => {
     this.setState({ open: !this.state.open });
@@ -86,32 +47,14 @@ class Application extends Component {
   }
 
   createImageCollection = () => {
-    let identifier = null;
-    let category = null;
-    let categoryColor = 'white';
-    let src = null;
-    const IMAGES = this.props.imagesMetadata.map(imageMetadata => {
-      categoryColor = 'white';
-      identifier = imageMetadata.identifier;
-      category = this.findCategory(imageMetadata.category);
-      if (category != null) {
-        if (category.color != null) {
-          categoryColor = category.color;
-          category = category.identifier;
-        }
+    const IMAGES = Object.values(this.props.images).map(image => {
+      let category = this.findCategory(image.category);
+      let categoryColor = 'white';
+      if (category !== undefined) {
+        categoryColor = category.color;
+        category = category.identifier;
       }
-      if (this.state.imgSources !== null) {
-        src = this.state.imgSources[identifier];
-      }
-      return {
-        src: src,
-        id: identifier,
-        thumbnailWidth: 180,
-        thumbnailHeight: 180,
-        isSelected: false,
-        category: category,
-        color: categoryColor
-      };
+      return { ...image, category: category, color: categoryColor };
     });
     return IMAGES;
   };
@@ -123,21 +66,21 @@ class Application extends Component {
   render() {
     const {
       classes,
-      settings,
-      toggleUploadDialog,
-      changeZoomLevel,
       updateImageCategory,
       updateUnlabeledVisibility
     } = this.props;
+
+    const { selectedImages } = this.state;
+
     const IMAGES = this.createImageCollection();
+
     return (
       <div className={classes.appFrame}>
         <PrimaryAppBar
+          selectedImages={selectedImages}
+          setSelectedImages={this.setSelectedImages}
           toggle={this.onClick}
           toggled={this.state.open}
-          changeZoomLevel={changeZoomLevel}
-          zoomLevel={settings.zoomLevel}
-          toggleUploadDialog={toggleUploadDialog}
         />
         <ConnectedSidebar
           toggle={this.onClick}
@@ -152,11 +95,13 @@ class Application extends Component {
         >
           <div className={classes.drawerHeader} />
 
-          <VirtualizedGallery
+          <Gallery
             images={IMAGES}
+            selectedImages={selectedImages}
             imagesPerRow={10}
-            decreaseWidth={this.state.open ? 240 + 24 : 24}
+            decreaseWidth={this.state.open ? 280 + 24 : 24}
             callOnDragEnd={updateImageCategory}
+            setSelectedImages={this.setSelectedImages}
           />
 
           <Tooltip
@@ -165,9 +110,8 @@ class Application extends Component {
               ' unlabeled images'
             }
           >
-            <Button
-              style={{ position: 'fixed', zIndex: 1202 }}
-              variant="fab"
+            <Fab
+              style={{ position: 'fixed' }}
               color="secondary"
               className={
                 this.state.displayUnlabeled
@@ -186,13 +130,9 @@ class Application extends Component {
               ) : (
                 <LabelOutlinedIcon />
               )}
-            </Button>
+            </Fab>
           </Tooltip>
         </main>
-        <ConnectedUploadDialog
-          onClose={toggleUploadDialog}
-          open={settings.upload.toggled}
-        />
       </div>
     );
   }

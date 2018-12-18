@@ -65,6 +65,7 @@ class Gallery extends PureComponent {
     if (this.state.selectionBoxVisibility === 'visible') {
       const collisions = collisionDetection(currentSelectionBoxCoordinates);
       this.setState({ selected: collisions, collisions: collisions });
+      this.props.setSelectedImages(collisions);
     }
   };
 
@@ -76,6 +77,7 @@ class Gallery extends PureComponent {
     ) {
       // if so unselect all items
       this.setState({ selected: [] });
+      this.props.setSelectedImages([]);
     }
     // Hide selection box und reset collisions
     this.setState({
@@ -95,7 +97,11 @@ class Gallery extends PureComponent {
       let copySelected = [...this.state.selected];
       copySelected.push(imgId);
       this.setState({ selected: copySelected });
-    } else this.setState({ selected: [imgId] });
+      this.props.setSelectedImages(copySelected);
+    } else {
+      this.props.setSelectedImages([imgId]);
+      this.setState({ selected: [imgId] });
+    }
   };
 
   setCurrentlyDraggedItem = value => {
@@ -143,7 +149,9 @@ class Gallery extends PureComponent {
 Gallery.propTypes = {
   images: PropTypes.array.isRequired,
   imagesPerRow: PropTypes.number,
-  decreaseWidth: PropTypes.number
+  decreaseWidth: PropTypes.number,
+  setSelectedImages: PropTypes.func,
+  callOnDragEnd: PropTypes.func
 };
 
 Gallery.defaultProps = {

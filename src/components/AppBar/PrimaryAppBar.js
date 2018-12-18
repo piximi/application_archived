@@ -4,13 +4,20 @@ import { withStyles } from '@material-ui/core/styles';
 import { AppBar, Grid, IconButton, Toolbar } from '@material-ui/core';
 import classNames from 'classnames';
 import MenuIcon from '@material-ui/icons/Menu';
-import Search from './Search';
+import ConnectedSearch from '../../containers/ConnectedSearch';
 import Logo from './Logo';
 import ImportImagesButton from './ImportImagesButton';
+import DeleteButton from '../DeleteButton/DeleteButton';
 
 class PrimaryAppBar extends PureComponent {
   render() {
-    const { classes, toggle, toggled, toggleUploadDialog } = this.props;
+    const {
+      classes,
+      toggle,
+      toggled,
+      selectedImages,
+      setSelectedImages
+    } = this.props;
 
     return (
       <AppBar
@@ -36,11 +43,18 @@ class PrimaryAppBar extends PureComponent {
             <Grid item xs={2} />
 
             <Grid item xs={4}>
-              <Search />
+              <ConnectedSearch />
+            </Grid>
+
+            <Grid item style={{ flexGrow: 1 }}>
+              <ImportImagesButton />
             </Grid>
 
             <Grid item>
-              <ImportImagesButton toggleUploadDialog={toggleUploadDialog} />
+              <DeleteButton
+                selectedImages={selectedImages}
+                setSelectedImages={setSelectedImages}
+              />
             </Grid>
           </Grid>
         </Toolbar>

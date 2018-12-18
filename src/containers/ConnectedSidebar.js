@@ -1,11 +1,9 @@
 import { connect } from 'react-redux';
-import { toggleModelCollapseAction } from '../actions/settings';
 import Sidebar from '../components/Sidebar/Sidebar';
 import {
   addImagesAction,
   updateImageCategoryAction,
-  // TODO update Image Probability rename
-  updateImageProbability
+  updateImageProbabilityAction
 } from '../actions/images';
 import {
   addCategoriesAction,
@@ -18,7 +16,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    toggleModelCollapse: () => dispatch(toggleModelCollapseAction()),
     updateStore: data => {
       dispatch(addImagesAction(data.images));
       dispatch(addCategoriesAction(data.categories));
@@ -31,7 +28,7 @@ const mapDispatchToProps = dispatch => {
           categoryName
         )
       );
-      dispatch(updateImageProbability(imgIdentifier, null));
+      dispatch(updateImageProbabilityAction(imgIdentifier, null));
     },
     createCategory: (identfier, color, description) => {
       const category = {

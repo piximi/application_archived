@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import styles from './UploadDialog.css';
 import { withStyles } from '@material-ui/core/styles';
 import hash from 'string-hash';
-import * as databaseAPI from '../../database';
 import {
   Button,
   Dialog,
@@ -11,44 +10,46 @@ import {
   DialogTitle,
   Zoom
 } from '@material-ui/core';
+import { store } from '../../index';
+import { addImagesAction } from '../../actions/images';
+import UploadSnackbar from '../UploadSnackbar/UploadSnackbar';
 
-function createImage(bytes, pathname, checksum) {
+// Add valid file formats here
+const validFileExtensions = ['png'];
+
+function createImage(bytes, pathname, checksum, currentFile) {
   let image = {};
   let img = new Image();
   img.onload = function() {
+    image['id'] = checksum;
+    image['src'] = bytes;
     image['width'] = img.width;
     image['height'] = img.height;
     image['channels'] = 4; // This is true for PNG images
     image['category'] = null;
     image['probability'] = null;
     image['visible'] = true;
-    image['identifier'] = String(checksum);
-    image['filename'] = pathname;
+    image['pathname'] = pathname;
     image['object_bounding_box_minimum_r'] = 0;
     image['object_bounding_box_minimum_c'] = 0;
+    image['brightness'] = 100;
+    image['contrast'] = 100;
   };
   img.src = bytes;
   return image;
 }
 
-const readFile = (currentFile, that) => {
+const readFile = (currentFile, that, noImageFiles) => {
   const pathname = currentFile.webkitRelativePath;
   return e => {
     const bytes = e.target.result;
-    const checksum = hash(bytes);
-    const image = createImage(bytes, pathname, checksum);
-    that.imageData.imageDataIndexedDB.push({
-      checksum: checksum,
-      bytes: bytes
-    });
-    that.imageData.imageDataReduxStore.push(image);
+    const checksum = String(hash(bytes));
+    const image = createImage(bytes, pathname, checksum, currentFile);
+    that.imageData[checksum] = image;
     that.counter = that.counter + 1;
-    if (that.counter === that.state.imageFiles.length) {
-      databaseAPI.saveData(
-        that.imageData.imageDataIndexedDB,
-        that.imageData.imageDataReduxStore
-      );
-      that.imageData = { imageDataReduxStore: [], imageDataIndexedDB: [] };
+    if (that.counter === noImageFiles) {
+      store.dispatch(addImagesAction(that.imageData));
+      that.imageData = {};
       that.counter = 0;
     }
   };
@@ -62,18 +63,35 @@ export class UploadDialog extends Component {
   constructor(props) {
     super(props);
     this.imageFiles = [];
-    this.imageData = { imageDataReduxStore: [], imageDataIndexedDB: [] };
+    this.imageData = {};
     this.counter = 0;
     this.state = {
-      images: []
+      images: [],
+      snackbar: false
     };
   }
 
+  toggleSnackbar = () => {
+    this.setState({
+      ...this.state,
+      snackbar: !this.state.snackbar
+    });
+  };
+
   uploadImages = () => {
-    let that = this;
+    const that = this;
+    let imageFiles = [];
+
+    // Check images for correct file format
     for (let imageFile of this.state.imageFiles) {
+      const fileExtension = imageFile.name.split('.').pop();
+      if (validFileExtensions.includes(fileExtension))
+        imageFiles.push(imageFile);
+    }
+    const noImageFiles = imageFiles.length;
+    for (let imageFile of imageFiles) {
       const reader = new FileReader();
-      reader.onload = readFile(imageFile, that);
+      reader.onload = readFile(imageFile, that, noImageFiles);
       reader.readAsDataURL(imageFile, that);
     }
   };
@@ -81,6 +99,7 @@ export class UploadDialog extends Component {
   onClickUploadButton = () => {
     this.uploadImages();
     this.props.onClose();
+    this.toggleSnackbar();
   };
 
   onClickCancelButton = () => {
@@ -104,32 +123,39 @@ export class UploadDialog extends Component {
     const { onClose, open } = this.props;
 
     return (
-      <Dialog open={open} onClose={onClose} TransitionComponent={Transition}>
-        <DialogTitle id="form-dialog-title">
-          Upload directory with images
-        </DialogTitle>
+      <React.Fragment>
+        <Dialog open={open} onClose={onClose} TransitionComponent={Transition}>
+          <DialogTitle id="form-dialog-title">
+            Upload directory with images
+          </DialogTitle>
 
-        <DialogContent>
-          <Button>
-            <input
-              type="file"
-              accept="image/*"
-              ref={node => this._addDirectory(node)}
-              onChange={this.onChange()}
-            />
-          </Button>
-        </DialogContent>
+          <DialogContent>
+            <Button>
+              <input
+                type="file"
+                accept="image/*"
+                ref={node => this._addDirectory(node)}
+                onChange={this.onChange()}
+              />
+            </Button>
+          </DialogContent>
 
-        <DialogActions>
-          <Button onClick={() => this.onClickCancelButton()} color="primary">
-            Cancel
-          </Button>
+          <DialogActions>
+            <Button onClick={() => this.onClickCancelButton()} color="primary">
+              Cancel
+            </Button>
 
-          <Button onClick={() => this.onClickUploadButton()} color="primary">
-            Upload
-          </Button>
-        </DialogActions>
-      </Dialog>
+            <Button onClick={() => this.onClickUploadButton()} color="primary">
+              Upload
+            </Button>
+          </DialogActions>
+        </Dialog>
+
+        <UploadSnackbar
+          open={this.state.snackbar}
+          onClose={this.toggleSnackbar}
+        />
+      </React.Fragment>
     );
   }
 }

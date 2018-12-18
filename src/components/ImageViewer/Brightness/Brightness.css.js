@@ -4,7 +4,8 @@ const styles = theme => ({
     width: 'calc(100% - 48px)'
   },
   slider: {
-    padding: '22px 0px'
+    padding: '22px 0px',
+    color: 'white'
   }
 });
 

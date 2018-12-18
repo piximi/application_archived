@@ -6,13 +6,12 @@ import {
   ListItemIcon,
   ListItemText
 } from '@material-ui/core';
-import AddIcon from '@material-ui/icons/Add';
 import { withStyles } from '@material-ui/core/styles';
 import styles from './Categories.css';
 import Category from '../Category/Category';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import ConnectedCreateCategoryDialog from '../../containers/ConnectedCreateCategoryDialog';
+import CreateCategoryListItem from '../CreateCategoryListItem/CreateCategoryListItem';
 
 class Categories extends Component {
   state = {
@@ -74,20 +73,9 @@ class Categories extends Component {
               />
             ))}
 
-            <ListItem button onClick={this.toggleCreateCategoryDialog}>
-              <ListItemIcon>
-                <AddIcon />
-              </ListItemIcon>
-
-              <ListItemText inset primary="Create category" />
-            </ListItem>
+            <CreateCategoryListItem />
           </Collapse>
         </List>
-
-        <ConnectedCreateCategoryDialog
-          onClose={this.toggleCreateCategoryDialog}
-          open={this.state.createCategoryDialogToggled}
-        />
       </React.Fragment>
     );
   }

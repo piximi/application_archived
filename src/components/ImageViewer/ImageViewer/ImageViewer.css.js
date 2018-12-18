@@ -16,6 +16,20 @@ const styles = theme => ({
     marginRight: 20,
     color: '#FFF'
   },
+  globalButton: {
+    marginLeft: -12,
+    marginRight: 20,
+    color: '#2196f3'
+  },
+
+  saveButton: {
+    left: 'calc(100% - 560px)'
+  },
+
+  undoButton: {
+    left: 'calc(100% - 580px)'
+  },
+
   appbar: {
     backgroundColor: '#000',
     boxShadow: 'none',

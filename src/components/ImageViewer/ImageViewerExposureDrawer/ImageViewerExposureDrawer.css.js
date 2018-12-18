@@ -1,6 +1,6 @@
 const styles = theme => ({
   paper: {
-    // backgroundColor: '#202124'
+    backgroundColor: '#202124'
   },
   content: {
     width: 300

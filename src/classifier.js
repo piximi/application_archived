@@ -1,11 +1,9 @@
 import * as tensorflow from '@tensorflow/tfjs';
 import { store } from './index';
-import {
-  updateImageCategoryAction,
-  updateImageProbability
-} from './actions/images';
+import { updateCategoryAndProbabilityAction } from './actions/images';
 import Dataset from './dataset';
-import * as databaseAPI from './database';
+
+var result = {};
 
 let indexMap = {};
 let categoryIndexArray = [];
@@ -158,6 +156,8 @@ async function run(datasetObj) {
     console.log('Predicting!');
     alert('Predicting');
     await predict(model, datasetObj);
+    console.log(result);
+    store.dispatch(updateCategoryAndProbabilityAction(result));
   }
 }
 
@@ -177,25 +177,23 @@ function passResults(imgId, predictions) {
   let predictionsArray = predictions.dataSync();
   let index = indexMap[predictionsArray.indexOf(Math.max(...predictionsArray))];
   let category = store.getState().categories[index].identifier;
-  store.dispatch(updateImageCategoryAction(imgId, category));
   let probability = predictionsArray[index];
-  store.dispatch(updateImageProbability(imgId, probability));
+
+  result[imgId] = { category: category, probability: probability };
+
+  //store.dispatch(updateImageCategoryAction(imgId, category));
+  //store.dispatch(updateImageProbabilityAction(imgId, probability));
 }
 
+// TODO: Make it work with Redux
+
 async function fitAndPredict(images, categories) {
-  let imgSources = {};
-  const collection = databaseAPI.indexeddb.images.toCollection();
-  collection
-    .each(entry => {
-      imgSources[entry.checksum] = entry.bytes;
-    })
-    .then(() => {
-      const imageTags = createImageTags(images, imgSources, categories);
-      const dataset = new Dataset();
-      dataset.loadFromArray(imageTags);
-      run(dataset);
-      return null;
-    });
+  //const collection = databaseAPI.indexeddb.images.toCollection();
+  const imageTags = createImageTags(images.images, categories);
+  const dataset = new Dataset();
+  dataset.loadFromArray(imageTags);
+  run(dataset);
+  return null;
 }
 
 async function exportWeights() {
@@ -220,23 +218,26 @@ async function importWeights(weightsFile) {
     });
 }
 
-function createImageTags(images, imgSources, categories) {
+function createImageTags(images, categories) {
   indexMap = {};
   counter = 0;
   categoryIndexArray = [];
-  const imageTags = images.images.map(observation => {
-    let categoryIndex = getCategoryIndex(observation.category, categories);
+
+  const imageTags = Object.values(images).map(image => {
+    let categoryIndex = getCategoryIndex(image.category, categories);
+
     // Create Index Map
     if (!categoryIndexArray.includes(categoryIndex) && categoryIndex !== null) {
       categoryIndexArray.push(categoryIndex);
       indexMap[counter] = categoryIndex;
       counter++;
     }
-    let image = new Image();
-    image.identifier = observation.identifier;
-    image.category = getCategoryIndex(observation.category, categories);
-    image.src = imgSources[image.identifier];
-    return image;
+
+    let imageTag = new Image();
+    imageTag.identifier = image.id;
+    imageTag.category = getCategoryIndex(image.category, categories);
+    imageTag.src = image.src;
+    return imageTag;
   });
   return imageTags;
 }

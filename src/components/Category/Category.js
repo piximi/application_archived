@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import {
   ListItem,
   ListItemIcon,
@@ -40,7 +40,7 @@ function collect(connect, monitor) {
   };
 }
 
-class Category extends Component {
+class Category extends PureComponent {
   state = {
     editCategoryDialogToggled: false,
     deleteCategoryDialogOpen: false,
@@ -87,7 +87,6 @@ class Category extends Component {
       color,
       connectDropTarget,
       description,
-      images,
       visible,
       classes
     } = this.props;
@@ -120,9 +119,7 @@ class Category extends Component {
             }}
           >
             <ListItemIcon
-              onClick={() =>
-                updateCategoryVisibility(identifier, images, !visible)
-              }
+              onClick={() => updateCategoryVisibility(identifier, !visible)}
             >
               {visible ? (
                 <LabelIcon style={{ color: color }} />
@@ -151,7 +148,7 @@ class Category extends Component {
                 <MenuList>
                   <MenuItem
                     onClick={() => {
-                      displayThisCategoryOnly(identifier, images);
+                      displayThisCategoryOnly(identifier);
                       setUnlabelledVisibility(false);
                       this.setState({ anchorEl: null });
                     }}
