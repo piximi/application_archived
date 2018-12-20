@@ -23,7 +23,8 @@ class ImageViewer extends PureComponent {
     channelDrawerToggled: false,
     exposureDrawerToggled: true,
     brightness: 100,
-    contrast: 100
+    contrast: 100,
+    unselectedChannels: []
   };
 
   componentDidMount() {
@@ -31,7 +32,14 @@ class ImageViewer extends PureComponent {
       .brightness;
     const initialContrast = this.props.images[this.props.imgIdentifier]
       .contrast;
-    this.setState({ brightness: initialBrightness, contrast: initialContrast });
+    const initialUnselectedChannels = this.props.images[
+      this.props.imgIdentifier
+    ].unselectedChannels;
+    this.setState({
+      brightness: initialBrightness,
+      contrast: initialContrast,
+      unselectedChannels: initialUnselectedChannels
+    });
   }
 
   toggleChannelDrawer = () => {
@@ -58,13 +66,25 @@ class ImageViewer extends PureComponent {
     });
   };
 
+  setUnselectedChannels = unselectedChannels => {
+    this.setState({
+      unselectedChannels: unselectedChannels
+    });
+  };
+
   saveEdits = () => {
     const imgIdentifier = this.props.imgIdentifier;
     const brightness = this.state.brightness;
     const contrast = this.state.contrast;
+    const unselectedChannels = this.state.unselectedChannels;
     this.state.applySettingsGlobally
-      ? this.props.saveEditsGlobally(brightness, contrast)
-      : this.props.saveEdits(imgIdentifier, brightness, contrast);
+      ? this.props.saveEditsGlobally(brightness, contrast, unselectedChannels)
+      : this.props.saveEdits(
+          imgIdentifier,
+          brightness,
+          contrast,
+          unselectedChannels
+        );
   };
 
   undoEdits = () => {
@@ -77,7 +97,12 @@ class ImageViewer extends PureComponent {
 
   render() {
     const { classes, src, imgIdentifier } = this.props;
-    const { brightness, contrast, applySettingsGlobally } = this.state;
+    const {
+      brightness,
+      contrast,
+      unselectedChannels,
+      applySettingsGlobally
+    } = this.state;
 
     return (
       <div className={classes.root}>
@@ -95,6 +120,7 @@ class ImageViewer extends PureComponent {
               width={500}
               brightness={brightness}
               contrast={contrast}
+              unselectedChannels={unselectedChannels}
             />
           </Grid>
         </Grid>
@@ -180,9 +206,11 @@ class ImageViewer extends PureComponent {
           src={src}
           imgIdentifier={imgIdentifier}
           setBrightness={this.setBrightness}
-          setContrast={this.setContrast}
           brightness={brightness}
+          setContrast={this.setContrast}
           contrast={contrast}
+          setUnselectedChannels={this.setUnselectedChannels}
+          unselectedChannels={unselectedChannels}
         />
       </div>
     );

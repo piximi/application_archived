@@ -1,42 +1,46 @@
-import React, { PureComponent } from 'react';
-import { FormControlLabel, Checkbox } from '@material-ui/core';
-import styles from './ChannelSelection.css';
-import { withStyles } from '@material-ui/core/styles';
+import React from 'react';
+import Checkbox from '@material-ui/core/Checkbox';
 
-class ChannelSelection extends PureComponent {
-  constructor(props) {
-    super();
-    this.state = {
-      selected: {
-        R: true,
-        G: true,
-        B: true,
-        A: true
-      }
-    };
-  }
+class Checkboxes extends React.Component {
+  state = {
+    0: true,
+    1: true,
+    2: true
+  };
+
+  handleChange = name => event => {
+    const selectState = { ...this.state };
+    selectState[Number(name)] = event.target.checked;
+    this.setState(selectState);
+    let currentlyUnselected = [];
+    for (let channel in selectState) {
+      if (selectState[channel] === false)
+        currentlyUnselected.push(Number(channel));
+    }
+    this.props.setUnselectedChannels(currentlyUnselected);
+  };
 
   render() {
     return (
-      <React.Fragment>
-        <FormControlLabel
-          control={<Checkbox checked={true} value="checkedF" indeterminate />}
-          label="R"
-          labelPlacement="start"
+      <div>
+        <Checkbox
+          checked={this.state[0]}
+          onChange={this.handleChange(0)}
+          value={'0'}
         />
-        <FormControlLabel
-          control={<Checkbox checked={true} value="checkedF" indeterminate />}
-          label="R"
-          labelPlacement="start"
+        <Checkbox
+          checked={this.state[1]}
+          onChange={this.handleChange(1)}
+          value={'1'}
         />
-        <FormControlLabel
-          control={<Checkbox checked={true} value="checkedF" indeterminate />}
-          label="R"
-          labelPlacement="start"
+        <Checkbox
+          checked={this.state[2]}
+          onChange={this.handleChange(2)}
+          value={'2'}
         />
-      </React.Fragment>
+      </div>
     );
   }
 }
 
-export default withStyles(styles, { withTheme: true })(ChannelSelection);
+export default Checkboxes;

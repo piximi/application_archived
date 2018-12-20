@@ -6,8 +6,7 @@ class ImageHistogram extends PureComponent {
     super();
     this.canvas = React.createRef();
     this.state = {
-      data: [],
-      max: 0
+      data: []
     };
     this.createHistogram = this.createHistogram.bind(this);
   }

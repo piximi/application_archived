@@ -12,6 +12,8 @@ import {
   UPDATE_BRIGHTNESS_FOR_ALL_IMAGES,
   UPDATE_CONTRAST,
   UPDATE_CONTRAST_FOR_ALL_IMAGES,
+  UPDATE_UNSELECTED_CHANNELS,
+  UPDATE_UNSELECTED_CHANNELS_FOR_ALL_IMAGES,
   DELETE_IMAGES
 } from '../constants';
 
@@ -135,6 +137,21 @@ const images = (state = {}, action) => {
       images = { ...state.images };
       for (let key in images) {
         images[key].contrast = action.contrast;
+      }
+      return { ...state, images: images };
+
+    // Call to update unselected channels of one specific image
+    case UPDATE_UNSELECTED_CHANNELS:
+      images = { ...state.images };
+      images[action.imgIdentifier].unselectedChannels =
+        action.unselectedChannels;
+      return { ...state, images: images };
+
+    // Call to update unselected channels of all images, helpful for imageViewer set contrast component
+    case UPDATE_UNSELECTED_CHANNELS_FOR_ALL_IMAGES:
+      images = { ...state.images };
+      for (let key in images) {
+        images[key].unselectedChannels = action.unselectedChannels;
       }
       return { ...state, images: images };
 

@@ -4,7 +4,9 @@ import {
   updateBrightnessAction,
   updateBrightnessForAllImagesAction,
   updateContrastAction,
-  updateContrastForAllImagesAction
+  updateContrastForAllImagesAction,
+  updateUnselectedChannelsAction,
+  updateUnselectedChannelsForAllImagesAction
 } from '../actions/images';
 
 const mapStateToProps = state => {
@@ -15,25 +17,17 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    updateBrightness: (imgIdentifier, brightness) => {
-      dispatch(updateBrightnessAction(imgIdentifier, brightness));
-    },
-    updateBrightnessGlobally: brightness => {
-      dispatch(updateBrightnessForAllImagesAction(brightness));
-    },
-    updateContrast: (imgIdentifier, contrast) => {
-      dispatch(updateContrastAction(imgIdentifier, contrast));
-    },
-    updateContrastGlobally: contrast => {
-      dispatch(updateContrastForAllImagesAction(contrast));
-    },
-    saveEdits: (imgIdentifier, brightness, contrast) => {
+    saveEdits: (imgIdentifier, brightness, contrast, unselectedChannels) => {
       dispatch(updateBrightnessAction(imgIdentifier, brightness));
       dispatch(updateContrastAction(imgIdentifier, contrast));
+      dispatch(
+        updateUnselectedChannelsAction(imgIdentifier, unselectedChannels)
+      );
     },
-    saveEditsGlobally: (brightness, contrast) => {
+    saveEditsGlobally: (brightness, contrast, unselectedChannels) => {
       dispatch(updateBrightnessForAllImagesAction(brightness));
       dispatch(updateContrastForAllImagesAction(contrast));
+      dispatch(updateUnselectedChannelsForAllImagesAction(unselectedChannels));
     }
   };
 };
