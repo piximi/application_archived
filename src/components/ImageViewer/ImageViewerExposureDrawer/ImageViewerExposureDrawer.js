@@ -21,7 +21,6 @@ class ImageViewerExposureDrawer extends PureComponent {
       setUnselectedChannels,
       unselectedChannels
     } = this.props;
-
     return (
       <Drawer
         anchor="right"

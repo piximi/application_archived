@@ -35,6 +35,7 @@ class ImageViewer extends PureComponent {
     const initialUnselectedChannels = this.props.images[
       this.props.imgIdentifier
     ].unselectedChannels;
+
     this.setState({
       brightness: initialBrightness,
       contrast: initialContrast,

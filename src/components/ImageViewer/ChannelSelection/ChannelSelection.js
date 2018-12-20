@@ -1,12 +1,20 @@
 import React from 'react';
 import Checkbox from '@material-ui/core/Checkbox';
 
-class Checkboxes extends React.Component {
+class Checkboxes extends React.PureComponent {
   state = {
     0: true,
     1: true,
     2: true
   };
+
+  static getDerivedStateFromProps(props, state) {
+    let unselectedChannels = { ...state };
+    for (let channel in props.unselectedChannels) {
+      unselectedChannels[channel] = false;
+    }
+    return unselectedChannels;
+  }
 
   handleChange = name => event => {
     const selectState = { ...this.state };
