@@ -1,7 +1,7 @@
 import React from 'react';
 import Checkbox from '@material-ui/core/Checkbox';
 
-class Checkboxes extends React.PureComponent {
+class Checkboxes extends React.Component {
   state = {
     0: true,
     1: true,
@@ -9,22 +9,22 @@ class Checkboxes extends React.PureComponent {
   };
 
   static getDerivedStateFromProps(props, state) {
-    let unselectedChannels = { ...state };
-    for (let channel in props.unselectedChannels) {
-      unselectedChannels[channel] = false;
+    let channelState = { ...state };
+    for (let channel of props.unselectedChannels) {
+      if (channelState[channel] === true) channelState[channel] = false;
     }
-    return unselectedChannels;
+    return channelState;
   }
 
   handleChange = name => event => {
     const selectState = { ...this.state };
-    selectState[Number(name)] = event.target.checked;
-    this.setState(selectState);
     let currentlyUnselected = [];
+    selectState[Number(name)] = !selectState[Number(name)];
     for (let channel in selectState) {
       if (selectState[channel] === false)
         currentlyUnselected.push(Number(channel));
     }
+    this.setState(selectState);
     this.props.setUnselectedChannels(currentlyUnselected);
   };
 
