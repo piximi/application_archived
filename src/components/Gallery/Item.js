@@ -81,6 +81,7 @@ class Item extends PureComponent {
     const imgSrc = item.src;
     const brightness = item.brightness;
     const contrast = item.contrast;
+    const unselectedChannels = item.unselectedChannels;
     const imgSelected = selectedItems.includes(imgId);
     return connectDragSource(
       <div
@@ -98,6 +99,7 @@ class Item extends PureComponent {
           src={imgSrc}
           brightness={brightness}
           contrast={contrast}
+          unselectedChannels={unselectedChannels}
           height={containerStyle.height}
           width={0.9 * containerStyle.width}
         />

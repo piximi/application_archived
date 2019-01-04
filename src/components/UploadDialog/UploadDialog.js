@@ -34,6 +34,7 @@ function createImage(bytes, pathname, checksum, currentFile) {
     image['object_bounding_box_minimum_c'] = 0;
     image['brightness'] = 100;
     image['contrast'] = 100;
+    image['unselectedChannels'] = [];
   };
   img.src = bytes;
   return image;

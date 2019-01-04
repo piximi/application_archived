@@ -12,6 +12,8 @@ import {
   UPDATE_BRIGHTNESS_FOR_ALL_IMAGES,
   UPDATE_CONTRAST,
   UPDATE_CONTRAST_FOR_ALL_IMAGES,
+  UPDATE_UNSELECTED_CHANNELS,
+  UPDATE_UNSELECTED_CHANNELS_FOR_ALL_IMAGES,
   DELETE_IMAGES
 } from '../constants';
 
@@ -103,6 +105,22 @@ export const updateContrastAction = (imgIdentifier, contrast) => ({
 export const updateBrightnessForAllImagesAction = brightness => ({
   type: UPDATE_BRIGHTNESS_FOR_ALL_IMAGES,
   brightness
+});
+
+// Call to update image unselected channels
+export const updateUnselectedChannelsAction = (
+  imgIdentifier,
+  unselectedChannels
+) => ({
+  type: UPDATE_UNSELECTED_CHANNELS,
+  imgIdentifier,
+  unselectedChannels
+});
+
+// Call to update image unselected channels  for all images
+export const updateUnselectedChannelsForAllImagesAction = unselectedChannels => ({
+  type: UPDATE_UNSELECTED_CHANNELS_FOR_ALL_IMAGES,
+  unselectedChannels
 });
 
 // Call to delete images

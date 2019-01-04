@@ -61,13 +61,21 @@ class Image extends PureComponent {
         this.props.contrast +
         '%)';
 
-      context.drawImage(
-        this.state.image,
-        0,
-        0,
-        this.state.imgWidth * ratio,
-        this.state.imgHeight * ratio
-      );
+      context.drawImage(this.state.image, 0, 0, canvas.width, canvas.height);
+
+      // Apply selected channel filter
+      const pixel = context.getImageData(0, 0, canvas.width, canvas.height);
+      let data = pixel.data;
+      this.selectVisibleChannels(data, this.props.unselectedChannels);
+      context.putImageData(pixel, 0, 0);
+    }
+  };
+
+  selectVisibleChannels = (imageData, nonVisibleChannels) => {
+    for (let i = 0; i < imageData.length; i += 4) {
+      for (let j = 0; j < 4; j += 1) {
+        if (nonVisibleChannels.includes(j)) imageData[j + i] = 0;
+      }
     }
   };
 
@@ -100,12 +108,14 @@ Image.propTypes = {
   height: PropTypes.number,
   width: PropTypes.number,
   brightness: PropTypes.number,
-  contrast: PropTypes.number
+  contrast: PropTypes.number,
+  unselectedChannels: PropTypes.array
 };
 
 Image.defaultProps = {
   brightness: 100,
-  contrast: 100
+  contrast: 100,
+  unselectedChannels: []
 };
 
 export default Image;
