@@ -4,6 +4,7 @@ import { updateCategoryAndProbabilityAction } from './actions/images';
 import Dataset from './dataset';
 
 var result = {};
+var categories = {};
 
 let indexMap = {};
 let categoryIndexArray = [];
@@ -24,6 +25,13 @@ const TEST_ITERATION_FREQUENCY = 5;
 
 async function loadNetwork(num_classes) {
   //get Prelaoded model of MobileNet
+  var loss;
+  if (num_classes === 1) {
+    loss = 'binaryCrossentropy';
+  } else {
+    loss = 'categoricalCrossentropy';
+  }
+
   const preLoadedmodel = await tensorflow.loadModel('indexeddb://classifier');
 
   //get some intermediate layer
@@ -67,7 +75,7 @@ async function loadNetwork(num_classes) {
   //compile the model
   model.compile({
     optimizer: optimizer,
-    loss: 'categoricalCrossentropy',
+    loss: loss,
     metrics: ['accuracy']
   });
 
@@ -187,8 +195,9 @@ function passResults(imgId, predictions) {
 
 // TODO: Make it work with Redux
 
-async function fitAndPredict(images, categories) {
+async function fitAndPredict(images, allCategories) {
   //const collection = databaseAPI.indexeddb.images.toCollection();
+  categories = allCategories;
   const imageTags = createImageTags(images.images, categories);
   const dataset = new Dataset();
   dataset.loadFromArray(imageTags);
@@ -242,4 +251,4 @@ function createImageTags(images, categories) {
   return imageTags;
 }
 
-export { fitAndPredict, exportWeights, importWeights };
+export { fitAndPredict, exportWeights, importWeights, categories };

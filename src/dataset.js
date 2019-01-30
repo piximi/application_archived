@@ -1,4 +1,5 @@
 import * as tensorflow from '@tensorflow/tfjs';
+import { categories } from './classifier';
 
 let VALIDATIONSET_RATIO = 0.3;
 
@@ -159,10 +160,15 @@ class Dataset {
           ys2.push(img.category);
         }
       }
-      const labelBatch = tensorflow.oneHot(
-        tensorflow.tensor1d(ys2, 'int32'),
-        this.numClasses
-      );
+      let labelBatch;
+      if (categories.length === 1) {
+        labelBatch = tensorflow.tensor1d(ys2, 'int32');
+      } else {
+        labelBatch = tensorflow.oneHot(
+          tensorflow.tensor1d(ys2, 'int32'),
+          this.numClasses
+        );
+      }
 
       return [tensorflow.keep(xs), tensorflow.keep(labelBatch)];
     });
