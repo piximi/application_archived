@@ -17,7 +17,7 @@ import ColorPicker from '../ColorPicker/ColorPicker';
 class EditCategoryDialog extends Component {
   state = {
     anchor: null,
-    color: '#FF0000',
+    color: '#ff0000',
     description: ''
   };
 
@@ -56,7 +56,17 @@ class EditCategoryDialog extends Component {
   };
 
   render() {
-    const { classes, updateCategory, onClose, open, categoryId } = this.props;
+    const {
+      classes,
+      updateCategory,
+      onClose,
+      open,
+      categoryId,
+      categories
+    } = this.props;
+    let colors = categories.map(function(c) {
+      return c.color;
+    });
     return (
       <Dialog open={open} onClose={onClose}>
         <DialogContent>
@@ -120,7 +130,7 @@ class EditCategoryDialog extends Component {
           }}
         >
           <div className={classes.colorPicker}>
-            <ColorPicker onChange={this.onColorChange} />
+            <ColorPicker colors={colors} onChange={this.onColorChange} />
           </div>
         </Popover>
       </Dialog>
