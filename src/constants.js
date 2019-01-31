@@ -62,6 +62,8 @@ export const CLASSIFIER_OPEN = 'CLASSIFIER_OPEN';
 
 export const CLASSIFIER_SAVE = 'CLASSIFIER_SAVE';
 
+export const TOGGLE_SPINNER = 'TOGGLE_SPINNER';
+
 export const fields = [
   {
     label: 'image_checksum',

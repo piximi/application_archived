@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { Fab, Tooltip } from '@material-ui/core';
 import LabelOffOutlinedIcon from '@material-ui/icons/LabelOffOutlined';
 import LabelOutlinedIcon from '@material-ui/icons/LabelOutlined';
+import { PacmanLoader } from 'react-spinners';
 import styles from './Application.css';
 import classNames from 'classnames';
 import ConnectedSidebar from '../../containers/ConnectedSidebar';
@@ -67,8 +68,11 @@ class Application extends Component {
     const {
       classes,
       updateImageCategory,
-      updateUnlabeledVisibility
+      updateUnlabeledVisibility,
+      spinnerActive
     } = this.props;
+
+    console.log(spinnerActive);
 
     const { selectedImages } = this.state;
 
@@ -132,6 +136,14 @@ class Application extends Component {
               )}
             </Fab>
           </Tooltip>
+          <div className={classes.pacmanLoader}>
+            <PacmanLoader
+              sizeUnit={'px'}
+              size={32}
+              color={'#6bd3b8'}
+              loading={spinnerActive}
+            />
+          </div>
         </main>
       </div>
     );

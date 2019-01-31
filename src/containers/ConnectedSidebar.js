@@ -11,6 +11,8 @@ import {
   createCategoryAction
 } from '../actions/categories';
 
+import { toggleSpinnerAction } from '../actions/settings';
+
 const mapStateToProps = state => {
   return state;
 };
@@ -44,6 +46,7 @@ const mapDispatchToProps = dispatch => {
     },
 
     loadDemoProject: demo => {
+      dispatch(toggleSpinnerAction());
       dispatch(loadDemoProject(demo));
     }
   };
@@ -59,6 +62,7 @@ function loadDemoProject(demo) {
           '.cyto'
       )
       .then(result => {
+        dispatch(toggleSpinnerAction());
         dispatch(addImagesAction(result.data.images));
         dispatch(addCategoriesAction(result.data.categories));
       });
