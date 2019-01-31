@@ -53,7 +53,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 function loadDemoProject(demo) {
-  console.log(demo);
   return dispatch => {
     return axios
       .get(
