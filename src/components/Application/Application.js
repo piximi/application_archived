@@ -72,8 +72,6 @@ class Application extends Component {
       spinnerActive
     } = this.props;
 
-    console.log(spinnerActive);
-
     const { selectedImages } = this.state;
 
     const IMAGES = this.createImageCollection();
