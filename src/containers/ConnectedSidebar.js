@@ -46,6 +46,7 @@ const mapDispatchToProps = dispatch => {
     },
 
     loadDemoProject: demo => {
+      dispatch(addImagesAction({}));
       dispatch(toggleSpinnerAction());
       dispatch(loadDemoProject(demo));
     }
