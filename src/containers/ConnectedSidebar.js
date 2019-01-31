@@ -54,7 +54,7 @@ function loadDemoProject(demo) {
   return dispatch => {
     return axios
       .get(
-        ' https://github.com/cytoai/cyto/blob/master/src/demos/' +
+        ' https://raw.githubusercontent.com/cytoai/cyto/master/src/demos/' +
           demo +
           '.cyto'
       )
@@ -64,7 +64,6 @@ function loadDemoProject(demo) {
       });
   };
 }
-
 const ConnectedSidebar = connect(
   mapStateToProps,
   mapDispatchToProps
