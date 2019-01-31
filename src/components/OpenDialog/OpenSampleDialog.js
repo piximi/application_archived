@@ -22,7 +22,7 @@ import CloseIcon from '@material-ui/icons/Close';
 
 class OpenSampleDialog extends Component {
   render() {
-    const { classes, open, onClose } = this.props;
+    const { classes, open, onClose, loadDemoProject } = this.props;
 
     return (
       <Dialog fullWidth={true} maxWidth="sm" open={open}>
@@ -72,7 +72,8 @@ class OpenSampleDialog extends Component {
               </ListItemAvatar>
               <ListItemText
                 primary="MNIST"
-                secondary="The MNIST dataset consists of 60,000 18 × 18 handwritten digits in 10 classes."
+                secondary="The MNIST dataset consists of 10,000 28 × 28 handwritten digits in 10 classes."
+                onClick={() => loadDemoProject('mnist')}
               />
             </ListItem>
           </List>

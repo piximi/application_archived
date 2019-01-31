@@ -17,6 +17,7 @@ class OpenSampleListItem extends PureComponent {
   };
 
   render() {
+    const { loadDemoProject } = { ...this.props };
     return (
       <React.Fragment>
         <ListItem dense button onClick={this.toggle}>
@@ -27,7 +28,11 @@ class OpenSampleListItem extends PureComponent {
           <ListItemText inset primary="Open sample" />
         </ListItem>
 
-        <OpenDialog onClose={this.toggle} open={this.state.open} />
+        <OpenDialog
+          onClose={this.toggle}
+          open={this.state.open}
+          loadDemoProject={loadDemoProject}
+        />
       </React.Fragment>
     );
   }

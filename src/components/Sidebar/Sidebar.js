@@ -44,7 +44,8 @@ class Sidebar extends PureComponent {
       images,
       setUnlabelledVisibility,
       toggled,
-      toggle
+      toggle,
+      loadDemoProject
     } = this.props;
 
     return (
@@ -76,7 +77,7 @@ class Sidebar extends PureComponent {
             </ListItem>
           </label>
 
-          <OpenSampleListItem />
+          <OpenSampleListItem loadDemoProject={loadDemoProject} />
 
           <Save images={images.images} categories={categories} />
         </List>

@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import axios from 'axios';
 import Sidebar from '../components/Sidebar/Sidebar';
 import {
   addImagesAction,
@@ -20,6 +21,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(addImagesAction(data.images));
       dispatch(addCategoriesAction(data.categories));
     },
+
     updateImageCategory: (imgIdentifier, categoryIdentifier, categoryName) => {
       dispatch(
         updateImageCategoryAction(
@@ -39,9 +41,29 @@ const mapDispatchToProps = dispatch => {
         visible: true
       };
       dispatch(createCategoryAction(category));
+    },
+
+    loadDemoProject: demo => {
+      dispatch(loadDemoProject(demo));
     }
   };
 };
+
+function loadDemoProject(demo) {
+  console.log(demo);
+  return dispatch => {
+    return axios
+      .get(
+        ' https://github.com/cytoai/cyto/blob/master/src/demos/' +
+          demo +
+          '.cyto'
+      )
+      .then(result => {
+        dispatch(addImagesAction(result.data.images));
+        dispatch(addCategoriesAction(result.data.categories));
+      });
+  };
+}
 
 const ConnectedSidebar = connect(
   mapStateToProps,
