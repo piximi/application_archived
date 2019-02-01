@@ -15,8 +15,7 @@ class Application extends Component {
     super(props);
     this.state = {
       selectedImages: [],
-      open: true,
-      displayUnlabeled: true
+      open: true
     };
   }
 

@@ -49,12 +49,14 @@ class Category extends PureComponent {
   };
 
   toggleEditCategoryDialog = () => {
+    console.log(true);
     this.setState({
       editCategoryDialogToggled: !this.state.editCategoryDialogToggled
     });
   };
 
   toggleDeleteCategoryDialog = () => {
+    console.log(true);
     this.setState({
       deleteCategoryDialogOpen: !this.state.deleteCategoryDialogOpen
     });
@@ -90,6 +92,7 @@ class Category extends PureComponent {
       visible,
       classes
     } = this.props;
+
     const {
       anchorEl,
       editCategoryDialogToggled,
@@ -199,10 +202,10 @@ class Category extends PureComponent {
           color={color}
         />
         <ConnectedDeleteCategoryDialog
+          onClose={this.toggleDeleteCategoryDialog}
+          open={deleteCategoryDialogOpen}
           categoryIdentifier={identifier}
           description={description}
-          open={deleteCategoryDialogOpen}
-          onClose={this.toggleDeleteCategoryDialog}
         />
       </React.Fragment>
     );

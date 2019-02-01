@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { DragSource } from 'react-dnd';
 import { getEmptyImage } from 'react-dnd-html5-backend';
 import ImageViewerDialog from '../ImageViewer/ImageViewerDialog/ImageViewerDialog';
@@ -43,12 +43,16 @@ function collect(connect, monitor) {
   };
 }
 
-class Item extends PureComponent {
+class Item extends Component {
   constructor(props) {
     super(props);
     this.state = {
       imageViewerDialogOpen: false
     };
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return true;
   }
 
   closeImageViewerDialog = () => {

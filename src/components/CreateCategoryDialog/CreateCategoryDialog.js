@@ -49,15 +49,21 @@ class CreateCategoryDialog extends Component {
 
   closePopover = () => {
     this.setState({
+      description: '',
       anchor: null
     });
   };
 
+  onClose = () => {
+    this.setState({ description: '' });
+    this.props.onClose();
+  };
+
   render() {
-    const { classes, createCategory, onClose, open } = this.props;
+    const { classes, createCategory, open, categories } = this.props;
 
     return (
-      <Dialog open={open} onClose={onClose} TransitionComponent={Transition}>
+      <Dialog open={open} TransitionComponent={Transition}>
         <DialogContent>
           <div className={classes.margin}>
             <Grid container spacing={8} alignItems="flex-end">
@@ -87,15 +93,16 @@ class CreateCategoryDialog extends Component {
         </DialogContent>
 
         <DialogActions>
-          <Button color="primary" onClick={onClose}>
+          <Button color="primary" onClick={this.onClose}>
             Cancel
           </Button>
 
           <Button
             color="primary"
-            onClick={() =>
-              createCategory(this.state.color, this.state.description)
-            }
+            onClick={() => {
+              createCategory(this.state.color, this.state.description);
+              this.onClose();
+            }}
           >
             Create category
           </Button>
@@ -115,7 +122,10 @@ class CreateCategoryDialog extends Component {
           }}
         >
           <div className={classes.colorPicker}>
-            <ColorPicker onChange={this.onColorChange} />
+            <ColorPicker
+              categories={categories}
+              onChange={this.onColorChange}
+            />
           </div>
         </Popover>
       </Dialog>
