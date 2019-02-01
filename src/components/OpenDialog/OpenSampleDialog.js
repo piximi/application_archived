@@ -61,7 +61,8 @@ class OpenSampleDialog extends Component {
               </ListItemAvatar>
               <ListItemText
                 primary="CIFAR-100"
-                secondary="The CIFAR-100 dataset consists of 60,000 32 × 32 color photographs in 100 classes."
+                secondary="The CIFAR-100 dataset consists of 10,000 32 × 32 color photographs in 100 classes."
+                onClick={() => loadDemoProject('cifar10')}
               />
             </ListItem>
 

@@ -13,7 +13,6 @@
     "classnames": "^2.2.5",
     "color": "^3.1.0",
     "d3": "^5.7.0",
-    "dexie": "^2.0.4",
     "js-file-download": "^0.4.4",
     "json2csv": "^4.3.1",
     "localforage": "^1.7.3",
@@ -35,13 +34,12 @@
     "react-spinners": "^0.5.1",
     "react-transition-group": "^2.5.0",
     "react-virtualized": "^9.21.0",
-    "react-vis": "^1.11.5",
     "redux": "^4.0.1",
     "redux-persist": "^5.10.0",
     "redux-thunk": "^2.3.0",
     "reselect": "^3.0.1",
     "string-hash": "^1.1.3",
-    "styled-components": "^4.0.3",
+    "styled-components": "^4.1.3",
     "uuid": "^3.2.1"
   },
   "scripts": {

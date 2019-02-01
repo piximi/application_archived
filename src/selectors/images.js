@@ -1,34 +1,28 @@
-// import _ from 'lodash';
-// import { createSelector } from 'reselect';
+import { createSelector } from 'reselect';
 
-export const getVisibleImages = images => {
+const getImages = images => images;
+
+// Calculate no of visible categories for memoization
+const getVisibleCategories = state => {
+  let noOfVisibleCategories = 0;
+  for (let category of state.categories) {
+    if (category.visible) noOfVisibleCategories += 1;
+  }
+  return noOfVisibleCategories;
+};
+
+export const selectVisibleImages = state => {
   let result = {};
-  for (let key in images) {
-    if (images[key].visible) result[key] = images[key];
+  for (let key in state.images.images) {
+    if (state.images.images[key].visible)
+      result[key] = state.images.images[key];
   }
   return result;
 };
 
-// const getVisibleCategories = state => {
-//   return _.map(state.categories, function(category) {
-//     if (category.visible === true) {
-//       return category.identifier;
-//     }
-//   });
-// };
-
-// const getImages = state => {
-//   return state.images;
-// };
-
-// const getVisibleImages = createSelector(
-//   [getVisibleCategories, getImages],
-//   (category, images) => {
-//     switch (category) {
-//       default:
-//         return images;
-//     }
-//   }
-// );
+export const getVisibleImages = createSelector(
+  [getImages, getVisibleCategories],
+  images => selectVisibleImages(images)
+);
 
 export default getVisibleImages;

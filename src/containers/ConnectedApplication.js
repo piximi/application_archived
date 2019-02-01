@@ -10,7 +10,7 @@ import { getVisibleImages } from '../selectors/images';
 const mapStateToProps = state => {
   return {
     ...state,
-    images: getVisibleImages(state.images.images),
+    images: getVisibleImages(state),
     spinnerActive: state.settings.spinnerActive
   };
 };
