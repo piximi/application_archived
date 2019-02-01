@@ -196,8 +196,7 @@ function passResults(imgId, predictions) {
 // TODO: Make it work with Redux
 
 async function fitAndPredict(images, allCategories) {
-  //const collection = databaseAPI.indexeddb.images.toCollection();
-  categories = allCategories;
+  categories = allCategories.slice(1, categories.length);
   const imageTags = createImageTags(images.images, categories);
   const dataset = new Dataset();
   dataset.loadFromArray(imageTags);

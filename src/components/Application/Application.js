@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { Fab, Tooltip } from '@material-ui/core';
-import LabelOffOutlinedIcon from '@material-ui/icons/LabelOffOutlined';
-import LabelOutlinedIcon from '@material-ui/icons/LabelOutlined';
 import { PacmanLoader } from 'react-spinners';
 import styles from './Application.css';
 import classNames from 'classnames';
@@ -65,12 +62,7 @@ class Application extends Component {
   };
 
   render() {
-    const {
-      classes,
-      updateImageCategory,
-      updateUnlabeledVisibility,
-      spinnerActive
-    } = this.props;
+    const { classes, updateImageCategory, spinnerActive } = this.props;
 
     const { selectedImages } = this.state;
 
@@ -106,34 +98,6 @@ class Application extends Component {
             setSelectedImages={this.setSelectedImages}
           />
 
-          <Tooltip
-            title={
-              (this.state.displayUnlabeled ? 'Hide' : 'Show') +
-              ' unlabeled images'
-            }
-          >
-            <Fab
-              style={{ position: 'fixed' }}
-              color="secondary"
-              className={
-                this.state.displayUnlabeled
-                  ? classes.unlabeledToggled
-                  : classes.unlabeledUntoggled
-              }
-              onClick={() => {
-                updateUnlabeledVisibility();
-                this.setState({
-                  displayUnlabeled: !this.state.displayUnlabeled
-                });
-              }}
-            >
-              {this.state.displayUnlabeled ? (
-                <LabelOffOutlinedIcon />
-              ) : (
-                <LabelOutlinedIcon />
-              )}
-            </Fab>
-          </Tooltip>
           <div className={classes.pacmanLoader}>
             <PacmanLoader
               sizeUnit={'px'}

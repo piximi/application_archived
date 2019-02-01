@@ -65,6 +65,9 @@ function loadDemoProject(demo) {
         dispatch(toggleSpinnerAction());
         dispatch(addImagesAction(result.data.images));
         dispatch(addCategoriesAction(result.data.categories));
+      })
+      .catch(function(error) {
+        alert(error);
       });
   };
 }

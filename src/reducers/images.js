@@ -3,7 +3,6 @@ import {
   UPDATE_IMAGE_CATEGORY,
   UPDATE_IMAGE_VISIBILTY_BASED_ON_CATEGORY,
   UPDATE_IMAGE_VISIBILITY,
-  UPDATE_UNLABELED_VISIBILITY,
   SET_IMAGE_CATEGORY_TO_NULL_BASED_ON_CATEGORY,
   ONLY_SHOW_IMAGES_WITH_CERTAIN_CATEGORY,
   UPDATE_PROBABILITY,
@@ -53,19 +52,6 @@ const images = (state = {}, action) => {
       for (let key in images) {
         if (images[key].category === action.categoryIdentifier) {
           images[key].visible = action.value;
-        }
-      }
-      return {
-        ...state,
-        images: images
-      };
-
-    // Call to toggle visibility of unlabeled images, helpful for blening out/in unlabeled images
-    case UPDATE_UNLABELED_VISIBILITY:
-      images = { ...state.images };
-      for (let key in images) {
-        if (images[key].category === null) {
-          images[key].visible = !images[key].visible;
         }
       }
       return {

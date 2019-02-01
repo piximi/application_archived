@@ -171,18 +171,21 @@ class Category extends PureComponent {
                       primary="Edit"
                     />
                   </MenuItem>
-                  <MenuItem
-                    onClick={() => {
-                      this.toggleDeleteCategoryDialog();
-                      this.setState({ anchorEl: null });
-                    }}
-                    className={classes.menuItem}
-                  >
-                    <ListItemText
-                      classes={{ primary: classes.primary }}
-                      primary="Delete"
-                    />
-                  </MenuItem>
+
+                  {identifier !== null ? (
+                    <MenuItem
+                      onClick={() => {
+                        this.toggleDeleteCategoryDialog();
+                        this.setState({ anchorEl: null });
+                      }}
+                      className={classes.menuItem}
+                    >
+                      <ListItemText
+                        classes={{ primary: classes.primary }}
+                        primary="Delete"
+                      />
+                    </MenuItem>
+                  ) : null}
                 </MenuList>
               </Paper>
             </Popover>
