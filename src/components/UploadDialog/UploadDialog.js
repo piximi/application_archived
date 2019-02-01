@@ -12,12 +12,12 @@ import {
 } from '@material-ui/core';
 import { store } from '../../index';
 import { addImagesAction } from '../../actions/images';
-import UploadSnackbar from '../UploadSnackbar/UploadSnackbar';
+import { toggleSpinnerAction } from '../../actions/settings';
 
 // Add valid file formats here
 const validFileExtensions = ['png'];
 
-function createImage(bytes, pathname, checksum, currentFile) {
+function createImage(bytes, pathname, checksum) {
   let image = {};
   let img = new Image();
   img.onload = function() {
@@ -49,6 +49,7 @@ const readFile = (currentFile, that, noImageFiles) => {
     that.imageData[checksum] = image;
     that.counter = that.counter + 1;
     if (that.counter === noImageFiles) {
+      store.dispatch(toggleSpinnerAction());
       store.dispatch(addImagesAction(that.imageData));
       that.imageData = {};
       that.counter = 0;
@@ -82,7 +83,8 @@ export class UploadDialog extends Component {
   uploadImages = () => {
     const that = this;
     let imageFiles = [];
-
+    store.dispatch(addImagesAction([]));
+    store.dispatch(toggleSpinnerAction());
     // Check images for correct file format
     for (let imageFile of this.state.imageFiles) {
       const fileExtension = imageFile.name.split('.').pop();
@@ -151,11 +153,6 @@ export class UploadDialog extends Component {
             </Button>
           </DialogActions>
         </Dialog>
-
-        <UploadSnackbar
-          open={this.state.snackbar}
-          onClose={this.toggleSnackbar}
-        />
       </React.Fragment>
     );
   }
