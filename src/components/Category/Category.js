@@ -49,14 +49,12 @@ class Category extends PureComponent {
   };
 
   toggleEditCategoryDialog = () => {
-    console.log(true);
     this.setState({
       editCategoryDialogToggled: !this.state.editCategoryDialogToggled
     });
   };
 
   toggleDeleteCategoryDialog = () => {
-    console.log(true);
     this.setState({
       deleteCategoryDialogOpen: !this.state.deleteCategoryDialogOpen
     });
@@ -162,32 +160,34 @@ class Category extends PureComponent {
                       primary="Display this only"
                     />
                   </MenuItem>
-                  <MenuItem
-                    onClick={() => {
-                      this.toggleEditCategoryDialog();
-                      this.setState({ anchorEl: null });
-                    }}
-                    className={classes.menuItem}
-                  >
-                    <ListItemText
-                      classes={{ primary: classes.primary }}
-                      primary="Edit"
-                    />
-                  </MenuItem>
-
                   {identifier !== null ? (
-                    <MenuItem
-                      onClick={() => {
-                        this.toggleDeleteCategoryDialog();
-                        this.setState({ anchorEl: null });
-                      }}
-                      className={classes.menuItem}
-                    >
-                      <ListItemText
-                        classes={{ primary: classes.primary }}
-                        primary="Delete"
-                      />
-                    </MenuItem>
+                    <React.Fragment>
+                      <MenuItem
+                        onClick={() => {
+                          this.toggleEditCategoryDialog();
+                          this.setState({ anchorEl: null });
+                        }}
+                        className={classes.menuItem}
+                      >
+                        <ListItemText
+                          classes={{ primary: classes.primary }}
+                          primary="Edit"
+                        />
+                      </MenuItem>
+
+                      <MenuItem
+                        onClick={() => {
+                          this.toggleDeleteCategoryDialog();
+                          this.setState({ anchorEl: null });
+                        }}
+                        className={classes.menuItem}
+                      >
+                        <ListItemText
+                          classes={{ primary: classes.primary }}
+                          primary="Delete"
+                        />
+                      </MenuItem>
+                    </React.Fragment>
                   ) : null}
                 </MenuList>
               </Paper>
