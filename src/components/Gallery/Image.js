@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
-class Image extends Component {
+class Image extends PureComponent {
   constructor() {
     super();
     this.state = {
