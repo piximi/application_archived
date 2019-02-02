@@ -52,7 +52,9 @@ class Item extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    if (
+    if (this.state.imageViewerDialogOpen !== nextState.imageViewerDialogOpen)
+      return true;
+    else if (
       nextProps.selectedItems.includes(this.props.item.id) !==
       this.props.selectedItems.includes(this.props.item.id)
     )
@@ -69,7 +71,6 @@ class Item extends Component {
       JSON.stringify(this.props.containerStyle)
     )
       return true;
-
     return false;
   }
 

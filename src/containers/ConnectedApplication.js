@@ -5,11 +5,12 @@ import {
   updateImageCategoryAction,
   updateImageProbabilityAction
 } from '../actions/images';
+import { getVisibleImages } from '../selectors/images';
 
 const mapStateToProps = state => {
   return {
     categories: state.categories,
-    images: state.images,
+    images: getVisibleImages(state),
     spinnerActive: state.settings.spinnerActive
   };
 };

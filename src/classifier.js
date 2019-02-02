@@ -197,7 +197,7 @@ function passResults(imgId, predictions) {
 
 async function fitAndPredict(images, allCategories) {
   categories = allCategories.slice(1, categories.length);
-  const imageTags = createImageTags(images.images, categories);
+  const imageTags = createImageTags(images, categories);
   const dataset = new Dataset();
   dataset.loadFromArray(imageTags);
   run(dataset);
