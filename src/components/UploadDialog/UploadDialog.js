@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styles from './UploadDialog.css';
+import className from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import hash from 'string-hash';
 import {
@@ -133,15 +134,6 @@ export class UploadDialog extends Component {
           </DialogTitle>
 
           <DialogContent className={classes.dialogContent}>
-            {/* <Button>
-              <input
-                type="file"
-                accept="image/*"
-                ref={node => this._addDirectory(node)}
-                onChange={this.onChange()}
-              />
-            </Button> */}
-
             <input
               accept="image/*"
               className={classes.input}
@@ -154,7 +146,8 @@ export class UploadDialog extends Component {
             <label htmlFor="raised-button-file">
               <Button
                 variant="contained"
-                className={classes.selectFolderButton}
+                color="primary"
+                className={className(classes.bootstrapRoot)}
                 component="span"
               >
                 Select Folder
