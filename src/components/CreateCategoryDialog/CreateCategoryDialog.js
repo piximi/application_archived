@@ -14,6 +14,7 @@ import {
 } from '@material-ui/core';
 import LabelIcon from '@material-ui/icons/Label';
 import ColorPicker from '../ColorPicker/ColorPicker';
+import { colors } from '../../constants';
 
 function Transition(props) {
   return <Zoom {...props} />;
@@ -25,6 +26,26 @@ class CreateCategoryDialog extends Component {
     color: '#FF0000',
     description: ''
   };
+
+  componentDidUpdate(prevProps, prevState) {
+    const prevUsedColors = prevProps.categories.map(category => {
+      if (category.color === undefined) return null;
+      return category.color.toUpperCase();
+    });
+
+    // Use default color when runnning out of colors
+    if (prevUsedColors.length > colors.length) return;
+
+    const usedColors = this.props.categories.map(category =>
+      category.color.toUpperCase()
+    );
+    const availableColors = colors.filter(color => !usedColors.includes(color));
+    if (JSON.stringify(prevUsedColors) !== JSON.stringify(usedColors)) {
+      let color =
+        availableColors[Math.floor(Math.random() * availableColors.length)];
+      this.setState({ color: color });
+    }
+  }
 
   onColorChange = (color, event) => {
     this.setState({
@@ -54,13 +75,18 @@ class CreateCategoryDialog extends Component {
     });
   };
 
+  createCategory = (color, description) => {
+    this.props.createCategory(color, description);
+    this.onClose();
+  };
+
   onClose = () => {
     this.setState({ description: '' });
     this.props.onClose();
   };
 
   render() {
-    const { classes, createCategory, open, categories } = this.props;
+    const { classes, open, categories } = this.props;
 
     return (
       <Dialog open={open} TransitionComponent={Transition}>
@@ -99,10 +125,9 @@ class CreateCategoryDialog extends Component {
 
           <Button
             color="primary"
-            onClick={() => {
-              createCategory(this.state.color, this.state.description);
-              this.onClose();
-            }}
+            onClick={() =>
+              this.createCategory(this.state.color, this.state.description)
+            }
           >
             Create category
           </Button>
