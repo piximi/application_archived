@@ -14,7 +14,10 @@ import {
 import { toggleSpinnerAction } from '../actions/settings';
 
 const mapStateToProps = state => {
-  return state;
+  return {
+    images: state.images,
+    categories: state.categories
+  };
 };
 
 const mapDispatchToProps = dispatch => {

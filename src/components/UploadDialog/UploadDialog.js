@@ -14,6 +14,7 @@ import {
 import FolderIcon from '@material-ui/icons/Folder';
 import { store } from '../../index';
 import { addImagesAction } from '../../actions/images';
+import { addCategoriesAction } from '../../actions/categories';
 import { toggleSpinnerAction } from '../../actions/settings';
 
 // Add valid file formats here
@@ -53,6 +54,7 @@ const readFile = (currentFile, that, noImageFiles) => {
     if (that.counter === noImageFiles) {
       store.dispatch(toggleSpinnerAction());
       store.dispatch(addImagesAction(that.imageData));
+      store.dispatch(addCategoriesAction([]));
       that.imageData = {};
       that.counter = 0;
     }

@@ -79,7 +79,7 @@ class Sidebar extends PureComponent {
 
           <OpenSampleListItem loadDemoProject={loadDemoProject} />
 
-          <Save images={images.images} categories={categories} />
+          <Save images={images} categories={categories} />
         </List>
 
         <Divider />

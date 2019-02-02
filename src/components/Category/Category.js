@@ -161,33 +161,33 @@ class Category extends PureComponent {
                     />
                   </MenuItem>
                   {identifier !== null ? (
-                    <React.Fragment>
-                      <MenuItem
-                        onClick={() => {
-                          this.toggleEditCategoryDialog();
-                          this.setState({ anchorEl: null });
-                        }}
-                        className={classes.menuItem}
-                      >
-                        <ListItemText
-                          classes={{ primary: classes.primary }}
-                          primary="Edit"
-                        />
-                      </MenuItem>
+                    <MenuItem
+                      onClick={() => {
+                        this.toggleEditCategoryDialog();
+                        this.setState({ anchorEl: null });
+                      }}
+                      className={classes.menuItem}
+                    >
+                      <ListItemText
+                        classes={{ primary: classes.primary }}
+                        primary="Edit"
+                      />
+                    </MenuItem>
+                  ) : null}
 
-                      <MenuItem
-                        onClick={() => {
-                          this.toggleDeleteCategoryDialog();
-                          this.setState({ anchorEl: null });
-                        }}
-                        className={classes.menuItem}
-                      >
-                        <ListItemText
-                          classes={{ primary: classes.primary }}
-                          primary="Delete"
-                        />
-                      </MenuItem>
-                    </React.Fragment>
+                  {identifier !== null ? (
+                    <MenuItem
+                      onClick={() => {
+                        this.toggleDeleteCategoryDialog();
+                        this.setState({ anchorEl: null });
+                      }}
+                      className={classes.menuItem}
+                    >
+                      <ListItemText
+                        classes={{ primary: classes.primary }}
+                        primary="Delete"
+                      />
+                    </MenuItem>
                   ) : null}
                 </MenuList>
               </Paper>

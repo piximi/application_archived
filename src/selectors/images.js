@@ -13,9 +13,8 @@ const getVisibleCategories = state => {
 
 export const selectVisibleImages = state => {
   let result = {};
-  for (let key in state.images.images) {
-    if (state.images.images[key].visible)
-      result[key] = state.images.images[key];
+  for (let key in state.images) {
+    if (state.images[key].visible) result[key] = state.images[key];
   }
   return result;
 };
