@@ -131,7 +131,7 @@ export class UploadDialog extends Component {
       <React.Fragment>
         <Dialog open={open} onClose={onClose} TransitionComponent={Transition}>
           <DialogTitle id="form-dialog-title">
-            Upload directory with images
+            Open directory with images
           </DialogTitle>
 
           <DialogContent className={classes.dialogContent}>
