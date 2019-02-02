@@ -14,10 +14,6 @@ class Items extends PureComponent {
   }
 
   static getDerivedStateFromProps(props, state) {
-    if (state.prevImages === props.images) {
-      return null;
-    }
-
     let picturesPerRow = props.imagesPerRow;
     const noImages = props.images.length;
     const quotient = Math.floor(noImages / picturesPerRow);

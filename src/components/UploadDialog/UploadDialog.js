@@ -53,8 +53,8 @@ const readFile = (currentFile, that, noImageFiles) => {
     that.counter = that.counter + 1;
     if (that.counter === noImageFiles) {
       store.dispatch(toggleSpinnerAction());
-      store.dispatch(addImagesAction(that.imageData));
       store.dispatch(addCategoriesAction([]));
+      store.dispatch(addImagesAction(that.imageData));
       that.imageData = {};
       that.counter = 0;
     }

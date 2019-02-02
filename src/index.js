@@ -6,6 +6,7 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import reducer from './reducers';
 import { PersistGate } from 'redux-persist/es/integration/react';
@@ -28,6 +29,10 @@ ReactDOM.render(
 registerServiceWorker();
 
 function initializeRedux() {
+  const composeEnhancers = composeWithDevTools({
+    // Specify custom devTools options
+  });
+
   const persistConfig = {
     key: 'root',
     storage: localforage,
@@ -37,7 +42,13 @@ function initializeRedux() {
 
   // TODO: start with empty project in the future
 
-  const store = createStore(persistedReducer, applyMiddleware(thunk));
+  const store = createStore(
+    persistedReducer,
+    composeEnhancers(
+      applyMiddleware(thunk)
+      // other store enhancers if any
+    )
+  );
   const persistor = persistStore(store);
   return { store, persistor };
 }
