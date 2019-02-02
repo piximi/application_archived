@@ -82,7 +82,7 @@ class Save extends Component {
               >
                 <ListItemText
                   classes={{ primary: classes.primary }}
-                  primary="Save Project"
+                  primary="Save Project (.cyto)"
                 />
               </MenuItem>
               <MenuItem

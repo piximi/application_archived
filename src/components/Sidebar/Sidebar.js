@@ -73,7 +73,7 @@ class Sidebar extends PureComponent {
               <ListItemIcon>
                 <FolderOpenIcon />
               </ListItemIcon>
-              <ListItemText inset primary="Open..." />
+              <ListItemText inset primary="Open .cyto" />
             </ListItem>
           </label>
 
