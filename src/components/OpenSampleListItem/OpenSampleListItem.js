@@ -25,7 +25,7 @@ class OpenSampleListItem extends PureComponent {
             <FolderOpenIcon />
           </ListItemIcon>
 
-          <ListItemText inset primary="Open sample" />
+          <ListItemText inset primary="Open demo" />
         </ListItem>
 
         <OpenDialog

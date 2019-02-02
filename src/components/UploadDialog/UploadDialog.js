@@ -11,6 +11,7 @@ import {
   DialogTitle,
   Zoom
 } from '@material-ui/core';
+import FolderIcon from '@material-ui/icons/Folder';
 import { store } from '../../index';
 import { addImagesAction } from '../../actions/images';
 import { toggleSpinnerAction } from '../../actions/settings';
@@ -151,6 +152,7 @@ export class UploadDialog extends Component {
                 component="span"
               >
                 Select Folder
+                <FolderIcon className={className(classes.folderIcon)} />
               </Button>
             </label>
           </DialogContent>

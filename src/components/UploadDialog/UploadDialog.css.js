@@ -11,7 +11,7 @@ const styles = theme => ({
     boxShadow: 'none',
     textTransform: 'none',
     fontSize: 16,
-    marginTop: '6px',
+    margin: '6px',
     padding: '6px 12px',
     border: '1px solid',
     lineHeight: 1.5,
@@ -41,6 +41,10 @@ const styles = theme => ({
     '&:focus': {
       boxShadow: '0 0 0 0.2rem rgba(0,123,255,.5)'
     }
+  },
+
+  folderIcon: {
+    marginLeft: '6px'
   }
 });
 
