@@ -123,7 +123,7 @@ export class UploadDialog extends Component {
   }
 
   render() {
-    const { onClose, open } = this.props;
+    const { onClose, open, classes } = this.props;
 
     return (
       <React.Fragment>
@@ -132,15 +132,34 @@ export class UploadDialog extends Component {
             Upload directory with images
           </DialogTitle>
 
-          <DialogContent>
-            <Button>
+          <DialogContent className={classes.dialogContent}>
+            {/* <Button>
               <input
                 type="file"
                 accept="image/*"
                 ref={node => this._addDirectory(node)}
                 onChange={this.onChange()}
               />
-            </Button>
+            </Button> */}
+
+            <input
+              accept="image/*"
+              className={classes.input}
+              id="raised-button-file"
+              multiple
+              type="file"
+              ref={node => this._addDirectory(node)}
+              onChange={this.onChange()}
+            />
+            <label htmlFor="raised-button-file">
+              <Button
+                variant="contained"
+                className={classes.selectFolderButton}
+                component="span"
+              >
+                Select Folder
+              </Button>
+            </label>
           </DialogContent>
 
           <DialogActions>
