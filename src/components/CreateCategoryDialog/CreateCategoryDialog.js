@@ -23,7 +23,7 @@ function Transition(props) {
 class CreateCategoryDialog extends Component {
   state = {
     anchor: null,
-    color: '#FF0000',
+    color: '#00e676',
     description: ''
   };
 
@@ -39,7 +39,9 @@ class CreateCategoryDialog extends Component {
     const usedColors = this.props.categories.map(category =>
       category.color.toUpperCase()
     );
-    const availableColors = colors.filter(color => !usedColors.includes(color));
+    const availableColors = colors.filter(
+      color => !usedColors.includes(color.toUpperCase())
+    );
     if (JSON.stringify(prevUsedColors) !== JSON.stringify(usedColors)) {
       let color =
         availableColors[Math.floor(Math.random() * availableColors.length)];

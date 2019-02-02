@@ -8,7 +8,9 @@ class ColorPicker extends PureComponent {
   render() {
     const { onChange, categories } = this.props;
     const usedColors = categories.map(category => category.color.toUpperCase());
-    const availableColors = colors.filter(color => !usedColors.includes(color));
+    const availableColors = colors.filter(
+      color => !usedColors.includes(color.toUpperCase())
+    );
     return <CirclePicker colors={availableColors} onChange={onChange} />;
   }
 }
