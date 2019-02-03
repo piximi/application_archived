@@ -20,7 +20,12 @@ import { toggleSpinnerAction } from '../../actions/settings';
 // Add valid file formats here
 const validFileExtensions = ['png'];
 
-function createImage(bytes, pathname, checksum) {
+function allImagesLoaded(noImageFiles, loadedImages) {
+  if (noImageFiles === loadedImages) return true;
+  else return false;
+}
+
+function createImage(bytes, pathname, checksum, noImageFiles, that) {
   let image = {};
   let img = new Image();
   img.onload = function() {
@@ -38,9 +43,19 @@ function createImage(bytes, pathname, checksum) {
     image['brightness'] = 100;
     image['contrast'] = 100;
     image['unselectedChannels'] = [];
+    that.imageData.push(image);
+    if (allImagesLoaded(noImageFiles, that.imageData.length)) {
+      store.dispatch(toggleSpinnerAction());
+      store.dispatch(addCategoriesAction([]));
+      const newImageData = {};
+      for (let image of that.imageData) {
+        newImageData[image.id] = image;
+      }
+      store.dispatch(addImagesAction(newImageData));
+      that.imageData = [];
+    }
   };
   img.src = bytes;
-  return image;
 }
 
 const readFile = (currentFile, that, noImageFiles) => {
@@ -48,16 +63,7 @@ const readFile = (currentFile, that, noImageFiles) => {
   return e => {
     const bytes = e.target.result;
     const checksum = String(hash(bytes));
-    const image = createImage(bytes, pathname, checksum, currentFile);
-    that.imageData[checksum] = image;
-    that.counter = that.counter + 1;
-    if (that.counter === noImageFiles) {
-      store.dispatch(toggleSpinnerAction());
-      store.dispatch(addCategoriesAction([]));
-      store.dispatch(addImagesAction(that.imageData));
-      that.imageData = {};
-      that.counter = 0;
-    }
+    createImage(bytes, pathname, checksum, noImageFiles, that);
   };
 };
 
@@ -69,8 +75,7 @@ export class UploadDialog extends Component {
   constructor(props) {
     super(props);
     this.imageFiles = [];
-    this.imageData = {};
-    this.counter = 0;
+    this.imageData = [];
     this.state = {
       images: [],
       snackbar: false
@@ -86,19 +91,21 @@ export class UploadDialog extends Component {
 
   uploadImages = () => {
     const that = this;
-    let imageFiles = [];
-    store.dispatch(addImagesAction([]));
+    let validImageFiles = [];
+    store.dispatch(addImagesAction({}));
     store.dispatch(toggleSpinnerAction());
+
     // Check images for correct file format
     for (let imageFile of this.state.imageFiles) {
       const fileExtension = imageFile.name.split('.').pop();
       if (validFileExtensions.includes(fileExtension))
-        imageFiles.push(imageFile);
+        validImageFiles.push(imageFile);
     }
-    const noImageFiles = imageFiles.length;
-    for (let imageFile of imageFiles) {
+    const noValidImageFiles = validImageFiles.length;
+
+    for (let imageFile of validImageFiles) {
       const reader = new FileReader();
-      reader.onload = readFile(imageFile, that, noImageFiles);
+      reader.onload = readFile(imageFile, that, noValidImageFiles);
       reader.readAsDataURL(imageFile, that);
     }
   };
@@ -110,7 +117,7 @@ export class UploadDialog extends Component {
   };
 
   onClickCancelButton = () => {
-    this.setState({ images: [] });
+    this.setState({ images: [], imageFiles: null });
     this.props.onClose();
   };
 
