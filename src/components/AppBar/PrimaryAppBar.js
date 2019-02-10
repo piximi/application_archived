@@ -40,9 +40,9 @@ class PrimaryAppBar extends PureComponent {
           <Logo />
 
           <Grid container className={classes.root} spacing={16}>
-            <Grid item xs={2} />
+            <Grid item xl={1} lg={2} md={3} sm={4} />
 
-            <Grid item xs={4}>
+            <Grid item xl={2} lg={3} md={3} sm={3}>
               <ConnectedSearch />
             </Grid>
 
