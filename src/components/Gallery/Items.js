@@ -19,8 +19,9 @@ class Items extends PureComponent {
     if (props.windowWidth > 0) {
       if (props.windowWidth - props.decreaseWidth < 900) picturesPerRow = 5;
       if (props.windowWidth - props.decreaseWidth < 850) picturesPerRow = 4;
-      if (props.windowWidth - props.decreaseWidth < 750) picturesPerRow = 3;
-      if (props.windowWidth - props.decreaseWidth < 400) picturesPerRow = 1;
+      if (props.windowWidth - props.decreaseWidth < 700) picturesPerRow = 3;
+      if (props.windowWidth - props.decreaseWidth < 450) picturesPerRow = 2;
+      if (props.windowWidth - props.decreaseWidth < 200) picturesPerRow = 1;
     }
 
     const noImages = props.images.length;

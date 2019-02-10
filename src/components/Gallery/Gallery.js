@@ -23,7 +23,7 @@ class Gallery extends PureComponent {
       shiftKeyPressed: false,
       altKeyPressed: false,
       mouseDown: false,
-      windowWidth: 0
+      windowWidth: window.innerWidth
     };
   }
 
