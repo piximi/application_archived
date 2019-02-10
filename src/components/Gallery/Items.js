@@ -16,9 +16,11 @@ class Items extends PureComponent {
   static getDerivedStateFromProps(props, state) {
     let picturesPerRow = props.imagesPerRow;
     // Media queries
-    if (props.windowWidth < 1100) picturesPerRow = 4;
-    if (props.windowWidth < 800) picturesPerRow = 2;
-    if (props.windowWidth < 400) picturesPerRow = 1;
+    if (props.windowWidth - props.decreaseWidth < 900) picturesPerRow = 5;
+    if (props.windowWidth - props.decreaseWidth < 850) picturesPerRow = 4;
+    if (props.windowWidth - props.decreaseWidth < 810) picturesPerRow = 3;
+    if (props.windowWidth - props.decreaseWidth < 400) picturesPerRow = 1;
+
     const noImages = props.images.length;
     const quotient = Math.floor(noImages / picturesPerRow);
     const remainder = noImages % picturesPerRow;
