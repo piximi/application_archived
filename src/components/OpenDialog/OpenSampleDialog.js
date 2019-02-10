@@ -40,7 +40,13 @@ class OpenSampleDialog extends Component {
 
         <DialogContent classes={{ root: classes.dialogContent }}>
           <List>
-            <ListItem button onClick={onClose}>
+            <ListItem
+              button
+              onClick={() => {
+                onClose();
+                loadDemoProject('cifar10');
+              }}
+            >
               <ListItemAvatar>
                 <Avatar src={CIFAR10}>
                   <AddIcon />
@@ -49,11 +55,16 @@ class OpenSampleDialog extends Component {
               <ListItemText
                 primary="CIFAR-10"
                 secondary="Our CIFAR-10 dataset contains 10.000 32×32 color photographs in 10 different categories."
-                onClick={() => loadDemoProject('cifar10')}
               />
             </ListItem>
 
-            <ListItem button onClick={onClose}>
+            <ListItem
+              button
+              onClick={() => {
+                onClose();
+                loadDemoProject('cifar10');
+              }}
+            >
               <ListItemAvatar>
                 <Avatar src={CIFAR100}>
                   <AddIcon />
@@ -62,11 +73,16 @@ class OpenSampleDialog extends Component {
               <ListItemText
                 primary="CIFAR-100"
                 secondary="The CIFAR-100 dataset consists of 10,000 32 × 32 color photographs in 100 classes."
-                onClick={() => loadDemoProject('cifar10')}
               />
             </ListItem>
 
-            <ListItem button onClick={onClose}>
+            <ListItem
+              button
+              onClick={() => {
+                onClose();
+                loadDemoProject('mnist');
+              }}
+            >
               <ListItemAvatar>
                 <Avatar src={MNIST}>
                   <AddIcon />
@@ -75,7 +91,6 @@ class OpenSampleDialog extends Component {
               <ListItemText
                 primary="MNIST"
                 secondary="Our MNIST dataset consists of 10,000 28 × 28 handwritten digits in 10 classes."
-                onClick={() => loadDemoProject('mnist')}
               />
             </ListItem>
           </List>
