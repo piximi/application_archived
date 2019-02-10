@@ -22,13 +22,15 @@ class Gallery extends PureComponent {
       currentlyDraggedItem: null,
       shiftKeyPressed: false,
       altKeyPressed: false,
-      mouseDown: false
+      mouseDown: false,
+      windowWidth: 0
     };
   }
 
   componentDidMount() {
     document.addEventListener('keydown', this.keyEvent);
     document.addEventListener('keyup', this.keyEvent);
+    window.addEventListener('resize', this.windowResizeEvent);
   }
 
   onmousedown = e => {
@@ -132,6 +134,10 @@ class Gallery extends PureComponent {
     });
   };
 
+  windowResizeEvent = e => {
+    this.setState({ windowWidth: e.target.innerWidth });
+  };
+
   render() {
     const { images, imagesPerRow, decreaseWidth, callOnDragEnd } = this.props;
     // Check if no images are visible or available
@@ -152,6 +158,7 @@ class Gallery extends PureComponent {
         <Items
           images={images}
           imagesPerRow={imagesPerRow}
+          windowWidth={this.state.windowWidth}
           decreaseWidth={decreaseWidth}
           selectItem={this.selectItem}
           selectedItems={this.state.selected}
