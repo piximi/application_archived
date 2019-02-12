@@ -23,7 +23,7 @@ function Transition(props) {
 class CreateCategoryDialog extends Component {
   state = {
     anchor: null,
-    color: '#ff0000',
+    color: '#00e676',
     description: ''
   };
 
@@ -88,10 +88,7 @@ class CreateCategoryDialog extends Component {
   };
 
   render() {
-    const { classes, createCategory, onClose, open, categories } = this.props;
-    let colors = categories.map(function(c) {
-      return c.color;
-    });
+    const { classes, open, categories } = this.props;
 
     return (
       <Dialog open={open} TransitionComponent={Transition}>
@@ -152,7 +149,10 @@ class CreateCategoryDialog extends Component {
           }}
         >
           <div className={classes.colorPicker}>
-            <ColorPicker colors={colors} onChange={this.onColorChange} />
+            <ColorPicker
+              categories={categories}
+              onChange={this.onColorChange}
+            />
           </div>
         </Popover>
       </Dialog>
