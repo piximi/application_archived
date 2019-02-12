@@ -21,13 +21,16 @@ class Gallery extends PureComponent {
       selectionBoxVisibility: 'hidden',
       currentlyDraggedItem: null,
       shiftKeyPressed: false,
-      mouseDown: false
+      altKeyPressed: false,
+      mouseDown: false,
+      windowWidth: window.innerWidth
     };
   }
 
   componentDidMount() {
     document.addEventListener('keydown', this.keyEvent);
     document.addEventListener('keyup', this.keyEvent);
+    window.addEventListener('resize', this.windowResizeEvent);
   }
 
   onmousedown = e => {
@@ -87,20 +90,36 @@ class Gallery extends PureComponent {
   };
 
   selectItem = imgId => {
+    let selectedItems = [...this.state.selected];
+    const noSelectedItems = selectedItems.length;
     // Check if clicked on an already selected item
-    if (this.state.selected.includes(imgId)) {
+    if (selectedItems.includes(imgId)) {
       return;
     }
     // Check if shiftkey is pressed
     if (this.state.shiftKeyPressed) {
-      let copySelected = [...this.state.selected];
-      copySelected.push(imgId);
-      this.setState({ selected: copySelected });
-      this.props.setSelectedImages(copySelected);
-    } else {
-      this.props.setSelectedImages([imgId]);
-      this.setState({ selected: [imgId] });
+      selectedItems.push(imgId);
     }
+    // Check if alt keys is pressed
+    else if (this.state.altKeyPressed) {
+      // Select a range of images
+      let selectOthers = false;
+      const lastSelected = selectedItems[selectedItems.length - 1];
+      for (let image of this.props.images) {
+        if (image.id === imgId || image.id === lastSelected) {
+          selectedItems.push(image.id);
+          selectOthers = !selectOthers;
+        }
+        if (selectOthers && noSelectedItems !== 0) selectedItems.push(image.id);
+      }
+    }
+    // No special key pressed
+    else {
+      selectedItems = [imgId];
+    }
+    // Set selected state
+    this.props.setSelectedImages(selectedItems);
+    this.setState({ selected: selectedItems });
   };
 
   setCurrentlyDraggedItem = value => {
@@ -109,12 +128,18 @@ class Gallery extends PureComponent {
   };
 
   keyEvent = e => {
-    this.setState({ shiftKeyPressed: e.shiftKey });
+    this.setState({
+      shiftKeyPressed: e.shiftKey,
+      altKeyPressed: e.getModifierState('Alt')
+    });
+  };
+
+  windowResizeEvent = e => {
+    this.setState({ windowWidth: e.target.innerWidth });
   };
 
   render() {
     const { images, imagesPerRow, decreaseWidth, callOnDragEnd } = this.props;
-
     // Check if no images are visible or available
     if (images.length === 0) return null;
 
@@ -133,6 +158,7 @@ class Gallery extends PureComponent {
         <Items
           images={images}
           imagesPerRow={imagesPerRow}
+          windowWidth={this.state.windowWidth}
           decreaseWidth={decreaseWidth}
           selectItem={this.selectItem}
           selectedItems={this.state.selected}

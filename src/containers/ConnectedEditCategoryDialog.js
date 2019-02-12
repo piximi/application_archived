@@ -6,7 +6,9 @@ import {
 import EditCategoryDialog from '../components/EditCategoryDialog/EditCategoryDialog';
 
 const mapStateToProps = state => {
-  return state;
+  return {
+    categories: state.categories
+  };
 };
 
 const mapDispatchToProps = (dispatch, props) => {

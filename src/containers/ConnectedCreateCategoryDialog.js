@@ -6,7 +6,9 @@ import uuidv4 from 'uuid';
 let index = 0;
 
 const mapStateToProps = state => {
-  return state;
+  return {
+    categories: state.categories
+  };
 };
 
 const mapDispatchToProps = (dispatch, props) => {
@@ -21,8 +23,6 @@ const mapDispatchToProps = (dispatch, props) => {
       };
 
       dispatch(createCategoryAction(category));
-
-      props.onClose();
     }
   };
 };

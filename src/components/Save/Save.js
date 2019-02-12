@@ -41,9 +41,11 @@ class Save extends Component {
   };
 
   clickOnExportProject = () => {
+    let categories = [...this.props.categories];
+    categories.shift();
     const exportObject = {
       images: this.props.images,
-      categories: this.props.categories,
+      categories: categories,
       settings: this.props.settings
     };
     const json = JSON.stringify(exportObject, null, '\t');
@@ -85,7 +87,7 @@ class Save extends Component {
               >
                 <ListItemText
                   classes={{ primary: classes.primary }}
-                  primary="Save Project"
+                  primary="Save Project (.cyto)"
                 />
               </MenuItem>
               <MenuItem

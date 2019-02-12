@@ -22,7 +22,7 @@ import CloseIcon from '@material-ui/icons/Close';
 
 class OpenSampleDialog extends Component {
   render() {
-    const { classes, open, onClose } = this.props;
+    const { classes, open, onClose, loadDemoProject } = this.props;
 
     return (
       <Dialog fullWidth={true} maxWidth="sm" open={open}>
@@ -40,7 +40,13 @@ class OpenSampleDialog extends Component {
 
         <DialogContent classes={{ root: classes.dialogContent }}>
           <List>
-            <ListItem button onClick={onClose}>
+            <ListItem
+              button
+              onClick={() => {
+                onClose();
+                loadDemoProject('cifar10');
+              }}
+            >
               <ListItemAvatar>
                 <Avatar src={CIFAR10}>
                   <AddIcon />
@@ -48,11 +54,17 @@ class OpenSampleDialog extends Component {
               </ListItemAvatar>
               <ListItemText
                 primary="CIFAR-10"
-                secondary="The CIFAR-10 dataset contains 60,000 32×32 color photographs in 10 different categories. There are 6,000 images of each category. The categories are completely mutually exclusive."
+                secondary="Our CIFAR-10 dataset contains 10.000 32×32 color photographs in 10 different categories."
               />
             </ListItem>
 
-            <ListItem button onClick={onClose}>
+            <ListItem
+              button
+              onClick={() => {
+                onClose();
+                loadDemoProject('cifar10');
+              }}
+            >
               <ListItemAvatar>
                 <Avatar src={CIFAR100}>
                   <AddIcon />
@@ -60,11 +72,17 @@ class OpenSampleDialog extends Component {
               </ListItemAvatar>
               <ListItemText
                 primary="CIFAR-100"
-                secondary="The CIFAR-100 dataset consists of 60,000 32 × 32 color photographs in 100 classes."
+                secondary="The CIFAR-100 dataset consists of 10,000 32 × 32 color photographs in 100 classes."
               />
             </ListItem>
 
-            <ListItem button onClick={onClose}>
+            <ListItem
+              button
+              onClick={() => {
+                onClose();
+                loadDemoProject('mnist');
+              }}
+            >
               <ListItemAvatar>
                 <Avatar src={MNIST}>
                   <AddIcon />
@@ -72,7 +90,7 @@ class OpenSampleDialog extends Component {
               </ListItemAvatar>
               <ListItemText
                 primary="MNIST"
-                secondary="The MNIST dataset consists of 60,000 18 × 18 handwritten digits in 10 classes."
+                secondary="Our MNIST dataset consists of 10,000 28 × 28 handwritten digits in 10 classes."
               />
             </ListItem>
           </List>

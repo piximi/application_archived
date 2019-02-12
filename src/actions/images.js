@@ -4,7 +4,6 @@ import {
   SET_IMAGE_CATEGORY_TO_NULL_BASED_ON_CATEGORY,
   UPDATE_IMAGE_VISIBILITY,
   UPDATE_IMAGE_VISIBILTY_BASED_ON_CATEGORY,
-  UPDATE_UNLABELED_VISIBILITY,
   ONLY_SHOW_IMAGES_WITH_CERTAIN_CATEGORY,
   UPDATE_PROBABILITY,
   UPDATE_CATEGORY_AND_PROBABILITY,
@@ -43,12 +42,6 @@ export const updateImageVisibilityBasedOnCategoryAction = (
   type: UPDATE_IMAGE_VISIBILTY_BASED_ON_CATEGORY,
   categoryIdentifier,
   value
-});
-
-// Call to toggle the visibility of unlabeled images
-export const updateUnlabeledVisibilityAction = images => ({
-  type: UPDATE_UNLABELED_VISIBILITY,
-  images
 });
 
 export const updateImageVisibilityAction = images => ({

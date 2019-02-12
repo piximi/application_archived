@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { Fab, Tooltip } from '@material-ui/core';
-import LabelOffOutlinedIcon from '@material-ui/icons/LabelOffOutlined';
-import LabelOutlinedIcon from '@material-ui/icons/LabelOutlined';
+import { PacmanLoader } from 'react-spinners';
 import styles from './Application.css';
 import classNames from 'classnames';
 import ConnectedSidebar from '../../containers/ConnectedSidebar';
@@ -12,14 +10,38 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContext } from 'react-dnd';
 import Gallery from '../Gallery/Gallery';
 
+function createImageCollection(images, categories) {
+  const IMAGES = Object.values(images).map(image => {
+    let category = findCategory(image.category, categories);
+    let categoryColor = 'white';
+    if (category !== undefined) {
+      categoryColor = category.color;
+      category = category.identifier;
+    }
+    return { ...image, category: category, color: categoryColor };
+  });
+  return IMAGES;
+}
+
+function findCategory(identifier, categories) {
+  return categories.find(function(category) {
+    return category.identifier === identifier;
+  });
+}
+
 class Application extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      images: [],
       selectedImages: [],
-      open: true,
-      displayUnlabeled: true
+      open: true
     };
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    const images = createImageCollection(props.images, props.categories);
+    return { images: images };
   }
 
   setSelectedImages = selectedImages => {
@@ -28,12 +50,6 @@ class Application extends Component {
 
   onClick = () => {
     this.setState({ open: !this.state.open });
-  };
-
-  findCategory = identifier => {
-    return this.props.categories.find(function(category) {
-      return category.identifier === identifier;
-    });
   };
 
   onSelectImage(index, image) {
@@ -46,34 +62,13 @@ class Application extends Component {
     });
   }
 
-  createImageCollection = () => {
-    const IMAGES = Object.values(this.props.images).map(image => {
-      let category = this.findCategory(image.category);
-      let categoryColor = 'white';
-      if (category !== undefined) {
-        categoryColor = category.color;
-        category = category.identifier;
-      }
-      return { ...image, category: category, color: categoryColor };
-    });
-    return IMAGES;
-  };
-
   setUnlabelledVisibility = value => {
     this.setState({ displayUnlabeled: value });
   };
 
   render() {
-    const {
-      classes,
-      updateImageCategory,
-      updateUnlabeledVisibility
-    } = this.props;
-
-    const { selectedImages } = this.state;
-
-    const IMAGES = this.createImageCollection();
-
+    const { classes, updateImageCategory, spinnerActive } = this.props;
+    const { images, selectedImages } = this.state;
     return (
       <div className={classes.appFrame}>
         <PrimaryAppBar
@@ -96,7 +91,7 @@ class Application extends Component {
           <div className={classes.drawerHeader} />
 
           <Gallery
-            images={IMAGES}
+            images={images}
             selectedImages={selectedImages}
             imagesPerRow={10}
             decreaseWidth={this.state.open ? 280 + 24 : 24}
@@ -104,34 +99,14 @@ class Application extends Component {
             setSelectedImages={this.setSelectedImages}
           />
 
-          <Tooltip
-            title={
-              (this.state.displayUnlabeled ? 'Hide' : 'Show') +
-              ' unlabeled images'
-            }
-          >
-            <Fab
-              style={{ position: 'fixed' }}
-              color="secondary"
-              className={
-                this.state.displayUnlabeled
-                  ? classes.unlabeledToggled
-                  : classes.unlabeledUntoggled
-              }
-              onClick={() => {
-                updateUnlabeledVisibility();
-                this.setState({
-                  displayUnlabeled: !this.state.displayUnlabeled
-                });
-              }}
-            >
-              {this.state.displayUnlabeled ? (
-                <LabelOffOutlinedIcon />
-              ) : (
-                <LabelOutlinedIcon />
-              )}
-            </Fab>
-          </Tooltip>
+          <div className={classes.pacmanLoader}>
+            <PacmanLoader
+              sizeUnit={'px'}
+              size={32}
+              color={'#6bd3b8'}
+              loading={spinnerActive}
+            />
+          </div>
         </main>
       </div>
     );

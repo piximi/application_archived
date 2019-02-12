@@ -50,7 +50,7 @@ class ModelList extends PureComponent {
               <PlayCircleOutlineIcon />
             </ListItemIcon>
 
-            <ListItemText primary="Fit" />
+            <ListItemText primary="Run Classifier" />
           </ListItem>
 
           <ListItem dense button component="label">

@@ -57,7 +57,6 @@ class Categories extends Component {
           <Collapse in={!this.state.collapsed} timeout="auto" unmountOnExit>
             {categories.map((category, index) => (
               <Category
-                categories={categories}
                 identifier={category.identifier}
                 key={category.identifier}
                 index={index}
