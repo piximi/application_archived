@@ -34,8 +34,10 @@ class Save extends Component {
   clickOnExportLabels = () => {
     const Json2csvParser = json2csv.Parser;
     const json2csvParser = new Json2csvParser({ fields });
+    debugger;
     const csv = json2csvParser.parse(this.props.images);
-    fileDownload(csv, 'labels.csv');
+    let fileName = 'labels.csv';
+    fileDownload(csv, fileName);
   };
 
   clickOnExportProject = () => {
@@ -45,7 +47,8 @@ class Save extends Component {
       settings: this.props.settings
     };
     const json = JSON.stringify(exportObject, null, '\t');
-    fileDownload(json, 'myProject.cyto');
+    let fileName = 'myProject.cyto';
+    fileDownload(json, fileName);
   };
 
   render() {
