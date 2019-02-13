@@ -10,12 +10,15 @@ import MenuList from '@material-ui/core/MenuList';
 import Paper from '@material-ui/core/Paper';
 import Popover from '@material-ui/core/Popover';
 import { fields } from '../../constants';
+import SaveDialog from '../SaveDialog/SaveDialog';
 
 class Save extends Component {
   constructor() {
     super();
     this.state = {
-      anchorEl: null
+      anchorEl: null,
+      saveDialogOpen: false,
+      defaultDialogText: ''
     };
   }
 
@@ -25,22 +28,38 @@ class Save extends Component {
     });
   };
 
+  handleCloseSaveDialog = () => {
+    this.setState({
+      saveDialogOpen: false
+    });
+  };
+
   handleClick = event => {
     this.setState({
       anchorEl: event.currentTarget
     });
   };
 
+  changeDefaultDialogText = event => {
+    this.setState({
+      defaultDialogText: event.target.value
+    });
+  };
+
   clickOnExportLabels = () => {
+    let fileName = this.state.defaultDialogText;
+    if (fileName.length === 0) fileName = 'labels.csv';
+    if (fileName.split('.').pop() !== 'csv') fileName = fileName + '.csv';
     const Json2csvParser = json2csv.Parser;
     const json2csvParser = new Json2csvParser({ fields });
-    debugger;
     const csv = json2csvParser.parse(this.props.images);
-    let fileName = 'labels.csv';
     fileDownload(csv, fileName);
   };
 
   clickOnExportProject = () => {
+    let fileName = this.state.defaultDialogText;
+    if (fileName.length === 0) fileName = 'MyProject.cyto';
+    if (fileName.split('.').pop() !== 'cyto') fileName = fileName + '.cyto';
     let categories = [...this.props.categories];
     categories.shift();
     const exportObject = {
@@ -49,7 +68,6 @@ class Save extends Component {
       settings: this.props.settings
     };
     const json = JSON.stringify(exportObject, null, '\t');
-    let fileName = 'myProject.cyto';
     fileDownload(json, fileName);
   };
 
@@ -81,7 +99,11 @@ class Save extends Component {
               <MenuItem
                 onClick={() => {
                   this.handleClose();
-                  this.clickOnExportProject();
+                  this.setState({
+                    saveDialogOpen: true,
+                    downloadFunction: this.clickOnExportProject,
+                    defaultDialogText: 'MyProject.cyto'
+                  });
                 }}
                 className={classes.menuItem}
               >
@@ -93,7 +115,11 @@ class Save extends Component {
               <MenuItem
                 onClick={() => {
                   this.handleClose();
-                  this.clickOnExportLabels();
+                  this.setState({
+                    saveDialogOpen: true,
+                    downloadFunction: this.clickOnExportLabels,
+                    defaultDialogText: 'labels.csv'
+                  });
                 }}
                 className={classes.menuItem}
               >
@@ -105,6 +131,15 @@ class Save extends Component {
             </MenuList>
           </Paper>
         </Popover>
+        {this.state.saveDialogOpen ? (
+          <SaveDialog
+            open={this.state.saveDialogOpen}
+            download={this.state.downloadFunction}
+            onClose={this.handleCloseSaveDialog}
+            defaultDialogText={this.state.defaultDialogText}
+            changeDefaultDialogText={this.changeDefaultDialogText}
+          />
+        ) : null}
       </React.Fragment>
     );
   }
