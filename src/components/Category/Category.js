@@ -88,7 +88,8 @@ class Category extends PureComponent {
       connectDropTarget,
       description,
       visible,
-      classes
+      classes,
+      categories
     } = this.props;
 
     const {
@@ -200,6 +201,7 @@ class Category extends PureComponent {
           categoryId={identifier}
           description={description}
           color={color}
+          categories={categories}
         />
         <ConnectedDeleteCategoryDialog
           onClose={this.toggleDeleteCategoryDialog}
