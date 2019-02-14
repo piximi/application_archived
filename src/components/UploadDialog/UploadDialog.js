@@ -77,8 +77,10 @@ export class UploadDialog extends Component {
     this.imageFiles = [];
     this.imageData = [];
     this.state = {
+      uploadButtonActive: false,
       images: [],
-      snackbar: false
+      snackbar: false,
+      selectFolderText: 'Select Folder'
     };
   }
 
@@ -94,6 +96,7 @@ export class UploadDialog extends Component {
     let validImageFiles = [];
     store.dispatch(addImagesAction({}));
     store.dispatch(toggleSpinnerAction());
+    this.setState({ imageFiles: [], uploadButtonActive: false });
 
     // Check images for correct file format
     for (let imageFile of this.state.imageFiles) {
@@ -102,7 +105,6 @@ export class UploadDialog extends Component {
         validImageFiles.push(imageFile);
     }
     const noValidImageFiles = validImageFiles.length;
-
     for (let imageFile of validImageFiles) {
       const reader = new FileReader();
       reader.onload = readFile(imageFile, that, noValidImageFiles);
@@ -114,16 +116,33 @@ export class UploadDialog extends Component {
     this.uploadImages();
     this.props.onClose();
     this.toggleSnackbar();
+    this.setState({
+      images: [],
+      imageFiles: null,
+      selectFolderText: 'Select Folder',
+      uploadButtonActive: false
+    });
   };
 
   onClickCancelButton = () => {
-    this.setState({ images: [], imageFiles: null });
     this.props.onClose();
+    this.setState({
+      images: [],
+      imageFiles: null,
+      selectFolderText: 'Select Folder',
+      uploadButtonActive: false
+    });
   };
 
   onChange = () => e => {
     const imageFiles = e.target.files;
-    this.setState({ imageFiles: imageFiles });
+    let path = imageFiles[0].webkitRelativePath;
+    let Folder = '/' + path.split('/')[0];
+    this.setState({
+      imageFiles: imageFiles,
+      uploadButtonActive: true,
+      selectFolderText: Folder
+    });
   };
 
   _addDirectory(node) {
@@ -160,7 +179,7 @@ export class UploadDialog extends Component {
                 className={className(classes.bootstrapRoot)}
                 component="span"
               >
-                Select Folder
+                {this.state.selectFolderText}
                 <FolderIcon className={className(classes.folderIcon)} />
               </Button>
             </label>
