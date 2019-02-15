@@ -52,7 +52,7 @@ class Save extends Component {
     if (fileName.split('.').pop() !== 'csv') fileName = fileName + '.csv';
     const Json2csvParser = json2csv.Parser;
     const json2csvParser = new Json2csvParser({ fields });
-    const csv = json2csvParser.parse(this.props.images);
+    const csv = json2csvParser.parse(Object.values(this.props.images));
     fileDownload(csv, fileName);
   };
 
