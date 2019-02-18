@@ -92,6 +92,11 @@ class Item extends Component {
     });
   }
 
+  myContextMenu = e => {
+    e.preventDefault();
+    console.log(true);
+  };
+
   render() {
     const {
       selectedItems,
@@ -113,6 +118,7 @@ class Item extends Component {
         type={'selectableElement'}
         imgid={imgId}
         onMouseDown={() => onmousedown(imgId)}
+        onContextMenu={this.myContextMenu}
         className={imgSelected ? 'selected' : 'unselected'}
       >
         <ItemLabel color={item.color} />
