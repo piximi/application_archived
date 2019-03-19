@@ -93,6 +93,12 @@ const styles = theme => ({
     whiteSpace: 'nowrap',
     verticalAlign: 'baseline',
     borderRadius: '.25em'
+  },
+
+  pacmanLoader: {
+    position: 'fixed',
+    top: '50%',
+    left: '50%'
   }
 });
 

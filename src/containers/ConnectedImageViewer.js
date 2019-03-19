@@ -11,7 +11,7 @@ import {
 
 const mapStateToProps = state => {
   return {
-    images: state.images.images
+    images: state.images
   };
 };
 

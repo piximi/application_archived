@@ -56,7 +56,14 @@ class EditCategoryDialog extends Component {
   };
 
   render() {
-    const { classes, updateCategory, onClose, open, categoryId } = this.props;
+    const {
+      classes,
+      updateCategory,
+      onClose,
+      open,
+      categoryId,
+      categories
+    } = this.props;
     return (
       <Dialog open={open} onClose={onClose}>
         <DialogContent>
@@ -120,7 +127,10 @@ class EditCategoryDialog extends Component {
           }}
         >
           <div className={classes.colorPicker}>
-            <ColorPicker onChange={this.onColorChange} />
+            <ColorPicker
+              categories={categories}
+              onChange={this.onColorChange}
+            />
           </div>
         </Popover>
       </Dialog>

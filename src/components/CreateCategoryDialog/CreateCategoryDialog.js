@@ -14,6 +14,7 @@ import {
 } from '@material-ui/core';
 import LabelIcon from '@material-ui/icons/Label';
 import ColorPicker from '../ColorPicker/ColorPicker';
+import { colors } from '../../constants';
 
 function Transition(props) {
   return <Zoom {...props} />;
@@ -22,9 +23,31 @@ function Transition(props) {
 class CreateCategoryDialog extends Component {
   state = {
     anchor: null,
-    color: '#FF0000',
+    color: '#00e676',
     description: ''
   };
+
+  componentDidUpdate(prevProps, prevState) {
+    const prevUsedColors = prevProps.categories.map(category => {
+      if (category.color === undefined) return null;
+      return category.color.toUpperCase();
+    });
+
+    // Use default color when runnning out of colors
+    if (prevUsedColors.length > colors.length) return;
+
+    const usedColors = this.props.categories.map(category =>
+      category.color.toUpperCase()
+    );
+    const availableColors = colors.filter(
+      color => !usedColors.includes(color.toUpperCase())
+    );
+    if (JSON.stringify(prevUsedColors) !== JSON.stringify(usedColors)) {
+      let color =
+        availableColors[Math.floor(Math.random() * availableColors.length)];
+      this.setState({ color: color });
+    }
+  }
 
   onColorChange = (color, event) => {
     this.setState({
@@ -49,15 +72,26 @@ class CreateCategoryDialog extends Component {
 
   closePopover = () => {
     this.setState({
+      description: '',
       anchor: null
     });
   };
 
+  createCategory = (color, description) => {
+    this.props.createCategory(color, description);
+    this.onClose();
+  };
+
+  onClose = () => {
+    this.setState({ description: '' });
+    this.props.onClose();
+  };
+
   render() {
-    const { classes, createCategory, onClose, open } = this.props;
+    const { classes, open, categories } = this.props;
 
     return (
-      <Dialog open={open} onClose={onClose} TransitionComponent={Transition}>
+      <Dialog open={open} TransitionComponent={Transition}>
         <DialogContent>
           <div className={classes.margin}>
             <Grid container spacing={8} alignItems="flex-end">
@@ -87,14 +121,14 @@ class CreateCategoryDialog extends Component {
         </DialogContent>
 
         <DialogActions>
-          <Button color="primary" onClick={onClose}>
+          <Button color="primary" onClick={this.onClose}>
             Cancel
           </Button>
 
           <Button
             color="primary"
             onClick={() =>
-              createCategory(this.state.color, this.state.description)
+              this.createCategory(this.state.color, this.state.description)
             }
           >
             Create category
@@ -115,7 +149,10 @@ class CreateCategoryDialog extends Component {
           }}
         >
           <div className={classes.colorPicker}>
-            <ColorPicker onChange={this.onColorChange} />
+            <ColorPicker
+              categories={categories}
+              onChange={this.onColorChange}
+            />
           </div>
         </Popover>
       </Dialog>

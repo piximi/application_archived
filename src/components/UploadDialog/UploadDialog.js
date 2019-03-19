@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styles from './UploadDialog.css';
+import className from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import hash from 'string-hash';
 import {
@@ -10,14 +11,21 @@ import {
   DialogTitle,
   Zoom
 } from '@material-ui/core';
+import FolderIcon from '@material-ui/icons/Folder';
 import { store } from '../../index';
 import { addImagesAction } from '../../actions/images';
-import UploadSnackbar from '../UploadSnackbar/UploadSnackbar';
+import { addCategoriesAction } from '../../actions/categories';
+import { toggleSpinnerAction } from '../../actions/settings';
 
 // Add valid file formats here
 const validFileExtensions = ['png'];
 
-function createImage(bytes, pathname, checksum, currentFile) {
+function allImagesLoaded(noImageFiles, loadedImages) {
+  if (noImageFiles === loadedImages) return true;
+  else return false;
+}
+
+function createImage(bytes, pathname, checksum, noImageFiles, that) {
   let image = {};
   let img = new Image();
   img.onload = function() {
@@ -35,9 +43,19 @@ function createImage(bytes, pathname, checksum, currentFile) {
     image['brightness'] = 100;
     image['contrast'] = 100;
     image['unselectedChannels'] = [];
+    that.imageData.push(image);
+    if (allImagesLoaded(noImageFiles, that.imageData.length)) {
+      store.dispatch(toggleSpinnerAction());
+      store.dispatch(addCategoriesAction([]));
+      const newImageData = {};
+      for (let image of that.imageData) {
+        newImageData[image.id] = image;
+      }
+      store.dispatch(addImagesAction(newImageData));
+      that.imageData = [];
+    }
   };
   img.src = bytes;
-  return image;
 }
 
 const readFile = (currentFile, that, noImageFiles) => {
@@ -45,14 +63,7 @@ const readFile = (currentFile, that, noImageFiles) => {
   return e => {
     const bytes = e.target.result;
     const checksum = String(hash(bytes));
-    const image = createImage(bytes, pathname, checksum, currentFile);
-    that.imageData[checksum] = image;
-    that.counter = that.counter + 1;
-    if (that.counter === noImageFiles) {
-      store.dispatch(addImagesAction(that.imageData));
-      that.imageData = {};
-      that.counter = 0;
-    }
+    createImage(bytes, pathname, checksum, noImageFiles, that);
   };
 };
 
@@ -64,11 +75,12 @@ export class UploadDialog extends Component {
   constructor(props) {
     super(props);
     this.imageFiles = [];
-    this.imageData = {};
-    this.counter = 0;
+    this.imageData = [];
     this.state = {
+      uploadButtonActive: false,
       images: [],
-      snackbar: false
+      snackbar: false,
+      selectFolderText: 'Select Folder'
     };
   }
 
@@ -81,18 +93,21 @@ export class UploadDialog extends Component {
 
   uploadImages = () => {
     const that = this;
-    let imageFiles = [];
+    let validImageFiles = [];
+    store.dispatch(addImagesAction({}));
+    store.dispatch(toggleSpinnerAction());
+    this.setState({ imageFiles: [], uploadButtonActive: false });
 
     // Check images for correct file format
     for (let imageFile of this.state.imageFiles) {
       const fileExtension = imageFile.name.split('.').pop();
       if (validFileExtensions.includes(fileExtension))
-        imageFiles.push(imageFile);
+        validImageFiles.push(imageFile);
     }
-    const noImageFiles = imageFiles.length;
-    for (let imageFile of imageFiles) {
+    const noValidImageFiles = validImageFiles.length;
+    for (let imageFile of validImageFiles) {
       const reader = new FileReader();
-      reader.onload = readFile(imageFile, that, noImageFiles);
+      reader.onload = readFile(imageFile, that, noValidImageFiles);
       reader.readAsDataURL(imageFile, that);
     }
   };
@@ -101,16 +116,33 @@ export class UploadDialog extends Component {
     this.uploadImages();
     this.props.onClose();
     this.toggleSnackbar();
+    this.setState({
+      images: [],
+      imageFiles: null,
+      selectFolderText: 'Select Folder',
+      uploadButtonActive: false
+    });
   };
 
   onClickCancelButton = () => {
-    this.setState({ images: [] });
     this.props.onClose();
+    this.setState({
+      images: [],
+      imageFiles: null,
+      selectFolderText: 'Select Folder',
+      uploadButtonActive: false
+    });
   };
 
   onChange = () => e => {
     const imageFiles = e.target.files;
-    this.setState({ imageFiles: imageFiles });
+    let path = imageFiles[0].webkitRelativePath;
+    let Folder = '/' + path.split('/')[0];
+    this.setState({
+      imageFiles: imageFiles,
+      uploadButtonActive: true,
+      selectFolderText: Folder
+    });
   };
 
   _addDirectory(node) {
@@ -121,24 +153,36 @@ export class UploadDialog extends Component {
   }
 
   render() {
-    const { onClose, open } = this.props;
+    const { onClose, open, classes } = this.props;
 
     return (
       <React.Fragment>
         <Dialog open={open} onClose={onClose} TransitionComponent={Transition}>
           <DialogTitle id="form-dialog-title">
-            Upload directory with images
+            Open directory with images
           </DialogTitle>
 
-          <DialogContent>
-            <Button>
-              <input
-                type="file"
-                accept="image/*"
-                ref={node => this._addDirectory(node)}
-                onChange={this.onChange()}
-              />
-            </Button>
+          <DialogContent className={classes.dialogContent}>
+            <input
+              accept="image/*"
+              className={classes.input}
+              id="raised-button-file"
+              multiple
+              type="file"
+              ref={node => this._addDirectory(node)}
+              onChange={this.onChange()}
+            />
+            <label htmlFor="raised-button-file">
+              <Button
+                variant="contained"
+                color="primary"
+                className={className(classes.bootstrapRoot)}
+                component="span"
+              >
+                {this.state.selectFolderText}
+                <FolderIcon className={className(classes.folderIcon)} />
+              </Button>
+            </label>
           </DialogContent>
 
           <DialogActions>
@@ -151,11 +195,6 @@ export class UploadDialog extends Component {
             </Button>
           </DialogActions>
         </Dialog>
-
-        <UploadSnackbar
-          open={this.state.snackbar}
-          onClose={this.toggleSnackbar}
-        />
       </React.Fragment>
     );
   }

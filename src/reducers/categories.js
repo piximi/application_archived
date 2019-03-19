@@ -11,7 +11,16 @@ import {
 const categories = (state = [], action) => {
   switch (action.type) {
     case ADD_CATEGORIES:
-      return action.categories;
+      const unlabeled = {
+        color: '#F8F8F8',
+        description: 'unlabeled',
+        identifier: null,
+        index: '-1',
+        visible: true
+      };
+      let categories = [...action.categories];
+      categories.unshift(unlabeled);
+      return categories;
 
     case CREATE_CATEGORY:
       return [...state, action.category];

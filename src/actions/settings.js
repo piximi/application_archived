@@ -1,5 +1,5 @@
-import { TOOGLE_NEW_IMAGES_EVENT } from '../constants';
+import { TOGGLE_SPINNER } from '../constants';
 
-export const toggleNewImagesEventAction = () => ({
-  type: TOOGLE_NEW_IMAGES_EVENT
+export const toggleSpinnerAction = () => ({
+  type: TOGGLE_SPINNER
 });

@@ -5,6 +5,8 @@
 A web-based deep learning tool for classification of human cells, created with Tensorflow.js and React.
 https://application.cyto.ai/
 
+**Please make sure to clean your browser cache, since we are continuously developing new features:)**
+
 ![alt text](./public/cyto.png)
       
 

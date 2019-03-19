@@ -3,15 +3,15 @@ import { fitClassifierAction } from '../actions/classifier';
 import Application from '../components/Application/Application';
 import {
   updateImageCategoryAction,
-  updateImageProbabilityAction,
-  updateUnlabeledVisibilityAction
+  updateImageProbabilityAction
 } from '../actions/images';
 import { getVisibleImages } from '../selectors/images';
 
 const mapStateToProps = state => {
   return {
-    ...state,
-    images: getVisibleImages(state.images.images)
+    categories: state.categories,
+    images: getVisibleImages(state),
+    spinnerActive: state.settings.spinnerActive
   };
 };
 
@@ -30,10 +30,6 @@ const mapDispatchToProps = (dispatch, props) => {
         )
       );
       dispatch(updateImageProbabilityAction(imgIdentifier, null));
-    },
-
-    updateUnlabeledVisibility: () => {
-      dispatch(updateUnlabeledVisibilityAction());
     }
   };
 };

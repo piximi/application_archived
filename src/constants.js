@@ -40,8 +40,6 @@ export const UPDATE_CONTRAST_FOR_ALL_IMAGES = 'UPDATE_CONTRAST_FOR_ALL_IMAGES';
 export const ONLY_SHOW_IMAGES_WITH_CERTAIN_CATEGORY =
   'ONLY_SHOW_IMAGES_WITH_CERTAIN_CATEGORY';
 
-export const UPDATE_UNLABELED_VISIBILITY = 'UPDATE_UNLABELED_VISIBILITY';
-
 export const UPDATE_CATEGORY_AND_PROBABILITY =
   'UPDATE_CATEGORY_AND_PROBABILITY';
 
@@ -61,6 +59,8 @@ export const OPEN_CLASSIFIER = 'OPEN_CLASSIFIER';
 export const CLASSIFIER_OPEN = 'CLASSIFIER_OPEN';
 
 export const CLASSIFIER_SAVE = 'CLASSIFIER_SAVE';
+
+export const TOGGLE_SPINNER = 'TOGGLE_SPINNER';
 
 export const fields = [
   {
@@ -143,4 +143,25 @@ export const fields = [
     label: 'object_category_name',
     value: 'categoryName'
   }
+];
+
+export const colors = [
+  '#f44336',
+  '#e91e63',
+  '#9c27b0',
+  '#673ab7',
+  '#3f51b5',
+  '#2196f3',
+  '#03a9f4',
+  '#00bcd4',
+  '#4caf50',
+  '#8bc34a',
+  '#cddc39',
+  '#ffeb3b',
+  '#ffc107',
+  '#ff9800',
+  '#ff5722',
+  '#795548',
+  '#9e9e9e',
+  '#607d8b'
 ];

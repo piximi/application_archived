@@ -44,7 +44,8 @@ class Sidebar extends PureComponent {
       images,
       setUnlabelledVisibility,
       toggled,
-      toggle
+      toggle,
+      loadDemoProject
     } = this.props;
 
     return (
@@ -72,13 +73,13 @@ class Sidebar extends PureComponent {
               <ListItemIcon>
                 <FolderOpenIcon />
               </ListItemIcon>
-              <ListItemText inset primary="Open..." />
+              <ListItemText inset primary="Open .cyto" />
             </ListItem>
           </label>
 
-          <OpenSampleListItem />
+          <OpenSampleListItem loadDemoProject={loadDemoProject} />
 
-          <Save images={images.images} categories={categories} />
+          <Save images={images} categories={categories} />
         </List>
 
         <Divider />

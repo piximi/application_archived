@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { DragSource } from 'react-dnd';
 import { getEmptyImage } from 'react-dnd-html5-backend';
 import ImageViewerDialog from '../ImageViewer/ImageViewerDialog/ImageViewerDialog';
@@ -43,12 +43,35 @@ function collect(connect, monitor) {
   };
 }
 
-class Item extends PureComponent {
+class Item extends Component {
   constructor(props) {
     super(props);
     this.state = {
       imageViewerDialogOpen: false
     };
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.state.imageViewerDialogOpen !== nextState.imageViewerDialogOpen)
+      return true;
+    else if (
+      nextProps.selectedItems.includes(this.props.item.id) !==
+      this.props.selectedItems.includes(this.props.item.id)
+    )
+      return true;
+    else if (JSON.stringify(nextProps.item) !== JSON.stringify(this.props.item))
+      return true;
+    else if (
+      JSON.stringify(nextProps.containerStyle) !==
+      JSON.stringify(this.props.containerStyle)
+    )
+      return true;
+    else if (
+      JSON.stringify(nextProps.containerStyle) !==
+      JSON.stringify(this.props.containerStyle)
+    )
+      return true;
+    return false;
   }
 
   closeImageViewerDialog = () => {
@@ -68,6 +91,11 @@ class Item extends PureComponent {
       captureDraggingState: true
     });
   }
+
+  myContextMenu = e => {
+    e.preventDefault();
+    console.log(true);
+  };
 
   render() {
     const {
@@ -90,6 +118,7 @@ class Item extends PureComponent {
         type={'selectableElement'}
         imgid={imgId}
         onMouseDown={() => onmousedown(imgId)}
+        onContextMenu={this.myContextMenu}
         className={imgSelected ? 'selected' : 'unselected'}
       >
         <ItemLabel color={item.color} />
