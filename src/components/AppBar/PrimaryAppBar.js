@@ -9,7 +9,7 @@ import Logo from './Logo';
 import ImportImagesButton from './ImportImagesButton';
 import DeleteButton from '../DeleteButton/DeleteButton';
 
-export default function PrimaryAppBar(props) {
+function PrimaryAppBar(props) {
   const { classes, toggle, toggled, selectedImages, setSelectedImages } = props;
 
   return (
@@ -55,4 +55,4 @@ export default function PrimaryAppBar(props) {
   );
 }
 
-withStyles(styles, { withTheme: true })(PrimaryAppBar);
+export default withStyles(styles, { withTheme: true })(PrimaryAppBar);
