@@ -1,38 +1,25 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
-import { withStyles } from '@material-ui/core/styles';
-import styles from './CreateCategoryListItem.css';
 import ConnectedCreateCategoryDialog from '../../containers/ConnectedCreateCategoryDialog';
 
-class CreateCategoryListItem extends Component {
-  state = {
-    open: false
-  };
+export default function CreateCategoryListItem() {
+  const [open, setOpen] = useState(0);
 
-  toggle = () => {
-    this.setState({
-      open: !this.state.open
-    });
-  };
+  return (
+    <React.Fragment>
+      <ListItem button onClick={() => setOpen(!open)}>
+        <ListItemIcon>
+          <AddIcon />
+        </ListItemIcon>
 
-  render() {
-    return (
-      <React.Fragment>
-        <ListItem button onClick={this.toggle}>
-          <ListItemIcon>
-            <AddIcon />
-          </ListItemIcon>
+        <ListItemText inset primary="Create category" />
+      </ListItem>
 
-          <ListItemText inset primary="Create category" />
-        </ListItem>
-        <ConnectedCreateCategoryDialog
-          onClose={this.toggle}
-          open={this.state.open}
-        />
-      </React.Fragment>
-    );
-  }
+      <ConnectedCreateCategoryDialog
+        onClose={() => setOpen(!open)}
+        open={open}
+      />
+    </React.Fragment>
+  );
 }
-
-export default withStyles(styles, { withTheme: true })(CreateCategoryListItem);
