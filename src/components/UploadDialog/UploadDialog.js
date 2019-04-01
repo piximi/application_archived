@@ -21,8 +21,7 @@ import { toggleSpinnerAction } from '../../actions/settings';
 const validFileExtensions = ['png'];
 
 function allImagesLoaded(noImageFiles, loadedImages) {
-  if (noImageFiles === loadedImages) return true;
-  else return false;
+  return noImageFiles === loadedImages;
 }
 
 function createImage(bytes, pathname, checksum, noImageFiles, that) {

@@ -7,7 +7,7 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(styles);
 
-export default function ImportImagesButton(props) {
+export default function ImportImagesButton() {
   const [open, setOpen] = useState(0);
 
   const classes = useStyles();

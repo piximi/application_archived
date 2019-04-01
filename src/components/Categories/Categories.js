@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import {
   Collapse,
   List,
@@ -6,78 +6,62 @@ import {
   ListItemIcon,
   ListItemText
 } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
-import styles from './Categories.css';
 import Category from '../Category/Category';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import CreateCategoryListItem from '../CreateCategoryListItem/CreateCategoryListItem';
 
-class Categories extends Component {
-  state = {
-    collapsed: false,
-    createCategoryDialogToggled: false
-  };
+export default function Categories(props) {
+  const [collapsed, setCollapsed] = useState(0);
 
-  toggleCreateCategoryDialog = () => {
-    this.setState({
-      ...this.state,
-      createCategoryDialogToggled: !this.state.createCategoryDialogToggled
-    });
-  };
+  const [
+    createCategoryDialogToggled,
+    setCreateCategoryDialogToggled
+  ] = useState(0);
 
-  collapse = () => {
-    this.setState({
-      ...this.state,
-      collapsed: !this.state.collapsed
-    });
-  };
+  const {
+    categories,
+    updateCategoryVisibility,
+    setUnlabelledVisibility,
+    displayThisCategoryOnly,
+    connectDropTarget,
+    images
+  } = props;
 
-  render() {
-    const {
-      categories,
-      updateCategoryVisibility,
-      setUnlabelledVisibility,
-      displayThisCategoryOnly,
-      connectDropTarget,
-      images
-    } = this.props;
+  return (
+    <React.Fragment>
+      <List dense>
+        <ListItem button onClick={() => setCollapsed(!collapsed)}>
+          <ListItemIcon>
+            {!collapsed ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+          </ListItemIcon>
 
-    return (
-      <React.Fragment>
-        <List dense>
-          <ListItem button onClick={this.collapse}>
-            <ListItemIcon>
-              {!this.state.collapsed ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-            </ListItemIcon>
+          <ListItemText inset primary="Categories" />
+        </ListItem>
 
-            <ListItemText inset primary="Categories" />
-          </ListItem>
+        <Collapse in={!collapsed} timeout="auto" unmountOnExit>
+          {categories.map((category, index) => (
+            <Category
+              identifier={category.identifier}
+              key={category.identifier}
+              index={index}
+              description={category.description}
+              visible={category.visible}
+              color={category.color}
+              images={images}
+              updateCategoryVisibility={updateCategoryVisibility}
+              displayThisCategoryOnly={displayThisCategoryOnly}
+              setUnlabelledVisibility={setUnlabelledVisibility}
+              connectDropTarget={connectDropTarget}
+              editCategory={() =>
+                setCreateCategoryDialogToggled(!createCategoryDialogToggled)
+              }
+            />
+          ))}
 
-          <Collapse in={!this.state.collapsed} timeout="auto" unmountOnExit>
-            {categories.map((category, index) => (
-              <Category
-                identifier={category.identifier}
-                key={category.identifier}
-                index={index}
-                description={category.description}
-                visible={category.visible}
-                color={category.color}
-                images={images}
-                updateCategoryVisibility={updateCategoryVisibility}
-                displayThisCategoryOnly={displayThisCategoryOnly}
-                setUnlabelledVisibility={setUnlabelledVisibility}
-                connectDropTarget={connectDropTarget}
-                editCategory={this.toggleCreateCategoryDialog}
-              />
-            ))}
-
-            <CreateCategoryListItem />
-          </Collapse>
-        </List>
-      </React.Fragment>
-    );
-  }
+          <CreateCategoryListItem />
+        </Collapse>
+      </List>
+    </React.Fragment>
+  );
 }
-
-export default withStyles(styles, { withTheme: true })(Categories);
