@@ -26,10 +26,6 @@ function filterImages(searchText, props) {
   props.updateImageVisibility(images);
 }
 
-function compare(a, b) {
-  return !!a.includes(b);
-}
-
 export default function Search(props) {
   const classes = useStyles();
 
