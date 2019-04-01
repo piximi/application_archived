@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './PrimaryAppBar.css';
-import { withStyles } from '@material-ui/core/styles';
 import { AppBar, Grid, IconButton, Toolbar } from '@material-ui/core';
 import classNames from 'classnames';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -8,9 +7,14 @@ import ConnectedSearch from '../../containers/ConnectedSearch';
 import Logo from './Logo';
 import ImportImagesButton from './ImportImagesButton';
 import DeleteButton from '../DeleteButton/DeleteButton';
+import { makeStyles } from '@material-ui/styles';
 
-function PrimaryAppBar(props) {
-  const { classes, toggle, toggled, selectedImages, setSelectedImages } = props;
+const useStyles = makeStyles(styles);
+
+export default function PrimaryAppBar(props) {
+  const classes = useStyles();
+
+  const { toggle, toggled, selectedImages, setSelectedImages } = props;
 
   return (
     <AppBar
@@ -54,5 +58,3 @@ function PrimaryAppBar(props) {
     </AppBar>
   );
 }
-
-export default withStyles(styles, { withTheme: true })(PrimaryAppBar);

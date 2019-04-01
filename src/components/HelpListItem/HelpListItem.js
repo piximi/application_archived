@@ -1,11 +1,9 @@
 import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import React, { useState } from 'react';
-import styles from './HelpListItem.css';
-import { withStyles } from '@material-ui/core/styles';
 import HelpDialog from '../HelpDialog/HelpDialog';
 import HelpIcon from '@material-ui/icons/Help';
 
-function HelpListItem() {
+export default function HelpListItem() {
   const [open, setOpen] = useState(0);
 
   return (
@@ -22,5 +20,3 @@ function HelpListItem() {
     </React.Fragment>
   );
 }
-
-export default withStyles(styles, { withTheme: true })(HelpListItem);

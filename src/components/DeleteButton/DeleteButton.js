@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
 import styles from './DeleteButton.css';
-import { withStyles } from '@material-ui/core/styles';
 import { IconButton, Tooltip } from '@material-ui/core';
 import Delete from '@material-ui/icons/Delete';
 import ConnectedDeleteImageDialog from '../../containers/ConnectedDeleteImageDialog';
+import { makeStyles } from '@material-ui/styles';
 
-function DeleteButton(props) {
+const useStyles = makeStyles(styles);
+
+export default function DeleteButton(props) {
   const [open, setOpen] = useState(0);
 
-  const { classes, selectedImages, setSelectedImages } = props;
+  const classes = useStyles();
+
+  const { selectedImages, setSelectedImages } = props;
 
   return (
     <React.Fragment>
@@ -31,5 +35,3 @@ function DeleteButton(props) {
     </React.Fragment>
   );
 }
-
-export default withStyles(styles, { withTheme: true })(DeleteButton);

@@ -1,9 +1,11 @@
 import React from 'react';
 import styles from './Search.css';
-import { withStyles } from '@material-ui/core/styles';
 import { FormControl, Input, InputAdornment } from '@material-ui/core';
 import classNames from 'classnames';
 import ImageSearchIcon from '@material-ui/icons/ImageSearch';
+import { makeStyles } from '@material-ui/styles';
+
+const useStyles = makeStyles(styles);
 
 function filterImages(searchText, props) {
   let images = { ...props.images };
@@ -28,8 +30,8 @@ function compare(a, b) {
   return !!a.includes(b);
 }
 
-function Search(props) {
-  const { classes } = props;
+export default function Search(props) {
+  const classes = useStyles();
 
   return (
     <FormControl className={classNames(classes.formControl)}>
@@ -48,5 +50,3 @@ function Search(props) {
     </FormControl>
   );
 }
-
-export default withStyles(styles, { withTheme: true })(Search);

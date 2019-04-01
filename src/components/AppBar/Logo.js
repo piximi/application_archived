@@ -1,6 +1,4 @@
 import React from 'react';
-import styles from './PrimaryAppBar.css';
-import { withStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 
 export default function Logo() {
@@ -10,5 +8,3 @@ export default function Logo() {
     </Typography>
   );
 }
-
-withStyles(styles, { withTheme: true })(Logo);
