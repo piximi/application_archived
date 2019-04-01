@@ -39,6 +39,7 @@
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.7",
     "redux-persist": "^5.10.0",
+    "redux-starter-kit": "^0.4.3",
     "redux-thunk": "^2.3.0",
     "reselect": "^3.0.1",
     "string-hash": "^1.1.3",

@@ -3326,6 +3326,11 @@ csstype@^2.5.7:
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.2.tgz#3043d5e065454579afc7478a18de41909c8a2f01"
   integrity sha512-Rl7PvTae0pflc1YtxtKbiSqq20Ts6vpIYOD5WBafl4y123DyHUeLrRdQP66sQW8/6gmX8jrYJLXwNeMqYVJcow==
 
+curriable@^1.2.4:
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/curriable/-/curriable-1.2.5.tgz#fb6ff7ad8740927ea09db15d395d9d26ca9d2726"
+  integrity sha512-hQwrkCn8DNiCw5CG8OS0td2wfpCDtxo1dmrVYxCDWUBHQPkpAvN9RqBVbmC64oSQaBqPQD2SOCXcTWH1zXe2mA==
+
 cyclist@~0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-0.2.2.tgz#1b33792e11e914a2fd6d6ed6447464444e5fa640"
@@ -4668,6 +4673,11 @@ fast-deep-equal@^2.0.1:
   resolved "https://registry.yarnpkg.com/fast-deep-equal/-/fast-deep-equal-2.0.1.tgz#7b05218ddf9667bf7f370bf7fdb2cb15fdd0aa49"
   integrity sha1-ewUhjd+WZ79/Nwv3/bLLFf3Qqkk=
 
+fast-equals@^1.2.1:
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/fast-equals/-/fast-equals-1.6.2.tgz#f1762bde0d571b5e9d4e1c4ae0599792f6a6df5f"
+  integrity sha512-6FiKwHkrHIqdvo9I92yzCR/zuWE6iy5ldcOszStPbmo7Zzj3OoVeng++GE//JqO4i6JQ4vH/BVAfCmUCki+C3g==
+
 fast-glob@^2.0.2:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/fast-glob/-/fast-glob-2.2.4.tgz#e54f4b66d378040e0e4d6a68ec36bbc5b04363c0"
@@ -5646,6 +5656,13 @@ icss-utils@^2.1.0:
   dependencies:
     postcss "^6.0.1"
 
+identitate@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/identitate/-/identitate-1.0.1.tgz#4b8bed39454f1d7a476e60ff0e4f82a094841dfc"
+  integrity sha512-xnDJ0JYhiZjBDuJRKbHoVzj5yP9FhATxLyUYswQyPdnJrwzGVBqS6DOmvKJi1lk7P+4dkL+hhUhuOZIcOUtG5A==
+  dependencies:
+    pathington "^1.0.1"
+
 identity-obj-proxy@3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/identity-obj-proxy/-/identity-obj-proxy-3.0.0.tgz#94d2bda96084453ef36fbc5aaec37e0f79f1fc14"
@@ -5689,6 +5706,11 @@ immer@1.10.0:
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/immer/-/immer-1.10.0.tgz#bad67605ba9c810275d91e1c2a47d4582e98286d"
   integrity sha512-O3sR1/opvCDGLEVcvrGTMtLac8GJ5IwZC4puPrLuRj3l7ICKvkmA0vGuU9OW8mV9WIBRnaxp5GJh9IEAaNOoYg==
+
+immer@^1.10.5:
+  version "1.12.1"
+  resolved "https://registry.yarnpkg.com/immer/-/immer-1.12.1.tgz#40c6e5b292c00560836c2993bda3a24379d466f5"
+  integrity sha512-3fmKM6ovaqDt0CdC9daXpNi5x/YCYS3i4cwLdTVkhJdk5jrDXoPs7lCm3IqM3yhfSnz4tjjxbRG2CziQ7m8ztg==
 
 immutable@^4.0.0-rc.12:
   version "4.0.0-rc.12"
@@ -6788,7 +6810,7 @@ json-stable-stringify@^1.0.1:
   dependencies:
     jsonify "~0.0.0"
 
-json-stringify-safe@~5.0.1:
+json-stringify-safe@^5.0.1, json-stringify-safe@~5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz#1296a2d58fd45f19a0f6ce01d65701e2c735b6eb"
   integrity sha1-Epai1Y/UXxmg9s4B1lcB4sc1tus=
@@ -8403,6 +8425,11 @@ path-type@^3.0.0:
   dependencies:
     pify "^3.0.0"
 
+pathington@^1.0.1, pathington@^1.1.5:
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/pathington/-/pathington-1.1.7.tgz#caf2d2db899a31fea4e81e3657af6acde5171903"
+  integrity sha512-JxzhUzagDfNIOm4qqwQqP3rWeo7rNNOfIahy4n+3GTEdwXLqw5cJHUR0soSopQtNEv763lzxb6eA2xBllpR8zw==
+
 pbkdf2@^3.0.3:
   version "3.0.17"
   resolved "https://registry.yarnpkg.com/pbkdf2/-/pbkdf2-3.0.17.tgz#976c206530617b14ebb32114239f7b09336e93a6"
@@ -9940,12 +9967,32 @@ redux-devtools-extension@^2.13.7:
   resolved "https://registry.yarnpkg.com/redux-devtools-extension/-/redux-devtools-extension-2.13.8.tgz#37b982688626e5e4993ff87220c9bbb7cd2d96e1"
   integrity sha512-8qlpooP2QqPtZHQZRhx3x3OP5skEV1py/zUdMY28WNAocbafxdG2tRD1MWE7sp8obGMNYuLWanhhQ7EQvT1FBg==
 
+redux-immutable-state-invariant@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/redux-immutable-state-invariant/-/redux-immutable-state-invariant-2.1.0.tgz#308fd3cc7415a0e7f11f51ec997b6379c7055ce1"
+  integrity sha512-3czbDKs35FwiBRsx/3KabUk5zSOoTXC+cgVofGkpBNv3jQcqIe5JrHcF5AmVt7B/4hyJ8MijBIpCJ8cife6yJg==
+  dependencies:
+    invariant "^2.1.0"
+    json-stringify-safe "^5.0.1"
+
 redux-persist@^5.10.0:
   version "5.10.0"
   resolved "https://registry.yarnpkg.com/redux-persist/-/redux-persist-5.10.0.tgz#5d8d802c5571e55924efc1c3a9b23575283be62b"
   integrity sha512-sSJAzNq7zka3qVHKce1hbvqf0Vf5DuTVm7dr4GtsqQVOexnrvbV47RWFiPxQ8fscnyiuWyD2O92DOxPl0tGCRg==
 
-redux-thunk@^2.3.0:
+redux-starter-kit@^0.4.3:
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/redux-starter-kit/-/redux-starter-kit-0.4.3.tgz#66a583cde1f1995ae59782d87cc462260ca85fa8"
+  integrity sha512-T3HXtwEGyFLCy63QlZEM95rDzTQ5BKbBhhTINNVFD1yWgHBKtgN3tXw4/sX9+Ve1Y8mAtXbAhep/E7I0YVvZPg==
+  dependencies:
+    immer "^1.10.5"
+    redux "^4.0.0"
+    redux-devtools-extension "^2.13.7"
+    redux-immutable-state-invariant "^2.1.0"
+    redux-thunk "^2.2.0"
+    selectorator "^4.0.1"
+
+redux-thunk@^2.2.0, redux-thunk@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-2.3.0.tgz#51c2c19a185ed5187aaa9a2d08b666d0d6467622"
   integrity sha512-km6dclyFnmcvxhAcrQV2AkZmPQjzPDjgVlQtR0EQjxZPyJ0BnMf3in1ryuR8A2qU0HldVRfxYXbFSKlI3N7Slw==
@@ -10190,6 +10237,11 @@ reselect@^3.0.1:
   resolved "https://registry.yarnpkg.com/reselect/-/reselect-3.0.1.tgz#efdaa98ea7451324d092b2b2163a6a1d7a9a2147"
   integrity sha1-79qpjqdFEyTQkrKyFjpqHXqaIUc=
 
+reselect@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/reselect/-/reselect-4.0.0.tgz#f2529830e5d3d0e021408b246a206ef4ea4437f7"
+  integrity sha512-qUgANli03jjAyGlnbYVAV5vvnOmJnODyABz51RdBN7M4WaVu8mecZWgyQNkG8Yqe3KRGRt0l4K4B3XVEULC4CA==
+
 resolve-cwd@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/resolve-cwd/-/resolve-cwd-2.0.0.tgz#00a9f7387556e27038eae232caa372a6a59b665a"
@@ -10427,6 +10479,16 @@ select-hose@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/select-hose/-/select-hose-2.0.0.tgz#625d8658f865af43ec962bfc376a37359a4994ca"
   integrity sha1-Yl2GWPhlr0Psliv8N2o3NZpJlMo=
+
+selectorator@^4.0.1:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/selectorator/-/selectorator-4.0.3.tgz#d33b11027da7e6838de277cd6eb1134125aa788b"
+  integrity sha512-A8+paRhzTab4Qm/38RAVnCgEZFbpn5xIWLyTCDqvyU3Obhmo94RS6UK1H00bVH7+U609sOhqbFJha09POsWURA==
+  dependencies:
+    fast-equals "^1.2.1"
+    identitate "^1.0.0"
+    reselect "^4.0.0"
+    unchanged "^2.0.1"
 
 selfsigned@^1.9.1:
   version "1.10.4"
@@ -11467,6 +11529,14 @@ uglify-js@3.4.x, uglify-js@^3.1.4:
   dependencies:
     commander "~2.17.1"
     source-map "~0.6.1"
+
+unchanged@^2.0.1:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/unchanged/-/unchanged-2.1.0.tgz#16308dde5bec15925032d91651f5c3843b957de6"
+  integrity sha512-CYVU0Mz35N821Pjxf+iG6JMPx/Yb6wStUq8uuhR52/+AU3vMiueOTrJ6u1vBKYSke7a75FAi2/jCdQkXcHaNGQ==
+  dependencies:
+    curriable "^1.2.4"
+    pathington "^1.1.5"
 
 underscore@^1.8.3:
   version "1.9.1"
