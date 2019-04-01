@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import AddPhotoAlternateIcon from '@material-ui/icons/AddPhotoAlternate';
 import UploadDialog from '../UploadDialog/UploadDialog';
 
-function ImportImagesButton(props) {
+export default function ImportImagesButton(props) {
   const [open, setOpen] = useState(0);
 
   const { classes } = props;
@@ -26,4 +26,4 @@ function ImportImagesButton(props) {
   );
 }
 
-export default withStyles(styles, { withTheme: true })(ImportImagesButton);
+withStyles(styles, { withTheme: true })(ImportImagesButton);

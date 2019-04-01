@@ -13,6 +13,7 @@ import { PersistGate } from 'redux-persist/es/integration/react';
 import { persistStore, persistReducer } from 'redux-persist';
 import localforage from 'localforage';
 import autoMergeLevel2 from 'redux-persist/es/stateReconciler/autoMergeLevel2';
+import './bootstrap.js';
 
 // Initialization
 const { store, persistor } = initializeRedux();

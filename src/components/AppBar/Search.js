@@ -28,7 +28,7 @@ function compare(a, b) {
   return !!a.includes(b);
 }
 
-function Search(props) {
+export default function Search(props) {
   const { classes } = props;
 
   return (
@@ -49,4 +49,4 @@ function Search(props) {
   );
 }
 
-export default withStyles(styles, { withTheme: true })(Search);
+withStyles(styles, { withTheme: true })(Search);

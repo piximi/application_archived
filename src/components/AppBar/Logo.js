@@ -3,7 +3,7 @@ import styles from './PrimaryAppBar.css';
 import { withStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 
-function Logo() {
+export default function Logo() {
   return (
     <Typography variant="h6" color="inherit">
       Logo
@@ -11,4 +11,4 @@ function Logo() {
   );
 }
 
-export default withStyles(styles, { withTheme: true })(Logo);
+withStyles(styles, { withTheme: true })(Logo);
