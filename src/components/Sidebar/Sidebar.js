@@ -6,7 +6,7 @@ import {
   ListItemIcon,
   ListItemText
 } from '@material-ui/core';
-import React, { PureComponent } from 'react';
+import React, { useState } from 'react';
 import styles from './Sidebar.css';
 import { withStyles } from '@material-ui/core/styles';
 import ConnectedCategories from '../../containers/ConnectedCategories';
@@ -18,102 +18,101 @@ import ModelList from '../ModelList/ModelList';
 import SettingsListItem from '../SettingsListItem/SettingsListItem';
 import OpenSampleListItem from '../OpenSampleListItem/OpenSampleListItem';
 import HelpListItem from '../HelpListItem/HelpListItem';
+import { makeStyles } from '@material-ui/styles';
 
-class Sidebar extends PureComponent {
-  state = {
-    helpDialogOpen: false,
-    sendFeedbackDialogOpen: false,
-    settingsDialogOpen: false
+const useStyles = makeStyles(styles);
+
+function readDataFromCytoFile(e, props) {
+  const reader = new FileReader();
+
+  reader.onload = function(e) {
+    const text = reader.result;
+    const data = JSON.parse(text);
+    props.updateStore(data);
   };
 
-  readDataFromCytoFile = e => {
-    const that = this;
-    const reader = new FileReader();
-    reader.onload = function(e) {
-      const text = reader.result;
-      const data = JSON.parse(text);
-      that.props.updateStore(data);
-    };
-    reader.readAsText(e.target.files[0]);
-  };
+  reader.readAsText(e.target.files[0]);
+}
 
-  render() {
-    const {
-      categories,
-      classes,
-      images,
-      setUnlabelledVisibility,
-      toggled,
-      toggle,
-      loadDemoProject
-    } = this.props;
+function Sidebar(props) {
+  const [helpDialogOpen, setHelpDialogOpen] = useState(0);
+  const [sendFeedbackDialogOpen, setSendFeedbackDialogOpen] = useState(0);
+  const [settingsDialogOpen, setSettingsDialogOpen] = useState(0);
 
-    return (
-      <Drawer
-        anchor="left"
-        classes={{ paper: classes.drawerPaper }}
-        open={toggled}
-        variant="persistent"
-      >
-        <div className={classes.drawerHeader} />
+  const classes = useStyles();
 
-        <SidebarAppBar toggle={toggle} toggled={toggled} />
+  const {
+    categories,
+    images,
+    setUnlabelledVisibility,
+    toggled,
+    toggle,
+    loadDemoProject
+  } = props;
 
-        <List dense>
-          <input
-            style={{ display: 'none' }}
-            type="file"
-            accept=".cyto"
-            name="file"
-            id="open-project"
-            onChange={this.readDataFromCytoFile}
-          />
-          <label htmlFor="open-project">
-            <ListItem dense button>
-              <ListItemIcon>
-                <FolderOpenIcon />
-              </ListItemIcon>
-              <ListItemText inset primary="Open .cyto" />
-            </ListItem>
-          </label>
+  return (
+    <Drawer
+      anchor="left"
+      classes={{ paper: classes.drawerPaper }}
+      open={toggled}
+      variant="persistent"
+    >
+      <div className={classes.drawerHeader} />
 
-          <OpenSampleListItem loadDemoProject={loadDemoProject} />
+      <SidebarAppBar toggle={toggle} toggled={toggled} />
 
-          <Save images={images} categories={categories} />
-        </List>
-
-        <Divider />
-
-        <ConnectedCategories
-          setUnlabelledVisibility={setUnlabelledVisibility}
+      <List dense>
+        <input
+          style={{ display: 'none' }}
+          type="file"
+          accept=".cyto"
+          name="file"
+          id="open-project"
+          onChange={e => readDataFromCytoFile(e, props)}
         />
-
-        <Divider />
-
-        <ModelList categories={categories} images={images} />
-
-        <Divider />
-
-        <List dense>
-          <SettingsListItem />
-
-          <ListItem
-            button
-            component="a"
-            href="https://docs.google.com/forms/d/e/1FAIpQLScAAydUXdfxxdjdkVpTJBXvZ2cGZblTRYHlcLEjfbTQsgoUug/viewform?usp=sf_link"
-          >
+        <label htmlFor="open-project">
+          <ListItem dense button>
             <ListItemIcon>
-              <FeedbackIcon />
+              <FolderOpenIcon />
             </ListItemIcon>
-
-            <ListItemText primary="Send feedback" />
+            <ListItemText inset primary="Open .cyto" />
           </ListItem>
+        </label>
 
-          <HelpListItem />
-        </List>
-      </Drawer>
-    );
-  }
+        <OpenSampleListItem loadDemoProject={loadDemoProject} />
+
+        <Save images={images} categories={categories} />
+      </List>
+
+      <Divider />
+
+      <ConnectedCategories setUnlabelledVisibility={setUnlabelledVisibility} />
+
+      <Divider />
+
+      <ModelList categories={categories} images={images} />
+
+      <Divider />
+
+      <List dense>
+        <SettingsListItem />
+
+        <ListItem
+          button
+          component="a"
+          href="https://docs.google.com/forms/d/e/1FAIpQLScAAydUXdfxxdjdkVpTJBXvZ2cGZblTRYHlcLEjfbTQsgoUug/viewform?usp=sf_link"
+        >
+          <ListItemIcon>
+            <FeedbackIcon />
+          </ListItemIcon>
+
+          <ListItemText primary="Send feedback" />
+        </ListItem>
+
+        <HelpListItem />
+      </List>
+    </Drawer>
+  );
 }
 
 export default withStyles(styles, { withTheme: true })(Sidebar);
