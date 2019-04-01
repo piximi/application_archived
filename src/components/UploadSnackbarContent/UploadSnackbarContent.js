@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './UploadSnackbarContent.css';
-import { withStyles } from '@material-ui/core/styles';
 import {
   Card,
   CardContent,
@@ -9,9 +8,12 @@ import {
   CardMedia
 } from '@material-ui/core';
 import example from './example.png';
+import { makeStyles } from '@material-ui/styles';
 
-function UploadSnackbarContent(props) {
-  const { classes } = props;
+const useStyles = makeStyles(styles);
+
+export default function UploadSnackbarContent(props) {
+  const classes = useStyles();
 
   return (
     <Card classes={{ root: classes.card }}>
@@ -31,5 +33,3 @@ function UploadSnackbarContent(props) {
     </Card>
   );
 }
-
-export default withStyles(styles, { withTheme: true })(UploadSnackbarContent);

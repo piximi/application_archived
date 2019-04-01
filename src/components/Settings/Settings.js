@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styles from './Settings.css';
-import { withStyles } from '@material-ui/core/styles';
 import {
   AppBar,
   Collapse,
@@ -18,13 +17,16 @@ import {
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { makeStyles } from '@material-ui/styles';
 
-function Settings(props) {
+const useStyles = makeStyles(styles);
+
+export default function Settings(props) {
   const [classificationCollapsed, setClassificationCollapsed] = useState(0);
 
   const [notificationsClicked, setNotificationsClicked] = useState(0);
 
-  const { classes } = props;
+  const classes = useStyles();
 
   return (
     <div className={classes.root}>
@@ -113,5 +115,3 @@ function Settings(props) {
     </div>
   );
 }
-
-export default withStyles(styles, { withTheme: true })(Settings);

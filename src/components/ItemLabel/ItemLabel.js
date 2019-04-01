@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 import LabelIcon from '@material-ui/icons/Label';
 import styles from './ItemLabel.css';
-import { withStyles } from '@material-ui/core/styles';
 import { IconButton } from '@material-ui/core';
 import ItemCategoryMenu from '../ItemCategoryMenu/ItemCategoryMenu';
+import { makeStyles } from '@material-ui/styles';
 
-function ItemLabel(props) {
+const useStyles = makeStyles(styles);
+
+export default function ItemLabel(props) {
   const [anchorEl, setAnchorEl] = useState(0);
 
-  const { classes, color } = props;
+  const { color } = props;
+
+  const classes = useStyles();
+
   const open = Boolean(anchorEl);
 
   return (
@@ -30,5 +35,3 @@ function ItemLabel(props) {
     </React.Fragment>
   );
 }
-
-export default withStyles(styles, { withTheme: true })(ItemLabel);

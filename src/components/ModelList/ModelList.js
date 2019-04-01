@@ -6,8 +6,6 @@ import {
   ListItemText
 } from '@material-ui/core';
 import React, { useState } from 'react';
-import styles from './ModelList.css';
-import { withStyles } from '@material-ui/core/styles';
 import OpenInBrowserIcon from '@material-ui/icons/OpenInBrowser';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -15,7 +13,7 @@ import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import SaveIcon from '@material-ui/icons/Save';
 import * as API from '../../classifier';
 
-function ModelList(props) {
+export default function ModelList(props) {
   const [collapsed, setCollapsed] = useState(0);
 
   const { categories, images } = props;
@@ -69,5 +67,3 @@ function ModelList(props) {
     </List>
   );
 }
-
-export default withStyles(styles, { withTheme: true })(ModelList);

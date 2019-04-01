@@ -1,11 +1,15 @@
 import React from 'react';
 import styles from './UploadSnackbar.css';
-import { withStyles } from '@material-ui/core/styles';
 import { Snackbar } from '@material-ui/core';
 import UploadSnackbarContent from '../UploadSnackbarContent/UploadSnackbarContent';
+import { makeStyles } from '@material-ui/styles';
 
-function UploadSnackbar(props) {
-  const { classes, open, onClose } = props;
+const useStyles = makeStyles(styles);
+
+export default function UploadSnackbar(props) {
+  const { open, onClose } = props;
+
+  const classes = useStyles();
 
   return (
     <Snackbar
@@ -19,5 +23,3 @@ function UploadSnackbar(props) {
     </Snackbar>
   );
 }
-
-withStyles(styles, { withTheme: true })(UploadSnackbar);

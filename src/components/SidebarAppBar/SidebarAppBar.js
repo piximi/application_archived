@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './SidebarAppBar.css';
-import { withStyles } from '@material-ui/core/styles';
 import {
   AppBar,
   IconButton,
@@ -10,9 +9,14 @@ import {
 } from '@material-ui/core';
 import classNames from 'classnames';
 import MenuIcon from '@material-ui/icons/Menu';
+import { makeStyles } from '@material-ui/styles';
 
-function SidebarAppBar(props) {
-  const { classes, toggle, toggled } = props;
+const useStyles = makeStyles(styles);
+
+export default function SidebarAppBar(props) {
+  const { toggle, toggled } = props;
+
+  const classes = useStyles();
 
   return (
     <AppBar className={classNames(classes.appBar)} color="default">
@@ -35,5 +39,3 @@ function SidebarAppBar(props) {
     </AppBar>
   );
 }
-
-export default withStyles(styles, { withTheme: true })(SidebarAppBar);
