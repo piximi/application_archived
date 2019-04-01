@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import styles from './HelpDialog.css';
-import { withStyles } from '@material-ui/core/styles';
 import {
   Button,
   Dialog,
@@ -9,7 +7,7 @@ import {
   DialogContentText
 } from '@material-ui/core';
 
-class HelpDialog extends Component {
+export default class HelpDialog extends Component {
   render() {
     const { onClose, open } = this.props;
 
@@ -32,5 +30,3 @@ class HelpDialog extends Component {
     );
   }
 }
-
-export default withStyles(styles, { withTheme: true })(HelpDialog);
