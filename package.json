@@ -7,7 +7,7 @@
     "@material-ui/core": "^3.4.0",
     "@material-ui/icons": "^3.0.1",
     "@material-ui/lab": "^3.0.0-alpha.23",
-    "@tensorflow/tfjs": "^0.14.1",
+    "@tensorflow/tfjs": "^1.0.3",
     "ajv": "^6.5.5",
     "axios": "^0.18.0",
     "classnames": "^2.2.5",

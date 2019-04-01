@@ -32,7 +32,9 @@ async function loadNetwork(num_classes) {
     loss = 'categoricalCrossentropy';
   }
 
-  const preLoadedmodel = await tensorflow.loadModel('indexeddb://classifier');
+  const preLoadedmodel = await tensorflow.loadLayersModel(
+    'indexeddb://classifier'
+  );
 
   //get some intermediate layer
   const layer = preLoadedmodel.getLayer('conv_pw_13_relu');
@@ -127,7 +129,7 @@ async function predict(modelDict, datasetObj) {
   tensorflow.tidy(() => {
     // Load img
     for (let img of datasetObj.predictionSet) {
-      let imgTensor = tensorflow.fromPixels(img);
+      let imgTensor = tensorflow.browser.fromPixels(img);
 
       //Preprocessing
       imgTensor = tensorflow.image.resizeBilinear(imgTensor, [224, 224]);
@@ -205,7 +207,9 @@ async function fitAndPredict(images, allCategories) {
 }
 
 async function exportWeights() {
-  const preLoadedmodel = await tensorflow.loadModel('indexeddb://classifier');
+  const preLoadedmodel = await tensorflow.loadLayersModel(
+    'indexeddb://classifier'
+  );
   await preLoadedmodel.save('downloads://classifier');
 }
 
@@ -220,7 +224,7 @@ async function importWeights(weightsFile) {
         type: 'application/json'
       });
       // TODO Make this working
-      tensorflow.loadModel(
+      tensorflow.loadLayersModel(
         tensorflow.io.browserFiles([modelFile, weightsFile])
       );
     });

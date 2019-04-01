@@ -1,5 +1,5 @@
 import React from 'react';
-import * as tensorflow from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
@@ -54,7 +54,7 @@ function initializeRedux() {
 }
 
 async function initializeModel() {
-  const preloadedModel = await tensorflow.loadModel(
+  const preloadedModel = await tf.loadLayersModel(
     'https://weights.cyto.ai/mobilenet/model.json'
   );
   await preloadedModel.save('indexeddb://classifier');
