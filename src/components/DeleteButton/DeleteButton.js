@@ -1,45 +1,35 @@
-import React, { PureComponent } from 'react';
+import React, { useState } from 'react';
 import styles from './DeleteButton.css';
 import { withStyles } from '@material-ui/core/styles';
 import { IconButton, Tooltip } from '@material-ui/core';
 import Delete from '@material-ui/icons/Delete';
 import ConnectedDeleteImageDialog from '../../containers/ConnectedDeleteImageDialog';
 
-class DeleteButton extends PureComponent {
-  state = {
-    open: false
-  };
+function DeleteButton(props) {
+  const [open, setOpen] = useState(0);
 
-  toggle = () => {
-    this.setState({
-      open: !this.state.open
-    });
-  };
+  const { classes, selectedImages, setSelectedImages } = props;
 
-  render() {
-    const { classes, selectedImages, setSelectedImages } = this.props;
+  return (
+    <React.Fragment>
+      <Tooltip title="Delete">
+        <IconButton
+          aria-label="Delete"
+          classes={{ root: classes.button }}
+          onClick={() => setOpen(!open)}
+        >
+          <Delete classes={{ root: classes.icon }} />
+        </IconButton>
+      </Tooltip>
 
-    return (
-      <React.Fragment>
-        <Tooltip title="Delete">
-          <IconButton
-            aria-label="Delete"
-            classes={{ root: classes.button }}
-            onClick={this.toggle}
-          >
-            <Delete classes={{ root: classes.icon }} />
-          </IconButton>
-        </Tooltip>
-
-        <ConnectedDeleteImageDialog
-          setSelectedImages={setSelectedImages}
-          selectedImages={selectedImages}
-          onClose={this.toggle}
-          open={this.state.open}
-        />
-      </React.Fragment>
-    );
-  }
+      <ConnectedDeleteImageDialog
+        setSelectedImages={setSelectedImages}
+        selectedImages={selectedImages}
+        onClose={() => setOpen(!open)}
+        open={open}
+      />
+    </React.Fragment>
+  );
 }
 
 export default withStyles(styles, { withTheme: true })(DeleteButton);
