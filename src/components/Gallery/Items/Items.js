@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import Item from './Item';
+import Item from '../Item/Item';
 import { Grid, AutoSizer } from 'react-virtualized';
 
 class Items extends PureComponent {

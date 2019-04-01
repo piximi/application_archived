@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from './ImportImagesButton.css';
 import { Button } from '@material-ui/core';
 import AddPhotoAlternateIcon from '@material-ui/icons/AddPhotoAlternate';
-import UploadDialog from '../UploadDialog/UploadDialog';
+import UploadDialog from '../../UploadDialog/UploadDialog';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(styles);

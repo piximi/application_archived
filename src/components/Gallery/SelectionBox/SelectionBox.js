@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
-import './Gallery.css';
-import { reCalc } from './helper';
+import '../Gallery/Gallery.css';
+import { reCalc } from '../helper';
 
 class SelectionBox extends PureComponent {
   constructor() {

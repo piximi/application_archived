@@ -5,10 +5,10 @@ import { PacmanLoader } from 'react-spinners';
 import styles from './Application.css';
 import classNames from 'classnames';
 import ConnectedSidebar from '../../containers/ConnectedSidebar';
-import PrimaryAppBar from '../AppBar/PrimaryAppBar';
+import PrimaryAppBar from '../AppBar/PrimaryAppBar/PrimaryAppBar';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContext } from 'react-dnd';
-import Gallery from '../Gallery/Gallery';
+import Gallery from '../Gallery/Gallery/Gallery';
 
 function createImageCollection(images, categories) {
   const IMAGES = Object.values(images).map(image => {

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { DragSource } from 'react-dnd';
 import { getEmptyImage } from 'react-dnd-html5-backend';
-import ImageViewerDialog from '../ImageViewer/ImageViewerDialog/ImageViewerDialog';
-import Image from './Image';
+import ImageViewerDialog from '../../ImageViewer/ImageViewerDialog/ImageViewerDialog';
+import Image from '../Image/Image';
 import styles from './Item.css';
 import { withStyles } from '@material-ui/core/styles';
-import ItemLabel from '../ItemLabel/ItemLabel';
+import ItemLabel from '../../ItemLabel/ItemLabel';
 
 const itemSource = {
   beginDrag(props) {
