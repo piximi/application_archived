@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { PacmanLoader } from 'react-spinners';
 import styles from './Application.css';
@@ -52,16 +51,6 @@ class Application extends Component {
     this.setState({ open: !this.state.open });
   };
 
-  onSelectImage(index, image) {
-    let images = this.state.images.slice();
-    let img = images[index];
-    if (img.hasOwnProperty('isSelected')) img.isSelected = !img.isSelected;
-    else img.isSelected = true;
-    this.setState({
-      images: images
-    });
-  }
-
   setUnlabelledVisibility = value => {
     this.setState({ displayUnlabeled: value });
   };
@@ -112,10 +101,6 @@ class Application extends Component {
     );
   }
 }
-
-Application.propTypes = {
-  name: PropTypes.string
-};
 
 export default DragDropContext(HTML5Backend)(
   withStyles(styles, { withTheme: true })(Application)

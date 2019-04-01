@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { useState } from 'react';
 import {
   ListItem,
   ListItemIcon,
@@ -40,178 +40,147 @@ function collect(connect, monitor) {
   };
 }
 
-class Category extends PureComponent {
-  state = {
-    editCategoryDialogToggled: false,
-    deleteCategoryDialogOpen: false,
-    animateOnDrop: null,
-    anchorEl: null
-  };
+function Category(props) {
+  const [editCategoryDialogToggled, setEditCategoryDialogToggled] = useState(
+    false
+  );
+  const [deleteCategoryDialogOpen, setDeleteCategoryDialogOpen] = useState(
+    false
+  );
+  const [animateOnDrop, setAnimateOnDrop] = useState(0);
+  const [anchorEl, setAnchorEl] = useState(0);
 
-  toggleEditCategoryDialog = () => {
-    this.setState({
-      editCategoryDialogToggled: !this.state.editCategoryDialogToggled
-    });
-  };
+  const {
+    identifier,
+    updateCategoryVisibility,
+    displayThisCategoryOnly,
+    setUnlabelledVisibility,
+    color,
+    connectDropTarget,
+    description,
+    visible,
+    classes,
+    categories
+  } = props;
 
-  toggleDeleteCategoryDialog = () => {
-    this.setState({
-      deleteCategoryDialogOpen: !this.state.deleteCategoryDialogOpen
-    });
-  };
+  const open = Boolean(anchorEl);
 
-  handleClose = () => {
-    this.setState({
-      anchorEl: null
-    });
-  };
-
-  handleClick = event => {
-    this.setState({
-      anchorEl: event.currentTarget
-    });
-  };
-
-  onDropAnimation = () => {
-    this.setState({
-      animateOnDrop: !this.state.animateOnDrop
-    });
-  };
-
-  render() {
-    const {
-      identifier,
-      updateCategoryVisibility,
-      displayThisCategoryOnly,
-      setUnlabelledVisibility,
-      color,
-      connectDropTarget,
-      description,
-      visible,
-      classes,
-      categories
-    } = this.props;
-
-    const {
-      anchorEl,
-      editCategoryDialogToggled,
-      deleteCategoryDialogOpen
-    } = this.state;
-    const open = Boolean(anchorEl);
-
-    return (
-      <React.Fragment>
-        <StyledCategory
-          ref={instance => connectDropTarget(instance)}
-          color={color}
-          onDrop={this.onDropAnimation}
-          className={
-            this.state.animateOnDrop !== null
-              ? this.state.animateOnDrop
-                ? 'onDropPulse'
-                : 'onDropPulse2'
-              : null
-          }
+  return (
+    <React.Fragment>
+      <StyledCategory
+        ref={instance => connectDropTarget(instance)}
+        color={color}
+        onDrop={() => setAnimateOnDrop(!animateOnDrop)}
+        className={
+          animateOnDrop !== null
+            ? animateOnDrop
+              ? 'onDropPulse'
+              : 'onDropPulse2'
+            : null
+        }
+      >
+        <ListItem
+          dense
+          style={{ cursor: 'pointer' }}
+          classes={{
+            root: props.isOver ? classes.isOver : null
+          }}
         >
-          <ListItem
-            dense
-            style={{ cursor: 'pointer' }}
-            classes={{
-              root: this.props.isOver ? classes.isOver : null
+          <ListItemIcon
+            onClick={() => updateCategoryVisibility(identifier, !visible)}
+          >
+            {visible ? (
+              <LabelIcon style={{ color: color }} />
+            ) : (
+              <LabelOutlinedIcon style={{ color: color }} />
+            )}
+          </ListItemIcon>
+          <ListItemText primary={description} />
+          <ListItemSecondaryAction>
+            <IconButton onClick={e => setAnchorEl(e.currentTarget)}>
+              <MoreHorizIcon />
+            </IconButton>
+          </ListItemSecondaryAction>
+
+          <Popover
+            id="simple-popper"
+            open={open}
+            onClose={() => setAnchorEl(0)}
+            anchorReference="anchorPosition"
+            anchorPosition={{
+              top: open ? anchorEl.getBoundingClientRect().bottom - 10 : 0,
+              left: open ? anchorEl.getBoundingClientRect().left : 0
             }}
           >
-            <ListItemIcon
-              onClick={() => updateCategoryVisibility(identifier, !visible)}
-            >
-              {visible ? (
-                <LabelIcon style={{ color: color }} />
-              ) : (
-                <LabelOutlinedIcon style={{ color: color }} />
-              )}
-            </ListItemIcon>
-            <ListItemText primary={description} />
-            <ListItemSecondaryAction>
-              <IconButton onClick={this.handleClick}>
-                <MoreHorizIcon />
-              </IconButton>
-            </ListItemSecondaryAction>
-
-            <Popover
-              id="simple-popper"
-              open={open}
-              onClose={this.handleClose}
-              anchorReference="anchorPosition"
-              anchorPosition={{
-                top: open ? anchorEl.getBoundingClientRect().bottom - 10 : 0,
-                left: open ? anchorEl.getBoundingClientRect().left : 0
-              }}
-            >
-              <Paper>
-                <MenuList>
+            <Paper>
+              <MenuList>
+                <MenuItem
+                  onClick={() => {
+                    displayThisCategoryOnly(identifier);
+                    setUnlabelledVisibility(false);
+                    setAnchorEl(0);
+                  }}
+                  className={classes.menuItem}
+                >
+                  <ListItemText
+                    classes={{ primary: classes.primary }}
+                    primary="Display this only"
+                  />
+                </MenuItem>
+                {identifier !== null ? (
                   <MenuItem
                     onClick={() => {
-                      displayThisCategoryOnly(identifier);
-                      setUnlabelledVisibility(false);
-                      this.setState({ anchorEl: null });
+                      setEditCategoryDialogToggled(!editCategoryDialogToggled);
+
+                      setAnchorEl(0);
                     }}
                     className={classes.menuItem}
                   >
                     <ListItemText
                       classes={{ primary: classes.primary }}
-                      primary="Display this only"
+                      primary="Edit"
                     />
                   </MenuItem>
-                  {identifier !== null ? (
-                    <MenuItem
-                      onClick={() => {
-                        this.toggleEditCategoryDialog();
-                        this.setState({ anchorEl: null });
-                      }}
-                      className={classes.menuItem}
-                    >
-                      <ListItemText
-                        classes={{ primary: classes.primary }}
-                        primary="Edit"
-                      />
-                    </MenuItem>
-                  ) : null}
+                ) : null}
 
-                  {identifier !== null ? (
-                    <MenuItem
-                      onClick={() => {
-                        this.toggleDeleteCategoryDialog();
-                        this.setState({ anchorEl: null });
-                      }}
-                      className={classes.menuItem}
-                    >
-                      <ListItemText
-                        classes={{ primary: classes.primary }}
-                        primary="Delete"
-                      />
-                    </MenuItem>
-                  ) : null}
-                </MenuList>
-              </Paper>
-            </Popover>
-          </ListItem>
-        </StyledCategory>
-        <ConnectedEditCategoryDialog
-          onClose={this.toggleEditCategoryDialog}
-          open={editCategoryDialogToggled}
-          categoryId={identifier}
-          description={description}
-          color={color}
-          categories={categories}
-        />
-        <ConnectedDeleteCategoryDialog
-          onClose={this.toggleDeleteCategoryDialog}
-          open={deleteCategoryDialogOpen}
-          categoryIdentifier={identifier}
-          description={description}
-        />
-      </React.Fragment>
-    );
-  }
+                {identifier !== null ? (
+                  <MenuItem
+                    onClick={() => {
+                      setDeleteCategoryDialogOpen(!deleteCategoryDialogOpen);
+
+                      setAnchorEl(0);
+                    }}
+                    className={classes.menuItem}
+                  >
+                    <ListItemText
+                      classes={{ primary: classes.primary }}
+                      primary="Delete"
+                    />
+                  </MenuItem>
+                ) : null}
+              </MenuList>
+            </Paper>
+          </Popover>
+        </ListItem>
+      </StyledCategory>
+
+      <ConnectedEditCategoryDialog
+        onClose={() => setEditCategoryDialogToggled(!editCategoryDialogToggled)}
+        open={editCategoryDialogToggled}
+        categoryId={identifier}
+        description={description}
+        color={color}
+        categories={categories}
+      />
+
+      <ConnectedDeleteCategoryDialog
+        onClose={() => setDeleteCategoryDialogOpen(!deleteCategoryDialogOpen)}
+        open={deleteCategoryDialogOpen}
+        categoryIdentifier={identifier}
+        description={description}
+      />
+    </React.Fragment>
+  );
 }
 
 export default withStyles(styles, { withTheme: true })(
