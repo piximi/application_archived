@@ -35,10 +35,6 @@ function readDataFromCytoFile(e, props) {
 }
 
 function Sidebar(props) {
-  const [helpDialogOpen, setHelpDialogOpen] = useState(0);
-  const [sendFeedbackDialogOpen, setSendFeedbackDialogOpen] = useState(0);
-  const [settingsDialogOpen, setSettingsDialogOpen] = useState(0);
-
   const classes = useStyles();
 
   const {
