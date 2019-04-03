@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './SettingsDialog.css';
 import { withStyles } from '@material-ui/core/styles';
 import { Dialog } from '@material-ui/core';
