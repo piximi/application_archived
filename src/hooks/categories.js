@@ -21,6 +21,12 @@ export function useCategories() {
     update(identifier, { ...category, visible: false });
   };
 
+  const relabel = (identifier, color) => {
+    const category = retrieve(identifier);
+
+    update(identifier, { ...category, color: color });
+  };
+
   const rename = (identifier, name) => {
     const category = retrieve(identifier);
 
