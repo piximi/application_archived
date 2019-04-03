@@ -11,19 +11,44 @@ export function useCategories() {
     update(identifier, category);
   };
 
-  const retrieve = identifier => {
-    categories.find(category => {
-      return category.identifier === identifier;
-    });
-  };
-
   const destroy = identifier => {
     setCategories(categories.delete(identifier));
+  };
+
+  const hide = identifier => {
+    const category = retrieve(identifier);
+
+    update(identifier, { ...category, visible: false });
+  };
+
+  const rename = (identifier, name) => {
+    const category = retrieve(identifier);
+
+    update(identifier, { ...category, name: name });
+  };
+
+  const retrieve = identifier => {
+    return categories.get(identifier);
+  };
+
+  const show = identifier => {
+    const category = retrieve(identifier);
+
+    update(identifier, { ...category, visible: true });
   };
 
   const update = (identifier, category) => {
     setCategories(categories.set(identifier, category));
   };
 
-  return { categories, create, retrieve, destroy, update };
+  return {
+    categories,
+    create,
+    destroy,
+    hide,
+    rename,
+    retrieve,
+    show,
+    update
+  };
 }
