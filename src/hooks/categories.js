@@ -25,5 +25,5 @@ export function useCategories() {
     setCategories(categories.set(identifier, category));
   };
 
-  return { categories };
+  return { categories, create, retrieve, destroy, update };
 }
