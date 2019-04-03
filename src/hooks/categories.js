@@ -3,7 +3,7 @@ import { Map } from 'immutable';
 import { uuid4 } from 'uuid';
 
 export function useCategories() {
-  const [categories, setCategories] = useState(Map([]));
+  const [categories, setCategories] = useState(Map());
 
   const create = category => {
     const identifier = uuid4();
