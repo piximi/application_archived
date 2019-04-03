@@ -52,6 +52,7 @@ export function useCategories() {
     create,
     destroy,
     hide,
+    relabel,
     rename,
     retrieve,
     show,
