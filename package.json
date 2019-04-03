@@ -23,7 +23,7 @@
     "json2csv": "^4.3.1",
     "localforage": "^1.7.3",
     "lodash": "^4.17.10",
-    "material-ui-color-picker": "^2.0.1",
+    "material-ui-color-picker": "^3.2.0",
     "prop-types": "latest",
     "randomcolor": "^0.5.3",
     "raven": "^2.6.2",

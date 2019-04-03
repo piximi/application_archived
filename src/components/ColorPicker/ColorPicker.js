@@ -4,9 +4,22 @@ import { colors } from '../../constants';
 
 export default function ColorPicker(props) {
   const { onChange, categories } = props;
-  const usedColors = categories.map(category => category.color.toUpperCase());
-  const availableColors = colors.filter(
-    color => !usedColors.includes(color.toUpperCase())
+
+  function usedColors(categories) {
+    if (categories) {
+      return categories.map(category => category.color.toUpperCase());
+    } else {
+      return [];
+    }
+  }
+
+  function availableColors(categories) {
+    return colors.filter(
+      color => !usedColors(categories).includes(color.toUpperCase())
+    );
+  }
+
+  return (
+    <CirclePicker colors={availableColors(categories)} onChange={onChange} />
   );
-  return <CirclePicker colors={availableColors} onChange={onChange} />;
 }
