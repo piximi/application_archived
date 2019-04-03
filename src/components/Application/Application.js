@@ -57,6 +57,7 @@ function Application(props) {
       <ConnectedSidebar
         toggle={onClick}
         toggled={open}
+        unlabelledVisibility={unlabelledVisibility}
         setUnlabelledVisibility={setUnlabelledVisibility}
       />
       <main

@@ -5,17 +5,10 @@ import { Dialog } from '@material-ui/core';
 import Settings from '../Settings/Settings';
 
 function SettingsDialog(props) {
-  const [tab, setTab] = useState(0);
-
   const { classes, onClose, open } = props;
 
   return (
-    <Dialog
-      className={classes.settingsDialog}
-      fullScreen
-      open={open}
-      onClose={onClose}
-    >
+    <Dialog className={classes.root} fullScreen open={open} onClose={onClose}>
       <Settings onClose={onClose} />
     </Dialog>
   );

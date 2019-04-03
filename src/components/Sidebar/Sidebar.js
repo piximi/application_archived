@@ -6,7 +6,7 @@ import {
   ListItemIcon,
   ListItemText
 } from '@material-ui/core';
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './Sidebar.css';
 import { withStyles } from '@material-ui/core/styles';
 import ConnectedCategories from '../../containers/ConnectedCategories';
