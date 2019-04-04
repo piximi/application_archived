@@ -5,7 +5,10 @@ export function ConfusionMatrix(props) {
   const containerRef = useRef();
 
   useEffect(() => {
-    tfvis.render.confusionMatrix(containerRef.current, props.data, {});
+    tfvis.render.confusionMatrix(containerRef.current, props.data, {
+      width: '400'
+    });
+    debugger;
   }, [props.data]);
 
   return <div className="confusion-matrix-root" ref={containerRef} />;
