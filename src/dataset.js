@@ -140,7 +140,7 @@ class Dataset {
       let ys2 = null;
 
       for (let img of imageArray) {
-        let imgTensor = tensorflow.fromPixels(img);
+        let imgTensor = tensorflow.browser.fromPixels(img);
 
         imgTensor = tensorflow.image.resizeBilinear(imgTensor, [224, 224]);
         imgTensor = imgTensor.expandDims(0);

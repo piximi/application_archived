@@ -26,7 +26,6 @@ class CreateCategoryListItem extends Component {
 
           <ListItemText inset primary="Create category" />
         </ListItem>
-
         <ConnectedCreateCategoryDialog
           onClose={this.toggle}
           open={this.state.open}

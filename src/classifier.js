@@ -32,7 +32,9 @@ async function loadNetwork(num_classes) {
     loss = 'categoricalCrossentropy';
   }
 
-  const preLoadedmodel = await tensorflow.loadModel('indexeddb://classifier');
+  const preLoadedmodel = await tensorflow.loadLayersModel(
+    'indexeddb://classifier'
+  );
 
   //get some intermediate layer
   const layer = preLoadedmodel.getLayer('conv_pw_13_relu');
@@ -124,10 +126,10 @@ async function train(modelDict, datasetObj) {
 
 async function predict(modelDict, datasetObj) {
   //while (isPredicting) {
-  tensorflow.tidy(() => {
-    // Load img
-    for (let img of datasetObj.predictionSet) {
-      let imgTensor = tensorflow.fromPixels(img);
+  // Load img
+  for (let img of datasetObj.predictionSet) {
+    tensorflow.tidy(() => {
+      let imgTensor = tensorflow.browser.fromPixels(img);
 
       //Preprocessing
       imgTensor = tensorflow.image.resizeBilinear(imgTensor, [224, 224]);
@@ -144,13 +146,13 @@ async function predict(modelDict, datasetObj) {
       // Make a prediction through our newly-trained model using the activation
       // from mobilenet as input.
       const predictions = modelDict['ShallowNet'].predict(activation);
-
       // Returns the index with the maximum probability. This number corresponds
       // to the class the model thinks is the most probable given the input.
       passResults(img.identifier, predictions.as1D());
-    }
-    //return predictions//.as1D().argMax();
-  });
+    });
+  }
+
+  //return predictions//.as1D().argMax();
 
   await tensorflow.nextFrame();
 }
@@ -205,12 +207,17 @@ async function fitAndPredict(images, allCategories) {
 }
 
 async function exportWeights() {
-  const preLoadedmodel = await tensorflow.loadModel('indexeddb://classifier');
+  const preLoadedmodel = await tensorflow.loadLayersModel(
+    'indexeddb://classifier'
+  );
   await preLoadedmodel.save('downloads://classifier');
 }
 
 async function importWeights(weightsFile) {
-  fetch('https://weights.cyto.ai/mobilenet/model.json')
+  //fetch('https://weights.cyto.ai/mobilenet/model.json')
+  fetch(
+    'https://storage.googleapis.com/tfjs-models/tfjs/mobilenet_v1_0.25_224/model.json'
+  )
     .then(function(response) {
       return response.json();
     })
@@ -220,7 +227,7 @@ async function importWeights(weightsFile) {
         type: 'application/json'
       });
       // TODO Make this working
-      tensorflow.loadModel(
+      tensorflow.loadLayersModel(
         tensorflow.io.browserFiles([modelFile, weightsFile])
       );
     });

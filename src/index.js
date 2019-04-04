@@ -1,5 +1,5 @@
 import React from 'react';
-import * as tensorflow from '@tensorflow/tfjs';
+import * as tf from '@tensorflow/tfjs';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
@@ -54,9 +54,10 @@ function initializeRedux() {
 }
 
 async function initializeModel() {
-  const preloadedModel = await tensorflow.loadModel(
-    'https://weights.cyto.ai/mobilenet/model.json'
+  const preloadedModel = await tf.loadLayersModel(
+    'https://storage.googleapis.com/tfjs-models/tfjs/mobilenet_v1_0.25_224/model.json'
   );
+  //'https://weights.cyto.ai/mobilenet/model.json'
   await preloadedModel.save('indexeddb://classifier');
 }
 
