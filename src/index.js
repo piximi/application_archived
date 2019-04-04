@@ -55,8 +55,9 @@ function initializeRedux() {
 
 async function initializeModel() {
   const preloadedModel = await tf.loadLayersModel(
-    'https://weights.cyto.ai/mobilenet/model.json'
+    'https://storage.googleapis.com/tfjs-models/tfjs/mobilenet_v1_0.25_224/model.json'
   );
+  //'https://weights.cyto.ai/mobilenet/model.json'
   await preloadedModel.save('indexeddb://classifier');
 }
 
