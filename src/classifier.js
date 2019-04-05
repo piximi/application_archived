@@ -13,14 +13,14 @@ let counter = 0;
 const LEARNING_RATE = 1e-4;
 const optimizer = tensorflow.train.adam(LEARNING_RATE);
 // How many examples the model should "see" before making a parameter update.
-const BATCH_SIZE = 4;
+const BATCH_SIZE = 32;
 // How many batches to train the model for.
 const TRAIN_BATCHES = 10;
 
 // Every TEST_ITERATION_FREQUENCY batches, test accuracy over TEST_BATCH_SIZE examples.
 // Ideally, we'd compute accuracy over the whole test set, but for performance
 // reasons we'll use a subset.
-const TEST_BATCH_SIZE = 4;
+const TEST_BATCH_SIZE = 32;
 const TEST_ITERATION_FREQUENCY = 5;
 
 async function loadNetwork(num_classes) {
