@@ -8,6 +8,7 @@
     "@material-ui/icons": "^3.0.1",
     "@material-ui/lab": "^3.0.0-alpha.23",
     "@material-ui/styles": "^3.0.0-alpha.10",
+    "@storybook/react": "^5.0.6",
     "@tensorflow/tfjs": "^1.0.3",
     "@tensorflow/tfjs-vis": "^1.0.3",
     "@types/jest": "^24.0.11",
@@ -56,16 +57,21 @@
   },
   "scripts": {
     "analyze": "source-map-explorer build/static/js/main.*",
-    "start": "react-scripts start",
-    "precommit": "lint-staged",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject",
     "flow": "flow",
+    "precommit": "lint-staged",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "start": "react-scripts start",
+    "storybook": "start-storybook",
+    "test": "react-scripts test"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^5.0.6",
+    "@storybook/addon-centered": "^5.0.6",
+    "@storybook/addon-jest": "^5.0.6",
+    "@storybook/addon-storyshots": "^5.0.6",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
     "babel-runtime": "^6.26.0",

@@ -1,9 +1,7 @@
 import { configure } from '@storybook/react';
 
-import '@storybook/addon-console';
-
 function loadStories() {
-  require('../src/stories/Settings');
+    require('../stories/Application');
 }
 
 configure(loadStories, module);
