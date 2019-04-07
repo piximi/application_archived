@@ -1,16 +1,15 @@
 import React from 'react';
 import { Snackbar } from '@material-ui/core';
 
-export default function TrainingSnackbar() {
+export default function TrainingSnackbar(props) {
+  const { onClose, open } = props;
+
   return (
     <Snackbar
-      anchorOrigin={{ vertical, horizontal }}
-      open={true}
-      onClose={() => {}}
-      ContentProps={{
-        'aria-describedby': 'message-id'
-      }}
-      message={<span id="message-id">I love snacks</span>}
+      anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+      open={open}
+      onClose={onClose}
+      message={<span id="message-id">...</span>}
     />
   );
 }

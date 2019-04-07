@@ -12,9 +12,19 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import SaveIcon from '@material-ui/icons/Save';
 import * as API from '../../../classifier';
+import useSnackbar from '../../../hooks/Snackbar';
+import TrainingSnackbar from '../../TrainingSnackbar/TrainingSnackbar';
 
 export default function SidebarModelList(props) {
   const [collapsed, setCollapsed] = useState(0);
+
+  const { openedSnackbar, openSnackbar, closeSnackbar } = useSnackbar();
+
+  const run = () => {
+    openSnackbar();
+
+    API.fitAndPredict(images, categories);
+  };
 
   const { categories, images } = props;
 
@@ -29,16 +39,14 @@ export default function SidebarModelList(props) {
       </ListItem>
 
       <Collapse in={!collapsed} timeout="auto" unmountOnExit>
-        <ListItem
-          dense
-          button
-          onClick={() => API.fitAndPredict(images, categories)}
-        >
+        <ListItem dense button onClick={run}>
           <ListItemIcon>
             <PlayCircleOutlineIcon />
           </ListItemIcon>
 
           <ListItemText primary="Run Classifier" />
+
+          <TrainingSnackbar onClose={closeSnackbar} open={openedSnackbar} />
         </ListItem>
 
         <ListItem dense button component="label">
