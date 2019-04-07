@@ -8,6 +8,7 @@ import PrimaryAppBar from '../AppBar/PrimaryAppBar/PrimaryAppBar';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContext } from 'react-dnd';
 import Gallery from '../Gallery/Gallery/Gallery';
+import useDrawer from '../../hooks/Drawer';
 
 function createImageCollection(images, categories) {
   const IMAGES = Object.values(images).map(image => {
@@ -32,13 +33,10 @@ function Application(props) {
   const [images, setImages] = useState(
     createImageCollection(props.images, props.categories)
   );
-  const [selectedImages, setSelectedImages] = useState([]);
-  const [open, setOpen] = useState(true);
-  const [unlabelledVisibility, setUnlabelledVisibility] = useState(0);
 
-  function onClick() {
-    setOpen(!open);
-  }
+  const [selectedImages, setSelectedImages] = useState([]);
+  const { openedDrawer, toggleDrawer } = useDrawer();
+  const [unlabelledVisibility, setUnlabelledVisibility] = useState(0);
 
   useEffect(() => {
     setImages(createImageCollection(props.images, props.categories));
@@ -51,19 +49,19 @@ function Application(props) {
       <PrimaryAppBar
         selectedImages={selectedImages}
         setSelectedImages={setSelectedImages}
-        toggle={onClick}
-        toggled={open}
+        toggle={toggleDrawer}
+        toggled={openedDrawer}
       />
       <ConnectedSidebar
-        toggle={onClick}
-        toggled={open}
+        toggle={toggleDrawer}
+        toggled={openedDrawer}
         unlabelledVisibility={unlabelledVisibility}
         setUnlabelledVisibility={setUnlabelledVisibility}
       />
       <main
         className={classNames(classes.content, classes.contentLeft, {
-          [classes.contentShift]: open,
-          [classes.contentShiftLeft]: open
+          [classes.contentShift]: openedDrawer,
+          [classes.contentShiftLeft]: openedDrawer
         })}
       >
         <div className={classes.drawerHeader} />
@@ -72,7 +70,7 @@ function Application(props) {
           images={images}
           selectedImages={selectedImages}
           imagesPerRow={10}
-          decreaseWidth={open ? 280 + 24 : 24}
+          decreaseWidth={openedDrawer ? 280 + 24 : 24}
           callOnDragEnd={updateImageCategory}
           setSelectedImages={setSelectedImages}
         />

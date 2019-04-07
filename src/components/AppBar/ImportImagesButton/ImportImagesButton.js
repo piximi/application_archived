@@ -4,22 +4,23 @@ import { Button } from '@material-ui/core';
 import AddPhotoAlternateIcon from '@material-ui/icons/AddPhotoAlternate';
 import UploadDialog from '../../UploadDialog/UploadDialog';
 import { makeStyles } from '@material-ui/styles';
+import useDialog from '../../../hooks/Dialog';
 
 const useStyles = makeStyles(styles);
 
 export default function ImportImagesButton() {
-  const [open, setOpen] = useState(false);
+  const { openedDialog, openDialog, closeDialog } = useDialog();
 
   const classes = useStyles();
 
   return (
     <React.Fragment>
-      <Button className={classes.button} onClick={() => setOpen(!open)}>
+      <Button className={classes.button} onClick={openDialog}>
         <AddPhotoAlternateIcon className={classes.icon} />
         Import images
       </Button>
 
-      <UploadDialog onClose={() => setOpen(!open)} open={open} />
+      <UploadDialog onClose={closeDialog} open={openedDialog} />
     </React.Fragment>
   );
 }
