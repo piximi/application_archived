@@ -1,16 +1,17 @@
 import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
-import React, { useState } from 'react';
+import React from 'react';
 import FolderOpenIcon from '@material-ui/icons/FolderOpen';
 import OpenDialog from '../../OpenSampleDialog/OpenSampleDialog';
+import useDialog from '../../../hooks/Dialog';
 
 export default function SidebarOpenSampleListItem(props) {
-  const [open, setOpen] = useState(0);
+  const { openedDialog, openDialog, closeDialog } = useDialog();
 
   const { loadDemoProject } = { ...props };
 
   return (
     <React.Fragment>
-      <ListItem dense button onClick={() => setOpen(!open)}>
+      <ListItem dense button onClick={openDialog}>
         <ListItemIcon>
           <FolderOpenIcon />
         </ListItemIcon>
@@ -19,8 +20,8 @@ export default function SidebarOpenSampleListItem(props) {
       </ListItem>
 
       <OpenDialog
-        onClose={() => setOpen(!open)}
-        open={open}
+        onClose={closeDialog}
+        open={openedDialog}
         loadDemoProject={loadDemoProject}
       />
     </React.Fragment>

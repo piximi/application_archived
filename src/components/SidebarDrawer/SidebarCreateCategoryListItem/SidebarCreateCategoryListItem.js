@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import ConnectedCreateCategoryDialog from '../../../containers/ConnectedCreateCategoryDialog';
+import useDialog from '../../../hooks/Dialog';
 
 export default function CreateCategoryListItem() {
-  const [open, setOpen] = useState(0);
+  const { openedDialog, openDialog, closeDialog } = useDialog();
 
   return (
     <React.Fragment>
-      <ListItem button onClick={() => setOpen(!open)}>
+      <ListItem button onClick={openDialog}>
         <ListItemIcon>
           <AddIcon />
         </ListItemIcon>
@@ -17,8 +18,8 @@ export default function CreateCategoryListItem() {
       </ListItem>
 
       <ConnectedCreateCategoryDialog
-        onClose={() => setOpen(!open)}
-        open={open}
+        onClose={closeDialog}
+        open={openedDialog}
       />
     </React.Fragment>
   );

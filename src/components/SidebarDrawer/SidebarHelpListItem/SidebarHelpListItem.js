@@ -1,14 +1,15 @@
 import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
-import React, { useState } from 'react';
+import React from 'react';
 import HelpDialog from '../../HelpDialog/HelpDialog';
 import HelpIcon from '@material-ui/icons/Help';
+import useDialog from '../../../hooks/Dialog';
 
 export default function HelpListItem() {
-  const [open, setOpen] = useState(0);
+  const { openedDialog, openDialog, closeDialog } = useDialog();
 
   return (
     <React.Fragment>
-      <ListItem dense button onClick={() => setOpen(!open)}>
+      <ListItem dense button onClick={openDialog}>
         <ListItemIcon>
           <HelpIcon />
         </ListItemIcon>
@@ -16,7 +17,7 @@ export default function HelpListItem() {
         <ListItemText primary="Help" />
       </ListItem>
 
-      <HelpDialog onClose={() => setOpen(!open)} open={open} />
+      <HelpDialog onClose={closeDialog} open={openedDialog} />
     </React.Fragment>
   );
 }

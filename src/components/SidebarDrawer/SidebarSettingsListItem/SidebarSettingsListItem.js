@@ -1,14 +1,15 @@
 import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
-import React, { useState } from 'react';
+import React from 'react';
 import SettingsIcon from '@material-ui/icons/Settings';
 import SettingsDialog from '../../SettingsDialog/SettingsDialog';
+import useDialog from '../../../hooks/Dialog';
 
 export default function SettingsListItem() {
-  const [open, setOpen] = useState(0);
+  const { openedDialog, openDialog, closeDialog } = useDialog();
 
   return (
     <React.Fragment>
-      <ListItem dense button onClick={() => setOpen(!open)}>
+      <ListItem dense button onClick={openDialog}>
         <ListItemIcon>
           <SettingsIcon />
         </ListItemIcon>
@@ -16,7 +17,7 @@ export default function SettingsListItem() {
         <ListItemText primary="Settings" />
       </ListItem>
 
-      <SettingsDialog onClose={() => setOpen(!open)} open={open} />
+      <SettingsDialog onClose={closeDialog} open={openedDialog} />
     </React.Fragment>
   );
 }
