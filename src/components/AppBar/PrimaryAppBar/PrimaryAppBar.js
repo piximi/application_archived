@@ -11,7 +11,7 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(styles);
 
-export default function PrimaryAppBar(props) {
+function PrimaryAppBar(props) {
   const classes = useStyles();
 
   const { toggle, toggled, selectedImages, setSelectedImages } = props;
@@ -58,3 +58,5 @@ export default function PrimaryAppBar(props) {
     </AppBar>
   );
 }
+
+export default React.memo(PrimaryAppBar);

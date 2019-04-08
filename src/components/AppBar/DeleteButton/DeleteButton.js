@@ -8,7 +8,7 @@ import useDialog from '../../../hooks/Dialog';
 
 const useStyles = makeStyles(styles);
 
-export default function DeleteButton(props) {
+function DeleteButton(props) {
   const { openedDialog, openDialog, closeDialog } = useDialog();
 
   const classes = useStyles();
@@ -36,3 +36,5 @@ export default function DeleteButton(props) {
     </React.Fragment>
   );
 }
+
+export default React.memo(DeleteButton);

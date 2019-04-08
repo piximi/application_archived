@@ -4,7 +4,7 @@ import FolderOpenIcon from '@material-ui/icons/FolderOpen';
 import OpenDialog from '../../Dialog/OpenSampleDialog/OpenSampleDialog';
 import useDialog from '../../../hooks/Dialog';
 
-export default function SidebarOpenSampleListItem(props) {
+function SidebarOpenSampleListItem(props) {
   const { openedDialog, openDialog, closeDialog } = useDialog();
 
   const { loadDemoProject } = { ...props };
@@ -27,3 +27,5 @@ export default function SidebarOpenSampleListItem(props) {
     </React.Fragment>
   );
 }
+
+export default React.memo(SidebarOpenSampleListItem);

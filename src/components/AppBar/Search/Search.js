@@ -26,7 +26,7 @@ function filterImages(searchText, props) {
   props.updateImageVisibility(images);
 }
 
-export default function Search(props) {
+function Search(props) {
   const classes = useStyles();
 
   return (
@@ -46,3 +46,5 @@ export default function Search(props) {
     </FormControl>
   );
 }
+
+export default React.memo(Search);

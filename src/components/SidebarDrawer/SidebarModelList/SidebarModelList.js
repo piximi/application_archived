@@ -16,7 +16,7 @@ import useSnackbar from '../../../hooks/Snackbar';
 import TrainingSnackbar from '../../Snackbar/TrainingSnackbar/TrainingSnackbar';
 import useCollapseList from '../../../hooks/CollapseList';
 
-export default function SidebarModelList(props) {
+function SidebarModelList(props) {
   const { collapsedList, collapseList } = useCollapseList();
 
   const { openedSnackbar, openSnackbar, closeSnackbar } = useSnackbar();
@@ -76,3 +76,5 @@ export default function SidebarModelList(props) {
     </List>
   );
 }
+
+export default React.memo(SidebarModelList);

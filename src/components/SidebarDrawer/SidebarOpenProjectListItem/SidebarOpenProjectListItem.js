@@ -14,7 +14,7 @@ function readDataFromCytoFile(e, props) {
   reader.readAsText(e.target.files[0]);
 }
 
-export default function SidebarOpenProjectListItem(props) {
+function SidebarOpenProjectListItem(props) {
   return (
     <React.Fragment>
       <input
@@ -36,3 +36,5 @@ export default function SidebarOpenProjectListItem(props) {
     </React.Fragment>
   );
 }
+
+export default React.memo(SidebarOpenProjectListItem);

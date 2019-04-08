@@ -8,7 +8,7 @@ import useDialog from '../../../hooks/Dialog';
 
 const useStyles = makeStyles(styles);
 
-export default function ImportImagesButton() {
+function ImportImagesButton() {
   const { openedDialog, openDialog, closeDialog } = useDialog();
 
   const classes = useStyles();
@@ -24,3 +24,5 @@ export default function ImportImagesButton() {
     </React.Fragment>
   );
 }
+
+export default React.memo(ImportImagesButton);

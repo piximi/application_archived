@@ -2,7 +2,7 @@ import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import React from 'react';
 import FeedbackIcon from '@material-ui/icons/Feedback';
 
-export default function SidebarSendFeedbackListItem() {
+function SidebarSendFeedbackListItem() {
   return (
     <React.Fragment>
       <ListItem
@@ -19,3 +19,5 @@ export default function SidebarSendFeedbackListItem() {
     </React.Fragment>
   );
 }
+
+export default React.memo(SidebarSendFeedbackListItem);

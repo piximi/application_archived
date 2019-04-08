@@ -14,7 +14,7 @@ import SidebarOpenProjectListItem from '../SidebarOpenProjectListItem/SidebarOpe
 
 const useStyles = makeStyles(styles);
 
-export default function SidebarDrawer(props) {
+function SidebarDrawer(props) {
   const classes = useStyles();
 
   const {
@@ -65,3 +65,5 @@ export default function SidebarDrawer(props) {
     </Drawer>
   );
 }
+
+export default React.memo(SidebarDrawer);
