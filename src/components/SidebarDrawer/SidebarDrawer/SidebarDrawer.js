@@ -9,7 +9,6 @@ import {
 import React from 'react';
 import styles from './SidebarDrawer.css';
 import ConnectedCategories from '../../../containers/ConnectedCategories';
-import FeedbackIcon from '@material-ui/icons/Feedback';
 import FolderOpenIcon from '@material-ui/icons/FolderOpen';
 import Save from '../SidebarSaveListItem/SidebarSaveListItem';
 import SidebarAppBar from '../SidebarAppBar/SidebarAppBar';
@@ -18,6 +17,7 @@ import SettingsListItem from '../SidebarSettingsListItem/SidebarSettingsListItem
 import SidebarOpenSampleListItem from '../SidebarOpenSampleListItem/SidebarOpenSampleListItem';
 import HelpListItem from '../SidebarHelpListItem/SidebarHelpListItem';
 import { makeStyles } from '@material-ui/styles';
+import SidebarSendFeedbackListItem from '../SidebarSendFeedbackListItem/SidebarSendFeedbackListItem';
 
 const useStyles = makeStyles(styles);
 
@@ -92,17 +92,7 @@ export default function SidebarDrawer(props) {
       <List dense>
         <SettingsListItem />
 
-        <ListItem
-          button
-          component="a"
-          href="https://docs.google.com/forms/d/e/1FAIpQLScAAydUXdfxxdjdkVpTJBXvZ2cGZblTRYHlcLEjfbTQsgoUug/viewform?usp=sf_link"
-        >
-          <ListItemIcon>
-            <FeedbackIcon />
-          </ListItemIcon>
-
-          <ListItemText primary="Send feedback" />
-        </ListItem>
+        <SidebarSendFeedbackListItem />
 
         <HelpListItem />
       </List>
