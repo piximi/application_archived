@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { withStyles } from '@material-ui/core/styles';
 import { PacmanLoader } from 'react-spinners';
 import styles from './Application.css';
 import classNames from 'classnames';
@@ -9,6 +8,9 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContext } from 'react-dnd';
 import Gallery from '../Gallery/Gallery/Gallery';
 import useDrawer from '../../hooks/Drawer';
+import { makeStyles } from '@material-ui/styles';
+
+const useStyles = makeStyles(styles);
 
 function createImageCollection(images, categories) {
   const IMAGES = Object.values(images).map(image => {
@@ -30,6 +32,7 @@ function findCategory(identifier, categories) {
 }
 
 function Application(props) {
+  const classes = useStyles();
   const [images, setImages] = useState(
     createImageCollection(props.images, props.categories)
   );
@@ -42,7 +45,7 @@ function Application(props) {
     setImages(createImageCollection(props.images, props.categories));
   });
 
-  const { classes, updateImageCategory, spinnerActive } = props;
+  const { updateImageCategory, spinnerActive } = props;
 
   return (
     <div className={classes.appFrame}>
@@ -88,6 +91,4 @@ function Application(props) {
   );
 }
 
-export default DragDropContext(HTML5Backend)(
-  withStyles(styles, { withTheme: true })(Application)
-);
+export default DragDropContext(HTML5Backend)(Application);
