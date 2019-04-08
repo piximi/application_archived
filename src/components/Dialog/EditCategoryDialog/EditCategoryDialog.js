@@ -12,7 +12,7 @@ import {
   Popover
 } from '@material-ui/core';
 import LabelIcon from '@material-ui/icons/Label';
-import ColorPicker from '../ColorPicker/ColorPicker';
+import ColorPicker from '../../ColorPicker/ColorPicker';
 
 function EditCategoryDialog(props) {
   const [anchor, setAnchor] = useState(null);

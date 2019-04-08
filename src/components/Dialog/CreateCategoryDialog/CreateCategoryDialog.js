@@ -13,8 +13,8 @@ import {
   Zoom
 } from '@material-ui/core';
 import LabelIcon from '@material-ui/icons/Label';
-import ColorPicker from '../ColorPicker/ColorPicker';
-import { colors } from '../../constants';
+import ColorPicker from '../../ColorPicker/ColorPicker';
+import { colors } from '../../../constants';
 
 function Transition(props) {
   return <Zoom {...props} />;

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from './DeleteButton.css';
 import { IconButton, Tooltip } from '@material-ui/core';
 import Delete from '@material-ui/icons/Delete';
-import ConnectedDeleteImageDialog from '../../containers/ConnectedDeleteImageDialog';
+import ConnectedDeleteImageDialog from '../../../containers/ConnectedDeleteImageDialog';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(styles);

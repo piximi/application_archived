@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import styles from './ImageViewerDialog.css';
 import { withStyles } from '@material-ui/core/styles';
 import { Dialog } from '@material-ui/core';
-import ConnectedImageViewer from '../../../containers/ConnectedImageViewer';
+import ConnectedImageViewer from '../../../../containers/ConnectedImageViewer';
 
 class ImageViewerDialog extends PureComponent {
   render() {

@@ -12,10 +12,10 @@ import {
   Zoom
 } from '@material-ui/core';
 import FolderIcon from '@material-ui/icons/Folder';
-import { store } from '../../index';
-import { addImagesAction } from '../../actions/images';
-import { addCategoriesAction } from '../../actions/categories';
-import { toggleSpinnerAction } from '../../actions/settings';
+import { store } from '../../../index';
+import { addImagesAction } from '../../../actions/images';
+import { addCategoriesAction } from '../../../actions/categories';
+import { toggleSpinnerAction } from '../../../actions/settings';
 
 // Add valid file formats here
 const validFileExtensions = ['png'];

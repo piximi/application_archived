@@ -1,7 +1,7 @@
 import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import React from 'react';
 import FolderOpenIcon from '@material-ui/icons/FolderOpen';
-import OpenDialog from '../../OpenSampleDialog/OpenSampleDialog';
+import OpenDialog from '../../Dialog/OpenSampleDialog/OpenSampleDialog';
 import useDialog from '../../../hooks/Dialog';
 
 export default function SidebarOpenSampleListItem(props) {

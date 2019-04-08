@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { DragSource } from 'react-dnd';
 import { getEmptyImage } from 'react-dnd-html5-backend';
-import ImageViewerDialog from '../../ImageViewerDialog/ImageViewerDialog/ImageViewerDialog';
+import ImageViewerDialog from '../../Dialog/ImageViewerDialog/ImageViewerDialog/ImageViewerDialog';
 import Image from '../Image/Image';
 import styles from './Item.css';
 import { withStyles } from '@material-ui/core/styles';

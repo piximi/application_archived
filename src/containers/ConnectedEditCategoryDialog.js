@@ -3,7 +3,7 @@ import {
   updateCategoryDescriptionAction,
   updateCategoryColorAction
 } from '../actions/categories';
-import EditCategoryDialog from '../components/EditCategoryDialog/EditCategoryDialog';
+import EditCategoryDialog from '../components/Dialog/EditCategoryDialog/EditCategoryDialog';
 
 const mapStateToProps = state => {
   return {

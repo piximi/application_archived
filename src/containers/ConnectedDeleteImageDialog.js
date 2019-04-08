@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import DeleteImageDialog from '../components/DeleteImageDialog/DeleteImageDialog';
+import DeleteImageDialog from '../components/Dialog/DeleteImageDialog/DeleteImageDialog';
 import { deleteImagesAction } from '../actions/images';
 
 const mapStateToProps = state => {

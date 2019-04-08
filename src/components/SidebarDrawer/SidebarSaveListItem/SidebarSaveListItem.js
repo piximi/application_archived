@@ -10,7 +10,7 @@ import MenuList from '@material-ui/core/MenuList';
 import Paper from '@material-ui/core/Paper';
 import Popover from '@material-ui/core/Popover';
 import { fields } from '../../../constants';
-import SaveDialog from '../../SaveDialog/SaveDialog';
+import SaveDialog from '../../Dialog/SaveDialog/SaveDialog';
 
 class SidebarSaveListItem extends Component {
   constructor() {

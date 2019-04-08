@@ -13,7 +13,7 @@ import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import SaveIcon from '@material-ui/icons/Save';
 import * as API from '../../../classifier';
 import useSnackbar from '../../../hooks/Snackbar';
-import TrainingSnackbar from '../../TrainingSnackbar/TrainingSnackbar';
+import TrainingSnackbar from '../../Snackbar/TrainingSnackbar/TrainingSnackbar';
 
 export default function SidebarModelList(props) {
   const [collapsed, setCollapsed] = useState(0);

@@ -15,7 +15,7 @@ import ColorLensIcon from '@material-ui/icons/ColorLens';
 import PublicIcon from '@material-ui/icons/Public';
 import ImageViewerChannelDrawer from '../ImageViewerChannelDrawer/ImageViewerChannelDrawer';
 import ImageViewerExposureDrawer from '../ImageViewerExposureDrawer/ImageViewerExposureDrawer';
-import Image from '../../Gallery/Image/Image';
+import Image from '../../../Gallery/Image/Image';
 
 class ImageViewer extends PureComponent {
   state = {
