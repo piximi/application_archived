@@ -12,7 +12,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import CreateCategoryListItem from '../SidebarCreateCategoryListItem/SidebarCreateCategoryListItem';
 import useCollapseList from '../../../hooks/CollapseList';
 
-export default function SidebarCategoriesList(props) {
+function SidebarCategoriesList(props) {
   const { collapsedList, collapseList } = useCollapseList();
 
   const [
@@ -66,3 +66,5 @@ export default function SidebarCategoriesList(props) {
     </React.Fragment>
   );
 }
+
+export default React.memo(SidebarCategoriesList);
