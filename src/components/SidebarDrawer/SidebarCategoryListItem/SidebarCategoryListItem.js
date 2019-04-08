@@ -104,68 +104,68 @@ function SidebarCategoryListItem(props) {
               <MoreHorizIcon />
             </IconButton>
           </ListItemSecondaryAction>
-
-          <Popover
-            id="simple-popper"
-            open={open}
-            onClose={() => setAnchorEl(0)}
-            anchorReference="anchorPosition"
-            anchorPosition={{
-              top: open ? anchorEl.getBoundingClientRect().bottom - 10 : 0,
-              left: open ? anchorEl.getBoundingClientRect().left : 0
-            }}
-          >
-            <Paper>
-              <MenuList>
-                <MenuItem
-                  onClick={() => {
-                    displayThisCategoryOnly(identifier);
-                    setUnlabelledVisibility(false);
-                    setAnchorEl(0);
-                  }}
-                  className={classes.menuItem}
-                >
-                  <ListItemText
-                    classes={{ primary: classes.primary }}
-                    primary="Display this only"
-                  />
-                </MenuItem>
-                {identifier !== null ? (
-                  <MenuItem
-                    onClick={() => {
-                      setEditCategoryDialogToggled(!editCategoryDialogToggled);
-
-                      setAnchorEl(0);
-                    }}
-                    className={classes.menuItem}
-                  >
-                    <ListItemText
-                      classes={{ primary: classes.primary }}
-                      primary="Edit"
-                    />
-                  </MenuItem>
-                ) : null}
-
-                {identifier !== null ? (
-                  <MenuItem
-                    onClick={() => {
-                      setDeleteCategoryDialogOpen(!deleteCategoryDialogOpen);
-
-                      setAnchorEl(0);
-                    }}
-                    className={classes.menuItem}
-                  >
-                    <ListItemText
-                      classes={{ primary: classes.primary }}
-                      primary="Delete"
-                    />
-                  </MenuItem>
-                ) : null}
-              </MenuList>
-            </Paper>
-          </Popover>
         </ListItem>
       </StyledCategory>
+
+      <Popover
+        id="simple-popper"
+        open={open}
+        onClose={() => setAnchorEl(0)}
+        anchorReference="anchorPosition"
+        anchorPosition={{
+          top: open ? anchorEl.getBoundingClientRect().bottom - 10 : 0,
+          left: open ? anchorEl.getBoundingClientRect().left : 0
+        }}
+      >
+        <Paper>
+          <MenuList>
+            <MenuItem
+              onClick={() => {
+                displayThisCategoryOnly(identifier);
+                setUnlabelledVisibility(false);
+                setAnchorEl(0);
+              }}
+              className={classes.menuItem}
+            >
+              <ListItemText
+                classes={{ primary: classes.primary }}
+                primary="Display this only"
+              />
+            </MenuItem>
+            {identifier !== null ? (
+              <MenuItem
+                onClick={() => {
+                  setEditCategoryDialogToggled(!editCategoryDialogToggled);
+
+                  setAnchorEl(0);
+                }}
+                className={classes.menuItem}
+              >
+                <ListItemText
+                  classes={{ primary: classes.primary }}
+                  primary="Edit"
+                />
+              </MenuItem>
+            ) : null}
+
+            {identifier !== null ? (
+              <MenuItem
+                onClick={() => {
+                  setDeleteCategoryDialogOpen(!deleteCategoryDialogOpen);
+
+                  setAnchorEl(0);
+                }}
+                className={classes.menuItem}
+              >
+                <ListItemText
+                  classes={{ primary: classes.primary }}
+                  primary="Delete"
+                />
+              </MenuItem>
+            ) : null}
+          </MenuList>
+        </Paper>
+      </Popover>
 
       <ConnectedEditCategoryDialog
         onClose={() => setEditCategoryDialogToggled(!editCategoryDialogToggled)}

@@ -8,7 +8,7 @@ import { makeStyles } from '@material-ui/styles';
 const useStyles = makeStyles(styles);
 
 export default function ItemLabel(props) {
-  const [anchorEl, setAnchorEl] = useState(0);
+  const [anchorEl, setAnchorEl] = useState(null);
 
   const { color } = props;
 

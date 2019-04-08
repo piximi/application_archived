@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './DeleteButton.css';
 import { IconButton, Tooltip } from '@material-ui/core';
 import Delete from '@material-ui/icons/Delete';
 import ConnectedDeleteImageDialog from '../../../containers/ConnectedDeleteImageDialog';
 import { makeStyles } from '@material-ui/styles';
+import useDialog from '../../../hooks/Dialog';
 
 const useStyles = makeStyles(styles);
 
 export default function DeleteButton(props) {
-  const [open, setOpen] = useState(0);
+  const { openedDialog, openDialog, closeDialog } = useDialog();
 
   const classes = useStyles();
 
@@ -20,7 +21,7 @@ export default function DeleteButton(props) {
         <IconButton
           aria-label="Delete"
           classes={{ root: classes.button }}
-          onClick={() => setOpen(!open)}
+          onClick={openDialog}
         >
           <Delete classes={{ root: classes.icon }} />
         </IconButton>
@@ -29,8 +30,8 @@ export default function DeleteButton(props) {
       <ConnectedDeleteImageDialog
         setSelectedImages={setSelectedImages}
         selectedImages={selectedImages}
-        onClose={() => setOpen(!open)}
-        open={open}
+        onClose={closeDialog}
+        open={openedDialog}
       />
     </React.Fragment>
   );
