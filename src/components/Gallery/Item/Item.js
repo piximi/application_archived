@@ -5,7 +5,7 @@ import ImageViewerDialog from '../../ImageViewerDialog/ImageViewerDialog/ImageVi
 import Image from '../Image/Image';
 import styles from './Item.css';
 import { withStyles } from '@material-ui/core/styles';
-import ItemLabel from '../../ItemLabel/ItemLabel';
+import ItemLabel from '../ItemLabel/ItemLabel';
 
 const itemSource = {
   beginDrag(props) {
