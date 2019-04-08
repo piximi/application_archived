@@ -15,10 +15,10 @@ import { DropTarget } from 'react-dnd';
 import StyledCategory from './StyledCategory';
 import styles from './SidebarCategoryListItem.css';
 import Paper from '@material-ui/core/Paper';
-import { withStyles } from '@material-ui/core/styles';
 import Popover from '@material-ui/core/Popover';
 import ConnectedEditCategoryDialog from '../../../containers/ConnectedEditCategoryDialog';
 import ConnectedDeleteCategoryDialog from '../../../containers/ConnectedDeleteCategoryDialog';
+import { makeStyles } from '@material-ui/styles';
 
 const spec = {
   drop(props, monitor, component) {
@@ -40,6 +40,8 @@ function collect(connect, monitor) {
   };
 }
 
+const useStyles = makeStyles(styles);
+
 function SidebarCategoryListItem(props) {
   const [editCategoryDialogToggled, setEditCategoryDialogToggled] = useState(
     false
@@ -50,6 +52,8 @@ function SidebarCategoryListItem(props) {
   const [animateOnDrop, setAnimateOnDrop] = useState(0);
   const [anchorEl, setAnchorEl] = useState(0);
 
+  const classes = useStyles();
+
   const {
     identifier,
     updateCategoryVisibility,
@@ -59,7 +63,6 @@ function SidebarCategoryListItem(props) {
     connectDropTarget,
     description,
     visible,
-    classes,
     categories
   } = props;
 
@@ -183,6 +186,6 @@ function SidebarCategoryListItem(props) {
   );
 }
 
-export default withStyles(styles, { withTheme: true })(
-  DropTarget('SelectedItems', spec, collect)(SidebarCategoryListItem)
+export default DropTarget('SelectedItems', spec, collect)(
+  SidebarCategoryListItem
 );

@@ -8,7 +8,6 @@ import {
 } from '@material-ui/core';
 import React from 'react';
 import styles from './SidebarDrawer.css';
-import { withStyles } from '@material-ui/core/styles';
 import ConnectedCategories from '../../../containers/ConnectedCategories';
 import FeedbackIcon from '@material-ui/icons/Feedback';
 import FolderOpenIcon from '@material-ui/icons/FolderOpen';
@@ -34,7 +33,7 @@ function readDataFromCytoFile(e, props) {
   reader.readAsText(e.target.files[0]);
 }
 
-function SidebarDrawer(props) {
+export default function SidebarDrawer(props) {
   const classes = useStyles();
 
   const {
@@ -110,5 +109,3 @@ function SidebarDrawer(props) {
     </Drawer>
   );
 }
-
-export default withStyles(styles, { withTheme: true })(SidebarDrawer);

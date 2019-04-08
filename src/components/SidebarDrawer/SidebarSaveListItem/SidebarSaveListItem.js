@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import styles from './SidebarSaveListItem.css';
-import { withStyles } from '@material-ui/core/styles';
 import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import SaveIcon from '@material-ui/icons/Save';
 import json2csv from 'json2csv';
@@ -11,138 +10,121 @@ import Paper from '@material-ui/core/Paper';
 import Popover from '@material-ui/core/Popover';
 import { fields } from '../../../constants';
 import SaveDialog from '../../Dialog/SaveDialog/SaveDialog';
+import { makeStyles } from '@material-ui/styles';
 
-class SidebarSaveListItem extends Component {
-  constructor() {
-    super();
-    this.state = {
-      anchorEl: null,
-      saveDialogOpen: false,
-      defaultDialogText: ''
-    };
-  }
+const useStyles = makeStyles(styles);
 
-  handleClose = () => {
-    this.setState({
-      anchorEl: null
-    });
+export default function SidebarSaveListItem(props) {
+  const classes = useStyles();
+
+  const [anchorEl, setAnchorEl] = useState(0);
+  const [saveDialogOpen, setSaveDialogOpen] = useState(false);
+  const [defaultDialogText, setDefaultDialogText] = useState('');
+  const [downloadFunction, setDownloadFunction] = useState(0);
+
+  const open = Boolean(anchorEl);
+
+  const handleClose = () => {
+    setAnchorEl(null);
   };
 
-  handleCloseSaveDialog = () => {
-    this.setState({
-      saveDialogOpen: false
-    });
+  const handleCloseSaveDialog = () => {
+    setSaveDialogOpen(false);
   };
 
-  handleClick = event => {
-    this.setState({
-      anchorEl: event.currentTarget
-    });
+  const handleClick = event => {
+    setAnchorEl(event.currentTarget);
   };
 
-  changeDefaultDialogText = event => {
-    this.setState({
-      defaultDialogText: event.target.value
-    });
+  const changeDefaultDialogText = event => {
+    setDefaultDialogText(event.target.value);
   };
 
-  clickOnExportLabels = () => {
-    let fileName = this.state.defaultDialogText;
+  const clickOnExportLabels = () => {
+    let fileName = defaultDialogText;
     if (fileName.length === 0) fileName = 'labels.csv';
     if (fileName.split('.').pop() !== 'csv') fileName = fileName + '.csv';
     const Json2csvParser = json2csv.Parser;
     const json2csvParser = new Json2csvParser({ fields });
-    const csv = json2csvParser.parse(Object.values(this.props.images));
+    const csv = json2csvParser.parse(Object.values(props.images));
     fileDownload(csv, fileName);
   };
 
-  clickOnExportProject = () => {
-    let fileName = this.state.defaultDialogText;
+  const clickOnExportProject = () => {
+    let fileName = defaultDialogText;
     if (fileName.length === 0) fileName = 'MyProject.cyto';
     if (fileName.split('.').pop() !== 'cyto') fileName = fileName + '.cyto';
-    let categories = [...this.props.categories];
+    let categories = [...props.categories];
     categories.shift();
     const exportObject = {
-      images: this.props.images,
+      images: props.images,
       categories: categories,
-      settings: this.props.settings
+      settings: props.settings
     };
     const json = JSON.stringify(exportObject, null, '\t');
     fileDownload(json, fileName);
   };
 
-  render() {
-    const { classes } = this.props;
-    const { anchorEl } = this.state;
-    const open = Boolean(anchorEl);
-
-    return (
-      <React.Fragment>
-        <ListItem button onClick={this.handleClick}>
-          <ListItemIcon>
-            <SaveIcon />
-          </ListItemIcon>
-          <ListItemText inset primary="Save" />
-        </ListItem>
-        <Popover
-          id="simple-popper"
-          open={open}
-          onClose={this.handleClose}
-          anchorReference="anchorPosition"
-          anchorPosition={{
-            top: open ? anchorEl.getBoundingClientRect().bottom - 3 : 0,
-            left: open ? anchorEl.getBoundingClientRect().left + 14 : 0
-          }}
-        >
-          <Paper>
-            <MenuList>
-              <MenuItem
-                onClick={() => {
-                  this.handleClose();
-                  this.setState({
-                    saveDialogOpen: true,
-                    downloadFunction: this.clickOnExportProject,
-                    defaultDialogText: 'MyProject.cyto'
-                  });
-                }}
-                className={classes.menuItem}
-              >
-                <ListItemText
-                  classes={{ primary: classes.primary }}
-                  primary="Save Project (.cyto)"
-                />
-              </MenuItem>
-              <MenuItem
-                onClick={() => {
-                  this.handleClose();
-                  this.setState({
-                    saveDialogOpen: true,
-                    downloadFunction: this.clickOnExportLabels,
-                    defaultDialogText: 'labels.csv'
-                  });
-                }}
-                className={classes.menuItem}
-              >
-                <ListItemText
-                  classes={{ primary: classes.primary }}
-                  primary="Save Labels (.csv)"
-                />
-              </MenuItem>
-            </MenuList>
-          </Paper>
-        </Popover>
-        {this.state.saveDialogOpen ? (
-          <SaveDialog
-            open={this.state.saveDialogOpen}
-            download={this.state.downloadFunction}
-            onClose={this.handleCloseSaveDialog}
-            defaultDialogText={this.state.defaultDialogText}
-            changeDefaultDialogText={this.changeDefaultDialogText}
-          />
-        ) : null}
-      </React.Fragment>
-    );
-  }
+  return (
+    <React.Fragment>
+      <ListItem button onClick={handleClick}>
+        <ListItemIcon>
+          <SaveIcon />
+        </ListItemIcon>
+        <ListItemText inset primary="Save" />
+      </ListItem>
+      <Popover
+        id="simple-popper"
+        open={open}
+        onClose={handleClose}
+        anchorReference="anchorPosition"
+        anchorPosition={{
+          top: open ? anchorEl.getBoundingClientRect().bottom - 3 : 0,
+          left: open ? anchorEl.getBoundingClientRect().left + 14 : 0
+        }}
+      >
+        <Paper>
+          <MenuList>
+            <MenuItem
+              onClick={() => {
+                handleClose();
+                setSaveDialogOpen(true);
+                setDownloadFunction(clickOnExportProject);
+                setDefaultDialogText('MyProject.cyto');
+              }}
+              className={classes.menuItem}
+            >
+              <ListItemText
+                classes={{ primary: classes.primary }}
+                primary="Save Project (.cyto)"
+              />
+            </MenuItem>
+            <MenuItem
+              onClick={() => {
+                handleClose();
+                setSaveDialogOpen(true);
+                setDownloadFunction(clickOnExportLabels);
+                setDefaultDialogText('labels.csv');
+              }}
+              className={classes.menuItem}
+            >
+              <ListItemText
+                classes={{ primary: classes.primary }}
+                primary="Save Labels (.csv)"
+              />
+            </MenuItem>
+          </MenuList>
+        </Paper>
+      </Popover>
+      {saveDialogOpen ? (
+        <SaveDialog
+          open={saveDialogOpen}
+          download={downloadFunction}
+          onClose={handleCloseSaveDialog}
+          defaultDialogText={defaultDialogText}
+          changeDefaultDialogText={changeDefaultDialogText}
+        />
+      ) : null}
+    </React.Fragment>
+  );
 }
-
-export default withStyles(styles, { withTheme: true })(SidebarSaveListItem);
