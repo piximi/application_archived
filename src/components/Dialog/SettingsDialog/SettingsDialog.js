@@ -18,14 +18,14 @@ import {
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { makeStyles } from '@material-ui/styles';
-import ArrowBackIcon from '@material-ui/core/SvgIcon/SvgIcon';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 const useStyles = makeStyles(styles);
 
 export default function SettingsDialog(props) {
-  const [classificationCollapsed, setClassificationCollapsed] = useState(0);
+  const [classificationCollapsed, setClassificationCollapsed] = useState(false);
 
-  const [notificationsClicked, setNotificationsClicked] = useState(0);
+  const [notificationsClicked, setNotificationsClicked] = useState(false);
 
   const { onClose, open } = props;
 
