@@ -5,7 +5,7 @@ import {
   ListItemIcon,
   ListItemText
 } from '@material-ui/core';
-import React, { useState } from 'react';
+import React from 'react';
 import OpenInBrowserIcon from '@material-ui/icons/OpenInBrowser';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -14,9 +14,10 @@ import SaveIcon from '@material-ui/icons/Save';
 import * as API from '../../../classifier';
 import useSnackbar from '../../../hooks/Snackbar';
 import TrainingSnackbar from '../../Snackbar/TrainingSnackbar/TrainingSnackbar';
+import useCollapseList from '../../../hooks/CollapseList';
 
 export default function SidebarModelList(props) {
-  const [collapsed, setCollapsed] = useState(0);
+  const { collapsedList, collapseList } = useCollapseList();
 
   const { openedSnackbar, openSnackbar, closeSnackbar } = useSnackbar();
 
@@ -30,15 +31,15 @@ export default function SidebarModelList(props) {
 
   return (
     <List dense>
-      <ListItem button onClick={() => setCollapsed(!collapsed)}>
+      <ListItem button onClick={collapseList}>
         <ListItemIcon>
-          {!collapsed ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+          {!collapsedList ? <ExpandLessIcon /> : <ExpandMoreIcon />}
         </ListItemIcon>
 
         <ListItemText inset primary="Model" />
       </ListItem>
 
-      <Collapse in={!collapsed} timeout="auto" unmountOnExit>
+      <Collapse in={!collapsedList} timeout="auto" unmountOnExit>
         <ListItem dense button onClick={run}>
           <ListItemIcon>
             <PlayCircleOutlineIcon />

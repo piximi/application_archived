@@ -1,11 +1,11 @@
 import { useState } from 'react';
 
 export default function useCollapseList() {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsedList, setCollapsedList] = useState(false);
 
-  const collapse = () => {
-    setCollapsed(!collapsed);
+  const collapseList = () => {
+    setCollapsedList(!collapsedList);
   };
 
-  return { collapsed, collapse };
+  return { collapsedList, collapseList };
 }

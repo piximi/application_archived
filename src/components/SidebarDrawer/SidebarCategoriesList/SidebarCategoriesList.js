@@ -10,9 +10,10 @@ import Category from '../SidebarCategoryListItem/SidebarCategoryListItem';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import CreateCategoryListItem from '../SidebarCreateCategoryListItem/SidebarCreateCategoryListItem';
+import useCollapseList from '../../../hooks/CollapseList';
 
 export default function SidebarCategoriesList(props) {
-  const [collapsed, setCollapsed] = useState(0);
+  const { collapsedList, collapseList } = useCollapseList();
 
   const [
     createCategoryDialogToggled,
@@ -31,15 +32,15 @@ export default function SidebarCategoriesList(props) {
   return (
     <React.Fragment>
       <List dense>
-        <ListItem button onClick={() => setCollapsed(!collapsed)}>
+        <ListItem button onClick={collapseList}>
           <ListItemIcon>
-            {!collapsed ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+            {!collapsedList ? <ExpandLessIcon /> : <ExpandMoreIcon />}
           </ListItemIcon>
 
           <ListItemText inset primary="Categories" />
         </ListItem>
 
-        <Collapse in={!collapsed} timeout="auto" unmountOnExit>
+        <Collapse in={!collapsedList} timeout="auto" unmountOnExit>
           {categories.map((category, index) => (
             <Category
               identifier={category.identifier}
