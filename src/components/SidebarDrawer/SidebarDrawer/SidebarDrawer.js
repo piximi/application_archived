@@ -10,7 +10,7 @@ import React from 'react';
 import styles from './SidebarDrawer.css';
 import ConnectedCategories from '../../../containers/ConnectedCategories';
 import FolderOpenIcon from '@material-ui/icons/FolderOpen';
-import Save from '../SidebarSaveListItem/SidebarSaveListItem';
+import SidebarSaveListItem from '../SidebarSaveListItem/SidebarSaveListItem';
 import SidebarAppBar from '../SidebarAppBar/SidebarAppBar';
 import SidebarModelList from '../SidebarModelList/SidebarModelList';
 import SettingsListItem from '../SidebarSettingsListItem/SidebarSettingsListItem';
@@ -76,7 +76,7 @@ export default function SidebarDrawer(props) {
 
         <SidebarOpenSampleListItem loadDemoProject={loadDemoProject} />
 
-        <Save images={images} categories={categories} />
+        <SidebarSaveListItem images={images} categories={categories} />
       </List>
 
       <Divider />
