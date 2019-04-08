@@ -66,7 +66,7 @@ export default function Settings(props) {
                   onChange={() =>
                     setNotificationsClicked(!notificationsClicked)
                   }
-                  checked={this.state.notifications.checked}
+                  checked={notificationsClicked}
                 />
               </ListItemSecondaryAction>
             </ListItem>
