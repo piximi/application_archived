@@ -1,3 +1,5 @@
+import './bootstrap.js';
+
 import React from 'react';
 import * as tf from '@tensorflow/tfjs';
 import ReactDOM from 'react-dom';

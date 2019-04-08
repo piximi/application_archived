@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import axios from 'axios';
-import Sidebar from '../components/Sidebar/Sidebar';
+import Sidebar from '../components/SidebarDrawer/SidebarDrawer/SidebarDrawer';
 import {
   addImagesAction,
   updateImageCategoryAction,

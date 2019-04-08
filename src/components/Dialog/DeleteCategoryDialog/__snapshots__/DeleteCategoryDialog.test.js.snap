@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DeleteCategoryDialogonent should render correctly 1`] = `
+<WithStyles(Dialog)
+  onClose={[Function]}
+>
+  <WithStyles(DialogTitle)
+    id="alert-dialog-title"
+  >
+    Delete undefined?
+  </WithStyles(DialogTitle)>
+  <WithStyles(DialogContent)>
+    <WithStyles(DialogContentText)
+      id="alert-dialog-description"
+    >
+      Images categorized as undefined won’t be deleted.
+    </WithStyles(DialogContentText)>
+  </WithStyles(DialogContent)>
+  <WithStyles(DialogActions)>
+    <WithStyles(Button)
+      color="primary"
+      onClick={[Function]}
+    >
+      Cancel
+    </WithStyles(Button)>
+    <WithStyles(Button)
+      color="primary"
+      onClick={[Function]}
+    >
+      Yes
+    </WithStyles(Button)>
+  </WithStyles(DialogActions)>
+</WithStyles(Dialog)>
+`;
