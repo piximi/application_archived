@@ -1,7 +1,7 @@
 import React from 'react';
 import { Snackbar } from '@material-ui/core';
 
-export default function TrainingSnackbar(props) {
+function TrainingSnackbar(props) {
   const { onClose, open } = props;
 
   return (
@@ -13,3 +13,5 @@ export default function TrainingSnackbar(props) {
     />
   );
 }
+
+export default React.memo(TrainingSnackbar);

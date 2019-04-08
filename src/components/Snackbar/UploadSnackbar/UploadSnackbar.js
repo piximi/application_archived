@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(styles);
 
-export default function UploadSnackbar(props) {
+function UploadSnackbar(props) {
   const { open, onClose } = props;
 
   const classes = useStyles();
@@ -23,3 +23,5 @@ export default function UploadSnackbar(props) {
     </Snackbar>
   );
 }
+
+export default React.memo(UploadSnackbar);
