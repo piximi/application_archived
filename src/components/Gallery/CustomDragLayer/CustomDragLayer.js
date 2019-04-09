@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { DragLayer } from 'react-dnd';
 import './CustomDragLayer.css';
@@ -35,8 +35,10 @@ let swapArrayElements = function(arr, indexA, indexB) {
   arr[indexB] = temp;
 };
 
-class CustomDragLayer extends PureComponent {
-  renderItem(type, item) {
+const CustomDragLayer = props => {
+  const { item, itemType, isDragging } = props;
+
+  const renderItem = (type, item) => {
     const list = document.getElementsByClassName('selected');
     let imgSources = [];
     let draggedIndex = 0;
@@ -56,23 +58,18 @@ class CustomDragLayer extends PureComponent {
         {imgSources} <span>{list.length}</span>{' '}
       </div>
     );
+  };
+
+  if (!isDragging) {
+    return null;
   }
 
-  render() {
-    const { item, itemType, isDragging } = this.props;
-    if (!isDragging) {
-      return null;
-    }
-
-    return (
-      <div style={layerStyles}>
-        <div style={getItemStyles(this.props)}>
-          {this.renderItem(itemType, item)}
-        </div>
-      </div>
-    );
-  }
-}
+  return (
+    <div style={layerStyles}>
+      <div style={getItemStyles(props)}>{renderItem(itemType, item)}</div>
+    </div>
+  );
+};
 
 CustomDragLayer.propTypes = {
   item: PropTypes.object,
