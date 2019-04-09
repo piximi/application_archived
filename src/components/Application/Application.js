@@ -33,9 +33,7 @@ function findCategory(identifier, categories) {
 
 function Application(props) {
   const classes = useStyles();
-  const [images, setImages] = useState(
-    createImageCollection(props.images, props.categories)
-  );
+  const [images, setImages] = useState([]);
 
   const [selectedImages, setSelectedImages] = useState([]);
   const { openedDrawer, toggleDrawer } = useDrawer();
@@ -43,7 +41,7 @@ function Application(props) {
 
   useEffect(() => {
     setImages(createImageCollection(props.images, props.categories));
-  });
+  }, []);
 
   const { updateImageCategory, spinnerActive } = props;
 
@@ -55,12 +53,14 @@ function Application(props) {
         toggle={toggleDrawer}
         toggled={openedDrawer}
       />
+
       <ConnectedSidebar
         toggle={toggleDrawer}
         toggled={openedDrawer}
         unlabelledVisibility={unlabelledVisibility}
         setUnlabelledVisibility={setUnlabelledVisibility}
       />
+
       <main
         className={classNames(classes.content, classes.contentLeft, {
           [classes.contentShift]: openedDrawer,
