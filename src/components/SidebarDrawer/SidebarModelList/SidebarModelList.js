@@ -49,22 +49,6 @@ function SidebarModelList(props) {
 
           <TrainingSnackbar onClose={closeSnackbar} open={openedSnackbar} />
         </ListItem>
-
-        <ListItem dense button component="label">
-          <ListItemIcon>
-            <OpenInBrowserIcon />
-          </ListItemIcon>
-
-          <ListItemText primary="Import Weights" />
-          <input
-            style={{ display: 'none' }}
-            type="file"
-            accept="*"
-            name="file"
-            id="file"
-            onChange={e => API.importWeights(e.target.files)}
-          />
-        </ListItem>
       </Collapse>
     </List>
   );
