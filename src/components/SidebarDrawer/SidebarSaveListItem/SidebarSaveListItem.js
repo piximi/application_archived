@@ -19,13 +19,11 @@ import useDialog from '../../../hooks/Dialog';
 import * as API from '../../../classifier';
 
 const SidebarSaveListItem = props => {
-  const { anchorEl, openMenu, closeMenu } = useMenu();
+  const { anchorEl, openedMenu, openMenu, closeMenu } = useMenu();
   const { openedDialog, openDialog, closeDialog } = useDialog();
 
   const [defaultDialogText, setDefaultDialogText] = useState('');
   const [downloadFunction, setDownloadFunction] = useState(0);
-
-  const openedMenu = Boolean(anchorEl);
 
   const changeDefaultDialogText = event => {
     setDefaultDialogText(event.target.value);

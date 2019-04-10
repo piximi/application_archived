@@ -19,6 +19,7 @@ import Popover from '@material-ui/core/Popover';
 import ConnectedEditCategoryDialog from '../../../containers/ConnectedEditCategoryDialog';
 import ConnectedDeleteCategoryDialog from '../../../containers/ConnectedDeleteCategoryDialog';
 import { makeStyles } from '@material-ui/styles';
+import useMenu from '../../../hooks/Menu';
 
 const spec = {
   drop(props, monitor, component) {
@@ -50,7 +51,8 @@ function SidebarCategoryListItem(props) {
     false
   );
   const [animateOnDrop, setAnimateOnDrop] = useState(0);
-  const [anchorEl, setAnchorEl] = useState(0);
+
+  const { anchorEl, openedMenu, openMenu, closeMenu } = useMenu();
 
   const classes = useStyles();
 
@@ -66,7 +68,28 @@ function SidebarCategoryListItem(props) {
     categories
   } = props;
 
-  const open = Boolean(anchorEl);
+  const anchorPosition = {
+    top: openedMenu ? anchorEl.getBoundingClientRect().bottom - 10 : 0,
+    left: openedMenu ? anchorEl.getBoundingClientRect().left : 0
+  };
+
+  const onHideOtherCategoriesClick = () => {
+    displayThisCategoryOnly(identifier);
+    setUnlabelledVisibility(false);
+    closeMenu();
+  };
+
+  const onEditCategoryClick = () => {
+    setEditCategoryDialogToggled(!editCategoryDialogToggled);
+
+    closeMenu();
+  };
+
+  const onDeleteCategoryClick = () => {
+    setDeleteCategoryDialogOpen(!deleteCategoryDialogOpen);
+
+    closeMenu();
+  };
 
   return (
     <React.Fragment>
@@ -100,7 +123,7 @@ function SidebarCategoryListItem(props) {
           </ListItemIcon>
           <ListItemText primary={description} />
           <ListItemSecondaryAction>
-            <IconButton onClick={e => setAnchorEl(e.currentTarget)}>
+            <IconButton onClick={openMenu}>
               <MoreHorizIcon />
             </IconButton>
           </ListItemSecondaryAction>
@@ -109,60 +132,24 @@ function SidebarCategoryListItem(props) {
 
       <Popover
         id="simple-popper"
-        open={open}
-        onClose={() => setAnchorEl(0)}
+        open={openedMenu}
+        onClose={closeMenu}
         anchorReference="anchorPosition"
-        anchorPosition={{
-          top: open ? anchorEl.getBoundingClientRect().bottom - 10 : 0,
-          left: open ? anchorEl.getBoundingClientRect().left : 0
-        }}
+        anchorPosition={anchorPosition}
       >
         <Paper>
-          <MenuList>
-            <MenuItem
-              onClick={() => {
-                displayThisCategoryOnly(identifier);
-                setUnlabelledVisibility(false);
-                setAnchorEl(0);
-              }}
-              className={classes.menuItem}
-            >
-              <ListItemText
-                classes={{ primary: classes.primary }}
-                primary="Display this only"
-              />
+          <MenuList dense>
+            <MenuItem onClick={onHideOtherCategoriesClick}>
+              <ListItemText primary="Hide other categories" />
             </MenuItem>
-            {identifier !== null ? (
-              <MenuItem
-                onClick={() => {
-                  setEditCategoryDialogToggled(!editCategoryDialogToggled);
 
-                  setAnchorEl(0);
-                }}
-                className={classes.menuItem}
-              >
-                <ListItemText
-                  classes={{ primary: classes.primary }}
-                  primary="Edit"
-                />
-              </MenuItem>
-            ) : null}
+            <MenuItem onClick={onEditCategoryClick}>
+              <ListItemText primary="Edit category" />
+            </MenuItem>
 
-            {identifier !== null ? (
-              <MenuItem
-                onClick={() => {
-                  setDeleteCategoryDialogOpen(!deleteCategoryDialogOpen);
-
-                  setAnchorEl(0);
-                }}
-                className={classes.menuItem}
-              >
-                <ListItemText
-                  classes={{ primary: classes.primary }}
-                  primary="Delete"
-                />
-              </MenuItem>
-            ) : null}
+            <MenuItem onClick={onDeleteCategoryClick}>
+              <ListItemText primary="Delete category" />
+            </MenuItem>
           </MenuList>
         </Paper>
       </Popover>

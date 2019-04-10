@@ -32,9 +32,7 @@ function SidebarOpenListItem(props) {
 
   const { openedDialog, openDialog, closeDialog } = useDialog();
 
-  const { anchorEl, openMenu, closeMenu } = useMenu();
-
-  const openedMenu = Boolean(anchorEl);
+  const { anchorEl, openedMenu, openMenu, closeMenu } = useMenu();
 
   const onOpenProjectMenuItemClick = event => {
     openProject(event, props);
