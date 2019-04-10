@@ -6,11 +6,9 @@ import {
   ListItemText
 } from '@material-ui/core';
 import React from 'react';
-import OpenInBrowserIcon from '@material-ui/icons/OpenInBrowser';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
-import SaveIcon from '@material-ui/icons/Save';
 import * as API from '../../../classifier';
 import useSnackbar from '../../../hooks/Snackbar';
 import TrainingSnackbar from '../../Snackbar/TrainingSnackbar/TrainingSnackbar';
