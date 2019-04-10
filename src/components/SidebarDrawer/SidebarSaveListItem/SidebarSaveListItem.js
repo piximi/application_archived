@@ -11,30 +11,21 @@ import Popover from '@material-ui/core/Popover';
 import { fields } from '../../../constants';
 import SaveDialog from '../../Dialog/SaveDialog/SaveDialog';
 import { makeStyles } from '@material-ui/styles';
+import useMenu from '../../../hooks/Menu';
+import useDialog from '../../../hooks/Dialog';
 
 const useStyles = makeStyles(styles);
 
 export default function SidebarSaveListItem(props) {
   const classes = useStyles();
 
-  const [anchorEl, setAnchorEl] = useState(0);
-  const [saveDialogOpen, setSaveDialogOpen] = useState(false);
+  const { anchorEl, openMenu, closeMenu } = useMenu();
+  const { openedDialog, openDialog, closeDialog } = useDialog();
+
   const [defaultDialogText, setDefaultDialogText] = useState('');
   const [downloadFunction, setDownloadFunction] = useState(0);
 
   const open = Boolean(anchorEl);
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const handleCloseSaveDialog = () => {
-    setSaveDialogOpen(false);
-  };
-
-  const handleClick = event => {
-    setAnchorEl(event.currentTarget);
-  };
 
   const changeDefaultDialogText = event => {
     setDefaultDialogText(event.target.value);
@@ -67,7 +58,7 @@ export default function SidebarSaveListItem(props) {
 
   return (
     <React.Fragment>
-      <ListItem button onClick={handleClick}>
+      <ListItem button onClick={openMenu}>
         <ListItemIcon>
           <SaveIcon />
         </ListItemIcon>
@@ -76,7 +67,7 @@ export default function SidebarSaveListItem(props) {
       <Popover
         id="simple-popper"
         open={open}
-        onClose={handleClose}
+        onClose={closeMenu}
         anchorReference="anchorPosition"
         anchorPosition={{
           top: open ? anchorEl.getBoundingClientRect().bottom - 3 : 0,
@@ -87,8 +78,8 @@ export default function SidebarSaveListItem(props) {
           <MenuList>
             <MenuItem
               onClick={() => {
-                handleClose();
-                setSaveDialogOpen(true);
+                closeMenu();
+                openDialog();
                 setDownloadFunction(clickOnExportProject);
                 setDefaultDialogText('MyProject.cyto');
               }}
@@ -101,8 +92,8 @@ export default function SidebarSaveListItem(props) {
             </MenuItem>
             <MenuItem
               onClick={() => {
-                handleClose();
-                setSaveDialogOpen(true);
+                closeMenu();
+                openDialog();
                 setDownloadFunction(clickOnExportLabels);
                 setDefaultDialogText('labels.csv');
               }}
@@ -116,15 +107,14 @@ export default function SidebarSaveListItem(props) {
           </MenuList>
         </Paper>
       </Popover>
-      {saveDialogOpen ? (
-        <SaveDialog
-          open={saveDialogOpen}
-          download={downloadFunction}
-          onClose={handleCloseSaveDialog}
-          defaultDialogText={defaultDialogText}
-          changeDefaultDialogText={changeDefaultDialogText}
-        />
-      ) : null}
+
+      <SaveDialog
+        open={openedDialog}
+        download={downloadFunction}
+        onClose={closeDialog}
+        defaultDialogText={defaultDialogText}
+        changeDefaultDialogText={changeDefaultDialogText}
+      />
     </React.Fragment>
   );
 }

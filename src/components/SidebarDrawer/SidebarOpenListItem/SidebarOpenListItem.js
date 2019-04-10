@@ -9,6 +9,7 @@ import React from 'react';
 import FolderOpenIcon from '@material-ui/icons/FolderOpen';
 import useDialog from '../../../hooks/Dialog';
 import OpenDialog from '../../Dialog/OpenSampleDialog/OpenSampleDialog';
+import useMenu from '../../../hooks/Menu';
 
 function openProject(e, props) {
   const reader = new FileReader();
@@ -23,35 +24,27 @@ function openProject(e, props) {
 }
 
 function SidebarOpenListItem(props) {
-  const [anchorEl, setAnchorEl] = React.useState();
-
   const { loadDemoProject } = props;
 
   const { openedDialog, openDialog, closeDialog } = useDialog();
 
-  const onListItemClick = event => {
-    setAnchorEl(event.currentTarget);
-  };
+  const { anchorEl, openMenu, closeMenu } = useMenu();
 
   const onOpenProjectMenuItemClick = event => {
     openProject(event, props);
 
-    setAnchorEl();
+    closeMenu();
   };
 
   const onOpenExampleProjectMenuItemClick = () => {
     openDialog();
 
-    setAnchorEl();
-  };
-
-  const onMenuClose = () => {
-    setAnchorEl();
+    closeMenu();
   };
 
   return (
     <React.Fragment>
-      <ListItem button onClick={onListItemClick}>
+      <ListItem button onClick={openMenu}>
         <ListItemIcon>
           <FolderOpenIcon />
         </ListItemIcon>
@@ -63,7 +56,7 @@ function SidebarOpenListItem(props) {
         id="lock-menu"
         anchorEl={anchorEl}
         open={Boolean(anchorEl)}
-        onClose={onMenuClose}
+        onClose={closeMenu}
       >
         <input
           style={{ display: 'none' }}

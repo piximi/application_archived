@@ -22,7 +22,7 @@ function Transition(props) {
 
 class CreateCategoryDialog extends Component {
   state = {
-    anchor: null,
+    anchorEl: null,
     color: '#00e676',
     description: ''
   };
@@ -52,7 +52,7 @@ class CreateCategoryDialog extends Component {
   onColorChange = (color, event) => {
     this.setState({
       ...this.state,
-      anchor: null,
+      anchorEl: null,
       color: color.hex
     });
   };
@@ -66,14 +66,14 @@ class CreateCategoryDialog extends Component {
 
   openCreateCategoryColorMenu = event => {
     this.setState({
-      anchor: event.currentTarget
+      anchorEl: event.currentTarget
     });
   };
 
   closePopover = () => {
     this.setState({
       description: '',
-      anchor: null
+      anchorEl: null
     });
   };
 
@@ -98,7 +98,9 @@ class CreateCategoryDialog extends Component {
               <Grid item>
                 <ButtonBase
                   aria-haspopup="true"
-                  aria-owns={this.state.anchor ? 'create-category-color' : null}
+                  aria-owns={
+                    this.state.anchorEl ? 'create-category-color' : null
+                  }
                   onClick={this.openCreateCategoryColorMenu}
                   style={{
                     color: this.state.color
@@ -136,8 +138,8 @@ class CreateCategoryDialog extends Component {
         </DialogActions>
 
         <Popover
-          open={Boolean(this.state.anchor)}
-          anchorEl={this.state.anchor}
+          open={Boolean(this.state.anchorEl)}
+          anchorEl={this.state.anchorEl}
           onClose={this.closePopover}
           anchorOrigin={{
             vertical: 'bottom',
