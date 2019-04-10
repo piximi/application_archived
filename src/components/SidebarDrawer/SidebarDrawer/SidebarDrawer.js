@@ -11,6 +11,7 @@ import HelpListItem from '../SidebarHelpListItem/SidebarHelpListItem';
 import { makeStyles } from '@material-ui/styles';
 import SidebarSendFeedbackListItem from '../SidebarSendFeedbackListItem/SidebarSendFeedbackListItem';
 import SidebarOpenProjectListItem from '../SidebarOpenProjectListItem/SidebarOpenProjectListItem';
+import SidebarNewListItem from '../SidebarNewListItem/SidebarNewListItem';
 
 const useStyles = makeStyles(styles);
 
@@ -38,6 +39,8 @@ function SidebarDrawer(props) {
       <SidebarAppBar toggle={toggle} toggled={toggled} />
 
       <List dense>
+        <SidebarNewListItem />
+
         <SidebarOpenProjectListItem />
 
         <SidebarOpenSampleListItem loadDemoProject={loadDemoProject} />
