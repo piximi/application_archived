@@ -65,13 +65,6 @@ function SidebarModelList(props) {
             onChange={e => API.importWeights(e.target.files)}
           />
         </ListItem>
-
-        <ListItem dense button onClick={() => API.exportWeights()}>
-          <ListItemIcon>
-            <SaveIcon />
-          </ListItemIcon>
-          <ListItemText primary="Save Weights" />
-        </ListItem>
       </Collapse>
     </List>
   );

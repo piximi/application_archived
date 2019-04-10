@@ -9,7 +9,7 @@ import SettingsListItem from '../SidebarSettingsListItem/SidebarSettingsListItem
 import HelpListItem from '../SidebarHelpListItem/SidebarHelpListItem';
 import { makeStyles } from '@material-ui/styles';
 import SidebarSendFeedbackListItem from '../SidebarSendFeedbackListItem/SidebarSendFeedbackListItem';
-import SidebarNewListItem from '../SidebarNewListItem/SidebarNewListItem';
+import SidebarNewListItem from '../SidebarNewClassifierListItem/SidebarNewClassifierListItem';
 import SidebarOpenListItem from '../SidebarOpenListItem/SidebarOpenListItem';
 
 const useStyles = makeStyles(styles);

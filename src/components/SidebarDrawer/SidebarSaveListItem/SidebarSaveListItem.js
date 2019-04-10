@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
-import styles from './SidebarSaveListItem.css';
-import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
+import {
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Divider
+} from '@material-ui/core';
 import SaveIcon from '@material-ui/icons/Save';
 import json2csv from 'json2csv';
 import fileDownload from 'js-file-download';
@@ -10,22 +14,18 @@ import Paper from '@material-ui/core/Paper';
 import Popover from '@material-ui/core/Popover';
 import { fields } from '../../../constants';
 import SaveDialog from '../../Dialog/SaveDialog/SaveDialog';
-import { makeStyles } from '@material-ui/styles';
 import useMenu from '../../../hooks/Menu';
 import useDialog from '../../../hooks/Dialog';
+import * as API from '../../../classifier';
 
-const useStyles = makeStyles(styles);
-
-export default function SidebarSaveListItem(props) {
-  const classes = useStyles();
-
+const SidebarSaveListItem = props => {
   const { anchorEl, openMenu, closeMenu } = useMenu();
   const { openedDialog, openDialog, closeDialog } = useDialog();
 
   const [defaultDialogText, setDefaultDialogText] = useState('');
   const [downloadFunction, setDownloadFunction] = useState(0);
 
-  const open = Boolean(anchorEl);
+  const openedMenu = Boolean(anchorEl);
 
   const changeDefaultDialogText = event => {
     setDefaultDialogText(event.target.value);
@@ -56,53 +56,67 @@ export default function SidebarSaveListItem(props) {
     fileDownload(json, fileName);
   };
 
+  const saveAnnotationsAndPredictions = () => {
+    closeMenu();
+
+    openDialog();
+
+    setDownloadFunction(clickOnExportLabels);
+
+    setDefaultDialogText('labels.csv');
+  };
+
+  const saveClassifier = () => {
+    closeMenu();
+
+    openDialog();
+
+    setDownloadFunction(clickOnExportProject);
+
+    setDefaultDialogText('MyProject.cyto');
+  };
+
+  const saveWeights = () => {
+    closeMenu();
+
+    API.exportWeights();
+  };
+
+  const anchorPosition = {
+    top: openedMenu ? anchorEl.getBoundingClientRect().bottom - 3 : 0,
+    left: openedMenu ? anchorEl.getBoundingClientRect().left + 14 : 0
+  };
+
   return (
     <React.Fragment>
       <ListItem button onClick={openMenu}>
         <ListItemIcon>
           <SaveIcon />
         </ListItemIcon>
+
         <ListItemText inset primary="Save" />
       </ListItem>
+
       <Popover
-        id="simple-popper"
-        open={open}
-        onClose={closeMenu}
+        anchorPosition={anchorPosition}
         anchorReference="anchorPosition"
-        anchorPosition={{
-          top: open ? anchorEl.getBoundingClientRect().bottom - 3 : 0,
-          left: open ? anchorEl.getBoundingClientRect().left + 14 : 0
-        }}
+        onClose={closeMenu}
+        open={openedMenu}
       >
         <Paper>
-          <MenuList>
-            <MenuItem
-              onClick={() => {
-                closeMenu();
-                openDialog();
-                setDownloadFunction(clickOnExportProject);
-                setDefaultDialogText('MyProject.cyto');
-              }}
-              className={classes.menuItem}
-            >
-              <ListItemText
-                classes={{ primary: classes.primary }}
-                primary="Save Project (.cyto)"
-              />
+          <MenuList dense>
+            <MenuItem onClick={saveClassifier}>
+              <ListItemText primary="Save classifier" />
             </MenuItem>
-            <MenuItem
-              onClick={() => {
-                closeMenu();
-                openDialog();
-                setDownloadFunction(clickOnExportLabels);
-                setDefaultDialogText('labels.csv');
-              }}
-              className={classes.menuItem}
-            >
-              <ListItemText
-                classes={{ primary: classes.primary }}
-                primary="Save Labels (.csv)"
-              />
+
+            <Divider />
+
+            <MenuItem onClick={saveAnnotationsAndPredictions}>
+              <ListItemText primary="Save annotations and predictions" />
+            </MenuItem>
+
+            <MenuItem onClick={saveWeights}>
+              <ListItemText primary="Save weights" />
             </MenuItem>
           </MenuList>
         </Paper>
@@ -117,4 +131,6 @@ export default function SidebarSaveListItem(props) {
       />
     </React.Fragment>
   );
-}
+};
+
+export default SidebarSaveListItem;
