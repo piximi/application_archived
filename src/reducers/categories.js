@@ -13,7 +13,7 @@ const categories = (state = [], action) => {
     case ADD_CATEGORIES:
       const unlabeled = {
         color: '#F8F8F8',
-        description: 'unlabeled',
+        description: 'Unlabeled',
         identifier: null,
         index: '-1',
         visible: true

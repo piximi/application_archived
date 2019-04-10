@@ -11,6 +11,7 @@ import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import CreateCategoryListItem from '../SidebarCreateCategoryListItem/SidebarCreateCategoryListItem';
 import useCollapseList from '../../../hooks/CollapseList';
+import * as _ from 'lodash';
 
 function SidebarCategoriesList(props) {
   const { collapsedList, collapseList } = useCollapseList();
@@ -29,6 +30,8 @@ function SidebarCategoriesList(props) {
     images
   } = props;
 
+  const sortedCategories = _.sortBy(categories, 'description');
+
   return (
     <React.Fragment>
       <List dense>
@@ -41,7 +44,7 @@ function SidebarCategoriesList(props) {
         </ListItem>
 
         <Collapse in={!collapsedList} timeout="auto" unmountOnExit>
-          {categories.map((category, index) => (
+          {sortedCategories.map((category, index) => (
             <Category
               identifier={category.identifier}
               key={category.identifier}

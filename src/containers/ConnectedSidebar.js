@@ -13,6 +13,25 @@ import {
 
 import { toggleSpinnerAction } from '../actions/settings';
 
+const loadDemoProject = demo => {
+  return dispatch => {
+    return axios
+      .get(
+        ' https://raw.githubusercontent.com/cytoai/cyto/master/src/demos/' +
+          demo +
+          '.cyto'
+      )
+      .then(result => {
+        dispatch(toggleSpinnerAction());
+        dispatch(addImagesAction(result.data.images));
+        dispatch(addCategoriesAction(result.data.categories));
+      })
+      .catch(function(error) {
+        alert(error);
+      });
+  };
+};
+
 const mapStateToProps = state => {
   return {
     images: state.images,
@@ -26,7 +45,6 @@ const mapDispatchToProps = dispatch => {
       dispatch(addImagesAction(data.images));
       dispatch(addCategoriesAction(data.categories));
     },
-
     updateImageCategory: (imgIdentifier, categoryIdentifier, categoryName) => {
       dispatch(
         updateImageCategoryAction(
@@ -47,7 +65,6 @@ const mapDispatchToProps = dispatch => {
       };
       dispatch(createCategoryAction(category));
     },
-
     loadDemoProject: demo => {
       dispatch(addImagesAction({}));
       dispatch(toggleSpinnerAction());
@@ -56,24 +73,6 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-function loadDemoProject(demo) {
-  return dispatch => {
-    return axios
-      .get(
-        ' https://raw.githubusercontent.com/cytoai/cyto/master/src/demos/' +
-          demo +
-          '.cyto'
-      )
-      .then(result => {
-        dispatch(toggleSpinnerAction());
-        dispatch(addImagesAction(result.data.images));
-        dispatch(addCategoriesAction(result.data.categories));
-      })
-      .catch(function(error) {
-        alert(error);
-      });
-  };
-}
 const ConnectedSidebar = connect(
   mapStateToProps,
   mapDispatchToProps
