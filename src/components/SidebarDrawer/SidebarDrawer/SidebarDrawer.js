@@ -6,12 +6,11 @@ import SidebarSaveListItem from '../SidebarSaveListItem/SidebarSaveListItem';
 import SidebarAppBar from '../SidebarAppBar/SidebarAppBar';
 import SidebarModelList from '../SidebarModelList/SidebarModelList';
 import SettingsListItem from '../SidebarSettingsListItem/SidebarSettingsListItem';
-import SidebarOpenSampleListItem from '../SidebarOpenSampleListItem/SidebarOpenSampleListItem';
 import HelpListItem from '../SidebarHelpListItem/SidebarHelpListItem';
 import { makeStyles } from '@material-ui/styles';
 import SidebarSendFeedbackListItem from '../SidebarSendFeedbackListItem/SidebarSendFeedbackListItem';
-import SidebarOpenProjectListItem from '../SidebarOpenProjectListItem/SidebarOpenProjectListItem';
 import SidebarNewListItem from '../SidebarNewListItem/SidebarNewListItem';
+import SidebarOpenListItem from '../SidebarOpenListItem/SidebarOpenListItem';
 
 const useStyles = makeStyles(styles);
 
@@ -41,9 +40,7 @@ function SidebarDrawer(props) {
       <List dense>
         <SidebarNewListItem />
 
-        <SidebarOpenProjectListItem />
-
-        <SidebarOpenSampleListItem loadDemoProject={loadDemoProject} />
+        <SidebarOpenListItem loadDemoProject={loadDemoProject} />
 
         <SidebarSaveListItem images={images} categories={categories} />
       </List>
