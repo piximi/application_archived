@@ -2,7 +2,7 @@ import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import React from 'react';
 import AddIcon from '@material-ui/icons/Add';
 import useDialog from '../../../hooks/Dialog';
-import NewClassifierDialog from '../../Dialog/NewClassifierDialog/NewClassifierDialog';
+import ConnectedNewClassifierDialog from '../../../containers/ConnectedNewClassifierDialog';
 
 function SidebarNewClassifierListItem() {
   const { openedDialog, openDialog, closeDialog } = useDialog();
@@ -17,7 +17,7 @@ function SidebarNewClassifierListItem() {
         <ListItemText primary="New classifier…" />
       </ListItem>
 
-      <NewClassifierDialog
+      <ConnectedNewClassifierDialog
         closeDialog={closeDialog}
         openedDialog={openedDialog}
       />

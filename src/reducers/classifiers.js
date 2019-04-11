@@ -1,16 +1,18 @@
 import { createAction, createReducer } from 'redux-starter-kit';
 
-const createClassifier = createAction('classifiers/create');
+export const createClassifierAction = createAction('classifiers/create');
 
-const updateClassifierName = createAction('classifiers/update/name');
+export const updateClassifierNameAction = createAction(
+  'classifiers/update/name'
+);
 
 const classifiers = createReducer([], {
-  [createClassifier]: (state, action) => {
+  [createClassifierAction]: (state, action) => {
     const classifier = action.payload;
 
     state.push(classifier);
   },
-  [updateClassifierName]: (state, action) => {
+  [updateClassifierNameAction]: (state, action) => {
     const { index, name } = action.payload;
 
     const classifier = state[index];

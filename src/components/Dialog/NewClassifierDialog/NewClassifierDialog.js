@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Button,
   Dialog,
@@ -9,7 +9,19 @@ import {
 } from '@material-ui/core';
 
 const NewClassifierDialog = props => {
-  const { openedDialog, closeDialog } = props;
+  const { createClassifier, openedDialog, closeDialog } = props;
+
+  const [name, setName] = useState('Untitled classifier');
+
+  const onCreateClassifierClick = () => {
+    createClassifier(name);
+
+    closeDialog();
+  };
+
+  const onNameChange = event => {
+    setName(event.target.value);
+  };
 
   return (
     <Dialog fullWidth maxWidth="xs" onClose={closeDialog} open={openedDialog}>
@@ -24,6 +36,8 @@ const NewClassifierDialog = props => {
           id="name"
           label="Name"
           margin="dense"
+          onChange={onNameChange}
+          placeholder="Untitled classifier"
           type="text"
         />
       </DialogContent>
@@ -33,7 +47,7 @@ const NewClassifierDialog = props => {
           Cancel
         </Button>
 
-        <Button onClick={closeDialog} color="primary">
+        <Button onClick={onCreateClassifierClick} color="primary">
           Create
         </Button>
       </DialogActions>
