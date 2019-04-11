@@ -20,6 +20,7 @@ import ConnectedEditCategoryDialog from '../../../containers/ConnectedEditCatego
 import ConnectedDeleteCategoryDialog from '../../../containers/ConnectedDeleteCategoryDialog';
 import { makeStyles } from '@material-ui/styles';
 import useMenu from '../../../hooks/Menu';
+import useDialog from '../../../hooks/Dialog';
 
 const spec = {
   drop(props, monitor, component) {
@@ -43,13 +44,19 @@ function collect(connect, monitor) {
 
 const useStyles = makeStyles(styles);
 
-function SidebarCategoryListItem(props) {
-  const [editCategoryDialogToggled, setEditCategoryDialogToggled] = useState(
-    false
-  );
-  const [deleteCategoryDialogOpen, setDeleteCategoryDialogOpen] = useState(
-    false
-  );
+const SidebarCategoryListItem = props => {
+  const {
+    openedDialog: openedEditCategoryDialog,
+    openDialog: openEditCategoryDialog,
+    closeDialog: closeEditCategoryDialog
+  } = useDialog();
+
+  const {
+    openedDialog: openedDeleteCategoryDialog,
+    openDialog: openDeleteCategoryDialog,
+    closeDialog: closeDeleteCategoryDialog
+  } = useDialog();
+
   const [animateOnDrop, setAnimateOnDrop] = useState(0);
 
   const { anchorEl, openedMenu, openMenu, closeMenu } = useMenu();
@@ -75,18 +82,20 @@ function SidebarCategoryListItem(props) {
 
   const onHideOtherCategoriesClick = () => {
     displayThisCategoryOnly(identifier);
+
     setUnlabelledVisibility(false);
+
     closeMenu();
   };
 
   const onEditCategoryClick = () => {
-    setEditCategoryDialogToggled(!editCategoryDialogToggled);
+    openEditCategoryDialog();
 
     closeMenu();
   };
 
   const onDeleteCategoryClick = () => {
-    setDeleteCategoryDialogOpen(!deleteCategoryDialogOpen);
+    openDeleteCategoryDialog();
 
     closeMenu();
   };
@@ -155,8 +164,8 @@ function SidebarCategoryListItem(props) {
       </Popover>
 
       <ConnectedEditCategoryDialog
-        onClose={() => setEditCategoryDialogToggled(!editCategoryDialogToggled)}
-        open={editCategoryDialogToggled}
+        onClose={closeEditCategoryDialog}
+        open={openedEditCategoryDialog}
         categoryId={identifier}
         description={description}
         color={color}
@@ -164,14 +173,14 @@ function SidebarCategoryListItem(props) {
       />
 
       <ConnectedDeleteCategoryDialog
-        onClose={() => setDeleteCategoryDialogOpen(!deleteCategoryDialogOpen)}
-        open={deleteCategoryDialogOpen}
+        onClose={closeDeleteCategoryDialog}
+        open={openedDeleteCategoryDialog}
         categoryIdentifier={identifier}
         description={description}
       />
     </React.Fragment>
   );
-}
+};
 
 export default DropTarget('SelectedItems', spec, collect)(
   SidebarCategoryListItem
