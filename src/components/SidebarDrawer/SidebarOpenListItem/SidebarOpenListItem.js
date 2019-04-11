@@ -11,7 +11,7 @@ import {
 import React from 'react';
 import FolderOpenIcon from '@material-ui/icons/FolderOpen';
 import useDialog from '../../../hooks/Dialog';
-import OpenDialog from '../../Dialog/OpenSampleDialog/OpenSampleDialog';
+import OpenDialog from '../../Dialog/OpenExampleClassifierDialog/OpenExampleClassifierDialog';
 import useMenu from '../../../hooks/Menu';
 import * as API from '../../../classifier';
 

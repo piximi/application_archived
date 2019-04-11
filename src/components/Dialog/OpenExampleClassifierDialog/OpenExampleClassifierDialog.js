@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './OpenSampleDialog.css';
+import styles from './OpenExampleClassifierDialog.css';
 import {
   Avatar,
   Dialog,
@@ -22,15 +22,15 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(styles);
 
-export default function OpenSampleDialog(props) {
+const OpenExampleClassifierDialog = props => {
   const classes = useStyles();
 
   const { open, onClose, loadDemoProject } = props;
 
   return (
-    <Dialog fullWidth={true} maxWidth="sm" open={open}>
+    <Dialog fullWidth maxWidth="sm" open={open}>
       <DialogTitle disableTypography className={classes.dialogTitle}>
-        <Typography variant="h6">&nbsp;</Typography>
+        <Typography variant="h6">Open example classifier</Typography>
 
         <IconButton
           aria-label="Close"
@@ -101,4 +101,6 @@ export default function OpenSampleDialog(props) {
       <DialogActions />
     </Dialog>
   );
-}
+};
+
+export default OpenExampleClassifierDialog;
