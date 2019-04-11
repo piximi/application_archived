@@ -1,16 +1,27 @@
 import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import React from 'react';
 import AddIcon from '@material-ui/icons/Add';
+import useDialog from '../../../hooks/Dialog';
+import NewClassifierDialog from '../../Dialog/NewClassifierDialog/NewClassifierDialog';
 
 function SidebarNewClassifierListItem() {
-  return (
-    <ListItem dense button>
-      <ListItemIcon>
-        <AddIcon />
-      </ListItemIcon>
+  const { openedDialog, openDialog, closeDialog } = useDialog();
 
-      <ListItemText primary="New classifier…" />
-    </ListItem>
+  return (
+    <React.Fragment>
+      <ListItem button dense onClick={openDialog}>
+        <ListItemIcon>
+          <AddIcon />
+        </ListItemIcon>
+
+        <ListItemText primary="New classifier…" />
+      </ListItem>
+
+      <NewClassifierDialog
+        closeDialog={closeDialog}
+        openedDialog={openedDialog}
+      />
+    </React.Fragment>
   );
 }
 

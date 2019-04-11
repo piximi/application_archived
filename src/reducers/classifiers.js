@@ -18,3 +18,5 @@ const classifiers = createReducer([], {
     classifier.name = name;
   }
 });
+
+export default classifiers;
