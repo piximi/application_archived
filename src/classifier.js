@@ -183,8 +183,8 @@ function getCategoryIndex(categoryId, categories) {
   return null;
 }
 
-function passResults(imgId, predictions) {
-  let predictionsArray = predictions.dataSync();
+async function passResults(imgId, predictions) {
+  let predictionsArray = await predictions.data();
   let index = indexMap[predictionsArray.indexOf(Math.max(...predictionsArray))];
   let category = store.getState().categories[index].identifier;
   let probability = predictionsArray[index];
