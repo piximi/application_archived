@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import DeleteCategoryDialog from '../components/DeleteCategoryDialog/DeleteCategoryDialog';
+import DeleteCategoryDialog from '../components/Dialog/DeleteCategoryDialog/DeleteCategoryDialog';
 import { deleteCategoryAction } from '../actions/categories';
 import { setImageCategoryToNullBasedOnCategoryAction } from '../actions/images';
 

@@ -1,18 +1,25 @@
-import { withStyles } from '@material-ui/core/styles';
-import React, { PureComponent } from 'react';
-import styles from './ColorPicker.css';
+import React from 'react';
 import { CirclePicker } from 'react-color';
 import { colors } from '../../constants';
 
-class ColorPicker extends PureComponent {
-  render() {
-    const { onChange, categories } = this.props;
-    const usedColors = categories.map(category => category.color.toUpperCase());
-    const availableColors = colors.filter(
-      color => !usedColors.includes(color.toUpperCase())
-    );
-    return <CirclePicker colors={availableColors} onChange={onChange} />;
-  }
-}
+export default function ColorPicker(props) {
+  const { onChange, categories } = props;
 
-export default withStyles(styles, { withTheme: true })(ColorPicker);
+  function usedColors(categories) {
+    if (categories) {
+      return categories.map(category => category.color.toUpperCase());
+    } else {
+      return [];
+    }
+  }
+
+  function availableColors(categories) {
+    return colors.filter(
+      color => !usedColors(categories).includes(color.toUpperCase())
+    );
+  }
+
+  return (
+    <CirclePicker colors={availableColors(categories)} onChange={onChange} />
+  );
+}

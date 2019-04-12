@@ -5,8 +5,6 @@ import {
   createMuiTheme,
   withStyles
 } from '@material-ui/core/styles';
-// FIXME: Why isn’t this `import styles from './App.css';`?
-import styles from './App.css.js';
 
 const theme = createMuiTheme({
   palette: {
@@ -25,4 +23,4 @@ function App() {
   );
 }
 
-export default withStyles(styles, { withTheme: true })(App);
+export default withStyles({}, { withTheme: true })(App);

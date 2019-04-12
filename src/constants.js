@@ -1,3 +1,5 @@
+export const NEW_CLASSIFIER = 'NEW_CLASSIFIER';
+
 export const ADD_CATEGORIES = 'ADD_CATEGORIES';
 
 export const CREATE_CATEGORY = 'CREATE_CATEGORY';

@@ -9,7 +9,7 @@ import {
   onlyShowImagesWithCertainCategoryAction
 } from '../actions/images';
 
-import Categories from '../components/Categories/Categories';
+import SidebarCategoriesList from '../components/SidebarDrawer/SidebarCategoriesList/SidebarCategoriesList';
 
 const mapStateToProps = (state, props) => {
   return state;
@@ -32,6 +32,6 @@ const mapDispatchToProps = (dispatch, props) => {
 const ConnectedCategories = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Categories);
+)(SidebarCategoriesList);
 
 export default ConnectedCategories;
