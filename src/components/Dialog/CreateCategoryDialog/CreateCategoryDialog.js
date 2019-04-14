@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './CreateCategoryDialog.css';
 import { withStyles } from '@material-ui/core/styles';
 import {
@@ -14,7 +14,7 @@ import {
 } from '@material-ui/core';
 import LabelIcon from '@material-ui/icons/Label';
 import ColorPicker from '../../ColorPicker/ColorPicker';
-// import { colors } from '../../../constants';
+import { colors } from '../../../constants';
 
 function Transition(props) {
   return <Zoom {...props} />;
@@ -27,27 +27,32 @@ const CreateCategoryDialog = props => {
   const [color, setColor] = useState('#00e676');
   const [description, setDescription] = useState('');
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   const prevUsedColors = prevProps.categories.map(category => {
-  //     if (category.color === undefined) return null;
-  //     return category.color.toUpperCase();
-  //   });
+  const prevPropsRef = useRef();
 
-  //   // Use default color when runnning out of colors
-  //   if (prevUsedColors.length > colors.length) return;
+  useEffect(() => {
+    prevPropsRef.current = props;
 
-  //   const usedColors = this.props.categories.map(category =>
-  //     category.color.toUpperCase()
-  //   );
-  //   const availableColors = colors.filter(
-  //     color => !usedColors.includes(color.toUpperCase())
-  //   );
-  //   if (JSON.stringify(prevUsedColors) !== JSON.stringify(usedColors)) {
-  //     let color =
-  //       availableColors[Math.floor(Math.random() * availableColors.length)];
-  //     this.setState({ color: color });
-  //   }
-  // }
+    const prevUsedColors = prevPropsRef.current.categories.map(category => {
+      if (category.color === undefined) return null;
+      return category.color.toUpperCase();
+    });
+
+    // Use default color when runnning out of colors
+    if (prevUsedColors.length > colors.length) return;
+
+    const usedColors = categories.map(category => category.color.toUpperCase());
+
+    const availableColors = colors.filter(
+      color => !usedColors.includes(color.toUpperCase())
+    );
+
+    if (JSON.stringify(prevUsedColors) !== JSON.stringify(usedColors)) {
+      let color =
+        availableColors[Math.floor(Math.random() * availableColors.length)];
+
+      setColor(color);
+    }
+  });
 
   const onColorChange = (color, event) => {
     setAnchorEl();
