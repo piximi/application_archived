@@ -57,7 +57,7 @@ const OpenExampleClassifierDialog = props => {
             </ListItemAvatar>
             <ListItemText
               primary="CIFAR-10"
-              secondary="Our CIFAR-10 dataset contains 10.000 32×32 color photographs in 10 different categories."
+              secondary="The CIFAR-10 dataset contains 10,000 32×32 color photographs in 10 different categories."
             />
           </ListItem>
 
@@ -93,7 +93,7 @@ const OpenExampleClassifierDialog = props => {
             </ListItemAvatar>
             <ListItemText
               primary="MNIST"
-              secondary="Our MNIST dataset consists of 10,000 28 × 28 handwritten digits in 10 classes."
+              secondary="The MNIST dataset consists of 10,000 28 × 28 handwritten digits in 10 classes."
             />
           </ListItem>
         </List>
