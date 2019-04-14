@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import styles from './CreateCategoryDialog.css';
 import { withStyles } from '@material-ui/core/styles';
 import {
@@ -14,152 +14,131 @@ import {
 } from '@material-ui/core';
 import LabelIcon from '@material-ui/icons/Label';
 import ColorPicker from '../../ColorPicker/ColorPicker';
-import { colors } from '../../../constants';
+// import { colors } from '../../../constants';
 
 function Transition(props) {
   return <Zoom {...props} />;
 }
 
-class CreateCategoryDialog extends Component {
-  state = {
-    anchorEl: null,
-    color: '#00e676',
-    description: ''
+const CreateCategoryDialog = props => {
+  const { classes, open, categories } = props;
+
+  const [anchorEl, setAnchorEl] = useState();
+  const [color, setColor] = useState('#00e676');
+  const [description, setDescription] = useState('');
+
+  // componentDidUpdate(prevProps, prevState) {
+  //   const prevUsedColors = prevProps.categories.map(category => {
+  //     if (category.color === undefined) return null;
+  //     return category.color.toUpperCase();
+  //   });
+
+  //   // Use default color when runnning out of colors
+  //   if (prevUsedColors.length > colors.length) return;
+
+  //   const usedColors = this.props.categories.map(category =>
+  //     category.color.toUpperCase()
+  //   );
+  //   const availableColors = colors.filter(
+  //     color => !usedColors.includes(color.toUpperCase())
+  //   );
+  //   if (JSON.stringify(prevUsedColors) !== JSON.stringify(usedColors)) {
+  //     let color =
+  //       availableColors[Math.floor(Math.random() * availableColors.length)];
+  //     this.setState({ color: color });
+  //   }
+  // }
+
+  const onColorChange = (color, event) => {
+    setAnchorEl();
+    setColor(color.hex);
   };
 
-  componentDidUpdate(prevProps, prevState) {
-    const prevUsedColors = prevProps.categories.map(category => {
-      if (category.color === undefined) return null;
-      return category.color.toUpperCase();
-    });
-
-    // Use default color when runnning out of colors
-    if (prevUsedColors.length > colors.length) return;
-
-    const usedColors = this.props.categories.map(category =>
-      category.color.toUpperCase()
-    );
-    const availableColors = colors.filter(
-      color => !usedColors.includes(color.toUpperCase())
-    );
-    if (JSON.stringify(prevUsedColors) !== JSON.stringify(usedColors)) {
-      let color =
-        availableColors[Math.floor(Math.random() * availableColors.length)];
-      this.setState({ color: color });
-    }
-  }
-
-  onColorChange = (color, event) => {
-    this.setState({
-      ...this.state,
-      anchorEl: null,
-      color: color.hex
-    });
+  const onDescriptionChange = event => {
+    setDescription(event.target.value);
   };
 
-  onDescriptionChange = event => {
-    this.setState({
-      ...this.state,
-      description: event.target.value
-    });
+  const openCreateCategoryColorMenu = event => {
+    setAnchorEl(event.currentTarget);
   };
 
-  openCreateCategoryColorMenu = event => {
-    this.setState({
-      anchorEl: event.currentTarget
-    });
+  const closePopover = () => {
+    setDescription('');
+    setAnchorEl(null);
   };
 
-  closePopover = () => {
-    this.setState({
-      description: '',
-      anchorEl: null
-    });
+  const createCategory = (color, description) => {
+    props.createCategory(color, description);
+    onClose();
   };
 
-  createCategory = (color, description) => {
-    this.props.createCategory(color, description);
-    this.onClose();
+  const onClose = () => {
+    setDescription('');
+    props.onClose();
   };
 
-  onClose = () => {
-    this.setState({ description: '' });
-    this.props.onClose();
-  };
-
-  render() {
-    const { classes, open, categories } = this.props;
-
-    return (
-      <Dialog open={open} TransitionComponent={Transition}>
-        <DialogContent>
-          <div className={classes.margin}>
-            <Grid container spacing={8} alignItems="flex-end">
-              <Grid item>
-                <ButtonBase
-                  aria-haspopup="true"
-                  aria-owns={
-                    this.state.anchorEl ? 'create-category-color' : null
-                  }
-                  onClick={this.openCreateCategoryColorMenu}
-                  style={{
-                    color: this.state.color
-                  }}
-                >
-                  <LabelIcon />
-                </ButtonBase>
-              </Grid>
-
-              <Grid item>
-                <TextField
-                  id="create-category-description"
-                  label="Description"
-                  onChange={this.onDescriptionChange}
-                  value={this.state.description}
-                />
-              </Grid>
+  return (
+    <Dialog open={open} TransitionComponent={Transition}>
+      <DialogContent>
+        <div className={classes.margin}>
+          <Grid container spacing={8} alignItems="flex-end">
+            <Grid item>
+              <ButtonBase
+                aria-haspopup="true"
+                aria-owns={anchorEl ? 'create-category-color' : null}
+                onClick={openCreateCategoryColorMenu}
+                style={{
+                  color: color
+                }}
+              >
+                <LabelIcon />
+              </ButtonBase>
             </Grid>
-          </div>
-        </DialogContent>
 
-        <DialogActions>
-          <Button color="primary" onClick={this.onClose}>
-            Cancel
-          </Button>
+            <Grid item>
+              <TextField
+                id="create-category-description"
+                label="Description"
+                onChange={onDescriptionChange}
+                value={description}
+              />
+            </Grid>
+          </Grid>
+        </div>
+      </DialogContent>
 
-          <Button
-            color="primary"
-            onClick={() =>
-              this.createCategory(this.state.color, this.state.description)
-            }
-          >
-            Create category
-          </Button>
-        </DialogActions>
+      <DialogActions>
+        <Button color="primary" onClick={onClose}>
+          Cancel
+        </Button>
 
-        <Popover
-          open={Boolean(this.state.anchorEl)}
-          anchorEl={this.state.anchorEl}
-          onClose={this.closePopover}
-          anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'center'
-          }}
-          transformOrigin={{
-            vertical: 'top',
-            horizontal: 'center'
-          }}
+        <Button
+          color="primary"
+          onClick={() => createCategory(color, description)}
         >
-          <div className={classes.colorPicker}>
-            <ColorPicker
-              categories={categories}
-              onChange={this.onColorChange}
-            />
-          </div>
-        </Popover>
-      </Dialog>
-    );
-  }
-}
+          Create category
+        </Button>
+      </DialogActions>
+
+      <Popover
+        open={Boolean(anchorEl)}
+        anchorEl={anchorEl}
+        onClose={closePopover}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'center'
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'center'
+        }}
+      >
+        <div className={classes.colorPicker}>
+          <ColorPicker categories={categories} onChange={onColorChange} />
+        </div>
+      </Popover>
+    </Dialog>
+  );
+};
 
 export default withStyles(styles, { withTheme: true })(CreateCategoryDialog);
