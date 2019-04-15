@@ -4,7 +4,7 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import SettingsDialog from '../../Dialog/SettingsDialog/SettingsDialog';
 import useDialog from '../../../hooks/Dialog';
 
-function SettingsListItem() {
+const SettingsListItem = () => {
   const { openedDialog, openDialog, closeDialog } = useDialog();
 
   return (
@@ -20,6 +20,6 @@ function SettingsListItem() {
       <SettingsDialog onClose={closeDialog} open={openedDialog} />
     </React.Fragment>
   );
-}
+};
 
 export default SettingsListItem;

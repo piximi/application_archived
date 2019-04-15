@@ -4,7 +4,7 @@ import HelpDialog from '../../Dialog/HelpDialog/HelpDialog';
 import HelpIcon from '@material-ui/icons/Help';
 import useDialog from '../../../hooks/Dialog';
 
-function HelpListItem() {
+const HelpListItem = () => {
   const { openedDialog, openDialog, closeDialog } = useDialog();
 
   return (
@@ -20,6 +20,6 @@ function HelpListItem() {
       <HelpDialog onClose={closeDialog} open={openedDialog} />
     </React.Fragment>
   );
-}
+};
 
 export default HelpListItem;

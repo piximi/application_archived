@@ -27,7 +27,7 @@ function openProject(e, props) {
   reader.readAsText(e.target.files[0]);
 }
 
-function SidebarOpenListItem(props) {
+const SidebarOpenListItem = props => {
   const { loadDemoProject } = props;
 
   const { openedDialog, openDialog, closeDialog } = useDialog();
@@ -119,6 +119,6 @@ function SidebarOpenListItem(props) {
       />
     </React.Fragment>
   );
-}
+};
 
 export default SidebarOpenListItem;

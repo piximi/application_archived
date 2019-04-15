@@ -4,7 +4,7 @@ import AddIcon from '@material-ui/icons/Add';
 import useDialog from '../../../hooks/Dialog';
 import ConnectedNewClassifierDialog from '../../../containers/ConnectedNewClassifierDialog';
 
-function SidebarNewClassifierListItem() {
+const SidebarNewClassifierListItem = () => {
   const { openedDialog, openDialog, closeDialog } = useDialog();
 
   return (
@@ -23,6 +23,6 @@ function SidebarNewClassifierListItem() {
       />
     </React.Fragment>
   );
-}
+};
 
 export default SidebarNewClassifierListItem;
