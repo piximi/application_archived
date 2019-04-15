@@ -8,7 +8,7 @@ import useDialog from '../../../hooks/Dialog';
 
 const useStyles = makeStyles(styles);
 
-function ImportImagesButton() {
+const ImportImagesButton = props => {
   const { openedDialog, openDialog, closeDialog } = useDialog();
 
   const classes = useStyles();
@@ -23,6 +23,6 @@ function ImportImagesButton() {
       <UploadDialog onClose={closeDialog} open={openedDialog} />
     </React.Fragment>
   );
-}
+};
 
 export default React.memo(ImportImagesButton);
