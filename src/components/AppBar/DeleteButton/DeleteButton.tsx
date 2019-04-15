@@ -8,7 +8,7 @@ import useDialog from '../../../hooks/Dialog';
 
 const useStyles = makeStyles(styles);
 
-const DeleteButton = props => {
+const DeleteButton = (props: any) => {
   const { openedDialog, openDialog, closeDialog } = useDialog();
 
   const classes = useStyles();

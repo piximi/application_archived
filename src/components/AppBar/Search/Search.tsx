@@ -7,17 +7,14 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(styles);
 
-function filterImages(searchText, props) {
+function filterImages(searchText: any, props: any) {
   let images = { ...props.images };
 
   for (let key in images) {
     const pathname = images[key].pathname;
 
     if (pathname) {
-      const match = this.compare(
-        pathname.toLowerCase(),
-        searchText.toLowerCase()
-      );
+      const match = pathname.toLowerCase() === searchText.toLowerCase();
 
       images[key].visible = !!match;
     }
@@ -26,7 +23,7 @@ function filterImages(searchText, props) {
   props.updateImageVisibility(images);
 }
 
-const Search = props => {
+const Search = (props: any) => {
   const classes = useStyles();
 
   return (

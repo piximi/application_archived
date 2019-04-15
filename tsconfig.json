@@ -28,6 +28,8 @@
     "src/registerServiceWorker.ts",
     "src/index.tsx",
     "src/App.tsx",
-    "src/components/ColorPicker/ColorPicker.tsx"
+    "src/components/ColorPicker/ColorPicker.tsx",
+    "src/components/AppBar/**/*.tsx",
+    "src/components/AppBar/**/*.ts"
   ]
 }
