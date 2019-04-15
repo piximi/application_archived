@@ -13,7 +13,7 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(styles);
 
-const SidebarAppBar = props => {
+const SidebarAppBar = (props: any) => {
   const { toggle, toggled } = props;
 
   const classes = useStyles();

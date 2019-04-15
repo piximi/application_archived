@@ -14,7 +14,7 @@ import SidebarOpenListItem from '../SidebarOpenListItem/SidebarOpenListItem';
 
 const useStyles = makeStyles(styles);
 
-const SidebarDrawer = props => {
+const SidebarDrawer = (props: any) => {
   const classes = useStyles();
 
   const {
