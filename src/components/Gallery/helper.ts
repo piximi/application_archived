@@ -15,7 +15,7 @@ const collisionDetection = (mousePosition: { x1: number; x2: number; y1: number;
   return collisions;
 };
 
-function reCalc(mousePosition: { x1: number; x2: number; y1: number; y2: number; }) {
+const reCalc = (mousePosition: { x1: number; x2: number; y1: number; y2: number; }) => {
   // Calculate rectangle position
   let x3 = Math.min(mousePosition.x1, mousePosition.x2); //Smaller X
   let x4 = Math.max(mousePosition.x1, mousePosition.x2); //Larger X
@@ -26,7 +26,7 @@ function reCalc(mousePosition: { x1: number; x2: number; y1: number; y2: number;
   let width = x4 - x3 + 'px';
   let height = y4 - y3 + 'px';
   return { left: left, top: top, width: width, height: height };
-}
+};
 
 function reCalcWithoutPixelString(mousePosition: { x1: any; x2: any; y1: any; y2: any; }) {
   let x3 = Math.min(mousePosition.x1, mousePosition.x2); //Smaller X
