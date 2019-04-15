@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import {
   updateCategoryVisibility,
-  soloCategoryAction
+  hideOtherCategoriesAction
 } from '../reducers/categories';
 
 import {
@@ -18,14 +18,14 @@ const mapStateToProps = (state: any, props: any) => {
 const mapDispatchToProps = (dispatch: any, props: any) => {
   return {
     updateVisibility: (index: any) => {
-      const payload = {index: index};
+      const payload = { index: index };
 
       dispatch(updateCategoryVisibility(payload));
 
       // dispatch(updateImageVisibilityBasedOnCategoryAction(index, value));
     },
     displayThisCategoryOnly: (identifier: any) => {
-      dispatch(soloCategoryAction(identifier));
+      dispatch(hideOtherCategoriesAction(identifier));
       dispatch(onlyShowImagesWithCertainCategoryAction(identifier));
     }
   };

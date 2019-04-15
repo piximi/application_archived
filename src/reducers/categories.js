@@ -4,11 +4,11 @@ export const addCategoryAction = createAction('categories/add');
 
 export const createCategoryAction = createAction('categories/create');
 
-export const deleteCategory = createAction(
-  'categories/category/delete'
-);
+export const deleteCategory = createAction('categories/category/delete');
 
-export const soloCategoryAction = createAction('categories/solo');
+export const hideOtherCategoriesAction = createAction(
+  'categories/category/hide-other-categories'
+);
 
 export const updateCategoryColor = createAction(
   'categories/category/update-color'
@@ -38,11 +38,11 @@ const categories = createReducer([], {
     state.push(category);
   },
   [deleteCategory]: (state, action) => {
-    const {index} = action.payload;
+    const { index } = action.payload;
 
     return state.filter(category => category.index !== index);
   },
-  [soloCategoryAction]: (state, action) => {},
+  [hideOtherCategoriesAction]: (state, action) => {},
   [updateCategoryColor]: (state, action) => {
     const { index, color } = action.payload;
 
