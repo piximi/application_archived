@@ -1,4 +1,7 @@
-const styles = theme => ({
+import {createStyles} from "@material-ui/styles";
+import {Theme} from "@material-ui/core";
+
+const styles = (theme: Theme) => createStyles({
   closeButton: {
     color: theme.palette.grey[500],
     position: 'absolute',
