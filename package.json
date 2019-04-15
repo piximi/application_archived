@@ -11,6 +11,7 @@
     "@storybook/react": "^5.0.6",
     "@tensorflow/tfjs": "^1.0.3",
     "@tensorflow/tfjs-vis": "^1.0.3",
+    "@types/classnames": "^2.2.7",
     "@types/jest": "^24.0.11",
     "@types/node": "^11.13.0",
     "@types/react": "^16.8.10",

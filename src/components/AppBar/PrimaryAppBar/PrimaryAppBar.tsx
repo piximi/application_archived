@@ -11,7 +11,7 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(styles);
 
-const PrimaryAppBar = props => {
+const PrimaryAppBar = (props: any) => {
   const classes = useStyles();
 
   const { toggle, toggled, selectedImages, setSelectedImages } = props;
@@ -36,7 +36,7 @@ const PrimaryAppBar = props => {
 
         <Logo />
 
-        <Grid container className={classes.root} spacing={16}>
+        <Grid container spacing={16}>
           <Grid item xl={1} lg={2} md={3} sm={4} />
 
           <Grid item xl={2} lg={3} md={3} sm={3}>

@@ -8,7 +8,7 @@ import useDialog from '../../../hooks/Dialog';
 
 const useStyles = makeStyles(styles);
 
-const ImportImagesButton = props => {
+const ImportImagesButton = (props: any) => {
   const { openedDialog, openDialog, closeDialog } = useDialog();
 
   const classes = useStyles();
