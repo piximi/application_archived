@@ -22,7 +22,7 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 const useStyles = makeStyles(styles);
 
-const SettingsDialog = props => {
+const SettingsDialog = (props: any) => {
   const [classificationCollapsed, setClassificationCollapsed] = React.useState(
     false
   );
@@ -57,7 +57,7 @@ const SettingsDialog = props => {
           <Grid item xs={1} sm={1} md={3} lg={4} />
 
           <Grid item xs={10} sm={10} md={6} lg={4}>
-            <List component="div">
+            <List>
               <ListItem>
                 <Grid item xs={12}>
                   <ListItemText primary="Notifications" />
@@ -102,7 +102,6 @@ const SettingsDialog = props => {
                 unmountOnExit
               >
                 <List
-                  component="div"
                   disablePadding
                   className={classes.collapsed}
                 >

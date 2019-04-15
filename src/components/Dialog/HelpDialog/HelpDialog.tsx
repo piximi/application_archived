@@ -7,7 +7,7 @@ import {
   DialogContentText
 } from '@material-ui/core';
 
-const HelpDialog = props => {
+const HelpDialog = (props: any)  => {
   const { onClose, open } = props;
 
   return (
