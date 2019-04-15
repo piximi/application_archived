@@ -16,7 +16,7 @@ class Checkboxes extends React.Component {
     return channelState;
   }
 
-  handleChange = name => event => {
+  onChange = name => event => {
     const selectState = { ...this.state };
     let currentlyUnselected = [];
     selectState[Number(name)] = !selectState[Number(name)];
@@ -33,17 +33,17 @@ class Checkboxes extends React.Component {
       <div>
         <Checkbox
           checked={this.state[0]}
-          onChange={this.handleChange(0)}
+          onChange={this.onChange(0)}
           value={'0'}
         />
         <Checkbox
           checked={this.state[1]}
-          onChange={this.handleChange(1)}
+          onChange={this.onChange(1)}
           value={'1'}
         />
         <Checkbox
           checked={this.state[2]}
-          onChange={this.handleChange(2)}
+          onChange={this.onChange(2)}
           value={'2'}
         />
       </div>

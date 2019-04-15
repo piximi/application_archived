@@ -22,7 +22,7 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 const useStyles = makeStyles(styles);
 
-export default function SettingsDialog(props) {
+const SettingsDialog = props => {
   const [classificationCollapsed, setClassificationCollapsed] = useState(false);
 
   const [notificationsClicked, setNotificationsClicked] = useState(false);
@@ -119,4 +119,6 @@ export default function SettingsDialog(props) {
       </div>
     </Dialog>
   );
-}
+};
+
+export default SettingsDialog;

@@ -14,7 +14,7 @@ import {
 import LabelIcon from '@material-ui/icons/Label';
 import ColorPicker from '../../ColorPicker/ColorPicker';
 
-function EditCategoryDialog(props) {
+const EditCategoryDialog = props => {
   const [anchor, setAnchor] = useState(null);
 
   const [color, setColor] = useState('#FF0000');
@@ -105,6 +105,6 @@ function EditCategoryDialog(props) {
       </Popover>
     </Dialog>
   );
-}
+};
 
 export default withStyles(styles, { withTheme: true })(EditCategoryDialog);

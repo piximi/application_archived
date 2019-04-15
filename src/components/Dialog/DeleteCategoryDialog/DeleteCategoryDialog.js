@@ -8,7 +8,7 @@ import {
   DialogTitle
 } from '@material-ui/core';
 
-export default function DeleteCategoryDialog(props) {
+const DeleteCategoryDialog = props => {
   const {
     deleteCategory,
     categoryIdentifier,
@@ -45,4 +45,6 @@ export default function DeleteCategoryDialog(props) {
       </DialogActions>
     </Dialog>
   );
-}
+};
+
+export default DeleteCategoryDialog;
