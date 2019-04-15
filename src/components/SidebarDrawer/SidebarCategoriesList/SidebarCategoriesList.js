@@ -46,6 +46,7 @@ const SidebarCategoriesList = props => {
         <Collapse in={!collapsedList} timeout="auto" unmountOnExit>
           {sortedCategories.map((category, index) => (
             <Category
+              category={category}
               identifier={category.identifier}
               key={category.identifier}
               index={index}

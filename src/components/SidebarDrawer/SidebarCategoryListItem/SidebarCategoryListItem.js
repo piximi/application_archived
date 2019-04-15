@@ -64,6 +64,7 @@ const SidebarCategoryListItem = props => {
   const classes = useStyles();
 
   const {
+    category,
     identifier,
     updateCategoryVisibility,
     displayThisCategoryOnly,
@@ -164,6 +165,7 @@ const SidebarCategoryListItem = props => {
       </Popover>
 
       <ConnectedEditCategoryDialog
+        category={category}
         onClose={closeEditCategoryDialog}
         open={openedEditCategoryDialog}
         categoryId={identifier}
@@ -173,6 +175,7 @@ const SidebarCategoryListItem = props => {
       />
 
       <ConnectedDeleteCategoryDialog
+        category={category}
         onClose={closeDeleteCategoryDialog}
         open={openedDeleteCategoryDialog}
         categoryIdentifier={identifier}

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import {
-  updateCategoryDescriptionAction,
-  updateCategoryColorAction
+  updateCategoryDescription,
+  updateCategoryColor
 } from '../reducers/categories';
 import EditCategoryDialog from '../components/Dialog/EditCategoryDialog/EditCategoryDialog';
 
@@ -13,9 +13,15 @@ const mapStateToProps = (state: { categories: any; }) => {
 
 const mapDispatchToProps = (dispatch: any, props: any) => {
   return {
-    updateCategory: (identifier: any, description: any, color: any) => {
-      dispatch(updateCategoryDescriptionAction({identifier, description}));
-      dispatch(updateCategoryColorAction({identifier, color}));
+    updateColor: (index: number, color: string) => {
+      const payload = {index: index, color: color};
+
+      dispatch(updateCategoryColor(payload));
+    },
+    updateDescription: (index: number, description: string) => {
+      const payload = {index: index, description: description};
+
+      dispatch(updateCategoryDescription(payload));
     }
   };
 };
