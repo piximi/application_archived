@@ -22,6 +22,10 @@
   "include": [
     "src/actions/*",
     "src/containers/*",
-    "src/hooks/*"
+    "src/hooks/*",
+    "src/constants.ts",
+    "src/bootstrap.ts",
+    "src/registerServiceWorker.ts",
+    "src/index.tsx"
   ]
 }
