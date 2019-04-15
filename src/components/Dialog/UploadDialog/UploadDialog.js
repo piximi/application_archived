@@ -14,7 +14,7 @@ import {
 import FolderIcon from '@material-ui/icons/Folder';
 import { store } from '../../../index';
 import { addImagesAction } from '../../../actions/images';
-import { addCategoriesAction } from '../../../actions/categories';
+import { addCategoryAction } from '../../../reducers/categories';
 import { toggleSpinnerAction } from '../../../actions/settings';
 
 // Add valid file formats here
@@ -45,7 +45,7 @@ function createImage(bytes, pathname, checksum, noImageFiles, that) {
     that.imageData.push(image);
     if (allImagesLoaded(noImageFiles, that.imageData.length)) {
       store.dispatch(toggleSpinnerAction());
-      store.dispatch(addCategoriesAction([]));
+      store.dispatch(addCategoryAction([]));
       const newImageData = {};
       for (let image of that.imageData) {
         newImageData[image.id] = image;
