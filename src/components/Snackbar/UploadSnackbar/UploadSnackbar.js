@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { Snackbar } from '@material-ui/core';
 import UploadSnackbarContent from '../UploadSnackbarContent/UploadSnackbarContent';
 

@@ -1,5 +1,5 @@
 import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
-import React from 'react';
+import * as React from 'react';
 import HelpDialog from '../../Dialog/HelpDialog/HelpDialog';
 import HelpIcon from '@material-ui/icons/Help';
 import useDialog from '../../../hooks/Dialog';

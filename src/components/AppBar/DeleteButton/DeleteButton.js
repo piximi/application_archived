@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import styles from './DeleteButton.css';
 import { IconButton, Tooltip } from '@material-ui/core';
 import Delete from '@material-ui/icons/Delete';

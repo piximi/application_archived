@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import ConnectedCreateCategoryDialog from '../../../containers/ConnectedCreateCategoryDialog';

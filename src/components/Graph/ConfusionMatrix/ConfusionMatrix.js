@@ -1,10 +1,10 @@
-import React, { useEffect, useRef } from 'react';
+import * as React from 'react';
 import * as tfvis from '@tensorflow/tfjs-vis';
 
 const ConfusionMatrix = props => {
-  const containerRef = useRef();
+  const containerRef = React.useRef();
 
-  useEffect(() => {
+  React.useEffect(() => {
     tfvis.render.confusionMatrix(containerRef.current, props.data, {
       width: '400'
     });

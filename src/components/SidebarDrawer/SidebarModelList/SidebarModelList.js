@@ -5,7 +5,7 @@ import {
   ListItemIcon,
   ListItemText
 } from '@material-ui/core';
-import React from 'react';
+import * as React from 'react';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
