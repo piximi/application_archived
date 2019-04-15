@@ -28,11 +28,13 @@
     "src/registerServiceWorker.ts",
     "src/index.tsx",
     "src/App.tsx",
+    "src/components/Application/*.ts",
     "src/components/ColorPicker/ColorPicker.tsx",
     "src/components/AppBar/**/*.tsx",
     "src/components/AppBar/**/*.ts",
     "src/components/Dialog/**/*.css.ts",
     "src/components/SidebarDrawer/**/*.css.ts",
-    "src/components/SidebarDrawer/**/*.ts"
+    "src/components/SidebarDrawer/**/*.ts",
+    "src/components/Graph/**/*.tsx"
   ]
 }
