@@ -1,4 +1,4 @@
-const styles = theme => ({
+const styles = () => ({
   paper: {
     backgroundColor: '#202124'
   },

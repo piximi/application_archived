@@ -1,7 +1,7 @@
 import { keyframes } from 'styled-components';
 import Color from 'color';
 
-const styles = theme => ({
+const styles = () => ({
   icon: {
     color: 'rgba(0,0,0,0.50)',
     cursor: 'pointer',

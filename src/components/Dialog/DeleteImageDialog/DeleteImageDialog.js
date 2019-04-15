@@ -1,6 +1,4 @@
 import React from 'react';
-import styles from './DeleteImageDialog.css';
-import { withStyles } from '@material-ui/core/styles';
 import {
   Button,
   Dialog,
@@ -64,4 +62,4 @@ const DeleteImageDialog = props => {
   );
 };
 
-export default withStyles(styles, { withTheme: true })(DeleteImageDialog);
+export default DeleteImageDialog;

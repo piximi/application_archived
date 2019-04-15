@@ -1,4 +1,4 @@
-const styles = theme => ({
+const styles = () => ({
   root: {
     flexGrow: 1,
     backgroundColor: '#000'
