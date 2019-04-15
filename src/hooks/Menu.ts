@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 
 export default function useMenu() {
-  const [anchorEl, setAnchorEl] = useState();
+  const [anchorEl, setAnchorEl] = useState(null);
 
   const openedMenu = Boolean(anchorEl);
 
@@ -13,7 +13,7 @@ export default function useMenu() {
   );
 
   const closeMenu = useCallback(() => {
-    setAnchorEl();
+    setAnchorEl(null);
   }, [anchorEl]);
 
   return { anchorEl, openedMenu, openMenu, closeMenu };
