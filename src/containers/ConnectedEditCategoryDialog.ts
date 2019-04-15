@@ -5,17 +5,17 @@ import {
 } from '../reducers/categories';
 import EditCategoryDialog from '../components/Dialog/EditCategoryDialog/EditCategoryDialog';
 
-const mapStateToProps = state => {
+const mapStateToProps = (state: { categories: any; }) => {
   return {
     categories: state.categories
   };
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = (dispatch: any, props: any) => {
   return {
-    updateCategory: (identifier, description, color) => {
-      dispatch(updateCategoryDescriptionAction(identifier, description));
-      dispatch(updateCategoryColorAction(identifier, color));
+    updateCategory: (identifier: any, description: any, color: any) => {
+      dispatch(updateCategoryDescriptionAction({identifier, description}));
+      dispatch(updateCategoryColorAction({identifier, color}));
     }
   };
 };

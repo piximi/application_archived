@@ -7,7 +7,7 @@ import {
 } from '../actions/images';
 import { getVisibleImages } from '../selectors/images';
 
-const mapStateToProps = state => {
+const mapStateToProps = (state: any) => {
   return {
     categories: state.categories,
     images: getVisibleImages(state),
@@ -15,13 +15,13 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = (dispatch: any, props: any) => {
   return {
     fit: () => {
       const pathname = '';
       dispatch(fitClassifierAction(pathname));
     },
-    updateImageCategory: (imgIdentifier, categoryIdentifier, categoryName) => {
+    updateImageCategory: (imgIdentifier: any, categoryIdentifier: any, categoryName: any) => {
       dispatch(
         updateImageCategoryAction(
           imgIdentifier,

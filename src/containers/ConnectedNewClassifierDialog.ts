@@ -2,15 +2,15 @@ import { connect } from 'react-redux';
 import NewClassifierDialog from '../components/Dialog/NewClassifierDialog/NewClassifierDialog';
 import { createClassifierAction } from '../reducers/classifiers';
 
-const mapStateToProps = state => {
+const mapStateToProps = (state: { classifiers: any; }) => {
   return {
     classifiers: state.classifiers
   };
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = (dispatch: any, props: any) => {
   return {
-    createClassifier: name => {
+    createClassifier: (name: any) => {
       const classifier = {
         name: name
       };

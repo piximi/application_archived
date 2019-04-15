@@ -13,8 +13,8 @@ import {
 
 import { toggleSpinnerAction } from '../actions/settings';
 
-const loadDemoProject = demo => {
-  return dispatch => {
+const loadDemoProject = (demo: string) => {
+  return (dispatch: any) => {
     return axios
       .get(
         ' https://raw.githubusercontent.com/cytoai/cyto/master/src/demos/' +
@@ -32,20 +32,20 @@ const loadDemoProject = demo => {
   };
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state: { images: any; categories: any; }) => {
   return {
     images: state.images,
     categories: state.categories
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch: any) => {
   return {
-    updateStore: data => {
+    updateStore: (data: { images: any; categories: any; }) => {
       dispatch(addImagesAction(data.images));
       dispatch(addCategoryAction(data.categories));
     },
-    updateImageCategory: (imgIdentifier, categoryIdentifier, categoryName) => {
+    updateImageCategory: (imgIdentifier: any, categoryIdentifier: any, categoryName: any) => {
       dispatch(
         updateImageCategoryAction(
           imgIdentifier,
@@ -55,7 +55,7 @@ const mapDispatchToProps = dispatch => {
       );
       dispatch(updateImageProbabilityAction(imgIdentifier, null));
     },
-    createCategory: (identfier, color, description) => {
+    createCategory: (identfier: any, color: any, description: any) => {
       const category = {
         color: color,
         description: description,
@@ -65,7 +65,7 @@ const mapDispatchToProps = dispatch => {
       };
       dispatch(createCategoryAction(category));
     },
-    loadDemoProject: demo => {
+    loadDemoProject: (demo: string) => {
       dispatch(addImagesAction({}));
       dispatch(toggleSpinnerAction());
       dispatch(loadDemoProject(demo));

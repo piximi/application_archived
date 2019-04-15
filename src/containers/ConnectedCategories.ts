@@ -11,18 +11,17 @@ import {
 
 import SidebarCategoriesList from '../components/SidebarDrawer/SidebarCategoriesList/SidebarCategoriesList';
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state: any, props: any) => {
   return state;
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = (dispatch: any, props: any) => {
   return {
-    updateCategoryVisibility: (identifier, value) => {
+    updateCategoryVisibility: (identifier: any, value: any) => {
       dispatch(updateCategoryVisibilityAction(identifier));
       dispatch(updateImageVisibilityBasedOnCategoryAction(identifier, value));
     },
-
-    displayThisCategoryOnly: identifier => {
+    displayThisCategoryOnly: (identifier: any) => {
       dispatch(soloCategoryAction(identifier));
       dispatch(onlyShowImagesWithCertainCategoryAction(identifier));
     }
