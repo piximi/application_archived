@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import * as React from 'react';
 import {
   Button,
   Dialog,
@@ -11,7 +11,7 @@ import {
 const NewClassifierDialog = props => {
   const { createClassifier, openedDialog, closeDialog } = props;
 
-  const [name, setName] = useState('Untitled classifier');
+  const [name, setName] = React.useState('Untitled classifier');
 
   const onCreateClassifierClick = () => {
     createClassifier(name);

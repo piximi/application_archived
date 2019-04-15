@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import * as React from 'react';
 import styles from './CreateCategoryDialog.css';
 import { withStyles } from '@material-ui/core/styles';
 import {
@@ -23,13 +23,13 @@ function Transition(props) {
 const CreateCategoryDialog = props => {
   const { classes, open, categories } = props;
 
-  const [anchorEl, setAnchorEl] = useState();
-  const [color, setColor] = useState('#00e676');
-  const [description, setDescription] = useState('');
+  const [anchorEl, setAnchorEl] = React.useState();
+  const [color, setColor] = React.useState('#00e676');
+  const [description, setDescription] = React.useState('');
 
-  const prevPropsRef = useRef();
+  const prevPropsRef = React.useRef();
 
-  useEffect(() => {
+  React.useEffect(() => {
     prevPropsRef.current = props;
 
     const prevUsedColors = prevPropsRef.current.categories.map(category => {

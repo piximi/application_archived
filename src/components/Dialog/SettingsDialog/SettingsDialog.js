@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import * as React from 'react';
 import styles from './SettingsDialog.css';
 import {
   AppBar,
@@ -23,9 +23,11 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 const useStyles = makeStyles(styles);
 
 const SettingsDialog = props => {
-  const [classificationCollapsed, setClassificationCollapsed] = useState(false);
+  const [classificationCollapsed, setClassificationCollapsed] = React.useState(
+    false
+  );
 
-  const [notificationsClicked, setNotificationsClicked] = useState(false);
+  const [notificationsClicked, setNotificationsClicked] = React.useState(false);
 
   const { onClose, open } = props;
 

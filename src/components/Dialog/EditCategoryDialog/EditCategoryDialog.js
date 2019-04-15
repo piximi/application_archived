@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import * as React from 'react';
 import styles from './EditCategoryDialog.css';
 import { withStyles } from '@material-ui/core/styles';
 import {
@@ -15,13 +15,13 @@ import LabelIcon from '@material-ui/icons/Label';
 import ColorPicker from '../../ColorPicker/ColorPicker';
 
 const EditCategoryDialog = props => {
-  const [anchor, setAnchor] = useState(null);
+  const [anchor, setAnchor] = React.useState(null);
 
-  const [color, setColor] = useState('#FF0000');
+  const [color, setColor] = React.useState('#FF0000');
 
-  const [description, setDescription] = useState('');
+  const [description, setDescription] = React.useState('');
 
-  useEffect(() => {
+  React.useEffect(() => {
     setColor(props.color);
     setDescription(props.description);
   });
