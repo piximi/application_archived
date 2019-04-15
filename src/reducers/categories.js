@@ -1,16 +1,22 @@
 import { createAction, createReducer } from 'redux-starter-kit';
 
 export const addCategoryAction = createAction('categories/add');
+
 export const createCategoryAction = createAction('categories/create');
-export const deleteCategoryAction = createAction('categories/delete');
+
+export const deleteCategory = createAction(
+  'categories/category/delete'
+);
+
 export const soloCategoryAction = createAction('categories/solo');
-export const updateCategoryColorAction = createAction(
+
+export const updateCategoryColor = createAction(
   'categories/update/color'
 );
-export const updateCategoryDescriptionAction = createAction(
+export const updateCategoryDescription = createAction(
   'categories/update/description'
 );
-export const updateCategoryVisibilityAction = createAction(
+export const updateCategoryVisibility = createAction(
   'categories/update/visibility'
 );
 
@@ -31,25 +37,27 @@ const categories = createReducer([], {
 
     state.push(category);
   },
-  [deleteCategoryAction]: (state, action) => {
-    return state.filter(category => category !== action.payload);
+  [deleteCategory]: (state, action) => {
+    const {index} = action.payload;
+
+    return state.filter(category => category.index !== index);
   },
   [soloCategoryAction]: (state, action) => {},
-  [updateCategoryColorAction]: (state, action) => {
+  [updateCategoryColor]: (state, action) => {
     const { index, color } = action.payload;
 
     const category = state[index];
 
     category.color = color;
   },
-  [updateCategoryDescriptionAction]: (state, action) => {
+  [updateCategoryDescription]: (state, action) => {
     const { index, description } = action.payload;
 
     const category = state[index];
 
     category.description = description;
   },
-  [updateCategoryVisibilityAction]: (state, action) => {
+  [updateCategoryVisibility]: (state, action) => {
     const { index, visibility } = action.payload;
 
     const category = state[index];

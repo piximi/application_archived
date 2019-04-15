@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import {
-  updateCategoryVisibilityAction,
+  updateCategoryVisibility,
   soloCategoryAction
 } from '../reducers/categories';
 
@@ -18,7 +18,7 @@ const mapStateToProps = (state: any, props: any) => {
 const mapDispatchToProps = (dispatch: any, props: any) => {
   return {
     updateCategoryVisibility: (identifier: any, value: any) => {
-      dispatch(updateCategoryVisibilityAction(identifier));
+      dispatch(updateCategoryVisibility(identifier));
       dispatch(updateImageVisibilityBasedOnCategoryAction(identifier, value));
     },
     displayThisCategoryOnly: (identifier: any) => {

@@ -1,6 +1,4 @@
 import * as React from 'react';
-import styles from './EditCategoryDialog.css';
-import { withStyles } from '@material-ui/core/styles';
 import {
   Button,
   ButtonBase,
@@ -13,45 +11,51 @@ import {
 } from '@material-ui/core';
 import LabelIcon from '@material-ui/icons/Label';
 import ColorPicker from '../../ColorPicker/ColorPicker';
+import useMenu from "../../../hooks/Menu";
 
 const EditCategoryDialog = (props: any) => {
-  const [anchor, setAnchor] = React.useState(null);
-
-  const [color, setColor] = React.useState('#FF0000');
-
-  const [description, setDescription] = React.useState('');
-
-  React.useEffect(() => {
-    setColor(props.color);
-    setDescription(props.description);
-  });
-
-  function onColorChange(color: any, event: any) {
-    setAnchor(null);
-
-    setColor(color.hex);
-  }
-
-  const onClick = (e: any) => {
-    setAnchor(e.currentTarget)
-  };
-
   const {
-    classes,
-    updateCategory,
+    category,
+    updateColor,
+    updateDescription,
     onClose,
     open,
-    categoryId,
     categories
   } = props;
 
+  const { anchorEl, openedMenu, openMenu, closeMenu } = useMenu();
+
+  const [color, setColor] = React.useState<string>('#FF0000');
+
+  const [description, setDescription] = React.useState<string>('');
+
+  const onColorChange = (color: any) => {
+    closeMenu();
+
+    setColor(color.hex);
+  };
+
+  const onSaveClick = (): void => {
+    onClose();
+
+    updateColor(category.index, color);
+
+    updateDescription(category.index, description);
+  };
+
+  const onTextFieldChange = (event: React.FormEvent<EventTarget>): void => {
+    const target = event.target as HTMLInputElement;
+
+    setDescription(target.value);
+  };
+
   return (
-    <Dialog open={open} onClose={onClose}>
+    <Dialog fullWidth maxWidth="xs" open={open} onClose={onClose}>
       <DialogContent>
         <Grid container spacing={8} alignItems="flex-end">
           <Grid item>
             <ButtonBase
-              onClick={onClick}
+              onClick={openMenu}
               style={{
                 color: color
               }}
@@ -64,7 +68,7 @@ const EditCategoryDialog = (props: any) => {
             <TextField
               id="create-category-description"
               label="Description"
-              onChange={e => setDescription(e.target.value)}
+              onChange={onTextFieldChange}
               value={description}
             />
           </Grid>
@@ -75,21 +79,16 @@ const EditCategoryDialog = (props: any) => {
         <Button color="primary" onClick={onClose}>
           Cancel
         </Button>
-        <Button
-          color="primary"
-          onClick={() => {
-            onClose();
-            updateCategory(categoryId, description, color);
-          }}
-        >
+
+        <Button color="primary" onClick={onSaveClick}>
           Save
         </Button>
       </DialogActions>
 
       <Popover
-        open={Boolean(anchor)}
-        anchorEl={anchor}
-        onClose={() => setAnchor(null)}
+        open={openedMenu}
+        anchorEl={anchorEl}
+        onClose={closeMenu}
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'center'
@@ -99,9 +98,7 @@ const EditCategoryDialog = (props: any) => {
           horizontal: 'center'
         }}
       >
-        <div>
-          <ColorPicker categories={categories} onChange={onColorChange} />
-        </div>
+        <ColorPicker categories={categories} onChange={onColorChange} />
       </Popover>
     </Dialog>
   );
