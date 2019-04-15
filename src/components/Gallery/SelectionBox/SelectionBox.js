@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../Gallery/Gallery.css';
 import { reCalc } from '../helper';
 
-function SelectionBox(props) {
+const SelectionBox = props => {
   const [style, setStyle] = useState({
     zIndex: 9000,
     position: 'fixed',
@@ -25,6 +25,6 @@ function SelectionBox(props) {
   });
 
   return <div style={style} />;
-}
+};
 
 export default React.memo(SelectionBox);

@@ -7,7 +7,7 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(styles);
 
-function ItemLabel(props) {
+const ItemLabel = props => {
   const [anchorEl, setAnchorEl] = useState(null);
 
   const { color } = props;
@@ -34,6 +34,6 @@ function ItemLabel(props) {
       />
     </React.Fragment>
   );
-}
+};
 
 export default React.memo(ItemLabel);

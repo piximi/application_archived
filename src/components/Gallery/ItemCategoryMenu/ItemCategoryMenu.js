@@ -1,7 +1,7 @@
 import React from 'react';
 import { Menu, MenuItem } from '@material-ui/core';
 
-function ItemCategoryMenu(props) {
+const ItemCategoryMenu = props => {
   const { anchorEl, onClose, open } = props;
 
   return (
@@ -9,6 +9,6 @@ function ItemCategoryMenu(props) {
       <MenuItem onClick={onClose}>Foo</MenuItem>
     </Menu>
   );
-}
+};
 
 export default React.memo(ItemCategoryMenu);
