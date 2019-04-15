@@ -5,15 +5,15 @@ import uuidv4 from 'uuid';
 
 let index = 0;
 
-const mapStateToProps = state => {
+const mapStateToProps = (state: { categories: any; }) => {
   return {
     categories: state.categories
   };
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = (dispatch: any, props: any) => {
   return {
-    createCategory: (color, description) => {
+    createCategory: (color: any, description: any) => {
       const category = {
         color: color,
         description: description,

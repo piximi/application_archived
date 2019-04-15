@@ -2,15 +2,15 @@ import { connect } from 'react-redux';
 import Search from '../components/AppBar/Search/Search';
 import { updateImageVisibilityAction } from '../actions/images';
 
-const mapStateToProps = state => {
+const mapStateToProps = (state: { images: any; }) => {
   return {
     images: state.images
   };
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = (dispatch: any, props: any) => {
   return {
-    updateImageVisibility: images => {
+    updateImageVisibility: (images: any) => {
       dispatch(updateImageVisibilityAction(images));
     }
   };

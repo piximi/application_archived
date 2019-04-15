@@ -3,13 +3,13 @@ import DeleteCategoryDialog from '../components/Dialog/DeleteCategoryDialog/Dele
 import { deleteCategoryAction } from '../reducers/categories';
 import { setImageCategoryToNullBasedOnCategoryAction } from '../actions/images';
 
-const mapStateToProps = state => {
+const mapStateToProps = (state: any) => {
   return state;
 };
 
-const mapDispatchToProps = (dispatch, props) => {
+const mapDispatchToProps = (dispatch: any, props: any) => {
   return {
-    deleteCategory: categoryIdentifier => {
+    deleteCategory: (categoryIdentifier: any) => {
       dispatch(deleteCategoryAction(categoryIdentifier));
       dispatch(setImageCategoryToNullBasedOnCategoryAction(categoryIdentifier));
     }
