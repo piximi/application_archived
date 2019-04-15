@@ -31,7 +31,9 @@ const categories = createReducer([], {
 
     state.push(category);
   },
-  [deleteCategoryAction]: (state, action) => {},
+  [deleteCategoryAction]: (state, action) => {
+    return state.filter(category => category !== action.payload);
+  },
   [soloCategoryAction]: (state, action) => {},
   [updateCategoryColorAction]: (state, action) => {
     const { index, color } = action.payload;
