@@ -11,13 +11,13 @@ export const deleteCategory = createAction(
 export const soloCategoryAction = createAction('categories/solo');
 
 export const updateCategoryColor = createAction(
-  'categories/update/color'
+  'categories/category/update-color'
 );
 export const updateCategoryDescription = createAction(
-  'categories/update/description'
+  'categories/category/update-description'
 );
 export const updateCategoryVisibility = createAction(
-  'categories/update/visibility'
+  'categories/category/update-visibility'
 );
 
 const categories = createReducer([], {
@@ -58,11 +58,11 @@ const categories = createReducer([], {
     category.description = description;
   },
   [updateCategoryVisibility]: (state, action) => {
-    const { index, visibility } = action.payload;
+    const { index } = action.payload;
 
     const category = state[index];
 
-    category.visibility = visibility;
+    category.visible = !category.visible;
   }
 });
 

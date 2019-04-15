@@ -5,7 +5,7 @@ import {
 } from '../reducers/categories';
 
 import {
-  updateImageVisibilityBasedOnCategoryAction,
+  // updateImageVisibilityBasedOnCategoryAction,
   onlyShowImagesWithCertainCategoryAction
 } from '../actions/images';
 
@@ -17,9 +17,12 @@ const mapStateToProps = (state: any, props: any) => {
 
 const mapDispatchToProps = (dispatch: any, props: any) => {
   return {
-    updateCategoryVisibility: (identifier: any, value: any) => {
-      dispatch(updateCategoryVisibility(identifier));
-      dispatch(updateImageVisibilityBasedOnCategoryAction(identifier, value));
+    updateVisibility: (index: any) => {
+      const payload = {index: index};
+
+      dispatch(updateCategoryVisibility(payload));
+
+      // dispatch(updateImageVisibilityBasedOnCategoryAction(index, value));
     },
     displayThisCategoryOnly: (identifier: any) => {
       dispatch(soloCategoryAction(identifier));
