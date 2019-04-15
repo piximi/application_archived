@@ -14,7 +14,7 @@ import {
 import LabelIcon from '@material-ui/icons/Label';
 import ColorPicker from '../../ColorPicker/ColorPicker';
 
-const EditCategoryDialog = props => {
+const EditCategoryDialog = (props: any) => {
   const [anchor, setAnchor] = React.useState(null);
 
   const [color, setColor] = React.useState('#FF0000');
@@ -26,11 +26,15 @@ const EditCategoryDialog = props => {
     setDescription(props.description);
   });
 
-  function onColorChange(color, event) {
+  function onColorChange(color: any, event: any) {
     setAnchor(null);
 
     setColor(color.hex);
   }
+
+  const onClick = (e: any) => {
+    setAnchor(e.currentTarget)
+  };
 
   const {
     classes,
@@ -44,31 +48,27 @@ const EditCategoryDialog = props => {
   return (
     <Dialog open={open} onClose={onClose}>
       <DialogContent>
-        <div className={classes.margin}>
-          <Grid container spacing={8} alignItems="flex-end">
-            <Grid item>
-              <ButtonBase
-                aria-haspopup="true"
-                aria-owns={anchor ? 'create-category-color' : null}
-                onClick={e => setAnchor(e.currentTarget)}
-                style={{
-                  color: color
-                }}
-              >
-                <LabelIcon />
-              </ButtonBase>
-            </Grid>
-
-            <Grid item>
-              <TextField
-                id="create-category-description"
-                label="Description"
-                onChange={e => setDescription(e.target.value)}
-                value={description}
-              />
-            </Grid>
+        <Grid container spacing={8} alignItems="flex-end">
+          <Grid item>
+            <ButtonBase
+              onClick={onClick}
+              style={{
+                color: color
+              }}
+            >
+              <LabelIcon />
+            </ButtonBase>
           </Grid>
-        </div>
+
+          <Grid item>
+            <TextField
+              id="create-category-description"
+              label="Description"
+              onChange={e => setDescription(e.target.value)}
+              value={description}
+            />
+          </Grid>
+        </Grid>
       </DialogContent>
 
       <DialogActions>
@@ -99,7 +99,7 @@ const EditCategoryDialog = props => {
           horizontal: 'center'
         }}
       >
-        <div className={classes.colorPicker}>
+        <div>
           <ColorPicker categories={categories} onChange={onColorChange} />
         </div>
       </Popover>
@@ -107,4 +107,4 @@ const EditCategoryDialog = props => {
   );
 };
 
-export default withStyles(styles, { withTheme: true })(EditCategoryDialog);
+export default EditCategoryDialog;
