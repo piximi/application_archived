@@ -14,7 +14,7 @@ import useSnackbar from '../../../hooks/Snackbar';
 import TrainingSnackbar from '../../Snackbar/TrainingSnackbar/TrainingSnackbar';
 import useCollapseList from '../../../hooks/CollapseList';
 
-function SidebarModelList(props) {
+const SidebarModelList = props => {
   const { collapsedList, collapseList } = useCollapseList();
 
   const { openedSnackbar, openSnackbar, closeSnackbar } = useSnackbar();
@@ -50,6 +50,6 @@ function SidebarModelList(props) {
       </Collapse>
     </List>
   );
-}
+};
 
 export default SidebarModelList;

@@ -4,7 +4,7 @@ import AddIcon from '@material-ui/icons/Add';
 import ConnectedCreateCategoryDialog from '../../../containers/ConnectedCreateCategoryDialog';
 import useDialog from '../../../hooks/Dialog';
 
-export default function CreateCategoryListItem() {
+const CreateCategoryListItem = () => {
   const { openedDialog, openDialog, closeDialog } = useDialog();
 
   return (
@@ -23,4 +23,6 @@ export default function CreateCategoryListItem() {
       />
     </React.Fragment>
   );
-}
+};
+
+export default CreateCategoryListItem;

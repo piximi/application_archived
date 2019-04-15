@@ -13,7 +13,7 @@ import CreateCategoryListItem from '../SidebarCreateCategoryListItem/SidebarCrea
 import useCollapseList from '../../../hooks/CollapseList';
 import * as _ from 'lodash';
 
-function SidebarCategoriesList(props) {
+const SidebarCategoriesList = props => {
   const { collapsedList, collapseList } = useCollapseList();
 
   const [
@@ -68,6 +68,6 @@ function SidebarCategoriesList(props) {
       </List>
     </React.Fragment>
   );
-}
+};
 
 export default SidebarCategoriesList;

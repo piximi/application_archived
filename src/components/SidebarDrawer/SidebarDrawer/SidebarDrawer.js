@@ -14,7 +14,7 @@ import SidebarOpenListItem from '../SidebarOpenListItem/SidebarOpenListItem';
 
 const useStyles = makeStyles(styles);
 
-function SidebarDrawer(props) {
+const SidebarDrawer = props => {
   const classes = useStyles();
 
   const {
@@ -64,6 +64,6 @@ function SidebarDrawer(props) {
       </List>
     </Drawer>
   );
-}
+};
 
 export default SidebarDrawer;

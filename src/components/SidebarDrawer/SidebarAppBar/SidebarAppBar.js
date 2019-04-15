@@ -13,7 +13,7 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(styles);
 
-function SidebarAppBar(props) {
+const SidebarAppBar = props => {
   const { toggle, toggled } = props;
 
   const classes = useStyles();
@@ -38,6 +38,6 @@ function SidebarAppBar(props) {
       </Toolbar>
     </AppBar>
   );
-}
+};
 
 export default SidebarAppBar;
