@@ -105,6 +105,16 @@ const SidebarCategoryListItem = props => {
     updateVisibility(category.index);
   };
 
+  const VisibleIcon = props => {
+    const { color, visible } = props;
+
+    if (visible) {
+      return <LabelIcon style={{ color: color }} />;
+    } else {
+      return <LabelOutlinedIcon style={{ color: color }} />;
+    }
+  };
+
   return (
     <React.Fragment>
       <StyledCategory
@@ -127,11 +137,7 @@ const SidebarCategoryListItem = props => {
           }}
         >
           <ListItemIcon onClick={onListItemIconClick}>
-            {visible ? (
-              <LabelIcon style={{ color: color }} />
-            ) : (
-              <LabelOutlinedIcon style={{ color: color }} />
-            )}
+            <VisibleIcon color={color} visible={visible} />
           </ListItemIcon>
           <ListItemText primary={description} />
           <ListItemSecondaryAction>
@@ -143,11 +149,11 @@ const SidebarCategoryListItem = props => {
       </StyledCategory>
 
       <Popover
-        id="simple-popper"
-        open={openedMenu}
-        onClose={closeMenu}
-        anchorReference="anchorPosition"
         anchorPosition={anchorPosition}
+        anchorReference="anchorPosition"
+        id="simple-popper"
+        onClose={closeMenu}
+        open={openedMenu}
       >
         <Paper>
           <MenuList dense>
@@ -167,21 +173,21 @@ const SidebarCategoryListItem = props => {
       </Popover>
 
       <ConnectedEditCategoryDialog
+        categories={categories}
         category={category}
+        categoryId={identifier}
+        color={color}
+        description={description}
         onClose={closeEditCategoryDialog}
         open={openedEditCategoryDialog}
-        categoryId={identifier}
-        description={description}
-        color={color}
-        categories={categories}
       />
 
       <ConnectedDeleteCategoryDialog
         category={category}
-        onClose={closeDeleteCategoryDialog}
-        open={openedDeleteCategoryDialog}
         categoryIdentifier={identifier}
         description={description}
+        onClose={closeDeleteCategoryDialog}
+        open={openedDeleteCategoryDialog}
       />
     </React.Fragment>
   );

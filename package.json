@@ -96,7 +96,7 @@
   },
   "homepage": "https://application.cyto.ai",
   "lint-staged": {
-    "src/**/*.{css, js, json, jsx, ts, tsx}": [
+    "src/**/*.{css,js,json,jsx,ts,tsx}": [
       "prettier --single-quote --write",
       "git add"
     ]
