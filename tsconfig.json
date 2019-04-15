@@ -20,6 +20,7 @@
     "jsx": "preserve"
   },
   "include": [
+    "src/actions/*",
     "src/containers/*",
     "src/hooks/*"
   ]
