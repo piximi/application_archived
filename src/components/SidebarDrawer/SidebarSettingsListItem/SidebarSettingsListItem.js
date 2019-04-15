@@ -22,4 +22,4 @@ function SettingsListItem() {
   );
 }
 
-export default React.memo(SettingsListItem);
+export default SettingsListItem;

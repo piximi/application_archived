@@ -14,4 +14,4 @@ const TrainingSnackbar = props => {
   );
 };
 
-export default React.memo(TrainingSnackbar);
+export default TrainingSnackbar;

@@ -22,4 +22,4 @@ function HelpListItem() {
   );
 }
 
-export default React.memo(HelpListItem);
+export default HelpListItem;

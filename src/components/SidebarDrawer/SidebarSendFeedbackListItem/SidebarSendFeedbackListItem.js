@@ -20,4 +20,4 @@ function SidebarSendFeedbackListItem() {
   );
 }
 
-export default React.memo(SidebarSendFeedbackListItem);
+export default SidebarSendFeedbackListItem;

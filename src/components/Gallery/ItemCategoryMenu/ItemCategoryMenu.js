@@ -11,4 +11,4 @@ const ItemCategoryMenu = props => {
   );
 };
 
-export default React.memo(ItemCategoryMenu);
+export default ItemCategoryMenu;

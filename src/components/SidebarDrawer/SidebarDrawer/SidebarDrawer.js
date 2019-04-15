@@ -66,4 +66,4 @@ function SidebarDrawer(props) {
   );
 }
 
-export default React.memo(SidebarDrawer);
+export default SidebarDrawer;

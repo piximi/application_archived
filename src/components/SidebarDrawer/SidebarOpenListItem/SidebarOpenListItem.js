@@ -121,4 +121,4 @@ function SidebarOpenListItem(props) {
   );
 }
 
-export default React.memo(SidebarOpenListItem);
+export default SidebarOpenListItem;

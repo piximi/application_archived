@@ -59,4 +59,4 @@ const PrimaryAppBar = props => {
   );
 };
 
-export default React.memo(PrimaryAppBar);
+export default PrimaryAppBar;
