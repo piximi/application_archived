@@ -2,7 +2,7 @@ import React from 'react';
 import { CirclePicker } from 'react-color';
 import { colors } from '../../constants';
 
-export default function ColorPicker(props) {
+const ColorPicker = props => {
   const { onChange, categories } = props;
 
   function usedColors(categories) {
@@ -22,4 +22,6 @@ export default function ColorPicker(props) {
   return (
     <CirclePicker colors={availableColors(categories)} onChange={onChange} />
   );
-}
+};
+
+export default ColorPicker;

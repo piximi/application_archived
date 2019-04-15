@@ -31,7 +31,7 @@ function findCategory(identifier, categories) {
   });
 }
 
-function Application(props) {
+const Application = props => {
   const classes = useStyles();
   const [images, setImages] = useState([]);
 
@@ -89,6 +89,6 @@ function Application(props) {
       </main>
     </div>
   );
-}
+};
 
 export default DragDropContext(HTML5Backend)(Application);
