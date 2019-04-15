@@ -66,7 +66,7 @@ const SidebarCategoryListItem = props => {
   const {
     category,
     identifier,
-    updateCategoryVisibility,
+    updateVisibility,
     displayThisCategoryOnly,
     setUnlabelledVisibility,
     color,
@@ -101,6 +101,10 @@ const SidebarCategoryListItem = props => {
     closeMenu();
   };
 
+  const onListItemIconClick = () => {
+    updateVisibility(category.index);
+  };
+
   return (
     <React.Fragment>
       <StyledCategory
@@ -122,9 +126,7 @@ const SidebarCategoryListItem = props => {
             root: props.isOver ? classes.isOver : null
           }}
         >
-          <ListItemIcon
-            onClick={() => updateCategoryVisibility(identifier, !visible)}
-          >
+          <ListItemIcon onClick={onListItemIconClick}>
             {visible ? (
               <LabelIcon style={{ color: color }} />
             ) : (

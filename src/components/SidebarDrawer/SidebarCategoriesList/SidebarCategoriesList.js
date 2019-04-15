@@ -23,7 +23,7 @@ const SidebarCategoriesList = props => {
 
   const {
     categories,
-    updateCategoryVisibility,
+    updateVisibility,
     setUnlabelledVisibility,
     displayThisCategoryOnly,
     connectDropTarget,
@@ -54,7 +54,7 @@ const SidebarCategoriesList = props => {
               visible={category.visible}
               color={category.color}
               images={images}
-              updateCategoryVisibility={updateCategoryVisibility}
+              updateVisibility={updateVisibility}
               displayThisCategoryOnly={displayThisCategoryOnly}
               setUnlabelledVisibility={setUnlabelledVisibility}
               connectDropTarget={connectDropTarget}
