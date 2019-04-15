@@ -1,7 +1,8 @@
 import { keyframes } from 'styled-components';
 import Color from 'color';
+import {createStyles} from "@material-ui/styles";
 
-const styles = () => ({
+const styles = () => createStyles({
   icon: {
     color: 'rgba(0,0,0,0.50)',
     cursor: 'pointer',
@@ -14,7 +15,7 @@ const styles = () => ({
   }
 });
 
-const pulseAnimation = color => {
+const pulseAnimation = (color: any) => {
   return keyframes`
   0% {
     box-shadow: 0px 0px 0px 0px ${Color(color)
@@ -42,7 +43,7 @@ const pulseAnimation = color => {
 `;
 };
 
-const pulseAnimation2 = color => {
+const pulseAnimation2 = (color: any) => {
   return keyframes`
   0% {
     box-shadow: 0px 0px 0px 0px ${Color(color)
