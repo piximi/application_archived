@@ -1,8 +1,8 @@
-import './bootstrap.js';
+import './bootstrap';
 
-import React from 'react';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import * as tf from '@tensorflow/tfjs';
-import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
@@ -11,13 +11,14 @@ import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import reducer from './reducers';
-import { PersistGate } from 'redux-persist/es/integration/react';
+import { PersistGate } from 'redux-persist/integration/react'
 import { persistStore, persistReducer } from 'redux-persist';
 import localforage from 'localforage';
 import autoMergeLevel2 from 'redux-persist/es/stateReconciler/autoMergeLevel2';
 
 // Initialization
 const { store, persistor } = initializeRedux();
+
 initializeModel();
 
 ReactDOM.render(
@@ -26,7 +27,7 @@ ReactDOM.render(
       <App />
     </PersistGate>
   </Provider>,
-  document.getElementById('root')
+  document.getElementById('root') as HTMLElement
 );
 registerServiceWorker();
 
@@ -59,7 +60,6 @@ async function initializeModel() {
   const preloadedModel = await tf.loadLayersModel(
     'https://storage.googleapis.com/tfjs-models/tfjs/mobilenet_v1_0.25_224/model.json'
   );
-  //'https://weights.cyto.ai/mobilenet/model.json'
   await preloadedModel.save('indexeddb://classifier');
 }
 
