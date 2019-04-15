@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import ConnectedApplication from './containers/ConnectedApplication';
 import {
   MuiThemeProvider,
@@ -15,12 +15,12 @@ const theme = createMuiTheme({
   }
 });
 
-function App() {
+const App = () => {
   return (
     <MuiThemeProvider theme={theme}>
       <ConnectedApplication />
     </MuiThemeProvider>
   );
-}
+};
 
 export default withStyles({}, { withTheme: true })(App);
