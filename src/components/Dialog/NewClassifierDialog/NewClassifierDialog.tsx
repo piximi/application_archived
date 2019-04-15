@@ -8,7 +8,7 @@ import {
   TextField
 } from '@material-ui/core';
 
-const NewClassifierDialog = props => {
+const NewClassifierDialog = (props: any) => {
   const { createClassifier, openedDialog, closeDialog } = props;
 
   const [name, setName] = React.useState('Untitled classifier');
@@ -19,7 +19,7 @@ const NewClassifierDialog = props => {
     closeDialog();
   };
 
-  const onNameChange = event => {
+  const onNameChange = (event: any) => {
     setName(event.target.value);
   };
 
