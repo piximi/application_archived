@@ -1,4 +1,4 @@
-const styles = theme => ({
+const styles = () => ({
   iconButton: {
     padding: '8px',
     position: 'absolute',
