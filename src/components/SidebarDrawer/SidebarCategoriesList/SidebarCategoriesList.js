@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import * as React from 'react';
 import {
   Collapse,
   List,
@@ -19,7 +19,7 @@ function SidebarCategoriesList(props) {
   const [
     createCategoryDialogToggled,
     setCreateCategoryDialogToggled
-  ] = useState(0);
+  ] = React.useState(0);
 
   const {
     categories,

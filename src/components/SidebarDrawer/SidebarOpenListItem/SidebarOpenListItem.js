@@ -8,7 +8,7 @@ import {
   ListItemIcon,
   ListItemText
 } from '@material-ui/core';
-import React from 'react';
+import * as React from 'react';
 import FolderOpenIcon from '@material-ui/icons/FolderOpen';
 import useDialog from '../../../hooks/Dialog';
 import OpenDialog from '../../Dialog/OpenExampleClassifierDialog/OpenExampleClassifierDialog';

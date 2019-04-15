@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import * as React from 'react';
 import {
   ListItem,
   ListItemIcon,
@@ -57,7 +57,7 @@ const SidebarCategoryListItem = props => {
     closeDialog: closeDeleteCategoryDialog
   } = useDialog();
 
-  const [animateOnDrop, setAnimateOnDrop] = useState(0);
+  const [animateOnDrop, setAnimateOnDrop] = React.useState(0);
 
   const { anchorEl, openedMenu, openMenu, closeMenu } = useMenu();
 

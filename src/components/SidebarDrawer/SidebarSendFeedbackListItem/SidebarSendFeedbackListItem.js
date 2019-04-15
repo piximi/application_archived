@@ -1,5 +1,5 @@
 import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
-import React from 'react';
+import * as React from 'react';
 import FeedbackIcon from '@material-ui/icons/Feedback';
 
 function SidebarSendFeedbackListItem() {

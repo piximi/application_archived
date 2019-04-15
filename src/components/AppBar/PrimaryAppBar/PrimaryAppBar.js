@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import styles from './PrimaryAppBar.css';
 import { AppBar, Grid, IconButton, Toolbar } from '@material-ui/core';
 import classNames from 'classnames';

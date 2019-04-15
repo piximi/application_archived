@@ -1,5 +1,5 @@
 import { Divider, Drawer, List } from '@material-ui/core';
-import React from 'react';
+import * as React from 'react';
 import styles from './SidebarDrawer.css';
 import ConnectedCategories from '../../../containers/ConnectedCategories';
 import SidebarSaveListItem from '../SidebarSaveListItem/SidebarSaveListItem';
