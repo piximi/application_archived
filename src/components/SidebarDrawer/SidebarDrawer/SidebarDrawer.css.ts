@@ -1,6 +1,9 @@
+import {createStyles} from "@material-ui/styles";
+import {Theme} from "@material-ui/core";
+
 const drawerWidth = 280;
 
-const styles = theme => ({
+const styles = (theme: Theme) => createStyles({
   appBar: {
     borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
     boxShadow: 'none',
