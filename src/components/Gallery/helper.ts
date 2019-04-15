@@ -1,5 +1,5 @@
-export function collisionDetection(mousePosition) {
-  // Check if any selectable item is overlaping with mouse selection box
+const collisionDetection = (mousePosition: { x1: number; x2: number; y1: number; y2: number; }) => {
+  // Check if any selectable item is overlapping with mouse selection box
   const rectancle1 = reCalcWithoutPixelString(mousePosition);
   const elements = document.getElementsByName('selectableElement'); // Check collisions with selectable elements
   let collisions = [];
@@ -7,16 +7,16 @@ export function collisionDetection(mousePosition) {
     const element = elements[i];
     const rectancle2 = element.getBoundingClientRect();
     const imgid = element.getAttribute('imgid');
-    const collisionDetected = collisionWithRectancle(rectancle1, rectancle2);
+    const collisionDetected = collisionWithRectangle(rectancle1, rectancle2);
     if (collisionDetected) {
       collisions.push(imgid);
     }
   }
   return collisions;
-}
+};
 
-export function reCalc(mousePosition) {
-  // Calculate rectangle positon
+function reCalc(mousePosition: { x1: number; x2: number; y1: number; y2: number; }) {
+  // Calculate rectangle position
   let x3 = Math.min(mousePosition.x1, mousePosition.x2); //Smaller X
   let x4 = Math.max(mousePosition.x1, mousePosition.x2); //Larger X
   let y3 = Math.min(mousePosition.y1, mousePosition.y2); //Smaller Y
@@ -28,7 +28,7 @@ export function reCalc(mousePosition) {
   return { left: left, top: top, width: width, height: height };
 }
 
-export function reCalcWithoutPixelString(mousePosition) {
+function reCalcWithoutPixelString(mousePosition: { x1: any; x2: any; y1: any; y2: any; }) {
   let x3 = Math.min(mousePosition.x1, mousePosition.x2); //Smaller X
   let x4 = Math.max(mousePosition.x1, mousePosition.x2); //Larger X
   let y3 = Math.min(mousePosition.y1, mousePosition.y2); //Smaller Y
@@ -40,14 +40,20 @@ export function reCalcWithoutPixelString(mousePosition) {
   return { x: left, y: top, width: width, height: height };
 }
 
-function collisionWithRectancle(rectancle1, rectancle2) {
+function collisionWithRectangle(rectangle1: { x: any; y: any; width: any; height: any; }, rectangle2: any) {
   // Check if two rectangles overlap
   if (
-    rectancle1.x < rectancle2.x + rectancle2.width &&
-    rectancle1.x + rectancle1.width > rectancle2.x &&
-    rectancle1.y < rectancle2.y + rectancle2.height &&
-    rectancle1.y + rectancle1.height > rectancle2.y
+    rectangle1.x < rectangle2.x + rectangle2.width &&
+    rectangle1.x + rectangle1.width > rectangle2.x &&
+    rectangle1.y < rectangle2.y + rectangle2.height &&
+    rectangle1.y + rectangle1.height > rectangle2.y
   ) {
     return true;
   } else return false;
+}
+
+export {
+  collisionDetection,
+  reCalc,
+  reCalcWithoutPixelString
 }
