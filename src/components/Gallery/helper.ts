@@ -1,15 +1,15 @@
 const collisionDetection = (mousePosition: { x1: number; x2: number; y1: number; y2: number; }) => {
   // Check if any selectable item is overlapping with mouse selection box
-  const rectancle1 = reCalcWithoutPixelString(mousePosition);
+  const rectangle1 = reCalcWithoutPixelString(mousePosition);
   const elements = document.getElementsByName('selectableElement'); // Check collisions with selectable elements
   let collisions = [];
   for (let i = 0; i < elements.length; i++) {
     const element = elements[i];
-    const rectancle2 = element.getBoundingClientRect();
-    const imgid = element.getAttribute('imgid');
-    const collisionDetected = collisionWithRectangle(rectancle1, rectancle2);
+    const rectangle2 = element.getBoundingClientRect();
+    const imageId = element.getAttribute('imageId');
+    const collisionDetected = collisionWithRectangle(rectangle1, rectangle2);
     if (collisionDetected) {
-      collisions.push(imgid);
+      collisions.push(imageId);
     }
   }
   return collisions;
@@ -42,14 +42,10 @@ function reCalcWithoutPixelString(mousePosition: { x1: any; x2: any; y1: any; y2
 
 function collisionWithRectangle(rectangle1: { x: any; y: any; width: any; height: any; }, rectangle2: any) {
   // Check if two rectangles overlap
-  if (
-    rectangle1.x < rectangle2.x + rectangle2.width &&
-    rectangle1.x + rectangle1.width > rectangle2.x &&
-    rectangle1.y < rectangle2.y + rectangle2.height &&
-    rectangle1.y + rectangle1.height > rectangle2.y
-  ) {
-    return true;
-  } else return false;
+  return !!(rectangle1.x < rectangle2.x + rectangle2.width &&
+      rectangle1.x + rectangle1.width > rectangle2.x &&
+      rectangle1.y < rectangle2.y + rectangle2.height &&
+      rectangle1.y + rectangle1.height > rectangle2.y);
 }
 
 export {
