@@ -15,7 +15,7 @@ function Transition(props) {
   return <Zoom {...props} />;
 }
 
-function DeleteImageDialog(props) {
+const DeleteImageDialog = props => {
   const { onClose, open, selectedImages } = props;
 
   function onClickDeleteButton() {
@@ -62,6 +62,6 @@ function DeleteImageDialog(props) {
       </DialogActions>
     </Dialog>
   );
-}
+};
 
 export default withStyles(styles, { withTheme: true })(DeleteImageDialog);
