@@ -4,7 +4,7 @@ import './Gallery.css';
 import Items from '../Items/Items.js';
 import SelectionBox from '../SelectionBox/SelectionBox.js';
 import CustomDragLayer from '../CustomDragLayer/CustomDragLayer';
-import { collisionDetection } from '../helper.js';
+import { collisionDetection } from '../helper';
 
 const Gallery = props => {
   const [selected, setSelected] = useState([]);
