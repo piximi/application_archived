@@ -12,7 +12,7 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(styles);
 
-function UploadSnackbarContent(props) {
+const UploadSnackbarContent = props => {
   const classes = useStyles();
 
   return (
@@ -32,6 +32,6 @@ function UploadSnackbarContent(props) {
       </div>
     </Card>
   );
-}
+};
 
 export default React.memo(UploadSnackbarContent);
