@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import {
   updateCategoryDescriptionAction,
   updateCategoryColorAction
-} from '../actions/categories';
+} from '../reducers/categories';
 import EditCategoryDialog from '../components/Dialog/EditCategoryDialog/EditCategoryDialog';
 
 const mapStateToProps = state => {

@@ -7,9 +7,9 @@ import {
   updateImageProbabilityAction
 } from '../actions/images';
 import {
-  addCategoriesAction,
+  addCategoryAction,
   createCategoryAction
-} from '../actions/categories';
+} from '../reducers/categories';
 
 import { toggleSpinnerAction } from '../actions/settings';
 
@@ -24,7 +24,7 @@ const loadDemoProject = demo => {
       .then(result => {
         dispatch(toggleSpinnerAction());
         dispatch(addImagesAction(result.data.images));
-        dispatch(addCategoriesAction(result.data.categories));
+        dispatch(addCategoryAction(result.data.categories));
       })
       .catch(function(error) {
         alert(error);
@@ -43,7 +43,7 @@ const mapDispatchToProps = dispatch => {
   return {
     updateStore: data => {
       dispatch(addImagesAction(data.images));
-      dispatch(addCategoriesAction(data.categories));
+      dispatch(addCategoryAction(data.categories));
     },
     updateImageCategory: (imgIdentifier, categoryIdentifier, categoryName) => {
       dispatch(

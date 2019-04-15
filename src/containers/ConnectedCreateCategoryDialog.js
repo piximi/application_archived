@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { createCategoryAction } from '../actions/categories';
+import { createCategoryAction } from '../reducers/categories';
 import CreateCategoryDialog from '../components/Dialog/CreateCategoryDialog/CreateCategoryDialog';
 import uuidv4 from 'uuid';
 
