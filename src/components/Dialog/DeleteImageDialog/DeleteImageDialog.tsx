@@ -9,11 +9,7 @@ import {
   Zoom
 } from '@material-ui/core';
 
-function Transition(props) {
-  return <Zoom {...props} />;
-}
-
-const DeleteImageDialog = props => {
+const DeleteImageDialog = (props: any) => {
   const { onClose, open, selectedImages } = props;
 
   function onClickDeleteButton() {
@@ -38,7 +34,7 @@ const DeleteImageDialog = props => {
   }
 
   return (
-    <Dialog open={open} onClose={onClose} TransitionComponent={Transition}>
+    <Dialog open={open} onClose={onClose}>
       <DialogTitle id="form-dialog-title">{title}</DialogTitle>
 
       <DialogContent>

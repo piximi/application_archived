@@ -8,7 +8,7 @@ import {
   DialogTitle
 } from '@material-ui/core';
 
-const DeleteCategoryDialog = props => {
+const DeleteCategoryDialog = (props: any) => {
   const {
     deleteCategory,
     categoryIdentifier,
