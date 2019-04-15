@@ -169,4 +169,4 @@ Gallery.defaultProps = {
   imagesPerRow: 10
 };
 
-export default React.memo(Gallery);
+export default Gallery;

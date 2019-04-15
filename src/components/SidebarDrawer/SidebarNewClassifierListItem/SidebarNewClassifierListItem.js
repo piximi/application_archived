@@ -25,4 +25,4 @@ function SidebarNewClassifierListItem() {
   );
 }
 
-export default React.memo(SidebarNewClassifierListItem);
+export default SidebarNewClassifierListItem;

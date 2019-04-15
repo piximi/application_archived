@@ -106,4 +106,4 @@ Image.defaultProps = {
   unselectedChannels: []
 };
 
-export default React.memo(Image);
+export default Image;

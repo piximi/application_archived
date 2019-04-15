@@ -7,4 +7,4 @@ const Logo = () => (
   </Typography>
 );
 
-export default React.memo(Logo);
+export default Logo;

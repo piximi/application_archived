@@ -36,4 +36,4 @@ const ItemLabel = props => {
   );
 };
 
-export default React.memo(ItemLabel);
+export default ItemLabel;

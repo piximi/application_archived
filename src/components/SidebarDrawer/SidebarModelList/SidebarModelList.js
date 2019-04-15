@@ -52,4 +52,4 @@ function SidebarModelList(props) {
   );
 }
 
-export default React.memo(SidebarModelList);
+export default SidebarModelList;

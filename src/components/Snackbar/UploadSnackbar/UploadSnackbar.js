@@ -24,4 +24,4 @@ const UploadSnackbar = props => {
   );
 };
 
-export default React.memo(UploadSnackbar);
+export default UploadSnackbar;

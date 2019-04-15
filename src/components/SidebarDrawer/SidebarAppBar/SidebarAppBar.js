@@ -40,4 +40,4 @@ function SidebarAppBar(props) {
   );
 }
 
-export default React.memo(SidebarAppBar);
+export default SidebarAppBar;

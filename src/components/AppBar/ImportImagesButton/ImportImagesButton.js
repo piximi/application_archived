@@ -25,4 +25,4 @@ const ImportImagesButton = props => {
   );
 };
 
-export default React.memo(ImportImagesButton);
+export default ImportImagesButton;

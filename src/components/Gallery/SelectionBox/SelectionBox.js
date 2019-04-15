@@ -27,4 +27,4 @@ const SelectionBox = props => {
   return <div style={style} />;
 };
 
-export default React.memo(SelectionBox);
+export default SelectionBox;

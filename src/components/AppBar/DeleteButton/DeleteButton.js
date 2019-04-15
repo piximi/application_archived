@@ -37,4 +37,4 @@ const DeleteButton = props => {
   );
 };
 
-export default React.memo(DeleteButton);
+export default DeleteButton;

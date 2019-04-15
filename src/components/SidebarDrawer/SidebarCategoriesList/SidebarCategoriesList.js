@@ -70,4 +70,4 @@ function SidebarCategoriesList(props) {
   );
 }
 
-export default React.memo(SidebarCategoriesList);
+export default SidebarCategoriesList;
