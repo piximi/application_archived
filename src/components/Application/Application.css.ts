@@ -1,6 +1,9 @@
+import {createStyles} from "@material-ui/styles";
+import {Theme} from "@material-ui/core";
+
 const drawerWidth = 280;
 
-const styles = theme => ({
+const styles = (theme: Theme) => createStyles({
   root: {
     flexGrow: 1
   },
@@ -82,19 +85,6 @@ const styles = theme => ({
     bottom: theme.spacing.unit * 2,
     right: theme.spacing.unit * 2
   },
-  tagStyle: {
-    display: 'inline',
-    padding: '.2em .6em .3em',
-    fontSize: '75%',
-    fontWeight: '600',
-    lineHeight: '1',
-    color: 'yellow',
-    textAlign: 'center',
-    whiteSpace: 'nowrap',
-    verticalAlign: 'baseline',
-    borderRadius: '.25em'
-  },
-
   pacmanLoader: {
     position: 'fixed',
     top: '50%',
