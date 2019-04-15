@@ -1,23 +1,23 @@
-import React from 'react';
+import * as React from 'react';
 import { CirclePicker } from 'react-color';
 import { colors } from '../../constants';
 
-const ColorPicker = props => {
+const ColorPicker = (props: { onChange: any; categories: any; }) => {
   const { onChange, categories } = props;
 
-  function usedColors(categories) {
+  const usedColors = (categories: any) => {
     if (categories) {
-      return categories.map(category => category.color.toUpperCase());
+      return categories.map((category: any) => category.color.toUpperCase());
     } else {
       return [];
     }
-  }
+  };
 
-  function availableColors(categories) {
+  const availableColors = (categories: any) => {
     return colors.filter(
       color => !usedColors(categories).includes(color.toUpperCase())
     );
-  }
+  };
 
   return (
     <CirclePicker colors={availableColors(categories)} onChange={onChange} />

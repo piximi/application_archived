@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import styles from './UploadDialog.css';
 import className from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
@@ -70,7 +70,7 @@ function Transition(props) {
   return <Zoom {...props} />;
 }
 
-export class UploadDialog extends Component {
+export class UploadDialog extends React.Component {
   constructor(props) {
     super(props);
     this.imageFiles = [];

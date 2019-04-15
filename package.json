@@ -14,6 +14,7 @@
     "@types/jest": "^24.0.11",
     "@types/node": "^11.13.0",
     "@types/react": "^16.8.10",
+    "@types/react-color": "^3.0.0",
     "@types/react-dom": "^16.8.3",
     "@types/react-redux": "^7.0.6",
     "@types/redux-persist": "^4.3.1",

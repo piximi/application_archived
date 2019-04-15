@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import * as React from 'react';
 import { PacmanLoader } from 'react-spinners';
 import styles from './Application.css';
 import classNames from 'classnames';
@@ -33,13 +33,13 @@ function findCategory(identifier, categories) {
 
 const Application = props => {
   const classes = useStyles();
-  const [images, setImages] = useState([]);
+  const [images, setImages] = React.useState([]);
 
-  const [selectedImages, setSelectedImages] = useState([]);
+  const [selectedImages, setSelectedImages] = React.useState([]);
   const { openedDrawer, toggleDrawer } = useDrawer();
-  const [unlabelledVisibility, setUnlabelledVisibility] = useState(0);
+  const [unlabelledVisibility, setUnlabelledVisibility] = React.useState(0);
 
-  useEffect(() => {
+  React.useEffect(() => {
     setImages(createImageCollection(props.images, props.categories));
   }, []);
 
