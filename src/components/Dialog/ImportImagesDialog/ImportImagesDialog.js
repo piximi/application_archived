@@ -1,21 +1,22 @@
 import * as React from 'react';
 import styles from './ImportImagesDialog.css';
 import className from 'classnames';
-import { withStyles } from '@material-ui/core/styles';
 import hash from 'string-hash';
 import {
   Button,
   Dialog,
   DialogActions,
   DialogContent,
-  DialogTitle,
-  Zoom
+  DialogTitle
 } from '@material-ui/core';
 import FolderIcon from '@material-ui/icons/Folder';
 import { store } from '../../../index';
 import { addImagesAction } from '../../../actions/images';
 import { addCategoryAction } from '../../../reducers/categories';
 import { toggleSpinnerAction } from '../../../actions/settings';
+import { makeStyles } from '@material-ui/styles';
+
+const useStyles = makeStyles(styles);
 
 // Add valid file formats here
 const validFileExtensions = ['png'];
@@ -66,137 +67,127 @@ const readFile = (currentFile, that, noImageFiles) => {
   };
 };
 
-function Transition(props) {
-  return <Zoom {...props} />;
-}
+const ImportImagesDialog = props => {
+  const { onClose, open } = props;
 
-export class ImportImagesDialog extends React.Component {
-  constructor(props) {
-    super(props);
-    this.imageFiles = [];
-    this.imageData = [];
-    this.state = {
-      uploadButtonActive: false,
-      images: [],
-      snackbar: false,
-      selectFolderText: 'Select Folder'
-    };
-  }
+  const classes = useStyles();
 
-  toggleSnackbar = () => {
-    this.setState({
-      ...this.state,
-      snackbar: !this.state.snackbar
-    });
-  };
+  const [uploadButtonActive, setUploadButtonActive] = React.useState(false);
+  const [selectFolderText, setSelectFolderText] = React.useState(
+    'Select Folder'
+  );
+  const [images, setImages] = React.useState([]);
+  const [imageFiles, setImageFiles] = React.useState([]);
+  const [imageData, setImageData] = React.useState([]);
 
-  uploadImages = () => {
-    const that = this;
+  const uploadImages = () => {
+    // const that = this;
     let validImageFiles = [];
     store.dispatch(addImagesAction({}));
     store.dispatch(toggleSpinnerAction());
-    this.setState({ imageFiles: [], uploadButtonActive: false });
+
+    setImageFiles([]);
+    setUploadButtonActive(false);
 
     // Check images for correct file format
-    for (let imageFile of this.state.imageFiles) {
-      const fileExtension = imageFile.name.split('.').pop();
-      if (validFileExtensions.includes(fileExtension))
+    for (let imageFile of imageFiles) {
+      const extension = imageFile.name.split('.').pop();
+
+      if (validFileExtensions.includes(extension)) {
         validImageFiles.push(imageFile);
+      }
     }
+
     const noValidImageFiles = validImageFiles.length;
+
     for (let imageFile of validImageFiles) {
       const reader = new FileReader();
-      reader.onload = readFile(imageFile, that, noValidImageFiles);
-      reader.readAsDataURL(imageFile, that);
+
+      // reader.onload = readFile(imageFile, that, noValidImageFiles);
+
+      // reader.readAsDataURL(imageFile, that);
     }
   };
 
-  onClickUploadButton = () => {
-    this.uploadImages();
-    this.props.onClose();
-    this.toggleSnackbar();
-    this.setState({
-      images: [],
-      imageFiles: null,
-      selectFolderText: 'Select Folder',
-      uploadButtonActive: false
-    });
+  const onClickUploadButton = () => {
+    uploadImages();
+
+    onClose();
+
+    setImages([]);
+    setImageFiles(null);
+    setSelectFolderText('Select Folder');
+    setUploadButtonActive(false);
   };
 
-  onClickCancelButton = () => {
-    this.props.onClose();
-    this.setState({
-      images: [],
-      imageFiles: null,
-      selectFolderText: 'Select Folder',
-      uploadButtonActive: false
-    });
+  const onClickCancelButton = () => {
+    onClose();
+
+    setImages([]);
+    setImageFiles(null);
+    setSelectFolderText('Select Folder');
+    setUploadButtonActive(false);
   };
 
-  onImportImagesChange = () => e => {
+  const onImportImagesChange = e => {
     const imageFiles = e.target.files;
     let path = imageFiles[0].webkitRelativePath;
     let Folder = '/' + path.split('/')[0];
-    this.setState({
-      imageFiles: imageFiles,
-      uploadButtonActive: true,
-      selectFolderText: Folder
-    });
+
+    setImageFiles(imageFiles);
+    setUploadButtonActive(true);
+    setSelectFolderText(Folder);
   };
 
-  _addDirectory(node) {
+  const _addDirectory = node => {
     if (node) {
       node.directory = true;
       node.webkitdirectory = true;
     }
-  }
+  };
 
-  render() {
-    const { onClose, open, classes } = this.props;
+  return (
+    <React.Fragment>
+      <Dialog open={open} onClose={onClose}>
+        <DialogTitle id="form-dialog-title">
+          Open directory with images
+        </DialogTitle>
 
-    return (
-      <React.Fragment>
-        <Dialog open={open} onClose={onClose} TransitionComponent={Transition}>
-          <DialogTitle id="form-dialog-title">
-            Open directory with images
-          </DialogTitle>
-
-          <DialogContent className={classes.dialogContent}>
-            <input
-              accept="image/*"
-              className={classes.input}
-              id="raised-button-file"
-              multiple
-              type="file"
-              ref={node => this._addDirectory(node)}
-              onChange={this.onImportImagesChange()}
-            />
-            <label htmlFor="raised-button-file">
-              <Button
-                variant="contained"
-                color="primary"
-                className={className(classes.bootstrapRoot)}
-                component="span"
-              >
-                {this.state.selectFolderText}
-                <FolderIcon className={className(classes.folderIcon)} />
-              </Button>
-            </label>
-          </DialogContent>
-
-          <DialogActions>
-            <Button onClick={() => this.onClickCancelButton()} color="primary">
-              Cancel
+        <DialogContent className={classes.dialogContent}>
+          <input
+            accept="image/*"
+            className={classes.input}
+            id="raised-button-file"
+            multiple
+            type="file"
+            ref={node => _addDirectory(node)}
+            onChange={onImportImagesChange}
+          />
+          <label htmlFor="raised-button-file">
+            <Button
+              variant="contained"
+              color="primary"
+              className={className(classes.bootstrapRoot)}
+              component="span"
+            >
+              {selectFolderText}
+              <FolderIcon className={className(classes.folderIcon)} />
             </Button>
+          </label>
+        </DialogContent>
 
-            <Button onClick={() => this.onClickUploadButton()} color="primary">
-              Upload
-            </Button>
-          </DialogActions>
-        </Dialog>
-      </React.Fragment>
-    );
-  }
-}
+        <DialogActions>
+          <Button onClick={onClickCancelButton} color="primary">
+            Cancel
+          </Button>
 
-export default withStyles(styles, { withTheme: true })(ImportImagesDialog);
+          <Button onClick={onClickUploadButton} color="primary">
+            Upload
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </React.Fragment>
+  );
+};
+
+export default ImportImagesDialog;
