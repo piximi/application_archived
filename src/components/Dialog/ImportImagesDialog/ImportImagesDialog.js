@@ -147,6 +147,10 @@ const ImportImagesDialog = props => {
     }
   };
 
+  const onFileReaderChange = files => {
+    console.log(files);
+  };
+
   return (
     <React.Fragment>
       <Dialog open={open} onClose={onClose}>
@@ -155,7 +159,7 @@ const ImportImagesDialog = props => {
         </DialogTitle>
 
         <DialogContent className={classes.dialogContent}>
-          <FileReader onChange={files => console.log(files)}>
+          <FileReader onChange={onFileReaderChange}>
             <Button
               variant="contained"
               color="primary"
