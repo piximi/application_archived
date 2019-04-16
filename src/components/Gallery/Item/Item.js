@@ -3,8 +3,6 @@ import { DragSource } from 'react-dnd';
 import { getEmptyImage } from 'react-dnd-html5-backend';
 import ImageViewerDialog from '../../Dialog/ImageViewerDialog/ImageViewerDialog/ImageViewerDialog';
 import Image from '../Image/Image';
-import styles from './Item.css';
-import { withStyles } from '@material-ui/core/styles';
 import ItemLabel from '../ItemLabel/ItemLabel';
 import useDialog from '../../../hooks/Dialog';
 
@@ -99,6 +97,4 @@ const Item = props => {
   );
 };
 
-export default DragSource('SelectedItems', itemSource, collect)(
-  withStyles(styles, { withTheme: true })(Item)
-);
+export default DragSource('SelectedItems', itemSource, collect)(Item);
