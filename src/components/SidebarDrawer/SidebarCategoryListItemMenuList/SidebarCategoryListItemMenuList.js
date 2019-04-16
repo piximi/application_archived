@@ -31,6 +31,8 @@ const SidebarCategoryListItemMenuList = props => {
   };
 
   const onHideOtherCategoriesClick = () => {
+    let x = categories;
+
     debugger;
 
     closeMenu();
@@ -75,11 +77,7 @@ const SidebarCategoryListItemMenuList = props => {
       </Popover>
 
       <ConnectedEditCategoryDialog
-        categories={categories}
         category={category}
-        categoryId={category.identifier}
-        color={category.color}
-        description={category.description}
         onClose={closeEditCategoryDialog}
         open={openedEditCategoryDialog}
       />
