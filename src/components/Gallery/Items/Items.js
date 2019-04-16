@@ -5,11 +5,13 @@ import { Grid, AutoSizer } from 'react-virtualized';
 class Items extends PureComponent {
   constructor(props) {
     super(props);
+
     this.state = {
       picturesPerRow: 0,
       rows: 0,
       noImages: 0
     };
+
     this.cellRenderer = this.cellRenderer.bind(this);
   }
 
