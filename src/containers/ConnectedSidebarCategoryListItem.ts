@@ -6,12 +6,6 @@ import {
 
 import SidebarCategoryListItem from '../components/SidebarDrawer/SidebarCategoryListItem/SidebarCategoryListItem';
 
-const mapStateToProps = (state: any, props: any) => {
-  return {
-    categories: state.categories
-  };
-};
-
 const mapDispatchToProps = (dispatch: any, props: any) => {
   return {
     toggleVisibility: (index: number) => {
@@ -27,9 +21,15 @@ const mapDispatchToProps = (dispatch: any, props: any) => {
   };
 };
 
+const mapStateToProps = (state: any, props: any) => {
+  return {
+    categories: state.categories
+  };
+};
+
 const ConnectedSidebarCategoryListItem = connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
+  mapStateToProps
 )(SidebarCategoryListItem);
 
 export default ConnectedSidebarCategoryListItem;
