@@ -7,7 +7,7 @@ import CustomDragLayer from '../CustomDragLayer/CustomDragLayer';
 import { collisionDetection } from '../helper';
 
 const Gallery = props => {
-  const { images, imagesPerRow, decreaseWidth, callOnDragEnd } = props;
+  const { images, imagesPerRow, decreaseWidth } = props;
 
   const [selected, setSelected] = React.useState([]);
   const [collisions, setCollisions] = React.useState([]);
@@ -150,7 +150,6 @@ const Gallery = props => {
         selectItem={selectItem}
         selectedItems={selected}
         ondrag={setCurrentlyDraggedItem}
-        callOnDragEnd={callOnDragEnd}
       />
     </div>
   );

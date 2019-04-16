@@ -21,13 +21,11 @@ const itemSource = {
     props.ondrag(null);
     if (monitor.getDropResult() !== null) {
       const categoryIdentifier = monitor.getDropResult().categoryIdentifier;
-      const categoryName = monitor.getDropResult().categoryName;
-      const selectedItemsIdentifiers = monitor.getDropResult().selectedItems;
-      props.callOnDragEnd(
-        selectedItemsIdentifiers,
-        categoryIdentifier,
-        categoryName
-      );
+      const identifiers = monitor.getDropResult().selectedItems;
+
+      for (const identifier of identifiers) {
+        props.updateImageCategory(identifier, categoryIdentifier);
+      }
     }
     if (!monitor.didDrop()) {
       return;
