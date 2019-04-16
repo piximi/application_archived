@@ -86,8 +86,6 @@ const SidebarCategoryListItemMenuList = props => {
 
       <ConnectedDeleteCategoryDialog
         category={category}
-        categoryIdentifier={category.identifier}
-        description={category.description}
         onClose={closeDeleteCategoryDialog}
         open={openedDeleteCategoryDialog}
       />

@@ -9,21 +9,17 @@ import {
 } from '@material-ui/core';
 
 const DeleteCategoryDialog = (props: any) => {
-  const {
-    category,
-    deleteCategory,
-    description,
-    open,
-    onClose
-  } = props;
+  const { category, deleteCategory, open, onClose } = props;
 
   const onDeleteCategoryClick = () => {
     deleteCategory(category.index);
   };
 
-  const dialogTitle = `Delete ${description}?`;
+  const dialogTitle = `Delete ${category.description}?`;
 
-  const dialogContentText = `Images categorized as ${description} won’t be deleted.`;
+  const dialogContentText = `Images categorized as ${
+    category.description
+  } won’t be deleted.`;
 
   return (
     <Dialog open={open} onClose={onClose}>
@@ -40,10 +36,7 @@ const DeleteCategoryDialog = (props: any) => {
           Cancel
         </Button>
 
-        <Button
-          onClick={onDeleteCategoryClick}
-          color="primary"
-        >
+        <Button onClick={onDeleteCategoryClick} color="primary">
           Yes
         </Button>
       </DialogActions>
