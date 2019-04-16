@@ -1,8 +1,6 @@
 import * as React from 'react';
 import Item from '../Item/Item';
 import { Grid, AutoSizer } from 'react-virtualized';
-import { useState } from 'react';
-import { useEffect } from 'react';
 
 const Items = props => {
   const {
@@ -17,11 +15,11 @@ const Items = props => {
     windowWidth
   } = props;
 
-  const [picturesPerRow, setPicturesPerRow] = useState(0);
-  const [rows, setRows] = useState(0);
-  const [noImages, setNoImages] = useState(0);
+  const [picturesPerRow, setPicturesPerRow] = React.useState(0);
+  const [rows, setRows] = React.useState(0);
+  const [noImages, setNoImages] = React.useState(0);
 
-  useEffect(() => {
+  React.useEffect(() => {
     let picturesPerRow = imagesPerRow;
 
     // Media queries
