@@ -22,7 +22,7 @@ const SelectionBox = props => {
     };
 
     setStyle(newStyle);
-  });
+  }, []);
 
   return <div style={style} />;
 };
