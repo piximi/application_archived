@@ -1,100 +1,101 @@
-import React, { PureComponent } from 'react';
+import * as React from 'react';
 import Item from '../Item/Item';
 import { Grid, AutoSizer } from 'react-virtualized';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
-class Items extends PureComponent {
-  constructor(props) {
-    super(props);
+const Items = props => {
+  const {
+    decreaseWidth,
+    selectItem,
+    images,
+    selectedItems,
+    ondrag,
+    asyncImgLoadingFunc,
+    callOnDragEnd,
+    imagesPerRow,
+    windowWidth
+  } = props;
 
-    this.state = {
-      picturesPerRow: 0,
-      rows: 0,
-      noImages: 0
-    };
+  const [picturesPerRow, setPicturesPerRow] = useState(0);
+  const [rows, setRows] = useState(0);
+  const [noImages, setNoImages] = useState(0);
 
-    this.cellRenderer = this.cellRenderer.bind(this);
-  }
+  useEffect(() => {
+    let picturesPerRow = imagesPerRow;
 
-  static getDerivedStateFromProps(props, state) {
-    let picturesPerRow = props.imagesPerRow;
     // Media queries
-    if (props.windowWidth > 0) {
-      if (props.windowWidth - props.decreaseWidth < 900) picturesPerRow = 5;
-      if (props.windowWidth - props.decreaseWidth < 850) picturesPerRow = 4;
-      if (props.windowWidth - props.decreaseWidth < 700) picturesPerRow = 3;
-      if (props.windowWidth - props.decreaseWidth < 450) picturesPerRow = 2;
-      if (props.windowWidth - props.decreaseWidth < 200) picturesPerRow = 1;
+    if (windowWidth > 0) {
+      if (windowWidth - decreaseWidth < 900) picturesPerRow = 5;
+      if (windowWidth - decreaseWidth < 850) picturesPerRow = 4;
+      if (windowWidth - decreaseWidth < 700) picturesPerRow = 3;
+      if (windowWidth - decreaseWidth < 450) picturesPerRow = 2;
+      if (windowWidth - decreaseWidth < 200) picturesPerRow = 1;
     }
 
-    const noImages = props.images.length;
+    const noImages = images.length;
     const quotient = Math.floor(noImages / picturesPerRow);
     const remainder = noImages % picturesPerRow;
+
     let rowCount = quotient;
+
     if (remainder !== 0) {
       rowCount = rowCount + 1;
     }
-    picturesPerRow = picturesPerRow > noImages ? noImages : picturesPerRow;
-    return {
-      ...state,
-      picturesPerRow: picturesPerRow,
-      rows: rowCount,
-      noImages: noImages,
-      prevImages: props.images
-    };
-  }
 
-  onmousedown = imgId => {
-    this.props.selectItem(imgId);
+    setPicturesPerRow(picturesPerRow > noImages ? noImages : picturesPerRow);
+    setRows(rowCount);
+    setNoImages(noImages);
+  });
+
+  const onmousedown = imgId => {
+    selectItem(imgId);
   };
 
-  cellRenderer({ columnIndex, key, rowIndex, style }) {
+  const cellRenderer = ({ columnIndex, key, rowIndex, style }) => {
     let newStyle = { ...style };
-    const index = this.state.picturesPerRow * rowIndex - 1 + columnIndex + 1;
-    if (index > this.state.noImages - 1) {
+    const index = picturesPerRow * rowIndex - 1 + columnIndex + 1;
+    if (index > noImages - 1) {
       return;
     }
     return (
       <div key={key} style={newStyle}>
         <Item
           key={key}
-          item={this.props.images[index]}
+          item={images[index]}
           containerStyle={style}
-          selectedItems={this.props.selectedItems}
-          onmousedown={this.onmousedown}
-          ondrag={this.props.ondrag}
-          asyncImgLoadingFunc={this.props.asyncImgLoadingFunc}
-          callOnDragEnd={this.props.callOnDragEnd}
+          selectedItems={selectedItems}
+          onmousedown={onmousedown}
+          ondrag={ondrag}
+          asyncImgLoadingFunc={asyncImgLoadingFunc}
+          callOnDragEnd={callOnDragEnd}
         />
       </div>
     );
-  }
+  };
 
-  render() {
-    const { decreaseWidth } = this.props;
-    const { picturesPerRow, noImages } = this.state;
-    return (
-      <AutoSizer>
-        {({ height, width }) => {
-          const calculatedWidth = width - decreaseWidth;
-          const columnWidth = calculatedWidth / picturesPerRow;
-          const columnCount =
-            picturesPerRow > noImages ? noImages : picturesPerRow;
-          return (
-            <Grid
-              cellRenderer={this.cellRenderer}
-              columnCount={columnCount}
-              columnWidth={columnWidth}
-              height={height}
-              rowCount={this.state.rows}
-              rowHeight={150}
-              width={calculatedWidth}
-              style={{ outline: 'none' }}
-            />
-          );
-        }}
-      </AutoSizer>
-    );
-  }
-}
+  return (
+    <AutoSizer>
+      {({ height, width }) => {
+        const calculatedWidth = width - decreaseWidth;
+        const columnWidth = calculatedWidth / picturesPerRow;
+        const columnCount =
+          picturesPerRow > noImages ? noImages : picturesPerRow;
+        return (
+          <Grid
+            cellRenderer={cellRenderer}
+            columnCount={columnCount}
+            columnWidth={columnWidth}
+            height={height}
+            rowCount={rows}
+            rowHeight={150}
+            width={calculatedWidth}
+            style={{ outline: 'none' }}
+          />
+        );
+      }}
+    </AutoSizer>
+  );
+};
 
 export default Items;
