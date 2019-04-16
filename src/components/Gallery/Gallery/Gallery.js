@@ -7,6 +7,8 @@ import CustomDragLayer from '../CustomDragLayer/CustomDragLayer';
 import { collisionDetection } from '../helper';
 
 const Gallery = props => {
+  const { images, imagesPerRow, decreaseWidth, callOnDragEnd } = props;
+
   const [selected, setSelected] = React.useState([]);
   const [collisions, setCollisions] = React.useState([]);
   const [selectionBoxCoordinates, setSelectionBoxCoordinates] = React.useState({
@@ -124,8 +126,6 @@ const Gallery = props => {
   const windowResizeEvent = e => {
     setWindowWidth(e.target.innerWidth);
   };
-
-  const { images, imagesPerRow, decreaseWidth, callOnDragEnd } = props;
 
   // Check if no images are visible or available
   if (images.length === 0) return null;
