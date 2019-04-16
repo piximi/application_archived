@@ -1,50 +1,45 @@
 import * as React from 'react';
 import { Portal } from 'react-portal';
 
-class FileReader extends React.PureComponent {
-  inputRef = React.createRef();
+const FileReader = props => {
+  const { children, onChange } = props;
 
-  onClick = e => {
+  const inputEl = React.useRef();
+
+  const onClick = e => {
     e.preventDefault();
-    const inputRef = this.inputRef.current;
-    if (inputRef) inputRef.click();
+
+    inputEl.current.click();
   };
 
-  onChange = e => {
-    const { onChange } = this.props;
+  const onInputChange = e => {
     onChange(e.target.files, e);
   };
 
-  render() {
-    const { children } = this.props;
+  return (
+    <React.Fragment>
+      <div
+        onClick={onClick}
+        onKeyPress={onClick}
+        role="button"
+        tabIndex="0"
+        style={{ display: 'inline-block' }}
+      >
+        {children}
+      </div>
 
-    const { inputRef, onClick, onChange } = this;
-
-    return (
-      <React.Fragment>
-        <div
-          onClick={onClick}
-          onKeyPress={onClick}
-          role="button"
-          tabIndex="0"
-          style={{ display: 'inline-block' }}
-        >
-          {children}
-        </div>
-
-        <Portal>
-          <input
-            ref={inputRef}
-            type="file"
-            accept={'image/*'}
-            onChange={onChange}
-            style={{ display: 'none' }}
-            multiple
-          />
-        </Portal>
-      </React.Fragment>
-    );
-  }
-}
+      <Portal>
+        <input
+          ref={inputEl}
+          type="file"
+          accept={'image/*'}
+          onChange={onInputChange}
+          style={{ display: 'none' }}
+          multiple
+        />
+      </Portal>
+    </React.Fragment>
+  );
+};
 
 export default FileReader;
