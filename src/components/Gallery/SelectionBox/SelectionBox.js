@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import * as React from 'react';
 import '../Gallery/Gallery.css';
 import { reCalc } from '../helper';
 
 const SelectionBox = props => {
-  const [style, setStyle] = useState({
+  const [style, setStyle] = React.useState({
     zIndex: 9000,
     position: 'fixed',
     background: '#eaeaea',
@@ -12,7 +12,7 @@ const SelectionBox = props => {
     borderColor: '#AAAAAA'
   });
 
-  useEffect(() => {
+  React.useEffect(() => {
     const styleFromBoxCoordinates = reCalc(props.selectionBoxCoordinates);
 
     const newStyle = {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 import './Gallery.css';
 import Items from '../Items/Items.js';
@@ -7,24 +7,24 @@ import CustomDragLayer from '../CustomDragLayer/CustomDragLayer';
 import { collisionDetection } from '../helper';
 
 const Gallery = props => {
-  const [selected, setSelected] = useState([]);
-  const [collisions, setCollisions] = useState([]);
-  const [selectionBoxCoordinates, setSelectionBoxCoordinates] = useState({
+  const [selected, setSelected] = React.useState([]);
+  const [collisions, setCollisions] = React.useState([]);
+  const [selectionBoxCoordinates, setSelectionBoxCoordinates] = React.useState({
     x1: 0,
     x2: 0,
     y1: 0,
     y2: 0
   });
-  const [selectionBoxVisibility, setSelectionBoxVisibility] = useState(
+  const [selectionBoxVisibility, setSelectionBoxVisibility] = React.useState(
     'hidden'
   );
-  const [currentlyDraggedItem, setCurrentlyDraggedItem] = useState(null);
-  const [shiftKeyPressed, setShiftKeyPressed] = useState(false);
-  const [altKeyPressed, setAltKeyPressed] = useState(false);
-  const [mouseDown, setMouseDown] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [currentlyDraggedItem, setCurrentlyDraggedItem] = React.useState(null);
+  const [shiftKeyPressed, setShiftKeyPressed] = React.useState(false);
+  const [altKeyPressed, setAltKeyPressed] = React.useState(false);
+  const [mouseDown, setMouseDown] = React.useState(false);
+  const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
 
-  useEffect(() => {
+  React.useEffect(() => {
     document.addEventListener('keydown', keyEvent);
     document.addEventListener('keyup', keyEvent);
     window.addEventListener('resize', windowResizeEvent);

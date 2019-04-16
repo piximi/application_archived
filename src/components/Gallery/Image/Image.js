@@ -1,15 +1,15 @@
-import React, { useEffect, useRef, useState } from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 
 const Image = props => {
   const { src, openImageViewerDialog } = props;
 
-  const [imageStatus, setImageStatus] = useState('loading');
-  const [image, setImage] = useState(null);
-  const [imgHeight, setImgHeight] = useState(null);
-  const [imgWidth, setImgWidth] = useState(null);
+  const [imageStatus, setImageStatus] = React.useState('loading');
+  const [image, setImage] = React.useState(null);
+  const [imgHeight, setImgHeight] = React.useState(null);
+  const [imgWidth, setImgWidth] = React.useState(null);
 
-  let canvasRef = useRef();
+  let canvasRef = React.useRef();
 
   const onLoad = e => {
     const image = e.target;
@@ -66,7 +66,7 @@ const Image = props => {
     }
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     draw();
   });
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { Menu, MenuItem } from '@material-ui/core';
 
 const ItemCategoryMenu = props => {
