@@ -99,4 +99,6 @@ const Item = props => {
   );
 };
 
-export default DragSource('SelectedItems', itemSource, collect)(Item);
+export default DragSource('SelectedItems', itemSource, collect)(
+  withStyles(styles, { withTheme: true })(Item)
+);
