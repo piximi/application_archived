@@ -149,8 +149,10 @@ const ImportImagesDialog = props => {
     }
   };
 
-  const onFileInputChange = files => {
-    console.log(files);
+  const onFileInputChange = image => {
+    const { base64, checksum } = image;
+
+    console.log(checksum);
   };
 
   return (
