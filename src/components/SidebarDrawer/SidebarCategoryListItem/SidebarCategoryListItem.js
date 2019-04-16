@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  IconButton,
   ListItem,
   ListItemIcon,
   ListItemSecondaryAction,
@@ -8,19 +9,12 @@ import {
 import LabelIcon from '@material-ui/icons/Label';
 import LabelOutlinedIcon from '@material-ui/icons/LabelOutlined';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
-import MenuItem from '@material-ui/core/MenuItem';
-import MenuList from '@material-ui/core/MenuList';
-import IconButton from '@material-ui/core/IconButton';
 import { DropTarget } from 'react-dnd';
 import StyledCategory from './StyledCategory';
 import styles from './SidebarCategoryListItem.css';
-import Paper from '@material-ui/core/Paper';
-import Popover from '@material-ui/core/Popover';
-import ConnectedEditCategoryDialog from '../../../containers/ConnectedEditCategoryDialog';
-import ConnectedDeleteCategoryDialog from '../../../containers/ConnectedDeleteCategoryDialog';
 import { makeStyles } from '@material-ui/styles';
 import useMenu from '../../../hooks/Menu';
-import useDialog from '../../../hooks/Dialog';
+import SidebarCategoryListItemMenuList from '../SidebarCategoryListItemMenuList/SidebarCategoryListItemMenuList';
 
 const spec = {
   drop(props, monitor, component) {
@@ -45,18 +39,6 @@ function collect(connect, monitor) {
 const useStyles = makeStyles(styles);
 
 const SidebarCategoryListItem = props => {
-  const {
-    openedDialog: openedEditCategoryDialog,
-    openDialog: openEditCategoryDialog,
-    closeDialog: closeEditCategoryDialog
-  } = useDialog();
-
-  const {
-    openedDialog: openedDeleteCategoryDialog,
-    openDialog: openDeleteCategoryDialog,
-    closeDialog: closeDeleteCategoryDialog
-  } = useDialog();
-
   const [animateOnDrop, setAnimateOnDrop] = React.useState(0);
 
   const { anchorEl, openedMenu, openMenu, closeMenu } = useMenu();
@@ -64,29 +46,6 @@ const SidebarCategoryListItem = props => {
   const classes = useStyles();
 
   const { category, toggleVisibility, connectDropTarget, categories } = props;
-
-  const anchorPosition = {
-    top: openedMenu ? anchorEl.getBoundingClientRect().bottom - 10 : 0,
-    left: openedMenu ? anchorEl.getBoundingClientRect().left : 0
-  };
-
-  const onHideOtherCategoriesClick = () => {
-    debugger;
-
-    closeMenu();
-  };
-
-  const onEditCategoryClick = () => {
-    openEditCategoryDialog();
-
-    closeMenu();
-  };
-
-  const onDeleteCategoryClick = () => {
-    openDeleteCategoryDialog();
-
-    closeMenu();
-  };
 
   const onToggleVisibilityClick = () => {
     toggleVisibility(category.index);
@@ -135,46 +94,12 @@ const SidebarCategoryListItem = props => {
         </ListItem>
       </StyledCategory>
 
-      <Popover
-        anchorPosition={anchorPosition}
-        anchorReference="anchorPosition"
-        id="simple-popper"
-        onClose={closeMenu}
-        open={openedMenu}
-      >
-        <Paper>
-          <MenuList dense>
-            <MenuItem onClick={onHideOtherCategoriesClick}>
-              <ListItemText primary="Hide other categories" />
-            </MenuItem>
-
-            <MenuItem onClick={onEditCategoryClick}>
-              <ListItemText primary="Edit category" />
-            </MenuItem>
-
-            <MenuItem onClick={onDeleteCategoryClick}>
-              <ListItemText primary="Delete category" />
-            </MenuItem>
-          </MenuList>
-        </Paper>
-      </Popover>
-
-      <ConnectedEditCategoryDialog
+      <SidebarCategoryListItemMenuList
+        anchorEl={anchorEl}
         categories={categories}
         category={category}
-        categoryId={category.identifier}
-        color={category.color}
-        description={category.description}
-        onClose={closeEditCategoryDialog}
-        open={openedEditCategoryDialog}
-      />
-
-      <ConnectedDeleteCategoryDialog
-        category={category}
-        categoryIdentifier={category.identifier}
-        description={category.description}
-        onClose={closeDeleteCategoryDialog}
-        open={openedDeleteCategoryDialog}
+        closeMenu={closeMenu}
+        openedMenu={openedMenu}
       />
     </React.Fragment>
   );
