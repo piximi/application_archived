@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { DragSource } from 'react-dnd';
 import { getEmptyImage } from 'react-dnd-html5-backend';
 import ImageViewerDialog from '../../Dialog/ImageViewerDialog/ImageViewerDialog/ImageViewerDialog';
@@ -6,6 +6,7 @@ import Image from '../Image/Image';
 import styles from './Item.css';
 import { withStyles } from '@material-ui/core/styles';
 import ItemLabel from '../ItemLabel/ItemLabel';
+import useDialog from '../../../hooks/Dialog';
 
 const itemSource = {
   beginDrag(props) {
@@ -51,15 +52,7 @@ const Item = props => {
     item
   } = props;
 
-  const [imageViewerDialogOpen, setImageViewerDialogOpen] = useState(false);
-
-  const closeImageViewerDialog = () => {
-    setImageViewerDialogOpen(false);
-  };
-
-  const openImageViewerDialog = () => {
-    setImageViewerDialogOpen(true);
-  };
+  const { openedDialog, openDialog, closeDialog } = useDialog();
 
   useEffect(() => {
     connectDragPreview(getEmptyImage(), {
@@ -71,40 +64,36 @@ const Item = props => {
     e.preventDefault();
   };
 
-  const imgId = String(item.identifier);
-  const imgSrc = item.data;
-  const brightness = item.brightness;
-  const contrast = item.contrast;
   const unselectedChannels = item.unselectedChannels;
-  const imgSelected = selectedItems.includes(imgId);
+  const imgSelected = selectedItems.includes(item.identifier);
 
   return connectDragSource(
     <div
-      key={'div' + imgId}
+      key={'div' + item.identifier}
       name={'selectableElement'}
       type={'selectableElement'}
-      imgid={imgId}
-      onMouseDown={() => onmousedown(imgId)}
+      imgid={item.identifier}
+      onMouseDown={() => onmousedown(item.identifier)}
       onContextMenu={myContextMenu}
       className={imgSelected ? 'selected' : 'unselected'}
     >
       <ItemLabel color={item.color} />
       <Image
-        key={'img' + imgId}
-        openImageViewerDialog={openImageViewerDialog}
-        src={imgSrc}
-        brightness={brightness}
-        contrast={contrast}
+        key={'img' + item.identifier}
+        openImageViewerDialog={openDialog}
+        src={item.data}
+        brightness={item.brightness}
+        contrast={item.contrast}
         unselectedChannels={unselectedChannels}
         height={containerStyle.height}
         width={0.9 * containerStyle.width}
       />
       <ImageViewerDialog
-        onClose={closeImageViewerDialog}
-        open={imageViewerDialogOpen}
-        src={imgSrc}
-        imgIdentifier={imgId}
-        brightness={brightness}
+        onClose={closeDialog}
+        open={openedDialog}
+        src={item.data}
+        imgIdentifier={item.identifier}
+        brightness={item.brightness}
       />
     </div>
   );
