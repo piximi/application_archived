@@ -6,29 +6,17 @@ import {
   ListItemIcon,
   ListItemText
 } from '@material-ui/core';
-import Category from '../SidebarCategoryListItem/SidebarCategoryListItem';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import CreateCategoryListItem from '../SidebarCreateCategoryListItem/SidebarCreateCategoryListItem';
 import useCollapseList from '../../../hooks/CollapseList';
 import * as _ from 'lodash';
+import ConnectedSidebarCategoryListItem from '../../../containers/ConnectedSidebarCategoryListItem';
 
 const SidebarCategoriesList = props => {
   const { collapsedList, collapseList } = useCollapseList();
 
-  const [
-    createCategoryDialogToggled,
-    setCreateCategoryDialogToggled
-  ] = React.useState(0);
-
-  const {
-    categories,
-    updateVisibility,
-    setUnlabelledVisibility,
-    displayThisCategoryOnly,
-    connectDropTarget,
-    images
-  } = props;
+  const { categories, connectDropTarget } = props;
 
   const sortedCategories = _.sortBy(categories, 'description');
 
@@ -45,22 +33,11 @@ const SidebarCategoriesList = props => {
 
         <Collapse in={!collapsedList} timeout="auto" unmountOnExit>
           {sortedCategories.map((category, index) => (
-            <Category
+            <ConnectedSidebarCategoryListItem
               category={category}
-              identifier={category.identifier}
               key={category.identifier}
               index={index}
-              description={category.description}
-              visible={category.visible}
-              color={category.color}
-              images={images}
-              updateVisibility={updateVisibility}
-              displayThisCategoryOnly={displayThisCategoryOnly}
-              setUnlabelledVisibility={setUnlabelledVisibility}
               connectDropTarget={connectDropTarget}
-              editCategory={() =>
-                setCreateCategoryDialogToggled(!createCategoryDialogToggled)
-              }
             />
           ))}
 
