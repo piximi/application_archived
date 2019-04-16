@@ -10,17 +10,19 @@ export const hideOtherCategoriesAction = createAction(
   'categories/category/hide-other-categories'
 );
 
-export const toggleCategoryVisibility = createAction(
+export const toggleCategoryVisibilityAction = createAction(
   'categories/category/toggle-visibility'
 );
 
-export const updateCategoryColor = createAction(
+export const updateCategoryColorAction = createAction(
   'categories/category/update-color'
 );
-export const updateCategoryDescription = createAction(
+
+export const updateCategoryDescriptionAction = createAction(
   'categories/category/update-description'
 );
-export const updateCategoryVisibility = createAction(
+
+export const updateCategoryVisibilityAction = createAction(
   'categories/category/update-visibility'
 );
 
@@ -47,28 +49,28 @@ const categories = createReducer([], {
     return state.filter(category => category.index !== index);
   },
   [hideOtherCategoriesAction]: (state, action) => {},
-  [toggleCategoryVisibility]: (state, action) => {
+  [toggleCategoryVisibilityAction]: (state, action) => {
     const { index } = action.payload;
 
     const category = state[index];
 
     category.visible = !category.visible;
   },
-  [updateCategoryColor]: (state, action) => {
+  [updateCategoryColorAction]: (state, action) => {
     const { index, color } = action.payload;
 
     const category = state[index];
 
     category.color = color;
   },
-  [updateCategoryDescription]: (state, action) => {
+  [updateCategoryDescriptionAction]: (state, action) => {
     const { index, description } = action.payload;
 
     const category = state[index];
 
     category.description = description;
   },
-  [updateCategoryVisibility]: (state, action) => {
+  [updateCategoryVisibilityAction]: (state, action) => {
     const { index } = action.payload;
 
     const category = state[index];

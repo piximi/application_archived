@@ -1,14 +1,14 @@
 import { connect } from 'react-redux';
-import { toggleCategoryVisibility } from '../reducers/categories';
+import { createImageAction } from '../reducers/images';
 
 import ImportImagesDialog from '../components/Dialog/ImportImagesDialog/ImportImagesDialog';
 
 const mapDispatchToProps = (dispatch: any, props: any) => {
   return {
-    toggleVisibility: (index: number) => {
-      const payload = { index: index };
+    createImage: (checksum: string, data: string) => {
+      const payload = { checksum: checksum, data: data };
 
-      dispatch(toggleCategoryVisibility(payload));
+      dispatch(createImageAction(payload));
     }
   };
 };
@@ -20,8 +20,8 @@ const mapStateToProps = (state: any, props: any) => {
 };
 
 const ConnectedImportImagesDialog = connect(
-  mapDispatchToProps,
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(ImportImagesDialog);
 
 export default ConnectedImportImagesDialog;
