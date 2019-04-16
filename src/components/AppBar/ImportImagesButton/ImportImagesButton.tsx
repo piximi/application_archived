@@ -2,7 +2,6 @@ import * as React from 'react';
 import styles from './ImportImagesButton.css';
 import { Button } from '@material-ui/core';
 import AddPhotoAlternateIcon from '@material-ui/icons/AddPhotoAlternate';
-import UploadDialog from '../../Dialog/ImportImagesDialog/ImportImagesDialog';
 import { makeStyles } from '@material-ui/styles';
 import useDialog from '../../../hooks/Dialog';
 import ConnectedImportImagesDialog from '../../../containers/ConnectedImportImagesDialog';
