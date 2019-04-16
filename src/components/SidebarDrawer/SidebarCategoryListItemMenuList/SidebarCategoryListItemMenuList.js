@@ -11,7 +11,7 @@ import ConnectedDeleteCategoryDialog from '../../../containers/ConnectedDeleteCa
 import useDialog from '../../../hooks/Dialog';
 
 const SidebarCategoryListItemMenuList = props => {
-  const { anchorEl, categories, category, closeMenu, openedMenu } = props;
+  const { anchorEl, category, closeMenu, openedMenu } = props;
 
   const {
     openedDialog: openedEditCategoryDialog,
@@ -31,10 +31,6 @@ const SidebarCategoryListItemMenuList = props => {
   };
 
   const onHideOtherCategoriesClick = () => {
-    let x = categories;
-
-    debugger;
-
     closeMenu();
   };
 
