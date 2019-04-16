@@ -15,7 +15,7 @@ import { addImagesAction } from '../../../actions/images';
 import { addCategoryAction } from '../../../reducers/categories';
 import { toggleSpinnerAction } from '../../../actions/settings';
 import { makeStyles } from '@material-ui/styles';
-import FileReader from '../../FileReader/FileReader';
+import FileInput from '../../FileInput/FileInput';
 
 const useStyles = makeStyles(styles);
 
@@ -81,6 +81,8 @@ const ImportImagesDialog = props => {
   const [imageFiles, setImageFiles] = React.useState([]);
   const [imageData, setImageData] = React.useState([]);
 
+  const [files, setFiles] = React.useState([]);
+
   const uploadImages = () => {
     // const that = this;
     let validImageFiles = [];
@@ -102,7 +104,7 @@ const ImportImagesDialog = props => {
     const noValidImageFiles = validImageFiles.length;
 
     for (let imageFile of validImageFiles) {
-      const reader = new FileReader();
+      const reader = new FileInput();
 
       // reader.onload = readFile(imageFile, that, noValidImageFiles);
 
@@ -147,7 +149,7 @@ const ImportImagesDialog = props => {
     }
   };
 
-  const onFileReaderChange = files => {
+  const onFileInputChange = files => {
     console.log(files);
   };
 
@@ -159,7 +161,7 @@ const ImportImagesDialog = props => {
         </DialogTitle>
 
         <DialogContent className={classes.dialogContent}>
-          <FileReader onChange={onFileReaderChange}>
+          <FileInput onChange={onFileInputChange}>
             <Button
               variant="contained"
               color="primary"
@@ -169,7 +171,7 @@ const ImportImagesDialog = props => {
               {selectFolderText}
               <FolderIcon className={className(classes.folderIcon)} />
             </Button>
-          </FileReader>
+          </FileInput>
         </DialogContent>
 
         <DialogActions>
