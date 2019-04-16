@@ -8,7 +8,7 @@ import useMenu from '../../../hooks/Menu';
 
 const useStyles = makeStyles(styles);
 
-const ItemLabel = props => {
+const ItemLabel = (props: any) => {
   const { anchorEl, openedMenu, openMenu, closeMenu } = useMenu();
 
   const { color } = props;

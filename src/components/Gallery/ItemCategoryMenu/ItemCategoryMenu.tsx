@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Menu, MenuItem } from '@material-ui/core';
 
-const ItemCategoryMenu = props => {
+const ItemCategoryMenu = (props: any) => {
   const { anchorEl, onClose, open } = props;
 
   return (
