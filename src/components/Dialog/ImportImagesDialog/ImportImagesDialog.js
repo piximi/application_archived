@@ -133,7 +133,7 @@ export class ImportImagesDialog extends React.Component {
     });
   };
 
-  onChange = () => e => {
+  onImportImagesChange = () => e => {
     const imageFiles = e.target.files;
     let path = imageFiles[0].webkitRelativePath;
     let Folder = '/' + path.split('/')[0];
@@ -169,7 +169,7 @@ export class ImportImagesDialog extends React.Component {
               multiple
               type="file"
               ref={node => this._addDirectory(node)}
-              onChange={this.onChange()}
+              onChange={this.onImportImagesChange()}
             />
             <label htmlFor="raised-button-file">
               <Button
