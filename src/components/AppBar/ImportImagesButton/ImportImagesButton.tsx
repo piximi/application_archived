@@ -5,6 +5,7 @@ import AddPhotoAlternateIcon from '@material-ui/icons/AddPhotoAlternate';
 import UploadDialog from '../../Dialog/ImportImagesDialog/ImportImagesDialog';
 import { makeStyles } from '@material-ui/styles';
 import useDialog from '../../../hooks/Dialog';
+import ConnectedImportImagesDialog from '../../../containers/ConnectedImportImagesDialog';
 
 const useStyles = makeStyles(styles);
 
@@ -20,7 +21,7 @@ const ImportImagesButton = () => {
         Import images
       </Button>
 
-      <UploadDialog onClose={closeDialog} open={openedDialog} />
+      <ConnectedImportImagesDialog onClose={closeDialog} open={openedDialog} />
     </React.Fragment>
   );
 };
