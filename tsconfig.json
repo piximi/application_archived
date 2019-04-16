@@ -36,6 +36,6 @@
     "src/components/SidebarDrawer/**/*.css.ts",
     "src/components/SidebarDrawer/**/*.ts",
     "src/components/Graph/**/*.tsx",
-    "src/components/Gallery/*.ts"
+    "src/components/Gallery/**/*.ts"
   ]
 }
