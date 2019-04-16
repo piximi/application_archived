@@ -28,8 +28,8 @@ const ImportImagesDialog = props => {
         <DialogContent>
           <FileInput onChange={onFileInputChange}>
             <Button variant="contained" color="primary" component="span">
-              Select folder
               <FolderIcon />
+              Select folder
             </Button>
           </FileInput>
         </DialogContent>
