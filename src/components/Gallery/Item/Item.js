@@ -103,7 +103,7 @@ class Item extends Component {
       containerStyle,
       item
     } = this.props;
-    const imgId = String(item.checksum);
+    const imgId = String(item.identifier);
     const imgSrc = item.data;
     const brightness = item.brightness;
     const contrast = item.contrast;

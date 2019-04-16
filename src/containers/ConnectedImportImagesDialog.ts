@@ -5,7 +5,7 @@ import * as uuid from 'uuid';
 import ImportImagesDialog from '../components/Dialog/ImportImagesDialog/ImportImagesDialog';
 
 type CreateImagePayload = {
-  categoryIdentifier?: String;
+  categoryIdentifier: String;
   checksum: String;
   data: String;
   identifier: String;
@@ -18,7 +18,7 @@ const mapDispatchToProps = (dispatch: any, props: any) => {
         checksum: checksum,
         identifier: uuid.v4(),
         data: data,
-        categoryIdentifier: undefined
+        categoryIdentifier: ''
       };
 
       const action = createImageAction(payload);

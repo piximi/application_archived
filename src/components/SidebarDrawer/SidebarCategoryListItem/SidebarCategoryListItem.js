@@ -19,9 +19,9 @@ import SidebarCategoryListItemMenuList from '../SidebarCategoryListItemMenuList/
 const spec = {
   drop(props, monitor, component) {
     const selectedItems = monitor.getItem().selectedItems;
-    const categoryIdentifer = props.identifier;
+
     return {
-      categoryIdentifier: categoryIdentifer,
+      categoryIdentifier: props.category.identifier,
       categoryName: props.description,
       color: props.color,
       selectedItems: selectedItems
