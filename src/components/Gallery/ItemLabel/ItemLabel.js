@@ -4,17 +4,16 @@ import styles from './ItemLabel.css';
 import { IconButton } from '@material-ui/core';
 import ItemCategoryMenu from '../ItemCategoryMenu/ItemCategoryMenu';
 import { makeStyles } from '@material-ui/styles';
+import useMenu from '../../../hooks/Menu';
 
 const useStyles = makeStyles(styles);
 
 const ItemLabel = props => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const { anchorEl, openedMenu, openMenu, closeMenu } = useMenu();
 
   const { color } = props;
 
   const classes = useStyles();
-
-  const open = Boolean(anchorEl);
 
   return (
     <React.Fragment>
@@ -22,15 +21,15 @@ const ItemLabel = props => {
         aria-label="categorize"
         classes={{ root: classes.iconButton }}
         disableRipple
-        onClick={e => setAnchorEl(e.currentTarget)}
+        onClick={openMenu}
       >
         <LabelIcon style={{ color: color }} />
       </IconButton>
 
       <ItemCategoryMenu
         anchorEl={anchorEl}
-        onClose={() => setAnchorEl(null)}
-        open={open}
+        onClose={closeMenu}
+        open={openedMenu}
       />
     </React.Fragment>
   );
