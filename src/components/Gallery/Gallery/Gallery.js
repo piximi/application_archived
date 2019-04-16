@@ -28,7 +28,7 @@ const Gallery = props => {
     document.addEventListener('keydown', keyEvent);
     document.addEventListener('keyup', keyEvent);
     window.addEventListener('resize', windowResizeEvent);
-  });
+  }, []);
 
   const onmousedown = e => {
     let currentSelectionBoxCoordinates = {

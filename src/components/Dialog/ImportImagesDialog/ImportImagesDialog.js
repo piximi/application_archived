@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styles from './UploadDialog.css';
+import styles from './ImportImagesDialog.css';
 import className from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import hash from 'string-hash';
@@ -70,7 +70,7 @@ function Transition(props) {
   return <Zoom {...props} />;
 }
 
-export class UploadDialog extends React.Component {
+export class ImportImagesDialog extends React.Component {
   constructor(props) {
     super(props);
     this.imageFiles = [];
@@ -199,4 +199,4 @@ export class UploadDialog extends React.Component {
   }
 }
 
-export default withStyles(styles, { withTheme: true })(UploadDialog);
+export default withStyles(styles, { withTheme: true })(ImportImagesDialog);
