@@ -1,9 +1,11 @@
 import * as React from 'react';
-import { ListItemText } from '@material-ui/core';
-import MenuItem from '@material-ui/core/MenuItem';
-import MenuList from '@material-ui/core/MenuList';
-import Paper from '@material-ui/core/Paper';
-import Popover from '@material-ui/core/Popover';
+import {
+  MenuItem,
+  MenuList,
+  Paper,
+  Popover,
+  ListItemText
+} from '@material-ui/core';
 import ConnectedEditCategoryDialog from '../../../containers/ConnectedEditCategoryDialog';
 import ConnectedDeleteCategoryDialog from '../../../containers/ConnectedDeleteCategoryDialog';
 import useDialog from '../../../hooks/Dialog';
