@@ -24,7 +24,7 @@ const FileInput = props => {
 
         const checksum = String(hash(base64));
 
-        onChange(base64, checksum, event);
+        onChange({ base64, checksum }, event);
       };
 
       reader.readAsDataURL(file);
