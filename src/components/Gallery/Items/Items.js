@@ -1,6 +1,6 @@
 import * as React from 'react';
-import Item from '../Item/Item';
 import { Grid, AutoSizer } from 'react-virtualized';
+import ConnectedItem from '../../../containers/ConnectedItem';
 
 const Items = props => {
   const {
@@ -58,7 +58,7 @@ const Items = props => {
     }
     return (
       <div key={key} style={newStyle}>
-        <Item
+        <ConnectedItem
           key={key}
           item={images[index]}
           containerStyle={style}

@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-
 import Gallery from '../components/Gallery/Gallery/Gallery';
 
 const mapDispatchToProps = (dispatch: any, props: any) => {

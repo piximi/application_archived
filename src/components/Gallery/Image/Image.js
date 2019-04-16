@@ -85,7 +85,7 @@ const Image = props => {
         onError={onError}
         alt="foo"
         src={src}
-        // style={{ visibility: 'hidden' }}
+        style={{ visibility: 'hidden' }}
       />
     </React.Fragment>
   );
