@@ -4,7 +4,7 @@ export const addCategoryAction = createAction('categories/add');
 
 export const createCategoryAction = createAction('categories/create');
 
-export const deleteCategory = createAction('categories/category/delete');
+export const deleteCategoryAction = createAction('categories/category/delete');
 
 export const hideOtherCategoriesAction = createAction(
   'categories/category/hide-other-categories'
@@ -41,7 +41,7 @@ const categories = createReducer([], {
 
     state.push(category);
   },
-  [deleteCategory]: (state, action) => {
+  [deleteCategoryAction]: (state, action) => {
     const { index } = action.payload;
 
     return state.filter(category => category.index !== index);
