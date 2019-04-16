@@ -10,6 +10,10 @@ export const hideOtherCategoriesAction = createAction(
   'categories/category/hide-other-categories'
 );
 
+export const toggleCategoryVisibility = createAction(
+  'categories/category/toggle-visibility'
+);
+
 export const updateCategoryColor = createAction(
   'categories/category/update-color'
 );
@@ -43,6 +47,13 @@ const categories = createReducer([], {
     return state.filter(category => category.index !== index);
   },
   [hideOtherCategoriesAction]: (state, action) => {},
+  [toggleCategoryVisibility]: (state, action) => {
+    const { index } = action.payload;
+
+    const category = state[index];
+
+    category.visible = !category.visible;
+  },
   [updateCategoryColor]: (state, action) => {
     const { index, color } = action.payload;
 

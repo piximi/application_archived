@@ -63,18 +63,7 @@ const SidebarCategoryListItem = props => {
 
   const classes = useStyles();
 
-  const {
-    category,
-    identifier,
-    updateVisibility,
-    displayThisCategoryOnly,
-    setUnlabelledVisibility,
-    color,
-    connectDropTarget,
-    description,
-    visible,
-    categories
-  } = props;
+  const { category, toggleVisibility, connectDropTarget, categories } = props;
 
   const anchorPosition = {
     top: openedMenu ? anchorEl.getBoundingClientRect().bottom - 10 : 0,
@@ -82,9 +71,7 @@ const SidebarCategoryListItem = props => {
   };
 
   const onHideOtherCategoriesClick = () => {
-    displayThisCategoryOnly(identifier);
-
-    setUnlabelledVisibility(false);
+    debugger;
 
     closeMenu();
   };
@@ -101,8 +88,8 @@ const SidebarCategoryListItem = props => {
     closeMenu();
   };
 
-  const onListItemIconClick = () => {
-    updateVisibility(category.index);
+  const onToggleVisibilityClick = () => {
+    toggleVisibility(category.index);
   };
 
   const VisibleIcon = props => {
@@ -119,7 +106,7 @@ const SidebarCategoryListItem = props => {
     <React.Fragment>
       <StyledCategory
         ref={instance => connectDropTarget(instance)}
-        color={color}
+        color={category.color}
         onDrop={() => setAnimateOnDrop(!animateOnDrop)}
         className={
           animateOnDrop !== null
@@ -136,10 +123,10 @@ const SidebarCategoryListItem = props => {
             root: props.isOver ? classes.isOver : null
           }}
         >
-          <ListItemIcon onClick={onListItemIconClick}>
-            <VisibleIcon color={color} visible={visible} />
+          <ListItemIcon onClick={onToggleVisibilityClick}>
+            <VisibleIcon color={category.color} visible={category.visible} />
           </ListItemIcon>
-          <ListItemText primary={description} />
+          <ListItemText primary={category.description} />
           <ListItemSecondaryAction>
             <IconButton onClick={openMenu}>
               <MoreHorizIcon />
@@ -175,17 +162,17 @@ const SidebarCategoryListItem = props => {
       <ConnectedEditCategoryDialog
         categories={categories}
         category={category}
-        categoryId={identifier}
-        color={color}
-        description={description}
+        categoryId={category.identifier}
+        color={category.color}
+        description={category.description}
         onClose={closeEditCategoryDialog}
         open={openedEditCategoryDialog}
       />
 
       <ConnectedDeleteCategoryDialog
         category={category}
-        categoryIdentifier={identifier}
-        description={description}
+        categoryIdentifier={category.identifier}
+        description={category.description}
         onClose={closeDeleteCategoryDialog}
         open={openedDeleteCategoryDialog}
       />

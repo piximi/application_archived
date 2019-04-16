@@ -4,12 +4,7 @@ import {
   toggleCategoryVisibility
 } from '../reducers/categories';
 
-import {
-  // updateImageVisibilityBasedOnCategoryAction,
-  onlyShowImagesWithCertainCategoryAction
-} from '../actions/images';
-
-import SidebarCategoriesList from '../components/SidebarDrawer/SidebarCategoriesList/SidebarCategoriesList';
+import SidebarCategoryListItem from '../components/SidebarDrawer/SidebarCategoryListItem/SidebarCategoryListItem';
 
 const mapStateToProps = (state: any, props: any) => {
   return {
@@ -23,22 +18,18 @@ const mapDispatchToProps = (dispatch: any, props: any) => {
       const payload = { index: index };
 
       dispatch(toggleCategoryVisibility(payload));
-
-      // dispatch(updateImageVisibilityBasedOnCategoryAction(index, value));
     },
     updateVisibility: (index: number, visible: boolean) => {
       const payload = { index: index, visible: visible };
 
       dispatch(updateCategoryVisibility(payload));
-
-      // dispatch(onlyShowImagesWithCertainCategoryAction(identifier));
     }
   };
 };
 
-const ConnectedCategories = connect(
+const ConnectedSidebarCategoryListItem = connect(
   mapStateToProps,
   mapDispatchToProps
-)(SidebarCategoriesList);
+)(SidebarCategoryListItem);
 
-export default ConnectedCategories;
+export default ConnectedSidebarCategoryListItem;
