@@ -105,8 +105,8 @@ class Item extends Component {
       containerStyle,
       item
     } = this.props;
-    const imgId = String(item.id);
-    const imgSrc = item.src;
+    const imgId = String(item.checksum);
+    const imgSrc = item.data;
     const brightness = item.brightness;
     const contrast = item.contrast;
     const unselectedChannels = item.unselectedChannels;
