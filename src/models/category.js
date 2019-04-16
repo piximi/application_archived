@@ -9,8 +9,9 @@ class Category extends Model {
 Category.modelName = 'category';
 
 Category.fields = {
-  id: attr(),
-  description: attr()
+  color: attr(),
+  description: attr(),
+  id: attr()
 };
 
 export default Category;
