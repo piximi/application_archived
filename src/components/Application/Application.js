@@ -6,42 +6,18 @@ import ConnectedSidebar from '../../containers/ConnectedSidebar';
 import PrimaryAppBar from '../AppBar/PrimaryAppBar/PrimaryAppBar';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContext } from 'react-dnd';
-import Gallery from '../Gallery/Gallery/Gallery';
 import useDrawer from '../../hooks/Drawer';
 import { makeStyles } from '@material-ui/styles';
+import ConnectedGallery from '../../containers/ConnectedGallery';
 
 const useStyles = makeStyles(styles);
 
-function createImageCollection(images, categories) {
-  const IMAGES = Object.values(images).map(image => {
-    let category = findCategory(image.category, categories);
-    let categoryColor = 'white';
-    if (category !== undefined) {
-      categoryColor = category.color;
-      category = category.identifier;
-    }
-    return { ...image, category: category, color: categoryColor };
-  });
-  return IMAGES;
-}
-
-function findCategory(identifier, categories) {
-  return categories.find(function(category) {
-    return category.identifier === identifier;
-  });
-}
-
 const Application = props => {
   const classes = useStyles();
-  const [images, setImages] = React.useState([]);
 
   const [selectedImages, setSelectedImages] = React.useState([]);
   const { openedDrawer, toggleDrawer } = useDrawer();
   const [unlabelledVisibility, setUnlabelledVisibility] = React.useState(0);
-
-  React.useEffect(() => {
-    setImages(createImageCollection(props.images, props.categories));
-  }, []);
 
   const { updateImageCategory, spinnerActive } = props;
 
@@ -69,8 +45,7 @@ const Application = props => {
       >
         <div className={classes.drawerHeader} />
 
-        <Gallery
-          images={images}
+        <ConnectedGallery
           selectedImages={selectedImages}
           imagesPerRow={10}
           decreaseWidth={openedDrawer ? 280 + 24 : 24}
