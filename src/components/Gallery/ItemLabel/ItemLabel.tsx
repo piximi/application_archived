@@ -11,7 +11,7 @@ const useStyles = makeStyles(styles);
 const ItemLabel = (props: any) => {
   const { anchorEl, openedMenu, openMenu, closeMenu } = useMenu();
 
-  const { color } = props;
+  const { color, image } = props;
 
   const classes = useStyles();
 
@@ -28,6 +28,7 @@ const ItemLabel = (props: any) => {
 
       <ConnectedItemCategoryMenu
         anchorEl={anchorEl}
+        image={image}
         onClose={closeMenu}
         open={openedMenu}
       />

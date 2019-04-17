@@ -10,15 +10,31 @@ import {
 import LabelIcon from '@material-ui/icons/Label';
 
 const ItemCategoryMenu = (props: any) => {
-  const { anchorEl, categories, onClose, open } = props;
+  const {
+    anchorEl,
+    categories,
+    image,
+    onClose,
+    open,
+    updateImageCategory
+  } = props;
 
   const anchorPosition = {
     top: open ? anchorEl.getBoundingClientRect().bottom - 3 : 0,
     left: open ? anchorEl.getBoundingClientRect().left + 14 : 0
   };
 
+  const onMenuItemClick = (category: any) => {
+    updateImageCategory(image.identifier, category.identifier);
+
+    onClose();
+  };
+
   const items = categories.map((category: any) => (
-    <MenuItem key={category.identifier} onClick={onClose}>
+    <MenuItem
+      key={category.identifier}
+      onClick={() => onMenuItemClick(category)}
+    >
       <ListItemIcon>
         <LabelIcon style={{ color: category.color }} />
       </ListItemIcon>
