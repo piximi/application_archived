@@ -15,6 +15,7 @@ import {
 import LabelIcon from '@material-ui/icons/Label';
 import ColorPicker from '../../ColorPicker/ColorPicker';
 import { colors } from '../../../constants';
+import { useTranslation } from 'react-i18next';
 
 function Transition(props) {
   return <Zoom {...props} />;
@@ -22,6 +23,8 @@ function Transition(props) {
 
 const CreateCategoryDialog = props => {
   const { classes, open, categories } = props;
+
+  const { t } = useTranslation();
 
   const [anchorEl, setAnchorEl] = React.useState();
   const [color, setColor] = React.useState('#00e676');
@@ -103,7 +106,7 @@ const CreateCategoryDialog = props => {
             <Grid item>
               <TextField
                 id="create-category-description"
-                label="Description"
+                label={t('Description')}
                 onChange={onDescriptionChange}
                 value={description}
               />
@@ -114,14 +117,14 @@ const CreateCategoryDialog = props => {
 
       <DialogActions>
         <Button color="primary" onClick={onClose}>
-          Cancel
+          {t('Cancel')}
         </Button>
 
         <Button
           color="primary"
           onClick={() => createCategory(color, description)}
         >
-          Create category
+          {t('Create category')}
         </Button>
       </DialogActions>
 
