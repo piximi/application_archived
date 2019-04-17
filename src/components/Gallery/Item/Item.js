@@ -3,8 +3,8 @@ import { DragSource } from 'react-dnd';
 import { getEmptyImage } from 'react-dnd-html5-backend';
 import ImageViewerDialog from '../../Dialog/ImageViewerDialog/ImageViewerDialog/ImageViewerDialog';
 import Image from '../Image/Image';
-import ItemLabel from '../ItemLabel/ItemLabel';
 import useDialog from '../../../hooks/Dialog';
+import ConnectedItemLabel from '../../../containers/ConnectedItemLabel';
 
 const itemSource = {
   beginDrag(props) {
@@ -75,7 +75,7 @@ const Item = props => {
       onContextMenu={myContextMenu}
       className={imgSelected ? 'selected' : 'unselected'}
     >
-      <ItemLabel color={item.color} image={item} />
+      <ConnectedItemLabel image={item} />
       <Image
         key={'img' + item.identifier}
         openImageViewerDialog={openDialog}
