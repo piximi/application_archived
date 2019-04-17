@@ -4,10 +4,13 @@ import { Button } from '@material-ui/core';
 import AddPhotoAlternateIcon from '@material-ui/icons/AddPhotoAlternate';
 import { makeStyles } from '@material-ui/styles';
 import FileInput from '../../FileInput/FileInput';
+import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles(styles);
 
 const ImportImagesButton = (props: any) => {
+  const { t, i18n } = useTranslation();
+
   const { createImage } = props;
 
   const classes = useStyles();
@@ -23,7 +26,7 @@ const ImportImagesButton = (props: any) => {
       <FileInput onChange={onFileInputChange}>
         <Button className={classes.button}>
           <AddPhotoAlternateIcon className={classes.icon} />
-          Import images
+          {t('Import images')}
         </Button>
       </FileInput>
     </React.Fragment>

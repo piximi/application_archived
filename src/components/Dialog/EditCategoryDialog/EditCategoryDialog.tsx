@@ -11,7 +11,8 @@ import {
 } from '@material-ui/core';
 import LabelIcon from '@material-ui/icons/Label';
 import ColorPicker from '../../ColorPicker/ColorPicker';
-import useMenu from "../../../hooks/Menu";
+import useMenu from '../../../hooks/Menu';
+import { useTranslation } from 'react-i18next';
 
 const EditCategoryDialog = (props: any) => {
   const {
@@ -49,6 +50,8 @@ const EditCategoryDialog = (props: any) => {
     setDescription(target.value);
   };
 
+  const { t } = useTranslation();
+
   return (
     <Dialog fullWidth maxWidth="xs" open={open} onClose={onClose}>
       <DialogContent>
@@ -67,7 +70,7 @@ const EditCategoryDialog = (props: any) => {
           <Grid item>
             <TextField
               id="create-category-description"
-              label="Description"
+              label={t('Description')}
               onChange={onTextFieldChange}
               value={description}
             />
@@ -77,11 +80,11 @@ const EditCategoryDialog = (props: any) => {
 
       <DialogActions>
         <Button color="primary" onClick={onClose}>
-          Cancel
+          {t('Cancel')}
         </Button>
 
         <Button color="primary" onClick={onSaveClick}>
-          Save
+          {t('Save')}
         </Button>
       </DialogActions>
 

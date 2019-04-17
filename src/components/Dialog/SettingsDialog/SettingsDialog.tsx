@@ -10,6 +10,7 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles(styles);
 
@@ -21,6 +22,8 @@ const SettingsDialog = (props: any) => {
   const { onClose, open } = props;
 
   const classes = useStyles();
+
+  const { t } = useTranslation();
 
   return (
     <Dialog
@@ -43,7 +46,7 @@ const SettingsDialog = (props: any) => {
             </IconButton>
 
             <Typography variant="h6" color="inherit" className={classes.flex}>
-              Settings
+              {t('Settings')}
             </Typography>
           </Toolbar>
         </AppBar>
