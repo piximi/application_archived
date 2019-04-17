@@ -24,7 +24,7 @@ const PrimaryAppBar = (props: any) => {
       })}
       color="default"
     >
-      <Toolbar disableGutters={!toggled}>
+      <Toolbar>
         <IconButton
           aria-label="open sidebar"
           className={classNames(classes.menuButton, toggled && classes.hide)}
