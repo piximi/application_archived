@@ -29,6 +29,7 @@ const Search = (props: any) => {
   return (
     <FormControl className={classNames(classes.formControl)}>
       <Input
+        disabled
         onChange={e => filterImages(e.target.value, props)}
         className={classNames(classes.input)}
         disableUnderline
