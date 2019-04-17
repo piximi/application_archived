@@ -1,6 +1,9 @@
 const en = {
   translation: {
-    ImportImages: 'Import images'
+    'Import images': 'Import images',
+    Logo: 'Logo',
+    'Search images': 'Search images',
+    'Delete images': 'Delete images'
   }
 };
 

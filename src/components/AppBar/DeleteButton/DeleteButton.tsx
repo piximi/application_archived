@@ -5,10 +5,13 @@ import Delete from '@material-ui/icons/Delete';
 import ConnectedDeleteImageDialog from '../../../containers/ConnectedDeleteImageDialog';
 import { makeStyles } from '@material-ui/styles';
 import useDialog from '../../../hooks/Dialog';
+import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles(styles);
 
 const DeleteButton = (props: any) => {
+  const { t, i18n } = useTranslation();
+
   const { openedDialog, openDialog, closeDialog } = useDialog();
 
   const classes = useStyles();
@@ -17,9 +20,9 @@ const DeleteButton = (props: any) => {
 
   return (
     <React.Fragment>
-      <Tooltip title="Delete">
+      <Tooltip title={t('Delete images')}>
         <IconButton
-          aria-label="Delete"
+          aria-label={t('Delete images')}
           classes={{ root: classes.button }}
           onClick={openDialog}
         >
