@@ -1,11 +1,11 @@
 import * as React from 'react';
 import styles from './PrimaryAppBar.css';
-import { AppBar, Grid, IconButton, Toolbar } from '@material-ui/core';
+import { AppBar, IconButton, Toolbar } from '@material-ui/core';
 import classNames from 'classnames';
 import MenuIcon from '@material-ui/icons/Menu';
 import ConnectedSearch from '../../../containers/ConnectedSearch';
+import ConnectedImportImagesButton from '../../../containers/ConnectedImportImagesButton';
 import Logo from '../Logo/Logo';
-import ImportImagesButton from '../ImportImagesButton/ImportImagesButton';
 import DeleteButton from '../DeleteButton/DeleteButton';
 import { makeStyles } from '@material-ui/styles';
 
@@ -24,7 +24,7 @@ const PrimaryAppBar = (props: any) => {
       })}
       color="default"
     >
-      <Toolbar disableGutters={!toggled}>
+      <Toolbar>
         <IconButton
           aria-label="open sidebar"
           className={classNames(classes.menuButton, toggled && classes.hide)}
@@ -36,24 +36,20 @@ const PrimaryAppBar = (props: any) => {
 
         <Logo />
 
-        <Grid container spacing={16}>
-          <Grid item xl={1} lg={2} md={3} sm={4} />
+        <div style={{ flexGrow: 1 }} />
 
-          <Grid item xl={2} lg={3} md={3} sm={3}>
-            <ConnectedSearch />
-          </Grid>
+        <ConnectedSearch />
 
-          <Grid item style={{ flexGrow: 1 }}>
-            <ImportImagesButton />
-          </Grid>
+        <div className={classNames(classes.padding)} />
 
-          <Grid item>
-            <DeleteButton
-              selectedImages={selectedImages}
-              setSelectedImages={setSelectedImages}
-            />
-          </Grid>
-        </Grid>
+        <ConnectedImportImagesButton />
+
+        <div className={classNames(classes.padding)} />
+
+        <DeleteButton
+          selectedImages={selectedImages}
+          setSelectedImages={setSelectedImages}
+        />
       </Toolbar>
     </AppBar>
   );

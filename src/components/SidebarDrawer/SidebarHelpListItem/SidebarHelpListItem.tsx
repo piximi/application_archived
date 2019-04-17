@@ -9,7 +9,7 @@ const HelpListItem = () => {
 
   return (
     <React.Fragment>
-      <ListItem dense button onClick={openDialog}>
+      <ListItem dense disabled button onClick={openDialog}>
         <ListItemIcon>
           <HelpIcon />
         </ListItemIcon>

@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { createImageAction } from '../reducers/images';
 import * as uuid from 'uuid';
 
-import ImportImagesDialog from '../components/Dialog/ImportImagesDialog/ImportImagesDialog';
+import ImportImagesButton from '../components/AppBar/ImportImagesButton/ImportImagesButton';
 
 type CreateImagePayload = {
   categoryIdentifier: String;
@@ -34,9 +34,9 @@ const mapStateToProps = (state: any, props: any) => {
   };
 };
 
-const ConnectedImportImagesDialog = connect(
+const ConnectedImportImagesButton = connect(
   mapStateToProps,
   mapDispatchToProps
-)(ImportImagesDialog);
+)(ImportImagesButton);
 
-export default ConnectedImportImagesDialog;
+export default ConnectedImportImagesButton;

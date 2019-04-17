@@ -4,11 +4,7 @@ import FeedbackIcon from '@material-ui/icons/Feedback';
 
 const SidebarSendFeedbackListItem = () => (
   <React.Fragment>
-    <ListItem
-      button
-      component="a"
-      href="https://docs.google.com/forms/d/e/1FAIpQLScAAydUXdfxxdjdkVpTJBXvZ2cGZblTRYHlcLEjfbTQsgoUug/viewform?usp=sf_link"
-    >
+    <ListItem button disabled>
       <ListItemIcon>
         <FeedbackIcon />
       </ListItemIcon>
