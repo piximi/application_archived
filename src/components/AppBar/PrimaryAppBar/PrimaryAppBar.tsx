@@ -4,8 +4,8 @@ import { AppBar, Grid, IconButton, Toolbar } from '@material-ui/core';
 import classNames from 'classnames';
 import MenuIcon from '@material-ui/icons/Menu';
 import ConnectedSearch from '../../../containers/ConnectedSearch';
+import ConnectedImportImagesButton from '../../../containers/ConnectedImportImagesButton';
 import Logo from '../Logo/Logo';
-import ImportImagesButton from '../ImportImagesButton/ImportImagesButton';
 import DeleteButton from '../DeleteButton/DeleteButton';
 import { makeStyles } from '@material-ui/styles';
 
@@ -44,7 +44,7 @@ const PrimaryAppBar = (props: any) => {
           </Grid>
 
           <Grid item style={{ flexGrow: 1 }}>
-            <ImportImagesButton />
+            <ConnectedImportImagesButton />
           </Grid>
 
           <Grid item>
