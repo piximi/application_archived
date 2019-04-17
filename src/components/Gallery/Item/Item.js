@@ -75,7 +75,7 @@ const Item = props => {
       onContextMenu={myContextMenu}
       className={imgSelected ? 'selected' : 'unselected'}
     >
-      <ItemLabel color={item.color} />
+      <ItemLabel color={item.color} image={item} />
       <Image
         key={'img' + item.identifier}
         openImageViewerDialog={openDialog}
