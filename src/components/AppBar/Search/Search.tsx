@@ -4,6 +4,7 @@ import { FormControl, Input, InputAdornment } from '@material-ui/core';
 import classNames from 'classnames';
 import ImageSearchIcon from '@material-ui/icons/ImageSearch';
 import { makeStyles } from '@material-ui/styles';
+import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles(styles);
 
@@ -26,6 +27,8 @@ function filterImages(searchText: any, props: any) {
 const Search = (props: any) => {
   const classes = useStyles();
 
+  const { t, i18n } = useTranslation();
+
   return (
     <FormControl>
       <Input
@@ -34,7 +37,7 @@ const Search = (props: any) => {
         className={classNames(classes.input)}
         disableUnderline
         id="input-with-icon-adornment"
-        placeholder="Search images"
+        placeholder={t('Search images')}
         startAdornment={
           <InputAdornment position="start">
             <ImageSearchIcon />

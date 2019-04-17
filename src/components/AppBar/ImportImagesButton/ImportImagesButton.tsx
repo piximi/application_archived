@@ -26,7 +26,7 @@ const ImportImagesButton = (props: any) => {
       <FileInput onChange={onFileInputChange}>
         <Button className={classes.button}>
           <AddPhotoAlternateIcon className={classes.icon} />
-          {t('ImportImages')}
+          {t('Import images')}
         </Button>
       </FileInput>
     </React.Fragment>
