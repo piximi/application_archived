@@ -1,83 +1,82 @@
-import {
-  ADD_CATEGORIES,
-  CREATE_CATEGORY,
-  DELETE_CATEGORY,
-  DISPLAY_THIS_CATEGORY_ONLY,
-  UPDATE_CATEGORY_DESCRIPTION,
-  UPDATE_CATEGORY_COLOR,
-  UPDATE_CATEGORY_VISIBILITY
-} from '../constants';
+import { createAction, createReducer } from 'redux-starter-kit';
 
-const categories = (state = [], action) => {
-  switch (action.type) {
-    case ADD_CATEGORIES:
-      const unlabeled = {
-        color: '#F8F8F8',
-        description: 'Unlabeled',
-        identifier: null,
-        index: '-1',
-        visible: true
-      };
-      let categories = [...action.categories];
-      categories.unshift(unlabeled);
-      return categories;
+export const addCategoryAction = createAction('categories/add');
 
-    case CREATE_CATEGORY:
-      return [...state, action.category];
-    case DELETE_CATEGORY:
-      return state.filter(category => {
-        return category.identifier !== action.identifier;
-      });
-    case UPDATE_CATEGORY_DESCRIPTION:
-      return state.map(category => {
-        if (category.identifier === action.identifier) {
-          return {
-            ...category,
-            description: action.description
-          };
-        } else {
-          return category;
-        }
-      });
-    case UPDATE_CATEGORY_COLOR:
-      return state.map(category => {
-        if (category.identifier === action.identifier) {
-          return {
-            ...category,
-            color: action.color
-          };
-        } else {
-          return category;
-        }
-      });
-    case UPDATE_CATEGORY_VISIBILITY:
-      return state.map(category => {
-        if (category.identifier === action.identifier) {
-          return {
-            ...category,
-            visible: !category.visible
-          };
-        } else {
-          return category;
-        }
-      });
-    case DISPLAY_THIS_CATEGORY_ONLY:
-      return state.map(category => {
-        if (category.identifier === action.identifier) {
-          return {
-            ...category,
-            visible: true
-          };
-        } else {
-          return {
-            ...category,
-            visible: false
-          };
-        }
-      });
-    default:
-      return state;
+export const createCategoryAction = createAction('categories/create');
+
+export const deleteCategoryAction = createAction('categories/category/delete');
+
+export const hideOtherCategoriesAction = createAction(
+  'categories/category/hide-other-categories'
+);
+
+export const toggleCategoryVisibilityAction = createAction(
+  'categories/category/toggle-visibility'
+);
+
+export const updateCategoryColorAction = createAction(
+  'categories/category/update-color'
+);
+
+export const updateCategoryDescriptionAction = createAction(
+  'categories/category/update-description'
+);
+
+export const updateCategoryVisibilityAction = createAction(
+  'categories/category/update-visibility'
+);
+
+const categories = createReducer([], {
+  [addCategoryAction]: (state, action) => {
+    const category = {
+      color: '#F8F8F8',
+      description: 'Unlabeled',
+      identifier: null,
+      index: '-1',
+      visible: true
+    };
+
+    state.push(category);
+  },
+  [createCategoryAction]: (state, action) => {
+    const category = action.payload;
+
+    state.push(category);
+  },
+  [deleteCategoryAction]: (state, action) => {
+    const { index } = action.payload;
+
+    return state.filter(category => category.index !== index);
+  },
+  [hideOtherCategoriesAction]: (state, action) => {},
+  [toggleCategoryVisibilityAction]: (state, action) => {
+    const { index } = action.payload;
+
+    const category = state[index];
+
+    category.visible = !category.visible;
+  },
+  [updateCategoryColorAction]: (state, action) => {
+    const { index, color } = action.payload;
+
+    const category = state[index];
+
+    category.color = color;
+  },
+  [updateCategoryDescriptionAction]: (state, action) => {
+    const { index, description } = action.payload;
+
+    const category = state[index];
+
+    category.description = description;
+  },
+  [updateCategoryVisibilityAction]: (state, action) => {
+    const { index } = action.payload;
+
+    const category = state[index];
+
+    category.visible = !category.visible;
   }
-};
+});
 
 export default categories;

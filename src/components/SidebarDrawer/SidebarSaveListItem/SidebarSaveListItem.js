@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import * as React from 'react';
 import {
   ListItem,
   ListItemIcon,
@@ -22,8 +22,8 @@ const SidebarSaveListItem = props => {
   const { anchorEl, openedMenu, openMenu, closeMenu } = useMenu();
   const { openedDialog, openDialog, closeDialog } = useDialog();
 
-  const [defaultDialogText, setDefaultDialogText] = useState('');
-  const [downloadFunction, setDownloadFunction] = useState(0);
+  const [defaultDialogText, setDefaultDialogText] = React.useState('');
+  const [downloadFunction, setDownloadFunction] = React.useState(0);
 
   const changeDefaultDialogText = event => {
     setDefaultDialogText(event.target.value);

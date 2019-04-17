@@ -1,13 +1,14 @@
-import React, { useEffect, useRef } from 'react';
+import * as React from 'react';
 import * as tfvis from '@tensorflow/tfjs-vis';
 
-export function LineChart(props) {
-  const containerRef = useRef();
+const LineChart = props => {
+  const containerRef = React.useRef();
 
-  useEffect(() => {
+  React.useEffect(() => {
     tfvis.render.linechart(containerRef.current, props.data, {});
-    debugger;
   }, [props.data]);
 
   return <div className="line-chart-root" ref={containerRef} />;
-}
+};
+
+export default LineChart;

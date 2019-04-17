@@ -8,7 +8,7 @@ import {
   ListItemIcon,
   ListItemText
 } from '@material-ui/core';
-import React from 'react';
+import * as React from 'react';
 import FolderOpenIcon from '@material-ui/icons/FolderOpen';
 import useDialog from '../../../hooks/Dialog';
 import OpenDialog from '../../Dialog/OpenExampleClassifierDialog/OpenExampleClassifierDialog';
@@ -27,7 +27,7 @@ function openProject(e, props) {
   reader.readAsText(e.target.files[0]);
 }
 
-function SidebarOpenListItem(props) {
+const SidebarOpenListItem = props => {
   const { loadDemoProject } = props;
 
   const { openedDialog, openDialog, closeDialog } = useDialog();
@@ -119,6 +119,6 @@ function SidebarOpenListItem(props) {
       />
     </React.Fragment>
   );
-}
+};
 
-export default React.memo(SidebarOpenListItem);
+export default SidebarOpenListItem;

@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 import { DragLayer } from 'react-dnd';
 import './CustomDragLayer.css';
@@ -45,9 +45,11 @@ const CustomDragLayer = props => {
     for (let i = 0; i < list.length; i = i + 1) {
       const element = list[i];
       const imgElement = list[i].childNodes[2];
-      let img = <img key={'draglayerImg' + i} src={imgElement.src} alt="foo" />;
+      let img = (
+        <img key={'draglayerImg' + i} src={imgElement.data} alt="foo" />
+      );
       imgSources.push(img);
-      if (element.getAttribute('imgid') === item.item.id) {
+      if (element.getAttribute('imageId') === item.item.id) {
         draggedIndex = i;
       }
     }

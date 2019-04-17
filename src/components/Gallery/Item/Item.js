@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { DragSource } from 'react-dnd';
 import { getEmptyImage } from 'react-dnd-html5-backend';
 import ImageViewerDialog from '../../Dialog/ImageViewerDialog/ImageViewerDialog/ImageViewerDialog';
 import Image from '../Image/Image';
-import styles from './Item.css';
-import { withStyles } from '@material-ui/core/styles';
 import ItemLabel from '../ItemLabel/ItemLabel';
+import useDialog from '../../../hooks/Dialog';
 
 const itemSource = {
   beginDrag(props) {
@@ -21,13 +20,11 @@ const itemSource = {
     props.ondrag(null);
     if (monitor.getDropResult() !== null) {
       const categoryIdentifier = monitor.getDropResult().categoryIdentifier;
-      const categoryName = monitor.getDropResult().categoryName;
-      const selectedItemsIdentifiers = monitor.getDropResult().selectedItems;
-      props.callOnDragEnd(
-        selectedItemsIdentifiers,
-        categoryIdentifier,
-        categoryName
-      );
+      const identifiers = monitor.getDropResult().selectedItems;
+
+      for (const identifier of identifiers) {
+        props.updateImageCategory(identifier, categoryIdentifier);
+      }
     }
     if (!monitor.didDrop()) {
       return;
@@ -43,107 +40,61 @@ function collect(connect, monitor) {
   };
 }
 
-class Item extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      imageViewerDialogOpen: false
-    };
-  }
+const Item = props => {
+  const {
+    connectDragPreview,
+    selectedItems,
+    onmousedown,
+    connectDragSource,
+    containerStyle,
+    item
+  } = props;
 
-  shouldComponentUpdate(nextProps, nextState) {
-    if (this.state.imageViewerDialogOpen !== nextState.imageViewerDialogOpen)
-      return true;
-    else if (
-      nextProps.selectedItems.includes(this.props.item.id) !==
-      this.props.selectedItems.includes(this.props.item.id)
-    )
-      return true;
-    else if (JSON.stringify(nextProps.item) !== JSON.stringify(this.props.item))
-      return true;
-    else if (
-      JSON.stringify(nextProps.containerStyle) !==
-      JSON.stringify(this.props.containerStyle)
-    )
-      return true;
-    else if (
-      JSON.stringify(nextProps.containerStyle) !==
-      JSON.stringify(this.props.containerStyle)
-    )
-      return true;
-    return false;
-  }
+  const { openedDialog, openDialog, closeDialog } = useDialog();
 
-  closeImageViewerDialog = () => {
-    this.setState({
-      imageViewerDialogOpen: false
-    });
-  };
-
-  openImageViewerDialog = () => {
-    this.setState({
-      imageViewerDialogOpen: true
-    });
-  };
-
-  componentDidMount() {
-    this.props.connectDragPreview(getEmptyImage(), {
+  useEffect(() => {
+    connectDragPreview(getEmptyImage(), {
       captureDraggingState: true
     });
-  }
+  });
 
-  myContextMenu = e => {
+  const myContextMenu = e => {
     e.preventDefault();
-    console.log(true);
   };
 
-  render() {
-    const {
-      selectedItems,
-      onmousedown,
-      connectDragSource,
-      containerStyle,
-      item
-    } = this.props;
-    const imgId = String(item.id);
-    const imgSrc = item.src;
-    const brightness = item.brightness;
-    const contrast = item.contrast;
-    const unselectedChannels = item.unselectedChannels;
-    const imgSelected = selectedItems.includes(imgId);
-    return connectDragSource(
-      <div
-        key={'div' + imgId}
-        name={'selectableElement'}
-        type={'selectableElement'}
-        imgid={imgId}
-        onMouseDown={() => onmousedown(imgId)}
-        onContextMenu={this.myContextMenu}
-        className={imgSelected ? 'selected' : 'unselected'}
-      >
-        <ItemLabel color={item.color} />
-        <Image
-          key={'img' + imgId}
-          openImageViewerDialog={this.openImageViewerDialog}
-          src={imgSrc}
-          brightness={brightness}
-          contrast={contrast}
-          unselectedChannels={unselectedChannels}
-          height={containerStyle.height}
-          width={0.9 * containerStyle.width}
-        />
-        <ImageViewerDialog
-          onClose={this.closeImageViewerDialog}
-          open={this.state.imageViewerDialogOpen}
-          src={imgSrc}
-          imgIdentifier={imgId}
-          brightness={brightness}
-        />
-      </div>
-    );
-  }
-}
+  const unselectedChannels = item.unselectedChannels;
+  const imgSelected = selectedItems.includes(item.identifier);
 
-export default DragSource('SelectedItems', itemSource, collect)(
-  withStyles(styles, { withTheme: true })(Item)
-);
+  return connectDragSource(
+    <div
+      key={'div' + item.identifier}
+      name={'selectableElement'}
+      type={'selectableElement'}
+      imgid={item.identifier}
+      onMouseDown={() => onmousedown(item.identifier)}
+      onContextMenu={myContextMenu}
+      className={imgSelected ? 'selected' : 'unselected'}
+    >
+      <ItemLabel color={item.color} />
+      <Image
+        key={'img' + item.identifier}
+        openImageViewerDialog={openDialog}
+        src={item.data}
+        brightness={item.brightness}
+        contrast={item.contrast}
+        unselectedChannels={unselectedChannels}
+        height={containerStyle.height}
+        width={0.9 * containerStyle.width}
+      />
+      <ImageViewerDialog
+        onClose={closeDialog}
+        open={openedDialog}
+        src={item.data}
+        imgIdentifier={item.identifier}
+        brightness={item.brightness}
+      />
+    </div>
+  );
+};
+
+export default DragSource('SelectedItems', itemSource, collect)(Item);
