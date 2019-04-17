@@ -7,11 +7,14 @@ import {
   DialogTitle,
   TextField
 } from '@material-ui/core';
+import { useTranslation } from 'react-i18next';
 
 const NewClassifierDialog = (props: any) => {
   const { createClassifier, openedDialog, closeDialog } = props;
 
-  const [name, setName] = React.useState('Untitled classifier');
+  const { t } = useTranslation();
+
+  const [name, setName] = React.useState(t('Untitled classifier'));
 
   const onCreateClassifierClick = () => {
     createClassifier(name);
@@ -26,7 +29,7 @@ const NewClassifierDialog = (props: any) => {
   return (
     <Dialog fullWidth maxWidth="xs" onClose={closeDialog} open={openedDialog}>
       <DialogTitle id="max-width-dialog-title">
-        Create new classifier
+        {t('Create new classifier')}
       </DialogTitle>
 
       <DialogContent>
@@ -37,18 +40,18 @@ const NewClassifierDialog = (props: any) => {
           label="Name"
           margin="dense"
           onChange={onNameChange}
-          placeholder="Untitled classifier"
+          placeholder={t('Untitled classifier')}
           type="text"
         />
       </DialogContent>
 
       <DialogActions>
         <Button onClick={closeDialog} color="primary">
-          Cancel
+          {t('Cancel')}
         </Button>
 
         <Button onClick={onCreateClassifierClick} color="primary">
-          Create
+          {t('Create')}
         </Button>
       </DialogActions>
     </Dialog>

@@ -7,6 +7,7 @@ import {
   DialogContentText,
   DialogTitle
 } from '@material-ui/core';
+import { useTranslation } from 'react-i18next';
 
 const DeleteCategoryDialog = (props: any) => {
   const { category, deleteCategory, open, onClose } = props;
@@ -21,6 +22,8 @@ const DeleteCategoryDialog = (props: any) => {
     category.description
   } won’t be deleted.`;
 
+  const { t } = useTranslation();
+
   return (
     <Dialog open={open} onClose={onClose}>
       <DialogTitle id="alert-dialog-title">{dialogTitle}</DialogTitle>
@@ -33,11 +36,11 @@ const DeleteCategoryDialog = (props: any) => {
 
       <DialogActions>
         <Button onClick={onClose} color="primary">
-          Cancel
+          {t('Cancel')}
         </Button>
 
         <Button onClick={onDeleteCategoryClick} color="primary">
-          Yes
+          {t('Yes')}
         </Button>
       </DialogActions>
     </Dialog>
