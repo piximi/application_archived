@@ -27,14 +27,14 @@ const Search = (props: any) => {
   const classes = useStyles();
 
   return (
-    <FormControl className={classNames(classes.formControl)}>
+    <FormControl>
       <Input
         disabled
         onChange={e => filterImages(e.target.value, props)}
         className={classNames(classes.input)}
         disableUnderline
         id="input-with-icon-adornment"
-        placeholder="Search images by filename"
+        placeholder="Search images"
         startAdornment={
           <InputAdornment position="start">
             <ImageSearchIcon />
