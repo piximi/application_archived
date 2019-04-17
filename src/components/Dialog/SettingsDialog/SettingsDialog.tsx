@@ -2,39 +2,34 @@ import * as React from 'react';
 import styles from './SettingsDialog.css';
 import {
   AppBar,
-  Collapse,
   Dialog,
-  Divider,
-  Grid,
   IconButton,
-  List,
-  ListItem,
-  ListItemSecondaryAction,
-  ListItemText,
-  Switch,
+  Slide,
   Toolbar,
   Typography
 } from '@material-ui/core';
-import ExpandLessIcon from '@material-ui/icons/ExpandLess';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { makeStyles } from '@material-ui/styles';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 const useStyles = makeStyles(styles);
 
+const SettingsDialogTransition = (props: any) => (
+  <Slide direction="right" {...props} />
+);
+
 const SettingsDialog = (props: any) => {
-  const [classificationCollapsed, setClassificationCollapsed] = React.useState(
-    false
-  );
-
-  const [notificationsClicked, setNotificationsClicked] = React.useState(false);
-
   const { onClose, open } = props;
 
   const classes = useStyles();
 
   return (
-    <Dialog className={classes.root} fullScreen open={open} onClose={onClose}>
+    <Dialog
+      className={classes.root}
+      fullScreen
+      open={open}
+      onClose={onClose}
+      TransitionComponent={SettingsDialogTransition}
+    >
       <div className={classes.root}>
         <AppBar position="static" color="inherit" className={classes.appbar}>
           <Toolbar>
@@ -52,71 +47,6 @@ const SettingsDialog = (props: any) => {
             </Typography>
           </Toolbar>
         </AppBar>
-
-        <Grid container spacing={24}>
-          <Grid item xs={1} sm={1} md={3} lg={4} />
-
-          <Grid item xs={10} sm={10} md={6} lg={4}>
-            <List>
-              <ListItem>
-                <Grid item xs={12}>
-                  <ListItemText primary="Notifications" />
-                  <ListItemText
-                    className={classes.secondary}
-                    secondary="Notifications are disabled. Learn more."
-                  />
-                </Grid>
-
-                <ListItemSecondaryAction>
-                  <Switch
-                    onChange={() =>
-                      setNotificationsClicked(!notificationsClicked)
-                    }
-                    checked={notificationsClicked}
-                  />
-                </ListItemSecondaryAction>
-              </ListItem>
-            </List>
-
-            <Divider />
-
-            <List component="nav">
-              <ListItem
-                button
-                onClick={() =>
-                  setClassificationCollapsed(!classificationCollapsed)
-                }
-              >
-                <ListItemText primary="Object recognition" />
-
-                {classificationCollapsed ? (
-                  <ExpandLessIcon />
-                ) : (
-                  <ExpandMoreIcon />
-                )}
-              </ListItem>
-
-              <Collapse
-                in={!classificationCollapsed}
-                timeout="auto"
-                unmountOnExit
-              >
-                <List
-                  disablePadding
-                  className={classes.collapsed}
-                >
-                  <ListItem>
-                    <ListItemText primary="Loss function" />
-                  </ListItem>
-
-                  <ListItem>
-                    <ListItemText primary="Learning rate" />
-                  </ListItem>
-                </List>
-              </Collapse>
-            </List>
-          </Grid>
-        </Grid>
       </div>
     </Dialog>
   );
