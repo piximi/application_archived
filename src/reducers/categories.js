@@ -26,11 +26,21 @@ export const updateCategoryVisibilityAction = createAction(
   'categories/category/update-visibility'
 );
 
-const categories = createReducer([], {
+const initialState = [
+  {
+    color: '#F8F8F8',
+    description: 'Unknown',
+    identifier: '00000000-0000-0000-0000-000000000000',
+    index: '-1',
+    visible: true
+  }
+];
+
+const categories = createReducer(initialState, {
   [addCategoryAction]: (state, action) => {
     const category = {
       color: '#F8F8F8',
-      description: 'Unlabeled',
+      description: 'Unknown',
       identifier: null,
       index: '-1',
       visible: true
