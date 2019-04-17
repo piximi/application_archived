@@ -4,6 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
+import { useTranslation } from 'react-i18next';
 
 const SaveDialog = (props: any) => {
   function handleCancel(props: any) {
@@ -16,6 +17,8 @@ const SaveDialog = (props: any) => {
   }
 
   const { open, defaultDialogText, changeDefaultDialogText } = props;
+
+  const { t } = useTranslation();
 
   return (
     <Dialog
@@ -38,10 +41,10 @@ const SaveDialog = (props: any) => {
       </DialogContent>
       <DialogActions>
         <Button onClick={() => handleCancel(props)} color="primary">
-          Cancel
+          {t('Cancel')}
         </Button>
         <Button onClick={() => handleDownload(props)} color="primary">
-          Download
+          {t('Download')}
         </Button>
       </DialogActions>
     </Dialog>

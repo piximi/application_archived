@@ -19,18 +19,21 @@ import CIFAR100 from './CIFAR-100.png';
 import MNIST from './MNIST.png';
 import CloseIcon from '@material-ui/icons/Close';
 import { makeStyles } from '@material-ui/styles';
+import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles(styles);
 
 const OpenExampleClassifierDialog = props => {
   const classes = useStyles();
 
+  const { t } = useTranslation();
+
   const { open, onClose, loadDemoProject } = props;
 
   return (
     <Dialog fullWidth maxWidth="sm" open={open}>
       <DialogTitle disableTypography className={classes.dialogTitle}>
-        <Typography variant="h6">Open example classifier</Typography>
+        <Typography variant="h6">{t('Open example classifier')}</Typography>
 
         <IconButton
           aria-label="Close"

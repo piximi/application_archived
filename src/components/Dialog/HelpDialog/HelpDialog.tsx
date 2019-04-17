@@ -6,9 +6,12 @@ import {
   DialogContent,
   DialogContentText
 } from '@material-ui/core';
+import { useTranslation } from 'react-i18next';
 
-const HelpDialog = (props: any)  => {
+const HelpDialog = (props: any) => {
   const { onClose, open } = props;
+
+  const { t } = useTranslation();
 
   return (
     <Dialog open={open} onClose={onClose}>
@@ -18,11 +21,11 @@ const HelpDialog = (props: any)  => {
 
       <DialogActions>
         <Button onClick={onClose} color="primary">
-          Cancel
+          {t('Cancel')}
         </Button>
 
         <Button onClick={onClose} color="primary">
-          OK
+          {t('OK')}
         </Button>
       </DialogActions>
     </Dialog>

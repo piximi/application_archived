@@ -12,9 +12,12 @@ import CreateCategoryListItem from '../SidebarCreateCategoryListItem/SidebarCrea
 import useCollapseList from '../../../hooks/CollapseList';
 import * as _ from 'lodash';
 import ConnectedSidebarCategoryListItem from '../../../containers/ConnectedSidebarCategoryListItem';
+import { useTranslation } from 'react-i18next';
 
 const SidebarCategoriesList = props => {
   const { collapsedList, collapseList } = useCollapseList();
+
+  const { t } = useTranslation();
 
   const { categories, connectDropTarget } = props;
 
@@ -28,7 +31,7 @@ const SidebarCategoriesList = props => {
             {!collapsedList ? <ExpandLessIcon /> : <ExpandMoreIcon />}
           </ListItemIcon>
 
-          <ListItemText inset primary="Categories" />
+          <ListItemText inset primary={t('Categories')} />
         </ListItem>
 
         <Collapse in={!collapsedList} timeout="auto" unmountOnExit>

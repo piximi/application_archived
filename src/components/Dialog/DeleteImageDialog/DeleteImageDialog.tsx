@@ -8,6 +8,7 @@ import {
   DialogContentText,
   Zoom
 } from '@material-ui/core';
+import { useTranslation } from 'react-i18next';
 
 const DeleteImageDialog = (props: any) => {
   const { onClose, open, selectedImages } = props;
@@ -33,6 +34,8 @@ const DeleteImageDialog = (props: any) => {
     text = 'Please confirm you want to delete this image';
   }
 
+  const { t } = useTranslation();
+
   return (
     <Dialog open={open} onClose={onClose}>
       <DialogTitle id="form-dialog-title">{title}</DialogTitle>
@@ -45,12 +48,12 @@ const DeleteImageDialog = (props: any) => {
 
       <DialogActions>
         <Button onClick={() => props.onClose()} color="primary">
-          Cancel
+          {t('Cancel')}
         </Button>
 
         {noSelectedImages > 0 ? (
           <Button onClick={() => onClickDeleteButton()} color="primary">
-            Delete
+            {t('Delete')}
           </Button>
         ) : null}
       </DialogActions>
