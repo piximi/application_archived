@@ -11,9 +11,21 @@ const useStyles = makeStyles(styles);
 const ItemLabel = (props: any) => {
   const { anchorEl, openedMenu, openMenu, closeMenu } = useMenu();
 
-  const { color, image } = props;
+  const { categories, image } = props;
 
   const classes = useStyles();
+
+  const findCategoryColor = () => {
+    const index = categories.findIndex((category: any) => {
+      return category.identifier === image.categoryIdentifier;
+    });
+
+    if (index > -1) {
+      return categories[index].color;
+    } else {
+      return '#000';
+    }
+  };
 
   return (
     <React.Fragment>
@@ -23,7 +35,7 @@ const ItemLabel = (props: any) => {
         disableRipple
         onClick={openMenu}
       >
-        <LabelIcon style={{ color: color }} />
+        <LabelIcon style={{ color: findCategoryColor() }} />
       </IconButton>
 
       <ConnectedItemCategoryMenu
