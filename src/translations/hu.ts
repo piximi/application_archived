@@ -1,5 +1,5 @@
 // prettier-ignore
-const en = {
+const hu = {
   translation: {
     'Cancel': 'Cancel',
     'Categories': 'Categories',
@@ -32,4 +32,4 @@ const en = {
   }
 };
 
-export default en;
+export default hu;
