@@ -28,19 +28,19 @@ class ImageViewer extends PureComponent {
   };
 
   componentDidMount() {
-    const initialBrightness = this.props.images[this.props.imgIdentifier]
-      .brightness;
-    const initialContrast = this.props.images[this.props.imgIdentifier]
-      .contrast;
-    const initialUnselectedChannels = this.props.images[
-      this.props.imgIdentifier
-    ].unselectedChannels;
-
-    this.setState({
-      brightness: initialBrightness,
-      contrast: initialContrast,
-      unselectedChannels: initialUnselectedChannels
-    });
+    // const initialBrightness = this.props.images[this.props.imgIdentifier]
+    //   .brightness;
+    // const initialContrast = this.props.images[this.props.imgIdentifier]
+    //   .contrast;
+    // const initialUnselectedChannels = this.props.images[
+    //   this.props.imgIdentifier
+    // ].unselectedChannels;
+    //
+    // this.setState({
+    //   brightness: initialBrightness,
+    //   contrast: initialContrast,
+    //   unselectedChannels: initialUnselectedChannels
+    // });
   }
 
   toggleChannelDrawer = () => {
