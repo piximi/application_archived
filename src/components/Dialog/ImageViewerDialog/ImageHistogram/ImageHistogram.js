@@ -18,13 +18,16 @@ class ImageHistogram extends PureComponent {
       const canvas = this.canvas.current;
       const context = canvas.getContext('2d');
       context.drawImage(img, 0, img.height, img.width, img.height);
+
       const imageData = context.getImageData(
         0,
         img.height,
         img.width,
         img.height
       ).data;
+
       const data = this.createPlottableData(imageData);
+
       // Create Histogram
       this.createHistogram(data);
       this.setState({ data: data });
@@ -125,7 +128,11 @@ class ImageHistogram extends PureComponent {
           return height - y(d.freq);
         });
     }
-    graphComponent(imgData.gD, 'green');
+
+    if (!this.props.unselectedChannels.includes(1)) {
+      graphComponent(imgData.gD, 'green');
+    }
+
     graphComponent(imgData.bD, 'blue');
     graphComponent(imgData.rD, 'red');
   }
