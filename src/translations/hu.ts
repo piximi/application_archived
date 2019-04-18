@@ -8,6 +8,7 @@ const hu = {
     'Delete category': 'Osztály törlése',
     'Delete images': 'Képek törlése',
     'Description': 'Leírás',
+    'Edit': 'Edit',
     'Edit category': 'Kategória szerkesztése',
     'Help': 'Súgó',
     'Hide other categories': 'Többi osztály elrejtése',
