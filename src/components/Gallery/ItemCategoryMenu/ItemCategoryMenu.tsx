@@ -8,6 +8,7 @@ import {
   Popover
 } from '@material-ui/core';
 import LabelIcon from '@material-ui/icons/Label';
+import * as _ from 'lodash';
 
 const ItemCategoryMenu = (props: any) => {
   const {
@@ -30,7 +31,15 @@ const ItemCategoryMenu = (props: any) => {
     onClose();
   };
 
-  const items = categories.map((category: any) => (
+  const [unknown, known] = _.partition(categories, category => {
+    if (category.identifier === '00000000-0000-0000-0000-000000000000') {
+      return category;
+    }
+  });
+
+  let sortedCategories = _.concat(_.sortBy(known, 'description'), unknown);
+
+  const items = sortedCategories.map((category: any) => (
     <MenuItem
       key={category.identifier}
       onClick={() => onMenuItemClick(category)}
