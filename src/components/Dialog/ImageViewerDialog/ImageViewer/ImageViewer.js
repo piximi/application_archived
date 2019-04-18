@@ -11,9 +11,7 @@ import {
 } from '@material-ui/core';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import EqualizerIcon from '@material-ui/icons/Equalizer';
-import ColorLensIcon from '@material-ui/icons/ColorLens';
 import PublicIcon from '@material-ui/icons/Public';
-import ImageViewerChannelDrawer from '../ImageViewerChannelDrawer/ImageViewerChannelDrawer';
 import ImageViewerExposureDrawer from '../ImageViewerExposureDrawer/ImageViewerExposureDrawer';
 import Image from '../../../Gallery/Image/Image';
 
@@ -42,12 +40,6 @@ class ImageViewer extends PureComponent {
     //   unselectedChannels: initialUnselectedChannels
     // });
   }
-
-  toggleChannelDrawer = () => {
-    this.setState({
-      channelDrawerToggled: !this.state.channelDrawerToggled
-    });
-  };
 
   toggleExposureDrawer = () => {
     this.setState({
@@ -181,25 +173,12 @@ class ImageViewer extends PureComponent {
             <IconButton
               className={classes.menuButton}
               color="inherit"
-              onClick={this.toggleChannelDrawer}
-            >
-              <ColorLensIcon />
-            </IconButton>
-
-            <IconButton
-              className={classes.menuButton}
-              color="inherit"
               onClick={this.toggleExposureDrawer}
             >
               <EqualizerIcon />
             </IconButton>
           </Toolbar>
         </AppBar>
-
-        <ImageViewerChannelDrawer
-          onClose={this.toggleChannelDrawer}
-          open={this.state.channelDrawerToggled}
-        />
 
         <ImageViewerExposureDrawer
           onClose={this.toggleExposureDrawer}
