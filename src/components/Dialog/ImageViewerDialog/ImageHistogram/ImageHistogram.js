@@ -1,22 +1,23 @@
 import * as React from 'react';
 import * as d3 from 'd3';
-import { PureComponent } from 'react';
 
-class ImageHistogram extends PureComponent {
-  constructor(props) {
-    super();
-    this.canvas = React.createRef();
-    this.state = {
-      data: []
-    };
-    this.createHistogram = this.createHistogram.bind(this);
-  }
+const ImageHistogram = props => {
+  const canvasRef = React.useRef();
+  const nodeRef = React.useRef();
 
-  componentDidMount() {
+  const { channels, src } = props;
+
+  const [data, setData] = React.useState([]);
+
+  console.log(data);
+
+  React.useEffect(() => {
     let image = new Image();
+
     image.onload = e => {
+      console.log('onload');
       const img = e.target;
-      const canvas = this.canvas.current;
+      const canvas = canvasRef.current;
       const context = canvas.getContext('2d');
       context.drawImage(img, 0, img.height, img.width, img.height);
 
@@ -27,20 +28,19 @@ class ImageHistogram extends PureComponent {
         img.height
       ).data;
 
-      const data = this.createPlottableData(imageData);
+      const plottableData = createPlottableData(imageData);
 
       // Create Histogram
-      this.createHistogram(data);
-      this.setState({ data: data });
+      createHistogram(plottableData);
+
+      setData(plottableData);
     };
-    image.src = this.props.src;
-  }
 
-  componentDidUpdate() {
-    this.createHistogram(this.state.data);
-  }
+    image.src = props.src;
+  }, [channels, src]);
 
-  createPlottableData(imageData) {
+  const createPlottableData = imageData => {
+    console.log(imageData);
     let rD = {},
       gD = {},
       bD = {};
@@ -55,12 +55,13 @@ class ImageHistogram extends PureComponent {
       bD[imageData[j + 2]]++;
     }
     return { rD, gD, bD };
-  }
+  };
 
-  createHistogram(imgData) {
+  const createHistogram = imgData => {
+    console.log(imgData);
     let W = 300;
     let H = 300;
-    const svg = d3.select(this.node);
+    const svg = d3.select(nodeRef.current);
     const margin = { top: 20, right: 44, bottom: 20, left: 0 };
     const width = W - margin.left - margin.right;
     const height = H - margin.top - margin.bottom;
@@ -133,26 +134,19 @@ class ImageHistogram extends PureComponent {
     graphComponent(imgData.gD, 'green');
     graphComponent(imgData.bD, 'blue');
     graphComponent(imgData.rD, 'red');
-  }
+  };
 
-  render() {
-    return (
-      <React.Fragment>
-        <canvas
-          style={{ display: 'none' }}
-          ref={this.canvas}
-          height={300}
-          width={300}
-        />
-        <svg
-          style={{ margin: '20px' }}
-          ref={node => (this.node = node)}
-          width={300}
-          height={300}
-        />
-      </React.Fragment>
-    );
-  }
-}
+  return (
+    <React.Fragment>
+      <canvas
+        style={{ display: 'none' }}
+        ref={canvasRef}
+        height={300}
+        width={300}
+      />
+      <svg style={{ margin: '20px' }} ref={nodeRef} width={300} height={300} />
+    </React.Fragment>
+  );
+};
 
 export default ImageHistogram;

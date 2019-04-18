@@ -29,7 +29,7 @@ const ImageViewerExposureDrawer = props => {
       onClose={onClose}
       open={open}
     >
-      <ImageHistogram channels={unselectedChannels} data={src} />
+      <ImageHistogram channels={unselectedChannels} src={src} />
 
       <ChannelSelection
         setUnselectedChannels={setUnselectedChannels}
