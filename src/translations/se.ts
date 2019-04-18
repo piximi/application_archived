@@ -8,6 +8,7 @@ const se = {
     'Delete category': 'Ta bort kategori',
     'Delete images': 'Ta bort bilder',
     'Description': 'Beskrivning',
+    'Edit': 'Edit',
     'Edit category': 'Redigera kategori',
     'Help': 'Hjälp',
     'Hide other categories': 'gömma andra kategorier',

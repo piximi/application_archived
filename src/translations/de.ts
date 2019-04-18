@@ -8,6 +8,7 @@ const de = {
     'Delete category': 'Lösche Kategorie',
     'Delete images': 'Lösche Bilder',
     'Description': 'Beschreibung',
+    'Edit': 'Edit',
     'Edit category': 'Bearbeite Kategorie',
     'Help': 'Hilfe',
     'Hide other categories': 'Blende andere Kategorien aus',
