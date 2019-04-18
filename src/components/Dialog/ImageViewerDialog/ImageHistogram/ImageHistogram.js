@@ -14,8 +14,9 @@ const ImageHistogram = props => {
   React.useEffect(() => {
     let image = new Image();
 
+    image.src = src;
+
     image.onload = e => {
-      console.log('onload');
       const img = e.target;
       const canvas = canvasRef.current;
       const context = canvas.getContext('2d');
@@ -28,6 +29,8 @@ const ImageHistogram = props => {
         img.height
       ).data;
 
+      debugger;
+
       const plottableData = createPlottableData(imageData);
 
       // Create Histogram
@@ -36,20 +39,20 @@ const ImageHistogram = props => {
       setData(plottableData);
     };
 
-    image.src = props.src;
-  }, [channels, src]);
+    image.src = src;
+  });
 
   const createPlottableData = imageData => {
     console.log(imageData);
     let rD = {},
       gD = {},
       bD = {};
-    for (var i = 0; i < 256; i++) {
+    for (let i = 0; i < 256; i++) {
       rD[i] = 0;
       gD[i] = 0;
       bD[i] = 0;
     }
-    for (var j = 0; j < imageData.length; j += 4) {
+    for (let j = 0; j < imageData.length; j += 4) {
       rD[imageData[j]]++;
       gD[imageData[j + 1]]++;
       bD[imageData[j + 2]]++;
