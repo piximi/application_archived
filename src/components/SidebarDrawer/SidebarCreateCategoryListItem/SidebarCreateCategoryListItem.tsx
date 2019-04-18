@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 const CreateCategoryListItem = () => {
   const { openedDialog, openDialog, closeDialog } = useDialog();
 
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <React.Fragment>
