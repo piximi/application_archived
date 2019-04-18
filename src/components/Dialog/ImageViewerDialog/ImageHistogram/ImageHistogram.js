@@ -12,28 +12,31 @@ class ImageHistogram extends PureComponent {
   }
 
   componentDidMount() {
-    // let image = new Image();
-    // image.onload = e => {
-    //   const img = e.target;
-    //   const canvas = this.canvas.current;
-    //   const context = canvas.getContext('2d');
-    //   context.drawImage(img, 0, img.height, img.width, img.height);
-    //   const imageData = context.getImageData(
-    //     0,
-    //     img.height,
-    //     img.width,
-    //     img.height
-    //   ).data;
-    //   const data = this.createPlottableData(imageData);
-    //   // Create Histogram
-    //   this.createHistogram(data);
-    //   this.setState({ data: data });
-    // };
-    // image.src = this.props.src;
+    let image = new Image();
+    image.onload = e => {
+      const img = e.target;
+      const canvas = this.canvas.current;
+      const context = canvas.getContext('2d');
+      context.drawImage(img, 0, img.height, img.width, img.height);
+
+      const imageData = context.getImageData(
+        0,
+        img.height,
+        img.width,
+        img.height
+      ).data;
+
+      const data = this.createPlottableData(imageData);
+
+      // Create Histogram
+      this.createHistogram(data);
+      this.setState({ data: data });
+    };
+    image.src = this.props.src;
   }
 
   componentDidUpdate() {
-    // this.createHistogram(this.state.data);
+    this.createHistogram(this.state.data);
   }
 
   createPlottableData(imageData) {
@@ -133,18 +136,18 @@ class ImageHistogram extends PureComponent {
   render() {
     return (
       <React.Fragment>
-        {/*<canvas*/}
-        {/*  style={{ display: 'none' }}*/}
-        {/*  ref={this.canvas}*/}
-        {/*  height={300}*/}
-        {/*  width={300}*/}
-        {/*/>*/}
-        {/*<svg*/}
-        {/*  style={{ margin: '20px' }}*/}
-        {/*  ref={node => (this.node = node)}*/}
-        {/*  width={300}*/}
-        {/*  height={300}*/}
-        {/*/>*/}
+        <canvas
+          style={{ display: 'none' }}
+          ref={this.canvas}
+          height={300}
+          width={300}
+        />
+        <svg
+          style={{ margin: '20px' }}
+          ref={node => (this.node = node)}
+          width={300}
+          height={300}
+        />
       </React.Fragment>
     );
   }
