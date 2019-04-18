@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next';
 const useStyles = makeStyles(styles);
 
 const DeleteButton = (props: any) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const { openedDialog, openDialog, closeDialog } = useDialog();
 

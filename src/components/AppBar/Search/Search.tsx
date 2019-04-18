@@ -27,7 +27,7 @@ function filterImages(searchText: any, props: any) {
 const Search = (props: any) => {
   const classes = useStyles();
 
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <FormControl>

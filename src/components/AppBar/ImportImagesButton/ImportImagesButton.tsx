@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next';
 const useStyles = makeStyles(styles);
 
 const ImportImagesButton = (props: any) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const { createImage } = props;
 
