@@ -36,11 +36,13 @@ const ImageViewerExposureDrawer = props => {
         role="button"
         tabIndex={0}
       >
-        <ImageHistogram src={src} />
+        <ImageHistogram src={src} unselectedChannels={unselectedChannels} />
+
         <ChannelSelection
           setUnselectedChannels={setUnselectedChannels}
           unselectedChannels={unselectedChannels}
         />
+
         <Brightness brightness={brightness} setBrightness={setBrightness} />
         <Contrast contrast={contrast} setContrast={setContrast} />
       </div>

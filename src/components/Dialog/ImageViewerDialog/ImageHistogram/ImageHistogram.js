@@ -128,6 +128,7 @@ class ImageHistogram extends PureComponent {
           return height - y(d.freq);
         });
     }
+
     graphComponent(imgData.gD, 'green');
     graphComponent(imgData.bD, 'blue');
     graphComponent(imgData.rD, 'red');
