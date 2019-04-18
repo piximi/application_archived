@@ -8,6 +8,7 @@ const en = {
     'Delete category': 'Delete category',
     'Delete images': 'Delete images',
     'Description': 'Description',
+    'Edit': 'Edit',
     'Edit category': 'Edit category',
     'Help': 'Help',
     'Hide other categories': 'Hide other categories',

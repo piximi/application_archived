@@ -7,12 +7,21 @@ import {
   DialogContent,
   Grid,
   TextField,
-  Popover
+  Paper,
+  IconButton,
+  Divider,
+  InputBase,
+  Popover,
+  DialogTitle
 } from '@material-ui/core';
 import LabelIcon from '@material-ui/icons/Label';
 import ColorPicker from '../../ColorPicker/ColorPicker';
 import useMenu from '../../../hooks/Menu';
 import { useTranslation } from 'react-i18next';
+import { makeStyles } from '@material-ui/styles';
+import styles from './EditCategoryDialog.css';
+
+const useStyles = makeStyles(styles);
 
 const EditCategoryDialog = (props: any) => {
   const {
@@ -26,9 +35,13 @@ const EditCategoryDialog = (props: any) => {
 
   const { anchorEl, openedMenu, openMenu, closeMenu } = useMenu();
 
-  const [color, setColor] = React.useState<string>('#FF0000');
+  const [color, setColor] = React.useState<string>(category.color);
 
-  const [description, setDescription] = React.useState<string>('');
+  const [description, setDescription] = React.useState<string>(
+    category.description
+  );
+
+  const classes = useStyles();
 
   const onColorChange = (color: any) => {
     closeMenu();
@@ -53,38 +66,42 @@ const EditCategoryDialog = (props: any) => {
   const { t } = useTranslation();
 
   return (
-    <Dialog fullWidth maxWidth="xs" open={open} onClose={onClose}>
-      <DialogContent>
-        <Grid container spacing={8} alignItems="flex-end">
-          <Grid item>
-            <ButtonBase
-              onClick={openMenu}
-              style={{
-                color: color
-              }}
-            >
-              <LabelIcon />
-            </ButtonBase>
-          </Grid>
+    <Dialog fullWidth maxWidth="xs" onClose={onClose} open={open}>
+      <DialogTitle id="max-width-dialog-title">
+        {t('Edit category')}
+      </DialogTitle>
 
-          <Grid item>
-            <TextField
-              id="create-category-description"
-              label={t('Description')}
-              onChange={onTextFieldChange}
-              value={description}
-            />
-          </Grid>
-        </Grid>
+      <DialogContent className={classes.content}>
+        <Paper className={classes.root} elevation={0}>
+          <IconButton
+            className={classes.iconButton}
+            aria-label="Menu"
+            onClick={openMenu}
+          >
+            <LabelIcon style={{ color: color }} />
+          </IconButton>
+
+          <TextField
+            autoFocus
+            className={classes.input}
+            fullWidth
+            id="description"
+            margin="dense"
+            onChange={onTextFieldChange}
+            placeholder={category.description}
+            type="text"
+            value={description}
+          />
+        </Paper>
       </DialogContent>
 
       <DialogActions>
-        <Button color="primary" onClick={onClose}>
+        <Button onClick={onClose} color="primary">
           {t('Cancel')}
         </Button>
 
-        <Button color="primary" onClick={onSaveClick}>
-          {t('Save')}
+        <Button onClick={onSaveClick} color="primary">
+          {t('Edit')}
         </Button>
       </DialogActions>
 
@@ -101,7 +118,9 @@ const EditCategoryDialog = (props: any) => {
           horizontal: 'center'
         }}
       >
-        <ColorPicker categories={categories} onChange={onColorChange} />
+        <div className={classes.colorPicker}>
+          <ColorPicker categories={categories} onChange={onColorChange} />
+        </div>
       </Popover>
     </Dialog>
   );
