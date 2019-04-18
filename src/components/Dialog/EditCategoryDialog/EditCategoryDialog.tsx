@@ -63,12 +63,12 @@ const EditCategoryDialog = (props: any) => {
     setDescription(target.value);
   };
 
-  const { t } = useTranslation();
+  const { t: translation } = useTranslation();
 
   return (
     <Dialog fullWidth maxWidth="xs" onClose={onClose} open={open}>
       <DialogTitle id="max-width-dialog-title">
-        {t('Edit category')}
+        {translation('Edit category')}
       </DialogTitle>
 
       <DialogContent className={classes.content}>
@@ -97,11 +97,11 @@ const EditCategoryDialog = (props: any) => {
 
       <DialogActions>
         <Button onClick={onClose} color="primary">
-          {t('Cancel')}
+          {translation('Cancel')}
         </Button>
 
         <Button onClick={onSaveClick} color="primary">
-          {t('Edit')}
+          {translation('Edit')}
         </Button>
       </DialogActions>
 

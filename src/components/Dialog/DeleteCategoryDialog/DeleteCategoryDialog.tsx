@@ -22,7 +22,7 @@ const DeleteCategoryDialog = (props: any) => {
     category.description
   } won’t be deleted.`;
 
-  const { t } = useTranslation();
+  const { t: translation } = useTranslation();
 
   return (
     <Dialog open={open} onClose={onClose}>
@@ -36,11 +36,11 @@ const DeleteCategoryDialog = (props: any) => {
 
       <DialogActions>
         <Button onClick={onClose} color="primary">
-          {t('Cancel')}
+          {translation('Cancel')}
         </Button>
 
         <Button onClick={onDeleteCategoryClick} color="primary">
-          {t('Yes')}
+          {translation('Yes')}
         </Button>
       </DialogActions>
     </Dialog>

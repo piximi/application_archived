@@ -12,9 +12,9 @@ import { useTranslation } from 'react-i18next';
 const NewClassifierDialog = (props: any) => {
   const { createClassifier, openedDialog, closeDialog } = props;
 
-  const { t } = useTranslation();
+  const { t: translation } = useTranslation();
 
-  const [name, setName] = React.useState(t('Untitled classifier'));
+  const [name, setName] = React.useState(translation('Untitled classifier'));
 
   const onCreateClassifierClick = () => {
     createClassifier(name);
@@ -29,7 +29,7 @@ const NewClassifierDialog = (props: any) => {
   return (
     <Dialog fullWidth maxWidth="xs" onClose={closeDialog} open={openedDialog}>
       <DialogTitle id="max-width-dialog-title">
-        {t('Create new classifier')}
+        {translation('Create new classifier')}
       </DialogTitle>
 
       <DialogContent>
@@ -40,18 +40,18 @@ const NewClassifierDialog = (props: any) => {
           label="Name"
           margin="dense"
           onChange={onNameChange}
-          placeholder={t('Untitled classifier')}
+          placeholder={translation('Untitled classifier')}
           type="text"
         />
       </DialogContent>
 
       <DialogActions>
         <Button onClick={closeDialog} color="primary">
-          {t('Cancel')}
+          {translation('Cancel')}
         </Button>
 
         <Button onClick={onCreateClassifierClick} color="primary">
-          {t('Create')}
+          {translation('Create')}
         </Button>
       </DialogActions>
     </Dialog>

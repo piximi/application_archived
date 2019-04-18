@@ -11,7 +11,7 @@ import { useTranslation } from 'react-i18next';
 const HelpDialog = (props: any) => {
   const { onClose, open } = props;
 
-  const { t } = useTranslation();
+  const { t: translation } = useTranslation();
 
   return (
     <Dialog open={open} onClose={onClose}>
@@ -21,11 +21,11 @@ const HelpDialog = (props: any) => {
 
       <DialogActions>
         <Button onClick={onClose} color="primary">
-          {t('Cancel')}
+          {translation('Cancel')}
         </Button>
 
         <Button onClick={onClose} color="primary">
-          {t('OK')}
+          {translation('OK')}
         </Button>
       </DialogActions>
     </Dialog>

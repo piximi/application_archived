@@ -26,14 +26,16 @@ const useStyles = makeStyles(styles);
 const OpenExampleClassifierDialog = props => {
   const classes = useStyles();
 
-  const { t } = useTranslation();
+  const { t: translation } = useTranslation();
 
   const { open, onClose, loadDemoProject } = props;
 
   return (
     <Dialog fullWidth maxWidth="sm" open={open}>
       <DialogTitle disableTypography className={classes.dialogTitle}>
-        <Typography variant="h6">{t('Open example classifier')}</Typography>
+        <Typography variant="h6">
+          {translation('Open example classifier')}
+        </Typography>
 
         <IconButton
           aria-label="Close"

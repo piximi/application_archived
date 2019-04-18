@@ -24,7 +24,7 @@ function Transition(props) {
 const CreateCategoryDialog = props => {
   const { classes, open, categories } = props;
 
-  const { t } = useTranslation();
+  const { t: translation } = useTranslation();
 
   const [anchorEl, setAnchorEl] = React.useState();
   const [color, setColor] = React.useState('#00e676');
@@ -106,7 +106,7 @@ const CreateCategoryDialog = props => {
             <Grid item>
               <TextField
                 id="create-category-description"
-                label={t('Description')}
+                label={translation('Description')}
                 onChange={onDescriptionChange}
                 value={description}
               />
@@ -117,14 +117,14 @@ const CreateCategoryDialog = props => {
 
       <DialogActions>
         <Button color="primary" onClick={onClose}>
-          {t('Cancel')}
+          {translation('Cancel')}
         </Button>
 
         <Button
           color="primary"
           onClick={() => createCategory(color, description)}
         >
-          {t('Create category')}
+          {translation('Create category')}
         </Button>
       </DialogActions>
 
