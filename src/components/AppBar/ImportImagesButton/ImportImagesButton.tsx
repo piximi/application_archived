@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next';
 const useStyles = makeStyles(styles);
 
 const ImportImagesButton = (props: any) => {
-  const { t } = useTranslation();
+  const { t: translation } = useTranslation();
 
   const { createImage } = props;
 
@@ -26,7 +26,7 @@ const ImportImagesButton = (props: any) => {
       <FileInput onChange={onFileInputChange}>
         <Button className={classes.button}>
           <AddPhotoAlternateIcon className={classes.icon} />
-          {t('Import images')}
+          {translation('Import images')}
         </Button>
       </FileInput>
     </React.Fragment>

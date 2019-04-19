@@ -34,7 +34,7 @@ const DeleteImageDialog = (props: any) => {
     text = 'Please confirm you want to delete this image';
   }
 
-  const { t } = useTranslation();
+  const { t: translation } = useTranslation();
 
   return (
     <Dialog open={open} onClose={onClose}>
@@ -48,12 +48,12 @@ const DeleteImageDialog = (props: any) => {
 
       <DialogActions>
         <Button onClick={() => props.onClose()} color="primary">
-          {t('Cancel')}
+          {translation('Cancel')}
         </Button>
 
         {noSelectedImages > 0 ? (
           <Button onClick={() => onClickDeleteButton()} color="primary">
-            {t('Delete')}
+            {translation('Delete')}
           </Button>
         ) : null}
       </DialogActions>

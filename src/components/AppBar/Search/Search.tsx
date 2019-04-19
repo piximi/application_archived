@@ -27,7 +27,7 @@ function filterImages(searchText: any, props: any) {
 const Search = (props: any) => {
   const classes = useStyles();
 
-  const { t } = useTranslation();
+  const { t: translation } = useTranslation();
 
   return (
     <FormControl>
@@ -37,7 +37,7 @@ const Search = (props: any) => {
         className={classNames(classes.input)}
         disableUnderline
         id="input-with-icon-adornment"
-        placeholder={t('Search images')}
+        placeholder={translation('Search images')}
         startAdornment={
           <InputAdornment position="start">
             <ImageSearchIcon />

@@ -1,43 +1,41 @@
 import * as React from 'react';
+import styles from './CreateCategoryDialog.css';
 import {
   Button,
   Dialog,
   DialogActions,
   DialogContent,
   TextField,
+  Popover,
   Paper,
   IconButton,
-  Popover,
   DialogTitle
 } from '@material-ui/core';
 import LabelIcon from '@material-ui/icons/Label';
 import ColorPicker from '../../ColorPicker/ColorPicker';
-import useMenu from '../../../hooks/Menu';
 import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/styles';
-import styles from './EditCategoryDialog.css';
+import useMenu from '../../../hooks/Menu';
 
 const useStyles = makeStyles(styles);
 
-const EditCategoryDialog = (props: any) => {
-  const {
-    category,
-    updateColor,
-    updateDescription,
-    onClose,
-    open,
-    categories
-  } = props;
+const CreateCategoryDialog = (props: any) => {
+  const { createCategory, open, categories, onClose } = props;
+
+  const classes = useStyles();
+
+  const { t: translation } = useTranslation();
 
   const { anchorEl, openedMenu, openMenu, closeMenu } = useMenu();
 
-  const [color, setColor] = React.useState<string>(category.color);
+  const [color, setColor] = React.useState('#00e676');
+  const [description, setDescription] = React.useState('');
 
-  const [description, setDescription] = React.useState<string>(
-    category.description
-  );
+  const onDescriptionChange = (event: React.FormEvent<EventTarget>) => {
+    const target = event.target as HTMLInputElement;
 
-  const classes = useStyles();
+    setDescription(target.value);
+  };
 
   const onColorChange = (color: any) => {
     closeMenu();
@@ -45,26 +43,16 @@ const EditCategoryDialog = (props: any) => {
     setColor(color.hex);
   };
 
-  const onSaveClick = (): void => {
+  const onCreateClick = () => {
+    createCategory(color, description);
+
     onClose();
-
-    updateColor(category.index, color);
-
-    updateDescription(category.index, description);
   };
-
-  const onTextFieldChange = (event: React.FormEvent<EventTarget>): void => {
-    const target = event.target as HTMLInputElement;
-
-    setDescription(target.value);
-  };
-
-  const { t: translation } = useTranslation();
 
   return (
     <Dialog fullWidth maxWidth="xs" onClose={onClose} open={open}>
       <DialogTitle id="max-width-dialog-title">
-        {translation('Edit category')}
+        {translation('Create category')}
       </DialogTitle>
 
       <DialogContent className={classes.content}>
@@ -83,8 +71,8 @@ const EditCategoryDialog = (props: any) => {
             fullWidth
             id="description"
             margin="dense"
-            onChange={onTextFieldChange}
-            placeholder={category.description}
+            onChange={onDescriptionChange}
+            placeholder={translation('Description')}
             type="text"
             value={description}
           />
@@ -96,8 +84,8 @@ const EditCategoryDialog = (props: any) => {
           {translation('Cancel')}
         </Button>
 
-        <Button onClick={onSaveClick} color="primary">
-          {translation('Edit')}
+        <Button onClick={onCreateClick} color="primary">
+          {translation('Create')}
         </Button>
       </DialogActions>
 
@@ -122,4 +110,4 @@ const EditCategoryDialog = (props: any) => {
   );
 };
 
-export default EditCategoryDialog;
+export default CreateCategoryDialog;

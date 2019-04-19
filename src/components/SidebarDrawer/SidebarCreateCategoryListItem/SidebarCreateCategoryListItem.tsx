@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 const CreateCategoryListItem = () => {
   const { openedDialog, openDialog, closeDialog } = useDialog();
 
-  const { t } = useTranslation();
+  const { t: translation } = useTranslation();
 
   return (
     <React.Fragment>
@@ -17,7 +17,7 @@ const CreateCategoryListItem = () => {
           <AddIcon />
         </ListItemIcon>
 
-        <ListItemText inset primary={t('Create category')} />
+        <ListItemText inset primary={translation('Create category')} />
       </ListItem>
 
       <ConnectedCreateCategoryDialog
