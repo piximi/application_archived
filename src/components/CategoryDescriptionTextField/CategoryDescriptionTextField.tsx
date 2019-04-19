@@ -18,13 +18,17 @@ const CategoryDescriptionTextField = (props: Props) => {
 
   const { t: translation } = useTranslation();
 
+  const inputProps = {
+    className: classes.input
+  };
+
   return (
     <MaterialUI.TextField
       autoFocus
-      className={classes.input}
       margin="dense"
       fullWidth
       id="description"
+      inputProps={inputProps}
       label={translation('Description')}
       onChange={onDescriptionChange}
       type="text"
