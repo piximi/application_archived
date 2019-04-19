@@ -1,22 +1,13 @@
 import * as React from 'react';
-import styles from './CreateCategoryDialog.css';
-import { TextField } from '@material-ui/core';
-import { useTranslation } from 'react-i18next';
-import { makeStyles } from '@material-ui/styles';
 import DialogContent from '../../DialogContent/DialogContent';
 import DialogActions from '../../DialogActions/DialogActions';
 import DialogTitle from '../../DialogTitle/DialogTitle';
 import ColorIconButton from '../../ColorIconButton/ColorIconButton';
 import Dialog from '../Dialog';
-
-const useStyles = makeStyles(styles);
+import CategoryDescriptionTextField from '../../CategoryDescriptionTextField/CategoryDescriptionTextField';
 
 const CreateCategoryDialog = (props: any) => {
   const { createCategory, open, onClose } = props;
-
-  const classes = useStyles();
-
-  const { t: translation } = useTranslation();
 
   const [color, setColor] = React.useState('#00e676');
   const [description, setDescription] = React.useState('');
@@ -31,7 +22,7 @@ const CreateCategoryDialog = (props: any) => {
     setColor(color.hex);
   };
 
-  const onCreateClick = () => {
+  const onAcceptance = () => {
     createCategory(color, description);
 
     onClose();
@@ -44,23 +35,16 @@ const CreateCategoryDialog = (props: any) => {
       <DialogContent>
         <ColorIconButton color={color} onColorChange={onColorChange} />
 
-        <TextField
-          autoFocus
-          className={classes.input}
-          margin="dense"
-          fullWidth
-          id="description"
-          label={translation('Description')}
-          onChange={onDescriptionChange}
-          type="text"
-          value={description}
+        <CategoryDescriptionTextField
+          description={description}
+          onDescriptionChange={onDescriptionChange}
         />
       </DialogContent>
 
       <DialogActions
         acceptanceTitle="Create"
         cancellationTitle="Cancel"
-        onAcceptance={onCreateClick}
+        onAcceptance={onAcceptance}
         onCancellation={onClose}
       />
     </Dialog>
