@@ -1,16 +1,12 @@
 import * as React from 'react';
 import {
   Button,
-  ButtonBase,
   Dialog,
   DialogActions,
   DialogContent,
-  Grid,
   TextField,
   Paper,
   IconButton,
-  Divider,
-  InputBase,
   Popover,
   DialogTitle
 } from '@material-ui/core';
