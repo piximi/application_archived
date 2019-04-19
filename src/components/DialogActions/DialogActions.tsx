@@ -27,11 +27,11 @@ const DialogActions = (props: Props) => {
 
   return (
     <MaterialUI.DialogActions>
-      <MaterialUI.Button onClick={onCancellation} color="primary" size="small">
+      <MaterialUI.Button className={classes.button} onClick={onCancellation}>
         {translation(cancellationTitle)}
       </MaterialUI.Button>
 
-      <MaterialUI.Button onClick={onAcceptance} color="primary" size="small">
+      <MaterialUI.Button className={classes.button} onClick={onAcceptance}>
         {translation(acceptanceTitle)}
       </MaterialUI.Button>
     </MaterialUI.DialogActions>

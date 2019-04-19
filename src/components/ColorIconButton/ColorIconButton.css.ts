@@ -2,7 +2,9 @@ import { createStyles } from '@material-ui/styles';
 
 const styles = () =>
   createStyles({
-    iconButton: {},
+    iconButton: {
+      marginRight: '15px'
+    },
     avatarRoot: {},
     colorPicker: {}
   });
