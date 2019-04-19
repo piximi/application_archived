@@ -1,13 +1,10 @@
 import * as React from 'react';
-import {
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  TextField
-} from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
+import Dialog from '../Dialog';
+import DialogTitle from '../../DialogTitle/DialogTitle';
+import DialogActions from '../../DialogActions/DialogActions';
+import DialogContent from '../../DialogContent/DialogContent';
+import { TextField } from '@material-ui/core';
 
 const NewClassifierDialog = (props: any) => {
   const { createClassifier, openedDialog, closeDialog } = props;
@@ -27,10 +24,8 @@ const NewClassifierDialog = (props: any) => {
   };
 
   return (
-    <Dialog fullWidth maxWidth="xs" onClose={closeDialog} open={openedDialog}>
-      <DialogTitle id="max-width-dialog-title">
-        {translation('Create new classifier')}
-      </DialogTitle>
+    <Dialog open={openedDialog} onClose={closeDialog}>
+      <DialogTitle title={'Create new classifier'} />
 
       <DialogContent>
         <TextField
@@ -45,15 +40,12 @@ const NewClassifierDialog = (props: any) => {
         />
       </DialogContent>
 
-      <DialogActions>
-        <Button onClick={closeDialog} color="primary">
-          {translation('Cancel')}
-        </Button>
-
-        <Button onClick={onCreateClassifierClick} color="primary">
-          {translation('Create')}
-        </Button>
-      </DialogActions>
+      <DialogActions
+        acceptanceTitle={'Create'}
+        cancellationTitle={'Cancel'}
+        onAcceptance={onCreateClassifierClick}
+        onCancellation={closeDialog}
+      />
     </Dialog>
   );
 };
