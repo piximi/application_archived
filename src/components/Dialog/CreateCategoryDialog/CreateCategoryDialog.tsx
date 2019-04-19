@@ -6,8 +6,10 @@ import {
   DialogActions,
   DialogContent,
   TextField,
+  Avatar,
   Popover,
   Paper,
+  Grid,
   IconButton,
   DialogTitle,
   Typography
@@ -64,7 +66,7 @@ const CreateCategoryDialog = (props: any) => {
           variant="subheading"
           gutterBottom
         >
-          {translation('Create category')}
+          {translation('Create a new category')}
         </Typography>
       </DialogTitle>
 
@@ -75,17 +77,22 @@ const CreateCategoryDialog = (props: any) => {
             aria-label="Menu"
             onClick={openMenu}
           >
-            <LabelIcon style={{ color: color }} />
+            <Avatar
+              classes={{ root: classes.avatarRoot }}
+              style={{ backgroundColor: color }}
+            >
+              {/*<LabelIcon style={{ color: color }} />*/}
+            </Avatar>
           </IconButton>
 
           <TextField
             autoFocus
             className={classes.input}
+            margin="dense"
             fullWidth
             id="description"
-            margin="dense"
+            label={translation('Description')}
             onChange={onDescriptionChange}
-            placeholder={translation('Description')}
             type="text"
             value={description}
           />

@@ -2,6 +2,9 @@ import { createStyles } from '@material-ui/styles';
 
 const styles = () =>
   createStyles({
+    avatarRoot: {
+      background: 'rgba(0,0,0,0.26)'
+    },
     dialogPaper: {
       borderRadius: '10px'
     },
@@ -21,7 +24,7 @@ const styles = () =>
       flex: 1
     },
     iconButton: {
-      padding: 10
+      padding: 4
     },
     divider: {
       width: 1,
