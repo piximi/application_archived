@@ -3,10 +3,13 @@ import { createStyles } from '@material-ui/styles';
 const styles = () =>
   createStyles({
     iconButton: {
-      marginRight: '15px'
+      margin: '0 15px 0 5px',
+      padding: '3px'
     },
     avatarRoot: {},
-    colorPicker: {}
+    colorPicker: {
+      margin: '16px'
+    }
   });
 
 export default styles;
