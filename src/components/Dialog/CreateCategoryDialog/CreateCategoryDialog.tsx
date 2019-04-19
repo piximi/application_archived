@@ -1,17 +1,18 @@
 import * as React from 'react';
 import styles from './CreateCategoryDialog.css';
-import { Dialog, TextField } from '@material-ui/core';
+import { TextField } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/styles';
 import DialogContent from '../../DialogContent/DialogContent';
 import DialogActions from '../../DialogActions/DialogActions';
 import DialogTitle from '../../DialogTitle/DialogTitle';
 import ColorIconButton from '../../ColorIconButton/ColorIconButton';
+import Dialog from '../Dialog';
 
 const useStyles = makeStyles(styles);
 
 const CreateCategoryDialog = (props: any) => {
-  const { createCategory, open, categories, onClose } = props;
+  const { createCategory, open, onClose } = props;
 
   const classes = useStyles();
 
@@ -37,13 +38,7 @@ const CreateCategoryDialog = (props: any) => {
   };
 
   return (
-    <Dialog
-      classes={{ paper: classes.dialogPaper }}
-      fullWidth
-      maxWidth="xs"
-      onClose={onClose}
-      open={open}
-    >
+    <Dialog open={open} onClose={onClose}>
       <DialogTitle title={'Create a new category'} />
 
       <DialogContent>
