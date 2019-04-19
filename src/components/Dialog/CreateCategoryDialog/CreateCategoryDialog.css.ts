@@ -2,6 +2,12 @@ import { createStyles } from '@material-ui/styles';
 
 const styles = () =>
   createStyles({
+    dialogPaper: {
+      borderRadius: '10px'
+    },
+    dialogTitle: {
+      fontWeight: 500
+    },
     content: {
       paddingLeft: '12px'
     },

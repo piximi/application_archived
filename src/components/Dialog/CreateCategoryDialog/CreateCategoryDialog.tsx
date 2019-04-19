@@ -9,7 +9,8 @@ import {
   Popover,
   Paper,
   IconButton,
-  DialogTitle
+  DialogTitle,
+  Typography
 } from '@material-ui/core';
 import LabelIcon from '@material-ui/icons/Label';
 import ColorPicker from '../../ColorPicker/ColorPicker';
@@ -50,9 +51,21 @@ const CreateCategoryDialog = (props: any) => {
   };
 
   return (
-    <Dialog fullWidth maxWidth="xs" onClose={onClose} open={open}>
-      <DialogTitle id="max-width-dialog-title">
-        {translation('Create category')}
+    <Dialog
+      classes={{ paper: classes.dialogPaper }}
+      fullWidth
+      maxWidth="xs"
+      onClose={onClose}
+      open={open}
+    >
+      <DialogTitle disableTypography id="max-width-dialog-title">
+        <Typography
+          classes={{ root: classes.dialogTitle }}
+          variant="subheading"
+          gutterBottom
+        >
+          {translation('Create category')}
+        </Typography>
       </DialogTitle>
 
       <DialogContent className={classes.content}>
@@ -80,11 +93,11 @@ const CreateCategoryDialog = (props: any) => {
       </DialogContent>
 
       <DialogActions>
-        <Button onClick={onClose} color="primary">
+        <Button onClick={onClose} color="primary" size="small">
           {translation('Cancel')}
         </Button>
 
-        <Button onClick={onCreateClick} color="primary">
+        <Button onClick={onCreateClick} color="primary" size="small">
           {translation('Create')}
         </Button>
       </DialogActions>
