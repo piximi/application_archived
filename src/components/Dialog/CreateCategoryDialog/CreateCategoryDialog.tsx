@@ -9,18 +9,8 @@ import CategoryDescriptionTextField from '../../CategoryDescriptionTextField/Cat
 const CreateCategoryDialog = (props: any) => {
   const { createCategory, open, onClose } = props;
 
-  const [color, setColor] = React.useState('#00e676');
-  const [description, setDescription] = React.useState('');
-
-  const onDescriptionChange = (event: React.FormEvent<EventTarget>) => {
-    const target = event.target as HTMLInputElement;
-
-    setDescription(target.value);
-  };
-
-  const onColorChange = (color: any) => {
-    setColor(color.hex);
-  };
+  const [color, setColor] = React.useState<string>('#00e676');
+  const [description, setDescription] = React.useState<string>('');
 
   const onAcceptance = () => {
     createCategory(color, description);
@@ -28,9 +18,19 @@ const CreateCategoryDialog = (props: any) => {
     onClose();
   };
 
+  const onColorChange = (color: any) => {
+    setColor(color.hex);
+  };
+
+  const onDescriptionChange = (event: React.FormEvent<EventTarget>) => {
+    const target = event.target as HTMLInputElement;
+
+    setDescription(target.value);
+  };
+
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogTitle title={'Create a new category'} />
+      <DialogTitle title="Create a new category" />
 
       <DialogContent>
         <ColorIconButton color={color} onColorChange={onColorChange} />

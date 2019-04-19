@@ -1,35 +1,13 @@
 import * as React from 'react';
-import {
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  TextField,
-  Paper,
-  IconButton,
-  Popover,
-  DialogTitle
-} from '@material-ui/core';
-import LabelIcon from '@material-ui/icons/Label';
-import ColorPicker from '../../ColorPicker/ColorPicker';
-import useMenu from '../../../hooks/Menu';
-import { useTranslation } from 'react-i18next';
-import { makeStyles } from '@material-ui/styles';
-import styles from './EditCategoryDialog.css';
-
-const useStyles = makeStyles(styles);
+import Dialog from '../Dialog';
+import DialogActions from '../../DialogActions/DialogActions';
+import DialogTitle from '../../DialogTitle/DialogTitle';
+import DialogContent from '../../DialogContent/DialogContent';
+import ColorIconButton from '../../ColorIconButton/ColorIconButton';
+import CategoryDescriptionTextField from '../../CategoryDescriptionTextField/CategoryDescriptionTextField';
 
 const EditCategoryDialog = (props: any) => {
-  const {
-    category,
-    updateColor,
-    updateDescription,
-    onClose,
-    open,
-    categories
-  } = props;
-
-  const { anchorEl, openedMenu, openMenu, closeMenu } = useMenu();
+  const { category, updateColor, updateDescription, onClose, open } = props;
 
   const [color, setColor] = React.useState<string>(category.color);
 
@@ -37,87 +15,43 @@ const EditCategoryDialog = (props: any) => {
     category.description
   );
 
-  const classes = useStyles();
-
-  const onColorChange = (color: any) => {
-    closeMenu();
-
-    setColor(color.hex);
-  };
-
-  const onSaveClick = (): void => {
-    onClose();
-
+  const onAcceptance = () => {
     updateColor(category.index, color);
 
     updateDescription(category.index, description);
+
+    onClose();
   };
 
-  const onTextFieldChange = (event: React.FormEvent<EventTarget>): void => {
+  const onColorChange = (color: any) => {
+    setColor(color.hex);
+  };
+
+  const onDescriptionChange = (event: React.FormEvent<EventTarget>): void => {
     const target = event.target as HTMLInputElement;
 
     setDescription(target.value);
   };
 
-  const { t: translation } = useTranslation();
-
   return (
-    <Dialog fullWidth maxWidth="xs" onClose={onClose} open={open}>
-      <DialogTitle id="max-width-dialog-title">
-        {translation('Edit category')}
-      </DialogTitle>
+    <Dialog open={open} onClose={onClose}>
+      <DialogTitle title="Edit category" />
 
-      <DialogContent className={classes.content}>
-        <Paper className={classes.root} elevation={0}>
-          <IconButton
-            className={classes.iconButton}
-            aria-label="Menu"
-            onClick={openMenu}
-          >
-            <LabelIcon style={{ color: color }} />
-          </IconButton>
+      <DialogContent>
+        <ColorIconButton color={color} onColorChange={onColorChange} />
 
-          <TextField
-            autoFocus
-            className={classes.input}
-            fullWidth
-            id="description"
-            margin="dense"
-            onChange={onTextFieldChange}
-            placeholder={category.description}
-            type="text"
-            value={description}
-          />
-        </Paper>
+        <CategoryDescriptionTextField
+          description={description}
+          onDescriptionChange={onDescriptionChange}
+        />
       </DialogContent>
 
-      <DialogActions>
-        <Button onClick={onClose} color="primary">
-          {translation('Cancel')}
-        </Button>
-
-        <Button onClick={onSaveClick} color="primary">
-          {translation('Edit')}
-        </Button>
-      </DialogActions>
-
-      <Popover
-        open={openedMenu}
-        anchorEl={anchorEl}
-        onClose={closeMenu}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'center'
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'center'
-        }}
-      >
-        <div className={classes.colorPicker}>
-          <ColorPicker categories={categories} onChange={onColorChange} />
-        </div>
-      </Popover>
+      <DialogActions
+        acceptanceTitle="Edit"
+        cancellationTitle="Cancel"
+        onAcceptance={onAcceptance}
+        onCancellation={onClose}
+      />
     </Dialog>
   );
 };
