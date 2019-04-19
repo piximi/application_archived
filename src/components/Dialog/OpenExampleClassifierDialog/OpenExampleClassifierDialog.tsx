@@ -13,17 +13,23 @@ import {
   ListItemText,
   Typography
 } from '@material-ui/core';
-import AddIcon from '@material-ui/icons/Add';
-import CIFAR10 from './CIFAR-10.png';
-import CIFAR100 from './CIFAR-100.png';
-import MNIST from './MNIST.png';
 import CloseIcon from '@material-ui/icons/Close';
 import { makeStyles } from '@material-ui/styles';
 import { useTranslation } from 'react-i18next';
+import AddIcon from '@material-ui/icons/Add';
+
+// @ts-ignore
+import CIFAR10 from './CIFAR-10.png';
+
+// @ts-ignore
+import CIFAR100 from './CIFAR-100.png';
+
+// @ts-ignore
+import MNIST from './MNIST.png';
 
 const useStyles = makeStyles(styles);
 
-const OpenExampleClassifierDialog = props => {
+const OpenExampleClassifierDialog = (props: any) => {
   const classes = useStyles();
 
   const { t: translation } = useTranslation();
