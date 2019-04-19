@@ -63,7 +63,7 @@ const CreateCategoryDialog = (props: any) => {
       <DialogTitle disableTypography id="max-width-dialog-title">
         <Typography
           classes={{ root: classes.dialogTitle }}
-          variant="subheading"
+          variant="h6"
           gutterBottom
         >
           {translation('Create a new category')}
