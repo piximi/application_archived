@@ -2,7 +2,12 @@ import * as React from 'react';
 import { CirclePicker } from 'react-color';
 import { colors } from '../../constants';
 
-const ColorPicker = (props: { onChange: any; categories: any; }) => {
+type Props = {
+  categories: [any];
+  onChange: any;
+};
+
+const ColorPicker = (props: Props) => {
   const { onChange, categories } = props;
 
   const usedColors = (categories: any) => {
