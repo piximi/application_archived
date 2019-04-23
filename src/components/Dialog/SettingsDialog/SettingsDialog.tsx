@@ -23,7 +23,7 @@ const SettingsDialog = (props: any) => {
 
   const classes = useStyles();
 
-  const { t } = useTranslation();
+  const { t: translation } = useTranslation();
 
   return (
     <Dialog
@@ -46,7 +46,7 @@ const SettingsDialog = (props: any) => {
             </IconButton>
 
             <Typography variant="h6" color="inherit" className={classes.flex}>
-              {t('Settings')}
+              {translation('Settings')}
             </Typography>
           </Toolbar>
         </AppBar>

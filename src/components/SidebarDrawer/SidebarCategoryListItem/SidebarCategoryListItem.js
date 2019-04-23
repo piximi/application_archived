@@ -39,7 +39,7 @@ function collect(connect, monitor) {
 const useStyles = makeStyles(styles);
 
 const SidebarCategoryListItem = props => {
-  const [animateOnDrop, setAnimateOnDrop] = React.useState(0);
+  const [animateOnDrop, setAnimateOnDrop] = React.useState(null);
 
   const { anchorEl, openedMenu, openMenu, closeMenu } = useMenu();
 

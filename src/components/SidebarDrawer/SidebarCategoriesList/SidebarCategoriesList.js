@@ -17,11 +17,17 @@ import { useTranslation } from 'react-i18next';
 const SidebarCategoriesList = props => {
   const { collapsedList, collapseList } = useCollapseList();
 
-  const { t } = useTranslation();
+  const { t: translation } = useTranslation();
 
   const { categories, connectDropTarget } = props;
 
-  const sortedCategories = _.sortBy(categories, 'description');
+  const [unknown, known] = _.partition(categories, category => {
+    if (category.identifier === '00000000-0000-0000-0000-000000000000') {
+      return category;
+    }
+  });
+
+  let sortedCategories = _.concat(_.sortBy(known, 'description'), unknown);
 
   return (
     <React.Fragment>
@@ -31,7 +37,7 @@ const SidebarCategoriesList = props => {
             {!collapsedList ? <ExpandLessIcon /> : <ExpandMoreIcon />}
           </ListItemIcon>
 
-          <ListItemText inset primary={t('Categories')} />
+          <ListItemText inset primary={translation('Categories')} />
         </ListItem>
 
         <Collapse in={!collapsedList} timeout="auto" unmountOnExit>
