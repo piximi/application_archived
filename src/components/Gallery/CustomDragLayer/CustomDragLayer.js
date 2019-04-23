@@ -46,10 +46,10 @@ const CustomDragLayer = props => {
       const element = list[i];
       const imgElement = list[i].childNodes[2];
       let img = (
-        <img key={'draglayerImg' + i} src={imgElement.data} alt="foo" />
+        <img key={'draglayerImg' + i} src={imgElement.src} alt="foo" />
       );
       imgSources.push(img);
-      if (element.getAttribute('imageId') === item.item.id) {
+      if (element.getAttribute('imgid') === item.item.identifier) {
         draggedIndex = i;
       }
     }
