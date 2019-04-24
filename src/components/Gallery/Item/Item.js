@@ -3,7 +3,9 @@ import { DragSource } from 'react-dnd';
 import { getEmptyImage } from 'react-dnd-html5-backend';
 import ImageViewerDialog from '../../Dialog/ImageViewerDialog/ImageViewerDialog/ImageViewerDialog';
 import Image from '../Image/Image';
+import ItemContextMenu from '../ItemContextMenu/ItemContextMenu';
 import useDialog from '../../../hooks/Dialog';
+import useMenu from '../../../hooks/Menu';
 import ConnectedItemLabel from '../../../containers/ConnectedItemLabel';
 
 const itemSource = {
@@ -52,6 +54,8 @@ const Item = props => {
 
   const { openedDialog, openDialog, closeDialog } = useDialog();
 
+  const { anchorEl, openedMenu, openMenu, closeMenu } = useMenu();
+
   useEffect(() => {
     connectDragPreview(getEmptyImage(), {
       captureDraggingState: true
@@ -60,6 +64,7 @@ const Item = props => {
 
   const myContextMenu = e => {
     e.preventDefault();
+    openMenu(e);
   };
 
   const unselectedChannels = item.unselectedChannels;
@@ -86,6 +91,14 @@ const Item = props => {
         height={containerStyle.height}
         width={0.9 * containerStyle.width}
       />
+
+      <ItemContextMenu
+        anchorEl={anchorEl}
+        onClose={closeMenu}
+        open={openedMenu}
+        openImageViewerDialog={openDialog}
+      />
+
       <ImageViewerDialog
         onClose={closeDialog}
         open={openedDialog}

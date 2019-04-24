@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^3.4.0",
-    "@material-ui/icons": "^3.0.1",
-    "@material-ui/lab": "^3.0.0-alpha.23",
+    "@material-ui/core": "^3.9.3",
+    "@material-ui/icons": "^3.0.2",
+    "@material-ui/lab": "^3.0.0-alpha.30",
     "@material-ui/styles": "^3.0.0-alpha.10",
     "@tensorflow/tfjs": "^1.0.3",
     "@tensorflow/tfjs-vis": "^1.0.3",
