@@ -1,62 +1,70 @@
-import React, { PureComponent } from 'react';
+import * as React from 'react';
 import * as d3 from 'd3';
 
-class ImageHistogram extends PureComponent {
-  constructor(props) {
-    super();
-    this.canvas = React.createRef();
-    this.state = {
-      data: []
-    };
-    this.createHistogram = this.createHistogram.bind(this);
-  }
+const ImageHistogram = props => {
+  const canvasRef = React.useRef();
+  const nodeRef = React.useRef();
 
-  componentDidMount() {
+  const { src } = props;
+
+  const [data, setData] = React.useState([]);
+
+  console.log(data);
+
+  React.useEffect(() => {
     let image = new Image();
+
+    image.src = src;
+
     image.onload = e => {
       const img = e.target;
-      const canvas = this.canvas.current;
+      const canvas = canvasRef.current;
       const context = canvas.getContext('2d');
       context.drawImage(img, 0, img.height, img.width, img.height);
+
       const imageData = context.getImageData(
         0,
         img.height,
         img.width,
         img.height
       ).data;
-      const data = this.createPlottableData(imageData);
+
+      debugger;
+
+      const plottableData = createPlottableData(imageData);
+
       // Create Histogram
-      this.createHistogram(data);
-      this.setState({ data: data });
+      createHistogram(plottableData);
+
+      setData(plottableData);
     };
-    image.src = this.props.src;
-  }
 
-  componentDidUpdate() {
-    this.createHistogram(this.state.data);
-  }
+    image.src = src;
+  });
 
-  createPlottableData(imageData) {
+  const createPlottableData = imageData => {
+    console.log(imageData);
     let rD = {},
       gD = {},
       bD = {};
-    for (var i = 0; i < 256; i++) {
+    for (let i = 0; i < 256; i++) {
       rD[i] = 0;
       gD[i] = 0;
       bD[i] = 0;
     }
-    for (var j = 0; j < imageData.length; j += 4) {
+    for (let j = 0; j < imageData.length; j += 4) {
       rD[imageData[j]]++;
       gD[imageData[j + 1]]++;
       bD[imageData[j + 2]]++;
     }
     return { rD, gD, bD };
-  }
+  };
 
-  createHistogram(imgData) {
+  const createHistogram = imgData => {
+    console.log(imgData);
     let W = 300;
     let H = 300;
-    const svg = d3.select(this.node);
+    const svg = d3.select(nodeRef.current);
     const margin = { top: 20, right: 44, bottom: 20, left: 0 };
     const width = W - margin.left - margin.right;
     const height = H - margin.top - margin.bottom;
@@ -125,29 +133,23 @@ class ImageHistogram extends PureComponent {
           return height - y(d.freq);
         });
     }
+
     graphComponent(imgData.gD, 'green');
     graphComponent(imgData.bD, 'blue');
     graphComponent(imgData.rD, 'red');
-  }
+  };
 
-  render() {
-    return (
-      <React.Fragment>
-        <canvas
-          style={{ display: 'none' }}
-          ref={this.canvas}
-          height={300}
-          width={300}
-        />
-        <svg
-          style={{ margin: '20px' }}
-          ref={node => (this.node = node)}
-          width={300}
-          height={300}
-        />
-      </React.Fragment>
-    );
-  }
-}
+  return (
+    <React.Fragment>
+      <canvas
+        style={{ display: 'none' }}
+        ref={canvasRef}
+        height={300}
+        width={300}
+      />
+      <svg style={{ margin: '20px' }} ref={nodeRef} width={300} height={300} />
+    </React.Fragment>
+  );
+};
 
 export default ImageHistogram;
