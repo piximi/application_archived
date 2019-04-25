@@ -33,7 +33,7 @@ const ColorIconButton = (props: Props) => {
           classes={{ root: classes.avatarRoot }}
           style={{ backgroundColor: color }}
         >
-          <LabelIcon style={{ color: color }} />
+          <LabelIcon style={{ color: '#FFF' }} />
         </MaterialUI.Avatar>
       </MaterialUI.IconButton>
 
