@@ -1,7 +1,7 @@
 import React from 'react';
 import Checkbox from '@material-ui/core/Checkbox';
 
-class Checkboxes extends React.Component {
+class ChannelSelection extends React.Component {
   state = {
     0: true,
     1: true,
@@ -51,4 +51,4 @@ class Checkboxes extends React.Component {
   }
 }
 
-export default Checkboxes;
+export default ChannelSelection;

@@ -22,28 +22,22 @@ const ImageViewerExposureDrawer = props => {
   } = props;
   return (
     <Drawer
+      classes={{ paper: classes.drawerPaper }}
       anchor="right"
       style={{ backgroundColor: '#202124' }}
-      classes={{ paper: classes.paper }}
       variant={'persistent'}
       onClose={onClose}
       open={open}
     >
-      =
-      <div
-        className={classes.content}
-        onKeyDown={onClose}
-        role="button"
-        tabIndex={0}
-      >
-        <ImageHistogram src={src} />
-        <ChannelSelection
-          setUnselectedChannels={setUnselectedChannels}
-          unselectedChannels={unselectedChannels}
-        />
-        <Brightness brightness={brightness} setBrightness={setBrightness} />
-        <Contrast contrast={contrast} setContrast={setContrast} />
-      </div>
+      <ImageHistogram channels={unselectedChannels} src={src} />
+
+      <ChannelSelection
+        setUnselectedChannels={setUnselectedChannels}
+        unselectedChannels={unselectedChannels}
+      />
+
+      <Brightness brightness={brightness} setBrightness={setBrightness} />
+      <Contrast contrast={contrast} setContrast={setContrast} />
     </Drawer>
   );
 };
