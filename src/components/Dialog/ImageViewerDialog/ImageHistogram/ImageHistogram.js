@@ -5,7 +5,7 @@ const ImageHistogram = props => {
   const canvasRef = React.useRef();
   const nodeRef = React.useRef();
 
-  const { channels, src } = props;
+  const { src } = props;
 
   const [data, setData] = React.useState([]);
 
