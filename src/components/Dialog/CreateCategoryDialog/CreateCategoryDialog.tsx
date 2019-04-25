@@ -1,24 +1,19 @@
 import * as React from 'react';
-import Dialog from '../Dialog';
+import DialogContent from '../../DialogContent/DialogContent';
 import DialogActions from '../../DialogActions/DialogActions';
 import DialogTitle from '../../DialogTitle/DialogTitle';
-import DialogContent from '../../DialogContent/DialogContent';
 import ColorIconButton from '../../ColorIconButton/ColorIconButton';
+import Dialog from '../Dialog';
 import CategoryDescriptionTextField from '../../CategoryDescriptionTextField/CategoryDescriptionTextField';
 
-const EditCategoryDialog = (props: any) => {
-  const { category, updateColor, updateDescription, onClose, open } = props;
+const CreateCategoryDialog = (props: any) => {
+  const { createCategory, open, onClose } = props;
 
-  const [color, setColor] = React.useState<string>(category.color);
-
-  const [description, setDescription] = React.useState<string>(
-    category.description
-  );
+  const [color, setColor] = React.useState<string>('#00e676');
+  const [description, setDescription] = React.useState<string>('');
 
   const onAcceptance = () => {
-    updateColor(category.index, color);
-
-    updateDescription(category.index, description);
+    createCategory(color, description);
 
     onClose();
   };
@@ -27,7 +22,7 @@ const EditCategoryDialog = (props: any) => {
     setColor(color.hex);
   };
 
-  const onDescriptionChange = (event: React.FormEvent<EventTarget>): void => {
+  const onDescriptionChange = (event: React.FormEvent<EventTarget>) => {
     const target = event.target as HTMLInputElement;
 
     setDescription(target.value);
@@ -35,7 +30,7 @@ const EditCategoryDialog = (props: any) => {
 
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogTitle title="Edit category" />
+      <DialogTitle title="Create a new category" />
 
       <DialogContent>
         <ColorIconButton color={color} onColorChange={onColorChange} />
@@ -47,7 +42,7 @@ const EditCategoryDialog = (props: any) => {
       </DialogContent>
 
       <DialogActions
-        acceptanceTitle="Edit"
+        acceptanceTitle="Create"
         cancellationTitle="Cancel"
         onAcceptance={onAcceptance}
         onCancellation={onClose}
@@ -56,4 +51,4 @@ const EditCategoryDialog = (props: any) => {
   );
 };
 
-export default EditCategoryDialog;
+export default CreateCategoryDialog;

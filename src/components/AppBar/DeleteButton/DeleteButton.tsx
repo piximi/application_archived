@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next';
 const useStyles = makeStyles(styles);
 
 const DeleteButton = (props: any) => {
-  const { t } = useTranslation();
+  const { t: translation } = useTranslation();
 
   const { openedDialog, openDialog, closeDialog } = useDialog();
 
@@ -20,9 +20,9 @@ const DeleteButton = (props: any) => {
 
   return (
     <React.Fragment>
-      <Tooltip title={t('Delete images')}>
+      <Tooltip title={translation('Delete images')}>
         <IconButton
-          aria-label={t('Delete images')}
+          aria-label={translation('Delete images')}
           classes={{ root: classes.button }}
           onClick={openDialog}
         >

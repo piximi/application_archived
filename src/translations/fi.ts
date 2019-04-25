@@ -8,6 +8,7 @@ const fi = {
     'Delete category': 'Poista kategoria',
     'Delete images': 'Poista kuvat',
     'Description': 'Kuvaus',
+    'Edit': 'Edit',
     'Edit category': 'Muokkaa kategoriaa',
     'Help': 'Apua',
     'Hide other categories': 'Piilota muut kategoriat',

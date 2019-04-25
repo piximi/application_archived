@@ -3,11 +3,11 @@ import { Typography } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 
 const Logo = () => {
-  const { t } = useTranslation();
+  const { t: translation } = useTranslation();
 
   return (
     <Typography variant="h6" color="inherit">
-      {t('Logo')}
+      {translation('Logo')}
     </Typography>
   );
 };

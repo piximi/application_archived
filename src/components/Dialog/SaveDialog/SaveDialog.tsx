@@ -18,7 +18,7 @@ const SaveDialog = (props: any) => {
 
   const { open, defaultDialogText, changeDefaultDialogText } = props;
 
-  const { t } = useTranslation();
+  const { t: translation } = useTranslation();
 
   return (
     <Dialog
@@ -41,10 +41,10 @@ const SaveDialog = (props: any) => {
       </DialogContent>
       <DialogActions>
         <Button onClick={() => handleCancel(props)} color="primary">
-          {t('Cancel')}
+          {translation('Cancel')}
         </Button>
         <Button onClick={() => handleDownload(props)} color="primary">
-          {t('Download')}
+          {translation('Download')}
         </Button>
       </DialogActions>
     </Dialog>

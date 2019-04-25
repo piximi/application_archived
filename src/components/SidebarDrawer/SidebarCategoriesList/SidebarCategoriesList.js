@@ -17,7 +17,7 @@ import { useTranslation } from 'react-i18next';
 const SidebarCategoriesList = props => {
   const { collapsedList, collapseList } = useCollapseList();
 
-  const { t } = useTranslation();
+  const { t: translation } = useTranslation();
 
   const { categories, connectDropTarget } = props;
 
@@ -37,7 +37,7 @@ const SidebarCategoriesList = props => {
             {!collapsedList ? <ExpandLessIcon /> : <ExpandMoreIcon />}
           </ListItemIcon>
 
-          <ListItemText inset primary={t('Categories')} />
+          <ListItemText inset primary={translation('Categories')} />
         </ListItem>
 
         <Collapse in={!collapsedList} timeout="auto" unmountOnExit>
