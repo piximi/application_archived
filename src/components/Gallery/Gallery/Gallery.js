@@ -1,5 +1,4 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import './Gallery.css';
 import Items from '../Items/Items.js';
 import SelectionBox from '../SelectionBox/SelectionBox.js';
@@ -155,17 +154,17 @@ const Gallery = props => {
   );
 };
 
-Gallery.propTypes = {
-  images: PropTypes.array.isRequired,
-  imagesPerRow: PropTypes.number,
-  decreaseWidth: PropTypes.number,
-  setSelectedImages: PropTypes.func,
-  callOnDragEnd: PropTypes.func
-};
-
-Gallery.defaultProps = {
-  decreaseWidth: 0,
-  imagesPerRow: 10
-};
+// Gallery.propTypes = {
+//   images: PropTypes.array.isRequired,
+//   imagesPerRow: PropTypes.number,
+//   decreaseWidth: PropTypes.number,
+//   setSelectedImages: PropTypes.func,
+//   callOnDragEnd: PropTypes.func
+// };
+//
+// Gallery.defaultProps = {
+//   decreaseWidth: 0,
+//   imagesPerRow: 10
+// };
 
 export default Gallery;

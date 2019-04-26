@@ -1,5 +1,4 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 
 const Image = props => {
   const { src, openImageViewerDialog } = props;
@@ -91,19 +90,19 @@ const Image = props => {
   );
 };
 
-Image.propTypes = {
-  src: PropTypes.string,
-  height: PropTypes.number,
-  width: PropTypes.number,
-  brightness: PropTypes.number,
-  contrast: PropTypes.number,
-  unselectedChannels: PropTypes.array
-};
-
-Image.defaultProps = {
-  brightness: 100,
-  contrast: 100,
-  unselectedChannels: []
-};
+// Image.propTypes = {
+//   src: PropTypes.string,
+//   height: PropTypes.number,
+//   width: PropTypes.number,
+//   brightness: PropTypes.number,
+//   contrast: PropTypes.number,
+//   unselectedChannels: PropTypes.array
+// };
+//
+// Image.defaultProps = {
+//   brightness: 100,
+//   contrast: 100,
+//   unselectedChannels: []
+// };
 
 export default Image;
