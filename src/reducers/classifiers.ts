@@ -6,13 +6,19 @@ export const updateClassifierNameAction = createAction(
   'classifiers/update/name'
 );
 
-const classifiers = createReducer([], {
-  [createClassifierAction]: (state, action) => {
+type Classifier = {
+  name: string;
+};
+
+const initialState: Classifier[] = [];
+
+const classifiers = createReducer(initialState, {
+  [createClassifierAction.toString()]: (state, action) => {
     const classifier = action.payload;
 
     state.push(classifier);
   },
-  [updateClassifierNameAction]: (state, action) => {
+  [updateClassifierNameAction.toString()]: (state, action) => {
     const { index, name } = action.payload;
 
     const classifier = state[index];

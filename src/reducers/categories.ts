@@ -1,4 +1,5 @@
 import { createAction, createReducer } from 'redux-starter-kit';
+import * as uuid from 'uuid';
 
 export const addCategoryAction = createAction('categories/add');
 
@@ -37,50 +38,50 @@ const initialState = [
 ];
 
 const categories = createReducer(initialState, {
-  [addCategoryAction]: (state, action) => {
+  [addCategoryAction.toString()]: (state, action) => {
     const category = {
       color: '#F8F8F8',
       description: 'Unknown',
-      identifier: null,
+      identifier: uuid.v4(),
       index: '-1',
       visible: true
     };
 
     state.push(category);
   },
-  [createCategoryAction]: (state, action) => {
+  [createCategoryAction.toString()]: (state, action) => {
     const category = action.payload;
 
     state.push(category);
   },
-  [deleteCategoryAction]: (state, action) => {
+  [deleteCategoryAction.toString()]: (state, action) => {
     const { index } = action.payload;
 
     return state.filter(category => category.index !== index);
   },
-  [hideOtherCategoriesAction]: (state, action) => {},
-  [toggleCategoryVisibilityAction]: (state, action) => {
+  [hideOtherCategoriesAction.toString()]: (state, action) => {},
+  [toggleCategoryVisibilityAction.toString()]: (state, action) => {
     const { index } = action.payload;
 
     const category = state[index];
 
     category.visible = !category.visible;
   },
-  [updateCategoryColorAction]: (state, action) => {
+  [updateCategoryColorAction.toString()]: (state, action) => {
     const { index, color } = action.payload;
 
     const category = state[index];
 
     category.color = color;
   },
-  [updateCategoryDescriptionAction]: (state, action) => {
+  [updateCategoryDescriptionAction.toString()]: (state, action) => {
     const { index, description } = action.payload;
 
     const category = state[index];
 
     category.description = description;
   },
-  [updateCategoryVisibilityAction]: (state, action) => {
+  [updateCategoryVisibilityAction.toString()]: (state, action) => {
     const { index } = action.payload;
 
     const category = state[index];

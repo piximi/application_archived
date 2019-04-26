@@ -151,17 +151,24 @@ export const updateImageCategoryAction = createAction(
   'images/image/update-category'
 );
 
-const findImageIndex = (images, identifier) => {
-  return images.findIndex(image => image.identifier === identifier);
+const findImageIndex = (images: any, identifier: any) => {
+  return images.findIndex((image: any) => image.identifier === identifier);
 };
 
-const images = createReducer([], {
-  [createImageAction]: (state, action) => {
+type Image = {
+  identifier: string;
+  categoryIdentifier: string;
+};
+
+const initialState: Image[] = [];
+
+const images = createReducer(initialState, {
+  [createImageAction.toString()]: (state, action) => {
     const image = action.payload;
 
     state.push(image);
   },
-  [updateImageCategoryAction]: (state, action) => {
+  [updateImageCategoryAction.toString()]: (state, action) => {
     const { identifier, categoryIdentifier } = action.payload;
 
     const index = findImageIndex(state, identifier);
