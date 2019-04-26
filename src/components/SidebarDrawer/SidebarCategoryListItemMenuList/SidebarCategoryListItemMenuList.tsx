@@ -46,6 +46,9 @@ const SidebarCategoryListItemMenuList = (props: any) => {
     closeMenu();
   };
 
+  const known: boolean =
+    category.identifier !== '00000000-0000-0000-0000-000000000000';
+
   return (
     <React.Fragment>
       <Popover
@@ -61,13 +64,17 @@ const SidebarCategoryListItemMenuList = (props: any) => {
               <ListItemText primary="Hide other categories" />
             </MenuItem>
 
-            <MenuItem onClick={onEditCategoryClick}>
-              <ListItemText primary="Edit category" />
-            </MenuItem>
+            {known && (
+              <React.Fragment>
+                <MenuItem onClick={onEditCategoryClick}>
+                  <ListItemText primary="Edit category" />
+                </MenuItem>
 
-            <MenuItem onClick={onDeleteCategoryClick}>
-              <ListItemText primary="Delete category" />
-            </MenuItem>
+                <MenuItem onClick={onDeleteCategoryClick}>
+                  <ListItemText primary="Delete category" />
+                </MenuItem>
+              </React.Fragment>
+            )}
           </MenuList>
         </Paper>
       </Popover>
