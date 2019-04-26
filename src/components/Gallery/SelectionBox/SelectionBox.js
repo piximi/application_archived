@@ -22,7 +22,19 @@ const SelectionBox = props => {
     };
 
     setStyle(newStyle);
-  }, []);
+  }, [props.selectionBoxCoordinates]);
+  
+  React.useEffect(() => {
+    const defaultCoordinates = {left: '0px', top: '0px', width: '0px', height: '0px'};
+
+    const newStyle = {
+      ...style,
+      ...defaultCoordinates,
+      visibility: props.visibility
+    };
+
+      setStyle(newStyle);
+  }, [props.visibility]);
 
   return <div style={style} />;
 };
