@@ -154,17 +154,9 @@ const Gallery = props => {
   );
 };
 
-// Gallery.propTypes = {
-//   images: PropTypes.array.isRequired,
-//   imagesPerRow: PropTypes.number,
-//   decreaseWidth: PropTypes.number,
-//   setSelectedImages: PropTypes.func,
-//   callOnDragEnd: PropTypes.func
-// };
-//
-// Gallery.defaultProps = {
-//   decreaseWidth: 0,
-//   imagesPerRow: 10
-// };
+Gallery.defaultProps = {
+  decreaseWidth: 0,
+  imagesPerRow: 10
+};
 
 export default Gallery;

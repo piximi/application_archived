@@ -70,16 +70,6 @@ const CustomDragLayer = props => {
   );
 };
 
-// CustomDragLayer.propTypes = {
-//   item: PropTypes.object,
-//   itemType: PropTypes.string,
-//   currentOffset: PropTypes.shape({
-//     x: PropTypes.number.isRequired,
-//     y: PropTypes.number.isRequired
-//   }),
-//   isDragging: PropTypes.bool.isRequired
-// };
-
 function collect(monitor) {
   return {
     item: monitor.getItem(),
