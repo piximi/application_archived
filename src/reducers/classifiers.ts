@@ -1,14 +1,11 @@
 import { createAction, createReducer } from 'redux-starter-kit';
+import { Classifier } from '../types';
 
 export const createClassifierAction = createAction('classifiers/create');
 
 export const updateClassifierNameAction = createAction(
   'classifiers/update/name'
 );
-
-type Classifier = {
-  name: string;
-};
 
 const initialState: Classifier[] = [];
 

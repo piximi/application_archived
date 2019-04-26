@@ -13,7 +13,7 @@ const DeleteCategoryDialog = (props: any) => {
   const { category, deleteCategory, open, onClose } = props;
 
   const onDeleteCategoryClick = () => {
-    deleteCategory(category.index);
+    deleteCategory(category.identifier);
   };
 
   const dialogTitle = `Delete ${category.description}?`;

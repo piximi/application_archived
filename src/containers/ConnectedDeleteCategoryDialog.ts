@@ -1,20 +1,20 @@
 import { connect } from 'react-redux';
 import DeleteCategoryDialog from '../components/Dialog/DeleteCategoryDialog/DeleteCategoryDialog';
 import { deleteCategoryAction } from '../reducers/categories';
-// import { setImageCategoryToNullBasedOnCategoryAction } from '../actions/images';
+import { Category } from '../types';
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: Category[]) => {
   return state;
 };
 
 const mapDispatchToProps = (dispatch: any, props: any) => {
   return {
-    deleteCategory: (index: number) => {
-      const payload = { index: index };
+    deleteCategory: (identifier: string) => {
+      const payload = { identifier: identifier };
 
-      dispatch(deleteCategoryAction(payload));
+      const action = deleteCategoryAction(payload);
 
-      // dispatch(setImageCategoryToNullBasedOnCategoryAction(categoryIdentifier));
+      dispatch(action);
     }
   };
 };

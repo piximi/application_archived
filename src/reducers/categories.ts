@@ -1,5 +1,5 @@
 import { createAction, createReducer } from 'redux-starter-kit';
-import * as uuid from 'uuid';
+import { Category } from '../types';
 
 export const addCategoryAction = createAction('categories/add');
 
@@ -27,64 +27,68 @@ export const updateCategoryVisibilityAction = createAction(
   'categories/category/update-visibility'
 );
 
-const initialState = [
+const initialState: Category[] = [
   {
+    classifierIdentifier: undefined,
     color: '#F8F8F8',
     description: 'Unknown',
     identifier: '00000000-0000-0000-0000-000000000000',
-    index: '-1',
+    index: 0,
     visible: true
   }
 ];
 
 const categories = createReducer(initialState, {
   [addCategoryAction.toString()]: (state, action) => {
-    const category = {
+    const category: Category = {
+      classifierIdentifier: undefined,
       color: '#F8F8F8',
       description: 'Unknown',
-      identifier: uuid.v4(),
-      index: '-1',
+      identifier: '00000000-0000-0000-0000-000000000000',
+      index: 0,
       visible: true
     };
 
     state.push(category);
   },
   [createCategoryAction.toString()]: (state, action) => {
-    const category = action.payload;
+    const category: Category = action.payload;
 
     state.push(category);
   },
   [deleteCategoryAction.toString()]: (state, action) => {
-    const { index } = action.payload;
+    const { identifier } = action.payload;
 
-    return state.filter(category => category.index !== index);
+    return state.filter(
+      (category: Category) => category.identifier !== identifier
+    );
   },
   [hideOtherCategoriesAction.toString()]: (state, action) => {},
   [toggleCategoryVisibilityAction.toString()]: (state, action) => {
     const { index } = action.payload;
 
-    const category = state[index];
+    const category: Category = state[index];
 
     category.visible = !category.visible;
   },
   [updateCategoryColorAction.toString()]: (state, action) => {
     const { index, color } = action.payload;
 
-    const category = state[index];
+    const category: Category = state[index];
 
     category.color = color;
   },
   [updateCategoryDescriptionAction.toString()]: (state, action) => {
     const { index, description } = action.payload;
 
-    const category = state[index];
+    const category: Category = state[index];
 
     category.description = description;
   },
   [updateCategoryVisibilityAction.toString()]: (state, action) => {
     const { index } = action.payload;
 
-    const category = state[index];
+    const category: Category = state[index];
 
     category.visible = !category.visible;
   }
