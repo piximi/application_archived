@@ -14,7 +14,7 @@ import * as _ from 'lodash';
 import ConnectedSidebarCategoryListItem from '../../../containers/ConnectedSidebarCategoryListItem';
 import { useTranslation } from 'react-i18next';
 
-const SidebarCategoriesList = props => {
+const SidebarCategoriesList = (props: any) => {
   const { collapsedList, collapseList } = useCollapseList();
 
   const { t: translation } = useTranslation();

@@ -10,7 +10,7 @@ import ConnectedEditCategoryDialog from '../../../containers/ConnectedEditCatego
 import ConnectedDeleteCategoryDialog from '../../../containers/ConnectedDeleteCategoryDialog';
 import useDialog from '../../../hooks/Dialog';
 
-const SidebarCategoryListItemMenuList = props => {
+const SidebarCategoryListItemMenuList = (props: any) => {
   const { anchorEl, category, closeMenu, openedMenu } = props;
 
   const {
