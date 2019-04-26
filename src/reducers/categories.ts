@@ -38,6 +38,15 @@ const initialState: Category[] = [
   }
 ];
 
+const findCategoryIndex = (
+  categories: Category[],
+  identifier: string
+): number => {
+  return categories.findIndex(
+    (category: Category) => category.identifier === identifier
+  );
+};
+
 const categories = createReducer(initialState, {
   [addCategoryAction.toString()]: (state, action) => {
     const category: Category = {
@@ -65,32 +74,40 @@ const categories = createReducer(initialState, {
   },
   [hideOtherCategoriesAction.toString()]: (state, action) => {},
   [toggleCategoryVisibilityAction.toString()]: (state, action) => {
-    const { index } = action.payload;
+    const { identifier } = action.payload;
+
+    const index = findCategoryIndex(state, identifier);
 
     const category: Category = state[index];
 
     category.visible = !category.visible;
   },
   [updateCategoryColorAction.toString()]: (state, action) => {
-    const { index, color } = action.payload;
+    const { identifier, color } = action.payload;
+
+    const index = findCategoryIndex(state, identifier);
 
     const category: Category = state[index];
 
     category.color = color;
   },
   [updateCategoryDescriptionAction.toString()]: (state, action) => {
-    const { index, description } = action.payload;
+    const { identifier, description } = action.payload;
+
+    const index = findCategoryIndex(state, identifier);
 
     const category: Category = state[index];
 
     category.description = description;
   },
   [updateCategoryVisibilityAction.toString()]: (state, action) => {
-    const { index } = action.payload;
+    const { identifier, visible } = action.payload;
+
+    const index = findCategoryIndex(state, identifier);
 
     const category: Category = state[index];
 
-    category.visible = !category.visible;
+    category.visible = visible;
   }
 });
 

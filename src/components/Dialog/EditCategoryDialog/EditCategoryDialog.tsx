@@ -16,9 +16,9 @@ const EditCategoryDialog = (props: any) => {
   );
 
   const onAcceptance = () => {
-    updateColor(category.index, color);
+    updateColor(category.identifier, color);
 
-    updateDescription(category.index, description);
+    updateDescription(category.identifier, description);
 
     onClose();
   };

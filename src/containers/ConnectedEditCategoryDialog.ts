@@ -4,8 +4,9 @@ import {
   updateCategoryColorAction
 } from '../reducers/categories';
 import EditCategoryDialog from '../components/Dialog/EditCategoryDialog/EditCategoryDialog';
+import { Category } from '../types';
 
-const mapStateToProps = (state: { categories: any }) => {
+const mapStateToProps = (state: { categories: Category[] }) => {
   return {
     categories: state.categories
   };
@@ -13,15 +14,19 @@ const mapStateToProps = (state: { categories: any }) => {
 
 const mapDispatchToProps = (dispatch: any, props: any) => {
   return {
-    updateColor: (index: number, color: string) => {
-      const payload = { index: index, color: color };
+    updateColor: (identifier: string, color: string) => {
+      const payload = { identifier: identifier, color: color };
 
-      dispatch(updateCategoryColorAction(payload));
+      const action = updateCategoryColorAction(payload);
+
+      dispatch(action);
     },
-    updateDescription: (index: number, description: string) => {
-      const payload = { index: index, description: description };
+    updateDescription: (identifier: string, description: string) => {
+      const payload = { identifier: identifier, description: description };
 
-      dispatch(updateCategoryDescriptionAction(payload));
+      const action = updateCategoryDescriptionAction(payload);
+
+      dispatch(action);
     }
   };
 };

@@ -5,23 +5,28 @@ import {
 } from '../reducers/categories';
 
 import SidebarCategoryListItem from '../components/SidebarDrawer/SidebarCategoryListItem/SidebarCategoryListItem';
+import { Category } from '../types';
 
 const mapDispatchToProps = (dispatch: any, props: any) => {
   return {
-    toggleVisibility: (index: number) => {
-      const payload = { index: index };
+    toggleVisibility: (identifier: string) => {
+      const payload = { identifier: identifier };
 
-      dispatch(toggleCategoryVisibilityAction(payload));
+      const action = toggleCategoryVisibilityAction(payload);
+
+      dispatch(action);
     },
-    updateVisibility: (index: number, visible: boolean) => {
-      const payload = { index: index, visible: visible };
+    updateVisibility: (identifier: string, visible: boolean) => {
+      const payload = { identifier: identifier, visible: visible };
 
-      dispatch(updateCategoryVisibilityAction(payload));
+      const action = updateCategoryVisibilityAction(payload);
+
+      dispatch(action);
     }
   };
 };
 
-const mapStateToProps = (state: any, props: any) => {
+const mapStateToProps = (state: { categories: Category[] }, props: any) => {
   return {
     categories: state.categories
   };

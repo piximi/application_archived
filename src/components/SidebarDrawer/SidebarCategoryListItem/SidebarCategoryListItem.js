@@ -48,7 +48,7 @@ const SidebarCategoryListItem = props => {
   const { categories, category, connectDropTarget, toggleVisibility } = props;
 
   const onToggleVisibilityClick = () => {
-    toggleVisibility(category.index);
+    toggleVisibility(category.identifier);
   };
 
   const VisibleIcon = props => {
