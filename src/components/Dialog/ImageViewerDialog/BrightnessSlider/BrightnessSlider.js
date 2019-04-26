@@ -9,11 +9,11 @@ const useStyles = makeStyles(styles);
 const BrightnessSlider = props => {
   const classes = useStyles();
 
-  const onChange = (event, value) => {
-    props.setBrightness(value);
-  };
+  const { brightness, setBrightness } = props;
 
-  const { brightness } = props;
+  const onChange = (event, value) => {
+    setBrightness(value);
+  };
 
   return (
     <div className={classes.root}>
