@@ -1,11 +1,9 @@
 import * as tensorflow from '@tensorflow/tfjs';
 import { store } from './index';
 import { updateCategoryAndProbabilityAction } from './actions/images';
-import Dataset from './dataset';
 
-var result = {};
-var categories = {};
-
+let result = {};
+let categories = {};
 let indexMap = {};
 let categoryIndexArray = [];
 let counter = 0;
@@ -22,10 +20,23 @@ const TRAIN_BATCHES = 10;
 // reasons we'll use a subset.
 const TEST_BATCH_SIZE = 32;
 const TEST_ITERATION_FREQUENCY = 5;
+let VALIDATIONSET_RATIO = 0.3;
 
-async function loadNetwork(num_classes) {
+const passResults = async (imgId, predictions) => {
+  let predictionsArray = await predictions.data();
+  let index = indexMap[predictionsArray.indexOf(Math.max(...predictionsArray))];
+  let category = store.getState().categories[index].identifier;
+  let probability = predictionsArray[index];
+
+  result[imgId] = { category: category, probability: probability };
+
+  //store.dispatch(updateImageCategoryAction(imgId, category));
+  //store.dispatch(updateImageProbabilityAction(imgId, probability));
+};
+
+const loadNetwork = async num_classes => {
   //get Prelaoded model of MobileNet
-  var loss;
+  let loss;
   if (num_classes === 1) {
     loss = 'binaryCrossentropy';
   } else {
@@ -82,9 +93,9 @@ async function loadNetwork(num_classes) {
   });
 
   return { PretrainedModel: tmpModel, ShallowNet: model };
-}
+};
 
-async function train(modelDict, datasetObj) {
+const train = async (modelDict, datasetObj) => {
   for (let i = 0; i < TRAIN_BATCHES; i++) {
     // TODO: Change function for getting training batch
     const batch = datasetObj.nextTrainBatch(BATCH_SIZE);
@@ -122,9 +133,9 @@ async function train(modelDict, datasetObj) {
   }
 
   return true;
-}
+};
 
-async function predict(modelDict, datasetObj) {
+const predict = async (modelDict, datasetObj) => {
   //while (isPredicting) {
   // Load img
   for (let img of datasetObj.predictionSet) {
@@ -155,9 +166,9 @@ async function predict(modelDict, datasetObj) {
   //return predictions//.as1D().argMax();
 
   await tensorflow.nextFrame();
-}
+};
 
-async function run(datasetObj) {
+const run = async datasetObj => {
   const model = await loadNetwork(datasetObj.num_classes);
 
   let doneTraining = await train(model, datasetObj);
@@ -169,9 +180,9 @@ async function run(datasetObj) {
     console.log(result);
     store.dispatch(updateCategoryAndProbabilityAction(result));
   }
-}
+};
 
-function getCategoryIndex(categoryId, categories) {
+const getCategoryIndex = (categoryId, categories) => {
   let index = 0;
   for (let category of categories) {
     if (categoryId === category.identifier) {
@@ -181,39 +192,48 @@ function getCategoryIndex(categoryId, categories) {
     }
   }
   return null;
-}
+};
 
-async function passResults(imgId, predictions) {
-  let predictionsArray = await predictions.data();
-  let index = indexMap[predictionsArray.indexOf(Math.max(...predictionsArray))];
-  let category = store.getState().categories[index].identifier;
-  let probability = predictionsArray[index];
+const createImageTags = (images, categories) => {
+  indexMap = {};
+  counter = 0;
+  categoryIndexArray = [];
 
-  result[imgId] = { category: category, probability: probability };
+  return Object.values(images).map(image => {
+    let categoryIndex = getCategoryIndex(image.category, categories);
 
-  //store.dispatch(updateImageCategoryAction(imgId, category));
-  //store.dispatch(updateImageProbabilityAction(imgId, probability));
-}
+    // Create Index Map
+    if (!categoryIndexArray.includes(categoryIndex) && categoryIndex !== null) {
+      categoryIndexArray.push(categoryIndex);
+      indexMap[counter] = categoryIndex;
+      counter++;
+    }
 
-// TODO: Make it work with Redux
+    let imageTag = new Image();
+    imageTag.identifier = image.id;
+    imageTag.category = getCategoryIndex(image.category, categories);
+    imageTag.src = image.src;
+    return imageTag;
+  });
+};
 
-async function fitAndPredict(images, allCategories) {
+const fitAndPredict = async (images, allCategories) => {
   categories = allCategories.slice(1, categories.length);
   const imageTags = createImageTags(images, categories);
   const dataset = new Dataset();
   dataset.loadFromArray(imageTags);
   run(dataset);
   return null;
-}
+};
 
-async function exportWeights() {
+const exportWeights = async () => {
   const preLoadedmodel = await tensorflow.loadLayersModel(
     'indexeddb://classifier'
   );
   await preLoadedmodel.save('downloads://classifier');
-}
+};
 
-async function importWeights(weightsFile) {
+const importWeights = async weightsFile => {
   //fetch('https://weights.cyto.ai/mobilenet/model.json')
   fetch(
     'https://storage.googleapis.com/tfjs-models/tfjs/mobilenet_v1_0.25_224/model.json'
@@ -231,30 +251,179 @@ async function importWeights(weightsFile) {
         tensorflow.io.browserFiles([modelFile, weightsFile])
       );
     });
-}
+};
 
-function createImageTags(images, categories) {
-  indexMap = {};
-  counter = 0;
-  categoryIndexArray = [];
+class Dataset {
+  constructor() {
+    this.numClasses = 0;
+    this.trainingSet = [];
+    this.trainingSetShuffledIndices = [];
+    this.trainingSetIndex = 0;
+    this.validationSet = [];
+    this.validationSetIndex = 0;
+    this.validationSetShuffledIndices = [];
+    this.predictionSet = [];
+  }
 
-  const imageTags = Object.values(images).map(image => {
-    let categoryIndex = getCategoryIndex(image.category, categories);
+  get num_classes() {
+    return this.numClasses;
+  }
 
-    // Create Index Map
-    if (!categoryIndexArray.includes(categoryIndex) && categoryIndex !== null) {
-      categoryIndexArray.push(categoryIndex);
-      indexMap[counter] = categoryIndex;
-      counter++;
+  loadFromArray(imDataArray) {
+    // function to split into training, validation and prediction set
+    if (imDataArray == null) {
+      console.log('No Image Data Array given.');
     }
 
-    let imageTag = new Image();
-    imageTag.identifier = image.id;
-    imageTag.category = getCategoryIndex(image.category, categories);
-    imageTag.src = image.src;
-    return imageTag;
-  });
-  return imageTags;
+    let labeledImages = {};
+
+    for (let image of imDataArray) {
+      if (image.category == null) {
+        this.predictionSet.push(image);
+      } else {
+        let currentLabelID = image.category;
+
+        if (currentLabelID in labeledImages) {
+          labeledImages[currentLabelID].push(image);
+        } else {
+          labeledImages[currentLabelID] = [image];
+        }
+      }
+    }
+
+    this.numClasses = Object.keys(labeledImages).length;
+
+    for (let labelId in labeledImages) {
+      // At least 1 element
+      let numSamplesValidation = Math.max(
+        1,
+        Math.round(labeledImages[labelId].length * VALIDATIONSET_RATIO)
+      );
+
+      let validationIndices = tensorflow.util.createShuffledIndices(
+        numSamplesValidation
+      );
+
+      for (let i = 0; i < labeledImages[labelId].length; i++) {
+        if (i in validationIndices) {
+          this.validationSet.push(labeledImages[labelId][i]);
+        } else {
+          this.trainingSet.push(labeledImages[labelId][i]);
+        }
+      }
+    }
+
+    this.trainingSetShuffledIndices = tensorflow.util.createShuffledIndices(
+      this.trainingSet.length
+    );
+
+    this.validationSetShuffledIndices = tensorflow.util.createShuffledIndices(
+      this.validationSet.length
+    );
+
+    alert('Training');
+    console.log(
+      'Training Set n_t =',
+      this.trainingSet.length,
+      ' Elements: ',
+      this.trainingSet
+    );
+
+    console.log(
+      'Validation Set n_v =',
+      this.validationSet.length,
+      ' Elements: ',
+      this.validationSet
+    );
+
+    console.log(
+      'Prediction Set n_p =',
+      this.predictionSet.length,
+      ' Elements: ',
+      this.predictionSet
+    );
+  }
+
+  nextTrainBatch(batchSize) {
+    return this.nextRandomBatch(
+      batchSize,
+      this.trainingSet,
+      this.trainingSetShuffledIndices,
+      () => {
+        this.trainingSetIndex = this.trainingSetShuffledIndices[
+          (this.trainingSetIndex + 1) % this.trainingSet.length
+        ];
+        return this.trainingSetIndex;
+      }
+    );
+  }
+
+  nextValidationBatch(batchSize) {
+    return this.nextRandomBatch(
+      batchSize,
+      this.validationSet,
+      this.validationSetShuffledIndices,
+      () => {
+        this.validationSetIndex = this.validationSetShuffledIndices[
+          (this.validationSetIndex + 1) % this.validationSet.length
+        ];
+        return this.validationSetIndex;
+      }
+    );
+  }
+
+  // TODO: change to shuffled indices list
+  nextRandomBatch(batchSize, datasetList, shuffleIndices, updateIndexFunc) {
+    let batchXY = [];
+
+    for (let i = 0; i < batchSize; i++) {
+      batchXY.push(datasetList[shuffleIndices[updateIndexFunc()]]);
+    }
+
+    return this.convertToBatchTensor(batchXY);
+  }
+
+  convertToBatchTensor(imageArray) {
+    return tensorflow.tidy(() => {
+      let xs = null;
+      // var ys = null;
+      let ys2 = null;
+
+      for (let img of imageArray) {
+        let imgTensor = tensorflow.browser.fromPixels(img);
+
+        imgTensor = tensorflow.image.resizeBilinear(imgTensor, [224, 224]);
+        imgTensor = imgTensor.expandDims(0);
+        imgTensor = imgTensor
+          .toFloat()
+          .div(tensorflow.scalar(127.0))
+          .sub(tensorflow.scalar(1.0));
+        if (xs == null) {
+          xs = imgTensor;
+        } else {
+          xs = xs.concat(imgTensor, 0);
+        }
+
+        if (ys2 == null) {
+          ys2 = [img.category];
+        } else {
+          ys2.push(img.category);
+        }
+      }
+      let labelBatch;
+      if (categories.length === 1) {
+        labelBatch = tensorflow.tensor1d(ys2, 'int32');
+      } else {
+        labelBatch = tensorflow.oneHot(
+          tensorflow.tensor1d(ys2, 'int32'),
+          this.numClasses
+        );
+      }
+
+      return [tensorflow.keep(xs), tensorflow.keep(labelBatch)];
+    });
+  }
 }
 
 export { fitAndPredict, exportWeights, importWeights, categories };
+export default Dataset;
