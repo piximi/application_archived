@@ -1,11 +1,16 @@
 import React from 'react';
 import styles from './ImageViewerDialog.css';
-import { withStyles } from '@material-ui/core/styles';
 import { Dialog } from '@material-ui/core';
 import ConnectedImageViewer from '../../../../containers/ConnectedImageViewer';
+import { makeStyles } from '@material-ui/styles';
+
+const useStyles = makeStyles(styles);
 
 const ImageViewerDialog = props => {
-  const { classes, onClose, open, src, imgIdentifier } = props;
+  const classes = useStyles();
+
+  const { onClose, open, src, imgIdentifier } = props;
+
   return (
     <Dialog
       className={classes.settingsDialog}
@@ -22,4 +27,4 @@ const ImageViewerDialog = props => {
   );
 };
 
-export default withStyles(styles, { withTheme: true })(ImageViewerDialog);
+export default ImageViewerDialog;

@@ -1,11 +1,15 @@
 import React from 'react';
-import styles from './Contrast.css';
-import { withStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 import Slider from '@material-ui/lab/Slider';
+import styles from './Contrast.css';
+import { makeStyles } from '@material-ui/styles';
+
+const useStyles = makeStyles(styles);
 
 const Contrast = props => {
-  const { classes, contrast } = props;
+  const { contrast } = props;
+
+  const classes = useStyles();
 
   const onChange = (event, value) => {
     props.setContrast(value);
@@ -30,4 +34,4 @@ const Contrast = props => {
   );
 };
 
-export default withStyles(styles, { withTheme: true })(Contrast);
+export default Contrast;

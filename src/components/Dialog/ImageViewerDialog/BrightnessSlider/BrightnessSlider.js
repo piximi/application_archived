@@ -1,15 +1,19 @@
 import React from 'react';
 import styles from './BrightnessSlider.css';
-import { withStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 import Slider from '@material-ui/lab/Slider';
+import { makeStyles } from '@material-ui/styles';
+
+const useStyles = makeStyles(styles);
 
 const BrightnessSlider = props => {
+  const classes = useStyles();
+
   const onChange = (event, value) => {
     props.setBrightness(value);
   };
 
-  const { classes, brightness } = props;
+  const { brightness } = props;
 
   return (
     <div className={classes.root}>
@@ -30,4 +34,4 @@ const BrightnessSlider = props => {
   );
 };
 
-export default withStyles(styles, { withTheme: true })(BrightnessSlider);
+export default BrightnessSlider;
