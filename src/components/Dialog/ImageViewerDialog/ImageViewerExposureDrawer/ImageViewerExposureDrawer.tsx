@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import styles from './ImageViewerExposureDrawer.css';
 import { Drawer } from '@material-ui/core';
 import ImageHistogram from '../ImageHistogram/ImageHistogram';
@@ -9,7 +9,7 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(styles);
 
-const ImageViewerExposureDrawer = props => {
+const ImageViewerExposureDrawer = (props: any) => {
   const {
     onClose,
     open,
