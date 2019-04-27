@@ -2,15 +2,17 @@ import { Divider, Drawer, List } from '@material-ui/core';
 import * as React from 'react';
 import styles from './SidebarDrawer.css';
 import { ConnectedCategories } from '../../../containers';
-import SidebarSaveListItem from '../SidebarSaveListItem/SidebarSaveListItem';
-import SidebarAppBar from '../SidebarAppBar/SidebarAppBar';
-import SidebarModelList from '../SidebarModelList/SidebarModelList';
-import SettingsListItem from '../SidebarSettingsListItem/SidebarSettingsListItem';
-import HelpListItem from '../SidebarHelpListItem/SidebarHelpListItem';
+import {
+  SidebarAppBar,
+  SidebarHelpListItem,
+  SidebarModelList,
+  SidebarNewClassifierListItem,
+  SidebarOpenListItem,
+  SidebarSaveListItem,
+  SidebarSendFeedbackListItem,
+  SidebarSettingsListItem
+} from '..';
 import { makeStyles } from '@material-ui/styles';
-import SidebarSendFeedbackListItem from '../SidebarSendFeedbackListItem/SidebarSendFeedbackListItem';
-import SidebarNewListItem from '../SidebarNewClassifierListItem/SidebarNewClassifierListItem';
-import SidebarOpenListItem from '../SidebarOpenListItem/SidebarOpenListItem';
 
 const useStyles = makeStyles(styles);
 
@@ -38,7 +40,7 @@ const SidebarDrawer = (props: any) => {
       <SidebarAppBar toggle={toggle} toggled={toggled} />
 
       <List dense>
-        <SidebarNewListItem />
+        <SidebarNewClassifierListItem />
 
         <SidebarOpenListItem loadDemoProject={loadDemoProject} />
 
@@ -56,11 +58,11 @@ const SidebarDrawer = (props: any) => {
       <Divider />
 
       <List dense>
-        <SettingsListItem />
+        <SidebarSettingsListItem />
 
         <SidebarSendFeedbackListItem />
 
-        <HelpListItem />
+        <SidebarHelpListItem />
       </List>
     </Drawer>
   );

@@ -1,13 +1,15 @@
 import * as React from 'react';
 import {
+  ListItemText,
   MenuItem,
   MenuList,
   Paper,
-  Popover,
-  ListItemText
+  Popover
 } from '@material-ui/core';
-import { ConnectedEditCategoryDialog } from '../../../containers';
-import { ConnectedDeleteCategoryDialog } from '../../../containers';
+import {
+  ConnectedDeleteCategoryDialog,
+  ConnectedEditCategoryDialog
+} from '../../../containers';
 import { useDialog } from '../../../hooks';
 
 const SidebarCategoryListItemMenuList = (props: any) => {

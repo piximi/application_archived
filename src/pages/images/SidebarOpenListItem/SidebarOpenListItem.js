@@ -11,7 +11,7 @@ import {
 import * as React from 'react';
 import FolderOpenIcon from '@material-ui/icons/FolderOpen';
 import { useDialog, useMenu } from '../../../hooks';
-import OpenDialog from '../OpenExampleClassifierDialog/OpenExampleClassifierDialog';
+import { OpenExampleClassifierDialog } from '..';
 import * as API from '../../../classifier';
 
 function openProject(e, props) {
@@ -111,7 +111,7 @@ const SidebarOpenListItem = props => {
         </Paper>
       </Popover>
 
-      <OpenDialog
+      <OpenExampleClassifierDialog
         onClose={closeDialog}
         open={openedDialog}
         loadDemoProject={loadDemoProject}

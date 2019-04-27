@@ -10,9 +10,8 @@ import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import * as API from '../../../classifier';
-import { useSnackbar } from '../../../hooks';
-import TrainingSnackbar from '../TrainingSnackbar/TrainingSnackbar';
-import { useCollapseList } from '../../../hooks';
+import { useCollapseList, useSnackbar } from '../../../hooks';
+import { TrainingSnackbar } from '..';
 
 const SidebarModelList = (props: { categories: any; images: any }) => {
   const { collapsedList, collapseList } = useCollapseList();

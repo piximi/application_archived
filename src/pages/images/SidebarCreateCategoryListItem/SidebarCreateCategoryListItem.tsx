@@ -5,7 +5,7 @@ import { ConnectedCreateCategoryDialog } from '../../../containers';
 import { useDialog } from '../../../hooks';
 import { useTranslation } from 'react-i18next';
 
-const CreateCategoryListItem = () => {
+const SidebarCreateCategoryListItem = () => {
   const { openedDialog, openDialog, closeDialog } = useDialog();
 
   const { t: translation } = useTranslation();
@@ -28,4 +28,4 @@ const CreateCategoryListItem = () => {
   );
 };
 
-export default CreateCategoryListItem;
+export default SidebarCreateCategoryListItem;

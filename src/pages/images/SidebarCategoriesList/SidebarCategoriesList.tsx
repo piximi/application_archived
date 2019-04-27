@@ -8,7 +8,7 @@ import {
 } from '@material-ui/core';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import CreateCategoryListItem from '../SidebarCreateCategoryListItem/SidebarCreateCategoryListItem';
+import { SidebarCreateCategoryListItem } from '..';
 import { useCollapseList } from '../../../hooks';
 import * as _ from 'lodash';
 import { ConnectedSidebarCategoryListItem } from '../../../containers';
@@ -50,7 +50,7 @@ const SidebarCategoriesList = (props: any) => {
             />
           ))}
 
-          <CreateCategoryListItem />
+          <SidebarCreateCategoryListItem />
         </Collapse>
       </List>
     </React.Fragment>
