@@ -2,9 +2,9 @@ import * as React from 'react';
 import LabelIcon from '@material-ui/icons/Label';
 import styles from './ItemLabel.css';
 import { IconButton } from '@material-ui/core';
-import ConnectedItemCategoryMenu from '../../../../containers/ConnectedItemCategoryMenu';
+import ConnectedItemCategoryMenu from '../../../containers/ConnectedItemCategoryMenu';
 import { makeStyles } from '@material-ui/styles';
-import { useMenu } from '../../../../hooks';
+import { useMenu } from '../../../hooks';
 
 const useStyles = makeStyles(styles);
 

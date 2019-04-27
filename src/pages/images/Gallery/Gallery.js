@@ -1,8 +1,8 @@
 import * as React from 'react';
 import './Gallery.css';
-import Items from '../Items/Items.js';
-import SelectionBox from '../SelectionBox/SelectionBox.js';
-import CustomDragLayer from '../CustomDragLayer/CustomDragLayer';
+import Items from '../GalleryItems/Items.js';
+import SelectionBox from '../GallerySelectionBox/SelectionBox.js';
+import CustomDragLayer from '../GalleryCustomDragLayer/CustomDragLayer';
 import { collisionDetection } from '../helper';
 
 const Gallery = props => {

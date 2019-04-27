@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import ItemLabel from '../pages/images/Gallery/ItemLabel/ItemLabel';
+import ItemLabel from '../pages/images/GalleryItemLabel/ItemLabel';
 
 const mapDispatchToProps = (dispatch: any, props: any) => {
   return {};

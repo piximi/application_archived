@@ -1,5 +1,5 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import CustomDragLayer from '../components/Gallery/CustomDragLayer/CustomDragLayer';
+import CustomDragLayer from '../components/GalleryEx/GalleryCustomDragLayer/GalleryCustomDragLayer';
 
 storiesOf('CustomDragLayer', module).add('default', () => <CustomDragLayer />);

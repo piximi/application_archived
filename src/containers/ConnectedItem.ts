@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Item from '../pages/images/Gallery/Item/Item';
+import Item from '../pages/images/GalleryItem/Item';
 import { updateImageCategoryAction } from '../reducers/images';
 
 const mapDispatchToProps = (dispatch: any, props: any) => {

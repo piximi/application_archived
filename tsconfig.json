@@ -36,7 +36,7 @@
     "src/pages/images/SidebarDrawer/**/*.css.ts",
     "src/pages/images/SidebarDrawer/**/*.ts",
     "src/pages/images/Graph/**/*.tsx",
-    "src/pages/images/Gallery/**/*.ts",
-    "src/pages/images/Gallery/**/*.tsx"
+    "src/pages/images/GalleryEx/**/*.ts",
+    "src/pages/images/GalleryEx/**/*.tsx"
   ]
 }
