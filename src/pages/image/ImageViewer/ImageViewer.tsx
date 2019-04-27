@@ -12,7 +12,7 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import EqualizerIcon from '@material-ui/icons/Equalizer';
 import PublicIcon from '@material-ui/icons/Public';
 import { ImageViewerExposureDrawer } from '..';
-import GalleryImage from '../../images/GalleryImage/GalleryImage';
+import { GalleryImage } from '../../images';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(styles);

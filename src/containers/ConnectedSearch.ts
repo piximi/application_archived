@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Search from '../pages/images/Search/Search';
+import { Search } from '../pages/images';
 import { updateImageVisibilityAction } from '../actions/images';
 
 const mapStateToProps = (state: { images: any }) => {

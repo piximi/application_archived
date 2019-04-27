@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { DragSource } from 'react-dnd/lib/index';
 import { getEmptyImage } from 'react-dnd-html5-backend/lib/index';
 import { ImageViewerDialog } from '../../image';
-import GalleryImage from '../GalleryImage/GalleryImage';
+import { GalleryImage } from '..';
 import { useDialog } from '../../../hooks';
 import { ConnectedItemLabel } from '../../../containers';
 

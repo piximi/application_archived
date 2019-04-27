@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import axios from 'axios';
-import Sidebar from '../pages/images/SidebarDrawer/SidebarDrawer';
+import { SidebarDrawer } from '../pages/images';
 import {
   addImagesAction,
   updateImageCategoryAction,
@@ -80,6 +80,6 @@ const mapDispatchToProps = (dispatch: any) => {
 const ConnectedSidebar = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Sidebar);
+)(SidebarDrawer);
 
 export default ConnectedSidebar;

@@ -6,7 +6,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { ConnectedSearch } from '../../../containers';
 import { ConnectedImportImagesButton } from '../../../containers';
 import Logo from '../Logo/Logo';
-import DeleteButton from '../DeleteButton/DeleteButton';
+import { DeleteButton } from '..';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(styles);

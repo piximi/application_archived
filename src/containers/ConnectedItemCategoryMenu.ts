@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import GalleryItemCategoryMenu from '../pages/images/GalleryItemCategoryMenu/GalleryItemCategoryMenu';
+import { GalleryItemCategoryMenu } from '../pages/images';
 import { updateImageCategoryAction } from '../reducers/images';
 
 const mapStateToProps = (state: any) => {
