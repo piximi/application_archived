@@ -25,7 +25,7 @@ type Props = {
   images: any;
 };
 
-export const ImageViewer = (props: Props) => {
+const ImageViewer = (props: Props) => {
   const classes = useStyles();
 
   const [applySettingsGlobally, setApplySettingsGlobally] = React.useState(
@@ -149,3 +149,5 @@ export const ImageViewer = (props: Props) => {
     </div>
   );
 };
+
+export default ImageViewer;

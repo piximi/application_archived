@@ -1,3 +1,3 @@
-import { SettingsDialog } from './SettingsDialog/SettingsDialog';
+import SettingsDialog from './SettingsDialog/SettingsDialog';
 
 export { SettingsDialog };

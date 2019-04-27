@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { DragSource } from 'react-dnd/lib/index';
 import { getEmptyImage } from 'react-dnd-html5-backend/lib/index';
-import { ImageViewerDialog } from '../../image/ImageViewerDialog/ImageViewerDialog';
+import { ImageViewerDialog } from '../../image';
 import Image from '../GalleryImage/Image';
 import { useDialog } from '../../../hooks';
 import ConnectedItemLabel from '../../../containers/ConnectedItemLabel';

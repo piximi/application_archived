@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { ImageViewer } from '../pages/image/ImageViewer/ImageViewer';
+import { ImageViewer } from '../pages/image';
 import {
   updateBrightnessAction,
   updateBrightnessForAllImagesAction,
