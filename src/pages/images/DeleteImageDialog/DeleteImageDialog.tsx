@@ -5,8 +5,7 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
-  DialogContentText,
-  Zoom
+  DialogContentText
 } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 
