@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Snackbar } from '@material-ui/core';
 
-const TrainingSnackbar = props => {
+const TrainingSnackbar = (props: any) => {
   const { onClose, open } = props;
 
   return (

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Snackbar } from '@material-ui/core';
-import UploadSnackbarContent from '../UploadSnackbarContent/UploadSnackbarContent';
+import { UploadSnackbarContent } from '..';
 
-const UploadSnackbar = props => {
+const UploadSnackbar = (props: any) => {
   const { open, onClose } = props;
 
   return (

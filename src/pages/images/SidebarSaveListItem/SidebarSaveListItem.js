@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {
+  Divider,
   ListItem,
   ListItemIcon,
-  ListItemText,
-  Divider
+  ListItemText
 } from '@material-ui/core';
 import SaveIcon from '@material-ui/icons/Save';
 import json2csv from 'json2csv';
@@ -14,8 +14,7 @@ import Paper from '@material-ui/core/Paper/index';
 import Popover from '@material-ui/core/Popover/index';
 import { fields } from '../../../constants';
 import SaveDialog from '../SaveDialog/SaveDialog';
-import { useMenu } from '../../../hooks';
-import { useDialog } from '../../../hooks';
+import { useDialog, useMenu } from '../../../hooks';
 import * as API from '../../../classifier';
 
 const SidebarSaveListItem = props => {
