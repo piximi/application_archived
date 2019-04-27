@@ -12,10 +12,12 @@ import ConnectedGallery from '../../../containers/ConnectedGallery';
 
 const useStyles = makeStyles(styles);
 
-const Application = (props: {
+type Props = {
   updateImageCategory: any;
   spinnerActive: any;
-}) => {
+};
+
+const Application = (props: Props) => {
   const classes = useStyles();
 
   const [selectedImages, setSelectedImages] = React.useState([]);
