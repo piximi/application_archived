@@ -6,7 +6,7 @@ const collisionDetection = (mousePosition: { x1: number; x2: number; y1: number;
   for (let i = 0; i < elements.length; i++) {
     const element = elements[i];
     const rectangle2 = element.getBoundingClientRect();
-    const imageId = element.getAttribute('imageId');
+    const imageId = element.getAttribute('imgid');
     const collisionDetected = collisionWithRectangle(rectangle1, rectangle2);
     if (collisionDetected) {
       collisions.push(imageId);
