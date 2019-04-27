@@ -2,13 +2,13 @@ import { combineReducers } from 'redux';
 import categories from './categories';
 import images from './images';
 import settings from './settings';
-import classifiers from './classifiers';
+import classifier from './classifier';
 
 const reducer = combineReducers({
   categories: categories,
   images: images,
   settings: settings,
-  classifiers: classifiers
+  classifier: classifier
 });
 
 export default reducer;

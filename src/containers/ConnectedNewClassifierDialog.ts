@@ -1,17 +1,18 @@
 import { connect } from 'react-redux';
 import NewClassifierDialog from '../components/Dialog/NewClassifierDialog/NewClassifierDialog';
-import { createClassifierAction } from '../reducers/classifiers';
+import { createClassifierAction } from '../reducers/classifier';
+import { Classifier } from '../types';
+import * as uuid from 'uuid';
 
-const mapStateToProps = (state: { classifiers: any; }) => {
-  return {
-    classifiers: state.classifiers
-  };
+const mapStateToProps = (state: { classifier: Classifier }) => {
+  return state.classifier;
 };
 
 const mapDispatchToProps = (dispatch: any, props: any) => {
   return {
-    createClassifier: (name: any) => {
+    createClassifier: (name: string) => {
       const classifier = {
+        identifier: uuid.v4(),
         name: name
       };
 

@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { fitClassifierAction } from '../actions/classifier';
 import Application from '../components/Application/Application';
 import {
   updateImageCategoryAction,
@@ -19,9 +18,12 @@ const mapDispatchToProps = (dispatch: any, props: any) => {
   return {
     fit: () => {
       const pathname = '';
-      dispatch(fitClassifierAction(pathname));
     },
-    updateImageCategory: (imgIdentifier: any, categoryIdentifier: any, categoryName: any) => {
+    updateImageCategory: (
+      imgIdentifier: any,
+      categoryIdentifier: any,
+      categoryName: any
+    ) => {
       dispatch(
         updateImageCategoryAction(
           imgIdentifier,
