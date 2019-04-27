@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Grid, AutoSizer } from 'react-virtualized';
-import ConnectedItem from '../../../containers/ConnectedItem';
+import { ConnectedItem } from '../../../containers';
 
 const GalleryItems = props => {
   const {

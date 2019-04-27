@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/styles';
 import * as MaterialUI from '@material-ui/core';
 import LabelIcon from '@material-ui/core/SvgIcon/SvgIcon';
 import { useMenu } from '../../hooks';
-import ConnectedColorPicker from '../../containers/ConnectedColorPicker';
+import { ConnectedColorPicker } from '../../containers';
 
 const useStyles = makeStyles(styles);
 

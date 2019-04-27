@@ -2,13 +2,13 @@ import * as React from 'react';
 import { PacmanLoader } from 'react-spinners';
 import styles from './Application.css';
 import classNames from 'classnames';
-import ConnectedSidebar from '../../../containers/ConnectedSidebar';
+import { ConnectedSidebar } from '../../../containers';
 import PrimaryAppBar from '../PrimaryAppBar/PrimaryAppBar';
 import HTML5Backend from 'react-dnd-html5-backend/lib/index';
 import { DragDropContext } from 'react-dnd';
 import { useDrawer } from '../../../hooks';
 import { makeStyles } from '@material-ui/styles';
-import ConnectedGallery from '../../../containers/ConnectedGallery';
+import { ConnectedGallery } from '../../../containers';
 
 const useStyles = makeStyles(styles);
 

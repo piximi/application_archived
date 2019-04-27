@@ -4,7 +4,7 @@ import { getEmptyImage } from 'react-dnd-html5-backend/lib/index';
 import { ImageViewerDialog } from '../../image';
 import GalleryImage from '../GalleryImage/GalleryImage';
 import { useDialog } from '../../../hooks';
-import ConnectedItemLabel from '../../../containers/ConnectedItemLabel';
+import { ConnectedItemLabel } from '../../../containers';
 
 const itemSource = {
   beginDrag(props) {

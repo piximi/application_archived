@@ -6,8 +6,8 @@ import {
   Popover,
   ListItemText
 } from '@material-ui/core';
-import ConnectedEditCategoryDialog from '../../../containers/ConnectedEditCategoryDialog';
-import ConnectedDeleteCategoryDialog from '../../../containers/ConnectedDeleteCategoryDialog';
+import { ConnectedEditCategoryDialog } from '../../../containers';
+import { ConnectedDeleteCategoryDialog } from '../../../containers';
 import { useDialog } from '../../../hooks';
 
 const SidebarCategoryListItemMenuList = (props: any) => {
