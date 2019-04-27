@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 
-export default function useSnackbar() {
+export function useSnackbar() {
   const [openedSnackbar, setOpenedSnackbar] = useState(false);
 
   const closeSnackbar = useCallback(() => {

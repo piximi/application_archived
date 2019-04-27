@@ -3,7 +3,7 @@ import { DragSource } from 'react-dnd/lib/index';
 import { getEmptyImage } from 'react-dnd-html5-backend/lib/index';
 import ImageViewerDialog from '../../../image/ImageViewerDialog/ImageViewerDialog';
 import Image from '../Image/Image';
-import useDialog from '../../../../hooks/Dialog';
+import { useDialog } from '../../../../hooks';
 import ConnectedItemLabel from '../../../../containers/ConnectedItemLabel';
 
 const itemSource = {

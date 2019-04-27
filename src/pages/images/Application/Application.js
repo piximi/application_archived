@@ -6,7 +6,7 @@ import ConnectedSidebar from '../../../containers/ConnectedSidebar';
 import PrimaryAppBar from '../AppBar/PrimaryAppBar/PrimaryAppBar';
 import HTML5Backend from 'react-dnd-html5-backend/lib/index';
 import { DragDropContext } from 'react-dnd/lib/index';
-import useDrawer from '../../../hooks/Drawer';
+import { useDrawer } from '../../../hooks';
 import { makeStyles } from '@material-ui/styles';
 import ConnectedGallery from '../../../containers/ConnectedGallery';
 

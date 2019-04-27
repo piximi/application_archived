@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function useCollapseList() {
+export function useCollapseList() {
   const [collapsedList, setCollapsedList] = useState(false);
 
   const collapseList = () => {

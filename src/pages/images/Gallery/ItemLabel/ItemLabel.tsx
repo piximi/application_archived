@@ -4,7 +4,7 @@ import styles from './ItemLabel.css';
 import { IconButton } from '@material-ui/core';
 import ConnectedItemCategoryMenu from '../../../../containers/ConnectedItemCategoryMenu';
 import { makeStyles } from '@material-ui/styles';
-import useMenu from '../../../../hooks/Menu';
+import { useMenu } from '../../../../hooks';
 
 const useStyles = makeStyles(styles);
 

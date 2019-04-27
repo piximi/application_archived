@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 
-export default function useDrawer() {
+export function useDrawer() {
   const [openedDrawer, setOpenedDrawer] = useState(true);
 
   const toggleDrawer = useCallback(() => {

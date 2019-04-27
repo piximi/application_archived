@@ -10,9 +10,9 @@ import {
 } from '@material-ui/core';
 import * as React from 'react';
 import FolderOpenIcon from '@material-ui/icons/FolderOpen';
-import useDialog from '../../../../hooks/Dialog';
+import { useDialog } from '../../../../hooks';
 import OpenDialog from '../../Dialog/OpenExampleClassifierDialog/OpenExampleClassifierDialog';
-import useMenu from '../../../../hooks/Menu';
+import { useMenu } from '../../../../hooks';
 import * as API from '../../../../classifier';
 
 function openProject(e, props) {
