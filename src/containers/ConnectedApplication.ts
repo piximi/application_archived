@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Application from '../components/Application/Application';
+import { Application } from '../pages/images';
 import {
   updateImageCategoryAction,
   updateImageProbabilityAction

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import ColorPicker from '../components/ColorPicker/ColorPicker';
+import { ColorPicker } from '../components';
 
 const mapDispatchToProps = (dispatch: any, props: any) => {
   return {};

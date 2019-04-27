@@ -3,8 +3,8 @@ import styles from './ColorIconButton.css';
 import { makeStyles } from '@material-ui/styles';
 import * as MaterialUI from '@material-ui/core';
 import LabelIcon from '@material-ui/core/SvgIcon/SvgIcon';
-import useMenu from '../../hooks/Menu';
-import ConnectedColorPicker from '../../containers/ConnectedColorPicker';
+import { useMenu } from '../../hooks';
+import { ConnectedColorPicker } from '../../containers';
 
 const useStyles = makeStyles(styles);
 

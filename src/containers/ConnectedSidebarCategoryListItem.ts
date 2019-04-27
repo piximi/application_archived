@@ -4,7 +4,7 @@ import {
   toggleCategoryVisibilityAction
 } from '../reducers/categories';
 
-import SidebarCategoryListItem from '../components/SidebarDrawer/SidebarCategoryListItem/SidebarCategoryListItem';
+import { SidebarCategoryListItem } from '../pages/images';
 import { Category } from '../types';
 
 const mapDispatchToProps = (dispatch: any, props: any) => {

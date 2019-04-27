@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import NewClassifierDialog from '../components/Dialog/NewClassifierDialog/NewClassifierDialog';
+import { NewClassifierDialog } from '../pages/images';
 import { createClassifierAction } from '../reducers/classifier';
 import { Classifier } from '../types';
 import * as uuid from 'uuid';

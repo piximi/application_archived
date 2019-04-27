@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { createImageAction } from '../reducers/images';
 import * as uuid from 'uuid';
 
-import ImportImagesButton from '../components/AppBar/ImportImagesButton/ImportImagesButton';
+import { ImportImagesButton } from '../pages/images';
 
 type CreateImagePayload = {
   categoryIdentifier: String;

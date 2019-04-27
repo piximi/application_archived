@@ -3,7 +3,7 @@ import {
   updateCategoryDescriptionAction,
   updateCategoryColorAction
 } from '../reducers/categories';
-import EditCategoryDialog from '../components/Dialog/EditCategoryDialog/EditCategoryDialog';
+import { EditCategoryDialog } from '../pages/images';
 import { Category } from '../types';
 
 const mapStateToProps = (state: { categories: Category[] }) => {

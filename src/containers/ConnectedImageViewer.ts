@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import ImageViewer from '../components/Dialog/ImageViewerDialog/ImageViewer/ImageViewer';
+import { ImageViewer } from '../pages/image';
 import {
   updateBrightnessAction,
   updateBrightnessForAllImagesAction,
@@ -9,7 +9,7 @@ import {
   updateUnselectedChannelsForAllImagesAction
 } from '../actions/images';
 
-const mapStateToProps = (state: { images: any; }) => {
+const mapStateToProps = (state: { images: any }) => {
   return {
     images: state.images
   };
@@ -17,14 +17,23 @@ const mapStateToProps = (state: { images: any; }) => {
 
 const mapDispatchToProps = (dispatch: any, props: any) => {
   return {
-    saveEdits: (imgIdentifier: any, brightness: any, contrast: any, unselectedChannels: any) => {
+    saveEdits: (
+      imgIdentifier: any,
+      brightness: any,
+      contrast: any,
+      unselectedChannels: any
+    ) => {
       dispatch(updateBrightnessAction(imgIdentifier, brightness));
       dispatch(updateContrastAction(imgIdentifier, contrast));
       dispatch(
         updateUnselectedChannelsAction(imgIdentifier, unselectedChannels)
       );
     },
-    saveEditsGlobally: (brightness: any, contrast: any, unselectedChannels: any) => {
+    saveEditsGlobally: (
+      brightness: any,
+      contrast: any,
+      unselectedChannels: any
+    ) => {
       dispatch(updateBrightnessForAllImagesAction(brightness));
       dispatch(updateContrastForAllImagesAction(contrast));
       dispatch(updateUnselectedChannelsForAllImagesAction(unselectedChannels));

@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
 import { createCategoryAction } from '../reducers/categories';
-import CreateCategoryDialog from '../components/Dialog/CreateCategoryDialog/CreateCategoryDialog';
+import { CreateCategoryDialog } from '../pages/images';
 import uuidv4 from 'uuid';
 
 let index = 0;
 
-const mapStateToProps = (state: { categories: any; }) => {
+const mapStateToProps = (state: { categories: any }) => {
   return {
     categories: state.categories
   };
