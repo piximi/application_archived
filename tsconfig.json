@@ -28,15 +28,15 @@
     "src/registerServiceWorker.ts",
     "src/index.tsx",
     "src/App.tsx",
-    "src/components/Application/*.ts",
+    "src/pages/images/Application/*.ts",
     "src/components/ColorPicker/ColorPicker.tsx",
-    "src/components/AppBar/**/*.tsx",
-    "src/components/AppBar/**/*.ts",
-    "src/components/Dialog/**/*.css.ts",
-    "src/components/SidebarDrawer/**/*.css.ts",
-    "src/components/SidebarDrawer/**/*.ts",
-    "src/components/Graph/**/*.tsx",
-    "src/components/Gallery/**/*.ts",
-    "src/components/Gallery/**/*.tsx"
+    "src/pages/images/AppBar/**/*.tsx",
+    "src/pages/images/AppBar/**/*.ts",
+    "src/pages/images/Dialog/**/*.css.ts",
+    "src/pages/images/SidebarDrawer/**/*.css.ts",
+    "src/pages/images/SidebarDrawer/**/*.ts",
+    "src/pages/images/Graph/**/*.tsx",
+    "src/pages/images/Gallery/**/*.ts",
+    "src/pages/images/Gallery/**/*.tsx"
   ]
 }

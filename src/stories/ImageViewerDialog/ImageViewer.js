@@ -1,5 +1,5 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import ImageViewer from '../../components/Dialog/ImageViewerDialog/ImageViewer/ImageViewer';
+import ImageViewer from '../../pages/image/ImageViewer/ImageViewer';
 
 storiesOf('ImageViewer', module).add('default', () => <ImageViewer />);
