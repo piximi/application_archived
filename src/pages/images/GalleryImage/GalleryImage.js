@@ -5,8 +5,8 @@ const GalleryImage = props => {
 
   const [imageStatus, setImageStatus] = React.useState('loading');
   const [image, setImage] = React.useState(null);
-  const [imgHeight, setImgHeight] = React.useState(null);
-  const [imgWidth, setImgWidth] = React.useState(null);
+  const [imageHeight, setImageHeight] = React.useState(null);
+  const [imageWidth, setImageWidth] = React.useState(null);
 
   let canvasRef = React.useRef();
 
@@ -16,8 +16,8 @@ const GalleryImage = props => {
     const height = image.height;
     setImageStatus('loaded');
     setImage(image);
-    setImgHeight(height);
-    setImgWidth(width);
+    setImageHeight(height);
+    setImageWidth(width);
     image.style.height = '0px';
   };
 
@@ -33,11 +33,11 @@ const GalleryImage = props => {
       canvas.height = props.height * 0.9;
       canvas.width = props.width * 0.9;
       const ratio = Math.min(
-        canvas.width / imgWidth,
-        canvas.height / imgHeight
+        canvas.width / imageWidth,
+        canvas.height / imageHeight
       );
-      canvas.height = imgHeight * ratio;
-      canvas.width = imgWidth * ratio;
+      canvas.height = imageHeight * ratio;
+      canvas.width = imageWidth * ratio;
 
       // Apply filters to context
       context.filter =
