@@ -2,7 +2,19 @@ import * as React from 'react';
 import { Grid, AutoSizer } from 'react-virtualized';
 import { ConnectedItem } from '../../../containers';
 
-const GalleryItems = props => {
+type Props = {
+  decreaseWidth: any;
+  selectItem: any;
+  images: any;
+  selectedItems: any;
+  ondrag: any;
+  asyncImgLoadingFunc: any;
+  callOnDragEnd: any;
+  imagesPerRow: any;
+  windowWidth: any;
+};
+
+const GalleryItems = (props: Props) => {
   const {
     decreaseWidth,
     selectItem,
@@ -46,11 +58,22 @@ const GalleryItems = props => {
     setNoImages(noImages);
   });
 
-  const onmousedown = imgId => {
+  const onmousedown = (imgId: any) => {
     selectItem(imgId);
   };
 
-  const cellRenderer = ({ columnIndex, key, rowIndex, style }) => {
+  let cellRenderer: ({
+    columnIndex,
+    key,
+    rowIndex,
+    style
+  }: {
+    columnIndex: any;
+    key: any;
+    rowIndex: any;
+    style: any;
+  }) => undefined | any;
+  cellRenderer = ({ columnIndex, key, rowIndex, style }) => {
     let newStyle = { ...style };
     const index = picturesPerRow * rowIndex - 1 + columnIndex + 1;
     if (index > noImages - 1) {
