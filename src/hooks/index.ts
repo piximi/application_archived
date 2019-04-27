@@ -1,9 +1,9 @@
-import { useCollapseList } from './CollapseList';
-import { useDialog } from './Dialog';
-import { useDrawer } from './Drawer';
-import { useKeyPress } from './KeyPress';
-import { useMenu } from './Menu';
-import { useSnackbar } from './Snackbar';
+import { useCollapseList } from './useCollapseList';
+import { useDialog } from './useDialog';
+import { useDrawer } from './useDrawer';
+import { useKeyPress } from './useKeyPress';
+import { useMenu } from './useMenu';
+import { useSnackbar } from './useSnackbar';
 
 export {
   useCollapseList,
