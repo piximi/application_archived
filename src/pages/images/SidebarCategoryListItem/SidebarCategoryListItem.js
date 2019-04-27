@@ -13,7 +13,7 @@ import { DropTarget } from 'react-dnd/lib/index';
 import StyledCategory from './StyledCategory';
 import styles from './SidebarCategoryListItem.css';
 import { makeStyles } from '@material-ui/styles';
-import { useMenu } from '../../../../hooks';
+import { useMenu } from '../../../hooks';
 import SidebarCategoryListItemMenuList from '../SidebarCategoryListItemMenuList/SidebarCategoryListItemMenuList';
 
 const spec = {

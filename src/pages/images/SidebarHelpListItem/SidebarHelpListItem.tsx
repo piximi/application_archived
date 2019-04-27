@@ -1,8 +1,8 @@
 import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import * as React from 'react';
-import HelpDialog from '../../HelpDialog/HelpDialog';
+import HelpDialog from '../HelpDialog/HelpDialog';
 import HelpIcon from '@material-ui/icons/Help';
-import { useDialog } from '../../../../hooks';
+import { useDialog } from '../../../hooks';
 
 const HelpListItem = () => {
   const { openedDialog, openDialog, closeDialog } = useDialog();

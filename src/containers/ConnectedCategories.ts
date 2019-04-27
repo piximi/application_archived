@@ -4,7 +4,7 @@ import {
   toggleCategoryVisibilityAction
 } from '../reducers/categories';
 
-import SidebarCategoriesList from '../pages/images/SidebarDrawer/SidebarCategoriesList/SidebarCategoriesList';
+import SidebarCategoriesList from '../pages/images/SidebarCategoriesList/SidebarCategoriesList';
 import { Category } from '../types';
 
 const mapStateToProps = (state: { categories: Category[] }, props: any) => {

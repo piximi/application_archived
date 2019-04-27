@@ -1,8 +1,8 @@
 import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import * as React from 'react';
 import AddIcon from '@material-ui/icons/Add';
-import { useDialog } from '../../../../hooks';
-import ConnectedNewClassifierDialog from '../../../../containers/ConnectedNewClassifierDialog';
+import { useDialog } from '../../../hooks';
+import ConnectedNewClassifierDialog from '../../../containers/ConnectedNewClassifierDialog';
 
 const SidebarNewClassifierListItem = () => {
   const { openedDialog, openDialog, closeDialog } = useDialog();

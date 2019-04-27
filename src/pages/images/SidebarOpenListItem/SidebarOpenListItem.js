@@ -10,10 +10,10 @@ import {
 } from '@material-ui/core';
 import * as React from 'react';
 import FolderOpenIcon from '@material-ui/icons/FolderOpen';
-import { useDialog } from '../../../../hooks';
-import OpenDialog from '../../OpenExampleClassifierDialog/OpenExampleClassifierDialog';
-import { useMenu } from '../../../../hooks';
-import * as API from '../../../../classifier';
+import { useDialog } from '../../../hooks';
+import OpenDialog from '../OpenExampleClassifierDialog/OpenExampleClassifierDialog';
+import { useMenu } from '../../../hooks';
+import * as API from '../../../classifier';
 
 function openProject(e, props) {
   const reader = new FileReader();

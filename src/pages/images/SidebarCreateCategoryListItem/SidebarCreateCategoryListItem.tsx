@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
-import ConnectedCreateCategoryDialog from '../../../../containers/ConnectedCreateCategoryDialog';
-import { useDialog } from '../../../../hooks';
+import ConnectedCreateCategoryDialog from '../../../containers/ConnectedCreateCategoryDialog';
+import { useDialog } from '../../../hooks';
 import { useTranslation } from 'react-i18next';
 
 const CreateCategoryListItem = () => {
