@@ -73,6 +73,7 @@ const GalleryItems = (props: Props) => {
     rowIndex: any;
     style: any;
   }) => undefined | any;
+
   cellRenderer = ({ columnIndex, key, rowIndex, style }) => {
     let newStyle = { ...style };
     const index = picturesPerRow * rowIndex - 1 + columnIndex + 1;
