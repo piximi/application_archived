@@ -2,7 +2,7 @@ import * as React from 'react';
 import '../Gallery/Gallery.css';
 import { reCalc } from '../helper';
 
-const SelectionBox = props => {
+const GallerySelectionBox = props => {
   const [style, setStyle] = React.useState({
     zIndex: 9000,
     position: 'fixed',
@@ -44,4 +44,4 @@ const SelectionBox = props => {
   return <div style={style} />;
 };
 
-export default SelectionBox;
+export default GallerySelectionBox;

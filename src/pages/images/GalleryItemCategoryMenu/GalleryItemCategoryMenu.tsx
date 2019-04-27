@@ -10,7 +10,7 @@ import {
 import LabelIcon from '@material-ui/icons/Label';
 import * as _ from 'lodash';
 
-const ItemCategoryMenu = (props: any) => {
+const GalleryItemCategoryMenu = (props: any) => {
   const {
     anchorEl,
     categories,
@@ -66,4 +66,4 @@ const ItemCategoryMenu = (props: any) => {
   );
 };
 
-export default ItemCategoryMenu;
+export default GalleryItemCategoryMenu;

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DragLayer } from 'react-dnd/lib/index';
-import './CustomDragLayer.css';
+import './GalleryCustomDragLayer.css';
 
 const layerStyles = {
   position: 'fixed',
@@ -34,7 +34,7 @@ let swapArrayElements = function(arr, indexA, indexB) {
   arr[indexB] = temp;
 };
 
-const CustomDragLayer = props => {
+const GalleryCustomDragLayer = props => {
   const { item, itemType, isDragging } = props;
 
   const renderItem = (type, item) => {
@@ -79,4 +79,4 @@ function collect(monitor) {
   };
 }
 
-export default DragLayer(collect)(CustomDragLayer);
+export default DragLayer(collect)(GalleryCustomDragLayer);

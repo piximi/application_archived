@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import ItemLabel from '../pages/images/GalleryItemLabel/ItemLabel';
+import GalleryItemLabel from '../pages/images/GalleryItemLabel/GalleryItemLabel';
 
 const mapDispatchToProps = (dispatch: any, props: any) => {
   return {};
@@ -14,6 +14,6 @@ const mapStateToProps = (state: any, props: any) => {
 const ConnectedItemLabel = connect(
   mapStateToProps,
   mapDispatchToProps
-)(ItemLabel);
+)(GalleryItemLabel);
 
 export default ConnectedItemLabel;

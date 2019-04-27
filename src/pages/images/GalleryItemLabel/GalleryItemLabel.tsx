@@ -1,6 +1,6 @@
 import * as React from 'react';
 import LabelIcon from '@material-ui/icons/Label';
-import styles from './ItemLabel.css';
+import styles from './GalleryItemLabel.css';
 import { IconButton } from '@material-ui/core';
 import ConnectedItemCategoryMenu from '../../../containers/ConnectedItemCategoryMenu';
 import { makeStyles } from '@material-ui/styles';
@@ -8,7 +8,7 @@ import { useMenu } from '../../../hooks';
 
 const useStyles = makeStyles(styles);
 
-const ItemLabel = (props: any) => {
+const GalleryItemLabel = (props: any) => {
   const { anchorEl, openedMenu, openMenu, closeMenu } = useMenu();
 
   const { categories, image } = props;
@@ -48,4 +48,4 @@ const ItemLabel = (props: any) => {
   );
 };
 
-export default ItemLabel;
+export default GalleryItemLabel;

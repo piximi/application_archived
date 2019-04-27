@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const Image = props => {
+const GalleryImage = props => {
   const { src, openImageViewerDialog } = props;
 
   const [imageStatus, setImageStatus] = React.useState('loading');
@@ -90,10 +90,10 @@ const Image = props => {
   );
 };
 
-Image.defaultProps = {
+GalleryImage.defaultProps = {
   brightness: 100,
   contrast: 100,
   unselectedChannels: []
 };
 
-export default Image;
+export default GalleryImage;

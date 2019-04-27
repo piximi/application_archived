@@ -1,8 +1,8 @@
 import * as React from 'react';
 import './Gallery.css';
-import Items from '../GalleryItems/Items.js';
-import SelectionBox from '../GallerySelectionBox/SelectionBox.js';
-import CustomDragLayer from '../GalleryCustomDragLayer/CustomDragLayer';
+import GalleryItems from '../GalleryItems/GalleryItems.js';
+import GallerySelectionBox from '../GallerySelectionBox/GallerySelectionBox.js';
+import CustomDragLayer from '../GalleryCustomDragLayer/GalleryCustomDragLayer';
 import { collisionDetection } from '../helper';
 
 const Gallery = props => {
@@ -137,11 +137,11 @@ const Gallery = props => {
       onMouseUp={onmouseup}
     >
       <CustomDragLayer draggedItem={currentlyDraggedItem} />
-      <SelectionBox
+      <GallerySelectionBox
         selectionBoxCoordinates={selectionBoxCoordinates}
         visibility={selectionBoxVisibility}
       />
-      <Items
+      <GalleryItems
         images={images}
         imagesPerRow={imagesPerRow}
         windowWidth={windowWidth}

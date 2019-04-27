@@ -12,7 +12,7 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import EqualizerIcon from '@material-ui/icons/Equalizer';
 import PublicIcon from '@material-ui/icons/Public';
 import { ImageViewerExposureDrawer } from '..';
-import Image from '../../images/GalleryImage/Image';
+import GalleryImage from '../../images/GalleryImage/GalleryImage';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(styles);
@@ -65,7 +65,7 @@ const ImageViewer = (props: Props) => {
         spacing={24}
       >
         <Grid item xs={4}>
-          <Image
+          <GalleryImage
             src={src}
             height={500}
             width={500}

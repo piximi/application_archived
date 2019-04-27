@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { DragSource } from 'react-dnd/lib/index';
 import { getEmptyImage } from 'react-dnd-html5-backend/lib/index';
 import { ImageViewerDialog } from '../../image';
-import Image from '../GalleryImage/Image';
+import GalleryImage from '../GalleryImage/GalleryImage';
 import { useDialog } from '../../../hooks';
 import ConnectedItemLabel from '../../../containers/ConnectedItemLabel';
 
@@ -40,7 +40,7 @@ function collect(connect, monitor) {
   };
 }
 
-const Item = props => {
+const GalleryItem = props => {
   const {
     connectDragPreview,
     selectedItems,
@@ -76,7 +76,7 @@ const Item = props => {
       className={imgSelected ? 'selected' : 'unselected'}
     >
       <ConnectedItemLabel image={item} />
-      <Image
+      <GalleryImage
         key={'img' + item.identifier}
         openImageViewerDialog={openDialog}
         src={item.data}
@@ -97,4 +97,4 @@ const Item = props => {
   );
 };
 
-export default DragSource('SelectedItems', itemSource, collect)(Item);
+export default DragSource('SelectedItems', itemSource, collect)(GalleryItem);

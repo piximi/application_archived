@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import ItemCategoryMenu from '../pages/images/GalleryItemCategoryMenu/ItemCategoryMenu';
+import GalleryItemCategoryMenu from '../pages/images/GalleryItemCategoryMenu/GalleryItemCategoryMenu';
 import { updateImageCategoryAction } from '../reducers/images';
 
 const mapStateToProps = (state: any) => {
@@ -26,6 +26,6 @@ const mapDispatchToProps = (dispatch: any, props: any) => {
 const ConnectedItemCategoryMenu = connect(
   mapStateToProps,
   mapDispatchToProps
-)(ItemCategoryMenu);
+)(GalleryItemCategoryMenu);
 
 export default ConnectedItemCategoryMenu;
