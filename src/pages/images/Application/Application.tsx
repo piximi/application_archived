@@ -5,14 +5,17 @@ import classNames from 'classnames';
 import ConnectedSidebar from '../../../containers/ConnectedSidebar';
 import PrimaryAppBar from '../PrimaryAppBar/PrimaryAppBar';
 import HTML5Backend from 'react-dnd-html5-backend/lib/index';
-import { DragDropContext } from 'react-dnd/lib/index';
+import { DragDropContext } from 'react-dnd';
 import { useDrawer } from '../../../hooks';
 import { makeStyles } from '@material-ui/styles';
 import ConnectedGallery from '../../../containers/ConnectedGallery';
 
 const useStyles = makeStyles(styles);
 
-const Application = props => {
+const Application = (props: {
+  updateImageCategory: any;
+  spinnerActive: any;
+}) => {
   const classes = useStyles();
 
   const [selectedImages, setSelectedImages] = React.useState([]);
