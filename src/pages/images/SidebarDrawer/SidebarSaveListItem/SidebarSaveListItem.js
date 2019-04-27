@@ -13,7 +13,7 @@ import MenuList from '@material-ui/core/MenuList/index';
 import Paper from '@material-ui/core/Paper/index';
 import Popover from '@material-ui/core/Popover/index';
 import { fields } from '../../../../constants';
-import SaveDialog from '../../Dialog/SaveDialog/SaveDialog';
+import SaveDialog from '../../SaveDialog/SaveDialog';
 import { useMenu } from '../../../../hooks';
 import { useDialog } from '../../../../hooks';
 import * as API from '../../../../classifier';

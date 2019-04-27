@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Dialog } from '../../../../components/Dialog/Dialog';
-import { DialogTitle } from '../../../../components/DialogTitle/DialogTitle';
-import { DialogActions } from '../../../../components/DialogActions/DialogActions';
-import { DialogContent } from '../../../../components/DialogContent/DialogContent';
+import { Dialog } from '../../../components/Dialog/Dialog';
+import { DialogTitle } from '../../../components/DialogTitle/DialogTitle';
+import { DialogActions } from '../../../components/DialogActions/DialogActions';
+import { DialogContent } from '../../../components/DialogContent/DialogContent';
 import { TextField } from '@material-ui/core';
 
 const NewClassifierDialog = (props: any) => {
