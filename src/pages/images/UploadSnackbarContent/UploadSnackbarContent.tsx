@@ -7,12 +7,15 @@ import {
   Typography,
   CardMedia
 } from '@material-ui/core';
+
+// @ts-ignore
 import example from './example.png';
+
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(styles);
 
-const UploadSnackbarContent = props => {
+const UploadSnackbarContent = (props: any) => {
   const classes = useStyles();
 
   return (
