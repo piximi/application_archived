@@ -12,7 +12,7 @@ import {
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import EqualizerIcon from '@material-ui/icons/Equalizer';
 import PublicIcon from '@material-ui/icons/Public';
-import ImageViewerExposureDrawer from '../ImageViewerExposureDrawer/ImageViewerExposureDrawer';
+import { ImageViewerExposureDrawer } from '../ImageViewerExposureDrawer/ImageViewerExposureDrawer';
 import Image from '../../images/Gallery/Image/Image';
 
 class ImageViewer extends PureComponent {

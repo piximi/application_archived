@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(styles);
 
-const BrightnessSlider = (props: any) => {
+export const BrightnessSlider = (props: any) => {
   const classes = useStyles();
 
   const { brightness, setBrightness } = props;
@@ -34,5 +34,3 @@ const BrightnessSlider = (props: any) => {
     </div>
   );
 };
-
-export default BrightnessSlider;

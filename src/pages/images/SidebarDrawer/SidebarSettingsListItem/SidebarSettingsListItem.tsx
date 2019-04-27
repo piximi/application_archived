@@ -1,7 +1,7 @@
 import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import * as React from 'react';
 import SettingsIcon from '@material-ui/icons/Settings';
-import SettingsDialog from '../../../settings/SettingsDialog/SettingsDialog';
+import { SettingsDialog } from '../../../settings';
 import { useDialog } from '../../../../hooks';
 
 const SettingsListItem = () => {

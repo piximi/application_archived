@@ -18,7 +18,7 @@ const SettingsDialogTransition = (props: any) => (
   <Slide direction="right" {...props} />
 );
 
-const SettingsDialog = (props: any) => {
+export const SettingsDialog = (props: any) => {
   const { onClose, open } = props;
 
   const classes = useStyles();
@@ -54,5 +54,3 @@ const SettingsDialog = (props: any) => {
     </Dialog>
   );
 };
-
-export default SettingsDialog;

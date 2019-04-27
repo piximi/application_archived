@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(styles);
 
-const Contrast = (props: any) => {
+export const Contrast = (props: any) => {
   const { contrast, setContrast } = props;
 
   const classes = useStyles();
@@ -33,5 +33,3 @@ const Contrast = (props: any) => {
     </div>
   );
 };
-
-export default Contrast;
