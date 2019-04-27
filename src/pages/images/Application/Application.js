@@ -3,7 +3,7 @@ import { PacmanLoader } from 'react-spinners';
 import styles from './Application.css';
 import classNames from 'classnames';
 import ConnectedSidebar from '../../../containers/ConnectedSidebar';
-import PrimaryAppBar from '../AppBar/PrimaryAppBar/PrimaryAppBar';
+import PrimaryAppBar from '../PrimaryAppBar/PrimaryAppBar';
 import HTML5Backend from 'react-dnd-html5-backend/lib/index';
 import { DragDropContext } from 'react-dnd/lib/index';
 import { useDrawer } from '../../../hooks';
