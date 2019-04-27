@@ -11,7 +11,7 @@ type Props = {
   onDescriptionChange: (event: React.FormEvent<EventTarget>) => void;
 };
 
-export const CategoryDescriptionTextField = (props: Props) => {
+const CategoryDescriptionTextField = (props: Props) => {
   const { description, onDescriptionChange } = props;
 
   const classes = useStyles();
@@ -36,3 +36,5 @@ export const CategoryDescriptionTextField = (props: Props) => {
     />
   );
 };
+
+export default CategoryDescriptionTextField;

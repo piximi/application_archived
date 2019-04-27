@@ -13,7 +13,7 @@ type Props = {
   onCancellation: () => void;
 };
 
-export const DialogActions = (props: Props) => {
+const DialogActions = (props: Props) => {
   const {
     acceptanceTitle,
     cancellationTitle,
@@ -37,3 +37,5 @@ export const DialogActions = (props: Props) => {
     </MaterialUI.DialogActions>
   );
 };
+
+export default DialogActions;

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as tfvis from '@tensorflow/tfjs-vis/dist/index';
 
-export const ConfusionMatrix = props => {
+const ConfusionMatrix = props => {
   const containerRef = React.useRef();
 
   React.useEffect(() => {
@@ -12,3 +12,5 @@ export const ConfusionMatrix = props => {
 
   return <div className="confusion-matrix-root" ref={containerRef} />;
 };
+
+export default ConfusionMatrix;

@@ -9,7 +9,7 @@ type Props = {
   children: React.ReactNode;
 };
 
-export const DialogContent = (props: Props) => {
+const DialogContent = (props: Props) => {
   const { children } = props;
 
   const classes = useStyles();
@@ -22,3 +22,5 @@ export const DialogContent = (props: Props) => {
     </MaterialUI.DialogContent>
   );
 };
+
+export default DialogContent;

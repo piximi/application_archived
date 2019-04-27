@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(styles);
 
-export const DialogTitle = (props: { title: string }) => {
+const DialogTitle = (props: { title: string }) => {
   const { title } = props;
 
   const classes = useStyles();
@@ -21,3 +21,5 @@ export const DialogTitle = (props: { title: string }) => {
     </MaterialUI.DialogTitle>
   );
 };
+
+export default DialogTitle;
