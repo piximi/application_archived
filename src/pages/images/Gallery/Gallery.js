@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './Gallery.css';
 import GalleryItems from '../GalleryItems/GalleryItems';
-import GallerySelectionBox from '../GallerySelectionBox/GallerySelectionBox.js';
+import GallerySelectionBox from '../GallerySelectionBox/GallerySelectionBox';
 import CustomDragLayer from '../GalleryCustomDragLayer/GalleryCustomDragLayer';
 import { collisionDetection } from '../helper';
 

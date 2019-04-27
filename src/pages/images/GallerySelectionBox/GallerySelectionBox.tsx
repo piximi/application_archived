@@ -2,7 +2,17 @@ import * as React from 'react';
 import '../Gallery/Gallery.css';
 import { reCalc } from '../helper';
 
-const GallerySelectionBox = props => {
+type Props = {
+  selectionBoxCoordinates: {
+    x1: number;
+    x2: number;
+    y1: number;
+    y2: number;
+  };
+  visibility: any;
+};
+
+const GallerySelectionBox = (props: Props) => {
   const [style, setStyle] = React.useState({
     zIndex: 9000,
     position: 'fixed',
@@ -41,7 +51,9 @@ const GallerySelectionBox = props => {
     setStyle(newStyle);
   }, [props.visibility]);
 
-  return <div style={style} />;
+  // return <div style={style} />;
+
+  return <div />;
 };
 
 export default GallerySelectionBox;
