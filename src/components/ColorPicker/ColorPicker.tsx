@@ -7,7 +7,7 @@ type Props = {
   onChange: any;
 };
 
-const ColorPicker = (props: Props) => {
+export const ColorPicker = (props: Props) => {
   const { onChange, categories } = props;
 
   const usedColors = (categories: any) => {
@@ -28,5 +28,3 @@ const ColorPicker = (props: Props) => {
     <CirclePicker colors={availableColors(categories)} onChange={onChange} />
   );
 };
-
-export default ColorPicker;

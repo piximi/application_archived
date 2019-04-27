@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as tfvis from '@tensorflow/tfjs-vis/dist/index';
 
-const Histogram = props => {
+export const Histogram = props => {
   const containerRef = React.useRef();
 
   React.useEffect(() => {
@@ -12,5 +12,3 @@ const Histogram = props => {
 
   return <div className="histogram-root" ref={containerRef} />;
 };
-
-export default Histogram;

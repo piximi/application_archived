@@ -11,7 +11,7 @@ type Props = {
   onClose: () => void;
 };
 
-const Dialog = (props: Props) => {
+export const Dialog = (props: Props) => {
   const { children, open, onClose } = props;
 
   const classes = useStyles();
@@ -28,5 +28,3 @@ const Dialog = (props: Props) => {
     </MaterialUI.Dialog>
   );
 };
-
-export default Dialog;

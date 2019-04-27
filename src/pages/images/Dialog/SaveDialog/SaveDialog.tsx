@@ -6,7 +6,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import { useTranslation } from 'react-i18next';
 
-const SaveDialog = (props: any) => {
+export const SaveDialog = (props: any) => {
   function handleCancel(props: any) {
     props.onClose();
   }
