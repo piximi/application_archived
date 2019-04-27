@@ -32,13 +32,11 @@ const itemSource = {
   }
 };
 
-function collect(connect, monitor) {
-  return {
-    connectDragSource: connect.dragSource(),
-    isDragging: monitor.isDragging(),
-    connectDragPreview: connect.dragPreview()
-  };
-}
+const collect = (connect, monitor) => ({
+  connectDragSource: connect.dragSource(),
+  isDragging: monitor.isDragging(),
+  connectDragPreview: connect.dragPreview()
+});
 
 const GalleryItem = props => {
   const {
