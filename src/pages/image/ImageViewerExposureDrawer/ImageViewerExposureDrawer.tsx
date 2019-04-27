@@ -4,7 +4,7 @@ import { Drawer } from '@material-ui/core';
 import { ImageHistogram } from '../ImageHistogram/ImageHistogram';
 import { ChannelSelection } from '../ChannelSelection/ChannelSelection';
 import { BrightnessSlider } from '../BrightnessSlider/BrightnessSlider';
-import { Contrast } from '../Contrast/Contrast';
+import { ContrastSlider } from '../ContrastSlider/ContrastSlider';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(styles);
@@ -41,7 +41,7 @@ export const ImageViewerExposureDrawer = (props: any) => {
       />
 
       <BrightnessSlider brightness={brightness} setBrightness={setBrightness} />
-      <Contrast contrast={contrast} setContrast={setContrast} />
+      <ContrastSlider contrast={contrast} setContrast={setContrast} />
     </Drawer>
   );
 };
