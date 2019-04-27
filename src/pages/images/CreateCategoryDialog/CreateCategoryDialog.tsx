@@ -1,10 +1,12 @@
 import * as React from 'react';
-import DialogContent from '../../../components/DialogContent/DialogContent';
-import DialogActions from '../../../components/DialogActions/DialogActions';
-import DialogTitle from '../../../components/DialogTitle/DialogTitle';
-import ColorIconButton from '../../../components/ColorIconButton/ColorIconButton';
-import Dialog from '../../../components/Dialog/Dialog';
-import CategoryDescriptionTextField from '../../../components/CategoryDescriptionTextField/CategoryDescriptionTextField';
+import {
+  CategoryDescriptionTextField,
+  ColorIconButton,
+  DialogTitle,
+  DialogActions,
+  DialogContent,
+  Dialog
+} from '../../../components';
 
 const CreateCategoryDialog = (props: any) => {
   const { createCategory, open, onClose } = props;
