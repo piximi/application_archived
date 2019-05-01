@@ -7,7 +7,7 @@ const ImageHistogram = props => {
 
   const { channels, src, brightness, contrast } = props;
 
-  const [data, setData] = React.useState([]);
+  const [data, setData] = React.useState([]); // eslint-disable-line no-unused-vars
 
   React.useEffect(() => {
     let image = new Image();
