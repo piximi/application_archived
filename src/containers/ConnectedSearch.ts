@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
-import Search from '../components/AppBar/Search/Search';
+import { Search } from '../pages/images';
 import { updateImageVisibilityAction } from '../actions/images';
 
-const mapStateToProps = (state: { images: any; }) => {
+const mapStateToProps = (state: { images: any }) => {
   return {
     images: state.images
   };

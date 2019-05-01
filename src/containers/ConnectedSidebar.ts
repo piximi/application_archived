@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import axios from 'axios';
-import Sidebar from '../components/SidebarDrawer/SidebarDrawer/SidebarDrawer';
+import { SidebarDrawer } from '../pages/images';
 import {
   addImagesAction,
   updateImageCategoryAction,
@@ -32,7 +32,7 @@ const loadDemoProject = (demo: string) => {
   };
 };
 
-const mapStateToProps = (state: { images: any; categories: any; }) => {
+const mapStateToProps = (state: { images: any; categories: any }) => {
   return {
     images: state.images,
     categories: state.categories
@@ -41,11 +41,15 @@ const mapStateToProps = (state: { images: any; categories: any; }) => {
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    updateStore: (data: { images: any; categories: any; }) => {
+    updateStore: (data: { images: any; categories: any }) => {
       dispatch(addImagesAction(data.images));
       dispatch(addCategoryAction(data.categories));
     },
-    updateImageCategory: (imgIdentifier: any, categoryIdentifier: any, categoryName: any) => {
+    updateImageCategory: (
+      imgIdentifier: any,
+      categoryIdentifier: any,
+      categoryName: any
+    ) => {
       dispatch(
         updateImageCategoryAction(
           imgIdentifier,
@@ -76,6 +80,6 @@ const mapDispatchToProps = (dispatch: any) => {
 const ConnectedSidebar = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Sidebar);
+)(SidebarDrawer);
 
 export default ConnectedSidebar;

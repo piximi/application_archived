@@ -1,5 +1,5 @@
 import * as React from 'react';
-import ConnectedApplication from './containers/ConnectedApplication';
+import { ConnectedApplication } from './containers';
 import {
   MuiThemeProvider,
   createMuiTheme,

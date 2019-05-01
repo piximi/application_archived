@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Item from '../components/Gallery/Item/Item';
+import { GalleryItem } from '../pages/images';
 import { updateImageCategoryAction } from '../reducers/images';
 
 const mapDispatchToProps = (dispatch: any, props: any) => {
@@ -26,6 +26,6 @@ const mapStateToProps = (state: any, props: any) => {
 const ConnectedItem = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Item);
+)(GalleryItem);
 
 export default ConnectedItem;
