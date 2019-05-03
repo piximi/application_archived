@@ -1,17 +1,18 @@
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { SidebarDrawer } from '../pages/images';
+import { updateImageProbabilityAction } from '../actions/images';
 import {
-  addImagesAction,
-  updateImageCategoryAction,
-  updateImageProbabilityAction
-} from '../actions/images';
+  createImageAction,
+  updateImageCategoryAction
+} from '../reducers/images';
 import {
   addCategoryAction,
   createCategoryAction
 } from '../reducers/categories';
 
 import { toggleSpinnerAction } from '../actions/settings';
+import { string } from 'prop-types';
 
 const loadDemoProject = (demo: string) => {
   return (dispatch: any) => {
@@ -23,7 +24,7 @@ const loadDemoProject = (demo: string) => {
       )
       .then(result => {
         dispatch(toggleSpinnerAction());
-        dispatch(addImagesAction(result.data.images));
+        dispatch(createImageAction(result.data.images));
         dispatch(addCategoryAction(result.data.categories));
       })
       .catch(function(error) {
@@ -42,7 +43,7 @@ const mapStateToProps = (state: { images: any; categories: any }) => {
 const mapDispatchToProps = (dispatch: any) => {
   return {
     updateStore: (data: { images: any; categories: any }) => {
-      dispatch(addImagesAction(data.images));
+      dispatch(createImageAction(data.images));
       dispatch(addCategoryAction(data.categories));
     },
     updateImageCategory: (
@@ -51,11 +52,10 @@ const mapDispatchToProps = (dispatch: any) => {
       categoryName: any
     ) => {
       dispatch(
-        updateImageCategoryAction(
-          imgIdentifier,
-          categoryIdentifier,
-          categoryName
-        )
+        updateImageCategoryAction({
+          identifier: string,
+          categoryIdentifier: string
+        })
       );
       dispatch(updateImageProbabilityAction(imgIdentifier, null));
     },
@@ -70,7 +70,7 @@ const mapDispatchToProps = (dispatch: any) => {
       dispatch(createCategoryAction(category));
     },
     loadDemoProject: (demo: string) => {
-      dispatch(addImagesAction({}));
+      dispatch(createImageAction({}));
       dispatch(toggleSpinnerAction());
       dispatch(loadDemoProject(demo));
     }
