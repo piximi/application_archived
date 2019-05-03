@@ -50,6 +50,8 @@ const GalleryItem = props => {
 
   const { openedDialog, openDialog, closeDialog } = useDialog();
 
+  const { anchorEl, openedMenu, openMenu, closeMenu } = useMenu();
+
   useEffect(() => {
     connectDragPreview(getEmptyImage(), {
       captureDraggingState: true
@@ -58,6 +60,7 @@ const GalleryItem = props => {
 
   const myContextMenu = e => {
     e.preventDefault();
+    openMenu(e);
   };
 
   const unselectedChannels = item.unselectedChannels;
@@ -84,6 +87,14 @@ const GalleryItem = props => {
         height={containerStyle.height}
         width={0.9 * containerStyle.width}
       />
+
+      <ItemContextMenu
+        anchorEl={anchorEl}
+        onClose={closeMenu}
+        open={openedMenu}
+        openImageViewerDialog={openDialog}
+      />
+
       <ImageViewerDialog
         onClose={closeDialog}
         open={openedDialog}
