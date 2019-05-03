@@ -115,7 +115,6 @@ const SidebarSaveListItem = props => {
           </MenuList>
         </Paper>
       </Popover>
-      c
       <SaveDialog
         open={openedDialog}
         download={downloadFunction}
