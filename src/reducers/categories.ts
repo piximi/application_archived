@@ -49,9 +49,7 @@ const findCategoryIndex = (
 
 const categories = createReducer(initialState, {
   [addCategoryAction.toString()]: (state, action) => {
-    for (let i = 0; i < action.payload.length; i++) {
-      state.push(action.payload[i]);
-    }
+    action.payload.map((category: Category) => state.push(category));
   },
   [createCategoryAction.toString()]: (state, action) => {
     const category: Category = action.payload;

@@ -162,9 +162,7 @@ const initialState: Image[] = [];
 
 const images = createReducer(initialState, {
   [createImageAction.toString()]: (state, action) => {
-    const image: Image = action.payload;
-
-    state.push(image);
+    action.payload.map((image: Image) => state.push(image));
   },
   [deleteImageAction.toString()]: (state, action) => {
     const { identifier } = action.payload;
