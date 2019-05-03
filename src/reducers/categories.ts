@@ -49,16 +49,9 @@ const findCategoryIndex = (
 
 const categories = createReducer(initialState, {
   [addCategoryAction.toString()]: (state, action) => {
-    const category: Category = {
-      classifierIdentifier: undefined,
-      color: '#F8F8F8',
-      description: 'Unknown',
-      identifier: '00000000-0000-0000-0000-000000000000',
-      index: 0,
-      visible: true
-    };
-
-    state.push(category);
+    for (let i = 0; i < action.payload.length; i++) {
+      state.push(action.payload[i]);
+    }
   },
   [createCategoryAction.toString()]: (state, action) => {
     const category: Category = action.payload;
