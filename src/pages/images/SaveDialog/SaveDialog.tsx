@@ -13,7 +13,7 @@ export const SaveDialog = (props: any) => {
 
   function handleDownload(props: any) {
     props.onClose();
-    props.download();
+    props.download(props.defaultDialogText);
   }
 
   const { open, defaultDialogText, changeDefaultDialogText } = props;
