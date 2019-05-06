@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { GalleryItemLabel } from '../pages/images';
 
-const mapDispatchToProps = (dispatch: any, props: any) => {
+const mapDispatchToProps = () => {
   return {};
 };
 
