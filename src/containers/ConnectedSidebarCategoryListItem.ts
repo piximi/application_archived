@@ -7,7 +7,7 @@ import { SidebarCategoryListItem } from '../pages/images';
 import { Category } from '../types';
 import { Dispatch } from 'redux';
 
-const mapStateToProps = (state: { categories: Category[] }, props: any) => {
+const mapStateToProps = (state: { categories: Category[] }) => {
   return {
     categories: state.categories
   };

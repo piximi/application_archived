@@ -12,7 +12,7 @@ type CreateImagePayload = {
   identifier: String;
 };
 
-const mapStateToProps = (state: any, props: any) => {
+const mapStateToProps = (state: any) => {
   return {
     images: state.images
   };

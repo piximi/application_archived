@@ -7,9 +7,7 @@ const mapStateToProps = (state: any) => {
   };
 };
 
-const mapDispatchToProps = () => {
-  return {};
-};
+const mapDispatchToProps = () => {};
 
 const ConnectedColorPicker = connect(
   mapStateToProps,
