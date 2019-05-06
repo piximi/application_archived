@@ -7,7 +7,7 @@ const mapStateToProps = (state: Category[]) => {
   return state;
 };
 
-const mapDispatchToProps = (dispatch: any, props: any) => {
+const mapDispatchToProps = (dispatch: any) => {
   return {
     deleteCategory: (identifier: string) => {
       const payload = { identifier: identifier };

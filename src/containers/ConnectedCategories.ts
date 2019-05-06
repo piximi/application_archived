@@ -13,7 +13,7 @@ const mapStateToProps = (state: { categories: Category[] }, props: any) => {
   };
 };
 
-const mapDispatchToProps = (dispatch: any, props: any) => {
+const mapDispatchToProps = (dispatch: any) => {
   return {
     toggleVisibility: (identifier: string) => {
       const payload = { identifier: identifier };

@@ -8,7 +8,7 @@ const mapStateToProps = (state: { classifier: Classifier }) => {
   return state.classifier;
 };
 
-const mapDispatchToProps = (dispatch: any, props: any) => {
+const mapDispatchToProps = (dispatch: any) => {
   return {
     createClassifier: (name: string) => {
       const classifier = {

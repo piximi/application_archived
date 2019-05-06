@@ -5,7 +5,7 @@ const mapDispatchToProps = (dispatch: any, props: any) => {
   return {};
 };
 
-const mapStateToProps = (state: any, props: any) => {
+const mapStateToProps = (state: any) => {
   return {
     images: state.images
   };

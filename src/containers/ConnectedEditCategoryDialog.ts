@@ -12,7 +12,7 @@ const mapStateToProps = (state: { categories: Category[] }) => {
   };
 };
 
-const mapDispatchToProps = (dispatch: any, props: any) => {
+const mapDispatchToProps = (dispatch: any) => {
   return {
     updateColor: (identifier: string, color: string) => {
       const payload = { identifier: identifier, color: color };

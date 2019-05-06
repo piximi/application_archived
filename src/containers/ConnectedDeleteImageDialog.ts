@@ -8,7 +8,7 @@ const mapStateToProps = (state: { images: any }) => {
   };
 };
 
-const mapDispatchToProps = (dispatch: any, props: any) => {
+const mapDispatchToProps = (dispatch: any) => {
   return {
     deleteImages: (imgIdentifiers: any) => {
       dispatch(deleteImagesAction(imgIdentifiers));

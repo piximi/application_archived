@@ -8,7 +8,7 @@ const mapStateToProps = (state: { images: any }) => {
   };
 };
 
-const mapDispatchToProps = (dispatch: any, props: any) => {
+const mapDispatchToProps = (dispatch: any) => {
   return {
     updateImageVisibility: (images: any) => {
       dispatch(updateImageVisibilityAction(images));

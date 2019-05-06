@@ -8,7 +8,7 @@ const mapStateToProps = (state: any) => {
   };
 };
 
-const mapDispatchToProps = (dispatch: any, props: any) => {
+const mapDispatchToProps = (dispatch: any) => {
   return {
     updateImageCategory: (identifier: string, categoryIdentifier: string) => {
       const payload = {

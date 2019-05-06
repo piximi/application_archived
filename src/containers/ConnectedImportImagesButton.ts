@@ -11,7 +11,7 @@ type CreateImagePayload = {
   identifier: String;
 };
 
-const mapDispatchToProps = (dispatch: any, props: any) => {
+const mapDispatchToProps = (dispatch: any) => {
   return {
     createImage: (checksum: String, data: String) => {
       const payload: CreateImagePayload = {

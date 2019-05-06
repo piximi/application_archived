@@ -11,7 +11,7 @@ const mapStateToProps = (state: { categories: any }) => {
   };
 };
 
-const mapDispatchToProps = (dispatch: any, props: any) => {
+const mapDispatchToProps = (dispatch: any) => {
   return {
     createCategory: (color: any, description: any) => {
       const category = {
