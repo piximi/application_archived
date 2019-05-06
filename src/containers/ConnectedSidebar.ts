@@ -72,7 +72,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     loadDemoProject: (demo: string) => {
       dispatch(createImageAction({}));
       dispatch(toggleSpinnerAction());
-      dispatch(loadDemoProject(demo));
+      // dispatch(loadDemoProject(demo));
     }
   };
 };
