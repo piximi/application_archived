@@ -3,6 +3,12 @@ import { GalleryItemCategoryMenu } from '../pages/images';
 import { updateImageCategoryAction } from '../reducers/images';
 import { Dispatch } from 'redux';
 
+const mapStateToProps = (state: any) => {
+  return {
+    categories: state.categories
+  };
+};
+
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     updateImageCategory: (identifier: string, categoryIdentifier: string) => {
@@ -15,12 +21,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
 
       dispatch(action);
     }
-  };
-};
-
-const mapStateToProps = (state: any) => {
-  return {
-    categories: state.categories
   };
 };
 

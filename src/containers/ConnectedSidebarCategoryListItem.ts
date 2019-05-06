@@ -7,6 +7,12 @@ import { SidebarCategoryListItem } from '../pages/images';
 import { Category } from '../types';
 import { Dispatch } from 'redux';
 
+const mapStateToProps = (state: { categories: Category[] }, props: any) => {
+  return {
+    categories: state.categories
+  };
+};
+
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     toggleVisibility: (identifier: string) => {
@@ -23,12 +29,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
 
       dispatch(action);
     }
-  };
-};
-
-const mapStateToProps = (state: { categories: Category[] }, props: any) => {
-  return {
-    categories: state.categories
   };
 };
 
