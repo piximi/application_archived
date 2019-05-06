@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import { createImageAction } from '../reducers/images';
 import * as uuid from 'uuid';
-
 import { ImportImagesButton } from '../pages/images';
 import { Dispatch } from 'redux';
 
