@@ -13,6 +13,7 @@ import {
 
 import { toggleSpinnerAction } from '../actions/settings';
 import { string } from 'prop-types';
+import { Dispatch } from 'redux';
 
 const loadDemoProject = (demo: string) => {
   return (dispatch: any) => {
@@ -40,7 +41,7 @@ const mapStateToProps = (state: { images: any; categories: any }) => {
   };
 };
 
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     updateStore: (data: { images: any; categories: any }) => {
       dispatch(createImageAction(data.images));

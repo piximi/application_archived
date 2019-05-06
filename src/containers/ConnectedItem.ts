@@ -1,8 +1,9 @@
 import { connect } from 'react-redux';
 import { GalleryItem } from '../pages/images';
 import { updateImageCategoryAction } from '../reducers/images';
+import { Dispatch } from 'redux';
 
-const mapDispatchToProps = (dispatch: any, props: any) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     updateImageCategory: (identifier: string, categoryIdentifier: string) => {
       const payload = {

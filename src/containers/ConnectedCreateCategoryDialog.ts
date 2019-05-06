@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { createCategoryAction } from '../reducers/categories';
 import { CreateCategoryDialog } from '../pages/images';
 import uuidv4 from 'uuid';
+import { Dispatch } from 'redux';
 
 let index = 0;
 
@@ -11,7 +12,7 @@ const mapStateToProps = (state: { categories: any }) => {
   };
 };
 
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     createCategory: (color: any, description: any) => {
       const category = {

@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { DeleteImageDialog } from '../pages/images';
 import { deleteImagesAction } from '../actions/images';
+import { Dispatch } from 'redux';
 
 const mapStateToProps = (state: { images: any }) => {
   return {
@@ -8,7 +9,7 @@ const mapStateToProps = (state: { images: any }) => {
   };
 };
 
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     deleteImages: (imgIdentifiers: any) => {
       dispatch(deleteImagesAction(imgIdentifiers));

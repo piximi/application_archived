@@ -5,6 +5,7 @@ import {
   updateImageProbabilityAction
 } from '../actions/images';
 import { getVisibleImages } from '../selectors/images';
+import { Dispatch } from 'redux';
 
 const mapStateToProps = (state: any) => {
   return {
@@ -14,7 +15,7 @@ const mapStateToProps = (state: any) => {
   };
 };
 
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     fit: () => {
       const pathname = '';

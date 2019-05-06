@@ -8,6 +8,7 @@ import {
   updateUnselectedChannelsAction,
   updateUnselectedChannelsForAllImagesAction
 } from '../actions/images';
+import { Dispatch } from 'redux';
 
 const mapStateToProps = (state: { images: any }) => {
   return {
@@ -15,7 +16,7 @@ const mapStateToProps = (state: { images: any }) => {
   };
 };
 
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     saveEdits: (
       imgIdentifier: any,

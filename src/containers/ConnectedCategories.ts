@@ -6,6 +6,7 @@ import {
 
 import { SidebarCategoriesList } from '../pages/images';
 import { Category } from '../types';
+import { Dispatch } from 'redux';
 
 const mapStateToProps = (state: { categories: Category[] }, props: any) => {
   return {
@@ -13,7 +14,7 @@ const mapStateToProps = (state: { categories: Category[] }, props: any) => {
   };
 };
 
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     toggleVisibility: (identifier: string) => {
       const payload = { identifier: identifier };

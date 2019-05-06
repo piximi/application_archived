@@ -3,6 +3,7 @@ import { createImageAction } from '../reducers/images';
 import * as uuid from 'uuid';
 
 import { ImportImagesButton } from '../pages/images';
+import { Dispatch } from 'redux';
 
 type CreateImagePayload = {
   categoryIdentifier: String;
@@ -11,7 +12,7 @@ type CreateImagePayload = {
   identifier: String;
 };
 
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     createImage: (checksum: String, data: String) => {
       const payload: CreateImagePayload = {

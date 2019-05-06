@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { GalleryItemCategoryMenu } from '../pages/images';
 import { updateImageCategoryAction } from '../reducers/images';
+import { Dispatch } from 'redux';
 
 const mapStateToProps = (state: any) => {
   return {
@@ -8,7 +9,7 @@ const mapStateToProps = (state: any) => {
   };
 };
 
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     updateImageCategory: (identifier: string, categoryIdentifier: string) => {
       const payload = {
