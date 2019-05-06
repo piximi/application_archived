@@ -2,7 +2,7 @@ import * as React from 'react';
 import styles from './ColorIconButton.css';
 import { makeStyles } from '@material-ui/styles';
 import * as MaterialUI from '@material-ui/core';
-import LabelIcon from '@material-ui/core/SvgIcon/SvgIcon';
+import LabelIcon from '@material-ui/icons/Label';
 import { useMenu } from '../../hooks';
 import { ConnectedColorPicker } from '../../containers';
 
