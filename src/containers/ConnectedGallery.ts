@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import { Gallery } from '../pages/images';
+import { Image } from '../types';
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: { images: Image[] }) => {
   return {
     images: state.images
   };
