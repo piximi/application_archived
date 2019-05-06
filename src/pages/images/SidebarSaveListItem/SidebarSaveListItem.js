@@ -20,7 +20,6 @@ import * as API from '../../../classifier';
 const SidebarSaveListItem = props => {
   const { anchorEl, openedMenu, openMenu, closeMenu } = useMenu();
   const { openedDialog, openDialog, closeDialog } = useDialog();
-
   const [defaultDialogText, setDefaultDialogText] = React.useState('');
   const [downloadFunction, setDownloadFunction] = React.useState(0);
 
@@ -28,8 +27,7 @@ const SidebarSaveListItem = props => {
     setDefaultDialogText(event.target.value);
   };
 
-  const clickOnExportLabels = () => {
-    let fileName = defaultDialogText;
+  const clickOnExportLabels = fileName => {
     if (fileName.length === 0) fileName = 'labels.csv';
     if (fileName.split('.').pop() !== 'csv') fileName = fileName + '.csv';
     const Json2csvParser = json2csv.Parser;
@@ -38,8 +36,7 @@ const SidebarSaveListItem = props => {
     fileDownload(csv, fileName);
   };
 
-  const clickOnExportProject = () => {
-    let fileName = defaultDialogText;
+  const clickOnExportProject = fileName => {
     if (fileName.length === 0) fileName = 'MyProject.cyto';
     if (fileName.split('.').pop() !== 'cyto') fileName = fileName + '.cyto';
     let categories = [...props.categories];
@@ -53,29 +50,21 @@ const SidebarSaveListItem = props => {
     fileDownload(json, fileName);
   };
 
-  const saveAnnotationsAndPredictions = () => {
+  const openFileNameEditor = defaultFileName => {
+    setDefaultDialogText(defaultFileName);
     closeMenu();
-
     openDialog();
-
-    setDownloadFunction(clickOnExportLabels);
-
-    setDefaultDialogText('labels.csv');
   };
 
-  const saveClassifier = () => {
-    closeMenu();
+  const saveAnnotationsAndPredictions = fileName => {
+    setDownloadFunction(clickOnExportLabels(fileName));
+  };
 
-    openDialog();
-
-    setDownloadFunction(clickOnExportProject);
-
-    setDefaultDialogText('MyProject.cyto');
+  const saveClassifier = fileName => {
+    setDownloadFunction(clickOnExportProject(fileName));
   };
 
   const saveWeights = () => {
-    closeMenu();
-
     API.exportWeights();
   };
 
@@ -90,10 +79,8 @@ const SidebarSaveListItem = props => {
         <ListItemIcon>
           <SaveIcon />
         </ListItemIcon>
-
         <ListItemText inset primary="Save" />
       </ListItem>
-
       <Popover
         anchorPosition={anchorPosition}
         anchorReference="anchorPosition"
@@ -102,13 +89,23 @@ const SidebarSaveListItem = props => {
       >
         <Paper>
           <MenuList dense>
-            <MenuItem onClick={saveClassifier}>
+            <MenuItem
+              onClick={() => {
+                openFileNameEditor('MyProject.cyto');
+                setDownloadFunction(fileName => saveClassifier);
+              }}
+            >
               <ListItemText primary="Save classifier" />
             </MenuItem>
 
             <Divider />
 
-            <MenuItem onClick={saveAnnotationsAndPredictions}>
+            <MenuItem
+              onClick={() => {
+                openFileNameEditor('labels.csv');
+                setDownloadFunction(fileName => saveAnnotationsAndPredictions);
+              }}
+            >
               <ListItemText primary="Save annotations and predictions" />
             </MenuItem>
 
@@ -118,7 +115,6 @@ const SidebarSaveListItem = props => {
           </MenuList>
         </Paper>
       </Popover>
-
       <SaveDialog
         open={openedDialog}
         download={downloadFunction}
