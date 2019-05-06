@@ -7,11 +7,6 @@ const mapStateToProps = (state: any) => {
   };
 };
 
-const mapDispatchToProps = () => {};
-
-const ConnectedItemLabel = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(GalleryItemLabel);
+const ConnectedItemLabel = connect(mapStateToProps)(GalleryItemLabel);
 
 export default ConnectedItemLabel;

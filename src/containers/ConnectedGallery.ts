@@ -7,11 +7,6 @@ const mapStateToProps = (state: any) => {
   };
 };
 
-const mapDispatchToProps = () => {};
-
-const ConnectedGallery = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Gallery);
+const ConnectedGallery = connect(mapStateToProps)(Gallery);
 
 export default ConnectedGallery;
