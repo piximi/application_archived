@@ -5,31 +5,24 @@ const ImageHistogram = props => {
   const canvasRef = React.useRef();
   const nodeRef = React.useRef();
 
-  const { src } = props;
+  const { channels, src, brightness, contrast } = props;
 
-  const [data, setData] = React.useState([]);
-
-  console.log(data);
+  const [data, setData] = React.useState([]); // eslint-disable-line no-unused-vars
 
   React.useEffect(() => {
     let image = new Image();
-
     image.src = src;
 
     image.onload = e => {
       const img = e.target;
       const canvas = canvasRef.current;
+      canvas.width = img.width;
+      canvas.height = img.height;
+
       const context = canvas.getContext('2d');
-      context.drawImage(img, 0, img.height, img.width, img.height);
+      context.drawImage(img, 0, 0, img.width, img.height);
 
-      const imageData = context.getImageData(
-        0,
-        img.height,
-        img.width,
-        img.height
-      ).data;
-
-      debugger;
+      const imageData = context.getImageData(0, 0, img.width, img.height).data;
 
       const plottableData = createPlottableData(imageData);
 
@@ -38,12 +31,9 @@ const ImageHistogram = props => {
 
       setData(plottableData);
     };
-
-    image.src = src;
-  });
+  }, [channels, src, brightness, contrast]);
 
   const createPlottableData = imageData => {
-    console.log(imageData);
     let rD = {},
       gD = {},
       bD = {};
@@ -52,6 +42,7 @@ const ImageHistogram = props => {
       gD[i] = 0;
       bD[i] = 0;
     }
+
     for (let j = 0; j < imageData.length; j += 4) {
       rD[imageData[j]]++;
       gD[imageData[j + 1]]++;
@@ -61,7 +52,6 @@ const ImageHistogram = props => {
   };
 
   const createHistogram = imgData => {
-    console.log(imgData);
     let W = 300;
     let H = 300;
     const svg = d3.select(nodeRef.current);
@@ -75,8 +65,8 @@ const ImageHistogram = props => {
     if (yAxis) {
       d3.selectAll('g.y-axis').remove();
     }
-    function graphComponent(imgData, color) {
-      d3.selectAll('.bar-' + color).remove();
+
+    const graphComponent = (imgData, color) => {
       var data = Object.keys(imgData).map(function(key) {
         return { freq: imgData[key], idx: +key };
       });
@@ -132,11 +122,25 @@ const ImageHistogram = props => {
         .attr('height', function(d) {
           return height - y(d.freq);
         });
+    };
+
+    if (channels.includes(0)) {
+      d3.selectAll('.bar-red').remove();
+    } else {
+      graphComponent(imgData.rD, 'red');
     }
 
-    graphComponent(imgData.gD, 'green');
-    graphComponent(imgData.bD, 'blue');
-    graphComponent(imgData.rD, 'red');
+    if (channels.includes(1)) {
+      d3.selectAll('.bar-green').remove();
+    } else {
+      graphComponent(imgData.gD, 'green');
+    }
+
+    if (channels.includes(2)) {
+      d3.selectAll('.bar-blue').remove();
+    } else {
+      graphComponent(imgData.bD, 'blue');
+    }
   };
 
   return (
