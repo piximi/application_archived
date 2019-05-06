@@ -21,7 +21,7 @@ const mapDispatchToProps = (dispatch: any, props: any) => {
         categoryIdentifier: ''
       };
 
-      const action = createImageAction(payload);
+      const action = createImageAction([payload]);
 
       dispatch(action);
     }

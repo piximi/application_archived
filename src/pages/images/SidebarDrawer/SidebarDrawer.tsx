@@ -25,7 +25,8 @@ const SidebarDrawer = (props: any) => {
     setUnlabelledVisibility,
     toggled,
     toggle,
-    loadDemoProject
+    loadDemoProject,
+    updateStore
   } = props;
 
   return (
@@ -42,7 +43,10 @@ const SidebarDrawer = (props: any) => {
       <List dense>
         <SidebarNewClassifierListItem />
 
-        <SidebarOpenListItem loadDemoProject={loadDemoProject} />
+        <SidebarOpenListItem
+          loadDemoProject={loadDemoProject}
+          updateStore={updateStore}
+        />
 
         <SidebarSaveListItem images={images} categories={categories} />
       </List>
