@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import {
-  updateCategoryDescriptionAction,
-  updateCategoryColorAction
+  updateCategoryColorAction,
+  updateCategoryDescriptionAction
 } from '../reducers/categories';
 import { EditCategoryDialog } from '../pages/images';
 import { Category } from '../types';

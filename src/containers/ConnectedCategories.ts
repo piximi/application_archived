@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import {
-  updateCategoryVisibilityAction,
-  toggleCategoryVisibilityAction
+  toggleCategoryVisibilityAction,
+  updateCategoryVisibilityAction
 } from '../reducers/categories';
 import { SidebarCategoriesList } from '../pages/images';
 import { Category } from '../types';
