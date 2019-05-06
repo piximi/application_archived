@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { ColorPicker } from '../components';
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: { categories: any }) => {
   return {
     categories: state.categories
   };
