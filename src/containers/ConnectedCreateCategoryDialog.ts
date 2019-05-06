@@ -23,7 +23,9 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
         visible: true
       };
 
-      dispatch(createCategoryAction(category));
+      const action = createCategoryAction(category);
+
+      dispatch(action);
     }
   };
 };

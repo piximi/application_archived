@@ -12,7 +12,9 @@ const mapStateToProps = (state: { images: any }) => {
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     updateImageVisibility: (images: any) => {
-      dispatch(updateImageVisibilityAction(images));
+      const action = updateImageVisibilityAction(images);
+
+      dispatch(action);
     }
   };
 };
