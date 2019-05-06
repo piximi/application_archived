@@ -9,8 +9,9 @@ import {
   updateUnselectedChannelsForAllImagesAction
 } from '../actions/images';
 import { Dispatch } from 'redux';
+import { Image } from '../types';
 
-const mapStateToProps = (state: { images: any }) => {
+const mapStateToProps = (state: { images: Image[] }) => {
   return {
     images: state.images
   };

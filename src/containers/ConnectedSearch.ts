@@ -2,8 +2,9 @@ import { connect } from 'react-redux';
 import { Search } from '../pages/images';
 import { updateImageVisibilityAction } from '../actions/images';
 import { Dispatch } from 'redux';
+import { Image } from '../types';
 
-const mapStateToProps = (state: { images: any }) => {
+const mapStateToProps = (state: { images: Image[] }) => {
   return {
     images: state.images
   };

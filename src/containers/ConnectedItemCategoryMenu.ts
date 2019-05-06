@@ -2,8 +2,9 @@ import { connect } from 'react-redux';
 import { GalleryItemCategoryMenu } from '../pages/images';
 import { updateImageCategoryAction } from '../reducers/images';
 import { Dispatch } from 'redux';
+import { Category } from '../types';
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: { categories: Category[] }) => {
   return {
     categories: state.categories
   };
