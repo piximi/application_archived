@@ -3,7 +3,6 @@ import {
   updateCategoryVisibilityAction,
   toggleCategoryVisibilityAction
 } from '../reducers/categories';
-
 import { SidebarCategoryListItem } from '../pages/images';
 import { Category } from '../types';
 import { Dispatch } from 'redux';

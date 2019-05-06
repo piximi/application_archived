@@ -10,7 +10,6 @@ import {
   addCategoryAction,
   createCategoryAction
 } from '../reducers/categories';
-
 import { toggleSpinnerAction } from '../actions/settings';
 import { string } from 'prop-types';
 import { Dispatch } from 'redux';
