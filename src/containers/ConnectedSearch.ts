@@ -1,17 +1,21 @@
 import { connect } from 'react-redux';
 import { Search } from '../pages/images';
 import { updateImageVisibilityAction } from '../actions/images';
+import { Dispatch } from 'redux';
+import { Image } from '../types';
 
-const mapStateToProps = (state: { images: any }) => {
+const mapStateToProps = (state: { images: Image[] }) => {
   return {
     images: state.images
   };
 };
 
-const mapDispatchToProps = (dispatch: any, props: any) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     updateImageVisibility: (images: any) => {
-      dispatch(updateImageVisibilityAction(images));
+      const action = updateImageVisibilityAction(images);
+
+      dispatch(action);
     }
   };
 };

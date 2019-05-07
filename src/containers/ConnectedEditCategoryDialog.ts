@@ -1,10 +1,11 @@
 import { connect } from 'react-redux';
 import {
-  updateCategoryDescriptionAction,
-  updateCategoryColorAction
+  updateCategoryColorAction,
+  updateCategoryDescriptionAction
 } from '../reducers/categories';
 import { EditCategoryDialog } from '../pages/images';
 import { Category } from '../types';
+import { Dispatch } from 'redux';
 
 const mapStateToProps = (state: { categories: Category[] }) => {
   return {
@@ -12,7 +13,7 @@ const mapStateToProps = (state: { categories: Category[] }) => {
   };
 };
 
-const mapDispatchToProps = (dispatch: any, props: any) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     updateColor: (identifier: string, color: string) => {
       const payload = { identifier: identifier, color: color };

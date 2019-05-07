@@ -1,19 +1,12 @@
 import { connect } from 'react-redux';
 import { ColorPicker } from '../components';
 
-const mapDispatchToProps = (dispatch: any, props: any) => {
-  return {};
-};
-
-const mapStateToProps = (state: any, props: any) => {
+const mapStateToProps = (state: { categories: any }) => {
   return {
     categories: state.categories
   };
 };
 
-const ConnectedColorPicker = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ColorPicker);
+const ConnectedColorPicker = connect(mapStateToProps)(ColorPicker);
 
 export default ConnectedColorPicker;

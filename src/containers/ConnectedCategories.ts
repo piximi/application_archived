@@ -1,19 +1,19 @@
 import { connect } from 'react-redux';
 import {
-  updateCategoryVisibilityAction,
-  toggleCategoryVisibilityAction
+  toggleCategoryVisibilityAction,
+  updateCategoryVisibilityAction
 } from '../reducers/categories';
-
 import { SidebarCategoriesList } from '../pages/images';
 import { Category } from '../types';
+import { Dispatch } from 'redux';
 
-const mapStateToProps = (state: { categories: Category[] }, props: any) => {
+const mapStateToProps = (state: { categories: Category[] }) => {
   return {
     categories: state.categories
   };
 };
 
-const mapDispatchToProps = (dispatch: any, props: any) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     toggleVisibility: (identifier: string) => {
       const payload = { identifier: identifier };

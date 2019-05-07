@@ -1,19 +1,13 @@
 import { connect } from 'react-redux';
 import { GalleryItemLabel } from '../pages/images';
+import { Category } from '../types';
 
-const mapDispatchToProps = (dispatch: any, props: any) => {
-  return {};
-};
-
-const mapStateToProps = (state: any, props: any) => {
+const mapStateToProps = (state: { categories: Category[] }) => {
   return {
     categories: state.categories
   };
 };
 
-const ConnectedItemLabel = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(GalleryItemLabel);
+const ConnectedItemLabel = connect(mapStateToProps)(GalleryItemLabel);
 
 export default ConnectedItemLabel;

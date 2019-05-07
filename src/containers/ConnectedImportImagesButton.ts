@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import { createImageAction } from '../reducers/images';
 import * as uuid from 'uuid';
-
 import { ImportImagesButton } from '../pages/images';
+import { Dispatch } from 'redux';
 
 type CreateImagePayload = {
   categoryIdentifier: String;
@@ -11,7 +11,13 @@ type CreateImagePayload = {
   identifier: String;
 };
 
-const mapDispatchToProps = (dispatch: any, props: any) => {
+const mapStateToProps = (state: any) => {
+  return {
+    images: state.images
+  };
+};
+
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     createImage: (checksum: String, data: String) => {
       const payload: CreateImagePayload = {
@@ -21,16 +27,10 @@ const mapDispatchToProps = (dispatch: any, props: any) => {
         categoryIdentifier: ''
       };
 
-      const action = createImageAction(payload);
+      const action = createImageAction([payload]);
 
       dispatch(action);
     }
-  };
-};
-
-const mapStateToProps = (state: any, props: any) => {
-  return {
-    images: state.images
   };
 };
 
