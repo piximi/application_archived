@@ -8,11 +8,16 @@ import { ConnectedImportImagesButton } from '../../../containers';
 import Logo from '../Logo/Logo';
 import { DeleteButton } from '..';
 import { makeStyles } from '@material-ui/styles';
+import ImageSearchIcon from '@material-ui/icons/ImageSearch';
+import { useDialog } from '../../../hooks';
+import SearchDialog from '../../search/SearchDialog/SearchDialog';
 
 const useStyles = makeStyles(styles);
 
 const PrimaryAppBar = (props: any) => {
   const classes = useStyles();
+
+  const { openedDialog, openDialog, closeDialog } = useDialog();
 
   const { toggle, toggled, selectedImages, setSelectedImages } = props;
 
@@ -38,7 +43,10 @@ const PrimaryAppBar = (props: any) => {
 
         <div style={{ flexGrow: 1 }} />
 
-        <ConnectedSearch />
+        <IconButton onClick={openDialog}>
+          <ImageSearchIcon />
+        </IconButton>
+        {/*<ConnectedSearch />*/}
 
         <div className={classNames(classes.padding)} />
 
@@ -51,6 +59,8 @@ const PrimaryAppBar = (props: any) => {
           setSelectedImages={setSelectedImages}
         />
       </Toolbar>
+
+      <SearchDialog onClose={closeDialog} open={openedDialog} />
     </AppBar>
   );
 };
