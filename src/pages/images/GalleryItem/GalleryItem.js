@@ -59,8 +59,17 @@ const GalleryItem = props => {
   });
 
   const myContextMenu = e => {
+    // console.log(e);
+    // console.log(e.clientX);
+    // console.log(e.clientY);
     e.preventDefault();
-    openMenu(e);
+    if (anchorEl) {
+      closeMenu();
+
+      // e.initMouseEvent('contextmenu', true, true, view, detail, screenX, screenY, clientX, clientY, ctrlKey, altKey, shiftKey, metaKey, button, relatedTarget);
+    } else {
+      openMenu(e);
+    }
   };
 
   const unselectedChannels = item.unselectedChannels;

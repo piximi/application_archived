@@ -8,10 +8,11 @@ import {
   Paper,
   Popover
 } from '@material-ui/core';
-import PhotoIcon from '@material-ui/icons/Photo';
+import ColorLensIcon from '@material-ui/icons/ColorLens';
 
-const ItemContextMenu = (props: any) => {
+const GalleryItemContextMenu = (props: any) => {
   const { anchorEl, onClose, open, openImageViewerDialog } = props;
+  // if (anchorEl) { console.log("GalleryItemContextMenu: anchorEl"); console.log(anchorEl); }
 
   const anchorPosition = {
     top: open ? anchorEl.getBoundingClientRect().bottom - 3 : 0,
@@ -27,10 +28,15 @@ const ItemContextMenu = (props: any) => {
     >
       <Paper>
         <MenuList dense>
-          <MenuItem onClick={openImageViewerDialog}>
+          <MenuItem
+            onClick={() => {
+              onClose();
+              openImageViewerDialog();
+            }}
+          >
             <ListItemIcon>
               <IconButton>
-                <PhotoIcon />
+                <ColorLensIcon />
               </IconButton>
             </ListItemIcon>
             <ListItemText inset primary="Open image viewer" />
@@ -41,4 +47,4 @@ const ItemContextMenu = (props: any) => {
   );
 };
 
-export default ItemContextMenu;
+export default GalleryItemContextMenu;

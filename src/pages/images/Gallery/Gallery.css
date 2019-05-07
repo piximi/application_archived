@@ -19,7 +19,6 @@ ul > li {
   border-radius: 4px;
   border-color: #4a90e2;
   display: table;
-  transform: scale(0.9);
 }
 
 .unselected {
