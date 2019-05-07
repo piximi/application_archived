@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { DragSource } from 'react-dnd/lib/index';
 import { getEmptyImage } from 'react-dnd-html5-backend/lib/index';
 import { ImageViewerDialog } from '../../image';
-import { GalleryImage } from '..';
-import { useDialog } from '../../../hooks';
+import { GalleryImage, GalleryItemContextMenu } from '..';
+import { useDialog, useMenu } from '../../../hooks';
 import { ConnectedItemLabel } from '../../../containers';
 
 const itemSource = {
@@ -88,7 +88,7 @@ const GalleryItem = props => {
         width={0.9 * containerStyle.width}
       />
 
-      <ItemContextMenu
+      <GalleryItemContextMenu
         anchorEl={anchorEl}
         onClose={closeMenu}
         open={openedMenu}

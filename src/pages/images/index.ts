@@ -10,6 +10,7 @@ import GalleryCustomDragLayer from './GalleryCustomDragLayer/GalleryCustomDragLa
 import GalleryImage from './GalleryImage/GalleryImage';
 import GalleryItem from './GalleryItem/GalleryItem';
 import GalleryItemCategoryMenu from './GalleryItemCategoryMenu/GalleryItemCategoryMenu';
+import GalleryItemContextMenu from './GalleryItemContextMenu/GalleryItemContextMenu';
 import GalleryItemLabel from './GalleryItemLabel/GalleryItemLabel';
 import GalleryItems from './GalleryItems/GalleryItems';
 import GallerySelectionBox from './GallerySelectionBox/GallerySelectionBox';
@@ -51,6 +52,7 @@ export {
   GalleryImage,
   GalleryItem,
   GalleryItemCategoryMenu,
+  GalleryItemContextMenu,
   GalleryItemLabel,
   GalleryItems,
   GallerySelectionBox,
