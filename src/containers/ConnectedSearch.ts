@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { Search } from '../pages/images';
+import { Input } from '../pages/images';
 import { updateImageVisibilityAction } from '../actions/images';
 import { Dispatch } from 'redux';
 import { Image } from '../types';
@@ -23,6 +23,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
 const ConnectedSearch = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Search);
+)(Input);
 
 export default ConnectedSearch;

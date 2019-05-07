@@ -1,6 +1,6 @@
 import * as React from 'react';
-import styles from './Search.css';
-import { FormControl, Input, InputAdornment } from '@material-ui/core';
+import styles from './Input.css';
+import * as MaterialUI from '@material-ui/core';
 import classNames from 'classnames';
 import ImageSearchIcon from '@material-ui/icons/ImageSearch';
 import { makeStyles } from '@material-ui/styles';
@@ -24,27 +24,27 @@ function filterImages(searchText: any, props: any) {
   props.updateImageVisibility(images);
 }
 
-const Search = (props: any) => {
+const Input = (props: any) => {
   const classes = useStyles();
 
   const { t: translation } = useTranslation();
 
   return (
-    <FormControl>
-      <Input
+    <MaterialUI.FormControl>
+      <MaterialUI.Input
         onChange={e => filterImages(e.target.value, props)}
         className={classNames(classes.input)}
         disableUnderline
         id="input-with-icon-adornment"
         placeholder={translation('Search images')}
         startAdornment={
-          <InputAdornment position="start">
+          <MaterialUI.InputAdornment position="start">
             <ImageSearchIcon />
-          </InputAdornment>
+          </MaterialUI.InputAdornment>
         }
       />
-    </FormControl>
+    </MaterialUI.FormControl>
   );
 };
 
-export default Search;
+export default Input;
