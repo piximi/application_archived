@@ -5,6 +5,7 @@ import Dialog from './Dialog/Dialog';
 import DialogActions from './DialogActions/DialogActions';
 import DialogContent from './DialogContent/DialogContent';
 import DialogTitle from './DialogTitle/DialogTitle';
+import Snackbar from './Snackbar/Snackbar';
 
 export {
   CategoryDescriptionTextField,
@@ -13,5 +14,6 @@ export {
   Dialog,
   DialogActions,
   DialogContent,
-  DialogTitle
+  DialogTitle,
+  Snackbar
 };

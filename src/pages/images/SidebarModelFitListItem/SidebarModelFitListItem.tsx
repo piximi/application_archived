@@ -4,6 +4,8 @@ import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import { useTranslation } from 'react-i18next';
 import { Category, Classifier, Image } from '../../../types';
 import { Network } from '../../../network';
+import { useSnackbar } from '../../../hooks';
+import { Snackbar } from '../../../components';
 
 type Props = {
   categories: Category[];
@@ -16,20 +18,32 @@ const SidebarModelFitListItem = (props: Props) => {
 
   const network = new Network(categories, classifier, images);
 
+  const { openedSnackbar, openSnackbar, closeSnackbar } = useSnackbar();
+
   const { t: translation } = useTranslation();
 
   const fit = () => {
+    openSnackbar();
+
     network.fit();
   };
 
   return (
-    <ListItem button dense onClick={fit}>
-      <ListItemIcon>
-        <PlayCircleOutlineIcon />
-      </ListItemIcon>
+    <React.Fragment>
+      <ListItem button dense onClick={fit}>
+        <ListItemIcon>
+          <PlayCircleOutlineIcon />
+        </ListItemIcon>
 
-      <ListItemText primary={translation('Fit')} />
-    </ListItem>
+        <ListItemText primary={translation('Fit')} />
+      </ListItem>
+
+      <Snackbar
+        closeSnackbar={closeSnackbar}
+        message={'foo'}
+        openedSnackbar={openedSnackbar}
+      />
+    </React.Fragment>
   );
 };
 
