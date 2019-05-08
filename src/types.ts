@@ -1,3 +1,12 @@
+export type Category = {
+  classifierIdentifier?: string;
+  color: string;
+  description: string;
+  identifier: string;
+  index: number;
+  visible: boolean;
+};
+
 export type Classifier = {
   categories: Category[];
   images: Image[];
@@ -11,11 +20,8 @@ export type Image = {
   categoryIdentifier: string;
 };
 
-export type Category = {
-  classifierIdentifier?: string;
-  color: string;
-  description: string;
-  identifier: string;
-  index: number;
-  visible: boolean;
+export type Settings = {
+  spinner: {
+    spinning: boolean;
+  };
 };

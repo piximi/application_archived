@@ -3,8 +3,8 @@ import settings from './settings';
 import classifier from './classifier';
 
 const reducer = combineReducers({
-  settings: settings,
-  classifier: classifier
+  classifier: classifier,
+  settings: settings
 });
 
 export default reducer;

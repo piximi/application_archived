@@ -46,24 +46,22 @@ const findImageIndex = (images: Image[], identifier: string): number => {
   return images.findIndex((image: Image) => image.identifier === identifier);
 };
 
-const categories: Category[] = [
-  {
-    classifierIdentifier: undefined,
-    color: '#F8F8F8',
-    description: 'Unknown',
-    identifier: '00000000-0000-0000-0000-000000000000',
-    index: 0,
-    visible: true
-  }
-];
-
-const images: Image[] = [];
-
 const initialState: Classifier = {
-  categories: categories,
-  images: images,
+  categories: [],
+  images: [],
   name: 'Untitled classifier'
 };
+
+const unknownCategory: Category = {
+  classifierIdentifier: undefined,
+  color: '#F8F8F8',
+  description: 'Unknown',
+  identifier: '00000000-0000-0000-0000-000000000000',
+  index: 0,
+  visible: true
+};
+
+initialState.categories.push(unknownCategory);
 
 const classifier = createReducer(initialState, {
   [addCategoryAction.toString()]: (state, action) => {
@@ -75,7 +73,15 @@ const classifier = createReducer(initialState, {
     state.categories.push(category);
   },
   [createClassifierAction.toString()]: (state, action) => {
-    state = action.payload;
+    const { name } = action.payload;
+
+    state.categories = [];
+
+    state.categories.push(unknownCategory);
+
+    state.images = [];
+
+    state.name = name;
   },
   [createImageAction.toString()]: (state, action) => {
     action.payload.map((image: Image) => state.images.push(image));
@@ -97,7 +103,7 @@ const classifier = createReducer(initialState, {
   [toggleCategoryVisibilityAction.toString()]: (state, action) => {
     const { identifier } = action.payload;
 
-    const index = findCategoryIndex(state.categories, identifier);
+    const index: number = findCategoryIndex(state.categories, identifier);
 
     const category: Category = state.categories[index];
 
