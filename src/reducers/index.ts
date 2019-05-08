@@ -5,8 +5,8 @@ import settings from './settings';
 import classifier from './classifier';
 
 const reducer = combineReducers({
-  categories: categories,
-  images: images,
+  // categories: categories,
+  // images: images,
   settings: settings,
   classifier: classifier
 });

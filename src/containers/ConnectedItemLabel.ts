@@ -1,10 +1,14 @@
 import { connect } from 'react-redux';
 import { GalleryItemLabel } from '../pages/images';
-import { Category } from '../types';
+import { Classifier } from '../types';
 
-const mapStateToProps = (state: { categories: Category[] }) => {
+type State = {
+  classifier: Classifier;
+};
+
+const mapStateToProps = (state: State) => {
   return {
-    categories: state.categories
+    categories: state.classifier.categories
   };
 };
 

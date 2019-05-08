@@ -2,17 +2,21 @@ import { connect } from 'react-redux';
 import { Search } from '../pages/images';
 import { updateImageVisibilityAction } from '../actions/images';
 import { Dispatch } from 'redux';
-import { Image } from '../types';
+import { Classifier, Image } from '../types';
 
-const mapStateToProps = (state: { images: Image[] }) => {
+type State = {
+  classifier: Classifier;
+};
+
+const mapStateToProps = (state: State) => {
   return {
-    images: state.images
+    images: state.classifier.images
   };
 };
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    updateImageVisibility: (images: any) => {
+    updateImageVisibility: (images: Image[]) => {
       const action = updateImageVisibilityAction(images);
 
       dispatch(action);

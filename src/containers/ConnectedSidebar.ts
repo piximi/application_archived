@@ -5,14 +5,15 @@ import { updateImageProbabilityAction } from '../actions/images';
 import {
   createImageAction,
   updateImageCategoryAction
-} from '../reducers/images';
+} from '../reducers/classifier';
 import {
   addCategoryAction,
   createCategoryAction
-} from '../reducers/categories';
+} from '../reducers/classifier';
 import { toggleSpinnerAction } from '../actions/settings';
 import { string } from 'prop-types';
 import { Dispatch } from 'redux';
+import { Classifier } from '../types';
 
 const loadDemoProject = (demo: string) => {
   return (dispatch: any) => {
@@ -33,10 +34,14 @@ const loadDemoProject = (demo: string) => {
   };
 };
 
-const mapStateToProps = (state: { images: any; categories: any }) => {
+type State = {
+  classifier: Classifier;
+};
+
+const mapStateToProps = (state: State) => {
   return {
-    images: state.images,
-    categories: state.categories
+    images: state.classifier.images,
+    categories: state.classifier.categories
   };
 };
 

@@ -2,10 +2,15 @@ import { connect } from 'react-redux';
 import { DeleteImageDialog } from '../pages/images';
 import { deleteImagesAction } from '../actions/images';
 import { Dispatch } from 'redux';
+import { Classifier } from '../types';
 
-const mapStateToProps = (state: { images: any }) => {
+type State = {
+  classifier: Classifier;
+};
+
+const mapStateToProps = (state: State) => {
   return {
-    images: state.images
+    images: state.classifier.images
   };
 };
 

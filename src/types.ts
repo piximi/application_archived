@@ -1,4 +1,6 @@
 export type Classifier = {
+  categories: Category[];
+  images: Image[];
   name: string;
 };
 

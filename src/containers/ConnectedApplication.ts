@@ -4,13 +4,18 @@ import {
   updateImageCategoryAction,
   updateImageProbabilityAction
 } from '../actions/images';
-import { getVisibleImages } from '../selectors/images';
 import { Dispatch } from 'redux';
+import { Classifier } from '../types';
 
-const mapStateToProps = (state: any) => {
+type State = {
+  classifier: Classifier;
+  settings: any;
+};
+
+const mapStateToProps = (state: State) => {
   return {
-    categories: state.categories,
-    images: getVisibleImages(state),
+    categories: state.classifier.categories,
+    images: state.classifier.images,
     spinnerActive: state.settings.spinnerActive
   };
 };

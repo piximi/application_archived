@@ -1,20 +1,25 @@
 import { connect } from 'react-redux';
-import { createCategoryAction } from '../reducers/categories';
+import { createCategoryAction } from '../reducers/classifier';
 import { CreateCategoryDialog } from '../pages/images';
 import uuidv4 from 'uuid';
 import { Dispatch } from 'redux';
+import { Classifier } from '../types';
 
 let index = 0;
 
-const mapStateToProps = (state: { categories: any }) => {
+type State = {
+  classifier: Classifier;
+};
+
+const mapStateToProps = (state: State) => {
   return {
-    categories: state.categories
+    categories: state.classifier.categories
   };
 };
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    createCategory: (color: any, description: any) => {
+    createCategory: (color: string, description: string) => {
       const category = {
         color: color,
         description: description,

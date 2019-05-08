@@ -1,9 +1,14 @@
 import { connect } from 'react-redux';
 import { ColorPicker } from '../components';
+import { Classifier } from '../types';
 
-const mapStateToProps = (state: { categories: any }) => {
+type State = {
+  classifier: Classifier;
+};
+
+const mapStateToProps = (state: State) => {
   return {
-    categories: state.categories
+    categories: state.classifier.categories
   };
 };
 

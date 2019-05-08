@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { CirclePicker } from 'react-color';
 import { colors } from '../../constants';
+import { Category } from '../../types';
 
 type Props = {
-  categories: [any];
+  categories: Category[];
   onChange: any;
 };
 

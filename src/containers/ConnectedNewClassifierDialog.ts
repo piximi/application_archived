@@ -5,7 +5,11 @@ import { Classifier } from '../types';
 import * as uuid from 'uuid';
 import { Dispatch } from 'redux';
 
-const mapStateToProps = (state: { classifier: Classifier }) => {
+type State = {
+  classifier: Classifier;
+};
+
+const mapStateToProps = (state: State) => {
   return state.classifier;
 };
 

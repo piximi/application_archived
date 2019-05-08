@@ -1,12 +1,16 @@
 import { connect } from 'react-redux';
 import { GalleryItem } from '../pages/images';
-import { updateImageCategoryAction } from '../reducers/images';
+import { updateImageCategoryAction } from '../reducers/classifier';
 import { Dispatch } from 'redux';
-import { Image } from '../types';
+import { Classifier } from '../types';
 
-const mapStateToProps = (state: { images: Image[] }) => {
+type State = {
+  classifier: Classifier;
+};
+
+const mapStateToProps = (state: State) => {
   return {
-    images: state.images
+    images: state.classifier.images
   };
 };
 

@@ -2,14 +2,18 @@ import { connect } from 'react-redux';
 import {
   updateCategoryColorAction,
   updateCategoryDescriptionAction
-} from '../reducers/categories';
+} from '../reducers/classifier';
 import { EditCategoryDialog } from '../pages/images';
-import { Category } from '../types';
+import { Classifier } from '../types';
 import { Dispatch } from 'redux';
 
-const mapStateToProps = (state: { categories: Category[] }) => {
+type State = {
+  classifier: Classifier;
+};
+
+const mapStateToProps = (state: State) => {
   return {
-    categories: state.categories
+    categories: state.classifier.categories
   };
 };
 

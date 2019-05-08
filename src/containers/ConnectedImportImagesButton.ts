@@ -1,8 +1,9 @@
 import { connect } from 'react-redux';
-import { createImageAction } from '../reducers/images';
+import { createImageAction } from '../reducers/classifier';
 import * as uuid from 'uuid';
 import { ImportImagesButton } from '../pages/images';
 import { Dispatch } from 'redux';
+import { Classifier } from '../types';
 
 type CreateImagePayload = {
   categoryIdentifier: String;
@@ -11,9 +12,13 @@ type CreateImagePayload = {
   identifier: String;
 };
 
-const mapStateToProps = (state: any) => {
+type State = {
+  classifier: Classifier;
+};
+
+const mapStateToProps = (state: State) => {
   return {
-    images: state.images
+    images: state.classifier.images
   };
 };
 

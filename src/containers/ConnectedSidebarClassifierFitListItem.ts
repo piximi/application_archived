@@ -1,18 +1,16 @@
 import { connect } from 'react-redux';
 import { SidebarClassifierFitListItem } from '../pages/images';
-import { Category, Classifier, Image } from '../types';
+import { Classifier } from '../types';
 
 type State = {
-  categories: Category[];
   classifier: Classifier;
-  images: Image[];
 };
 
 const mapStateToProps = (state: State) => {
   return {
-    categories: state.categories,
+    categories: state.classifier.categories,
     classifier: state.classifier,
-    images: state.images
+    images: state.classifier.images
   };
 };
 

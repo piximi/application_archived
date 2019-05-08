@@ -1,10 +1,14 @@
 import { connect } from 'react-redux';
 import { DeleteCategoryDialog } from '../pages/images';
-import { deleteCategoryAction } from '../reducers/categories';
-import { Category } from '../types';
+import { deleteCategoryAction } from '../reducers/classifier';
+import { Classifier } from '../types';
 import { Dispatch } from 'redux';
 
-const mapStateToProps = (state: Category[]) => {
+type State = {
+  classifier: Classifier;
+};
+
+const mapStateToProps = (state: State) => {
   return state;
 };
 
