@@ -5,7 +5,7 @@ import { ConnectedCategories } from '../../../containers';
 import {
   SidebarAppBar,
   SidebarHelpListItem,
-  SidebarModelList,
+  SidebarClassifierList,
   SidebarNewClassifierListItem,
   SidebarOpenListItem,
   SidebarSaveListItem,
@@ -57,7 +57,7 @@ const SidebarDrawer = (props: any) => {
 
       <Divider />
 
-      <SidebarModelList />
+      <SidebarClassifierList />
 
       <Divider />
 

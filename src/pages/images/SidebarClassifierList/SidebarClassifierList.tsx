@@ -11,7 +11,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { useCollapseList } from '../../../hooks';
 import { ConnectedSidebarClassifierFitListItem } from '../../../containers';
 
-const SidebarModelList = () => {
+const SidebarClassifierList = () => {
   const { collapsedList, collapseList } = useCollapseList();
 
   return (
@@ -21,7 +21,7 @@ const SidebarModelList = () => {
           {!collapsedList ? <ExpandLessIcon /> : <ExpandMoreIcon />}
         </ListItemIcon>
 
-        <ListItemText inset primary="Model" />
+        <ListItemText inset primary="Classifier" />
       </ListItem>
 
       <Collapse in={!collapsedList} timeout="auto" unmountOnExit>
@@ -31,4 +31,4 @@ const SidebarModelList = () => {
   );
 };
 
-export default SidebarModelList;
+export default SidebarClassifierList;

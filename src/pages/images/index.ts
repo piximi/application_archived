@@ -29,7 +29,7 @@ import SidebarCreateCategoryListItem from './SidebarCreateCategoryListItem/Sideb
 import SidebarDrawer from './SidebarDrawer/SidebarDrawer';
 import SidebarHelpListItem from './SidebarHelpListItem/SidebarHelpListItem';
 import SidebarClassifierFitListItem from './SidebarClassifierFitListItem/SidebarClassifierFitListItem';
-import SidebarModelList from './SidebarModelList/SidebarModelList';
+import SidebarClassifierList from './SidebarClassifierList/SidebarClassifierList';
 import SidebarNewClassifierListItem from './SidebarNewClassifierListItem/SidebarNewClassifierListItem';
 import SidebarOpenListItem from './SidebarOpenListItem/SidebarOpenListItem';
 import SidebarSaveListItem from './SidebarSaveListItem/SidebarSaveListItem';
@@ -71,7 +71,7 @@ export {
   SidebarDrawer,
   SidebarHelpListItem,
   SidebarClassifierFitListItem,
-  SidebarModelList,
+  SidebarClassifierList,
   SidebarNewClassifierListItem,
   SidebarOpenListItem,
   SidebarSaveListItem,
