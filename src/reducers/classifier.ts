@@ -9,6 +9,8 @@ export const createClassifierAction = createAction('create-classifier');
 
 export const createImageAction = createAction('create-image');
 
+export const createImageScoreAction = createAction('create-image-score');
+
 export const deleteCategoryAction = createAction('delete-category');
 
 export const deleteImageAction = createAction('delete-image');
@@ -95,6 +97,15 @@ const classifier = createReducer(initialState, {
   },
   [createImageAction.toString()]: (state, action) => {
     action.payload.map((image: Image) => state.images.push(image));
+  },
+  [createImageScoreAction.toString()]: (state, action) => {
+    const { identifier, score } = action.payload;
+
+    const index = findImageIndex(state.images, identifier);
+
+    const image: Image = state.images[index];
+
+    image.scores.push(score);
   },
   [deleteCategoryAction.toString()]: (state, action) => {
     const { identifier } = action.payload;

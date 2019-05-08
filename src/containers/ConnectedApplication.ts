@@ -1,11 +1,8 @@
 import { connect } from 'react-redux';
 import { Application } from '../pages/images';
-import {
-  updateImageCategoryAction,
-  updateImageProbabilityAction
-} from '../actions/images';
 import { Dispatch } from 'redux';
 import { Classifier } from '../types';
+import { updateImageCategoryAction } from '../reducers/classifier';
 
 type State = {
   classifier: Classifier;
@@ -22,22 +19,15 @@ const mapStateToProps = (state: State) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    fit: () => {
-      const pathname = '';
-    },
-    updateImageCategory: (
-      imgIdentifier: any,
-      categoryIdentifier: any,
-      categoryName: any
-    ) => {
-      dispatch(
-        updateImageCategoryAction(
-          imgIdentifier,
-          categoryIdentifier,
-          categoryName
-        )
-      );
-      dispatch(updateImageProbabilityAction(imgIdentifier, null));
+    updateImageCategory: (identifier: string, categoryIdentifier: string) => {
+      const payload = {
+        identifier: identifier,
+        categoryIdentifier: categoryIdentifier
+      };
+
+      const action = updateImageCategoryAction(payload);
+
+      dispatch(action);
     }
   };
 };
