@@ -10,7 +10,7 @@ import {
   addCategoryAction,
   createCategoryAction
 } from '../reducers/classifier';
-import { toggleSpinnerAction } from '../actions/settings';
+import { updateSpinnerSpinningAction } from '../reducers/settings';
 import { string } from 'prop-types';
 import { Dispatch } from 'redux';
 import { Classifier } from '../types';
@@ -24,7 +24,7 @@ const loadDemoProject = (demo: string) => {
           '.cyto'
       )
       .then(result => {
-        dispatch(toggleSpinnerAction());
+        dispatch(updateSpinnerSpinningAction());
         dispatch(createImageAction(result.data.images));
         dispatch(addCategoryAction(result.data.categories));
       })
@@ -76,7 +76,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     },
     loadDemoProject: (demo: string) => {
       dispatch(createImageAction({}));
-      dispatch(toggleSpinnerAction());
+      dispatch(updateSpinnerSpinningAction());
       // dispatch(loadDemoProject(demo));
     }
   };
