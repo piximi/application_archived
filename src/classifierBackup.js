@@ -1,5 +1,5 @@
 import * as tensorflow from '@tensorflow/tfjs';
-import { store } from './types';
+import { store } from './index';
 import { updateCategoryAndProbabilityAction } from './actions/images';
 
 let result = {};
