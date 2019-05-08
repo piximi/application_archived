@@ -14,7 +14,7 @@ type Props = {
   images: Image[];
 };
 
-const SidebarModelFitListItem = (props: Props) => {
+const SidebarClassifierFitListItem = (props: Props) => {
   const { categories, classifier, images } = props;
 
   const network = new Network(categories, classifier, images);
@@ -56,4 +56,4 @@ const SidebarModelFitListItem = (props: Props) => {
   );
 };
 
-export default SidebarModelFitListItem;
+export default SidebarClassifierFitListItem;

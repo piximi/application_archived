@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { SidebarModelFitListItem } from '../pages/images';
+import { SidebarClassifierFitListItem } from '../pages/images';
 import { Category, Classifier, Image } from '../types';
 
 type State = {
@@ -17,7 +17,7 @@ const mapStateToProps = (state: State) => {
 };
 
 const ConnectedSidebarModelFitListItem = connect(mapStateToProps)(
-  SidebarModelFitListItem
+  SidebarClassifierFitListItem
 );
 
 export default ConnectedSidebarModelFitListItem;
