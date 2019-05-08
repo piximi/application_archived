@@ -6,21 +6,23 @@ import {
   MenuItem,
   MenuList,
   Paper,
-  Popover
+  Popover,
+  Backdrop
 } from '@material-ui/core';
 import ColorLensIcon from '@material-ui/icons/ColorLens';
 
 const GalleryItemContextMenu = (props: any) => {
   const { anchorEl, onClose, open, openImageViewerDialog } = props;
-  // if (anchorEl) { console.log("GalleryItemContextMenu: anchorEl"); console.log(anchorEl); }
 
   const anchorPosition = {
-    top: open ? anchorEl.getBoundingClientRect().bottom - 3 : 0,
-    left: open ? anchorEl.getBoundingClientRect().left + 14 : 0
+    top: open ? anchorEl.getBoundingClientRect().top + 7 : 0,
+    left: open ? anchorEl.getBoundingClientRect().left + 7 : 0
   };
 
   return (
     <Popover
+      // BackdropComponent={<Backdrop open={false}></Backdrop>}
+      // BackdropProps={{ open: false, style:{pointerEvents: 'none'} }}
       anchorPosition={anchorPosition}
       anchorReference="anchorPosition"
       onClose={onClose}
@@ -35,9 +37,7 @@ const GalleryItemContextMenu = (props: any) => {
             }}
           >
             <ListItemIcon>
-              <IconButton>
-                <ColorLensIcon />
-              </IconButton>
+              <ColorLensIcon />
             </ListItemIcon>
             <ListItemText inset primary="Open image viewer" />
           </MenuItem>
