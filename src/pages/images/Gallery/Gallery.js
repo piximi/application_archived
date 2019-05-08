@@ -125,7 +125,9 @@ const Gallery = props => {
   };
 
   // Check if no images are visible or available
-  if (images.length === 0) return null;
+  if (!images || !images.length) {
+    return null;
+  }
 
   return (
     <div
