@@ -3,6 +3,7 @@ import * as React from 'react';
 import styles from './SidebarDrawer.css';
 import {
   ConnectedCategories,
+  ConnectedSidebarOpenListItem,
   ConnectedSidebarSaveListItem
 } from '../../../containers';
 import {
@@ -10,7 +11,6 @@ import {
   SidebarHelpListItem,
   SidebarClassifierList,
   SidebarNewClassifierListItem,
-  SidebarOpenListItem,
   SidebarSendFeedbackListItem,
   SidebarSettingsListItem
 } from '..';
@@ -21,13 +21,7 @@ const useStyles = makeStyles(styles);
 const SidebarDrawer = (props: any) => {
   const classes = useStyles();
 
-  const {
-    setUnlabelledVisibility,
-    toggled,
-    toggle,
-    loadDemoProject,
-    updateStore
-  } = props;
+  const { setUnlabelledVisibility, toggled, toggle } = props;
 
   return (
     <Drawer
@@ -43,10 +37,7 @@ const SidebarDrawer = (props: any) => {
       <List dense>
         <SidebarNewClassifierListItem />
 
-        <SidebarOpenListItem
-          updateStore={updateStore}
-          loadDemoProject={loadDemoProject}
-        />
+        <ConnectedSidebarOpenListItem />
 
         <ConnectedSidebarSaveListItem />
       </List>
