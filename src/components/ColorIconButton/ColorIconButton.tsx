@@ -31,9 +31,9 @@ const ColorIconButton = (props: Props) => {
       <MaterialUI.IconButton className={classes.iconButton} onClick={openMenu}>
         <MaterialUI.Avatar
           classes={{ root: classes.avatarRoot }}
-          style={{ backgroundColor: color }}
+          style={{ backgroundColor: '#F3F3F3' }}
         >
-          <LabelIcon style={{ color: '#FFF' }} />
+          <LabelIcon style={{ color: color }} />
         </MaterialUI.Avatar>
       </MaterialUI.IconButton>
 
