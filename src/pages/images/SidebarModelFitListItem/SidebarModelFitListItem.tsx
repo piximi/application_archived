@@ -1,14 +1,26 @@
 import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import * as React from 'react';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
-import * as API from '../../../classifier';
+import { useTranslation } from 'react-i18next';
+import { Category, Classifier, Image } from '../../../types';
+import { Network } from '../../../network';
 
-const SidebarModelFitListItem = (props: { categories: any; images: any }) => {
+type Props = {
+  categories: Category[];
+  classifier: Classifier;
+  images: Image[];
+};
+
+const SidebarModelFitListItem = (props: Props) => {
+  const { categories, classifier, images } = props;
+
+  const network = new Network(categories, classifier, images);
+
+  const { t: translation } = useTranslation();
+
   const fit = () => {
-    API.fitAndPredict(images, categories);
+    network.fit();
   };
-
-  const { categories, images } = props;
 
   return (
     <ListItem dense button onClick={fit}>
@@ -16,7 +28,7 @@ const SidebarModelFitListItem = (props: { categories: any; images: any }) => {
         <PlayCircleOutlineIcon />
       </ListItemIcon>
 
-      <ListItemText primary="Fit" />
+      <ListItemText primary={translation('Fit')} />
     </ListItem>
   );
 };

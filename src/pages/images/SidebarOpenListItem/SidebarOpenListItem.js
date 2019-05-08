@@ -12,7 +12,7 @@ import * as React from 'react';
 import FolderOpenIcon from '@material-ui/icons/FolderOpen';
 import { useDialog, useMenu } from '../../../hooks';
 import { OpenExampleClassifierDialog } from '..';
-import * as API from '../../../classifier';
+import * as API from '../../../classifierBackup';
 
 function openProject(e, props) {
   const reader = new FileReader();

@@ -15,7 +15,7 @@ import Popover from '@material-ui/core/Popover/index';
 import { fields } from '../../../constants';
 import { SaveDialog } from '..';
 import { useDialog, useMenu } from '../../../hooks';
-import * as API from '../../../classifier';
+import * as API from '../../../classifierBackup';
 
 const SidebarSaveListItem = props => {
   const { anchorEl, openedMenu, openMenu, closeMenu } = useMenu();

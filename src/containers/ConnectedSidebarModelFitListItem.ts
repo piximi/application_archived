@@ -11,6 +11,7 @@ type State = {
 const mapStateToProps = (state: State) => {
   return {
     categories: state.categories,
+    classifier: state.classifier,
     images: state.images
   };
 };
