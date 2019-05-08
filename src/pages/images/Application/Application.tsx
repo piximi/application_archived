@@ -2,8 +2,7 @@ import * as React from 'react';
 import { PacmanLoader } from 'react-spinners';
 import styles from './Application.css';
 import classNames from 'classnames';
-import { ConnectedSidebarDrawer } from '../../../containers';
-import { PrimaryAppBar } from '..';
+import { PrimaryAppBar, SidebarDrawer } from '..';
 import HTML5Backend from 'react-dnd-html5-backend/lib/index';
 import { DragDropContext } from 'react-dnd';
 import { useDrawer } from '../../../hooks';
@@ -35,7 +34,7 @@ const Application = (props: Props) => {
         toggled={openedDrawer}
       />
 
-      <ConnectedSidebarDrawer
+      <SidebarDrawer
         toggle={toggleDrawer}
         toggled={openedDrawer}
         unlabelledVisibility={unlabelledVisibility}
