@@ -43,10 +43,9 @@ const PrimaryAppBar = (props: any) => {
 
         <div style={{ flexGrow: 1 }} />
 
-        <IconButton onClick={openDialog}>
+        <IconButton disabled onClick={openDialog}>
           <ImageSearchIcon />
         </IconButton>
-        {/*<ConnectedSearch />*/}
 
         <div className={classNames(classes.padding)} />
 
