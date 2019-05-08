@@ -57,7 +57,7 @@ const SidebarDrawer = (props: any) => {
 
       <Divider />
 
-      <SidebarModelList categories={categories} images={images} />
+      <SidebarModelList />
 
       <Divider />
 
