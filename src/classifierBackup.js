@@ -1,6 +1,4 @@
 import * as tensorflow from '@tensorflow/tfjs';
-import { store } from './index';
-import { updateCategoryAndProbabilityAction } from './actions/images';
 
 let result = {};
 let categories = {};
@@ -22,17 +20,17 @@ const TEST_BATCH_SIZE = 32;
 const TEST_ITERATION_FREQUENCY = 5;
 let VALIDATIONSET_RATIO = 0.3;
 
-const passResults = async (imgId, predictions) => {
-  let predictionsArray = await predictions.data();
-  let index = indexMap[predictionsArray.indexOf(Math.max(...predictionsArray))];
-  let category = store.getState().categories[index].identifier;
-  let probability = predictionsArray[index];
-
-  result[imgId] = { category: category, probability: probability };
-
-  //store.dispatch(updateImageCategoryAction(imgId, category));
-  //store.dispatch(updateImageProbabilityAction(imgId, probability));
-};
+// const passResults = async (imgId, predictions) => {
+//   let predictionsArray = await predictions.data();
+//   let index = indexMap[predictionsArray.indexOf(Math.max(...predictionsArray))];
+//   let category = store.getState().categories[index].identifier;
+//   let probability = predictionsArray[index];
+//
+//   result[imgId] = { category: category, probability: probability };
+//
+//   //store.dispatch(updateImageCategoryAction(imgId, category));
+//   //store.dispatch(updateImageProbabilityAction(imgId, probability));
+// };
 
 const loadNetwork = async num_classes => {
   //get Prelaoded model of MobileNet
@@ -159,7 +157,7 @@ const predict = async (modelDict, datasetObj) => {
       const predictions = modelDict['ShallowNet'].predict(activation);
       // Returns the index with the maximum probability. This number corresponds
       // to the class the model thinks is the most probable given the input.
-      passResults(img.identifier, predictions.as1D());
+      // passResults(img.identifier, predictions.as1D());
     });
   }
 
@@ -178,7 +176,7 @@ const run = async datasetObj => {
     alert('Predicting');
     await predict(model, datasetObj);
     console.log(result);
-    store.dispatch(updateCategoryAndProbabilityAction(result));
+    // store.dispatch(updateCategoryAndProbabilityAction(result));
   }
 };
 

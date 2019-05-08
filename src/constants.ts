@@ -1,8 +1,3 @@
-export const UPDATE_PROBABILITY = 'UPDATE_PROBABILITY';
-
-export const UPDATE_CATEGORY_AND_PROBABILITY =
-  'UPDATE_CATEGORY_AND_PROBABILITY';
-
 export const fields = [
   {
     label: 'image_checksum',
