@@ -1,18 +1,5 @@
 import { createAction, createReducer } from 'redux-starter-kit';
 import { Category, Classifier, Image } from '../types';
-import {
-  DELETE_IMAGES,
-  UPDATE_BRIGHTNESS,
-  UPDATE_BRIGHTNESS_FOR_ALL_IMAGES,
-  UPDATE_CATEGORY_AND_PROBABILITY,
-  UPDATE_CONTRAST,
-  UPDATE_CONTRAST_FOR_ALL_IMAGES,
-  UPDATE_IMAGE_CATEGORY,
-  UPDATE_IMAGE_VISIBILITY,
-  UPDATE_PROBABILITY,
-  UPDATE_UNSELECTED_CHANNELS,
-  UPDATE_UNSELECTED_CHANNELS_FOR_ALL_IMAGES
-} from '../constants';
 
 export const addCategoryAction = createAction('add-category');
 
