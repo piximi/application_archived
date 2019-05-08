@@ -1,17 +1,11 @@
 import { connect } from 'react-redux';
 import { ImageViewer } from '../pages/image';
 import {
-  updateBrightnessForAllImagesAction,
-  updateContrastForAllImagesAction,
-  updateUnselectedChannelsAction,
-  updateUnselectedChannelsForAllImagesAction
-} from '../actions/images';
-import {
   updateImageBrightnessAction,
   updateImageContrastAction
 } from '../reducers/classifier';
 import { Dispatch } from 'redux';
-import { Classifier } from '../types';
+import { Classifier, Image } from '../types';
 
 type State = {
   classifier: Classifier;
@@ -25,26 +19,49 @@ const mapStateToProps = (state: State) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    saveEdits: (
-      imgIdentifier: any,
-      brightness: any,
-      contrast: any,
-      unselectedChannels: any
-    ) => {
-      dispatch(updateImageBrightnessAction({ imgIdentifier, brightness }));
-      dispatch(updateImageContrastAction({ imgIdentifier, contrast }));
-      dispatch(
-        updateUnselectedChannelsAction(imgIdentifier, unselectedChannels)
-      );
+    saveEdits: (identifier: string, brightness: number, contrast: number) => {
+      const brightnessPayload = {
+        identifier: identifier,
+        brightness: brightness
+      };
+
+      const brightnessAction = updateImageBrightnessAction(brightnessPayload);
+
+      dispatch(brightnessAction);
+
+      const contrastPayload = {
+        identifier: identifier,
+        contrast: contrast
+      };
+
+      const contrastAction = updateImageContrastAction(contrastPayload);
+
+      dispatch(contrastAction);
     },
     saveEditsGlobally: (
-      brightness: any,
-      contrast: any,
-      unselectedChannels: any
+      images: Image[],
+      brightness: number,
+      contrast: number
     ) => {
-      dispatch(updateBrightnessForAllImagesAction(brightness));
-      dispatch(updateContrastForAllImagesAction(contrast));
-      dispatch(updateUnselectedChannelsForAllImagesAction(unselectedChannels));
+      for (let image of images) {
+        const brightnessPayload = {
+          identifier: image.identifier,
+          brightness: brightness
+        };
+
+        const brightnessAction = updateImageBrightnessAction(brightnessPayload);
+
+        dispatch(brightnessAction);
+
+        const contrastPayload = {
+          identifier: image.identifier,
+          contrast: contrast
+        };
+
+        const contrastAction = updateImageContrastAction(contrastPayload);
+
+        dispatch(contrastAction);
+      }
     }
   };
 };
