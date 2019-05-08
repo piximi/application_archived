@@ -1,7 +1,10 @@
 import { Divider, Drawer, List } from '@material-ui/core';
 import * as React from 'react';
 import styles from './SidebarDrawer.css';
-import { ConnectedCategories } from '../../../containers';
+import {
+  ConnectedCategories,
+  ConnectedSidebarSaveListItem
+} from '../../../containers';
 import {
   SidebarAppBar,
   SidebarHelpListItem,
@@ -12,7 +15,6 @@ import {
   SidebarSettingsListItem
 } from '..';
 import { makeStyles } from '@material-ui/styles';
-import ConnectedSidebarSaveListItem from '../../../containers/ConnectedSidebarSaveListItem';
 
 const useStyles = makeStyles(styles);
 

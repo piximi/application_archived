@@ -16,6 +16,7 @@ import ConnectedSearch from './ConnectedSearch';
 import ConnectedSidebarDrawer from './ConnectedSidebarDrawer';
 import ConnectedSidebarCategoryListItem from './ConnectedSidebarCategoryListItem';
 import ConnectedSidebarClassifierFitListItem from './ConnectedSidebarClassifierFitListItem';
+import ConnectedSidebarSaveListItem from './ConnectedSidebarSaveListItem';
 
 export {
   ConnectedApplication,
@@ -35,5 +36,6 @@ export {
   ConnectedSearch,
   ConnectedSidebarDrawer,
   ConnectedSidebarCategoryListItem,
-  ConnectedSidebarClassifierFitListItem
+  ConnectedSidebarClassifierFitListItem,
+  ConnectedSidebarSaveListItem
 };

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { SidebarCategoriesList } from '../pages/images';
+import { SidebarSaveListItem } from '../pages/images';
 import { Classifier } from '../types';
 
 type State = {
@@ -13,11 +13,8 @@ const mapStateToProps = (state: State) => {
   };
 };
 
-const mapDispatchToProps = () => {};
-
-const ConnectedSidebarSaveListItem = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SidebarCategoriesList);
+const ConnectedSidebarSaveListItem = connect(mapStateToProps)(
+  SidebarSaveListItem
+);
 
 export default ConnectedSidebarSaveListItem;
