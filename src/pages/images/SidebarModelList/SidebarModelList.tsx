@@ -9,7 +9,7 @@ import * as React from 'react';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { useCollapseList } from '../../../hooks';
-import { ConnectedSidebarModelFitListItem } from '../../../containers';
+import { ConnectedSidebarClassifierFitListItem } from '../../../containers';
 
 const SidebarModelList = () => {
   const { collapsedList, collapseList } = useCollapseList();
@@ -25,7 +25,7 @@ const SidebarModelList = () => {
       </ListItem>
 
       <Collapse in={!collapsedList} timeout="auto" unmountOnExit>
-        <ConnectedSidebarModelFitListItem />
+        <ConnectedSidebarClassifierFitListItem />
       </Collapse>
     </List>
   );

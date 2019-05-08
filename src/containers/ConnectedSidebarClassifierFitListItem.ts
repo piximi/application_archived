@@ -16,8 +16,8 @@ const mapStateToProps = (state: State) => {
   };
 };
 
-const ConnectedSidebarModelFitListItem = connect(mapStateToProps)(
+const ConnectedSidebarClassifierFitListItem = connect(mapStateToProps)(
   SidebarClassifierFitListItem
 );
 
-export default ConnectedSidebarModelFitListItem;
+export default ConnectedSidebarClassifierFitListItem;
