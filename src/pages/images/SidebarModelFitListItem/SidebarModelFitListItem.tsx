@@ -6,6 +6,7 @@ import { Category, Classifier, Image } from '../../../types';
 import { Network } from '../../../network';
 import { useSnackbar } from '../../../hooks';
 import { Snackbar } from '../../../components';
+import { useState } from 'react';
 
 type Props = {
   categories: Category[];
@@ -20,12 +21,20 @@ const SidebarModelFitListItem = (props: Props) => {
 
   const { openedSnackbar, openSnackbar, closeSnackbar } = useSnackbar();
 
+  const [message, setMessage] = useState();
+
   const { t: translation } = useTranslation();
 
   const fit = () => {
-    openSnackbar();
+    try {
+      network.fit();
 
-    network.fit();
+      setMessage('success');
+    } catch (e) {
+      setMessage(e);
+    }
+
+    openSnackbar();
   };
 
   return (
@@ -40,7 +49,7 @@ const SidebarModelFitListItem = (props: Props) => {
 
       <Snackbar
         closeSnackbar={closeSnackbar}
-        message={'foo'}
+        message={message}
         openedSnackbar={openedSnackbar}
       />
     </React.Fragment>
