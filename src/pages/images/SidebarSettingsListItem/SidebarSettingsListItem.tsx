@@ -9,7 +9,7 @@ const SettingsListItem = () => {
 
   return (
     <React.Fragment>
-      <ListItem dense button onClick={openDialog}>
+      <ListItem dense button disabled onClick={openDialog}>
         <ListItemIcon>
           <SettingsIcon />
         </ListItemIcon>
