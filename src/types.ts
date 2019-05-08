@@ -23,6 +23,7 @@ export type Image = {
   partition: Partition;
   scores: Score[];
   visible: boolean;
+  visualization: ImageVisualization;
 };
 
 export enum Partition {
@@ -40,4 +41,10 @@ export type Settings = {
   spinner: {
     spinning: boolean;
   };
+};
+
+export type ImageVisualization = {
+  brightness: number;
+  contrast: number;
+  visible: boolean;
 };
