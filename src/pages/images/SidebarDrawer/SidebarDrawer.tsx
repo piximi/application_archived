@@ -8,11 +8,11 @@ import {
   SidebarClassifierList,
   SidebarNewClassifierListItem,
   SidebarOpenListItem,
-  SidebarSaveListItem,
   SidebarSendFeedbackListItem,
   SidebarSettingsListItem
 } from '..';
 import { makeStyles } from '@material-ui/styles';
+import ConnectedSidebarSaveListItem from '../../../containers/ConnectedSidebarSaveListItem';
 
 const useStyles = makeStyles(styles);
 
@@ -20,8 +20,6 @@ const SidebarDrawer = (props: any) => {
   const classes = useStyles();
 
   const {
-    categories,
-    images,
     setUnlabelledVisibility,
     toggled,
     toggle,
@@ -44,11 +42,11 @@ const SidebarDrawer = (props: any) => {
         <SidebarNewClassifierListItem />
 
         <SidebarOpenListItem
-          loadDemoProject={loadDemoProject}
           updateStore={updateStore}
+          loadDemoProject={loadDemoProject}
         />
 
-        <SidebarSaveListItem images={images} categories={categories} />
+        <ConnectedSidebarSaveListItem />
       </List>
 
       <Divider />

@@ -12,7 +12,7 @@ import * as React from 'react';
 import FolderOpenIcon from '@material-ui/icons/FolderOpen';
 import { useDialog, useMenu } from '../../../hooks';
 import { OpenExampleClassifierDialog } from '..';
-import * as API from '../../../classifierBackup';
+// import * as API from '../../../classifierBackup';
 
 function openProject(e, props) {
   const reader = new FileReader();
@@ -46,7 +46,7 @@ const SidebarOpenListItem = props => {
   };
 
   const openWeights = event => {
-    API.importWeights(event.target.files);
+    // API.importWeights(event.target.files);
 
     closeMenu();
   };
