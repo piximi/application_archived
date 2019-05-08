@@ -20,7 +20,20 @@ export type Image = {
   contrast: number;
   data: string;
   identifier: string;
+  partition: Partition;
+  scores: Score[];
   visible: boolean;
+};
+
+export enum Partition {
+  Training,
+  Validation,
+  Test
+}
+
+export type Score = {
+  categoryIdentifier: string;
+  probability: number;
 };
 
 export type Settings = {
