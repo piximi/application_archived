@@ -23,7 +23,7 @@ const SidebarModelFitListItem = (props: Props) => {
   };
 
   return (
-    <ListItem dense button onClick={fit}>
+    <ListItem button dense onClick={fit}>
       <ListItemIcon>
         <PlayCircleOutlineIcon />
       </ListItemIcon>
