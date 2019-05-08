@@ -8,21 +8,11 @@ import {
 import * as React from 'react';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
-import * as API from '../../../classifier';
-import { useCollapseList, useSnackbar } from '../../../hooks';
-import { TrainingSnackbar } from '..';
+import { useCollapseList } from '../../../hooks';
+import SidebarModelFitListItem from '../SidebarModelFitListItem/SidebarModelFitListItem';
 
 const SidebarModelList = (props: { categories: any; images: any }) => {
   const { collapsedList, collapseList } = useCollapseList();
-
-  const { openedSnackbar, openSnackbar, closeSnackbar } = useSnackbar();
-
-  const run = () => {
-    openSnackbar();
-
-    API.fitAndPredict(images, categories);
-  };
 
   const { categories, images } = props;
 
@@ -37,15 +27,7 @@ const SidebarModelList = (props: { categories: any; images: any }) => {
       </ListItem>
 
       <Collapse in={!collapsedList} timeout="auto" unmountOnExit>
-        <ListItem dense button onClick={run}>
-          <ListItemIcon>
-            <PlayCircleOutlineIcon />
-          </ListItemIcon>
-
-          <ListItemText primary="Run Classifier" />
-
-          <TrainingSnackbar onClose={closeSnackbar} open={openedSnackbar} />
-        </ListItem>
+        <SidebarModelFitListItem categories={categories} images={images} />
       </Collapse>
     </List>
   );
