@@ -1,13 +1,15 @@
 import { connect } from 'react-redux';
 import { ImageViewer } from '../pages/image';
 import {
-  updateBrightnessAction,
   updateBrightnessForAllImagesAction,
-  updateContrastAction,
   updateContrastForAllImagesAction,
   updateUnselectedChannelsAction,
   updateUnselectedChannelsForAllImagesAction
 } from '../actions/images';
+import {
+  updateImageBrightnessAction,
+  updateImageContrastAction
+} from '../reducers/classifier';
 import { Dispatch } from 'redux';
 import { Classifier } from '../types';
 
@@ -29,8 +31,8 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
       contrast: any,
       unselectedChannels: any
     ) => {
-      dispatch(updateBrightnessAction(imgIdentifier, brightness));
-      dispatch(updateContrastAction(imgIdentifier, contrast));
+      dispatch(updateImageBrightnessAction({ imgIdentifier, brightness }));
+      dispatch(updateImageContrastAction({ imgIdentifier, contrast }));
       dispatch(
         updateUnselectedChannelsAction(imgIdentifier, unselectedChannels)
       );

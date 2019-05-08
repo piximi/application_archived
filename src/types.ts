@@ -14,10 +14,13 @@ export type Classifier = {
 };
 
 export type Image = {
+  brightness: number;
+  categoryIdentifier: string;
   checksum: string;
+  contrast: number;
   data: string;
   identifier: string;
-  categoryIdentifier: string;
+  visible: boolean;
 };
 
 export type Settings = {

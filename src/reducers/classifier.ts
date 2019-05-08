@@ -1,5 +1,18 @@
 import { createAction, createReducer } from 'redux-starter-kit';
 import { Category, Classifier, Image } from '../types';
+import {
+  DELETE_IMAGES,
+  UPDATE_BRIGHTNESS,
+  UPDATE_BRIGHTNESS_FOR_ALL_IMAGES,
+  UPDATE_CATEGORY_AND_PROBABILITY,
+  UPDATE_CONTRAST,
+  UPDATE_CONTRAST_FOR_ALL_IMAGES,
+  UPDATE_IMAGE_CATEGORY,
+  UPDATE_IMAGE_VISIBILITY,
+  UPDATE_PROBABILITY,
+  UPDATE_UNSELECTED_CHANNELS,
+  UPDATE_UNSELECTED_CHANNELS_FOR_ALL_IMAGES
+} from '../constants';
 
 export const addCategoryAction = createAction('add-category');
 
@@ -31,7 +44,17 @@ export const updateClassifierNameAction = createAction(
   'update-classifier-name'
 );
 
+export const updateImageBrightnessAction = createAction(
+  'update-image-brightness'
+);
+
 export const updateImageCategoryAction = createAction('update-image-category');
+
+export const updateImageContrastAction = createAction('update-image-contrast');
+
+export const updateImageVisibilityAction = createAction(
+  'update-image-visibility'
+);
 
 const findCategoryIndex = (
   categories: Category[],
@@ -141,6 +164,15 @@ const classifier = createReducer(initialState, {
 
     state.name = name;
   },
+  [updateImageBrightnessAction.toString()]: (state, action) => {
+    const { identifier, brightness } = action.payload;
+
+    const index = findImageIndex(state.images, identifier);
+
+    const image: Image = state.images[index];
+
+    image.brightness = brightness;
+  },
   [updateImageCategoryAction.toString()]: (state, action) => {
     const { identifier, categoryIdentifier } = action.payload;
 
@@ -149,6 +181,24 @@ const classifier = createReducer(initialState, {
     const image: Image = state.images[index];
 
     image.categoryIdentifier = categoryIdentifier;
+  },
+  [updateImageContrastAction.toString()]: (state, action) => {
+    const { identifier, contrast } = action.payload;
+
+    const index = findImageIndex(state.images, identifier);
+
+    const image: Image = state.images[index];
+
+    image.contrast = contrast;
+  },
+  [updateImageVisibilityAction.toString()]: (state, action) => {
+    const { identifier, visible } = action.payload;
+
+    const index = findImageIndex(state.images, identifier);
+
+    const image: Image = state.images[index];
+
+    image.visible = visible;
   }
 });
 

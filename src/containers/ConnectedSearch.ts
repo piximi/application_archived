@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { Search } from '../pages/images';
-import { updateImageVisibilityAction } from '../actions/images';
+import { updateImageVisibilityAction } from '../reducers/classifier';
 import { Dispatch } from 'redux';
 import { Classifier, Image } from '../types';
 

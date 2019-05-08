@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { DeleteImageDialog } from '../pages/images';
-import { deleteImagesAction } from '../actions/images';
+import { deleteImageAction } from '../reducers/classifier';
 import { Dispatch } from 'redux';
 import { Classifier } from '../types';
 
@@ -16,8 +16,12 @@ const mapStateToProps = (state: State) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    deleteImages: (imgIdentifiers: any) => {
-      dispatch(deleteImagesAction(imgIdentifiers));
+    deleteImages: (identifiers: string[]) => {
+      for (let identifier of identifiers) {
+        const action = deleteImageAction(identifier);
+
+        dispatch(action);
+      }
     }
   };
 };
