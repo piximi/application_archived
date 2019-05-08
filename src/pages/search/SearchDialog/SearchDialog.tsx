@@ -11,7 +11,7 @@ import {
 import { makeStyles } from '@material-ui/styles';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { useTranslation } from 'react-i18next';
-import Search from '../../images/Search/Search';
+import Search from '../Search/Search';
 
 const useStyles = makeStyles(styles);
 

@@ -20,7 +20,7 @@ import NewClassifierDialog from './NewClassifierDialog/NewClassifierDialog';
 import OpenExampleClassifierDialog from './OpenExampleClassifierDialog/OpenExampleClassifierDialog';
 import PrimaryAppBar from './PrimaryAppBar/PrimaryAppBar';
 import SaveDialog from './SaveDialog/SaveDialog';
-import Search from './Search/Search';
+import Search from '../search/Search/Search';
 import SidebarAppBar from './SidebarAppBar/SidebarAppBar';
 import SidebarCategoriesList from './SidebarCategoriesList/SidebarCategoriesList';
 import SidebarCategoryListItem from './SidebarCategoryListItem/SidebarCategoryListItem';
