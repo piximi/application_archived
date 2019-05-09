@@ -110,6 +110,14 @@ const classifier = createReducer(initialState, {
     state.categories = state.categories.filter(
       (category: Category) => category.identifier !== identifier
     );
+
+    state.images = state.images.map((image: Image) => {
+      if (image.categoryIdentifier === identifier) {
+        image.categoryIdentifier = '00000000-0000-0000-0000-000000000000';
+      }
+
+      return image;
+    });
   },
   [deleteImageAction.toString()]: (state, action) => {
     const { identifier } = action.payload;

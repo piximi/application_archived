@@ -9,13 +9,17 @@ type State = {
 };
 
 const mapStateToProps = (state: State) => {
-  return state;
+  return {
+    images: state.classifier.images
+  };
 };
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     deleteCategory: (identifier: string) => {
-      const payload = { identifier: identifier };
+      const payload = {
+        identifier: identifier
+      };
 
       const action = deleteCategoryAction(payload);
 

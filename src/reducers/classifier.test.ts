@@ -311,7 +311,22 @@ describe('classifier', () => {
           visible: true
         }
       ],
-      images: [],
+      images: [
+        {
+          categoryIdentifier: '11111111-1111-1111-1111-11111111111',
+          checksum: '',
+          data: '',
+          identifier: '22222222-2222-2222-2222-22222222222',
+          partition: Partition.Training,
+          scores: [],
+          visualization: {
+            brightness: 0,
+            contrast: 0,
+            visible: true,
+            visibleChannels: []
+          }
+        }
+      ],
       name: 'Untitled classifier'
     };
 
@@ -334,7 +349,22 @@ describe('classifier', () => {
           visible: true
         }
       ],
-      images: [],
+      images: [
+        {
+          categoryIdentifier: '00000000-0000-0000-0000-000000000000',
+          checksum: '',
+          data: '',
+          identifier: '22222222-2222-2222-2222-22222222222',
+          partition: Partition.Training,
+          scores: [],
+          visualization: {
+            brightness: 0,
+            contrast: 0,
+            visible: true,
+            visibleChannels: []
+          }
+        }
+      ],
       name: 'Untitled classifier'
     };
 
