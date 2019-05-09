@@ -30,30 +30,28 @@ const SidebarCategoriesList = (props: any) => {
   let sortedCategories = _.concat(_.sortBy(known, 'description'), unknown);
 
   return (
-    <React.Fragment>
-      <List dense>
-        <ListItem button onClick={collapseList}>
-          <ListItemIcon>
-            {!collapsedList ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-          </ListItemIcon>
+    <List dense>
+      <ListItem button onClick={collapseList}>
+        <ListItemIcon>
+          {!collapsedList ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+        </ListItemIcon>
 
-          <ListItemText inset primary={translation('Categories')} />
-        </ListItem>
+        <ListItemText inset primary={translation('Categories')} />
+      </ListItem>
 
-        <Collapse in={!collapsedList} timeout="auto" unmountOnExit>
-          {sortedCategories.map((category, index) => (
-            <ConnectedSidebarCategoryListItem
-              category={category}
-              key={category.identifier}
-              index={index}
-              connectDropTarget={connectDropTarget}
-            />
-          ))}
+      <Collapse in={!collapsedList} timeout="auto" unmountOnExit>
+        {sortedCategories.map((category, index) => (
+          <ConnectedSidebarCategoryListItem
+            category={category}
+            key={category.identifier}
+            index={index}
+            connectDropTarget={connectDropTarget}
+          />
+        ))}
 
-          <SidebarCreateCategoryListItem />
-        </Collapse>
-      </List>
-    </React.Fragment>
+        <SidebarCreateCategoryListItem />
+      </Collapse>
+    </List>
   );
 };
 

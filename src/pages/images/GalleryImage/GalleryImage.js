@@ -70,7 +70,7 @@ const GalleryImage = props => {
   });
 
   return (
-    <React.Fragment>
+    <div>
       <canvas
         onDoubleClick={openImageViewerDialog}
         type={'selectableElement'}
@@ -86,7 +86,7 @@ const GalleryImage = props => {
         src={src}
         style={{ visibility: 'hidden' }}
       />
-    </React.Fragment>
+    </div>
   );
 };
 

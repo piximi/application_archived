@@ -19,7 +19,7 @@ const DeleteButton = (props: any) => {
   const { selectedImages, setSelectedImages } = props;
 
   return (
-    <React.Fragment>
+    <div>
       <Tooltip title={translation('Delete images')}>
         <IconButton
           aria-label={translation('Delete images')}
@@ -36,7 +36,7 @@ const DeleteButton = (props: any) => {
         onClose={closeDialog}
         open={openedDialog}
       />
-    </React.Fragment>
+    </div>
   );
 };
 

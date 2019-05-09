@@ -62,7 +62,7 @@ const SidebarCategoryListItem = props => {
   };
 
   return (
-    <React.Fragment>
+    <div>
       <StyledCategory
         ref={instance => connectDropTarget(instance)}
         color={category.color}
@@ -101,7 +101,7 @@ const SidebarCategoryListItem = props => {
         closeMenu={closeMenu}
         openedMenu={openedMenu}
       />
-    </React.Fragment>
+    </div>
   );
 };
 

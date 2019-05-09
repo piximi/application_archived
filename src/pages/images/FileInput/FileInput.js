@@ -32,7 +32,7 @@ const FileInput = props => {
   };
 
   return (
-    <React.Fragment>
+    <div>
       <div
         onClick={onClick}
         onKeyPress={onClick}
@@ -53,7 +53,7 @@ const FileInput = props => {
           multiple
         />
       </Portal>
-    </React.Fragment>
+    </div>
   );
 };
 

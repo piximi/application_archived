@@ -22,14 +22,14 @@ const ImportImagesButton = (props: any) => {
   };
 
   return (
-    <React.Fragment>
+    <div>
       <FileInput onChange={onFileInputChange}>
         <Button className={classes.button}>
           <AddPhotoAlternateIcon className={classes.icon} />
           {translation('Import images')}
         </Button>
       </FileInput>
-    </React.Fragment>
+    </div>
   );
 };
 

@@ -3,7 +3,7 @@ import * as React from 'react';
 import FeedbackIcon from '@material-ui/icons/Feedback';
 
 const SidebarSendFeedbackListItem = () => (
-  <React.Fragment>
+  <div>
     <ListItem button disabled>
       <ListItemIcon>
         <FeedbackIcon />
@@ -11,7 +11,7 @@ const SidebarSendFeedbackListItem = () => (
 
       <ListItemText primary="Send feedback" />
     </ListItem>
-  </React.Fragment>
+  </div>
 );
 
 export default SidebarSendFeedbackListItem;

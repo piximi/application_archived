@@ -144,7 +144,7 @@ const ImageHistogram = props => {
   };
 
   return (
-    <React.Fragment>
+    <div>
       <canvas
         style={{ display: 'none' }}
         ref={canvasRef}
@@ -152,7 +152,7 @@ const ImageHistogram = props => {
         width={300}
       />
       <svg style={{ margin: '20px' }} ref={nodeRef} width={300} height={300} />
-    </React.Fragment>
+    </div>
   );
 };
 

@@ -57,7 +57,7 @@ const SidebarOpenListItem = props => {
   };
 
   return (
-    <React.Fragment>
+    <div>
       <ListItem button onClick={openMenu}>
         <ListItemIcon>
           <FolderOpenIcon />
@@ -116,7 +116,7 @@ const SidebarOpenListItem = props => {
         open={openedDialog}
         loadDemoProject={loadDemoProject}
       />
-    </React.Fragment>
+    </div>
   );
 };
 

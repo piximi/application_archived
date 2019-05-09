@@ -8,7 +8,7 @@ const HelpListItem = () => {
   const { openedDialog, openDialog, closeDialog } = useDialog();
 
   return (
-    <React.Fragment>
+    <div>
       <ListItem dense disabled button onClick={openDialog}>
         <ListItemIcon>
           <HelpIcon />
@@ -18,7 +18,7 @@ const HelpListItem = () => {
       </ListItem>
 
       <HelpDialog onClose={closeDialog} open={openedDialog} />
-    </React.Fragment>
+    </div>
   );
 };
 

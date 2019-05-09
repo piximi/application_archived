@@ -74,7 +74,7 @@ const SidebarSaveListItem = props => {
   };
 
   return (
-    <React.Fragment>
+    <div>
       <ListItem button onClick={openMenu}>
         <ListItemIcon>
           <SaveIcon />
@@ -122,7 +122,7 @@ const SidebarSaveListItem = props => {
         defaultDialogText={defaultDialogText}
         changeDefaultDialogText={changeDefaultDialogText}
       />
-    </React.Fragment>
+    </div>
   );
 };
 

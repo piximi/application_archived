@@ -8,7 +8,7 @@ const SettingsListItem = () => {
   const { openedDialog, openDialog, closeDialog } = useDialog();
 
   return (
-    <React.Fragment>
+    <div>
       <ListItem dense button disabled onClick={openDialog}>
         <ListItemIcon>
           <SettingsIcon />
@@ -18,7 +18,7 @@ const SettingsListItem = () => {
       </ListItem>
 
       <SettingsDialog onClose={closeDialog} open={openedDialog} />
-    </React.Fragment>
+    </div>
   );
 };
 

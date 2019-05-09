@@ -52,7 +52,7 @@ const SidebarCategoryListItemMenuList = (props: any) => {
     category.identifier !== '00000000-0000-0000-0000-000000000000';
 
   return (
-    <React.Fragment>
+    <div>
       <Popover
         anchorPosition={anchorPosition}
         anchorReference="anchorPosition"
@@ -67,7 +67,7 @@ const SidebarCategoryListItemMenuList = (props: any) => {
             </MenuItem>
 
             {known && (
-              <React.Fragment>
+              <div>
                 <MenuItem onClick={onEditCategoryClick}>
                   <ListItemText primary="Edit category" />
                 </MenuItem>
@@ -75,7 +75,7 @@ const SidebarCategoryListItemMenuList = (props: any) => {
                 <MenuItem onClick={onDeleteCategoryClick}>
                   <ListItemText primary="Delete category" />
                 </MenuItem>
-              </React.Fragment>
+              </div>
             )}
           </MenuList>
         </Paper>
@@ -92,7 +92,7 @@ const SidebarCategoryListItemMenuList = (props: any) => {
         onClose={closeDeleteCategoryDialog}
         open={openedDeleteCategoryDialog}
       />
-    </React.Fragment>
+    </div>
   );
 };
 

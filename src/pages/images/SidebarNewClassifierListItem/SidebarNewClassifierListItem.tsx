@@ -8,7 +8,7 @@ const SidebarNewClassifierListItem = () => {
   const { openedDialog, openDialog, closeDialog } = useDialog();
 
   return (
-    <React.Fragment>
+    <div>
       <ListItem button dense onClick={openDialog}>
         <ListItemIcon>
           <AddIcon />
@@ -21,7 +21,7 @@ const SidebarNewClassifierListItem = () => {
         closeDialog={closeDialog}
         openedDialog={openedDialog}
       />
-    </React.Fragment>
+    </div>
   );
 };
 

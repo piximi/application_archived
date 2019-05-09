@@ -28,7 +28,7 @@ const GalleryItemLabel = (props: any) => {
   };
 
   return (
-    <React.Fragment>
+    <div>
       <IconButton
         aria-label="categorize"
         classes={{ root: classes.iconButton }}
@@ -44,7 +44,7 @@ const GalleryItemLabel = (props: any) => {
         onClose={closeMenu}
         open={openedMenu}
       />
-    </React.Fragment>
+    </div>
   );
 };
 
