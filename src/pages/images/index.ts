@@ -24,7 +24,6 @@ import SaveAnnotationsAndPredictionsMenuItem from './SaveAnnotationsAndPredictio
 import SaveClassifierDialog from './SaveClassifierDialog/SaveClassifierDialog';
 import SaveClassifierMenuItem from './SaveClassifierMenuItem/SaveClassifierMenuItem';
 import SaveWeightsDialog from './SaveWeightsDialog/SaveWeightsDialog';
-import SaveDialog from './SaveDialog/SaveDialog';
 import SaveMenuList from './SaveMenuList/SaveMenuList';
 import Search from '../search/Search/Search';
 import SaveWeightsMenuItem from './SaveWeightsMenuItem/SaveWeightsMenuItem';
@@ -72,7 +71,6 @@ export {
   SaveAnnotationsAndPredictionsMenuItem,
   SaveClassifierDialog,
   SaveClassifierMenuItem,
-  SaveDialog,
   SaveMenuList,
   SaveWeightsDialog,
   Search,
