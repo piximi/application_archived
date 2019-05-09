@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { PacmanLoader } from 'react-spinners';
 import styles from './Application.css';
 import classNames from 'classnames';
 import { PrimaryAppBar, SidebarDrawer } from '..';
@@ -23,7 +22,7 @@ const Application = (props: Props) => {
   const { openedDrawer, toggleDrawer } = useDrawer();
   const [unlabelledVisibility, setUnlabelledVisibility] = React.useState(0);
 
-  const { updateImageCategory, spinnerActive } = props;
+  const { updateImageCategory } = props;
 
   return (
     <div className={classes.appFrame}>
