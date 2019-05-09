@@ -1,6 +1,6 @@
 import classifier, {
-  createClassifierAction,
   createCategoryAction,
+  createClassifierAction,
   createImageAction,
   deleteCategoryAction,
   deleteImageAction,
@@ -8,11 +8,11 @@ import classifier, {
   updateCategoryColorAction,
   updateCategoryDescriptionAction,
   updateCategoryVisibilityAction,
+  updateClassifierNameAction,
   updateImageBrightnessAction,
-  updateImageContrastAction,
-  updateImageVisibilityAction,
   updateImageCategoryAction,
-  updateClassifierNameAction
+  updateImageContrastAction,
+  updateImageVisibilityAction
 } from './classifier';
 import { Category, Classifier, Image, Partition } from '../types';
 
