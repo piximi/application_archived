@@ -18,7 +18,11 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     deleteImages: (identifiers: string[]) => {
       for (let identifier of identifiers) {
-        const action = deleteImageAction(identifier);
+        const payload = {
+          identifier: identifier
+        };
+
+        const action = deleteImageAction(payload);
 
         dispatch(action);
       }
