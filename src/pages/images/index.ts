@@ -19,8 +19,15 @@ import Logo from './Logo/Logo';
 import NewClassifierDialog from './NewClassifierDialog/NewClassifierDialog';
 import OpenExampleClassifierDialog from './OpenExampleClassifierDialog/OpenExampleClassifierDialog';
 import PrimaryAppBar from './PrimaryAppBar/PrimaryAppBar';
+import SaveAnnotationsAndPredictionsDialog from './SaveAnnotationsAndPredictionsDialog/SaveAnnotationsAndPredictionsDialog';
+import SaveAnnotationsAndPredictionsMenuItem from './SaveAnnotationsAndPredictionsMenuItem/SaveAnnotationsAndPredictionsMenuItem';
+import SaveClassifierDialog from './SaveClassifierDialog/SaveClassifierDialog';
+import SaveClassifierMenuItem from './SaveClassifierMenuItem/SaveClassifierMenuItem';
+import SaveWeightsDialog from './SaveWeightsDialog/SaveWeightsDialog';
 import SaveDialog from './SaveDialog/SaveDialog';
+import SaveMenuList from './SaveMenuList/SaveMenuList';
 import Search from '../search/Search/Search';
+import SaveWeightsMenuItem from './SaveWeightsMenuItem/SaveWeightsMenuItem';
 import SidebarAppBar from './SidebarAppBar/SidebarAppBar';
 import SidebarCategoriesList from './SidebarCategoriesList/SidebarCategoriesList';
 import SidebarCategoryListItem from './SidebarCategoryListItem/SidebarCategoryListItem';
@@ -61,11 +68,18 @@ export {
   NewClassifierDialog,
   OpenExampleClassifierDialog,
   PrimaryAppBar,
+  SaveAnnotationsAndPredictionsDialog,
+  SaveAnnotationsAndPredictionsMenuItem,
+  SaveClassifierDialog,
+  SaveClassifierMenuItem,
   SaveDialog,
+  SaveMenuList,
+  SaveWeightsDialog,
   Search,
   SidebarAppBar,
   SidebarCategoriesList,
   SidebarCategoryListItem,
+  SaveWeightsMenuItem,
   SidebarCategoryListItemMenuList,
   SidebarCreateCategoryListItem,
   SidebarDrawer,

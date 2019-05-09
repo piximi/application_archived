@@ -5,6 +5,7 @@ import Dialog from './Dialog/Dialog';
 import DialogActions from './DialogActions/DialogActions';
 import DialogContent from './DialogContent/DialogContent';
 import DialogTitle from './DialogTitle/DialogTitle';
+import FilenameTextField from './FilenameTextField/FilenameTextField';
 import Snackbar from './Snackbar/Snackbar';
 
 export {
@@ -15,5 +16,6 @@ export {
   DialogActions,
   DialogContent,
   DialogTitle,
+  FilenameTextField,
   Snackbar
 };
