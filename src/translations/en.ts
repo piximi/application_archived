@@ -18,6 +18,7 @@ const en = {
     'Model': 'Model',
     'Open classifier': 'Open classifier',
     'Open example classifier': 'Open example classifier',
+    'Open image viewer': 'Open image viewer',
     'Open weights': 'Open weights',
     'Open': 'Open',
     'Run classifier': 'Run classifier',

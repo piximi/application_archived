@@ -18,6 +18,7 @@ const se = {
     'Model': 'Modell',
     'Open classifier': 'Öppna klassificerare',
     'Open example classifier': 'Öppna exempel klassificeraren',
+    'Open image viewer': 'Open image viewer',
     'Open weights': 'Öppna vikter',
     'Open': 'Öppna',
     'Run classifier': 'Kör klassificeringsenheten',

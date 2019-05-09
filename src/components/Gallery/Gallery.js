@@ -166,7 +166,6 @@ class Gallery extends PureComponent {
           ondrag={this.setCurrentlyDraggedItem}
           callOnDragEnd={callOnDragEnd}
         />
-        <DeleteDropLayer draggedItem={this.state.currentlyDraggedItem} />
       </div>
     );
   }

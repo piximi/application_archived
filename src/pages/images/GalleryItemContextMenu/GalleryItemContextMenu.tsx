@@ -10,9 +10,13 @@ import {
   Backdrop
 } from '@material-ui/core';
 import ColorLensIcon from '@material-ui/icons/ColorLens';
+import DeleteIcon from '@material-ui/icons/Delete';
+import { useTranslation } from 'react-i18next';
 
 const GalleryItemContextMenu = (props: any) => {
   const { anchorEl, onClose, open, openImageViewerDialog } = props;
+
+  const { t: translation } = useTranslation();
 
   const anchorPosition = {
     top: open ? anchorEl.getBoundingClientRect().top + 7 : 0,
@@ -39,7 +43,18 @@ const GalleryItemContextMenu = (props: any) => {
             <ListItemIcon>
               <ColorLensIcon />
             </ListItemIcon>
-            <ListItemText inset primary="Open image viewer" />
+            <ListItemText inset primary={translation('Open image viewer')} />
+          </MenuItem>
+          <MenuItem
+            onClick={() => {
+              onClose();
+              // delete image
+            }}
+          >
+            <ListItemIcon>
+              <DeleteIcon />
+            </ListItemIcon>
+            <ListItemText inset primary={translation('Delete images')} />
           </MenuItem>
         </MenuList>
       </Paper>

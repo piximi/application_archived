@@ -17,6 +17,7 @@ const hi = {
     'Model': 'मॉडल', // transliterated (Model) but should figure out an appropriate abstraction and translate that
     'Open classifier': 'वर्गीकर्त्ता खोलें',
     'Open example classifier': 'उदाहरण का वर्गीकर्त्ता खोलें',
+    'Open image viewer': 'Open image viewer',
     'Open weights': 'वेइट्स खोलें',
     'Open': 'खोलें',
     'Run classifier': 'वर्गीकर्त्ता को चलाएं',

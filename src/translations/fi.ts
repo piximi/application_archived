@@ -18,6 +18,7 @@ const fi = {
     'Model': 'Malli',
     'Open classifier': 'Avaa luokittelija',
     'Open example classifier': 'Avaa esimerkkiluokittelija',
+    'Open image viewer': 'Open image viewer',
     'Open weights': 'Avaa painot',
     'Open': 'Avaa',
     'Run classifier': 'Suorita luokittelija',

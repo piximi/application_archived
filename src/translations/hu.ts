@@ -18,6 +18,7 @@ const hu = {
     'Model': 'Modell',
     'Open classifier': 'Osztályozó betöltése',
     'Open example classifier': 'Példa osztályozó betöltése',
+    'Open image viewer': 'Képnézegető megnyitása',
     'Open weights': 'Súlyok betöltése',
     'Open': 'Megnyitás',
     'Run classifier': 'Osztályozó futtatása',

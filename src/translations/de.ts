@@ -18,6 +18,7 @@ const de = {
     'Model': 'Modell',
     'Open classifier': 'Öffne Classifier',
     'Open example classifier': 'Öffne Beispiel Classifier',
+    'Open image viewer': 'Open image viewer',
     'Open weights': 'Öffne Gewichte',
     'Open': 'Öffnen',
     'Run classifier': 'Starte Classfier',
