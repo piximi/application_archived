@@ -136,19 +136,17 @@ describe('classifier', () => {
     };
 
     const image: Image = {
-      brightness: 0.0,
       categoryIdentifier: '00000000-0000-0000-0000-000000000000',
       checksum: '',
-      contrast: 0.0,
       data: '',
       identifier: '11111111-1111-1111-1111-11111111111',
       partition: Partition.Training,
       scores: [],
-      visible: true,
       visualization: {
         brightness: 0,
         contrast: 0,
-        visible: true
+        visible: true,
+        visibleChannels: []
       }
     };
 
@@ -174,19 +172,17 @@ describe('classifier', () => {
       ],
       images: [
         {
-          brightness: 0.0,
           categoryIdentifier: '00000000-0000-0000-0000-000000000000',
           checksum: '',
-          contrast: 0.0,
           data: '',
           identifier: '11111111-1111-1111-1111-11111111111',
           partition: Partition.Training,
           scores: [],
-          visible: true,
           visualization: {
             brightness: 0,
             contrast: 0,
-            visible: true
+            visible: true,
+            visibleChannels: []
           }
         }
       ],
@@ -218,19 +214,17 @@ describe('classifier', () => {
       ],
       images: [
         {
-          brightness: 0.0,
           categoryIdentifier: '00000000-0000-0000-0000-000000000000',
           checksum: '',
-          contrast: 0.0,
           data: '',
           identifier: '22222222-2222-2222-2222-22222222222',
           partition: Partition.Training,
           scores: [],
-          visible: true,
           visualization: {
             brightness: 0,
             contrast: 0,
-            visible: true
+            visible: true,
+            visibleChannels: []
           }
         }
       ],
@@ -272,10 +266,8 @@ describe('classifier', () => {
       ],
       images: [
         {
-          brightness: 0.0,
           categoryIdentifier: '00000000-0000-0000-0000-000000000000',
           checksum: '',
-          contrast: 0.0,
           data: '',
           identifier: '22222222-2222-2222-2222-22222222222',
           partition: Partition.Training,
@@ -285,11 +277,11 @@ describe('classifier', () => {
               probability: 1.0
             }
           ],
-          visible: true,
           visualization: {
             brightness: 0,
             contrast: 0,
-            visible: true
+            visible: true,
+            visibleChannels: []
           }
         }
       ],
@@ -363,19 +355,17 @@ describe('classifier', () => {
       ],
       images: [
         {
-          brightness: 0.0,
           categoryIdentifier: '00000000-0000-0000-0000-000000000000',
           checksum: '',
-          contrast: 0.0,
           data: '',
           identifier: '11111111-1111-1111-1111-11111111111',
           partition: Partition.Training,
           scores: [],
-          visible: true,
           visualization: {
             brightness: 0,
             contrast: 0,
-            visible: true
+            visible: true,
+            visibleChannels: []
           }
         }
       ],
@@ -699,19 +689,17 @@ describe('classifier', () => {
       ],
       images: [
         {
-          brightness: 0,
           categoryIdentifier: '00000000-0000-0000-0000-000000000000',
           checksum: '',
-          contrast: 0,
           data: '',
           identifier: '11111111-1111-1111-1111-11111111111',
           partition: Partition.Training,
           scores: [],
-          visible: true,
           visualization: {
             brightness: 0,
             contrast: 0,
-            visible: true
+            visible: true,
+            visibleChannels: []
           }
         }
       ],
@@ -740,19 +728,17 @@ describe('classifier', () => {
       ],
       images: [
         {
-          brightness: 1,
           categoryIdentifier: '00000000-0000-0000-0000-000000000000',
           checksum: '',
-          contrast: 0,
           data: '',
           identifier: '11111111-1111-1111-1111-11111111111',
           partition: Partition.Training,
           scores: [],
-          visible: true,
           visualization: {
-            brightness: 0,
+            brightness: 1,
             contrast: 0,
-            visible: true
+            visible: true,
+            visibleChannels: []
           }
         }
       ],
@@ -784,19 +770,17 @@ describe('classifier', () => {
       ],
       images: [
         {
-          brightness: 0,
           categoryIdentifier: '00000000-0000-0000-0000-000000000000',
           checksum: '',
-          contrast: 0,
           data: '',
           identifier: '22222222-2222-2222-2222-22222222222',
           partition: Partition.Training,
           scores: [],
-          visible: true,
           visualization: {
             brightness: 0,
             contrast: 0,
-            visible: true
+            visible: true,
+            visibleChannels: []
           }
         }
       ],
@@ -833,19 +817,17 @@ describe('classifier', () => {
       ],
       images: [
         {
-          brightness: 0,
           categoryIdentifier: '11111111-1111-1111-1111-11111111111',
           checksum: '',
-          contrast: 0,
           data: '',
           identifier: '22222222-2222-2222-2222-22222222222',
           partition: Partition.Training,
           scores: [],
-          visible: true,
           visualization: {
             brightness: 0,
             contrast: 0,
-            visible: true
+            visible: true,
+            visibleChannels: []
           }
         }
       ],
@@ -869,19 +851,17 @@ describe('classifier', () => {
       ],
       images: [
         {
-          brightness: 0,
           categoryIdentifier: '00000000-0000-0000-0000-000000000000',
           checksum: '',
-          contrast: 0,
           data: '',
           identifier: '11111111-1111-1111-1111-11111111111',
           partition: Partition.Training,
           scores: [],
-          visible: true,
           visualization: {
             brightness: 0,
             contrast: 0,
-            visible: true
+            visible: true,
+            visibleChannels: []
           }
         }
       ],
@@ -910,19 +890,17 @@ describe('classifier', () => {
       ],
       images: [
         {
-          brightness: 0,
           categoryIdentifier: '00000000-0000-0000-0000-000000000000',
           checksum: '',
-          contrast: 1,
           data: '',
           identifier: '11111111-1111-1111-1111-11111111111',
           partition: Partition.Training,
           scores: [],
-          visible: true,
           visualization: {
             brightness: 0,
-            contrast: 0,
-            visible: true
+            contrast: 1,
+            visible: true,
+            visibleChannels: []
           }
         }
       ],
@@ -946,19 +924,17 @@ describe('classifier', () => {
       ],
       images: [
         {
-          brightness: 0,
           categoryIdentifier: '00000000-0000-0000-0000-000000000000',
           checksum: '',
-          contrast: 0,
           data: '',
           identifier: '11111111-1111-1111-1111-11111111111',
           partition: Partition.Training,
           scores: [],
-          visible: true,
           visualization: {
             brightness: 0,
             contrast: 0,
-            visible: true
+            visible: true,
+            visibleChannels: []
           }
         }
       ],
@@ -987,19 +963,17 @@ describe('classifier', () => {
       ],
       images: [
         {
-          brightness: 0,
           categoryIdentifier: '00000000-0000-0000-0000-000000000000',
           checksum: '',
-          contrast: 0,
           data: '',
           identifier: '11111111-1111-1111-1111-11111111111',
           partition: Partition.Training,
           scores: [],
-          visible: false,
           visualization: {
             brightness: 0,
             contrast: 0,
-            visible: true
+            visible: false,
+            visibleChannels: []
           }
         }
       ],

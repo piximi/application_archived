@@ -9,27 +9,26 @@ import { useTranslation } from 'react-i18next';
 const useStyles = makeStyles(styles);
 
 const ImportImagesButton = (props: any) => {
-  const { t: translation } = useTranslation();
-
   const { createImage } = props;
 
   const classes = useStyles();
 
-  const onFileInputChange = (image: any) => {
+  const { t: translation } = useTranslation();
+
+  const onFileInputChange = (image: { checksum: string; data: string }) => {
     const { checksum, data } = image;
 
     createImage(checksum, data);
   };
 
   return (
-    <div>
-      <FileInput onChange={onFileInputChange}>
-        <Button className={classes.button}>
-          <AddPhotoAlternateIcon className={classes.icon} />
-          {translation('Import images')}
-        </Button>
-      </FileInput>
-    </div>
+    <FileInput onChange={onFileInputChange}>
+      <Button className={classes.button}>
+        <AddPhotoAlternateIcon className={classes.icon} />
+
+        {translation('Import images')}
+      </Button>
+    </FileInput>
   );
 };
 

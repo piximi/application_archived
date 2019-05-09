@@ -166,7 +166,7 @@ const classifier = createReducer(initialState, {
 
     const image: Image = state.images[index];
 
-    image.brightness = brightness;
+    image.visualization.brightness = brightness;
   },
   [updateImageCategoryAction.toString()]: (state, action) => {
     const { identifier, categoryIdentifier } = action.payload;
@@ -184,7 +184,7 @@ const classifier = createReducer(initialState, {
 
     const image: Image = state.images[index];
 
-    image.contrast = contrast;
+    image.visualization.contrast = contrast;
   },
   [updateImageVisibilityAction.toString()]: (state, action) => {
     const { identifier, visible } = action.payload;
@@ -193,7 +193,7 @@ const classifier = createReducer(initialState, {
 
     const image: Image = state.images[index];
 
-    image.visible = visible;
+    image.visualization.visible = visible;
   }
 });
 

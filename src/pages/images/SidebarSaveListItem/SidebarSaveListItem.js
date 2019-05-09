@@ -1,17 +1,9 @@
 import * as React from 'react';
-import {
-  Divider,
-  ListItem,
-  ListItemIcon,
-  ListItemText
-} from '@material-ui/core';
+import { ListItemText } from '@material-ui/core';
 import SaveIcon from '@material-ui/icons/Save';
 import json2csv from 'json2csv';
 import fileDownload from 'js-file-download';
-import MenuItem from '@material-ui/core/MenuItem/index';
-import MenuList from '@material-ui/core/MenuList/index';
-import Paper from '@material-ui/core/Paper/index';
-import Popover from '@material-ui/core/Popover/index';
+import * as MaterialUI from '@material-ui/core';
 import { fields } from '../../../constants';
 import { SaveDialog } from '..';
 import { useDialog, useMenu } from '../../../hooks';
@@ -75,46 +67,49 @@ const SidebarSaveListItem = props => {
 
   return (
     <div>
-      <ListItem button onClick={openMenu}>
-        <ListItemIcon>
+      <MaterialUI.ListItem button onClick={openMenu}>
+        <MaterialUI.ListItemIcon>
           <SaveIcon />
-        </ListItemIcon>
-        <ListItemText inset primary="Save" />
-      </ListItem>
-      <Popover
+        </MaterialUI.ListItemIcon>
+
+        <MaterialUI.ListItemText inset primary="Save" />
+      </MaterialUI.ListItem>
+
+      <MaterialUI.Popover
         anchorPosition={anchorPosition}
         anchorReference="anchorPosition"
         onClose={closeMenu}
         open={openedMenu}
       >
-        <Paper>
-          <MenuList dense>
-            <MenuItem
+        <MaterialUI.Paper>
+          <MaterialUI.MenuList dense>
+            <MaterialUI.MenuItem
               onClick={() => {
                 openFileNameEditor('MyProject.cyto');
                 setDownloadFunction(fileName => saveClassifier);
               }}
             >
               <ListItemText primary="Save classifier" />
-            </MenuItem>
+            </MaterialUI.MenuItem>
 
-            <Divider />
+            <MaterialUI.Divider />
 
-            <MenuItem
+            <MaterialUI.MenuItem
               onClick={() => {
                 openFileNameEditor('labels.csv');
                 setDownloadFunction(fileName => saveAnnotationsAndPredictions);
               }}
             >
-              <ListItemText primary="Save annotations and predictions" />
-            </MenuItem>
+              <MaterialUI.ListItemText primary="Save annotations and predictions" />
+            </MaterialUI.MenuItem>
 
-            <MenuItem onClick={saveWeights}>
-              <ListItemText primary="Save weights" />
-            </MenuItem>
-          </MenuList>
-        </Paper>
-      </Popover>
+            <MaterialUI.MenuItem onClick={saveWeights}>
+              <MaterialUI.ListItemText primary="Save weights" />
+            </MaterialUI.MenuItem>
+          </MaterialUI.MenuList>
+        </MaterialUI.Paper>
+      </MaterialUI.Popover>
+
       <SaveDialog
         open={openedDialog}
         download={downloadFunction}

@@ -18,8 +18,8 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     updateImageCategory: (identifier: string, categoryIdentifier: string) => {
       const payload = {
-        identifier: identifier,
-        categoryIdentifier: categoryIdentifier
+        categoryIdentifier: categoryIdentifier,
+        identifier: identifier
       };
 
       const action = updateImageCategoryAction(payload);

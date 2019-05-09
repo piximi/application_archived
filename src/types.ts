@@ -14,15 +14,12 @@ export type Classifier = {
 };
 
 export type Image = {
-  brightness: number;
   categoryIdentifier: string;
   checksum: string;
-  contrast: number;
   data: string;
   identifier: string;
   partition: Partition;
   scores: Score[];
-  visible: boolean;
   visualization: ImageVisualization;
 };
 
@@ -45,6 +42,7 @@ export type Settings = {
 
 export type ImageVisualization = {
   brightness: number;
+  visibleChannels: number[];
   contrast: number;
   visible: boolean;
 };

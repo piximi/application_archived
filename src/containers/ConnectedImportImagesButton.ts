@@ -3,14 +3,7 @@ import { createImageAction } from '../reducers/classifier';
 import * as uuid from 'uuid';
 import { ImportImagesButton } from '../pages/images';
 import { Dispatch } from 'redux';
-import { Classifier } from '../types';
-
-type CreateImagePayload = {
-  categoryIdentifier: String;
-  checksum: String;
-  data: String;
-  identifier: String;
-};
+import { Classifier, Image, Partition } from '../types';
 
 type State = {
   classifier: Classifier;
@@ -24,15 +17,25 @@ const mapStateToProps = (state: State) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    createImage: (checksum: String, data: String) => {
-      const payload: CreateImagePayload = {
+    createImage: (checksum: string, data: string) => {
+      const image: Image = {
+        categoryIdentifier: '00000000-0000-0000-0000-000000000000',
         checksum: checksum,
-        identifier: uuid.v4(),
         data: data,
-        categoryIdentifier: ''
+        identifier: uuid.v4(),
+        partition: Partition.Training,
+        scores: [],
+        visualization: {
+          brightness: 0,
+          contrast: 0,
+          visible: true,
+          visibleChannels: []
+        }
       };
 
-      const action = createImageAction([payload]);
+      const payload = { image: image };
+
+      const action = createImageAction(payload);
 
       dispatch(action);
     }
