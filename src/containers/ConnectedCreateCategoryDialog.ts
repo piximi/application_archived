@@ -28,7 +28,9 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
         visible: true
       };
 
-      const action = createCategoryAction(category);
+      const payload = { category: category };
+
+      const action = createCategoryAction(payload);
 
       dispatch(action);
     }
