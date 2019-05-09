@@ -16,8 +16,8 @@ const OpenMenuList = (props: Props) => {
   const { anchorEl, closeMenu, openedMenu } = props;
 
   const anchorPosition = {
-    top: open ? anchorEl.getBoundingClientRect().bottom - 3 : 0,
-    left: open ? anchorEl.getBoundingClientRect().left + 14 : 0
+    top: openedMenu ? anchorEl.getBoundingClientRect().bottom - 3 : 0,
+    left: openedMenu ? anchorEl.getBoundingClientRect().left + 14 : 0
   };
 
   return (
