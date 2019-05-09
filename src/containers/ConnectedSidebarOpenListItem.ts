@@ -1,8 +1,10 @@
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { SidebarOpenListItem } from '../pages/images';
-import { createImageAction } from '../reducers/classifier';
-import { addCategoryAction } from '../reducers/classifier';
+import {
+  createCategoryAction,
+  createImageAction
+} from '../reducers/classifier';
 import { updateSpinnerSpinningAction } from '../reducers/settings';
 import { Dispatch } from 'redux';
 import { Classifier } from '../types';
@@ -17,8 +19,26 @@ const loadDemoProject = (demo: string) => {
       )
       .then(result => {
         dispatch(updateSpinnerSpinningAction());
-        dispatch(createImageAction(result.data.images));
-        dispatch(addCategoryAction(result.data.categories));
+
+        for (let image of result.data.images) {
+          const payload = {
+            image: image
+          };
+
+          const action = createImageAction(payload);
+
+          dispatch(action);
+        }
+
+        for (let category of result.data.categories) {
+          const payload = {
+            category: category
+          };
+
+          const action = createCategoryAction(payload);
+
+          dispatch(action);
+        }
       })
       .catch(function(error) {
         alert(error);
@@ -40,8 +60,25 @@ const mapStateToProps = (state: State) => {
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     updateStore: (data: { images: any; categories: any }) => {
-      dispatch(createImageAction(data.images));
-      dispatch(addCategoryAction(data.categories));
+      for (let image of data.images) {
+        const payload = {
+          image: image
+        };
+
+        const action = createImageAction(payload);
+
+        dispatch(action);
+      }
+
+      for (let category of data.categories) {
+        const payload = {
+          category: category
+        };
+
+        const action = createCategoryAction(payload);
+
+        dispatch(action);
+      }
     },
     loadDemoProject: (demo: string) => {
       dispatch(createImageAction({}));
