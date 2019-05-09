@@ -5,7 +5,6 @@ import {
   createCategoryAction,
   createImageAction
 } from '../reducers/classifier';
-import { updateSpinnerSpinningAction } from '../reducers/settings';
 import { Dispatch } from 'redux';
 import { Classifier } from '../types';
 
@@ -18,7 +17,7 @@ const loadDemoProject = (demo: string) => {
           '.cyto'
       )
       .then(result => {
-        dispatch(updateSpinnerSpinningAction());
+        // dispatch(updateSpinnerSpinningAction());
 
         for (let image of result.data.images) {
           const payload = {
@@ -82,7 +81,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     },
     loadDemoProject: (demo: string) => {
       dispatch(createImageAction({}));
-      dispatch(updateSpinnerSpinningAction());
+      // dispatch(updateSpinnerSpinningAction());
       // dispatch(loadDemoProject(demo));
     }
   };

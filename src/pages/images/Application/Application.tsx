@@ -56,15 +56,6 @@ const Application = (props: Props) => {
           callOnDragEnd={updateImageCategory}
           setSelectedImages={setSelectedImages}
         />
-
-        <div className={classes.pacmanLoader}>
-          <PacmanLoader
-            sizeUnit={'px'}
-            size={32}
-            color={'#6bd3b8'}
-            loading={spinnerActive}
-          />
-        </div>
       </main>
     </div>
   );
