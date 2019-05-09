@@ -17,20 +17,6 @@ import classifier, {
 import { Category, Classifier, Image, Partition } from '../types';
 
 describe('classifier', () => {
-  // it('addCategoryAction', () => {
-  //   const payload = {};
-  //
-  //   const action = addCategoryAction(payload);
-  //
-  //   const reducer = classifier(state, action);
-  //
-  //   const expected: Classifier = state;
-  //
-  //   expected.categories = [];
-  //
-  //   expect(reducer).toEqual(expected)
-  // });
-
   it('createCategoryAction', () => {
     const state: Classifier = {
       categories: [

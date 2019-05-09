@@ -1,8 +1,6 @@
 import { createAction, createReducer } from 'redux-starter-kit';
 import { Category, Classifier, Image } from '../types';
 
-export const addCategoryAction = createAction('add-category');
-
 export const createCategoryAction = createAction('create-category');
 
 export const createClassifierAction = createAction('create-classifier');
@@ -76,9 +74,6 @@ const unknownCategory: Category = {
 initialState.categories.push(unknownCategory);
 
 const classifier = createReducer(initialState, {
-  [addCategoryAction.toString()]: (state, action) => {
-    action.payload.map((category: Category) => state.categories.push(category));
-  },
   [createCategoryAction.toString()]: (state, action) => {
     const { category } = action.payload;
 
