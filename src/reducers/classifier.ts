@@ -80,7 +80,7 @@ const classifier = createReducer(initialState, {
     action.payload.map((category: Category) => state.categories.push(category));
   },
   [createCategoryAction.toString()]: (state, action) => {
-    const category: Category = action.payload;
+    const { category } = action.payload;
 
     state.categories.push(category);
   },
@@ -96,12 +96,14 @@ const classifier = createReducer(initialState, {
     state.name = name;
   },
   [createImageAction.toString()]: (state, action) => {
-    action.payload.map((image: Image) => state.images.push(image));
+    const { image } = action.payload;
+
+    state.images.push(image);
   },
   [createImageScoreAction.toString()]: (state, action) => {
     const { identifier, score } = action.payload;
 
-    const index = findImageIndex(state.images, identifier);
+    const index: number = findImageIndex(state.images, identifier);
 
     const image: Image = state.images[index];
 
@@ -110,14 +112,14 @@ const classifier = createReducer(initialState, {
   [deleteCategoryAction.toString()]: (state, action) => {
     const { identifier } = action.payload;
 
-    return state.categories.filter(
+    state.categories = state.categories.filter(
       (category: Category) => category.identifier !== identifier
     );
   },
   [deleteImageAction.toString()]: (state, action) => {
     const { identifier } = action.payload;
 
-    return state.images.filter(
+    state.images = state.images.filter(
       (image: Image) => image.identifier !== identifier
     );
   },
@@ -133,7 +135,7 @@ const classifier = createReducer(initialState, {
   [updateCategoryColorAction.toString()]: (state, action) => {
     const { identifier, color } = action.payload;
 
-    const index = findCategoryIndex(state.categories, identifier);
+    const index: number = findCategoryIndex(state.categories, identifier);
 
     const category: Category = state.categories[index];
 
@@ -142,7 +144,7 @@ const classifier = createReducer(initialState, {
   [updateCategoryDescriptionAction.toString()]: (state, action) => {
     const { identifier, description } = action.payload;
 
-    const index = findCategoryIndex(state.categories, identifier);
+    const index: number = findCategoryIndex(state.categories, identifier);
 
     const category: Category = state.categories[index];
 
@@ -151,7 +153,7 @@ const classifier = createReducer(initialState, {
   [updateCategoryVisibilityAction.toString()]: (state, action) => {
     const { identifier, visible } = action.payload;
 
-    const index = findCategoryIndex(state.categories, identifier);
+    const index: number = findCategoryIndex(state.categories, identifier);
 
     const category: Category = state.categories[index];
 
@@ -165,7 +167,7 @@ const classifier = createReducer(initialState, {
   [updateImageBrightnessAction.toString()]: (state, action) => {
     const { identifier, brightness } = action.payload;
 
-    const index = findImageIndex(state.images, identifier);
+    const index: number = findImageIndex(state.images, identifier);
 
     const image: Image = state.images[index];
 
@@ -183,7 +185,7 @@ const classifier = createReducer(initialState, {
   [updateImageContrastAction.toString()]: (state, action) => {
     const { identifier, contrast } = action.payload;
 
-    const index = findImageIndex(state.images, identifier);
+    const index: number = findImageIndex(state.images, identifier);
 
     const image: Image = state.images[index];
 
@@ -192,7 +194,7 @@ const classifier = createReducer(initialState, {
   [updateImageVisibilityAction.toString()]: (state, action) => {
     const { identifier, visible } = action.payload;
 
-    const index = findImageIndex(state.images, identifier);
+    const index: number = findImageIndex(state.images, identifier);
 
     const image: Image = state.images[index];
 
