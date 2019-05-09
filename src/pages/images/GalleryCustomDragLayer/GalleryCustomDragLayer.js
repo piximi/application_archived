@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { DragLayer } from 'react-dnd/lib/index';
 import './GalleryCustomDragLayer.css';
+import { __EXPERIMENTAL_DND_HOOKS_THAT_MAY_CHANGE_AND_BREAK_MY_BUILD__ as dnd } from 'react-dnd';
+const { useDragLayer } = dnd;
 
 const layerStyles = {
   position: 'fixed',
@@ -40,6 +41,19 @@ let swapArrayElements = (arr, indexA, indexB) => {
 
 const GalleryCustomDragLayer = props => {
   const { item, itemType, isDragging } = props;
+
+  // const spec = {
+  //   collect: (monitor, props) => {
+  //     return {
+  //       item: monitor.getItem(),
+  //       itemType: monitor.getItemType(),
+  //       currentOffset: monitor.getClientOffset(),
+  //       isDragging: monitor.isDragging()
+  //     };
+  //   }
+  // };
+  //
+  // const collectedProps = useDragLayer(spec);
 
   const renderItem = (type, item) => {
     const list = document.getElementsByClassName('selected');
@@ -82,13 +96,13 @@ const GalleryCustomDragLayer = props => {
   );
 };
 
-function collect(monitor) {
-  return {
-    item: monitor.getItem(),
-    itemType: monitor.getItemType(),
-    currentOffset: monitor.getClientOffset(),
-    isDragging: monitor.isDragging()
-  };
-}
+// function collect(monitor) {
+//   return {
+//     item: monitor.getItem(),
+//     itemType: monitor.getItemType(),
+//     currentOffset: monitor.getClientOffset(),
+//     isDragging: monitor.isDragging()
+//   };
+// }
 
-export default DragLayer(collect)(GalleryCustomDragLayer);
+export default GalleryCustomDragLayer;
