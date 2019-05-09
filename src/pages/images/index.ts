@@ -17,7 +17,10 @@ import HelpDialog from './HelpDialog/HelpDialog';
 import ImportImagesButton from './ImportImagesButton/ImportImagesButton';
 import Logo from './Logo/Logo';
 import NewClassifierDialog from './NewClassifierDialog/NewClassifierDialog';
+import OpenClassifierMenuItem from './OpenClassifierMenuItem/OpenClassifierMenuItem';
 import OpenExampleClassifierDialog from './OpenExampleClassifierDialog/OpenExampleClassifierDialog';
+import OpenExampleClassifierMenuItem from './OpenExampleClassifierMenuItem/OpenExampleClassifierMenuItem';
+import OpenWeightsMenuItem from './OpenWeightsMenuItem/OpenWeightsMenuItem';
 import PrimaryAppBar from './PrimaryAppBar/PrimaryAppBar';
 import SaveAnnotationsAndPredictionsDialog from './SaveAnnotationsAndPredictionsDialog/SaveAnnotationsAndPredictionsDialog';
 import SaveAnnotationsAndPredictionsMenuItem from './SaveAnnotationsAndPredictionsMenuItem/SaveAnnotationsAndPredictionsMenuItem';
@@ -65,7 +68,10 @@ export {
   ImportImagesButton,
   Logo,
   NewClassifierDialog,
+  OpenClassifierMenuItem,
   OpenExampleClassifierDialog,
+  OpenExampleClassifierMenuItem,
+  OpenWeightsMenuItem,
   PrimaryAppBar,
   SaveAnnotationsAndPredictionsDialog,
   SaveAnnotationsAndPredictionsMenuItem,

@@ -3,15 +3,18 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  MenuItem,
   MenuList,
   Paper,
   Popover
 } from '@material-ui/core';
 import * as React from 'react';
 import FolderOpenIcon from '@material-ui/icons/FolderOpen';
-import { useDialog, useMenu } from '../../../hooks';
-import { OpenExampleClassifierDialog } from '..';
+import { useMenu } from '../../../hooks';
+import {
+  OpenClassifierMenuItem,
+  OpenExampleClassifierMenuItem,
+  OpenWeightsMenuItem
+} from '..';
 // import * as API from '../../../classifierBackup';
 
 function openProject(e, props) {
@@ -27,20 +30,10 @@ function openProject(e, props) {
 }
 
 const SidebarOpenListItem = props => {
-  const { loadDemoProject } = props;
-
-  const { openedDialog, openDialog, closeDialog } = useDialog();
-
   const { anchorEl, openedMenu, openMenu, closeMenu } = useMenu();
 
   const onOpenProjectMenuItemClick = event => {
     openProject(event, props);
-
-    closeMenu();
-  };
-
-  const openExampleClassifier = () => {
-    openDialog();
 
     closeMenu();
   };
@@ -74,48 +67,16 @@ const SidebarOpenListItem = props => {
       >
         <Paper>
           <MenuList dense>
-            <input
-              accept=".cyto"
-              id="open-project"
-              name="file"
-              onChange={onOpenProjectMenuItemClick}
-              style={{ display: 'none' }}
-              type="file"
-            />
-            <label htmlFor="open-project">
-              <MenuItem>
-                <ListItemText primary="Open classifier" />
-              </MenuItem>
-            </label>
+            <OpenClassifierMenuItem onChange={onOpenProjectMenuItemClick} />
 
             <Divider />
 
-            <MenuItem onClick={openExampleClassifier}>
-              <ListItemText primary="Open example classifier" />
-            </MenuItem>
+            <OpenExampleClassifierMenuItem closeMenu={closeMenu} />
 
-            <input
-              accept="*"
-              id="open-weights"
-              name="file"
-              onChange={openWeights}
-              style={{ display: 'none' }}
-              type="file"
-            />
-            <label htmlFor="open-weights">
-              <MenuItem>
-                <ListItemText primary="Open weights" />
-              </MenuItem>
-            </label>
+            <OpenWeightsMenuItem onChange={openWeights} />
           </MenuList>
         </Paper>
       </Popover>
-
-      <OpenExampleClassifierDialog
-        onClose={closeDialog}
-        open={openedDialog}
-        loadDemoProject={loadDemoProject}
-      />
     </div>
   );
 };
