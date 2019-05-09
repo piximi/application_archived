@@ -2,7 +2,11 @@ import * as React from 'react';
 import * as MaterialUI from '@material-ui/core';
 
 const OpenWeightsMenuItem = (props: any) => {
-  const { onChange } = props;
+  const { closeMenu } = props;
+
+  const onChange = () => {
+    closeMenu();
+  };
 
   return (
     <React.Fragment>

@@ -20,6 +20,7 @@ import NewClassifierDialog from './NewClassifierDialog/NewClassifierDialog';
 import OpenClassifierMenuItem from './OpenClassifierMenuItem/OpenClassifierMenuItem';
 import OpenExampleClassifierDialog from './OpenExampleClassifierDialog/OpenExampleClassifierDialog';
 import OpenExampleClassifierMenuItem from './OpenExampleClassifierMenuItem/OpenExampleClassifierMenuItem';
+import OpenMenuList from './OpenMenuList/OpenMenuList';
 import OpenWeightsMenuItem from './OpenWeightsMenuItem/OpenWeightsMenuItem';
 import PrimaryAppBar from './PrimaryAppBar/PrimaryAppBar';
 import SaveAnnotationsAndPredictionsDialog from './SaveAnnotationsAndPredictionsDialog/SaveAnnotationsAndPredictionsDialog';
@@ -71,6 +72,7 @@ export {
   OpenClassifierMenuItem,
   OpenExampleClassifierDialog,
   OpenExampleClassifierMenuItem,
+  OpenMenuList,
   OpenWeightsMenuItem,
   PrimaryAppBar,
   SaveAnnotationsAndPredictionsDialog,
