@@ -8,12 +8,12 @@ import {
 
 type Props = {
   anchorEl: any;
-  onClose: () => void;
-  open: boolean;
+  closeMenu: () => void;
+  openedMenu: boolean;
 };
 
 const OpenMenuList = (props: Props) => {
-  const { anchorEl, onClose, open } = props;
+  const { anchorEl, closeMenu, openedMenu } = props;
 
   const anchorPosition = {
     top: open ? anchorEl.getBoundingClientRect().bottom - 3 : 0,
@@ -24,18 +24,18 @@ const OpenMenuList = (props: Props) => {
     <MaterialUI.Popover
       anchorPosition={anchorPosition}
       anchorReference="anchorPosition"
-      onClose={onClose}
-      open={open}
+      onClose={closeMenu}
+      open={openedMenu}
     >
       <MaterialUI.Paper>
         <MaterialUI.MenuList dense>
-          <OpenClassifierMenuItem closeMenu={onClose} />
+          <OpenClassifierMenuItem />
 
           <MaterialUI.Divider />
 
-          <OpenExampleClassifierMenuItem closeMenu={onClose} />
+          <OpenExampleClassifierMenuItem />
 
-          <OpenWeightsMenuItem closeMenu={onClose} />
+          <OpenWeightsMenuItem />
         </MaterialUI.MenuList>
       </MaterialUI.Paper>
     </MaterialUI.Popover>

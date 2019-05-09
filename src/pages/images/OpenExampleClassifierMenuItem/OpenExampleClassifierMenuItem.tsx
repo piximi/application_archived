@@ -3,19 +3,11 @@ import * as MaterialUI from '@material-ui/core';
 import { useDialog } from '../../../hooks';
 import { OpenExampleClassifierDialog } from '../index';
 
-type Props = {
-  closeMenu: () => void;
-};
-
-const OpenExampleClassifierMenuItem = (props: Props) => {
-  const { closeMenu } = props;
-
+const OpenExampleClassifierMenuItem = () => {
   const { openedDialog, openDialog, closeDialog } = useDialog();
 
   const onClick = () => {
     openDialog();
-
-    closeMenu();
   };
 
   return (

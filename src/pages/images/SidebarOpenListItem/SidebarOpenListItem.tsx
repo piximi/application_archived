@@ -8,7 +8,7 @@ const SidebarOpenListItem = () => {
   const { anchorEl, openedMenu, openMenu, closeMenu } = useMenu();
 
   return (
-    <div>
+    <React.Fragment>
       <ListItem button onClick={openMenu}>
         <ListItemIcon>
           <FolderOpenIcon />
@@ -17,8 +17,12 @@ const SidebarOpenListItem = () => {
         <ListItemText primary="Open" />
       </ListItem>
 
-      <OpenMenuList anchorEl={anchorEl} onClose={closeMenu} open={openedMenu} />
-    </div>
+      <OpenMenuList
+        anchorEl={anchorEl}
+        closeMenu={closeMenu}
+        openedMenu={openedMenu}
+      />
+    </React.Fragment>
   );
 };
 
