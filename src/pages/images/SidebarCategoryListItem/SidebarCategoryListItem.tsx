@@ -18,12 +18,22 @@ import { ConnectedCategoryDropTarget } from '../../../containers';
 
 const useStyles = makeStyles(styles);
 
-const SidebarCategoryListItem = props => {
+const VisibleIcon = (props: any) => {
+  const { color, visible } = props;
+
+  if (visible) {
+    return <LabelIcon style={{ color: color }} />;
+  } else {
+    return <LabelOutlinedIcon style={{ color: color }} />;
+  }
+};
+
+const SidebarCategoryListItem = (props: any) => {
   const { categories, category, toggleVisibility } = props;
 
   const { anchorEl, openedMenu, openMenu, closeMenu } = useMenu();
 
-  const [animateOnDrop, setAnimateOnDrop] = React.useState(null);
+  const [animateOnDrop, setAnimateOnDrop] = React.useState(false);
 
   const classes = useStyles();
 
@@ -31,40 +41,35 @@ const SidebarCategoryListItem = props => {
     toggleVisibility(category.identifier);
   };
 
-  const VisibleIcon = props => {
-    const { color, visible } = props;
+  const className =
+    animateOnDrop !== null
+      ? animateOnDrop
+        ? 'onDropPulse'
+        : 'onDropPulse2'
+      : '';
 
-    if (visible) {
-      return <LabelIcon style={{ color: color }} />;
-    } else {
-      return <LabelOutlinedIcon style={{ color: color }} />;
-    }
+  const onDrop = () => {
+    setAnimateOnDrop(!animateOnDrop);
+  };
+
+  const listItemClasses = {
+    root: props.isOver ? classes.isOver : ''
   };
 
   return (
     <ConnectedCategoryDropTarget category={category}>
       <StyledCategory
         color={category.color}
-        onDrop={() => setAnimateOnDrop(!animateOnDrop)}
-        className={
-          animateOnDrop !== null
-            ? animateOnDrop
-              ? 'onDropPulse'
-              : 'onDropPulse2'
-            : null
-        }
+        onDrop={onDrop}
+        className={className}
       >
-        <ListItem
-          dense
-          style={{ cursor: 'pointer' }}
-          classes={{
-            root: props.isOver ? classes.isOver : null
-          }}
-        >
+        <ListItem classes={listItemClasses} dense style={{ cursor: 'pointer' }}>
           <ListItemIcon onClick={onToggleVisibilityClick}>
             <VisibleIcon color={category.color} visible={category.visible} />
           </ListItemIcon>
+
           <ListItemText primary={category.description} />
+
           <ListItemSecondaryAction>
             <IconButton onClick={openMenu}>
               <MoreHorizIcon />
