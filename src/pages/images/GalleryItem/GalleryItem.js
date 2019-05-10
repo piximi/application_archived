@@ -4,6 +4,7 @@ import { GalleryImage } from '..';
 import { useDialog } from '../../../hooks';
 import { ConnectedItemLabel } from '../../../containers';
 import { __EXPERIMENTAL_DND_HOOKS_THAT_MAY_CHANGE_AND_BREAK_MY_BUILD__ as dnd } from 'react-dnd';
+import { ImageDragSource } from '../../../components';
 const { useDrag } = dnd;
 
 const GalleryItem = props => {
@@ -28,12 +29,10 @@ const GalleryItem = props => {
   const imgSelected = selectedItems.includes(item.identifier);
 
   return (
-    <div
-      key={'div' + item.identifier}
-      ref={dragSource}
-      onMouseDown={() => onmousedown(item.identifier)}
-      onContextMenu={myContextMenu}
-      className={imgSelected ? 'selected' : 'unselected'}
+    <ImageDragSource
+      selectedItems={selectedItems}
+      onmousedown={onmousedown}
+      item={item}
     >
       <ConnectedItemLabel image={item} />
 
@@ -55,7 +54,7 @@ const GalleryItem = props => {
         imgIdentifier={item.identifier}
         brightness={item.brightness}
       />
-    </div>
+    </ImageDragSource>
   );
 };
 
