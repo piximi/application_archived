@@ -20,29 +20,18 @@ const { useDrop } = dnd;
 const useStyles = makeStyles(styles);
 
 const SidebarCategoryListItem = props => {
-  const { categories, category, toggleVisibility } = props;
+  const { categories, category, toggleVisibility, updateImageCategory } = props;
+
+  const drop = React.useCallback(item => {
+    updateImageCategory(item.id, category.identifier);
+  });
 
   const spec = {
     accept: 'image',
-    collect: (monitor, props) => {
-      return {
-        connectDropTarget: monitor.dropTarget,
-        isOver: monitor.isOver()
-      };
-    },
-    drop: (item, monitor) => {
-      const selectedItems = monitor.getItem().selectedItems;
-
-      return {
-        categoryIdentifier: item.identifier,
-        categoryName: item.name,
-        color: item.color,
-        selectedItems: selectedItems
-      };
-    }
+    drop: drop
   };
 
-  const [collectedProps, drop] = useDrop(spec);
+  const [, dropTarget] = useDrop(spec);
 
   const { anchorEl, openedMenu, openMenu, closeMenu } = useMenu();
 
@@ -67,7 +56,7 @@ const SidebarCategoryListItem = props => {
   return (
     <div>
       <StyledCategory
-        ref={drop}
+        ref={dropTarget}
         color={category.color}
         onDrop={() => setAnimateOnDrop(!animateOnDrop)}
         className={

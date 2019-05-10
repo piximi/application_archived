@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import {
   toggleCategoryVisibilityAction,
-  updateCategoryVisibilityAction
+  updateCategoryVisibilityAction,
+  updateImageCategoryAction
 } from '../reducers/classifier';
 import { SidebarCategoryListItem } from '../pages/images';
 import { Classifier } from '../types';
@@ -23,6 +24,16 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
       const payload = { identifier: identifier };
 
       const action = toggleCategoryVisibilityAction(payload);
+
+      dispatch(action);
+    },
+    updateImageCategory: (identifier: string, categoryIdentifier: string) => {
+      const payload = {
+        categoryIdentifier: categoryIdentifier,
+        identifier: identifier
+      };
+
+      const action = updateImageCategoryAction(payload);
 
       dispatch(action);
     },
