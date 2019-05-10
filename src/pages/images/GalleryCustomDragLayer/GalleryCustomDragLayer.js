@@ -1,7 +1,5 @@
 import * as React from 'react';
 import './GalleryCustomDragLayer.css';
-import { __EXPERIMENTAL_DND_HOOKS_THAT_MAY_CHANGE_AND_BREAK_MY_BUILD__ as dnd } from 'react-dnd';
-const { useDragLayer } = dnd;
 
 const layerStyles = {
   position: 'fixed',

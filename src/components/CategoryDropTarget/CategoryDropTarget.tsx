@@ -12,9 +12,12 @@ type Props = {
 const CategoryDropTarget = (props: Props) => {
   const { category, children, updateImageCategory } = props;
 
-  const drop = React.useCallback(item => {
-    updateImageCategory(item.id, category.identifier);
-  }, []);
+  const drop = React.useCallback(
+    item => {
+      updateImageCategory(item.id, category.identifier);
+    },
+    [category.identifier, updateImageCategory]
+  );
 
   const spec = {
     accept: 'image',

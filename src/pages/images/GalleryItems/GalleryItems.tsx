@@ -56,7 +56,7 @@ const GalleryItems = (props: Props) => {
     setPicturesPerRow(picturesPerRow > noImages ? noImages : picturesPerRow);
     setRows(rowCount);
     setNoImages(noImages);
-  });
+  }, [imagesPerRow, windowWidth, images, decreaseWidth]);
 
   const onmousedown = (imgId: any) => {
     selectItem(imgId);

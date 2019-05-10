@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import axios from 'axios';
+// import axios from 'axios';
 import { SidebarOpenListItem } from '../pages/images';
 import {
   createCategoryAction,
@@ -8,42 +8,42 @@ import {
 import { Dispatch } from 'redux';
 import { Classifier } from '../types';
 
-const loadDemoProject = (demo: string) => {
-  return (dispatch: any) => {
-    return axios
-      .get(
-        ' https://raw.githubusercontent.com/cytoai/cyto/master/src/demos/' +
-          demo +
-          '.cyto'
-      )
-      .then(result => {
-        // dispatch(updateSpinnerSpinningAction());
-
-        for (let image of result.data.images) {
-          const payload = {
-            image: image
-          };
-
-          const action = createImageAction(payload);
-
-          dispatch(action);
-        }
-
-        for (let category of result.data.categories) {
-          const payload = {
-            category: category
-          };
-
-          const action = createCategoryAction(payload);
-
-          dispatch(action);
-        }
-      })
-      .catch(function(error) {
-        alert(error);
-      });
-  };
-};
+// const loadDemoProject = (demo: string) => {
+//   return (dispatch: any) => {
+//     return axios
+//       .get(
+//         ' https://raw.githubusercontent.com/cytoai/cyto/master/src/demos/' +
+//           demo +
+//           '.cyto'
+//       )
+//       .then(result => {
+//         // dispatch(updateSpinnerSpinningAction());
+//
+//         for (let image of result.data.images) {
+//           const payload = {
+//             image: image
+//           };
+//
+//           const action = createImageAction(payload);
+//
+//           dispatch(action);
+//         }
+//
+//         for (let category of result.data.categories) {
+//           const payload = {
+//             category: category
+//           };
+//
+//           const action = createCategoryAction(payload);
+//
+//           dispatch(action);
+//         }
+//       })
+//       .catch(function(error) {
+//         alert(error);
+//       });
+//   };
+// };
 
 type State = {
   classifier: Classifier;

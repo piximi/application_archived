@@ -23,7 +23,7 @@ export const useKeyPress = (target: any) => {
       window.removeEventListener('keydown', onKeyDown);
       window.removeEventListener('keyup', onKeyUp);
     };
-  }, [target]);
+  });
 
   return keyPressed;
 };
