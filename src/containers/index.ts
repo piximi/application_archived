@@ -1,5 +1,6 @@
 import ConnectedApplication from './ConnectedApplication';
 import ConnectedCategories from './ConnectedCategories';
+import ConnectedCategoryDropTarget from './ConnectedCategoryDropTarget';
 import ConnectedColorPicker from './ConnectedColorPicker';
 import ConnectedCreateCategoryDialog from './ConnectedCreateCategoryDialog';
 import ConnectedDeleteCategoryDialog from './ConnectedDeleteCategoryDialog';
@@ -21,6 +22,7 @@ import ConnectedSidebarSaveListItem from './ConnectedSidebarSaveListItem';
 export {
   ConnectedApplication,
   ConnectedCategories,
+  ConnectedCategoryDropTarget,
   ConnectedColorPicker,
   ConnectedCreateCategoryDialog,
   ConnectedDeleteCategoryDialog,
