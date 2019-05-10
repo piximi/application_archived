@@ -3,30 +3,14 @@ import { ImageViewerDialog } from '../../image';
 import { GalleryImage } from '..';
 import { useDialog } from '../../../hooks';
 import { ConnectedItemLabel } from '../../../containers';
-import { __EXPERIMENTAL_DND_HOOKS_THAT_MAY_CHANGE_AND_BREAK_MY_BUILD__ as dnd } from 'react-dnd';
 import { ImageDragSource } from '../../../components';
-const { useDrag } = dnd;
 
-const GalleryItem = props => {
+const GalleryItem = (props: any) => {
   const { selectedItems, onmousedown, containerStyle, item } = props;
 
   const { openedDialog, openDialog, closeDialog } = useDialog();
 
-  const spec = {
-    item: {
-      id: item.identifier,
-      type: 'image'
-    }
-  };
-
-  const [, dragSource] = useDrag(spec);
-
-  const myContextMenu = e => {
-    e.preventDefault();
-  };
-
   const unselectedChannels = item.visualization.visibleChannels;
-  const imgSelected = selectedItems.includes(item.identifier);
 
   return (
     <ImageDragSource

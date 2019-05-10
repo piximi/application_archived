@@ -6,6 +6,7 @@ import {
   ListItemSecondaryAction,
   ListItemText
 } from '@material-ui/core';
+import { CategoryDropTarget } from '../../../components';
 import LabelIcon from '@material-ui/icons/Label';
 import LabelOutlinedIcon from '@material-ui/icons/LabelOutlined';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
@@ -54,9 +55,11 @@ const SidebarCategoryListItem = props => {
   };
 
   return (
-    <div>
+    <CategoryDropTarget
+      category={category}
+      updateImageCategory={updateImageCategory}
+    >
       <StyledCategory
-        ref={dropTarget}
         color={category.color}
         onDrop={() => setAnimateOnDrop(!animateOnDrop)}
         className={
@@ -93,7 +96,7 @@ const SidebarCategoryListItem = props => {
         closeMenu={closeMenu}
         openedMenu={openedMenu}
       />
-    </div>
+    </CategoryDropTarget>
   );
 };
 

@@ -1,4 +1,5 @@
 import CategoryDescriptionTextField from './CategoryDescriptionTextField/CategoryDescriptionTextField';
+import CategoryDropTarget from './CategoryDropTarget/CategoryDropTarget';
 import ColorIconButton from './ColorIconButton/ColorIconButton';
 import ColorPicker from './ColorPicker/ColorPicker';
 import Dialog from './Dialog/Dialog';
@@ -11,6 +12,7 @@ import Snackbar from './Snackbar/Snackbar';
 
 export {
   CategoryDescriptionTextField,
+  CategoryDropTarget,
   ColorIconButton,
   ColorPicker,
   Dialog,
