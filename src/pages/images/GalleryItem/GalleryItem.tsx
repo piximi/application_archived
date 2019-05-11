@@ -1,6 +1,6 @@
 import React from 'react';
 import { ImageViewerDialog } from '../../image';
-import { GalleryImage } from '../../../components';
+import { Image } from '../../../components';
 import { useDialog } from '@cytoai/hooks';
 import { ConnectedItemLabel } from '../../../containers';
 import { ImageDragSource } from '../../../components';
@@ -20,7 +20,7 @@ const GalleryItem = (props: any) => {
     >
       <ConnectedItemLabel image={item} />
 
-      <GalleryImage
+      <Image
         key={'img' + item.identifier}
         openImageViewerDialog={openDialog}
         src={item.data}

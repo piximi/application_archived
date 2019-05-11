@@ -270,7 +270,7 @@ class Dataset {
   loadFromArray(imDataArray) {
     // function to split into training, validation and prediction set
     if (imDataArray == null) {
-      console.log('No GalleryImage Data Array given.');
+      console.log('No Image Data Array given.');
     }
 
     let labeledImages = {};
