@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { createImageAction } from '@cytoai/store/dist';
+import { createImageAction } from '@cytoai/store';
 import * as uuid from 'uuid';
 import { ImportImagesButton } from '../pages/images';
 import { Dispatch } from 'redux';

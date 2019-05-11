@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { DeleteImageDialog } from '../pages/images';
-import { deleteImageAction } from '@cytoai/store/dist';
+import { deleteImageAction } from '@cytoai/store';
 import { Dispatch } from 'redux';
 import { Classifier } from '../types';
 

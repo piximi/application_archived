@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { GalleryItem } from '../pages/images';
-import { updateImageCategoryAction } from '@cytoai/store/dist';
+import { updateImageCategoryAction } from '@cytoai/store';
 import { Dispatch } from 'redux';
 import { Classifier } from '../types';
 

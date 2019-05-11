@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { Search } from '../pages/images';
-import { updateImageVisibilityAction } from '@cytoai/store/dist';
+import { updateImageVisibilityAction } from '@cytoai/store';
 import { Dispatch } from 'redux';
 import { Classifier, Image } from '../types';
 

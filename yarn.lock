@@ -910,10 +910,10 @@
   resolved "https://registry.yarnpkg.com/@csstools/normalize.css/-/normalize.css-9.0.1.tgz#c27b391d8457d1e893f1eddeaf5e5412d12ffbb5"
   integrity sha512-6It2EVfGskxZCQhuykrfnALg7oVeiI6KclWSmGDqB0AiInVrTGB9Jp9i4/Ad21u9Jde/voVQz6eFX/eSg/UsPA==
 
-"@cytoai/store@^0.1.9":
-  version "0.1.9"
-  resolved "https://registry.yarnpkg.com/@cytoai/store/-/store-0.1.9.tgz#ff653e40e9b41f48ae210dd69d0cc8dfedde95c9"
-  integrity sha512-5CVF4DiIXCdXCpzibKRk7mnuxcYPfGx5/snuSeRb/pzYSCHlDpMdzSuxl58FSStnnqUWdiz+msv4lXlco48GXA==
+"@cytoai/store@^0.1.10":
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/@cytoai/store/-/store-0.1.10.tgz#974e9bd32cba07fa66be7d78708b36354c665cd7"
+  integrity sha512-NObUg68jIcfVgLs1HDYJ8ioVQzS+W+tvrJxD8T08RDOy6J4UyuRGcl8P1qJNpM8G3Fd1PfupsEO5RPMBmP1Tjw==
   dependencies:
     react "^16.8.6"
     redux "^4.0.1"

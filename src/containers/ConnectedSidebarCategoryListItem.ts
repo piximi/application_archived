@@ -3,7 +3,7 @@ import {
   toggleCategoryVisibilityAction,
   updateCategoryVisibilityAction,
   updateImageCategoryAction
-} from '@cytoai/store/dist';
+} from '@cytoai/store';
 import { SidebarCategoryListItem } from '../pages/images';
 import { Classifier } from '../types';
 import { Dispatch } from 'redux';

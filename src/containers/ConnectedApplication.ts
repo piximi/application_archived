@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { Application } from '../pages/images';
 import { Dispatch } from 'redux';
 import { Classifier } from '../types';
-import { updateImageCategoryAction } from '@cytoai/store/dist';
+import { updateImageCategoryAction } from '@cytoai/store';
 
 type State = {
   classifier: Classifier;

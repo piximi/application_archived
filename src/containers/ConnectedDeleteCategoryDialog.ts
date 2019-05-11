@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { DeleteCategoryDialog } from '../pages/images';
-import { deleteCategoryAction } from '@cytoai/store/dist';
+import { deleteCategoryAction } from '@cytoai/store';
 import { Classifier } from '../types';
 import { Dispatch } from 'redux';
 

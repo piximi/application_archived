@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { updateImageCategoryAction } from '@cytoai/store/dist';
+import { updateImageCategoryAction } from '@cytoai/store';
 import { CategoryDropTarget } from '../components';
 import { Classifier } from '../types';
 import { Dispatch } from 'redux';

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { createCategoryAction } from '@cytoai/store/dist';
+import { createCategoryAction } from '@cytoai/store';
 import { CreateCategoryDialog } from '../pages/images';
 import uuidv4 from 'uuid';
 import { Dispatch } from 'redux';
