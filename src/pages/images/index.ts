@@ -7,7 +7,6 @@ import EditCategoryDialog from './EditCategoryDialog/EditCategoryDialog';
 import FileInput from './FileInput/FileInput';
 import Gallery from './Gallery/Gallery';
 import GalleryCustomDragLayer from './GalleryCustomDragLayer/GalleryCustomDragLayer';
-import GalleryImage from './GalleryImage/GalleryImage';
 import GalleryItem from './GalleryItem/GalleryItem';
 import GalleryItemCategoryMenu from './GalleryItemCategoryMenu/GalleryItemCategoryMenu';
 import GalleryItemLabel from './GalleryItemLabel/GalleryItemLabel';
@@ -59,7 +58,6 @@ export {
   FileInput,
   Gallery,
   GalleryCustomDragLayer,
-  GalleryImage,
   GalleryItem,
   GalleryItemCategoryMenu,
   GalleryItemLabel,

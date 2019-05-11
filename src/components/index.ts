@@ -7,6 +7,7 @@ import DialogActions from './DialogActions/DialogActions';
 import DialogContent from './DialogContent/DialogContent';
 import DialogTitle from './DialogTitle/DialogTitle';
 import FilenameTextField from './FilenameTextField/FilenameTextField';
+import GalleryImage from './GalleryImage/GalleryImage';
 import ImageDragSource from './ImageDragSource/ImageDragSource';
 import Snackbar from './Snackbar/Snackbar';
 
@@ -20,6 +21,7 @@ export {
   DialogContent,
   DialogTitle,
   FilenameTextField,
+  GalleryImage,
   ImageDragSource,
   Snackbar
 };
