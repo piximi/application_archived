@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { Application } from '../pages/images';
 import { Dispatch } from 'redux';
 import { Classifier } from '../types';
-import { updateImageCategoryAction } from '../reducers/classifier';
+import { updateImageCategoryAction } from '@cytoai/store/dist';
 
 type State = {
   classifier: Classifier;
@@ -12,8 +12,7 @@ type State = {
 const mapStateToProps = (state: State) => {
   return {
     categories: state.classifier.categories,
-    images: state.classifier.images,
-    spinnerActive: state.settings.spinnerActive
+    images: state.classifier.images
   };
 };
 

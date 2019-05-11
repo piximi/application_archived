@@ -910,6 +910,16 @@
   resolved "https://registry.yarnpkg.com/@csstools/normalize.css/-/normalize.css-9.0.1.tgz#c27b391d8457d1e893f1eddeaf5e5412d12ffbb5"
   integrity sha512-6It2EVfGskxZCQhuykrfnALg7oVeiI6KclWSmGDqB0AiInVrTGB9Jp9i4/Ad21u9Jde/voVQz6eFX/eSg/UsPA==
 
+"@cytoai/store@^0.1.9":
+  version "0.1.9"
+  resolved "https://registry.yarnpkg.com/@cytoai/store/-/store-0.1.9.tgz#ff653e40e9b41f48ae210dd69d0cc8dfedde95c9"
+  integrity sha512-5CVF4DiIXCdXCpzibKRk7mnuxcYPfGx5/snuSeRb/pzYSCHlDpMdzSuxl58FSStnnqUWdiz+msv4lXlco48GXA==
+  dependencies:
+    react "^16.8.6"
+    redux "^4.0.1"
+    redux-persist "^5.10.0"
+    redux-starter-kit "^0.5.1"
+
 "@emotion/cache@^10.0.9":
   version "10.0.9"
   resolved "https://registry.yarnpkg.com/@emotion/cache/-/cache-10.0.9.tgz#e0c7b7a289f7530edcfad4dcf3858bd2e5700a6f"
@@ -5892,6 +5902,11 @@ immer@^1.10.5:
   resolved "https://registry.yarnpkg.com/immer/-/immer-1.12.1.tgz#40c6e5b292c00560836c2993bda3a24379d466f5"
   integrity sha512-3fmKM6ovaqDt0CdC9daXpNi5x/YCYS3i4cwLdTVkhJdk5jrDXoPs7lCm3IqM3yhfSnz4tjjxbRG2CziQ7m8ztg==
 
+immer@^2.1.5:
+  version "2.1.5"
+  resolved "https://registry.yarnpkg.com/immer/-/immer-2.1.5.tgz#0389947455c5a2c7a47f1e6f415c9d1a62a1ebed"
+  integrity sha512-xyjQyTBYIeiz6jd02Hg12jV+9QISwF1crLcwTlzHpWH4e0ryNWj1kacpTwimK3bJV5NKKXw458G2vpqoB/inFA==
+
 import-cwd@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/import-cwd/-/import-cwd-2.1.0.tgz#aa6cf36e722761285cb371ec6519f53e2435b0a9"
@@ -9936,7 +9951,7 @@ react-virtualized@^9.21.0:
     prop-types "^15.6.0"
     react-lifecycles-compat "^3.0.4"
 
-react@^16.8.0:
+react@^16.8.0, react@^16.8.6:
   version "16.8.6"
   resolved "https://registry.yarnpkg.com/react/-/react-16.8.6.tgz#ad6c3a9614fd3a4e9ef51117f54d888da01f2bbe"
   integrity sha512-pC0uMkhLaHm11ZSJULfOBqV4tIZkx87ZLvbbQYunNixAAvjnC+snJCg0XQXn9VIsttVsbZP/H/ewzgsd5fxKXw==
@@ -10044,7 +10059,7 @@ recursive-readdir@2.2.2:
   dependencies:
     minimatch "3.0.4"
 
-redux-devtools-extension@^2.13.7:
+redux-devtools-extension@^2.13.7, redux-devtools-extension@^2.13.8:
   version "2.13.8"
   resolved "https://registry.yarnpkg.com/redux-devtools-extension/-/redux-devtools-extension-2.13.8.tgz#37b982688626e5e4993ff87220c9bbb7cd2d96e1"
   integrity sha512-8qlpooP2QqPtZHQZRhx3x3OP5skEV1py/zUdMY28WNAocbafxdG2tRD1MWE7sp8obGMNYuLWanhhQ7EQvT1FBg==
@@ -10073,6 +10088,18 @@ redux-starter-kit@^0.4.3:
     redux-immutable-state-invariant "^2.1.0"
     redux-thunk "^2.2.0"
     selectorator "^4.0.1"
+
+redux-starter-kit@^0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/redux-starter-kit/-/redux-starter-kit-0.5.1.tgz#8b11ef234624a20c9cd384892033f7772331e9e3"
+  integrity sha512-CWnjwPGdPhzqDnYYTNG5I0VjK8x3f21Nuf5xpPlOrHOhstagwxvwCZFoydOQ8TIV78ah1/WeoIQdlbks49KyIQ==
+  dependencies:
+    immer "^2.1.5"
+    redux "^4.0.0"
+    redux-devtools-extension "^2.13.8"
+    redux-immutable-state-invariant "^2.1.0"
+    redux-thunk "^2.2.0"
+    selectorator "^4.0.3"
 
 redux-thunk@^2.2.0, redux-thunk@^2.3.0:
   version "2.3.0"
@@ -10501,7 +10528,7 @@ select-hose@^2.0.0:
   resolved "https://registry.yarnpkg.com/select-hose/-/select-hose-2.0.0.tgz#625d8658f865af43ec962bfc376a37359a4994ca"
   integrity sha1-Yl2GWPhlr0Psliv8N2o3NZpJlMo=
 
-selectorator@^4.0.1:
+selectorator@^4.0.1, selectorator@^4.0.3:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/selectorator/-/selectorator-4.0.3.tgz#d33b11027da7e6838de277cd6eb1134125aa788b"
   integrity sha512-A8+paRhzTab4Qm/38RAVnCgEZFbpn5xIWLyTCDqvyU3Obhmo94RS6UK1H00bVH7+U609sOhqbFJha09POsWURA==

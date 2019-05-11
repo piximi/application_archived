@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import {
   updateCategoryColorAction,
   updateCategoryDescriptionAction
-} from '../reducers/classifier';
+} from '@cytoai/store/dist';
 import { EditCategoryDialog } from '../pages/images';
 import { Classifier } from '../types';
 import { Dispatch } from 'redux';

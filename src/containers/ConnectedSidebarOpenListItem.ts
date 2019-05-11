@@ -1,10 +1,7 @@
 import { connect } from 'react-redux';
 // import axios from 'axios';
 import { SidebarOpenListItem } from '../pages/images';
-import {
-  createCategoryAction,
-  createImageAction
-} from '../reducers/classifier';
+import { createCategoryAction, createImageAction } from '@cytoai/store/dist';
 import { Dispatch } from 'redux';
 import { Classifier } from '../types';
 

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { NewClassifierDialog } from '../pages/images';
-import { createClassifierAction } from '../reducers/classifier';
+import { createClassifierAction } from '@cytoai/store/dist';
 import { Classifier } from '../types';
 import * as uuid from 'uuid';
 import { Dispatch } from 'redux';

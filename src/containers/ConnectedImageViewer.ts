@@ -3,7 +3,7 @@ import { ImageViewer } from '../pages/image';
 import {
   updateImageBrightnessAction,
   updateImageContrastAction
-} from '../reducers/classifier';
+} from '@cytoai/store/dist';
 import { Dispatch } from 'redux';
 import { Classifier, Image } from '../types';
 

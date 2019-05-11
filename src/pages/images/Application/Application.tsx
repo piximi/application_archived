@@ -12,7 +12,6 @@ const useStyles = makeStyles(styles);
 
 type Props = {
   updateImageCategory: any;
-  spinnerActive: any;
 };
 
 const Application = (props: Props) => {

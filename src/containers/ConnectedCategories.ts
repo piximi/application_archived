@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import {
   toggleCategoryVisibilityAction,
   updateCategoryVisibilityAction
-} from '../reducers/classifier';
+} from '@cytoai/store/dist';
 import { SidebarCategoriesList } from '../pages/images';
 import { Classifier } from '../types';
 import { Dispatch } from 'redux';
