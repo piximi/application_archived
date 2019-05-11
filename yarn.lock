@@ -920,6 +920,11 @@
     redux-persist "^5.10.0"
     redux-starter-kit "^0.5.1"
 
+"@cytoai/translations@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@cytoai/translations/-/translations-0.1.0.tgz#5bced1d602bda5706efe3ecf032d3475bbf81dca"
+  integrity sha512-4S+mSTAnQ8dLtvUP0dBY2j39lHLLAT9t1O+bTkzPtLf/XexPPaThpGklTbuDdO4XGrY/A7itclgojK+D+IIDVg==
+
 "@emotion/cache@^10.0.9":
   version "10.0.9"
   resolved "https://registry.yarnpkg.com/@emotion/cache/-/cache-10.0.9.tgz#e0c7b7a289f7530edcfad4dcf3858bd2e5700a6f"
