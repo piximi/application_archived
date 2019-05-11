@@ -6,7 +6,12 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(styles);
 
-const ContrastSlider = (props: any) => {
+type Props = {
+  contrast: number;
+  setContrast: (contrast: number) => void;
+};
+
+const ContrastSlider = (props: Props) => {
   const { contrast, setContrast } = props;
 
   const classes = useStyles();
