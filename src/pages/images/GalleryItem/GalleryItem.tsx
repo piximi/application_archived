@@ -1,7 +1,7 @@
 import React from 'react';
 import { ImageViewerDialog } from '../../image';
 import { GalleryImage } from '..';
-import { useDialog } from '../../../hooks';
+import { useDialog } from '@cytoai/hooks';
 import { ConnectedItemLabel } from '../../../containers';
 import { ImageDragSource } from '../../../components';
 

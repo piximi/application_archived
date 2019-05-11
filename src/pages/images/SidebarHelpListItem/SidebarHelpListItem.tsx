@@ -2,7 +2,7 @@ import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import * as React from 'react';
 import { HelpDialog } from '..';
 import HelpIcon from '@material-ui/icons/Help';
-import { useDialog } from '../../../hooks';
+import { useDialog } from '@cytoai/hooks';
 
 const HelpListItem = () => {
   const { openedDialog, openDialog, closeDialog } = useDialog();

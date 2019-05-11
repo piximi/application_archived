@@ -8,7 +8,7 @@ import {
 import * as React from 'react';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { useCollapseList } from '../../../hooks';
+import { useCollapseList } from '@cytoai/hooks';
 import { ConnectedSidebarClassifierFitListItem } from '../../../containers';
 
 const SidebarClassifierList = () => {

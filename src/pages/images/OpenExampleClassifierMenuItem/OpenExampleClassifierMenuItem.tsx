@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as MaterialUI from '@material-ui/core';
-import { useDialog } from '../../../hooks';
+import { useDialog } from '@cytoai/hooks';
 import { OpenExampleClassifierDialog } from '../index';
 
 const OpenExampleClassifierMenuItem = () => {

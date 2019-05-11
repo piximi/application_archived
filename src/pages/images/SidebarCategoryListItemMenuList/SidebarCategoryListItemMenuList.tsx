@@ -10,7 +10,7 @@ import {
   ConnectedDeleteCategoryDialog,
   ConnectedEditCategoryDialog
 } from '../../../containers';
-import { useDialog } from '../../../hooks';
+import { useDialog } from '@cytoai/hooks';
 
 const SidebarCategoryListItemMenuList = (props: any) => {
   const { anchorEl, category, closeMenu, openedMenu } = props;

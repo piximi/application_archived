@@ -4,7 +4,7 @@ import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import { useTranslation } from 'react-i18next';
 import { Category, Classifier, Image } from '../../../types';
 import { Network } from '../../../network';
-import { useSnackbar } from '../../../hooks';
+import { useSnackbar } from '@cytoai/hooks';
 import { Snackbar } from '../../../components';
 import { useState } from 'react';
 

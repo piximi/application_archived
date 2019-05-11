@@ -1,7 +1,7 @@
 import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import * as React from 'react';
 import FolderOpenIcon from '@material-ui/icons/FolderOpen';
-import { useMenu } from '../../../hooks';
+import { useMenu } from '@cytoai/hooks';
 import { OpenMenuList } from '..';
 
 const SidebarOpenListItem = () => {

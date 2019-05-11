@@ -12,7 +12,7 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import StyledCategory from './StyledCategory';
 import styles from './SidebarCategoryListItem.css';
 import { makeStyles } from '@material-ui/styles';
-import { useMenu } from '../../../hooks';
+import { useMenu } from '@cytoai/hooks';
 import { SidebarCategoryListItemMenuList } from '..';
 import { ConnectedCategoryDropTarget } from '../../../containers';
 

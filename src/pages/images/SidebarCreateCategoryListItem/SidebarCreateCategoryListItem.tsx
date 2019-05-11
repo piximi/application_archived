@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import { ConnectedCreateCategoryDialog } from '../../../containers';
-import { useDialog } from '../../../hooks';
+import { useDialog } from '@cytoai/hooks';
 import { useTranslation } from 'react-i18next';
 
 const SidebarCreateCategoryListItem = () => {

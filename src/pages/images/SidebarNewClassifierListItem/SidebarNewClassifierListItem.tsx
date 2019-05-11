@@ -1,7 +1,7 @@
 import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import * as React from 'react';
 import AddIcon from '@material-ui/icons/Add';
-import { useDialog } from '../../../hooks';
+import { useDialog } from '@cytoai/hooks';
 import { ConnectedNewClassifierDialog } from '../../../containers';
 
 const SidebarNewClassifierListItem = () => {

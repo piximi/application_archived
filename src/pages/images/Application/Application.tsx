@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { PrimaryAppBar, SidebarDrawer } from '..';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContext } from 'react-dnd';
-import { useDrawer } from '../../../hooks';
+import { useDrawer } from '@cytoai/hooks';
 import { makeStyles } from '@material-ui/styles';
 import { ConnectedGallery } from '../../../containers';
 
