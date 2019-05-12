@@ -38,7 +38,7 @@ const SidebarClassifierFitListItem = (props: Props) => {
   };
 
   return (
-    <div>
+    <React.Fragment>
       <ListItem button dense onClick={fit}>
         <ListItemIcon>
           <PlayCircleOutlineIcon />
@@ -52,7 +52,7 @@ const SidebarClassifierFitListItem = (props: Props) => {
         message={message}
         openedSnackbar={openedSnackbar}
       />
-    </div>
+    </React.Fragment>
   );
 };
 

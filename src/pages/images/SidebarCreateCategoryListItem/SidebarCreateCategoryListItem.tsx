@@ -11,7 +11,7 @@ const SidebarCreateCategoryListItem = () => {
   const { t: translation } = useTranslation();
 
   return (
-    <div>
+    <React.Fragment>
       <ListItem button onClick={openDialog}>
         <ListItemIcon>
           <AddIcon />
@@ -24,7 +24,7 @@ const SidebarCreateCategoryListItem = () => {
         onClose={closeDialog}
         open={openedDialog}
       />
-    </div>
+    </React.Fragment>
   );
 };
 

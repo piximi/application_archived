@@ -52,7 +52,7 @@ const SidebarCategoryListItemMenuList = (props: any) => {
     category.identifier !== '00000000-0000-0000-0000-000000000000';
 
   return (
-    <div>
+    <React.Fragment>
       <Popover
         anchorPosition={anchorPosition}
         anchorReference="anchorPosition"
@@ -92,7 +92,7 @@ const SidebarCategoryListItemMenuList = (props: any) => {
         onClose={closeDeleteCategoryDialog}
         open={openedDeleteCategoryDialog}
       />
-    </div>
+    </React.Fragment>
   );
 };
 

@@ -13,6 +13,7 @@
     "@tensorflow/tfjs": "1.1.0",
     "@tensorflow/tfjs-vis": "^1.0.3",
     "axios": "^0.18.0",
+    "base64-arraybuffer": "^0.2.0",
     "classnames": "^2.2.5",
     "color": "^3.1.0",
     "d3": "^5.7.0",

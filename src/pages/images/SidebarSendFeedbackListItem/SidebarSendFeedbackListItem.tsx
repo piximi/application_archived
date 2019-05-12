@@ -3,15 +3,13 @@ import * as React from 'react';
 import FeedbackIcon from '@material-ui/icons/Feedback';
 
 const SidebarSendFeedbackListItem = () => (
-  <div>
-    <ListItem button disabled>
-      <ListItemIcon>
-        <FeedbackIcon />
-      </ListItemIcon>
+  <ListItem button disabled>
+    <ListItemIcon>
+      <FeedbackIcon />
+    </ListItemIcon>
 
-      <ListItemText primary="Send feedback" />
-    </ListItem>
-  </div>
+    <ListItemText primary="Send feedback" />
+  </ListItem>
 );
 
 export default SidebarSendFeedbackListItem;
