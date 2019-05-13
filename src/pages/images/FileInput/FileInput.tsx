@@ -2,27 +2,29 @@ import * as React from 'react';
 import { Portal } from 'react-portal';
 import hash from 'string-hash';
 
-const FileInput = props => {
+const FileInput = (props: any) => {
   const { children, onChange } = props;
 
-  const inputEl = React.useRef();
+  const inputEl = React.useRef<HTMLInputElement>(null);
 
-  const onClick = event => {
+  const onClick = (event: any) => {
     event.preventDefault();
 
-    inputEl.current.click();
+    if (inputEl.current) {
+      inputEl.current.click();
+    }
   };
 
-  const onInputChange = event => {
+  const onInputChange = (event: any) => {
     const files = event.target.files;
 
     for (const file of files) {
-      const reader = new FileReader();
+      const reader: FileReader = new FileReader();
 
       reader.onload = () => {
         const data = reader.result;
 
-        const checksum = String(hash(data));
+        const checksum = String(hash(data as string));
 
         onChange({ checksum, data }, event);
       };
@@ -32,12 +34,12 @@ const FileInput = props => {
   };
 
   return (
-    <div>
+    <React.Fragment>
       <div
         onClick={onClick}
         onKeyPress={onClick}
         role="button"
-        tabIndex="0"
+        tabIndex={0}
         style={{ display: 'inline-block' }}
       >
         {children}
@@ -53,7 +55,7 @@ const FileInput = props => {
           multiple
         />
       </Portal>
-    </div>
+    </React.Fragment>
   );
 };
 
