@@ -59,7 +59,7 @@ class Network {
     };
   };
 
-  fit = () => {};
+  fit = async () => {};
 }
 
 export { Network };
