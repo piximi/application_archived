@@ -1,52 +1,59 @@
-// import * as types from './types';
-// import * as tensorflow from '@tensorflow/tfjs';
-// import { TensorContainer } from '@tensorflow/tfjs';
-// import { Dataset } from '@tensorflow/tfjs-data';
-// import { LazyIterator } from '@tensorflow/tfjs-data/dist/iterators/lazy_iterator';
-// import { fromPixels } from '@tensorflow/tfjs-core/dist/ops/browser';
+import { Category, Image } from './types';
+import * as ImageJS from 'image-js';
+import * as TensorFlow from '@tensorflow/tfjs';
+import { stack } from '@tensorflow/tfjs';
 
-// export class ImageDataset extends Dataset<TensorContainer> {
-//   x: any;
-//   y: any;
-//
-//   constructor(images: types.Image[], categories: types.Category[]) {
-//     super();
-//
-//     let x = [];
-//     let y = [];
-//
-//     for (const image of images) {
-//       const e: HTMLImageElement = new Image(691, 700);
-//
-//       e.src = image.data;
-//
-//       const tensor = fromPixels(e);
-//
-//       // const indicies = images.map((image) => image.categoryIdentifier);
-//
-//       const categoryIdentifier = image.categoryIdentifier;
-//
-//       x.push(tensor);
-//       y.push(categoryIdentifier);
-//     }
-//
-//     this.x = tensorflow.stack(x);
-//     this.y = y;
-//   }
-//
-//   iterator(): Promise<LazyIterator<TensorContainer>> {
-//     throw new Error('Method not implemented.');
-//   }
-// }
+const findCategoryIndex = (
+  categories: Category[],
+  identifier: string
+): number => {
+  return categories.findIndex(
+    (category: Category) => category.identifier === identifier
+  );
+};
+
+async function getCanvas(image: Image) {
+  return await ImageJS.Image.load(image.data).then((x: ImageJS.Image) =>
+    x.getCanvas()
+  );
+}
 
 class Network {
-  // constructor(
-  //   categories: types.Category[],
-  //   classifier: types.Classifier,
-  //   images: types.Image[]
-  // ) {
-  //   // const dataset = new ImageDataset(images, categories);
-  // }
+  private readonly categories: Category[];
+  private readonly images: Image[];
+
+  constructor(categories: Category[], images: Image[]) {
+    this.categories = categories;
+    this.images = images;
+  }
+
+  dataset = async () => {
+    const images = [];
+    const categories = [];
+
+    for (const image of this.images) {
+      const canvas = await getCanvas(image);
+
+      const tensor = TensorFlow.browser.fromPixels(canvas);
+
+      images.push(tensor);
+
+      const categoryIndex = findCategoryIndex(
+        this.categories,
+        image.categoryIdentifier
+      );
+
+      categories.push(categoryIndex);
+    }
+
+    const x = stack(images);
+    const y = TensorFlow.tensor(categories);
+
+    return {
+      x: x,
+      y: y
+    };
+  };
 
   fit = () => {};
 }

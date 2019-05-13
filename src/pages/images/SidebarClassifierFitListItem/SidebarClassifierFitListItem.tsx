@@ -1,20 +1,29 @@
 import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import * as React from 'react';
+import { useState } from 'react';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import { useTranslation } from 'react-i18next';
 import { useSnackbar } from '@cytoai/hooks';
 import { Snackbar } from '@cytoai/components';
-import { useState } from 'react';
+import { Network } from '../../../network';
 
-const SidebarClassifierFitListItem = () => {
+const SidebarClassifierFitListItem = (props: any) => {
+  const { categories, images } = props;
+
   const { openedSnackbar, openSnackbar, closeSnackbar } = useSnackbar();
 
   const [message, setMessage] = useState();
 
   const { t: translation } = useTranslation();
 
-  const fit = () => {
+  const fit = async () => {
     try {
+      const network = new Network(categories, images);
+
+      const dataset = await network.dataset();
+
+      console.log(dataset);
+
       setMessage('success');
     } catch (e) {
       setMessage(e);
