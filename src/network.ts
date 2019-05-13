@@ -1,7 +1,6 @@
 import { Category, Image } from './types';
 import * as ImageJS from 'image-js';
 import * as TensorFlow from '@tensorflow/tfjs';
-import { stack } from '@tensorflow/tfjs';
 
 const findCategoryIndex = (
   categories: Category[],
@@ -46,8 +45,13 @@ class Network {
       categories.push(categoryIndex);
     }
 
-    const x = stack(images);
-    const y = TensorFlow.tensor(categories);
+    const x = TensorFlow.stack(images);
+
+    const depth: number = this.categories.length;
+    const y = TensorFlow.oneHot(
+      TensorFlow.tensor(categories).asType('int32'),
+      depth
+    );
 
     return {
       x: x,
