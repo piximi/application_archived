@@ -5,7 +5,7 @@ import {
   DialogContent,
   Dialog,
   FilenameTextField
-} from '../../../components';
+} from '@cytoai/components';
 
 const SaveClassifierDialog = (props: any) => {
   const { open, onClose } = props;

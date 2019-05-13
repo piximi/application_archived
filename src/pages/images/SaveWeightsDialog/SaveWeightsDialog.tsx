@@ -5,7 +5,7 @@ import {
   DialogContent,
   Dialog,
   FilenameTextField
-} from '../../../components';
+} from '@cytoai/components';
 
 const SaveWeightsDialog = (props: any) => {
   const { open, onClose } = props;

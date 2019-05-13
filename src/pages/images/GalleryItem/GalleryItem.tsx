@@ -1,9 +1,9 @@
 import React from 'react';
 import { ImageViewerDialog } from '../../image';
-import { Image } from '../../../components';
+import Image from '../../../components/Image/Image';
 import { useDialog } from '@cytoai/hooks';
 import { ConnectedItemLabel } from '../../../containers';
-import { ImageDragSource } from '../../../components';
+import { ImageDragSource } from '@cytoai/components';
 
 const GalleryItem = (props: any) => {
   const { selectedItems, onmousedown, containerStyle, item } = props;

@@ -1,10 +1,12 @@
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  ColorIconButton,
+  CategoryDescriptionTextField
+} from '@cytoai/components';
 import * as React from 'react';
-import Dialog from '../../../components/Dialog/Dialog';
-import DialogActions from '../../../components/DialogActions/DialogActions';
-import DialogTitle from '../../../components/DialogTitle/DialogTitle';
-import DialogContent from '../../../components/DialogContent/DialogContent';
-import ColorIconButton from '../../../components/ColorIconButton/ColorIconButton';
-import CategoryDescriptionTextField from '../../../components/CategoryDescriptionTextField/CategoryDescriptionTextField';
 
 const EditCategoryDialog = (props: any) => {
   const { category, updateColor, updateDescription, onClose, open } = props;

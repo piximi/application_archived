@@ -6,7 +6,7 @@ import {
   DialogActions,
   DialogContent,
   Dialog
-} from '../../../components';
+} from '@cytoai/components';
 
 const CreateCategoryDialog = (props: any) => {
   const { createCategory, open, onClose } = props;
