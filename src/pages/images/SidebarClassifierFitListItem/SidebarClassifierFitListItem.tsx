@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { useSnackbar } from '@cytoai/hooks';
 import { Snackbar } from '@cytoai/components';
 import { Network } from '../../../network';
+import { UnresolvedLogs } from '@tensorflow/tfjs-layers/dist/logs';
 
 const SidebarClassifierFitListItem = (props: any) => {
   const { categories, images } = props;
@@ -20,9 +21,41 @@ const SidebarClassifierFitListItem = (props: any) => {
     try {
       const network = new Network(categories, images);
 
-      const dataset = await network.dataset();
+      const { x, y } = await network.dataset();
 
-      console.log(dataset);
+      const resource =
+        'https://storage.googleapis.com/tfjs-models/tfjs/mobilenet_v1_0.25_224/model.json';
+
+      await network.load(resource);
+
+      network.compile();
+
+      const args = {
+        callbacks: {
+          onTrainBegin: (logs?: UnresolvedLogs) => {
+            console.log('onTrainBegin');
+          },
+          onTrainEnd: (logs?: UnresolvedLogs) => {
+            console.log('onTrainEnd');
+          },
+          onEpochBegin: (epoch: number, logs?: UnresolvedLogs) => {
+            console.log('onEpochBegin');
+          },
+          onEpochEnd: (epoch: number, logs?: UnresolvedLogs) => {
+            console.log('onEpochEnd');
+          },
+          onBatchBegin: (batch: number, logs?: UnresolvedLogs) => {
+            console.log('onBatchBegin');
+          },
+          onBatchEnd: (batch: number, logs?: UnresolvedLogs) => {
+            console.log('onBatchEnd');
+          }
+        }
+      };
+
+      network.fit(x, y, args);
+
+      console.log(x);
 
       setMessage('success');
     } catch (e) {
