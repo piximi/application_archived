@@ -1,21 +1,23 @@
 import { connect } from 'react-redux';
-import { NewClassifierDialog } from '../pages/images';
-import { createClassifierAction } from '@cytoai/store';
+import { OpenExampleClassifierDialog } from '../pages/images';
 import { Classifier } from '../types';
-import * as uuid from 'uuid';
 import { Dispatch } from 'redux';
+import * as uuid from 'uuid';
+import { createClassifierAction } from '@cytoai/store';
 
 type State = {
   classifier: Classifier;
 };
 
 const mapStateToProps = (state: State) => {
-  return state.classifier;
+  return {
+    categories: state.classifier.categories
+  };
 };
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    openClassifier: (name: string) => {
+    openClassifier: async (name: string) => {
       const classifier = {
         identifier: uuid.v4(),
         name: name
@@ -28,9 +30,9 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
   };
 };
 
-const ConnectedNewClassifierDialog = connect(
+const ConnectedOpenExampleClassifierDialog = connect(
   mapStateToProps,
   mapDispatchToProps
-)(NewClassifierDialog);
+)(OpenExampleClassifierDialog);
 
-export default ConnectedNewClassifierDialog;
+export default ConnectedOpenExampleClassifierDialog;

@@ -18,6 +18,7 @@ import Logo from './Logo/Logo';
 import NewClassifierDialog from './NewClassifierDialog/NewClassifierDialog';
 import OpenClassifierMenuItem from './OpenClassifierMenuItem/OpenClassifierMenuItem';
 import OpenExampleClassifierDialog from './OpenExampleClassifierDialog/OpenExampleClassifierDialog';
+import OpenExampleClassifierListItem from './OpenExampleClassifierListItem/OpenExampleClassifierListItem';
 import OpenExampleClassifierMenuItem from './OpenExampleClassifierMenuItem/OpenExampleClassifierMenuItem';
 import OpenMenuList from './OpenMenuList/OpenMenuList';
 import OpenWeightsMenuItem from './OpenWeightsMenuItem/OpenWeightsMenuItem';
@@ -26,19 +27,19 @@ import SaveAnnotationsAndPredictionsDialog from './SaveAnnotationsAndPredictions
 import SaveAnnotationsAndPredictionsMenuItem from './SaveAnnotationsAndPredictionsMenuItem/SaveAnnotationsAndPredictionsMenuItem';
 import SaveClassifierDialog from './SaveClassifierDialog/SaveClassifierDialog';
 import SaveClassifierMenuItem from './SaveClassifierMenuItem/SaveClassifierMenuItem';
-import SaveWeightsDialog from './SaveWeightsDialog/SaveWeightsDialog';
 import SaveMenuList from './SaveMenuList/SaveMenuList';
-import Search from '../search/Search/Search';
+import SaveWeightsDialog from './SaveWeightsDialog/SaveWeightsDialog';
 import SaveWeightsMenuItem from './SaveWeightsMenuItem/SaveWeightsMenuItem';
+import Search from '../search/Search/Search';
 import SidebarAppBar from './SidebarAppBar/SidebarAppBar';
 import SidebarCategoriesList from './SidebarCategoriesList/SidebarCategoriesList';
 import SidebarCategoryListItem from './SidebarCategoryListItem/SidebarCategoryListItem';
 import SidebarCategoryListItemMenuList from './SidebarCategoryListItemMenuList/SidebarCategoryListItemMenuList';
+import SidebarClassifierFitListItem from './SidebarClassifierFitListItem/SidebarClassifierFitListItem';
+import SidebarClassifierList from './SidebarClassifierList/SidebarClassifierList';
 import SidebarCreateCategoryListItem from './SidebarCreateCategoryListItem/SidebarCreateCategoryListItem';
 import SidebarDrawer from './SidebarDrawer/SidebarDrawer';
 import SidebarHelpListItem from './SidebarHelpListItem/SidebarHelpListItem';
-import SidebarClassifierFitListItem from './SidebarClassifierFitListItem/SidebarClassifierFitListItem';
-import SidebarClassifierList from './SidebarClassifierList/SidebarClassifierList';
 import SidebarNewClassifierListItem from './SidebarNewClassifierListItem/SidebarNewClassifierListItem';
 import SidebarOpenListItem from './SidebarOpenListItem/SidebarOpenListItem';
 import SidebarSaveListItem from './SidebarSaveListItem/SidebarSaveListItem';
@@ -69,6 +70,7 @@ export {
   NewClassifierDialog,
   OpenClassifierMenuItem,
   OpenExampleClassifierDialog,
+  OpenExampleClassifierListItem,
   OpenExampleClassifierMenuItem,
   OpenMenuList,
   OpenWeightsMenuItem,
@@ -79,17 +81,17 @@ export {
   SaveClassifierMenuItem,
   SaveMenuList,
   SaveWeightsDialog,
+  SaveWeightsMenuItem,
   Search,
   SidebarAppBar,
   SidebarCategoriesList,
   SidebarCategoryListItem,
-  SaveWeightsMenuItem,
   SidebarCategoryListItemMenuList,
+  SidebarClassifierFitListItem,
+  SidebarClassifierList,
   SidebarCreateCategoryListItem,
   SidebarDrawer,
   SidebarHelpListItem,
-  SidebarClassifierFitListItem,
-  SidebarClassifierList,
   SidebarNewClassifierListItem,
   SidebarOpenListItem,
   SidebarSaveListItem,

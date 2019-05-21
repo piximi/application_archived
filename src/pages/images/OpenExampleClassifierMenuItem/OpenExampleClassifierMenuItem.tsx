@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as MaterialUI from '@material-ui/core';
 import { useDialog } from '@cytoai/hooks';
-import { OpenExampleClassifierDialog } from '../index';
+import { ConnectedOpenExampleClassifierDialog } from '../../../containers';
 
 const OpenExampleClassifierMenuItem = () => {
   const { openedDialog, openDialog, closeDialog } = useDialog();
@@ -16,7 +16,10 @@ const OpenExampleClassifierMenuItem = () => {
         <MaterialUI.ListItemText primary="Open example classifier" />
       </MaterialUI.MenuItem>
 
-      <OpenExampleClassifierDialog onClose={closeDialog} open={openedDialog} />
+      <ConnectedOpenExampleClassifierDialog
+        onClose={closeDialog}
+        open={openedDialog}
+      />
     </React.Fragment>
   );
 };
