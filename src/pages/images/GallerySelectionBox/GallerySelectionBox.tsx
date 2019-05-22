@@ -53,9 +53,7 @@ const GallerySelectionBox = (props: Props) => {
     setStyle(newStyle);
   }, [selectionBoxCoordinates, style, visibility]);
 
-  // return <div style={style} />;
-
-  return <div />;
+  return <div style={style} />;
 };
 
 export default GallerySelectionBox;
