@@ -17,7 +17,7 @@ const GallerySelectionBox = (props: Props) => {
 
   const [style, setStyle] = React.useState({
     zIndex: 9000,
-    position: 'fixed',
+    position: 'fixed' as 'fixed',
     background: '#eaeaea',
     opacity: 0.4,
     border: '0.1em solid',
