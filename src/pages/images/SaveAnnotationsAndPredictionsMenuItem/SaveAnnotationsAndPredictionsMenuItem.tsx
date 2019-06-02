@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as MaterialUI from '@material-ui/core';
 import { SaveAnnotationsAndPredictionsDialog } from '..';
-import { useDialog } from '@cytoai/hooks';
+import { useDialog } from '@piximi/hooks';
 
 const SaveAnnotationsAndPredictionsMenuItem = () => {
   const { openedDialog, openDialog, closeDialog } = useDialog();

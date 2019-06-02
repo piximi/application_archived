@@ -5,7 +5,7 @@ import {
   DialogTitle,
   ColorIconButton,
   CategoryDescriptionTextField
-} from '@cytoai/components';
+} from '@piximi/components';
 import * as React from 'react';
 
 const EditCategoryDialog = (props: any) => {

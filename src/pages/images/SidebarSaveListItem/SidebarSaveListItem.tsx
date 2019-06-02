@@ -2,7 +2,7 @@ import * as React from 'react';
 import SaveIcon from '@material-ui/icons/Save';
 import * as MaterialUI from '@material-ui/core';
 import { SaveMenuList } from '..';
-import { useMenu } from '@cytoai/hooks';
+import { useMenu } from '@piximi/hooks';
 
 const SidebarSaveListItem = () => {
   const { anchorEl, openedMenu, openMenu, closeMenu } = useMenu();

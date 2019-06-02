@@ -1,10 +1,10 @@
 deploy:
   access_key_id: GOOGAPI2JYRMRONGVOXT
-  bucket: application-cyto-ai
+  bucket: application-piximi-org
   cache_control: "max-age=31536000"
   local-dir: build
   on:
-    repo: cytoai/cyto
+    repo: piximi/application
   provider: gcs
   secret_access_key:
     secure: mUOcPS2dnIWo7pO+/iTLybEAmXwDy1BJkYtF33yizPyOAgbkLpsroqOkTnaqHCwowAVJwwVBnTcV/Li8cs4KUMLp+xAFWL4ElBkuyubOUEqinJSX+38tQ6CvkEo8IPjeDOktip/MasbsRCo8AxKkIj8sOTR4AFpfh6Roy+/BBCYOQbZOJz5tI1yIQW416fl/6QDNxDhwV/wPlr6VUAFj32Qj2JnMxRflSvfnFmS2RGFvqjoeGTSl9IaWdiISU1U+uV+kZdOkTb33sGyz1ePWaPPySWUXZi7ANOOyQzqK4EEItCvCc7bytUF6kNFkI8cWFUCJigVoWxKzj3B57YDzBgRWy/UyTheGefCJJhl5A3FKzpwko7WUZ0uJtiL/A8UjhevjJ50cMoettRcXawgC8bIpf0AyRJRH8x6AKWZZ5a95rka3GWCqjEuL6cesBkHYnsnRMQzayprHruL2qryWjQZs3QoQRhbybtq+HdOV4rT34vLE10zDTNt175GcHm+P1OYmo6jBKeIR8lmgkphoNjoEr07CCF4dRCsSXBJ0Go9oWfCZNJ0N8aZWjpNeBs/wfJFaacAl/LvfJ+oU/EtNPcNxCud11CzlOJEHvb7ldF78BnnpQTN7QVMssv2KqXNwZjCPjpPNdoXNfBdVKUpGfXxl8NkHpKRk0gdzk5TVH/0=

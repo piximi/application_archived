@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { GalleryItemCategoryMenu } from '../pages/images';
-import { updateImageCategoryAction } from '@cytoai/store';
+import { updateImageCategoryAction } from '@piximi/store';
 import { Dispatch } from 'redux';
 import { Classifier } from '../types';
 

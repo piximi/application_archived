@@ -7,7 +7,7 @@ import { ConnectedImportImagesButton } from '../../../containers';
 import { DeleteButton, Logo } from '..';
 import { makeStyles } from '@material-ui/styles';
 import ImageSearchIcon from '@material-ui/icons/ImageSearch';
-import { useDialog } from '@cytoai/hooks';
+import { useDialog } from '@piximi/hooks';
 import SearchDialog from '../../search/SearchDialog/SearchDialog';
 
 const useStyles = makeStyles(styles);

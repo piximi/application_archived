@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 // import axios from 'axios';
 import { SidebarOpenListItem } from '../pages/images';
-import { createCategoryAction, createImageAction } from '@cytoai/store';
+import { createCategoryAction, createImageAction } from '@piximi/store';
 import { Dispatch } from 'redux';
 import { Classifier } from '../types';
 
@@ -9,9 +9,9 @@ import { Classifier } from '../types';
 //   return (dispatch: any) => {
 //     return axios
 //       .get(
-//         ' https://raw.githubusercontent.com/cytoai/cyto/master/src/demos/' +
+//         ' https://raw.githubusercontent.com/piximi/application/master/src/demos/' +
 //           demo +
-//           '.cyto'
+//           '.piximi'
 //       )
 //       .then(result => {
 //         // dispatch(updateSpinnerSpinningAction());

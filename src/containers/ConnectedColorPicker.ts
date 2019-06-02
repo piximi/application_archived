@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { ColorPicker } from '@cytoai/components';
+import { ColorPicker } from '@piximi/components';
 import { Classifier } from '../types';
 
 type State = {

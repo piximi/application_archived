@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { Application } from '../pages/images';
 import { Dispatch } from 'redux';
 import { Classifier } from '../types';
-import { updateImageCategoryAction } from '@cytoai/store';
+import { updateImageCategoryAction } from '@piximi/store';
 
 type State = {
   classifier: Classifier;

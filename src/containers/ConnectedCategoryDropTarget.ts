@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { updateImageCategoryAction } from '@cytoai/store';
-import { CategoryDropTarget } from '@cytoai/components';
+import { updateImageCategoryAction } from '@piximi/store';
+import { CategoryDropTarget } from '@piximi/components';
 import { Classifier } from '../types';
 import { Dispatch } from 'redux';
 

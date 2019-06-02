@@ -2,7 +2,7 @@ import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import * as React from 'react';
 import SettingsIcon from '@material-ui/icons/Settings';
 import { SettingsDialog } from '../../settings';
-import { useDialog } from '@cytoai/hooks';
+import { useDialog } from '@piximi/hooks';
 
 const SettingsListItem = () => {
   const { openedDialog, openDialog, closeDialog } = useDialog();

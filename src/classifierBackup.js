@@ -232,7 +232,7 @@ const exportWeights = async () => {
 };
 
 const importWeights = async weightsFile => {
-  //fetch('https://weights.cyto.ai/mobilenet/model.json')
+  //fetch('https://weights.piximi.org/mobilenet/model.json')
   fetch(
     'https://storage.googleapis.com/tfjs-models/tfjs/mobilenet_v1_0.25_224/model.json'
   )

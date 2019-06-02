@@ -3,7 +3,7 @@ import { OpenExampleClassifierDialog } from '../pages/images';
 import { Classifier } from '../types';
 import { Dispatch } from 'redux';
 import * as uuid from 'uuid';
-import { createClassifierAction } from '@cytoai/store';
+import { createClassifierAction } from '@piximi/store';
 
 type State = {
   classifier: Classifier;

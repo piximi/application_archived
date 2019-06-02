@@ -1,14 +1,13 @@
-[![Build Status](https://travis-ci.org/cytoai/cyto.svg?branch=master)](https://travis-ci.org/cytoai/cyto)
+[![Build Status](https://travis-ci.org/piximi/application.svg?branch=master)](https://travis-ci.org/piximi/application)
 
-# CYTO AI
+# Piximi
 
 A web-based deep learning tool for classification of human cells, created with Tensorflow.js and React.
-https://application.cyto.ai/
+https://application.piximi.org
 
 **Please make sure to clean your browser cache, since we are continuously developing new features:)**
 
-![alt text](./public/cyto.png)
-      
+![alt text](./public/piximi.png)
 
 ## Getting Started
 
@@ -23,9 +22,9 @@ What things you need to install the software and how to install them
 
 ### Installing
 
-1. Clone the project: ``` git clone https://github.com/cytoai/cyto.git ```
+1. Clone the project: ``` git clone https://github.com/piximi/application.git ```
 
-2. Move into the created directory: ``` cd cyto  ```
+2. Move into the created directory: ``` cd application  ```
 
 3. Install all dependencies: ``` npm install ```
 
@@ -40,7 +39,7 @@ You can define where to deploy in the package.json file under: ** homepage **
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://github.com/cytoai/cyto/blob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](https://github.com/piximi/application/blob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Versioning
 

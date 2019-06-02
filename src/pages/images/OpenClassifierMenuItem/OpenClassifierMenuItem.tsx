@@ -21,7 +21,7 @@ const OpenClassifierMenuItem = (props: any) => {
   return (
     <React.Fragment>
       <input
-        accept=".cyto"
+        accept=".piximi"
         id="open-classifier"
         name="file"
         onChange={onChange}

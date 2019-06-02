@@ -3,8 +3,8 @@ import * as React from 'react';
 import { useState } from 'react';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import { useTranslation } from 'react-i18next';
-import { useSnackbar } from '@cytoai/hooks';
-import { Snackbar } from '@cytoai/components';
+import { useSnackbar } from '@piximi/hooks';
+import { Snackbar } from '@piximi/components';
 import { Network } from '../../../network';
 import { UnresolvedLogs } from '@tensorflow/tfjs-layers/dist/logs';
 

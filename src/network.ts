@@ -1,4 +1,4 @@
-import { Category, Image } from '@cytoai/types';
+import { Category, Image } from '@piximi/types';
 import * as ImageJS from 'image-js';
 import * as tensorflow from '@tensorflow/tfjs';
 

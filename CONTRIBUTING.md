@@ -25,16 +25,16 @@ Please note we have a code of conduct, please follow it in all your interactions
 ### Fork the repository
 
 Forking a repository is a simple two-step process.
-1. On GitHub, navigate to the cytoai/cyto repository.
+1. On GitHub, navigate to the piximi/application repository.
 2. In the top-right corner of the page, click Fork.
 
 ### Keep your fork synced
 
-You might fork a project in order to propose changes to the upstream, or original, repository. In this case, it's good practice to regularly sync your fork with the upstream repository. To do this, you'll need to use Git on the command line. You can practice setting the upstream repository using the same cytoai/cyto repository you just forked!
+You might fork a project in order to propose changes to the upstream, or original, repository. In this case, it's good practice to regularly sync your fork with the upstream repository. To do this, you'll need to use Git on the command line. You can practice setting the upstream repository using the same piximi/application repository you just forked!
 
 #### Step 1: Create a local clone of your fork
 
-1. On GitHub, navigate to your fork of the cyto repository.
+1. On GitHub, navigate to your fork of the application repository.
 
 2. Under the repository name, click Clone or download.
 
@@ -44,17 +44,17 @@ You might fork a project in order to propose changes to the upstream, or origina
 
 5. Type git clone, and then paste the URL you copied in Step 2. It will look like this, with your GitHub username instead of YOUR-USERNAME: 
 ``` 
-git clone https://github.com/YOUR-USERNAME/cyto
+git clone https://github.com/YOUR-USERNAME/application
 ```
 6. Press Enter. Your local clone will be created.
 
-Now, you have a local copy of your fork of the cyto repository!
+Now, you have a local copy of your fork of the application repository!
 
-#### Step 2: Configure Git to sync your fork with the original cyto repository
+#### Step 2: Configure Git to sync your fork with the original application repository
 
 When you fork a project in order to propose changes to the original repository, you can configure Git to pull changes from the original, or upstream, repository into the local clone of your fork.
 
-1. On GitHub, navigate to the cytoai/cyto repository.
+1. On GitHub, navigate to the piximi/application repository.
 
 2. Under the repository name, click Clone or download
 
@@ -67,7 +67,7 @@ When you fork a project in order to propose changes to the original repository, 
 6. Type ``` git remote -v ``` and press Enter. You'll see the current configured remote repository for your fork.
 
 7. Type ``` git remote add upstream ```, and then paste the URL you copied in Step 2 and press Enter. It will look like this:
-``` git remote add upstream https://github.com/cytoai/cyto.git ```
+``` git remote add upstream https://github.com/piximi/application.git ```
 
 8. To verify the new upstream repository you've specified for your fork, type ``` git remote -v ``` again. You should see the URL for your fork as origin, and the URL for the original repository as upstream.
 

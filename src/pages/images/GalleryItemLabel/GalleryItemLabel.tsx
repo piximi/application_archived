@@ -4,7 +4,7 @@ import styles from './GalleryItemLabel.css';
 import { IconButton } from '@material-ui/core';
 import { ConnectedItemCategoryMenu } from '../../../containers';
 import { makeStyles } from '@material-ui/styles';
-import { useMenu } from '@cytoai/hooks';
+import { useMenu } from '@piximi/hooks';
 
 const useStyles = makeStyles(styles);
 

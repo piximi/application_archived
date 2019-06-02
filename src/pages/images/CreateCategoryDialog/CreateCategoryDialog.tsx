@@ -6,7 +6,7 @@ import {
   DialogActions,
   DialogContent,
   Dialog
-} from '@cytoai/components';
+} from '@piximi/components';
 
 const CreateCategoryDialog = (props: any) => {
   const { createCategory, open, onClose } = props;

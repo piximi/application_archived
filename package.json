@@ -1,12 +1,12 @@
 {
-  "name": "cyto",
+  "name": "@piximi/application",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@cytoai/components": "^0.1.5",
-    "@cytoai/hooks": "^0.1.1",
-    "@cytoai/store": "^0.1.11",
-    "@cytoai/translations": "^0.1.0",
+    "@piximi/components": "^0.1.5",
+    "@piximi/hooks": "^0.1.1",
+    "@piximi/store": "^0.1.11",
+    "@piximi/translations": "^0.1.0",
     "@material-ui/core": "3.9.3",
     "@material-ui/icons": "3.0.2",
     "@material-ui/lab": "3.0.0-alpha.30",
@@ -88,7 +88,7 @@
     "source-map-explorer": "^1.6.0",
     "typescript": "^3.4.1"
   },
-  "homepage": "https://application.cyto.ai",
+  "homepage": "https://application.piximi.org",
   "lint-staged": {
     "src/**/*.{css,js,json,jsx,ts,tsx}": [
       "prettier --single-quote --write",

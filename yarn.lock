@@ -910,13 +910,13 @@
   resolved "https://registry.yarnpkg.com/@csstools/normalize.css/-/normalize.css-9.0.1.tgz#c27b391d8457d1e893f1eddeaf5e5412d12ffbb5"
   integrity sha512-6It2EVfGskxZCQhuykrfnALg7oVeiI6KclWSmGDqB0AiInVrTGB9Jp9i4/Ad21u9Jde/voVQz6eFX/eSg/UsPA==
 
-"@cytoai/components@^0.1.5":
+"@piximi/components@^0.1.5":
   version "0.1.5"
-  resolved "https://registry.yarnpkg.com/@cytoai/components/-/components-0.1.5.tgz#5cc54caf837bb28cc9391a22fb492d84c59711e4"
+  resolved "https://registry.yarnpkg.com/@piximi/components/-/components-0.1.5.tgz#5cc54caf837bb28cc9391a22fb492d84c59711e4"
   integrity sha512-rF8WCZI6P1oq+KE2y6ELBOvMLLYCHTaJTfnuMloeGh3egy7TJagxkH8tFSO15p/p+yxU/Z1wTlj91TlE31L4+w==
   dependencies:
-    "@cytoai/hooks" "^0.1.1"
-    "@cytoai/types" "^0.1.0"
+    "@piximi/hooks" "^0.1.1"
+    "@piximi/types" "^0.1.0"
     "@material-ui/core" "^3.9.3"
     "@material-ui/icons" "^3.0.2"
     "@material-ui/styles" "^3.0.0-alpha.10"
@@ -926,9 +926,9 @@
     react-dom "^16.8.6"
     react-i18next "^10.9.0"
 
-"@cytoai/hooks@^0.1.1":
+"@piximi/hooks@^0.1.1":
   version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@cytoai/hooks/-/hooks-0.1.1.tgz#c0527cd9ccbac6b7430577f29d8f82e832a422c4"
+  resolved "https://registry.yarnpkg.com/@piximi/hooks/-/hooks-0.1.1.tgz#c0527cd9ccbac6b7430577f29d8f82e832a422c4"
   integrity sha512-wdv3f/VKEuN0g2XFhwi7N+F5MPz7LLvJLY3du9Xw187k3rZYQ0yeK5Lx2JMEUme3ySays/0FCQrRp6EhYHrR9Q==
   dependencies:
     react "^16.8.6"
@@ -936,12 +936,12 @@
     redux-persist "^5.10.0"
     redux-starter-kit "^0.5.1"
 
-"@cytoai/store@^0.1.11":
+"@piximi/store@^0.1.11":
   version "0.1.11"
-  resolved "https://registry.yarnpkg.com/@cytoai/store/-/store-0.1.11.tgz#b39e435b48713009c6705091afe82880c21f824f"
+  resolved "https://registry.yarnpkg.com/@piximi/store/-/store-0.1.11.tgz#b39e435b48713009c6705091afe82880c21f824f"
   integrity sha512-GXmDQxAhqwJt/Vdu98wWKp1b7zv7GJIR4EfJTQxTsfYT7ZXciytz3aGwzWlUyDwLkeVrskcJ3VH9zYpG7mfhAQ==
   dependencies:
-    "@cytoai/types" "^0.1.0"
+    "@piximi/types" "^0.1.0"
     react "^16.8.6"
     redux "^4.0.1"
     redux-logger "^3.0.6"
@@ -949,14 +949,14 @@
     redux-starter-kit "^0.5.1"
     redux-thunk "^2.3.0"
 
-"@cytoai/translations@^0.1.0":
+"@piximi/translations@^0.1.0":
   version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@cytoai/translations/-/translations-0.1.0.tgz#5bced1d602bda5706efe3ecf032d3475bbf81dca"
+  resolved "https://registry.yarnpkg.com/@piximi/translations/-/translations-0.1.0.tgz#5bced1d602bda5706efe3ecf032d3475bbf81dca"
   integrity sha512-4S+mSTAnQ8dLtvUP0dBY2j39lHLLAT9t1O+bTkzPtLf/XexPPaThpGklTbuDdO4XGrY/A7itclgojK+D+IIDVg==
 
-"@cytoai/types@^0.1.0":
+"@piximi/types@^0.1.0":
   version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@cytoai/types/-/types-0.1.0.tgz#c663c2abd46ba74f7085d8efa225c89e9e12f7f7"
+  resolved "https://registry.yarnpkg.com/@piximi/types/-/types-0.1.0.tgz#c663c2abd46ba74f7085d8efa225c89e9e12f7f7"
   integrity sha512-8HjAZqcjDKcOkq2RAOVKJ6iG8Q5qkocSjX4/aRPoAIkskF2FUkKJdb7eaq5QOIKZUvUHG4m+ecem3JghS91mGQ==
 
 "@emotion/cache@^10.0.9":

@@ -3,7 +3,7 @@ import {
   DialogTitle,
   DialogActions,
   DialogContent
-} from '@cytoai/components';
+} from '@piximi/components';
 import { TextField } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import * as React from 'react';

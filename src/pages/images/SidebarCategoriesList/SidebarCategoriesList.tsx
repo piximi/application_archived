@@ -9,7 +9,7 @@ import {
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { SidebarCreateCategoryListItem } from '..';
-import { useCollapseList } from '@cytoai/hooks';
+import { useCollapseList } from '@piximi/hooks';
 import * as _ from 'lodash';
 import { ConnectedSidebarCategoryListItem } from '../../../containers';
 import { useTranslation } from 'react-i18next';

@@ -9,7 +9,7 @@ import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import './i18n';
-import { store, persistor } from '@cytoai/store';
+import { store, persistor } from '@piximi/store';
 
 initializeModel();
 

@@ -5,7 +5,7 @@ import {
   DialogContent,
   Dialog,
   FilenameTextField
-} from '@cytoai/components';
+} from '@piximi/components';
 
 const SaveAnnotationsAndPredictionsDialog = (props: any) => {
   const { open, onClose } = props;
