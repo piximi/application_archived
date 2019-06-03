@@ -11,7 +11,9 @@ import * as React from 'react';
 const EditCategoryDialog = (props: any) => {
   const { category, updateColor, updateDescription, onClose, open } = props;
 
-  const [color, setColor] = React.useState<string>(category.color);
+  const [color, setColor] = React.useState<string>(
+    category.visualization.color
+  );
 
   const [description, setDescription] = React.useState<string>(
     category.description
