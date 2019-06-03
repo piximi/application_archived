@@ -26,7 +26,7 @@ type Props = {
 };
 
 const ImageViewer = (props: Props) => {
-  const classes = useStyles();
+  const classes = useStyles({});
 
   const [applySettingsGlobally, setApplySettingsGlobally] = React.useState(
     false

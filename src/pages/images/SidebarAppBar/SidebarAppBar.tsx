@@ -16,7 +16,7 @@ const useStyles = makeStyles(styles);
 const SidebarAppBar = (props: any) => {
   const { toggle, toggled } = props;
 
-  const classes = useStyles();
+  const classes = useStyles({});
 
   return (
     <AppBar className={classNames(classes.appBar)} color="default">

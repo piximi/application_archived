@@ -35,7 +35,7 @@ const SidebarCategoryListItem = (props: any) => {
 
   const [animateOnDrop, setAnimateOnDrop] = React.useState(false);
 
-  const classes = useStyles();
+  const classes = useStyles({});
 
   const onToggleVisibilityClick = () => {
     toggleVisibility(category.identifier);

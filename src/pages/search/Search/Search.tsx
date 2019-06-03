@@ -25,7 +25,7 @@ function filterImages(searchText: any, props: any) {
 }
 
 const Search = (props: any) => {
-  const classes = useStyles();
+  const classes = useStyles({});
 
   const { t: translation } = useTranslation();
 

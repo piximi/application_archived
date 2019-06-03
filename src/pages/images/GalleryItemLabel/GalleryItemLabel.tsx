@@ -13,7 +13,7 @@ const GalleryItemLabel = (props: any) => {
 
   const { categories, image } = props;
 
-  const classes = useStyles();
+  const classes = useStyles({});
 
   const findCategoryColor = () => {
     const index = categories.findIndex((category: any) => {

@@ -14,7 +14,7 @@ type Props = {
 const ContrastSlider = (props: Props) => {
   const { contrast, setContrast } = props;
 
-  const classes = useStyles();
+  const classes = useStyles({});
 
   const onChange = (event: any, value: any) => {
     setContrast(value);

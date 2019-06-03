@@ -11,7 +11,7 @@ const useStyles = makeStyles(styles);
 const ImportImagesButton = (props: any) => {
   const { createImage } = props;
 
-  const classes = useStyles();
+  const classes = useStyles({});
 
   const { t: translation } = useTranslation();
 

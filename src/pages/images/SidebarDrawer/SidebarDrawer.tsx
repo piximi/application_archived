@@ -19,7 +19,7 @@ import { makeStyles } from '@material-ui/styles';
 const useStyles = makeStyles(styles);
 
 const SidebarDrawer = (props: any) => {
-  const classes = useStyles();
+  const classes = useStyles({});
 
   const { setUnlabelledVisibility, toggled, toggle } = props;
 

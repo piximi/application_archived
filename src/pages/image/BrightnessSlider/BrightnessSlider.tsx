@@ -12,7 +12,7 @@ type Props = {
 };
 
 const BrightnessSlider = (props: Props) => {
-  const classes = useStyles();
+  const classes = useStyles({});
 
   const { brightness, setBrightness } = props;
 

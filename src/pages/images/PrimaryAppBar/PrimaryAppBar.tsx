@@ -13,7 +13,7 @@ import SearchDialog from '../../search/SearchDialog/SearchDialog';
 const useStyles = makeStyles(styles);
 
 const PrimaryAppBar = (props: any) => {
-  const classes = useStyles();
+  const classes = useStyles({});
 
   const { openedDialog, openDialog, closeDialog } = useDialog();
 

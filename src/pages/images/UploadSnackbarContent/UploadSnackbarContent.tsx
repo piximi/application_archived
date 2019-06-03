@@ -16,7 +16,7 @@ import { makeStyles } from '@material-ui/styles';
 const useStyles = makeStyles(styles);
 
 const UploadSnackbarContent = (props: any) => {
-  const classes = useStyles();
+  const classes = useStyles({});
 
   return (
     <Card classes={{ root: classes.card }}>

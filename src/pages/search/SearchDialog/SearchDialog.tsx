@@ -9,7 +9,7 @@ const useStyles = makeStyles(styles);
 const SearchDialog = (props: any) => {
   const { onClose, open } = props;
 
-  const classes = useStyles();
+  const classes = useStyles({});
 
   return (
     <Dialog className={classes.root} fullScreen open={open} onClose={onClose}>

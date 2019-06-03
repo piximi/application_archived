@@ -15,7 +15,7 @@ type Props = {
 };
 
 const Application = (props: Props) => {
-  const classes = useStyles();
+  const classes = useStyles({});
 
   const [selectedImages, setSelectedImages] = React.useState([]);
   const { openedDrawer, toggleDrawer } = useDrawer();

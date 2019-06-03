@@ -23,7 +23,7 @@ import MNIST from './MNIST.png';
 const useStyles = makeStyles(styles);
 
 const OpenExampleClassifierDialog = (props: any) => {
-  const classes = useStyles();
+  const classes = useStyles({});
 
   const { t: translation } = useTranslation();
 

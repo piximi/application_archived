@@ -21,7 +21,7 @@ const SettingsDialogTransition = (props: any) => (
 const SettingsDialog = (props: any) => {
   const { onClose, open } = props;
 
-  const classes = useStyles();
+  const classes = useStyles({});
 
   const { t: translation } = useTranslation();
 

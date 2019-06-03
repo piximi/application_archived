@@ -14,7 +14,7 @@ const DeleteButton = (props: any) => {
 
   const { openedDialog, openDialog, closeDialog } = useDialog();
 
-  const classes = useStyles();
+  const classes = useStyles({});
 
   const { selectedImages, setSelectedImages } = props;
 

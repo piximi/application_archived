@@ -24,7 +24,7 @@ const ImageViewerExposureDrawer = (props: any) => {
     unselectedChannels
   } = props;
 
-  const classes = useStyles();
+  const classes = useStyles({});
 
   return (
     <Drawer

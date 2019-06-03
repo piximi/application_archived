@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { ColorPicker } from '@piximi/components';
-import { Classifier } from '../types';
+import { Classifier } from '@piximi/types';
 
 type State = {
   classifier: Classifier;
