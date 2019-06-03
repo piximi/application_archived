@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { updateImageCategoryAction } from '@piximi/store';
 import { CategoryDropTarget } from '@piximi/components';
-import { Classifier } from '../types';
+import { Classifier } from '@piximi/types';
 import { Dispatch } from 'redux';
 
 type State = {

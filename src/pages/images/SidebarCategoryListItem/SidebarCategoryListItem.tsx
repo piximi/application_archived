@@ -65,7 +65,10 @@ const SidebarCategoryListItem = (props: any) => {
       >
         <ListItem classes={listItemClasses} dense style={{ cursor: 'pointer' }}>
           <ListItemIcon onClick={onToggleVisibilityClick}>
-            <VisibleIcon color={category.color} visible={category.visible} />
+            <VisibleIcon
+              color={category.color}
+              visible={category.visualization.visible}
+            />
           </ListItemIcon>
 
           <ListItemText primary={category.description} />

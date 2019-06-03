@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { SidebarOpenListItem } from '../pages/images';
 import { createCategoryAction, createImageAction } from '@piximi/store';
 import { Dispatch } from 'redux';
-import { Classifier } from '../types';
+import { Classifier } from '@piximi/types';
 
 // const loadDemoProject = (demo: string) => {
 //   return (dispatch: any) => {

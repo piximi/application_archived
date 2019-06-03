@@ -3,7 +3,7 @@ import { createImageAction } from '@piximi/store';
 import * as uuid from 'uuid';
 import { ImportImagesButton } from '../pages/images';
 import { Dispatch } from 'redux';
-import { Classifier, Image, Partition } from '../types';
+import { Classifier, Image, Partition } from '@piximi/types';
 
 type State = {
   classifier: Classifier;

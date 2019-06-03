@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { DeleteImageDialog } from '../pages/images';
 import { deleteImageAction } from '@piximi/store';
 import { Dispatch } from 'redux';
-import { Classifier } from '../types';
+import { Classifier } from '@piximi/types';
 
 type State = {
   classifier: Classifier;

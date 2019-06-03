@@ -81,7 +81,6 @@ const Image = props => {
       />
       <img
         onLoad={onLoad}
-        onError={onError}
         alt="foo"
         src={src}
         style={{ visibility: 'hidden' }}

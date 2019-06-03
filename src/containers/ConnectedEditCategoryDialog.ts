@@ -4,7 +4,7 @@ import {
   updateCategoryDescriptionAction
 } from '@piximi/store';
 import { EditCategoryDialog } from '../pages/images';
-import { Classifier } from '../types';
+import { Classifier } from '@piximi/types';
 import { Dispatch } from 'redux';
 
 type State = {

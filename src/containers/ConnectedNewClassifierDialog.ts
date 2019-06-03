@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { NewClassifierDialog } from '../pages/images';
 import { createClassifierAction } from '@piximi/store';
-import { Classifier } from '../types';
+import { Classifier } from '@piximi/types';
 import * as uuid from 'uuid';
 import { Dispatch } from 'redux';
 

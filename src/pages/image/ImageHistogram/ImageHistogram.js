@@ -26,10 +26,10 @@ const ImageHistogram = props => {
       }
 
       const graphComponent = (imgData, color) => {
-        var data = Object.keys(imgData).map(function(key) {
+        const data = Object.keys(imgData).map(function(key) {
           return { freq: imgData[key], idx: +key };
         });
-        var x = d3
+        const x = d3
           .scaleLinear()
           .range([0, width])
           .domain([
@@ -38,7 +38,7 @@ const ImageHistogram = props => {
               return d.idx;
             })
           ]);
-        var y = d3
+        const y = d3
           .scaleLinear()
           .range([height, 0])
           .domain([
@@ -47,7 +47,7 @@ const ImageHistogram = props => {
               return d.freq;
             })
           ]);
-        var g = svg
+        const g = svg
           .append('g')
           .attr(
             'transform',

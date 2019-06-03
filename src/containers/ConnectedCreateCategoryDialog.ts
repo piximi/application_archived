@@ -3,7 +3,7 @@ import { createCategoryAction } from '@piximi/store';
 import { CreateCategoryDialog } from '../pages/images';
 import uuidv4 from 'uuid';
 import { Dispatch } from 'redux';
-import { Classifier } from '../types';
+import { Classifier } from '@piximi/types';
 
 let index = 0;
 
@@ -21,11 +21,13 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     createCategory: (color: string, description: string) => {
       const category = {
-        color: color,
         description: description,
         identifier: uuidv4(),
         index: index++,
-        visible: true
+        visualization: {
+          color: color,
+          visible: true
+        }
       };
 
       const payload = { category: category };
