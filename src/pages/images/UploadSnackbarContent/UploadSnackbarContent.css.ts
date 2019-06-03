@@ -21,8 +21,8 @@ const styles = (theme: Theme) =>
     controls: {
       display: 'flex',
       alignItems: 'center',
-      paddingLeft: theme.spacing.unit,
-      paddingBottom: theme.spacing.unit
+      paddingLeft: theme.spacing(1),
+      paddingBottom: theme.spacing(1)
     }
   });
 

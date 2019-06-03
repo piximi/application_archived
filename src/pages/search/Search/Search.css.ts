@@ -5,13 +5,13 @@ const styles = (theme: Theme) =>
   createStyles({
     form: {
       root: {
-        marginRight: theme.spacing.unit
+        marginRight: theme.spacing(1)
       }
     },
     input: {
       backgroundColor: '#f1f3f4',
-      borderRadius: theme.spacing.unit,
-      padding: theme.spacing.unit
+      borderRadius: theme.spacing(1),
+      padding: theme.spacing(1)
     }
   });
 

@@ -22,7 +22,6 @@
   "include": [
     "src/actions/*",
     "src/App.tsx",
-    "src/bootstrap.ts",
     "src/components/**/*.ts",
     "src/components/**/*.tsx",
     "src/constants.ts",
