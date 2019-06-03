@@ -33,7 +33,7 @@ const SidebarAppBar = (props: any) => {
         </Tooltip>
 
         <Typography variant="h6" color="inherit">
-          Logo
+          Piximi
         </Typography>
       </Toolbar>
     </AppBar>

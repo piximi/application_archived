@@ -7,7 +7,7 @@ const Logo = () => {
 
   return (
     <Typography variant="h6" color="inherit">
-      {translation('Logo')}
+      {translation('Piximi')}
     </Typography>
   );
 };
