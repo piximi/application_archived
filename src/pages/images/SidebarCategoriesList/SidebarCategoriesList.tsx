@@ -36,7 +36,7 @@ const SidebarCategoriesList = (props: any) => {
           {!collapsedList ? <ExpandLessIcon /> : <ExpandMoreIcon />}
         </ListItemIcon>
 
-        <ListItemText inset primary={translation('Categories')} />
+        <ListItemText primary={translation('Categories')} />
       </ListItem>
 
       <Collapse in={!collapsedList} timeout="auto" unmountOnExit>
