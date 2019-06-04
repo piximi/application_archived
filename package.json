@@ -18,7 +18,7 @@
     "base64-arraybuffer": "^0.2.0",
     "classnames": "^2.2.5",
     "color": "^3.1.0",
-    "d3": "^5.7.w0",
+    "d3": "^5.7.0",
     "i18next": "^15.0.9",
     "image-js": "^0.21.6",
     "js-file-download": "^0.4.4",
