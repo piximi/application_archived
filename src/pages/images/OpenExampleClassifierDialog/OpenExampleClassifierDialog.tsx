@@ -1,4 +1,5 @@
 import * as React from 'react';
+import axios from 'axios';
 import styles from './OpenExampleClassifierDialog.css';
 import {
   Dialog,
@@ -30,9 +31,18 @@ const OpenExampleClassifierDialog = (props: any) => {
   const { openClassifier, open, onClose } = props;
 
   const openExampleClassifier = (name: string) => {
-    console.log(name);
-
-    openClassifier(name);
+    return axios
+      .get(
+        ' https://raw.githubusercontent.com/cytoai/cyto/master/src/demos/' +
+          name +
+          '.cyto'
+      )
+      .then(result => {
+        openClassifier(result.data.categories, result.data.images, name);
+      })
+      .catch(function(error) {
+        alert(error);
+      });
   };
 
   return (
