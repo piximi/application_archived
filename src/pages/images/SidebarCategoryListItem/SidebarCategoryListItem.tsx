@@ -59,7 +59,7 @@ const SidebarCategoryListItem = (props: any) => {
   return (
     <ConnectedCategoryDropTarget category={category}>
       <StyledCategory
-        color={category.color}
+        color={category.visualization.color}
         onDrop={onDrop}
         className={className}
       >
