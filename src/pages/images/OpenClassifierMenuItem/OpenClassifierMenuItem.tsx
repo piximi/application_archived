@@ -14,13 +14,7 @@ const OpenClassifierMenuItem = (props: any) => {
 
       const classifier = JSON.parse(target.result as string);
 
-      const payload = {
-        categories: classifier.categories,
-        images: classifier.images,
-        name: classifier.name
-      };
-
-      openClassifier(payload);
+      openClassifier(classifier.categories, classifier.images, classifier.name);
     };
 
     closeMenu();
