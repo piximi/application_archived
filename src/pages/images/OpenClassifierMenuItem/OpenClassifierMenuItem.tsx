@@ -2,20 +2,22 @@ import * as React from 'react';
 import * as MaterialUI from '@material-ui/core';
 
 const OpenClassifierMenuItem = (props: any) => {
-  const { closeMenu } = props;
+  // const { closeMenu } = props;
 
   const onChange = (e: any) => {
     const reader = new FileReader();
 
-    reader.onload = function(e) {
-      // const text = reader.result;
-      // const data = JSON.parse(text);
-      // props.updateStore(data);
+    reader.readAsText(e.target.files[0], 'UTF-8');
+
+    reader.onload = e => {
+      const target = e.target as FileReader;
+
+      const x = target.result;
+
+      const data = JSON.parse(x);
     };
 
-    // reader.readAsText(e.target.files[0]);
-
-    closeMenu();
+    // closeMenu();
   };
 
   return (
