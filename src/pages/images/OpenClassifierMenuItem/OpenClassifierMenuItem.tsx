@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as MaterialUI from '@material-ui/core';
 
 const OpenClassifierMenuItem = (props: any) => {
-  // const { closeMenu } = props;
+  const { closeMenu, openClassifier } = props;
 
   const onChange = (e: any) => {
     const reader = new FileReader();
@@ -14,10 +14,12 @@ const OpenClassifierMenuItem = (props: any) => {
 
       const x = target.result;
 
-      const data = JSON.parse(x);
+      // const data = JSON.parse(x);
+
+      openClassifier(x);
     };
 
-    // closeMenu();
+    closeMenu();
   };
 
   return (
