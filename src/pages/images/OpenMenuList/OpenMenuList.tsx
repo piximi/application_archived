@@ -26,7 +26,7 @@ const OpenMenuList = (props: Props) => {
     >
       <MaterialUI.Paper>
         <MaterialUI.MenuList dense>
-          <ConnectedOpenClassifierMenuItem />
+          <ConnectedOpenClassifierMenuItem closeMenu={closeMenu} />
 
           <MaterialUI.Divider />
 

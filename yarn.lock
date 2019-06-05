@@ -1304,10 +1304,10 @@
     react "^16.8.6"
     react-dom "^16.8.6"
 
-"@piximi/store@^0.1.19":
-  version "0.1.19"
-  resolved "https://registry.yarnpkg.com/@piximi/store/-/store-0.1.19.tgz#d0a65bf332e9da03a48153d08ed11bd9fc7a4e57"
-  integrity sha512-SXSaxDXME4xlY46fMZQwKZSoaHdk/5W5cy9Q1Xqyiy8WZ9+ci9lE+Zva8KE5Ox0IEYsvia4Mx7nES6UkbHXpAg==
+"@piximi/store@^0.1.21":
+  version "0.1.21"
+  resolved "https://registry.yarnpkg.com/@piximi/store/-/store-0.1.21.tgz#ed3ff489e13bf39d6e3c142713c5cad06dc11111"
+  integrity sha512-FriT2kef8uP5nesm2vfg3OZwlyJ/H/NGE7FsNFKFn/3vT53Pf6XeLIky52XaF+2BSRHJlrE4CBLrPZwMuhpL1g==
   dependencies:
     "@piximi/types" "^0.1.7"
     localforage "^1.7.3"
