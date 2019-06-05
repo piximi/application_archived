@@ -16,11 +16,7 @@ const mapStateToProps = (state: State) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    openClassifier: async (
-      categories: Category[],
-      images: Image[],
-      name: string
-    ) => {
+    openClassifier: (categories: Category[], images: Image[], name: string) => {
       const payload = {
         categories: categories,
         images: images,
