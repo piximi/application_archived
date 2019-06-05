@@ -16,15 +16,6 @@ const createDataset = async (categories: Category[], images: Image[]) => {
     return image.categoryIdentifier !== '00000000-0000-0000-0000-000000000000';
   });
 
-  const categoryIdentifiers = images.map(image => {
-    const categoryIndex = findCategoryIndex(
-      categories,
-      image.categoryIdentifier
-    );
-
-    return categories[categoryIndex].identifier;
-  });
-
   let xs: tensorflow.Tensor<tensorflow.Rank>[] = [];
   let ys = [];
 
