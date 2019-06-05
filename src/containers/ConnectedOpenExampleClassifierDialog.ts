@@ -3,7 +3,7 @@ import { OpenExampleClassifierDialog } from '../pages/images';
 import { Classifier, Image, Category } from '@piximi/types';
 import { Dispatch } from 'redux';
 import * as uuid from 'uuid';
-import { createClassifierAction } from '@piximi/store';
+import { openClassifierAction } from '@piximi/store';
 
 type State = {
   classifier: Classifier;
@@ -22,13 +22,13 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
       images: Image[],
       name: string
     ) => {
-      const classifier = {
+      const payload: Classifier = {
         categories: categories,
         images: images,
         name: name
       };
 
-      const action = createClassifierAction(classifier);
+      const action = openClassifierAction(payload);
 
       dispatch(action);
     }

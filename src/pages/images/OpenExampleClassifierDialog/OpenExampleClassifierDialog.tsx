@@ -38,6 +38,7 @@ const OpenExampleClassifierDialog = (props: any) => {
           '.cyto'
       )
       .then(result => {
+        debugger;
         openClassifier(result.data.categories, result.data.images, name);
       })
       .catch(function(error) {

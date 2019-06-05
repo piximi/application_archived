@@ -45,7 +45,7 @@ const GalleryItemCategoryMenu = (props: any) => {
       onClick={() => onMenuItemClick(category)}
     >
       <ListItemIcon>
-        <LabelIcon style={{ color: category.color }} />
+        <LabelIcon style={{ color: category.visualization.color }} />
       </ListItemIcon>
 
       <ListItemText inset primary={category.description} />

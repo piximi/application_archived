@@ -31,7 +31,7 @@ const SidebarClassifierFitListItem = (props: any) => {
           setMessage(`onTrainBegin`);
         },
         onTrainEnd: async (logs?: Logs | undefined) => {
-          setMessage(`onTrainEnd`);
+          closeSnackbar();
         },
         onEpochBegin: async (epoch: number, logs?: Logs | undefined) => {
           setMessage(`onEpochBegin ${epoch}`);
@@ -53,7 +53,9 @@ const SidebarClassifierFitListItem = (props: any) => {
       verbose: 1
     };
 
-    const _ = await model.fit(x, y, args);
+    const history = await model.fit(x, y, args);
+
+    console.log(history);
   };
 
   return (

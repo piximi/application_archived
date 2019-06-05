@@ -21,10 +21,6 @@ const Image = props => {
     image.style.height = '0px';
   };
 
-  const onError = () => {
-    setImageStatus('failed to load');
-  };
-
   // Draw canvas
   const draw = () => {
     if (imageStatus === 'loaded') {

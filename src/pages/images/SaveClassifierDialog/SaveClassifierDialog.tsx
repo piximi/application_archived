@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { saveAs } from 'file-saver';
 import {
   DialogTitle,
   DialogActions,
@@ -6,13 +7,33 @@ import {
   Dialog,
   FilenameTextField
 } from '@piximi/components';
+import { Classifier } from '@piximi/types';
 
-const SaveClassifierDialog = (props: any) => {
-  const { open, onClose } = props;
+type SaveClassifierDialogProps = {
+  classifier: Classifier;
+  open: boolean;
+  onClose: () => void;
+};
 
-  const [filename, setFilename] = React.useState<string>('');
+const SaveClassifierDialog = (props: SaveClassifierDialogProps) => {
+  const { classifier, open, onClose } = props;
+
+  const [filename, setFilename] = React.useState<string>(classifier.name);
 
   const onAcceptance = () => {
+    const parts = {
+      ...classifier,
+      version: '0.1.0'
+    };
+
+    const options = {
+      type: 'text/json;charset=utf-8'
+    };
+
+    const blob = new Blob([JSON.stringify(parts)], options);
+
+    saveAs(blob, `${filename}.piximi`);
+
     onClose();
   };
 

@@ -21,7 +21,7 @@ const GalleryItemLabel = (props: any) => {
     });
 
     if (index > -1) {
-      return categories[index].color;
+      return categories[index].visualization.color;
     } else {
       return '#000';
     }

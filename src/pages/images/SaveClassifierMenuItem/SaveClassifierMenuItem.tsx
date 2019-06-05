@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as MaterialUI from '@material-ui/core';
-import { SaveClassifierDialog } from '..';
 import { useDialog } from '@piximi/hooks';
+import { ConnectedSaveClassifierDialog } from '../../../containers';
 
 const SaveClassifierMenuItem = () => {
   const { openedDialog, openDialog, closeDialog } = useDialog();
@@ -12,7 +12,10 @@ const SaveClassifierMenuItem = () => {
         <MaterialUI.ListItemText primary="Save classifier" />
       </MaterialUI.MenuItem>
 
-      <SaveClassifierDialog open={openedDialog} onClose={closeDialog} />
+      <ConnectedSaveClassifierDialog
+        open={openedDialog}
+        onClose={closeDialog}
+      />
     </React.Fragment>
   );
 };
