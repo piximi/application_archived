@@ -12,11 +12,15 @@ const OpenClassifierMenuItem = (props: any) => {
     reader.onload = e => {
       const target = e.target as FileReader;
 
-      const x = target.result;
+      const classifier = JSON.parse(target.result as string);
 
-      // const data = JSON.parse(x);
+      const payload = {
+        categories: classifier.categories,
+        images: classifier.images,
+        name: classifier.name
+      };
 
-      openClassifier(x);
+      openClassifier(payload);
     };
 
     closeMenu();
