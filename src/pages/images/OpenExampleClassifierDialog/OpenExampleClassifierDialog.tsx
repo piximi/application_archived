@@ -1,4 +1,5 @@
 import * as React from 'react';
+import axios from 'axios';
 import styles from './OpenExampleClassifierDialog.css';
 import {
   Dialog,
@@ -14,11 +15,7 @@ import { makeStyles } from '@material-ui/styles';
 import { useTranslation } from 'react-i18next';
 import { OpenExampleClassifierListItem } from '..';
 // @ts-ignore
-import CIFAR10 from './CIFAR-10.png';
-// @ts-ignore
-import CIFAR100 from './CIFAR-100.png';
-// @ts-ignore
-import MNIST from './MNIST.png';
+import WORMS from './worms.png';
 
 const useStyles = makeStyles(styles);
 
@@ -30,9 +27,18 @@ const OpenExampleClassifierDialog = (props: any) => {
   const { openClassifier, open, onClose } = props;
 
   const openExampleClassifier = (name: string) => {
-    console.log(name);
-
-    openClassifier(name);
+    return axios
+      .get(
+        'https://raw.githubusercontent.com/piximi/application/master/src/demos/' +
+          name +
+          '.piximi'
+      )
+      .then(result => {
+        openClassifier(result.data.categories, result.data.images, name);
+      })
+      .catch(function(error) {
+        alert(error);
+      });
   };
 
   return (
@@ -54,42 +60,12 @@ const OpenExampleClassifierDialog = (props: any) => {
       <DialogContent classes={{ root: classes.dialogContent }}>
         <List>
           <OpenExampleClassifierListItem
-            src={CIFAR10}
-            primary="UC Merced Land Use Dataset"
-            secondary="The UC Merced Land Use Dataset contains 2,100 256 × 256 3-channel satellite images. Images are classified into one of 21 possible categories."
+            src={WORMS}
+            primary="worms"
+            secondary="worms"
             onClick={() => {
               onClose();
-              openExampleClassifier('uc-merced-land-use-dataset');
-            }}
-          />
-
-          <OpenExampleClassifierListItem
-            src={CIFAR10}
-            primary="CIFAR-10"
-            secondary="The CIFAR-10 dataset contains 10,000 32×32 color photographs in 10 different categories."
-            onClick={() => {
-              onClose();
-              openExampleClassifier('cifar10');
-            }}
-          />
-
-          <OpenExampleClassifierListItem
-            src={CIFAR100}
-            primary="CIFAR-100"
-            secondary="The CIFAR-100 dataset consists of 10,000 32 × 32 color photographs in 100 classes."
-            onClick={() => {
-              onClose();
-              openExampleClassifier('cifar100');
-            }}
-          />
-
-          <OpenExampleClassifierListItem
-            src={MNIST}
-            primary="MNIST"
-            secondary="The MNIST dataset consists of 10,000 28 × 28 handwritten digits in 10 classes."
-            onClick={() => {
-              onClose();
-              openExampleClassifier('mnist');
+              openExampleClassifier('worms');
             }}
           />
         </List>

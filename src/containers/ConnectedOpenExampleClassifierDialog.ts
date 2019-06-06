@@ -1,9 +1,8 @@
 import { connect } from 'react-redux';
 import { OpenExampleClassifierDialog } from '../pages/images';
-import { Classifier } from '@piximi/types';
+import { Classifier, Category, Image } from '@piximi/types';
 import { Dispatch } from 'redux';
-import * as uuid from 'uuid';
-import { createClassifierAction } from '@piximi/store';
+import { openClassifierAction } from '@piximi/store';
 
 type State = {
   classifier: Classifier;
@@ -17,13 +16,18 @@ const mapStateToProps = (state: State) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    openClassifier: async (name: string) => {
-      const classifier = {
-        identifier: uuid.v4(),
+    openClassifier: async (
+      categories: Category[],
+      images: Image[],
+      name: string
+    ) => {
+      const payload: Classifier = {
+        categories: categories,
+        images: images,
         name: name
       };
 
-      const action = createClassifierAction(classifier);
+      const action = openClassifierAction(payload);
 
       dispatch(action);
     }
