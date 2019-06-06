@@ -35,7 +35,7 @@ const OpenExampleClassifierDialog = (props: any) => {
       .get(
         ' https://raw.githubusercontent.com/cytoai/cyto/master/src/demos/' +
           name +
-          '.cyto'
+          '.piximi'
       )
       .then(result => {
         debugger;
@@ -65,39 +65,9 @@ const OpenExampleClassifierDialog = (props: any) => {
       <DialogContent classes={{ root: classes.dialogContent }}>
         <List>
           <OpenExampleClassifierListItem
-            src={CIFAR10}
-            primary="UC Merced Land Use Dataset"
-            secondary="The UC Merced Land Use Dataset contains 2,100 256 × 256 3-channel satellite images. Images are classified into one of 21 possible categories."
-            onClick={() => {
-              onClose();
-              openExampleClassifier('uc-merced-land-use-dataset');
-            }}
-          />
-
-          <OpenExampleClassifierListItem
-            src={CIFAR10}
-            primary="CIFAR-10"
-            secondary="The CIFAR-10 dataset contains 10,000 32×32 color photographs in 10 different categories."
-            onClick={() => {
-              onClose();
-              openExampleClassifier('cifar10');
-            }}
-          />
-
-          <OpenExampleClassifierListItem
-            src={CIFAR100}
-            primary="CIFAR-100"
-            secondary="The CIFAR-100 dataset consists of 10,000 32 × 32 color photographs in 100 classes."
-            onClick={() => {
-              onClose();
-              openExampleClassifier('cifar100');
-            }}
-          />
-
-          <OpenExampleClassifierListItem
             src={MNIST}
-            primary="MNIST"
-            secondary="The MNIST dataset consists of 10,000 28 × 28 handwritten digits in 10 classes."
+            primary="worms"
+            secondary="dataset consists of 10,000 28 × 28 handwritten digits in 10 classes."
             onClick={() => {
               onClose();
               openExampleClassifier('mnist');
