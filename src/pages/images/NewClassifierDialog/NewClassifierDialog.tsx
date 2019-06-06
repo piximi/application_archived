@@ -9,14 +9,14 @@ import { useTranslation } from 'react-i18next';
 import * as React from 'react';
 
 const NewClassifierDialog = (props: any) => {
-  const { createClassifier, openedDialog, closeDialog } = props;
+  const { openClassifier, openedDialog, closeDialog } = props;
 
   const { t: translation } = useTranslation();
 
   const [name, setName] = React.useState(translation('Untitled classifier'));
 
   const onCreateClassifierClick = () => {
-    createClassifier(name);
+    openClassifier(name);
 
     closeDialog();
   };
