@@ -22,7 +22,9 @@ const SaveClassifierDialog = (props: SaveClassifierDialogProps) => {
 
   const onAcceptance = () => {
     const parts = {
-      ...classifier,
+      categories: classifier.categories,
+      images: classifier.images,
+      name: classifier.name,
       version: '0.1.0'
     };
 
@@ -30,7 +32,7 @@ const SaveClassifierDialog = (props: SaveClassifierDialogProps) => {
       type: 'text/json;charset=utf-8'
     };
 
-    const blob = new Blob([JSON.stringify(parts)], options);
+    const blob = new Blob([JSON.stringify(parts, null, 4)], options);
 
     saveAs(blob, `${filename}.piximi`);
 
