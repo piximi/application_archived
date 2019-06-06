@@ -13,6 +13,7 @@ import ConnectedItem from './ConnectedItem';
 import ConnectedItemCategoryMenu from './ConnectedItemCategoryMenu';
 import ConnectedItemLabel from './ConnectedItemLabel';
 import ConnectedNewClassifierDialog from './ConnectedNewClassifierDialog';
+import ConnectedOpenClassifierMenuItem from './ConnectedOpenClassifierMenuItem';
 import ConnectedSaveClassifierDialog from './ConnectedSaveClassifierDialog';
 import ConnectedSearch from './ConnectedSearch';
 import ConnectedSidebarCategoryListItem from './ConnectedSidebarCategoryListItem';
@@ -37,6 +38,7 @@ export {
   ConnectedItemCategoryMenu,
   ConnectedItemLabel,
   ConnectedNewClassifierDialog,
+  ConnectedOpenClassifierMenuItem,
   ConnectedSaveClassifierDialog,
   ConnectedSearch,
   ConnectedSidebarCategoryListItem,
