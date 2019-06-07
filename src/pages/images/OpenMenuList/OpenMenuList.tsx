@@ -30,9 +30,9 @@ const OpenMenuList = (props: Props) => {
 
           <MaterialUI.Divider />
 
-          <OpenExampleClassifierMenuItem />
+          <OpenExampleClassifierMenuItem closeMenu={closeMenu} />
 
-          <OpenWeightsMenuItem />
+          <OpenWeightsMenuItem closeMenu={closeMenu} />
         </MaterialUI.MenuList>
       </MaterialUI.Paper>
     </MaterialUI.Popover>
