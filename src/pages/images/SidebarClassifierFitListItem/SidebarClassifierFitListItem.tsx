@@ -1,7 +1,7 @@
 import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import * as React from 'react';
 import { useState } from 'react';
-import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
+import ScatterPlotIcon from '@material-ui/icons/ScatterPlot';
 import { useTranslation } from 'react-i18next';
 import { useSnackbar } from '@piximi/hooks';
 import { Snackbar } from '@piximi/components';
@@ -66,7 +66,7 @@ const SidebarClassifierFitListItem = (props: any) => {
     <React.Fragment>
       <ListItem button dense onClick={fit}>
         <ListItemIcon>
-          <PlayCircleOutlineIcon />
+          <ScatterPlotIcon />
         </ListItemIcon>
 
         <ListItemText primary={translation('Fit')} />
