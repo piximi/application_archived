@@ -7,6 +7,7 @@ import {
   DialogContent,
   Dialog
 } from '@piximi/components';
+import { colors } from '../../../constants';
 
 const CreateCategoryDialog = (props: any) => {
   const { createCategory, open, onClose } = props;
@@ -35,7 +36,11 @@ const CreateCategoryDialog = (props: any) => {
       <DialogTitle title="Create a new category" />
 
       <DialogContent>
-        <ColorIconButton color={color} onColorChange={onColorChange} />
+        <ColorIconButton
+          color={color}
+          colors={colors}
+          onColorChange={onColorChange}
+        />
 
         <CategoryDescriptionTextField
           description={description}

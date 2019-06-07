@@ -7,7 +7,7 @@
     "@material-ui/icons": "3.0.2",
     "@material-ui/lab": "3.0.0-alpha.30",
     "@material-ui/styles": "^3.0.0-alpha.10",
-    "@piximi/components": "^0.1.7",
+    "@piximi/components": "^0.1.9",
     "@piximi/hooks": "^0.1.11",
     "@piximi/store": "^0.1.23",
     "@piximi/translations": "^0.1.2",
