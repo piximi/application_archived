@@ -6,6 +6,12 @@ import { useTranslation } from 'react-i18next';
 import { useSnackbar } from '@piximi/hooks';
 import { Snackbar } from '@piximi/components';
 import { createDataset, createModel } from '../../../network';
+import {
+  fitAndPredict,
+  exportWeights,
+  importWeights,
+  categories
+} from '../../../classifierBackup';
 import { Logs } from '@tensorflow/tfjs-layers';
 
 const SidebarClassifierFitListItem = (props: any) => {
@@ -17,49 +23,63 @@ const SidebarClassifierFitListItem = (props: any) => {
 
   const { t: translation } = useTranslation();
 
+  // const fit = async () => {
+
+  //   var t0 = performance.now();
+  //   const model = await createModel(categories.length - 1, 100);
+  //   var t1 = performance.now();
+  //   console.log("createModel took " + ((t1 - t0)/1000) + " seconds.")
+
+  //   t0 = performance.now();
+  //   const { sucsess, x, y } = await createDataset(categories, images);
+  //   t1 = performance.now();
+  //   console.log("createDataset took " + ((t1 - t0)/1000) + " seconds.")
+
+  //   if (!sucsess) {
+  //     return;
+  //   }
+
+  //   openSnackbar();
+
+  //   const args = {
+  //     batchSize: 32,
+  //     callbacks: {
+  //       onTrainBegin: async (logs?: Logs | undefined) => {
+  //         setMessage(`onTrainBegin`);
+  //       },
+  //       onTrainEnd: async (logs?: Logs | undefined) => {
+  //         closeSnackbar();
+  //       },
+  //       onEpochBegin: async (epoch: number, logs?: Logs | undefined) => {
+  //         setMessage(`onEpochBegin ${epoch}`);
+  //       },
+  //       onEpochEnd: async (epoch: number, logs?: Logs | undefined) => {
+  //         if (logs) {
+  //           setMessage(`onEpochEnd ${epoch}, loss: ${logs.loss}`);
+  //         }
+  //       },
+  //       onBatchBegin: async (batch: number, logs?: Logs | undefined) => {
+  //         setMessage(`onBatchBegin ${batch}`);
+  //       },
+  //       onBatchEnd: async (batch: number, logs?: Logs | undefined) => {
+  //         setMessage(`onBatchEnd ${batch}`);
+  //       }
+  //     },
+  //     epochs: 10,
+  //     shuffle: true,
+  //     verbose: 1
+  //   };
+
+  //   t0 = performance.now();
+  //   const history = await model.fit(x, y, args);
+  //   t1 = performance.now();
+  //   console.log("createDataset took " + ((t1 - t0)/1000) + " seconds.")
+  //   debugger;
+  //   console.log(history);
+  // };
+
   const fit = async () => {
-    const model = await createModel(categories.length - 1, 100);
-
-    const { sucsess, x, y } = await createDataset(categories, images);
-
-    if (!sucsess) {
-      return;
-    }
-
-    openSnackbar();
-
-    const args = {
-      batchSize: 32,
-      callbacks: {
-        onTrainBegin: async (logs?: Logs | undefined) => {
-          setMessage(`onTrainBegin`);
-        },
-        onTrainEnd: async (logs?: Logs | undefined) => {
-          closeSnackbar();
-        },
-        onEpochBegin: async (epoch: number, logs?: Logs | undefined) => {
-          setMessage(`onEpochBegin ${epoch}`);
-        },
-        onEpochEnd: async (epoch: number, logs?: Logs | undefined) => {
-          if (logs) {
-            setMessage(`onEpochEnd ${epoch}, loss: ${logs.loss}`);
-          }
-        },
-        onBatchBegin: async (batch: number, logs?: Logs | undefined) => {
-          setMessage(`onBatchBegin ${batch}`);
-        },
-        onBatchEnd: async (batch: number, logs?: Logs | undefined) => {
-          setMessage(`onBatchEnd ${batch}`);
-        }
-      },
-      epochs: 10,
-      shuffle: true,
-      verbose: 1
-    };
-
-    const history = await model.fit(x, y, args);
-
-    console.log(history);
+    fitAndPredict(images, categories);
   };
 
   return (

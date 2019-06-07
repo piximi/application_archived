@@ -29,7 +29,7 @@ const createDataset = async (categories: Category[], images: Image[]) => {
     const resized = tensorflow.image.resizeBilinear(x, [224, 224]);
 
     const newShape = [1, 224, 224, 3];
-
+    debugger;
     const offset = tensorflow.scalar(127.5);
 
     const batched = resized
