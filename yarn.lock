@@ -1276,10 +1276,10 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
 
-"@piximi/components@^0.1.7":
-  version "0.1.7"
-  resolved "https://registry.yarnpkg.com/@piximi/components/-/components-0.1.7.tgz#be532165441e8e6d92ad606ecd259354f2f02266"
-  integrity sha512-dRLtHDj1+xTOqUlzfsnh32RHYAeO3+VWLU3N78z7oVNsoifr0oJRZ0SDlajjo0b2sxO9NHjBPPen38I3PPDGag==
+"@piximi/components@^0.1.9":
+  version "0.1.9"
+  resolved "https://registry.yarnpkg.com/@piximi/components/-/components-0.1.9.tgz#6830078a843547076dd1c66c657ac6fff4650b42"
+  integrity sha512-DyskdlX0AfOj8YHUAU/9KQqz2gwuYwhFpbREENYH54GD6U+BoGO6yRtTFx/UEZcD2aVAcs9SiGaT60L7/UTOQw==
   dependencies:
     "@material-ui/core" "^3.9.3"
     "@material-ui/icons" "^3.0.2"
