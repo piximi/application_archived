@@ -48,9 +48,18 @@ const createDataset = async (categories: Category[], images: Image[]) => {
   }
 
   let x = tensorflow.concat(xs);
+  if (categories.length - 1 < 2) {
+    alert('There must be at least two categories!');
+    return {
+      sucsess: false,
+      x: x,
+      y: x
+    };
+  }
   let y = tensorflow.oneHot(ys, categories.length - 1);
 
   return {
+    sucsess: true,
     x: x,
     y: y
   };
