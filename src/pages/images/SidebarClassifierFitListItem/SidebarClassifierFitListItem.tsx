@@ -20,7 +20,11 @@ const SidebarClassifierFitListItem = (props: any) => {
   const fit = async () => {
     const model = await createModel(categories.length - 1, 100);
 
-    const { x, y } = await createDataset(categories, images);
+    const { sucsess, x, y } = await createDataset(categories, images);
+
+    if (!sucsess) {
+      return;
+    }
 
     openSnackbar();
 
