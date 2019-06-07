@@ -2,6 +2,31 @@ import { Category, Image } from '@piximi/types';
 import * as ImageJS from 'image-js';
 import * as tensorflow from '@tensorflow/tfjs';
 
+const imageToSquare = (
+  image: HTMLImageElement | HTMLCanvasElement,
+  size: number
+): HTMLCanvasElement => {
+  const dimensions =
+    image instanceof HTMLImageElement
+      ? { width: image.naturalWidth, height: image.naturalHeight }
+      : image;
+
+  const scale = size / Math.max(dimensions.height, dimensions.width);
+  const width = scale * dimensions.width;
+  const height = scale * dimensions.height;
+
+  const canvas = document.createElement('canvas') as HTMLCanvasElement;
+
+  canvas.width = size;
+  canvas.height = size;
+
+  const context = canvas.getContext('2d') as CanvasRenderingContext2D;
+
+  context.drawImage(image, 0, 0, width, height);
+
+  return canvas;
+};
+
 const findCategoryIndex = (
   categories: Category[],
   identifier: string
@@ -22,20 +47,12 @@ const createDataset = async (categories: Category[], images: Image[]) => {
   for (const image of images) {
     const data = await ImageJS.Image.load(image.data);
 
-    const canvas = data.getCanvas();
-
-    const x = tensorflow.browser.fromPixels(canvas).toFloat();
-
-    const resized = tensorflow.image.resizeBilinear(x, [224, 224]);
-
-    const newShape = [1, 224, 224, 3];
-
-    const offset = tensorflow.scalar(127.5);
-
-    const batched = resized
-      .sub(offset)
-      .div(offset)
-      .reshape(newShape);
+    const batched = tensorflow.browser
+      .fromPixels(imageToSquare(data.getCanvas(), 224))
+      .toFloat()
+      .sub(tensorflow.scalar(127.5))
+      .div(tensorflow.scalar(127.5))
+      .reshape([1, 224, 224, 3]);
 
     xs.push(batched);
 
@@ -48,18 +65,20 @@ const createDataset = async (categories: Category[], images: Image[]) => {
   }
 
   let x = tensorflow.concat(xs);
+
   if (categories.length - 1 < 2) {
     alert('There must be at least two categories!');
     return {
-      sucsess: false,
+      success: false,
       x: x,
       y: x
     };
   }
+
   let y = tensorflow.oneHot(ys, categories.length - 1);
 
   return {
-    sucsess: true,
+    success: true,
     x: x,
     y: y
   };
