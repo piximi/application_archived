@@ -18,7 +18,7 @@ const mapStateToProps = (state: State) => {
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     createImage: (checksum: string, data: string) => {
-      const image: Image = {
+      const payload: Image = {
         categoryIdentifier: '00000000-0000-0000-0000-000000000000',
         checksum: checksum,
         data: data,
@@ -32,8 +32,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
           visibleChannels: []
         }
       };
-
-      const payload = { image: image };
 
       const action = createImageAction(payload);
 
