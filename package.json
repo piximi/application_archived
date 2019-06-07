@@ -9,7 +9,7 @@
     "@material-ui/styles": "^3.0.0-alpha.10",
     "@piximi/components": "^0.1.7",
     "@piximi/hooks": "^0.1.11",
-    "@piximi/store": "^0.1.21",
+    "@piximi/store": "^0.1.23",
     "@piximi/translations": "^0.1.2",
     "@piximi/types": "^0.1.8",
     "@tensorflow/tfjs": "1.1.0",
