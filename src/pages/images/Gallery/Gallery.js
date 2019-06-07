@@ -24,9 +24,9 @@ const Gallery = props => {
   const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
 
   React.useEffect(() => {
-    document.addEventListener('keydown', keyEvent);
-    document.addEventListener('keyup', keyEvent);
-    window.addEventListener('resize', windowResizeEvent);
+    // document.addEventListener('keydown', keyEvent);
+    // document.addEventListener('keyup', keyEvent);
+    // window.addEventListener('resize', windowResizeEvent);
   }, []);
 
   const onmousedown = e => {
@@ -116,6 +116,7 @@ const Gallery = props => {
   };
 
   const keyEvent = e => {
+    debugger;
     setShiftKeyPressed(e.shiftKey);
     setAltKeyPressed(e.getModifierState('Alt'));
   };
