@@ -4,7 +4,9 @@ import * as MaterialUI from '@material-ui/core';
 const OpenWeightsMenuItem = (props: any) => {
   const { closeMenu } = props;
 
-  const onChange = () => {
+  const onChange = () => {};
+
+  const onClick = () => {
     closeMenu();
   };
 
@@ -20,7 +22,7 @@ const OpenWeightsMenuItem = (props: any) => {
       />
 
       <label htmlFor="open-weights">
-        <MaterialUI.MenuItem>
+        <MaterialUI.MenuItem onClick={onClick}>
           <MaterialUI.ListItemText primary="Open weights" />
         </MaterialUI.MenuItem>
       </label>

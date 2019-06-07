@@ -3,7 +3,9 @@ import * as MaterialUI from '@material-ui/core';
 import { useDialog } from '@piximi/hooks';
 import { ConnectedOpenExampleClassifierDialog } from '../../../containers';
 
-const OpenExampleClassifierMenuItem = () => {
+const OpenExampleClassifierMenuItem = (props: any) => {
+  const { closeMenu } = props;
+
   const { openedDialog, openDialog, closeDialog } = useDialog();
 
   const onClick = () => {
