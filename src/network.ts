@@ -36,26 +36,34 @@ const findCategoryIndex = (
   );
 };
 
+const extracted = async (image: Image) => {
+  const data = await ImageJS.Image.load(image.data);
+
+  return tensorflow.tidy(() => {
+    return tensorflow.browser
+      .fromPixels(imageToSquare(data.getCanvas(), 224))
+      .toFloat()
+      .sub(tensorflow.scalar(127.5))
+      .div(tensorflow.scalar(127.5))
+      .reshape([1, 224, 224, 3]);
+  });
+};
+
 const createDataset = async (categories: Category[], images: Image[]) => {
   images = images.filter(image => {
     return image.categoryIdentifier !== '00000000-0000-0000-0000-000000000000';
   });
 
   let xs: tensorflow.Tensor<tensorflow.Rank>[] = [];
-  let ys = [];
+  let ys: any = [];
 
   for (const image of images) {
-    const data = await ImageJS.Image.load(image.data);
+    let x = await extracted(image);
 
-    const batched = tensorflow.browser
-      .fromPixels(imageToSquare(data.getCanvas(), 224))
-      .toFloat()
-      .sub(tensorflow.scalar(127.5))
-      .div(tensorflow.scalar(127.5))
-      .reshape([1, 224, 224, 3]);
+    xs.push(x);
+  }
 
-    xs.push(batched);
-
+  for (const image of images) {
     const categoryIndex = findCategoryIndex(
       categories,
       image.categoryIdentifier
@@ -64,7 +72,7 @@ const createDataset = async (categories: Category[], images: Image[]) => {
     ys.push(categoryIndex - 1);
   }
 
-  let x = tensorflow.concat(xs);
+  let x = tensorflow.tidy(() => tensorflow.concat(xs));
 
   if (categories.length - 1 < 2) {
     alert('There must be at least two categories!');
@@ -75,7 +83,9 @@ const createDataset = async (categories: Category[], images: Image[]) => {
     };
   }
 
-  let y = tensorflow.oneHot(ys, categories.length - 1);
+  let y = tensorflow.tidy(() => {
+    return tensorflow.oneHot(ys, categories.length - 1);
+  });
 
   return {
     success: true,
@@ -97,25 +107,26 @@ const createModel = async (classes: number, units: number) => {
     outputs: layer.output
   });
 
+  const a = tensorflow.layers.flatten({
+    inputShape: backbone.outputs[0].shape.slice(1)
+  });
+
+  const b = tensorflow.layers.dense({
+    units: units,
+    activation: 'relu',
+    kernelInitializer: 'varianceScaling',
+    useBias: true
+  });
+
+  const c = tensorflow.layers.dense({
+    units: classes,
+    kernelInitializer: 'varianceScaling',
+    useBias: false,
+    activation: 'softmax'
+  });
+
   const config = {
-    layers: [
-      ...backbone.layers,
-      tensorflow.layers.flatten({
-        inputShape: backbone.outputs[0].shape.slice(1)
-      }),
-      tensorflow.layers.dense({
-        units: units,
-        activation: 'relu',
-        kernelInitializer: 'varianceScaling',
-        useBias: true
-      }),
-      tensorflow.layers.dense({
-        units: classes,
-        kernelInitializer: 'varianceScaling',
-        useBias: false,
-        activation: 'softmax'
-      })
-    ]
+    layers: [...backbone.layers, a, b, c]
   };
 
   const model = tensorflow.sequential(config);

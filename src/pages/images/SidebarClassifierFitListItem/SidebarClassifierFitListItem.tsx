@@ -7,6 +7,7 @@ import { useSnackbar } from '@piximi/hooks';
 import { Snackbar } from '@piximi/components';
 import { createDataset, createModel } from '../../../network';
 import { Logs } from '@tensorflow/tfjs-layers';
+import * as tensorflow from '@tensorflow/tfjs';
 
 const SidebarClassifierFitListItem = (props: any) => {
   const { categories, images } = props;
@@ -19,6 +20,8 @@ const SidebarClassifierFitListItem = (props: any) => {
 
   const fit = async () => {
     const model = await createModel(categories.length - 1, 100);
+
+    console.log(tensorflow.memory());
 
     const { success, x, y } = await createDataset(categories, images);
 
