@@ -35,6 +35,7 @@ import SidebarAppBar from './SidebarAppBar/SidebarAppBar';
 import SidebarCategoriesList from './SidebarCategoriesList/SidebarCategoriesList';
 import SidebarCategoryListItem from './SidebarCategoryListItem/SidebarCategoryListItem';
 import SidebarCategoryListItemMenuList from './SidebarCategoryListItemMenuList/SidebarCategoryListItemMenuList';
+import SidebarClassifierEvaluateListItem from './SidebarClassifierEvaluateListItem/SidebarClassifierEvaluateListItem';
 import SidebarClassifierFitListItem from './SidebarClassifierFitListItem/SidebarClassifierFitListItem';
 import SidebarClassifierList from './SidebarClassifierList/SidebarClassifierList';
 import SidebarCreateCategoryListItem from './SidebarCreateCategoryListItem/SidebarCreateCategoryListItem';
@@ -87,6 +88,7 @@ export {
   SidebarCategoriesList,
   SidebarCategoryListItem,
   SidebarCategoryListItemMenuList,
+  SidebarClassifierEvaluateListItem,
   SidebarClassifierFitListItem,
   SidebarClassifierList,
   SidebarCreateCategoryListItem,

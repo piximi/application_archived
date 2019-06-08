@@ -7,6 +7,7 @@ import {
   CategoryDescriptionTextField
 } from '@piximi/components';
 import * as React from 'react';
+import { colors } from '../../../constants';
 
 const EditCategoryDialog = (props: any) => {
   const { category, updateColor, updateDescription, onClose, open } = props;
@@ -42,7 +43,11 @@ const EditCategoryDialog = (props: any) => {
       <DialogTitle title="Edit category" />
 
       <DialogContent>
-        <ColorIconButton color={color} onColorChange={onColorChange} />
+        <ColorIconButton
+          color={color}
+          colors={colors}
+          onColorChange={onColorChange}
+        />
 
         <CategoryDescriptionTextField
           description={description}

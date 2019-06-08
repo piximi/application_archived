@@ -1,12 +1,13 @@
 import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import * as React from 'react';
 import { useState } from 'react';
-import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
+import ScatterPlotIcon from '@material-ui/icons/ScatterPlot';
 import { useTranslation } from 'react-i18next';
 import { useSnackbar } from '@piximi/hooks';
 import { Snackbar } from '@piximi/components';
 import { createDataset, createModel } from '../../../network';
 import { Logs } from '@tensorflow/tfjs-layers';
+import * as tensorflow from '@tensorflow/tfjs';
 
 const SidebarClassifierFitListItem = (props: any) => {
   const { categories, images } = props;
@@ -20,41 +21,44 @@ const SidebarClassifierFitListItem = (props: any) => {
   const fit = async () => {
     const model = await createModel(categories.length - 1, 100);
 
-    const { sucsess, x, y } = await createDataset(categories, images);
+    console.log(tensorflow.memory());
 
-    if (!sucsess) {
+    const { success, x, y } = await createDataset(categories, images);
+
+    if (!success) {
       return;
     }
 
     openSnackbar();
 
     const args = {
-      batchSize: 32,
+      batchSize: 1,
       callbacks: {
         onTrainBegin: async (logs?: Logs | undefined) => {
-          setMessage(`onTrainBegin`);
+          console.log(`onTrainBegin`);
         },
         onTrainEnd: async (logs?: Logs | undefined) => {
           closeSnackbar();
         },
         onEpochBegin: async (epoch: number, logs?: Logs | undefined) => {
-          setMessage(`onEpochBegin ${epoch}`);
+          console.log(`onEpochBegin ${epoch}`);
         },
         onEpochEnd: async (epoch: number, logs?: Logs | undefined) => {
           if (logs) {
-            setMessage(`onEpochEnd ${epoch}, loss: ${logs.loss}`);
+            console.log(`onEpochEnd ${epoch}, loss: ${logs.loss}`);
           }
         },
         onBatchBegin: async (batch: number, logs?: Logs | undefined) => {
-          setMessage(`onBatchBegin ${batch}`);
+          console.log(`onBatchBegin ${batch}`);
         },
         onBatchEnd: async (batch: number, logs?: Logs | undefined) => {
-          setMessage(`onBatchEnd ${batch}`);
+          console.log(`onBatchEnd ${batch}`);
         }
       },
       epochs: 10,
       shuffle: true,
-      verbose: 1
+      validationSplit: 0.2,
+      verbose: 2
     };
 
     const history = await model.fit(x, y, args);
@@ -66,7 +70,7 @@ const SidebarClassifierFitListItem = (props: any) => {
     <React.Fragment>
       <ListItem button dense onClick={fit}>
         <ListItemIcon>
-          <PlayCircleOutlineIcon />
+          <ScatterPlotIcon />
         </ListItemIcon>
 
         <ListItemText primary={translation('Fit')} />
