@@ -20,6 +20,10 @@ const OpenClassifierMenuItem = (props: any) => {
     closeMenu();
   };
 
+  const onClick = () => {
+    closeMenu();
+  };
+
   return (
     <React.Fragment>
       <input
@@ -32,7 +36,7 @@ const OpenClassifierMenuItem = (props: any) => {
       />
 
       <label htmlFor="open-classifier">
-        <MaterialUI.MenuItem>
+        <MaterialUI.MenuItem onClick={onClick}>
           <MaterialUI.ListItemText primary="Open classifier" />
         </MaterialUI.MenuItem>
       </label>

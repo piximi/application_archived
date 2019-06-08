@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { OpenExampleClassifierDialog } from '../pages/images';
-import { Classifier, Image, Category } from '@piximi/types';
+import { Classifier, Category, Image } from '@piximi/types';
 import { Dispatch } from 'redux';
 import { openClassifierAction } from '@piximi/store';
 
