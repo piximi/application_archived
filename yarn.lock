@@ -1356,9 +1356,9 @@
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
 
 "@piximi/components@^0.1.7":
-  version "0.1.7"
-  resolved "https://registry.yarnpkg.com/@piximi/components/-/components-0.1.7.tgz#be532165441e8e6d92ad606ecd259354f2f02266"
-  integrity sha512-dRLtHDj1+xTOqUlzfsnh32RHYAeO3+VWLU3N78z7oVNsoifr0oJRZ0SDlajjo0b2sxO9NHjBPPen38I3PPDGag==
+  version "0.1.11"
+  resolved "https://registry.yarnpkg.com/@piximi/components/-/components-0.1.11.tgz#4ab74e563cb61bb5b2022601a5133a2dd19d19ec"
+  integrity sha512-hx1eoMl8R4zNyl3/fkqTAG6dosJulpaFpXCHxv+tIyGjL3hljKr25DcKzqlZJ09mgNVNhm6yJsdt8IsxpiteTA==
   dependencies:
     "@material-ui/core" "^3.9.3"
     "@material-ui/icons" "^3.0.2"
@@ -1383,10 +1383,10 @@
     react "^16.8.6"
     react-dom "^16.8.6"
 
-"@piximi/store@^0.1.18":
-  version "0.1.18"
-  resolved "https://registry.yarnpkg.com/@piximi/store/-/store-0.1.18.tgz#6111496f553613b061c50b125b638403b594a516"
-  integrity sha512-yinnSd8xgkYO9dWKXrmZEGFmmz7O7aqvb/47lJUQ5D32I8Z9mSmhuOZxXGPZPmRPcAfyU9XU8CNvwOVGpKcH2Q==
+"@piximi/store@^0.1.23":
+  version "0.1.23"
+  resolved "https://registry.yarnpkg.com/@piximi/store/-/store-0.1.23.tgz#67c58d7b2eeb435d037abc5521d1c1dae0236b29"
+  integrity sha512-Jy0N6JeInWr9BZE/IDbz+yivSaIVFs26uwU1oIc6OHdWPqwsbSw9h5LfTIAhySdFkHr2FSi1iPCJEcvLpsw51Q==
   dependencies:
     "@piximi/types" "^0.1.7"
     localforage "^1.7.3"
@@ -1660,6 +1660,11 @@
   dependencies:
     "@types/cheerio" "*"
     "@types/react" "*"
+
+"@types/file-saver@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@types/file-saver/-/file-saver-2.0.1.tgz#e18eb8b069e442f7b956d313f4fadd3ef887354e"
+  integrity sha512-g1QUuhYVVAamfCifK7oB7G3aIl4BbOyzDOqVyUfEr4tfBKrXfeH+M+Tg7HKCXSrbzxYdhyCP7z9WbKo0R2hBCw==
 
 "@types/hoist-non-react-statics@^3.3.0":
   version "3.3.1"
@@ -5260,6 +5265,11 @@ file-loader@3.0.1:
   dependencies:
     loader-utils "^1.0.2"
     schema-utils "^1.0.0"
+
+file-saver@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/file-saver/-/file-saver-2.0.2.tgz#06d6e728a9ea2df2cce2f8d9e84dfcdc338ec17a"
+  integrity sha512-Wz3c3XQ5xroCxd1G8b7yL0Ehkf0TC9oYC6buPFkNnU9EnaPlifeAFCyCh+iewXTyFRcg0a6j3J7FmJsIhlhBdw==
 
 file-type@^10.10.0:
   version "10.11.0"

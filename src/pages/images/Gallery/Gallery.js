@@ -117,7 +117,7 @@ const Gallery = props => {
 
   const keyEvent = e => {
     setShiftKeyPressed(e.shiftKey);
-    setAltKeyPressed(e.getModifierState('Alt'));
+    setAltKeyPressed(e.altKey);
   };
 
   const windowResizeEvent = e => {

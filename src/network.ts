@@ -2,6 +2,31 @@ import { Category, Image } from '@piximi/types';
 import * as ImageJS from 'image-js';
 import * as tensorflow from '@tensorflow/tfjs';
 
+const imageToSquare = (
+  image: HTMLImageElement | HTMLCanvasElement,
+  size: number
+): HTMLCanvasElement => {
+  const dimensions =
+    image instanceof HTMLImageElement
+      ? { width: image.naturalWidth, height: image.naturalHeight }
+      : image;
+
+  const scale = size / Math.max(dimensions.height, dimensions.width);
+  const width = scale * dimensions.width;
+  const height = scale * dimensions.height;
+
+  const canvas = document.createElement('canvas') as HTMLCanvasElement;
+
+  canvas.width = size;
+  canvas.height = size;
+
+  const context = canvas.getContext('2d') as CanvasRenderingContext2D;
+
+  context.drawImage(image, 0, 0, width, height);
+
+  return canvas;
+};
+
 const findCategoryIndex = (
   categories: Category[],
   identifier: string
@@ -11,127 +36,110 @@ const findCategoryIndex = (
   );
 };
 
-async function getCanvas(image: Image) {
-  return await ImageJS.Image.load(image.data).then((x: ImageJS.Image) =>
-    x.getCanvas()
-  );
-}
+const extracted = async (image: Image) => {
+  const data = await ImageJS.Image.load(image.data);
 
-class Network {
-  private readonly categories: Category[];
-  private readonly images: Image[];
-  private backbone: tensorflow.LayersModel | undefined;
-  private model?: tensorflow.LayersModel;
+  return tensorflow.tidy(() => {
+    return tensorflow.browser
+      .fromPixels(imageToSquare(data.getCanvas(), 224))
+      .toFloat()
+      .sub(tensorflow.scalar(127.5))
+      .div(tensorflow.scalar(127.5))
+      .reshape([1, 224, 224, 3]);
+  });
+};
 
-  constructor(categories: Category[], images: Image[]) {
-    this.categories = categories;
-    this.images = images;
+const createDataset = async (categories: Category[], images: Image[]) => {
+  images = images.filter(image => {
+    return image.categoryIdentifier !== '00000000-0000-0000-0000-000000000000';
+  });
+
+  let xs: tensorflow.Tensor<tensorflow.Rank>[] = [];
+  let ys: any = [];
+
+  for (const image of images) {
+    let x = await extracted(image);
+
+    xs.push(x);
   }
 
-  compile = () => {
-    if (this.model) {
-      const optimizer = tensorflow.train.adam();
+  for (const image of images) {
+    const categoryIndex = findCategoryIndex(
+      categories,
+      image.categoryIdentifier
+    );
 
-      const args = {
-        loss: 'categoricalCrossentropy',
-        metrics: ['accuracy'],
-        optimizer: optimizer
-      };
+    ys.push(categoryIndex - 1);
+  }
 
-      this.model.compile(args);
-    }
-  };
+  let x = tensorflow.tidy(() => tensorflow.concat(xs));
 
-  createBackbone = async (
-    pathOrIOHandler: string | tensorflow.io.IOHandler
-  ) => {
-    await tensorflow.loadLayersModel(pathOrIOHandler).then(backbone => {
-      const activation = backbone.getLayer('conv_pw_13_relu');
-
-      this.backbone = tensorflow.model({
-        inputs: backbone.inputs,
-        outputs: activation.output
-      });
-    });
-  };
-
-  load = async (pathOrIOHandler: string | tensorflow.io.IOHandler) => {
-    this.createBackbone(pathOrIOHandler);
-
-    if (this.backbone) {
-      const a = tensorflow.layers.flatten({
-        inputShape: this.backbone.outputs[0].shape.slice(1)
-      });
-
-      const b = tensorflow.layers.dense({
-        activation: 'relu',
-        kernelInitializer: 'varianceScaling',
-        units: 1000,
-        useBias: true
-      });
-
-      const c = tensorflow.layers.dense({
-        activation: 'softmax',
-        kernelInitializer: 'varianceScaling',
-        units: this.categories.length - 1,
-        useBias: false
-      });
-
-      const layers = [a, b, c];
-
-      const config = {
-        layers: layers
-      };
-
-      this.model = tensorflow.sequential(config);
-    }
-  };
-
-  fit = async (x: tensorflow.Tensor, y: tensorflow.Tensor, args?: any) => {
-    if (this.model) {
-      await this.model.fit(x, y, args);
-    }
-  };
-
-  dataset = async () => {
-    const images: tensorflow.Tensor[] = [];
-    const categories = [];
-
-    for (const image of this.images) {
-      await getCanvas(image).then(canvas => {
-        const x = tensorflow.browser.fromPixels(canvas).toFloat();
-
-        const resized = tensorflow.image.resizeBilinear(x, [224, 224]);
-
-        const newShape = [1, 224, 224, 3];
-
-        const offset = tensorflow.scalar(127.5);
-
-        const batched = resized
-          .sub(offset)
-          .div(offset)
-          .reshape(newShape);
-
-        images.push(batched);
-      });
-
-      const categoryIndex = findCategoryIndex(
-        this.categories,
-        image.categoryIdentifier
-      );
-
-      categories.push(categoryIndex);
-    }
-
-    const x = tensorflow.concat(images);
-
-    const y = tensorflow.oneHot(categories, categories.length - 1);
-
+  if (categories.length - 1 < 2) {
+    alert('There must be at least two categories!');
     return {
+      success: false,
       x: x,
-      y: y
+      y: x
     };
-  };
-}
+  }
 
-export { Network };
+  let y = tensorflow.tidy(() => {
+    return tensorflow.oneHot(ys, categories.length - 1);
+  });
+
+  return {
+    success: true,
+    x: x,
+    y: y
+  };
+};
+
+const createModel = async (classes: number, units: number) => {
+  const resource =
+    'https://storage.googleapis.com/tfjs-models/tfjs/mobilenet_v1_0.25_224/model.json';
+
+  const mobilenet = await tensorflow.loadLayersModel(resource);
+
+  const layer = mobilenet.getLayer('conv_pw_13_relu');
+
+  const backbone = tensorflow.model({
+    inputs: mobilenet.inputs,
+    outputs: layer.output
+  });
+
+  const a = tensorflow.layers.flatten({
+    inputShape: backbone.outputs[0].shape.slice(1)
+  });
+
+  const b = tensorflow.layers.dense({
+    units: units,
+    activation: 'relu',
+    kernelInitializer: 'varianceScaling',
+    useBias: true
+  });
+
+  const c = tensorflow.layers.dense({
+    units: classes,
+    kernelInitializer: 'varianceScaling',
+    useBias: false,
+    activation: 'softmax'
+  });
+
+  const config = {
+    layers: [...backbone.layers, a, b, c]
+  };
+
+  const model = tensorflow.sequential(config);
+
+  const optimizer = tensorflow.train.adam();
+
+  model.compile({
+    loss: 'categoricalCrossentropy',
+    metrics: ['accuracy'],
+    optimizer: optimizer
+  });
+
+  return model;
+};
+
+export { createDataset, createModel };

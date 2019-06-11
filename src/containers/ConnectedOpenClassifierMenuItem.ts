@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { OpenExampleClassifierDialog } from '../pages/images';
-import { Classifier, Category, Image } from '@piximi/types';
+import { OpenClassifierMenuItem } from '../pages/images';
+import { Category, Image, Classifier } from '@piximi/types';
 import { Dispatch } from 'redux';
 import { openClassifierAction } from '@piximi/store';
 
@@ -16,12 +16,8 @@ const mapStateToProps = (state: State) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    openClassifier: async (
-      categories: Category[],
-      images: Image[],
-      name: string
-    ) => {
-      const payload: Classifier = {
+    openClassifier: (categories: Category[], images: Image[], name: string) => {
+      const payload = {
         categories: categories,
         images: images,
         name: name
@@ -37,6 +33,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
 const ConnectedOpenExampleClassifierDialog = connect(
   mapStateToProps,
   mapDispatchToProps
-)(OpenExampleClassifierDialog);
+)(OpenClassifierMenuItem);
 
 export default ConnectedOpenExampleClassifierDialog;

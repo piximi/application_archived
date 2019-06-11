@@ -1,10 +1,7 @@
 import * as React from 'react';
 import * as MaterialUI from '@material-ui/core';
-import {
-  OpenClassifierMenuItem,
-  OpenExampleClassifierMenuItem,
-  OpenWeightsMenuItem
-} from '..';
+import { OpenExampleClassifierMenuItem, OpenWeightsMenuItem } from '..';
+import { ConnectedOpenClassifierMenuItem } from '../../../containers';
 
 type Props = {
   anchorEl: any;
@@ -29,13 +26,13 @@ const OpenMenuList = (props: Props) => {
     >
       <MaterialUI.Paper>
         <MaterialUI.MenuList dense>
-          <OpenClassifierMenuItem />
+          <ConnectedOpenClassifierMenuItem closeMenu={closeMenu} />
 
           <MaterialUI.Divider />
 
-          <OpenExampleClassifierMenuItem />
+          <OpenExampleClassifierMenuItem closeMenu={closeMenu} />
 
-          <OpenWeightsMenuItem />
+          <OpenWeightsMenuItem closeMenu={closeMenu} />
         </MaterialUI.MenuList>
       </MaterialUI.Paper>
     </MaterialUI.Popover>

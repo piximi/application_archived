@@ -33,7 +33,9 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
         }
       };
 
-      const payload = { image: image };
+      const payload = {
+        image: image
+      };
 
       const action = createImageAction(payload);
 

@@ -13,8 +13,11 @@ import ConnectedItem from './ConnectedItem';
 import ConnectedItemCategoryMenu from './ConnectedItemCategoryMenu';
 import ConnectedItemLabel from './ConnectedItemLabel';
 import ConnectedNewClassifierDialog from './ConnectedNewClassifierDialog';
+import ConnectedOpenClassifierMenuItem from './ConnectedOpenClassifierMenuItem';
+import ConnectedSaveClassifierDialog from './ConnectedSaveClassifierDialog';
 import ConnectedSearch from './ConnectedSearch';
 import ConnectedSidebarCategoryListItem from './ConnectedSidebarCategoryListItem';
+import ConnectedSidebarClassifierEvaluateListItem from './ConnectedSidebarClassifierEvaluateListItem';
 import ConnectedSidebarClassifierFitListItem from './ConnectedSidebarClassifierFitListItem';
 import ConnectedSidebarOpenListItem from './ConnectedSidebarOpenListItem';
 import ConnectedSidebarSaveListItem from './ConnectedSidebarSaveListItem';
@@ -36,8 +39,11 @@ export {
   ConnectedItemCategoryMenu,
   ConnectedItemLabel,
   ConnectedNewClassifierDialog,
+  ConnectedOpenClassifierMenuItem,
+  ConnectedSaveClassifierDialog,
   ConnectedSearch,
   ConnectedSidebarCategoryListItem,
+  ConnectedSidebarClassifierEvaluateListItem,
   ConnectedSidebarClassifierFitListItem,
   ConnectedSidebarOpenListItem,
   ConnectedOpenExampleClassifierDialog,
