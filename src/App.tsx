@@ -1,26 +1,20 @@
 import * as React from 'react';
 import { ConnectedApplication } from './containers';
-import {
-  MuiThemeProvider,
-  createMuiTheme,
-  withStyles
-} from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 
 const theme = createMuiTheme({
   palette: {
     type: 'light'
-  },
-  typography: {
-    useNextVariants: true
   }
 });
 
 const App = () => {
   return (
-    <MuiThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
       <ConnectedApplication />
-    </MuiThemeProvider>
+    </ThemeProvider>
   );
 };
 
-export default withStyles({}, { withTheme: true })(App);
+export default App;

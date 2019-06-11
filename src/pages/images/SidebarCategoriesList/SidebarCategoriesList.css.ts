@@ -4,9 +4,9 @@ import { Theme } from '@material-ui/core';
 const styles = (theme: Theme) =>
   createStyles({
     create: {
-      bottom: theme.spacing.unit * 2,
+      bottom: theme.spacing(2),
       position: 'absolute',
-      right: theme.spacing.unit * 2
+      right: theme.spacing(2)
     }
   });
 

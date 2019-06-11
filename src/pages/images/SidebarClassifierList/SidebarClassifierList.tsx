@@ -24,7 +24,7 @@ const SidebarClassifierList = () => {
           {!collapsedList ? <ExpandLessIcon /> : <ExpandMoreIcon />}
         </ListItemIcon>
 
-        <ListItemText inset primary="Classifier" />
+        <ListItemText primary="Classifier" />
       </ListItem>
 
       <Collapse in={!collapsedList} timeout="auto" unmountOnExit>

@@ -14,7 +14,7 @@ const SidebarSaveListItem = () => {
           <SaveIcon />
         </MaterialUI.ListItemIcon>
 
-        <MaterialUI.ListItemText inset primary="Save" />
+        <MaterialUI.ListItemText primary="Save" />
       </MaterialUI.ListItem>
 
       <SaveMenuList anchorEl={anchorEl} onClose={closeMenu} open={openedMenu} />
