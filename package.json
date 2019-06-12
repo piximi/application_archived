@@ -91,7 +91,7 @@
     "source-map-explorer": "^1.6.0",
     "typescript": "^3.4.1"
   },
-  "homepage": "https://application.piximi.org",
+  "homepage": ".",
   "lint-staged": {
     "src/**/*.{css,js,json,jsx,ts,tsx}": [
       "prettier --single-quote --write",
