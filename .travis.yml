@@ -20,9 +20,10 @@ deploy:
     on:
       branch: production
       repo: piximi/application
+before_deploy:
+  - yarn build --max-old-space-size=4096
+  - ls build
 cache: yarn
 language: node_js
 node_js:
   - '12'
-script:
-  - yarn build --max-old-space-size=4096
