@@ -20,18 +20,6 @@
     "jsx": "preserve"
   },
   "include": [
-    "src/actions/*",
-    "src/App.tsx",
-    "src/components/**/*.ts",
-    "src/components/**/*.tsx",
-    "src/constants.ts",
-    "src/containers/*",
-    "src/containers/**/*.ts",
-    "src/containers/**/*.tsx",
-    "src/hooks/*",
-    "src/index.tsx",
-    "src/pages/images/**/*.ts",
-    "src/pages/images/**/*.tsx",
-    "src/registerServiceWorker.ts"
+    "src"
   ]
 }
