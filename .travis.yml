@@ -21,8 +21,6 @@ deploy:
       branch: production
       repo: piximi/application
 cache: yarn
-env:
-  NODE_OPTIONS: --max-old-space-size=4096
 language: node_js
 node_js:
   - '12'
