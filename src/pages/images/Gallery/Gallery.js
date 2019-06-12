@@ -18,16 +18,10 @@ const Gallery = props => {
     'hidden'
   );
   const [currentlyDraggedItem, setCurrentlyDraggedItem] = React.useState(null);
-  const [shiftKeyPressed, setShiftKeyPressed] = React.useState(false);
-  const [altKeyPressed, setAltKeyPressed] = React.useState(false);
+  const [shiftKeyPressed] = React.useState(false);
+  const [altKeyPressed] = React.useState(false);
   const [mouseDown, setMouseDown] = React.useState(false);
-  const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
-
-  React.useEffect(() => {
-    // document.addEventListener('keydown', keyEvent);
-    // document.addEventListener('keyup', keyEvent);
-    // window.addEventListener('resize', windowResizeEvent);
-  }, []);
+  const [windowWidth] = React.useState(window.innerWidth);
 
   const onmousedown = e => {
     let currentSelectionBoxCoordinates = {
@@ -113,16 +107,6 @@ const Gallery = props => {
     // Set selected state
     props.setSelectedImages(selectedItems);
     setSelected(selectedItems);
-  };
-
-  const keyEvent = e => {
-    debugger;
-    setShiftKeyPressed(e.shiftKey);
-    setAltKeyPressed(e.altKey);
-  };
-
-  const windowResizeEvent = e => {
-    setWindowWidth(e.target.innerWidth);
   };
 
   // Check if no images are visible or available
