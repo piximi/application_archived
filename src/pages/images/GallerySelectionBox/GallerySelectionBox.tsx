@@ -16,7 +16,7 @@ const GallerySelectionBox = (props: Props) => {
   const { selectionBoxCoordinates, visibility } = props;
 
   const [style, setStyle] = React.useState({
-    zIndex: 9000,
+    zIndex: 1,
     position: 'fixed' as 'fixed',
     background: '#eaeaea',
     opacity: 0.4,
@@ -26,7 +26,6 @@ const GallerySelectionBox = (props: Props) => {
 
   React.useEffect(() => {
     const styleFromBoxCoordinates = reCalc(selectionBoxCoordinates);
-
     const newStyle = {
       ...style,
       ...styleFromBoxCoordinates,
@@ -36,22 +35,22 @@ const GallerySelectionBox = (props: Props) => {
     setStyle(newStyle);
   }, [selectionBoxCoordinates, style, visibility]);
 
-  React.useEffect(() => {
-    const defaultCoordinates = {
-      left: '0px',
-      top: '0px',
-      width: '0px',
-      height: '0px'
-    };
+  // React.useEffect(() => {
+  //   const defaultCoordinates = {
+  //     left: '0px',
+  //     top: '0px',
+  //     width: '0px',
+  //     height: '0px'
+  //   };
 
-    const newStyle = {
-      ...style,
-      ...defaultCoordinates,
-      visibility: visibility
-    };
+  //   const newStyle = {
+  //     ...style,
+  //     ...defaultCoordinates,
+  //     visibility: visibility
+  //   };
 
-    setStyle(newStyle);
-  }, [selectionBoxCoordinates, style, visibility]);
+  //   setStyle(newStyle);
+  // }, [selectionBoxCoordinates, style, visibility]);
 
   return <div style={style} />;
 };

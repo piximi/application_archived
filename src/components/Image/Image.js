@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 const Image = props => {
-  const { src, openImageViewerDialog } = props;
+  const { src, openImageViewerDialog, id } = props;
 
   const [imageStatus, setImageStatus] = React.useState('loading');
   const [image, setImage] = React.useState(null);
@@ -68,8 +68,9 @@ const Image = props => {
   return (
     <div>
       <canvas
-        onDoubleClick={openImageViewerDialog}
         type={'selectableElement'}
+        onDoubleClick={openImageViewerDialog}
+        imgid={id}
         style={{ verticalAlign: 'middle', padding: '2px' }}
         ref={canvasRef}
         height={props.height}

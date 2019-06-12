@@ -22,6 +22,7 @@ const GalleryItem = (props: any) => {
 
       <Image
         key={'img' + item.identifier}
+        id={item.identifier}
         openImageViewerDialog={openDialog}
         src={item.data}
         brightness={item.brightness}
