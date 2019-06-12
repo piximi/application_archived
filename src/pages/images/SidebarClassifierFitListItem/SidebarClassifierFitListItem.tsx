@@ -63,7 +63,7 @@ const SidebarClassifierFitListItem = (props: any) => {
 
     const history = await model.fit(x, y, args);
 
-    console.log(history);
+    setMessage(history);
   };
 
   return (

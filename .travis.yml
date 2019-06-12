@@ -1,21 +1,29 @@
-deploy:
+gcs: &gcs
   access_key_id: GOOGAPI2JYRMRONGVOXT
-  bucket: application-piximi-org
+  acl: public-read
   cache_control: "max-age=31536000"
+  detect_encoding: true
   local-dir: build
-  on:
-    repo: piximi/application
   provider: gcs
   secret_access_key:
-    secure: mUOcPS2dnIWo7pO+/iTLybEAmXwDy1BJkYtF33yizPyOAgbkLpsroqOkTnaqHCwowAVJwwVBnTcV/Li8cs4KUMLp+xAFWL4ElBkuyubOUEqinJSX+38tQ6CvkEo8IPjeDOktip/MasbsRCo8AxKkIj8sOTR4AFpfh6Roy+/BBCYOQbZOJz5tI1yIQW416fl/6QDNxDhwV/wPlr6VUAFj32Qj2JnMxRflSvfnFmS2RGFvqjoeGTSl9IaWdiISU1U+uV+kZdOkTb33sGyz1ePWaPPySWUXZi7ANOOyQzqK4EEItCvCc7bytUF6kNFkI8cWFUCJigVoWxKzj3B57YDzBgRWy/UyTheGefCJJhl5A3FKzpwko7WUZ0uJtiL/A8UjhevjJ50cMoettRcXawgC8bIpf0AyRJRH8x6AKWZZ5a95rka3GWCqjEuL6cesBkHYnsnRMQzayprHruL2qryWjQZs3QoQRhbybtq+HdOV4rT34vLE10zDTNt175GcHm+P1OYmo6jBKeIR8lmgkphoNjoEr07CCF4dRCsSXBJ0Go9oWfCZNJ0N8aZWjpNeBs/wfJFaacAl/LvfJ+oU/EtNPcNxCud11CzlOJEHvb7ldF78BnnpQTN7QVMssv2KqXNwZjCPjpPNdoXNfBdVKUpGfXxl8NkHpKRk0gdzk5TVH/0=
-  skip_cleanup: true
+    secure: Xv/fFzUooy3JjZG/296tkoJW40zgIQM/xTURF/m7tOegruReVXyt8AIuSeVoTBMeUoDIfvj1ZoIIFFFaAkihgib8ixFJZUl51lv1v2q45GzW0aqztKyLYDfXhkdebVK5VaEw1ggdD1hlHxzadwKLESUIAsQzPCsGyMbR59LaSRoNzY4xWOHtBl+e/KWPjpoT9F5K/5YTv45UMnMvVuQ+7gvfAUPybh+xQ8FbZl5y1BGS91Fa9PFfclRCdZOiu1S62Z0Evouj4ECRE+vWsihm6AsAm49EEeoLJQxyGzppmlSb+lTHtOv6EaQHJ8fwGTjDXlCqMI5sfG2pvK1DjXitXuNTyMgijFdyvgm/yQanXamKxPBqRTsvz6Shop+MWJ7MnC8SRExbYC3wHkgoqNfI9T8IMezxeN6KXJGBua2dsNBNZ/iVzeB4IClNAc0qguFEJiWTjXMGjAxSqGtnEMGe8gPsv6bdaZXnt3TWZqHiN7KtkhtepsM9NTWfGb/plHLnnhrMWeBwI6BsYyY6nRBkIpA3bCvMFyb5SWvamXMspBWKpMLGiqseceElL7kD9hfSlmB7VDt2piyuESUsvgp9eR9CGTq9BXFiLfAPonGPLArqxLLnIr9bQhrjp6kRcEPtUkE86pq/5avK3i1itq8pr2EdIIUhZCeVJbqjSmlDv7U=
+
+deploy:
+  - <<: *gcs
+    bucket: master.piximi.app
+    on:
+      branch: master
+      repo: piximi/application
+  - <<: *gcs
+    bucket: www.piximi.app
+    on:
+      branch: production
+      repo: piximi/application
+cache: yarn
 env:
-  global:
-    secure: iabyEFI/1lqFCppjHKwgEz3L7c3UkI6iXPPqyoKUfvTLpomYJHO9M5lblx5tzJBvJuhLQhslHFt/SH+1TpGBFOrGmXMMTI754HKNG9ExqVmDgeRQivQls1iROSQ7Q8WhdczMBy024ggW3ekxpsp2aOjmWaj8d6A2ZE+9+aD/iU7I8IntBiZhSy/1ZdNLrXZ3igL5qRzJxOdorGhjjfNcEwm4MIHCnTW/swzvXXnzgLS+sPECn9lPHqowamjblG16YGHkmH0gy4z2eKWVf9H4ZCRCU/IhSYhWfMq2klSP25AtjWO4j0vjqcbl3j7SGtwUAi4YtNl2/VNoWV6EIIiEJJUCjPVbdU+qdXsRdOLl9Afil2Imjjq7NsL30D/d84iwtY6IGymVgTx7IftqBUEyUPjnBHZleQEfMLqv3hlR+mX254Q5wV/HCfS04OuwiLVugLQXpJW+oLeFXAn83R/o1JYNr/BDteCMYaS4bToHCqXpGFGHyqzAp+UdgL7SZdbmW5M6gC9slqcBEaOAdrvX0D35kY5dD2X7sHeSypy4zRIVlQIwH4YROOuXPEsrocO+3TyWE60wgdQZuZcEAy/jobjbyprfxb42Z87DD4JJ87N7b5nbgIU5WB2RmJ7Prmb0e88gSD09UTybq8dXYpOpsj+nsHaMln8sJ443NvQqQnA=
+  NODE_OPTIONS: --max-old-space-size=4096
 language: node_js
 node_js:
-  - '10'
+  - '12'
 script:
-  - yarn install
-  - yarn test
-  - yarn build
+  - yarn build --max-old-space-size=4096
