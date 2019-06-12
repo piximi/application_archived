@@ -68,8 +68,8 @@ const styles = (theme: Theme) =>
     },
     fab: {
       position: 'absolute',
-      bottom: theme.spacing.unit * 2,
-      right: theme.spacing.unit * 2
+      bottom: theme.spacing(2),
+      right: theme.spacing(2)
     },
     unlabeledToggled: {
       '&:hover': {
@@ -77,14 +77,14 @@ const styles = (theme: Theme) =>
       },
       background: 'rgba(200,200,200,1)',
       position: 'absolute',
-      bottom: theme.spacing.unit * 2,
-      right: theme.spacing.unit * 2
+      bottom: theme.spacing(2),
+      right: theme.spacing(2)
     },
     unlabeledUntoggled: {
       background: 'rgba(200,50,50,1)',
       position: 'absolute',
-      bottom: theme.spacing.unit * 2,
-      right: theme.spacing.unit * 2
+      bottom: theme.spacing(2),
+      right: theme.spacing(2)
     },
     pacmanLoader: {
       position: 'fixed',

@@ -17,7 +17,7 @@ const styles = (theme: Theme) =>
       marginRight: 20
     },
     formControl: {
-      margin: theme.spacing.unit,
+      margin: theme.spacing(1),
       minWidth: 120
     },
     appbar: {

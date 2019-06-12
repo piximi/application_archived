@@ -62,7 +62,7 @@ const ImageViewer = (props: Props) => {
         container
         alignItems="center"
         justify="center"
-        spacing={24}
+        spacing={3}
       >
         <Grid item xs={4}>
           <Image

@@ -17,7 +17,7 @@ const SidebarCreateCategoryListItem = () => {
           <AddIcon />
         </ListItemIcon>
 
-        <ListItemText inset primary={translation('Create category')} />
+        <ListItemText primary={translation('Create category')} />
       </ListItem>
 
       <ConnectedCreateCategoryDialog

@@ -6,13 +6,13 @@ const styles = (theme: Theme) =>
     button: {
       textTransform: 'none',
       fontSize: '1rem',
-      borderRadius: theme.spacing.unit,
-      padding: theme.spacing.unit,
+      borderRadius: theme.spacing(1),
+      padding: theme.spacing(1),
       fontWeight: 'inherit',
       letterSpacing: 'inherit'
     },
     icon: {
-      paddingRight: theme.spacing.unit,
+      paddingRight: theme.spacing(1),
       paddingTop: '4px',
       paddingBottom: '4px'
     }

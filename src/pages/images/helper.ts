@@ -36,7 +36,7 @@ const collisionDetection = (mousePosition: {
 }) => {
   // Check if any selectable item is overlapping with mouse selection box
   const rectangle1 = reCalcWithoutPixelString(mousePosition);
-  const elements = document.getElementsByName('selectableElement'); // Check collisions with selectable elements
+  const elements = document.getElementsByTagName('canvas'); // Check collisions with selectable elements
   let collisions = [];
   for (let i = 0; i < elements.length; i++) {
     const element = elements[i];

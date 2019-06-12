@@ -34,11 +34,11 @@ const styles = (theme: Theme) =>
       display: 'none'
     },
     search: {
-      marginLeft: theme.spacing.unit,
-      marginRight: theme.spacing.unit
+      marginLeft: theme.spacing(1),
+      marginRight: theme.spacing(1)
     },
     padding: {
-      marginRight: theme.spacing.unit
+      marginRight: theme.spacing(1)
     },
     slider: {
       root: {

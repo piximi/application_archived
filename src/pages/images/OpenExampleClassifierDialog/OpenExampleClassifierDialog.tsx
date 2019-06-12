@@ -24,9 +24,10 @@ const OpenExampleClassifierDialog = (props: any) => {
 
   const { t: translation } = useTranslation();
 
-  const { openClassifier, open, onClose } = props;
+  const { openClassifier, open, onClose, closeMenu } = props;
 
   const openExampleClassifier = (name: string) => {
+    closeMenu();
     return axios
       .get(
         'https://raw.githubusercontent.com/piximi/application/master/src/demos/' +
@@ -41,6 +42,11 @@ const OpenExampleClassifierDialog = (props: any) => {
       });
   };
 
+  const closeMenueAndDialog = () => {
+    onClose();
+    closeMenu();
+  };
+
   return (
     <Dialog fullWidth maxWidth="sm" open={open}>
       <DialogTitle disableTypography className={classes.dialogTitle}>
@@ -51,7 +57,7 @@ const OpenExampleClassifierDialog = (props: any) => {
         <IconButton
           aria-label="Close"
           className={classes.closeButton}
-          onClick={onClose}
+          onClick={closeMenueAndDialog}
         >
           <CloseIcon />
         </IconButton>

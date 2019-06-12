@@ -48,7 +48,7 @@ const GalleryItemCategoryMenu = (props: any) => {
         <LabelIcon style={{ color: category.visualization.color }} />
       </ListItemIcon>
 
-      <ListItemText inset primary={category.description} />
+      <ListItemText primary={category.description} />
     </MenuItem>
   ));
 

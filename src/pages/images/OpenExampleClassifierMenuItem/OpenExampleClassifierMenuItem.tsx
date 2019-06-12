@@ -28,6 +28,7 @@ const OpenExampleClassifierMenuItem = (
       <ConnectedOpenExampleClassifierDialog
         onClose={closeDialog}
         open={openedDialog}
+        closeMenu={closeMenu}
       />
     </React.Fragment>
   );
