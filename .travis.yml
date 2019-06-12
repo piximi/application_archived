@@ -21,7 +21,7 @@ deploy:
       repo: piximi/application
 language: node_js
 node_js:
-  - '10'
+  - '12'
 script:
   - yarn install
   - yarn build
