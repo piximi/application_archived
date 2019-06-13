@@ -6,10 +6,6 @@ const OpenWeightsMenuItem = (props: any) => {
 
   const onChange = () => {};
 
-  const onClick = () => {
-    closeMenu();
-  };
-
   return (
     <React.Fragment>
       <input
@@ -22,7 +18,7 @@ const OpenWeightsMenuItem = (props: any) => {
       />
 
       <label htmlFor="open-weights">
-        <MaterialUI.MenuItem onClick={onClick}>
+        <MaterialUI.MenuItem onClick={closeMenu}>
           <MaterialUI.ListItemText primary="Open weights" />
         </MaterialUI.MenuItem>
       </label>
