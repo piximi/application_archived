@@ -6,6 +6,11 @@ import { collisionDetection } from '../helper';
 const Gallery = props => {
   const { images, imagesPerRow, decreaseWidth } = props;
 
+  const visibleImages =
+    images.length > 0
+      ? images.filter(image => image.visualization.visible)
+      : images;
+
   const [selected, setSelected] = React.useState([]);
   const [collisions, setCollisions] = React.useState([]);
   const [selectionBoxCoordinates, setSelectionBoxCoordinates] = React.useState({
@@ -127,7 +132,7 @@ const Gallery = props => {
         visibility={selectionBoxVisibility}
       />
       <GalleryItems
-        images={images}
+        images={visibleImages}
         imagesPerRow={imagesPerRow}
         windowWidth={windowWidth}
         decreaseWidth={decreaseWidth}
