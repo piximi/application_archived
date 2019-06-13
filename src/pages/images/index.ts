@@ -24,12 +24,9 @@ import OpenMenuList from './OpenMenuList/OpenMenuList';
 import OpenWeightsMenuItem from './OpenWeightsMenuItem/OpenWeightsMenuItem';
 import PrimaryAppBar from './PrimaryAppBar/PrimaryAppBar';
 import SaveAnnotationsAndPredictionsDialog from './SaveAnnotationsAndPredictionsDialog/SaveAnnotationsAndPredictionsDialog';
-import SaveAnnotationsAndPredictionsMenuItem from './SaveAnnotationsAndPredictionsMenuItem/SaveAnnotationsAndPredictionsMenuItem';
 import SaveClassifierDialog from './SaveClassifierDialog/SaveClassifierDialog';
-import SaveClassifierMenuItem from './SaveClassifierMenuItem/SaveClassifierMenuItem';
 import SaveMenuList from './SaveMenuList/SaveMenuList';
 import SaveWeightsDialog from './SaveWeightsDialog/SaveWeightsDialog';
-import SaveWeightsMenuItem from './SaveWeightsMenuItem/SaveWeightsMenuItem';
 import Search from '../search/Search/Search';
 import SidebarAppBar from './SidebarAppBar/SidebarAppBar';
 import SidebarCategoriesList from './SidebarCategoriesList/SidebarCategoriesList';
@@ -77,12 +74,9 @@ export {
   OpenWeightsMenuItem,
   PrimaryAppBar,
   SaveAnnotationsAndPredictionsDialog,
-  SaveAnnotationsAndPredictionsMenuItem,
   SaveClassifierDialog,
-  SaveClassifierMenuItem,
   SaveMenuList,
   SaveWeightsDialog,
-  SaveWeightsMenuItem,
   Search,
   SidebarAppBar,
   SidebarCategoriesList,
