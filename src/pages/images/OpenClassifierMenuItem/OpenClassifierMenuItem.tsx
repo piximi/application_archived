@@ -16,9 +16,6 @@ const OpenClassifierMenuItem = (props: any) => {
 
       openClassifier(classifier.categories, classifier.images, classifier.name);
     };
-  };
-
-  const onClick = () => {
     closeMenu();
   };
 
@@ -34,7 +31,7 @@ const OpenClassifierMenuItem = (props: any) => {
       />
 
       <label htmlFor="open-classifier">
-        <MaterialUI.MenuItem onClick={onClick}>
+        <MaterialUI.MenuItem>
           <MaterialUI.ListItemText primary="Open classifier" />
         </MaterialUI.MenuItem>
       </label>
