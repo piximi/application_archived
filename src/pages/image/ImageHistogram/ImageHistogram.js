@@ -136,6 +136,8 @@ const ImageHistogram = props => {
       const context = canvas.getContext('2d');
       context.drawImage(img, 0, 0, img.width, img.height);
 
+      img.crossOrigin = 'Anonymous';
+
       const imageData = context.getImageData(0, 0, img.width, img.height).data;
 
       const plottableData = createPlottableData(imageData);
