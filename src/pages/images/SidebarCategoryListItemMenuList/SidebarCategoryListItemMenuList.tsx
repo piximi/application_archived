@@ -4,12 +4,14 @@ import {
   MenuItem,
   MenuList,
   Paper,
-  Popover
+  Popover,
+  Divider
 } from '@material-ui/core';
 import {
   ConnectedDeleteCategoryDialog,
   ConnectedEditCategoryDialog,
-  ConnectedHideOtherCategoriesMenuItem
+  ConnectedHideOtherCategoriesMenuItem,
+  ConnectedChangeCategoryVisibilityMenuItem
 } from '../../../containers';
 import { useDialog } from '@piximi/hooks';
 
@@ -63,6 +65,13 @@ const SidebarCategoryListItemMenuList = (props: any) => {
               categoryProp={category}
               closeMenu={closeMenu}
             />
+
+            <ConnectedChangeCategoryVisibilityMenuItem
+              categoryProp={category}
+              closeMenu={closeMenu}
+            />
+
+            <Divider />
 
             {known && (
               <div>
