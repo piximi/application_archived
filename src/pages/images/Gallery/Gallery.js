@@ -4,7 +4,20 @@ import { GalleryCustomDragLayer, GalleryItems, GallerySelectionBox } from '..';
 import { collisionDetection } from '../helper';
 
 const Gallery = props => {
-  const { images, imagesPerRow, decreaseWidth } = props;
+  const { images, categories, imagesPerRow, decreaseWidth } = props;
+
+  const visibleCategories = categories
+    .filter(category => category.visualization.visible)
+    .map(category => category.identifier);
+
+  const imageIsVisible = categoryIdentifier => {
+    return visibleCategories.includes(categoryIdentifier);
+  };
+
+  const visibleImages =
+    images.length > 0
+      ? images.filter(image => imageIsVisible(image.categoryIdentifier))
+      : images;
 
   const [selected, setSelected] = React.useState([]);
   const [collisions, setCollisions] = React.useState([]);
@@ -142,7 +155,7 @@ const Gallery = props => {
         visibility={selectionBoxVisibility}
       />
       <GalleryItems
-        images={images}
+        images={visibleImages}
         imagesPerRow={imagesPerRow}
         windowWidth={windowWidth}
         decreaseWidth={decreaseWidth}

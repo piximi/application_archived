@@ -4,6 +4,8 @@ import DeleteButton from './DeleteButton/DeleteButton';
 import DeleteCategoryDialog from './DeleteCategoryDialog/DeleteCategoryDialog';
 import DeleteImageDialog from './DeleteImageDialog/DeleteImageDialog';
 import EditCategoryDialog from './EditCategoryDialog/EditCategoryDialog';
+import HideOtherCategoriesMenuItem from './HideOtherCategoriesMenuItem/HideOtherCategoriesMenuItem';
+import ChangeCategoryVisibilityMenuItem from './ChangeCategoryVisibilityMenuItem/ChangeCategoryVisibilityMenuItem';
 import FileInput from './FileInput/FileInput';
 import Gallery from './Gallery/Gallery';
 import GalleryCustomDragLayer from './GalleryCustomDragLayer/GalleryCustomDragLayer';
@@ -54,6 +56,8 @@ export {
   DeleteCategoryDialog,
   DeleteImageDialog,
   EditCategoryDialog,
+  HideOtherCategoriesMenuItem,
+  ChangeCategoryVisibilityMenuItem,
   FileInput,
   Gallery,
   GalleryCustomDragLayer,

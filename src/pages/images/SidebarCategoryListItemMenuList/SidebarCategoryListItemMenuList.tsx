@@ -4,11 +4,14 @@ import {
   MenuItem,
   MenuList,
   Paper,
-  Popover
+  Popover,
+  Divider
 } from '@material-ui/core';
 import {
   ConnectedDeleteCategoryDialog,
-  ConnectedEditCategoryDialog
+  ConnectedEditCategoryDialog,
+  ConnectedHideOtherCategoriesMenuItem,
+  ConnectedChangeCategoryVisibilityMenuItem
 } from '../../../containers';
 import { useDialog } from '@piximi/hooks';
 
@@ -30,10 +33,6 @@ const SidebarCategoryListItemMenuList = (props: any) => {
   const anchorPosition = {
     top: openedMenu ? anchorEl.getBoundingClientRect().bottom - 10 : 0,
     left: openedMenu ? anchorEl.getBoundingClientRect().left : 0
-  };
-
-  const onHideOtherCategoriesClick = () => {
-    closeMenu();
   };
 
   const onEditCategoryClick = () => {
@@ -62,9 +61,17 @@ const SidebarCategoryListItemMenuList = (props: any) => {
       >
         <Paper>
           <MenuList dense>
-            <MenuItem onClick={onHideOtherCategoriesClick}>
-              <ListItemText primary="Hide other categories" />
-            </MenuItem>
+            <ConnectedHideOtherCategoriesMenuItem
+              categoryProp={category}
+              closeMenu={closeMenu}
+            />
+
+            <ConnectedChangeCategoryVisibilityMenuItem
+              categoryProp={category}
+              closeMenu={closeMenu}
+            />
+
+            <Divider />
 
             {known && (
               <div>

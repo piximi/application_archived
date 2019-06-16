@@ -6,6 +6,8 @@ import ConnectedCreateCategoryDialog from './ConnectedCreateCategoryDialog';
 import ConnectedDeleteCategoryDialog from './ConnectedDeleteCategoryDialog';
 import ConnectedDeleteImageDialog from './ConnectedDeleteImageDialog';
 import ConnectedEditCategoryDialog from './ConnectedEditCategoryDialog';
+import ConnectedHideOtherCategoriesMenuItem from './ConnectedHideOtherCategoriesMenuItem';
+import ConnectedChangeCategoryVisibilityMenuItem from './ConnectedChangeCategoryVisibilityMenuItem';
 import ConnectedGallery from './ConnectedGallery';
 import ConnectedImageViewer from './ConnectedImageViewer';
 import ConnectedImportImagesButton from './ConnectedImportImagesButton';
@@ -30,6 +32,8 @@ export {
   ConnectedColorPicker,
   ConnectedCreateCategoryDialog,
   ConnectedDeleteCategoryDialog,
+  ConnectedHideOtherCategoriesMenuItem,
+  ConnectedChangeCategoryVisibilityMenuItem,
   ConnectedDeleteImageDialog,
   ConnectedEditCategoryDialog,
   ConnectedGallery,
