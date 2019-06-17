@@ -3,9 +3,14 @@ import { Portal } from 'react-portal';
 import hash from 'string-hash';
 
 const FileInput = (props: any) => {
-  const { children, onChange } = props;
+  const { children, createImages } = props;
 
   const inputEl = React.useRef<HTMLInputElement>(null);
+
+  type imageProps = {
+    checksum: string;
+    data: string;
+  };
 
   const onClick = (event: any) => {
     event.preventDefault();
@@ -17,16 +22,23 @@ const FileInput = (props: any) => {
 
   const onInputChange = (event: any) => {
     const files = event.target.files;
+    const imageProps: imageProps[] = [];
+    let counter = 0;
 
     for (const file of files) {
       const reader: FileReader = new FileReader();
 
       reader.onload = () => {
-        const data = reader.result;
+        const data = reader.result as string;
 
         const checksum = String(hash(data as string));
 
-        onChange({ checksum, data }, event);
+        imageProps.push({ checksum, data });
+        counter += 1;
+
+        if (counter === files.length) {
+          createImages(imageProps);
+        }
       };
 
       reader.readAsDataURL(file);
