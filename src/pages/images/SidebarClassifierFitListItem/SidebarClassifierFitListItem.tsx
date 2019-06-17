@@ -13,8 +13,8 @@ import {
   Slide,
   TextField,
   MenuItem,
-  Grid
-} from '@material-ui/core';
+  Grid, Button
+} from "@material-ui/core";
 import * as React from 'react';
 import MaskedInput from 'react-text-mask';
 import { useState } from 'react';
@@ -25,7 +25,7 @@ import { Snackbar } from '@piximi/components';
 import { createDataset, createModel } from '../../../network';
 import { Logs } from '@tensorflow/tfjs-layers';
 import * as tensorflow from '@tensorflow/tfjs';
-import { ArrowBack, ExpandMore } from '@material-ui/icons';
+import { Close, ExpandMore } from '@material-ui/icons';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { TransitionProps } from '@material-ui/core/transitions';
 
@@ -94,9 +94,6 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     form: {},
     appBar: {
-      backgroundColor: 'rgb(255, 255, 255)',
-      borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
-      boxShadow: 'none',
       position: 'relative'
     },
     container: {
@@ -198,32 +195,28 @@ const FitclassifierDialog = (props: any) => {
   return (
     <Dialog
       classes={{
-        paperFullScreen: classes.paperFullScreen,
         paper: classes.paper
       }}
       fullScreen
       onClose={closeDialog}
       open={openedDialog}
-      style={{ zIndex: 1100 }}
       TransitionComponent={FitclassifierDialogTransition}
     >
       <AppBar className={classes.appBar}>
         <Toolbar>
-          <IconButton
-            edge="start"
-            color="inherit"
-            onClick={closeDialog}
-            aria-label="Close"
-            style={{ color: 'rgba(0, 0, 0, 0.54)' }}
-          >
-            <ArrowBack />
+          <IconButton edge="start" color="inherit" onClick={closeDialog} aria-label="Close">
+            <Close />
           </IconButton>
+          <Typography variant="h6" className={classes.title}>
+            Fit classifier
+          </Typography>
+          <Button color="inherit" onClick={closeDialog}>
+            Fit
+          </Button>
         </Toolbar>
       </AppBar>
 
-      <Grid container spacing={0}>
         <form className={classes.container} noValidate autoComplete="off">
-          <Grid item xs={4}>
             <ExpansionPanel classes={{ root: classes.expansionPanel }}>
               <ExpansionPanelSummary
                 expandIcon={<ExpandMore />}
@@ -236,8 +229,6 @@ const FitclassifierDialog = (props: any) => {
               </ExpansionPanelSummary>
 
               <ExpansionPanelDetails>
-                <Grid container spacing={2}>
-                  <Grid item xs>
                     <TextField
                       id="optimization-algorithm"
                       select
@@ -261,9 +252,7 @@ const FitclassifierDialog = (props: any) => {
                         </MenuItem>
                       ))}
                     </TextField>
-                  </Grid>
 
-                  <Grid item xs>
                     <TextField
                       id="learning-rate"
                       label="Learning rate"
@@ -272,13 +261,9 @@ const FitclassifierDialog = (props: any) => {
                       onChange={() => {}}
                       margin="normal"
                     />
-                  </Grid>
-                </Grid>
               </ExpansionPanelDetails>
             </ExpansionPanel>
-          </Grid>
 
-          <Grid item xs={4}>
             <ExpansionPanel classes={{ root: classes.expansionPanel }}>
               <ExpansionPanelSummary
                 expandIcon={<ExpandMore />}
@@ -291,8 +276,6 @@ const FitclassifierDialog = (props: any) => {
               </ExpansionPanelSummary>
 
               <ExpansionPanelDetails>
-                <Grid container spacing={2}>
-                  <Grid item xs>
                     <TextField
                       id="learning-rate"
                       label="Learning rate"
@@ -301,9 +284,7 @@ const FitclassifierDialog = (props: any) => {
                       onChange={() => {}}
                       margin="normal"
                     />
-                  </Grid>
 
-                  <Grid item xs>
                     <TextField
                       id="loss-function"
                       select
@@ -327,13 +308,9 @@ const FitclassifierDialog = (props: any) => {
                         </MenuItem>
                       ))}
                     </TextField>
-                  </Grid>
-                </Grid>
               </ExpansionPanelDetails>
             </ExpansionPanel>
-          </Grid>
         </form>
-      </Grid>
     </Dialog>
   );
 };
