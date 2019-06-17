@@ -13,8 +13,9 @@ import {
   Slide,
   TextField,
   MenuItem,
-  Grid, Button
-} from "@material-ui/core";
+  Grid,
+  Button
+} from '@material-ui/core';
 import * as React from 'react';
 import MaskedInput from 'react-text-mask';
 import { useState } from 'react';
@@ -204,7 +205,12 @@ const FitclassifierDialog = (props: any) => {
     >
       <AppBar className={classes.appBar}>
         <Toolbar>
-          <IconButton edge="start" color="inherit" onClick={closeDialog} aria-label="Close">
+          <IconButton
+            edge="start"
+            color="inherit"
+            onClick={closeDialog}
+            aria-label="Close"
+          >
             <Close />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
@@ -216,101 +222,94 @@ const FitclassifierDialog = (props: any) => {
         </Toolbar>
       </AppBar>
 
-        <form className={classes.container} noValidate autoComplete="off">
-            <ExpansionPanel classes={{ root: classes.expansionPanel }}>
-              <ExpansionPanelSummary
-                expandIcon={<ExpandMore />}
-                aria-controls="optimization-content"
-                id="optimization-header"
-              >
-                <Typography className={classes.heading}>
-                  Optimization
-                </Typography>
-              </ExpansionPanelSummary>
+      <form className={classes.container} noValidate autoComplete="off">
+        <ExpansionPanel classes={{ root: classes.expansionPanel }}>
+          <ExpansionPanelSummary
+            expandIcon={<ExpandMore />}
+            aria-controls="optimization-content"
+            id="optimization-header"
+          >
+            <Typography className={classes.heading}>Optimization</Typography>
+          </ExpansionPanelSummary>
 
-              <ExpansionPanelDetails>
-                    <TextField
-                      id="optimization-algorithm"
-                      select
-                      label="Optimization algorithm"
-                      className={classes.textField}
-                      value={values.optimizationAlgorithm}
-                      onChange={onChange('optimizationAlgorithm')}
-                      SelectProps={{
-                        MenuProps: {
-                          className: classes.menu
-                        }
-                      }}
-                      margin="normal"
-                    >
-                      {optimizationAlgorithms.map(optimizationAlgorithm => (
-                        <MenuItem
-                          key={optimizationAlgorithm.value}
-                          value={optimizationAlgorithm.value}
-                        >
-                          {optimizationAlgorithm.label}
-                        </MenuItem>
-                      ))}
-                    </TextField>
+          <ExpansionPanelDetails>
+            <TextField
+              id="optimization-algorithm"
+              select
+              label="Optimization algorithm"
+              className={classes.textField}
+              value={values.optimizationAlgorithm}
+              onChange={onChange('optimizationAlgorithm')}
+              SelectProps={{
+                MenuProps: {
+                  className: classes.menu
+                }
+              }}
+              margin="normal"
+            >
+              {optimizationAlgorithms.map(optimizationAlgorithm => (
+                <MenuItem
+                  key={optimizationAlgorithm.value}
+                  value={optimizationAlgorithm.value}
+                >
+                  {optimizationAlgorithm.label}
+                </MenuItem>
+              ))}
+            </TextField>
 
-                    <TextField
-                      id="learning-rate"
-                      label="Learning rate"
-                      className={classes.textField}
-                      value={'0.01'}
-                      onChange={() => {}}
-                      margin="normal"
-                    />
-              </ExpansionPanelDetails>
-            </ExpansionPanel>
+            <TextField
+              id="learning-rate"
+              label="Learning rate"
+              className={classes.textField}
+              value={'0.01'}
+              onChange={() => {}}
+              margin="normal"
+            />
+          </ExpansionPanelDetails>
+        </ExpansionPanel>
 
-            <ExpansionPanel classes={{ root: classes.expansionPanel }}>
-              <ExpansionPanelSummary
-                expandIcon={<ExpandMore />}
-                aria-controls="optimization-content"
-                id="optimization-header"
-              >
-                <Typography className={classes.heading}>
-                  Optimization
-                </Typography>
-              </ExpansionPanelSummary>
+        <ExpansionPanel classes={{ root: classes.expansionPanel }}>
+          <ExpansionPanelSummary
+            expandIcon={<ExpandMore />}
+            aria-controls="optimization-content"
+            id="optimization-header"
+          >
+            <Typography className={classes.heading}>Optimization</Typography>
+          </ExpansionPanelSummary>
 
-              <ExpansionPanelDetails>
-                    <TextField
-                      id="learning-rate"
-                      label="Learning rate"
-                      className={classes.textField}
-                      value={''}
-                      onChange={() => {}}
-                      margin="normal"
-                    />
+          <ExpansionPanelDetails>
+            <TextField
+              id="learning-rate"
+              label="Learning rate"
+              className={classes.textField}
+              value={''}
+              onChange={() => {}}
+              margin="normal"
+            />
 
-                    <TextField
-                      id="loss-function"
-                      select
-                      label="Loss function"
-                      className={classes.textField}
-                      value={values.lossFunction}
-                      onChange={onChange('lossFunction')}
-                      SelectProps={{
-                        MenuProps: {
-                          className: classes.menu
-                        }
-                      }}
-                      margin="normal"
-                    >
-                      {lossFunctions.map(lossFunction => (
-                        <MenuItem
-                          key={lossFunction.value}
-                          value={lossFunction.value}
-                        >
-                          {lossFunction.label}
-                        </MenuItem>
-                      ))}
-                    </TextField>
-              </ExpansionPanelDetails>
-            </ExpansionPanel>
-        </form>
+            <TextField
+              id="loss-function"
+              select
+              label="Loss function"
+              className={classes.textField}
+              value={values.lossFunction}
+              onChange={onChange('lossFunction')}
+              SelectProps={{
+                MenuProps: {
+                  className: classes.menu
+                }
+              }}
+              margin="normal"
+            >
+              {lossFunctions.map(lossFunction => (
+                <MenuItem key={lossFunction.value} value={lossFunction.value}>
+                  {lossFunction.label}
+                </MenuItem>
+              ))}
+            </TextField>
+          </ExpansionPanelDetails>
+        </ExpansionPanel>
+      </form>
     </Dialog>
   );
 };
