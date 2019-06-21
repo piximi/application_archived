@@ -158,18 +158,7 @@ export const Form = (props: any) => {
       <OptimizationGrid />
 
       <Grid container spacing={2}>
-        <Grid item xs={3}>
-          <TextField
-            id="input-shape"
-            label="Input shape"
-            className={classes.textField}
-            value={''}
-            onChange={() => {}}
-            margin="normal"
-          />
-        </Grid>
-
-        <Grid item xs={3}>
+        <Grid item xs={4}>
           <TextField
             id="loss-function"
             select
@@ -198,7 +187,18 @@ export const Form = (props: any) => {
       </Grid>
 
       <Grid container spacing={2}>
-        <Grid item xs={3}>
+        <Grid item xs={4}>
+          <TextField
+            id="input-shape"
+            label="Input shape"
+            className={classes.textField}
+            value={''}
+            onChange={() => {}}
+            margin="normal"
+          />
+        </Grid>
+
+        <Grid item xs={2}>
           <TextField
             id="batch-size"
             label="Batch size"
@@ -209,7 +209,7 @@ export const Form = (props: any) => {
           />
         </Grid>
 
-        <Grid item xs={3}>
+        <Grid item xs={2}>
           <TextField
             id="epochs"
             label="Epochs"

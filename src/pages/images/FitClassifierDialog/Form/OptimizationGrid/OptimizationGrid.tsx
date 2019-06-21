@@ -60,7 +60,7 @@ export const OptimizationGrid = (props: any) => {
 
   return (
     <Grid container spacing={2}>
-      <Grid item xs={3}>
+      <Grid item xs={4}>
         <TextField
           id="optimization-algorithm"
           select
@@ -87,7 +87,7 @@ export const OptimizationGrid = (props: any) => {
         </TextField>
       </Grid>
 
-      <Grid item xs={3}>
+      <Grid item xs={4}>
         <TextField
           id="learning-rate"
           label="Learning rate"
