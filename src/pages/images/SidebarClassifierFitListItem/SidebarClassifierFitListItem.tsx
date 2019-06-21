@@ -11,7 +11,7 @@ import * as tensorflow from '@tensorflow/tfjs';
 import { FitClassifierDialog } from '../FitClassifierDialog/FitClassifierDialog';
 
 const SidebarClassifierFitListItem = (props: any) => {
-  const { categories, images } = props;
+  const { categories, images, openedDrawer } = props;
 
   const { openedDialog, openDialog, closeDialog } = useDialog();
 
@@ -86,8 +86,9 @@ const SidebarClassifierFitListItem = (props: any) => {
       />
 
       <FitClassifierDialog
-        openedDialog={openedDialog}
         closeDialog={closeDialog}
+        openedDialog={openedDialog}
+        openedDrawer={openedDrawer}
       />
     </React.Fragment>
   );

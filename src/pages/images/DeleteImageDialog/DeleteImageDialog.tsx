@@ -15,7 +15,7 @@ const DeleteImageDialog = (props: any) => {
   function onClickDeleteButton() {
     props.setSelectedImages([]);
     props.deleteImages(props.selectedImages);
-    props.onClose();
+    props.closeDialog();
   }
 
   const noSelectedImages = selectedImages.length;
@@ -46,7 +46,7 @@ const DeleteImageDialog = (props: any) => {
       </DialogContent>
 
       <DialogActions>
-        <Button onClick={() => props.onClose()} color="primary">
+        <Button onClick={() => props.closeDialog()} color="primary">
           {translation('Cancel')}
         </Button>
 

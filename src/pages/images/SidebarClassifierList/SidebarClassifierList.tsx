@@ -14,7 +14,9 @@ import {
   ConnectedSidebarClassifierFitListItem
 } from '../../../containers';
 
-const SidebarClassifierList = () => {
+const SidebarClassifierList = (props: any) => {
+  const { openedDrawer } = props;
+
   const { collapsedList, collapseList } = useCollapseList();
 
   return (
@@ -28,7 +30,7 @@ const SidebarClassifierList = () => {
       </ListItem>
 
       <Collapse in={!collapsedList} timeout="auto" unmountOnExit>
-        <ConnectedSidebarClassifierFitListItem />
+        <ConnectedSidebarClassifierFitListItem openedDrawer={openedDrawer} />
 
         <ConnectedSidebarClassifierEvaluateListItem />
       </Collapse>

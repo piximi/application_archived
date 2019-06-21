@@ -21,18 +21,18 @@ const useStyles = makeStyles(styles);
 const SidebarDrawer = (props: any) => {
   const classes = useStyles({});
 
-  const { setUnlabelledVisibility, toggled, toggle } = props;
+  const { setUnlabelledVisibility, openedDrawer, toggleDrawer } = props;
 
   return (
     <Drawer
       anchor="left"
       classes={{ paper: classes.drawerPaper }}
-      open={toggled}
+      open={openedDrawer}
       variant="persistent"
     >
       <div className={classes.drawerHeader} />
 
-      <SidebarAppBar toggle={toggle} toggled={toggled} />
+      <SidebarAppBar toggle={toggleDrawer} toggled={openedDrawer} />
 
       <List dense>
         <SidebarNewClassifierListItem />
@@ -48,7 +48,7 @@ const SidebarDrawer = (props: any) => {
 
       <Divider />
 
-      <SidebarClassifierList />
+      <SidebarClassifierList openedDrawer={openedDrawer} />
 
       <Divider />
 

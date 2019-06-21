@@ -10,11 +10,11 @@ import { ConnectedGallery } from '../../../containers';
 
 const useStyles = makeStyles(styles);
 
-type Props = {
+type ApplicationProps = {
   updateImageCategory: any;
 };
 
-const Application = (props: Props) => {
+const Application = (props: ApplicationProps) => {
   const classes = useStyles({});
 
   const [selectedImages, setSelectedImages] = React.useState([]);
@@ -33,8 +33,8 @@ const Application = (props: Props) => {
       />
 
       <SidebarDrawer
-        toggle={toggleDrawer}
-        toggled={openedDrawer}
+        toggleDrawer={toggleDrawer}
+        openedDrawer={openedDrawer}
         unlabelledVisibility={unlabelledVisibility}
         setUnlabelledVisibility={setUnlabelledVisibility}
       />
