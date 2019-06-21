@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export const DialogAppBar = (props: any) => {
-  const { closeDialog, openedDrawer } = props;
+  const { closeDialog, fit, openedDrawer } = props;
 
   const classes = useStyles();
 

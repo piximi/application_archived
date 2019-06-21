@@ -22,6 +22,7 @@ import ConnectedSidebarClassifierFitListItem from './ConnectedSidebarClassifierF
 import ConnectedSidebarOpenListItem from './ConnectedSidebarOpenListItem';
 import ConnectedSidebarSaveListItem from './ConnectedSidebarSaveListItem';
 import ConnectedOpenExampleClassifierDialog from './ConnectedOpenExampleClassifierDialog';
+import { ConnectedFitClassifierDialog } from './ConnectedFitClassifierDialog';
 
 export {
   ConnectedApplication,
@@ -42,6 +43,7 @@ export {
   ConnectedOpenClassifierMenuItem,
   ConnectedSaveClassifierDialog,
   ConnectedSearch,
+  ConnectedFitClassifierDialog,
   ConnectedSidebarCategoryListItem,
   ConnectedSidebarClassifierEvaluateListItem,
   ConnectedSidebarClassifierFitListItem,

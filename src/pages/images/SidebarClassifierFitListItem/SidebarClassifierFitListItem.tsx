@@ -9,6 +9,7 @@ import { createDataset, createModel } from '../../../network';
 import { Logs } from '@tensorflow/tfjs-layers';
 import * as tensorflow from '@tensorflow/tfjs';
 import { FitClassifierDialog } from '../FitClassifierDialog/FitClassifierDialog';
+import { ConnectedFitClassifierDialog } from '../../../containers';
 
 const SidebarClassifierFitListItem = (props: any) => {
   const { categories, images, openedDrawer } = props;
@@ -85,7 +86,7 @@ const SidebarClassifierFitListItem = (props: any) => {
         openedSnackbar={openedSnackbar}
       />
 
-      <FitClassifierDialog
+      <ConnectedFitClassifierDialog
         closeDialog={closeDialog}
         openedDialog={openedDialog}
         openedDrawer={openedDrawer}
