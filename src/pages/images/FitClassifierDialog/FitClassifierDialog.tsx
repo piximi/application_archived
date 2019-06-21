@@ -3,10 +3,6 @@ import {
   AppBar,
   IconButton,
   Toolbar,
-  Typography,
-  ExpansionPanel,
-  ExpansionPanelSummary,
-  ExpansionPanelDetails,
   Slide,
   TextField,
   MenuItem,
@@ -14,7 +10,7 @@ import {
   Grid
 } from '@material-ui/core';
 import * as React from 'react';
-import { Close, ExpandMore } from '@material-ui/icons';
+import { Close, Pause, PlayArrow, Replay, Stop } from '@material-ui/icons';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { TransitionProps } from '@material-ui/core/transitions';
 
@@ -81,14 +77,29 @@ const useStyles = makeStyles((theme: Theme) =>
     expansionPanel: {
       boxShadow: 'none'
     },
+    leftIcon: {
+      marginRight: theme.spacing(1)
+    },
+    rightIcon: {
+      marginLeft: theme.spacing(1)
+    },
+    button: {
+      marginRight: theme.spacing(1)
+    },
+    grow: {
+      flexGrow: 1
+    },
     form: {},
     appBar: {
-      position: 'relative'
+      position: 'relative',
+      backgroundColor: 'transparent',
+      boxShadow: 'none',
+      borderBottom: '1px solid rgba(0, 0, 0, 0.12)'
     },
     container: {
-      width: '100%'
-      // display: 'flex',
-      // flexWrap: 'wrap',
+      // width: '100%',
+      display: 'flex',
+      flexWrap: 'wrap'
     },
     root: {
       zIndex: 1100
@@ -105,6 +116,7 @@ const useStyles = makeStyles((theme: Theme) =>
     textField: {
       // marginLeft: theme.spacing(1),
       marginRight: theme.spacing(1),
+      flexBasis: 300,
       width: '100%'
     },
     title: {
@@ -118,7 +130,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const FitclassifierDialogTransition = React.forwardRef<
+const FitClassifierDialogTransition = React.forwardRef<
   unknown,
   TransitionProps
 >(function Transition(props, ref) {
@@ -154,32 +166,81 @@ export const FitClassifierDialog = (props: any) => {
       fullScreen
       onClose={closeDialog}
       open={openedDialog}
-      TransitionComponent={FitclassifierDialogTransition}
+      TransitionComponent={FitClassifierDialogTransition}
     >
       <AppBar className={classes.appBar}>
         <Toolbar>
           <IconButton
             edge="start"
-            color="inherit"
+            color="primary"
             onClick={closeDialog}
             aria-label="Close"
           >
             <Close />
           </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            Fit classifier
-          </Typography>
-          <Button color="inherit" onClick={closeDialog}>
-            Fit
+
+          <div className={classes.grow} />
+
+          <Button
+            className={classes.button}
+            color="primary"
+            onClick={closeDialog}
+            variant="contained"
+          >
+            <PlayArrow />
+            Start
+          </Button>
+
+          <Button
+            className={classes.button}
+            color="primary"
+            onClick={closeDialog}
+            variant="contained"
+          >
+            <Pause />
+            Pause
+          </Button>
+
+          <Button
+            className={classes.button}
+            color="primary"
+            onClick={closeDialog}
+            variant="contained"
+          >
+            <Stop className={classes.leftIcon} />
+            Stop
+          </Button>
+
+          <Button color="primary" onClick={closeDialog} variant="contained">
+            <Replay className={classes.leftIcon} />
+            Restart
           </Button>
         </Toolbar>
       </AppBar>
 
-      <Grid container>
+      <br />
+
+      <Grid container spacing={2}>
         <Grid item xs={3} />
 
-        <Grid item xs={6}>
-          <form className={classes.container} noValidate autoComplete="off">
+        <Grid item xs={3}>
+          <br />
+        </Grid>
+
+        <Grid item xs={3}>
+          <br />
+        </Grid>
+
+        <Grid item xs={3} />
+      </Grid>
+
+      <br />
+
+      <form className={classes.container} noValidate autoComplete="off">
+        <Grid container spacing={2}>
+          <Grid item xs={3} />
+
+          <Grid item xs={3}>
             <TextField
               id="optimization-algorithm"
               select
@@ -204,7 +265,9 @@ export const FitClassifierDialog = (props: any) => {
                 </MenuItem>
               ))}
             </TextField>
+          </Grid>
 
+          <Grid item xs={3}>
             <TextField
               id="learning-rate"
               label="Learning rate"
@@ -213,7 +276,17 @@ export const FitClassifierDialog = (props: any) => {
               onChange={() => {}}
               margin="normal"
             />
+          </Grid>
 
+          <Grid item xs={3} />
+        </Grid>
+
+        <br />
+
+        <Grid container spacing={2}>
+          <Grid item xs={3} />
+
+          <Grid item xs={3}>
             <TextField
               id="input-shape"
               label="Input shape"
@@ -222,7 +295,9 @@ export const FitClassifierDialog = (props: any) => {
               onChange={() => {}}
               margin="normal"
             />
+          </Grid>
 
+          <Grid item xs={3}>
             <TextField
               id="loss-function"
               select
@@ -247,7 +322,15 @@ export const FitClassifierDialog = (props: any) => {
                 </MenuItem>
               ))}
             </TextField>
+          </Grid>
 
+          <Grid item xs={3} />
+        </Grid>
+
+        <Grid container spacing={2}>
+          <Grid item xs={3} />
+
+          <Grid item xs={3}>
             <TextField
               id="batch-size"
               label="Batch size"
@@ -256,7 +339,9 @@ export const FitClassifierDialog = (props: any) => {
               onChange={() => {}}
               margin="normal"
             />
+          </Grid>
 
+          <Grid item xs={3}>
             <TextField
               id="epochs"
               label="Epochs"
@@ -265,11 +350,11 @@ export const FitClassifierDialog = (props: any) => {
               onChange={() => {}}
               margin="normal"
             />
-          </form>
-        </Grid>
+          </Grid>
 
-        <Grid item xs={3} />
-      </Grid>
+          <Grid item xs={3} />
+        </Grid>
+      </form>
     </Dialog>
   );
 };
