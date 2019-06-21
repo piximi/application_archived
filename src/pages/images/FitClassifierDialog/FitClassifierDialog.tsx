@@ -1,4 +1,4 @@
-import { Dialog, Theme } from '@material-ui/core';
+import { Dialog, DialogContent, Theme } from '@material-ui/core';
 import * as React from 'react';
 import { AppBar } from './AppBar/AppBar';
 import { DialogTransition } from './DialogTransition/DialogTransition';
@@ -84,9 +84,11 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
     >
       <AppBar closeDialog={closeDialog} openedDrawer={openedDrawer} />
 
-      <History data={data} />
+      <DialogContent>
+        {/*<History data={data} />*/}
 
-      <Form />
+        <Form />
+      </DialogContent>
     </Dialog>
   );
 };

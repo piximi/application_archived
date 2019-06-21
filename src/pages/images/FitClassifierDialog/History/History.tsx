@@ -16,17 +16,13 @@ export const History = (props: HistoryProps) => {
 
   return (
     <Grid container spacing={2}>
-      <Grid item xs={2} />
-
-      <Grid item xs={2}>
-        <VictoryLine data={data} height={300} padding={0} width={600} />
+      <Grid item xs={3}>
+        <VictoryLine data={data} height={100} padding={0} width={200} />
       </Grid>
 
-      <Grid item xs={2}>
-        <VictoryLine data={data} height={300} padding={0} width={600} />
+      <Grid item xs={3}>
+        <VictoryLine data={data} height={100} padding={0} width={200} />
       </Grid>
-
-      <Grid item xs={2} />
     </Grid>
   );
 };

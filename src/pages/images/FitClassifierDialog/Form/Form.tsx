@@ -1,6 +1,7 @@
-import * as MaterialUI from '@material-ui/core';
 import * as React from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import { OptimizationGrid } from './OptimizationGrid/OptimizationGrid';
+import { Grid, MenuItem, TextField } from '@material-ui/core';
 
 const lossFunctions = [
   {
@@ -154,57 +155,11 @@ export const Form = (props: any) => {
 
   return (
     <form className={classes.container} noValidate autoComplete="off">
-      <MaterialUI.Grid container spacing={2}>
-        <MaterialUI.Grid item xs={2} />
+      <OptimizationGrid />
 
-        <MaterialUI.Grid item xs={2}>
-          <MaterialUI.TextField
-            id="optimization-algorithm"
-            select
-            label="Optimization algorithm"
-            className={classes.textField}
-            value={values.optimizationAlgorithm}
-            onChange={onChange('optimizationAlgorithm')}
-            SelectProps={{
-              MenuProps: {
-                className: classes.menu
-              }
-            }}
-            margin="normal"
-          >
-            {optimizationAlgorithms.map(optimizationAlgorithm => (
-              <MaterialUI.MenuItem
-                dense
-                key={optimizationAlgorithm.value}
-                value={optimizationAlgorithm.value}
-              >
-                {optimizationAlgorithm.label}
-              </MaterialUI.MenuItem>
-            ))}
-          </MaterialUI.TextField>
-        </MaterialUI.Grid>
-
-        <MaterialUI.Grid item xs={2}>
-          <MaterialUI.TextField
-            id="learning-rate"
-            label="Learning rate"
-            className={classes.textField}
-            value={'0.01'}
-            onChange={() => {}}
-            margin="normal"
-          />
-        </MaterialUI.Grid>
-
-        <MaterialUI.Grid item xs={3} />
-      </MaterialUI.Grid>
-
-      <br />
-
-      <MaterialUI.Grid container spacing={2}>
-        <MaterialUI.Grid item xs={2} />
-
-        <MaterialUI.Grid item xs={2}>
-          <MaterialUI.TextField
+      <Grid container spacing={2}>
+        <Grid item xs={3}>
+          <TextField
             id="input-shape"
             label="Input shape"
             className={classes.textField}
@@ -212,10 +167,10 @@ export const Form = (props: any) => {
             onChange={() => {}}
             margin="normal"
           />
-        </MaterialUI.Grid>
+        </Grid>
 
-        <MaterialUI.Grid item xs={2}>
-          <MaterialUI.TextField
+        <Grid item xs={3}>
+          <TextField
             id="loss-function"
             select
             label="Loss function"
@@ -230,25 +185,21 @@ export const Form = (props: any) => {
             margin="normal"
           >
             {lossFunctions.map(lossFunction => (
-              <MaterialUI.MenuItem
+              <MenuItem
                 dense
                 key={lossFunction.value}
                 value={lossFunction.value}
               >
                 {lossFunction.label}
-              </MaterialUI.MenuItem>
+              </MenuItem>
             ))}
-          </MaterialUI.TextField>
-        </MaterialUI.Grid>
+          </TextField>
+        </Grid>
+      </Grid>
 
-        <MaterialUI.Grid item xs={2} />
-      </MaterialUI.Grid>
-
-      <MaterialUI.Grid container spacing={2}>
-        <MaterialUI.Grid item xs={2} />
-
-        <MaterialUI.Grid item xs={1}>
-          <MaterialUI.TextField
+      <Grid container spacing={2}>
+        <Grid item xs={3}>
+          <TextField
             id="batch-size"
             label="Batch size"
             className={classes.textField}
@@ -256,10 +207,10 @@ export const Form = (props: any) => {
             onChange={() => {}}
             margin="normal"
           />
-        </MaterialUI.Grid>
+        </Grid>
 
-        <MaterialUI.Grid item xs={1}>
-          <MaterialUI.TextField
+        <Grid item xs={3}>
+          <TextField
             id="epochs"
             label="Epochs"
             className={classes.textField}
@@ -267,10 +218,8 @@ export const Form = (props: any) => {
             onChange={() => {}}
             margin="normal"
           />
-        </MaterialUI.Grid>
-
-        <MaterialUI.Grid item xs={3} />
-      </MaterialUI.Grid>
+        </Grid>
+      </Grid>
     </form>
   );
 };
