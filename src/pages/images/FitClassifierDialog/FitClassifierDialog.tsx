@@ -6,19 +6,14 @@ import { Form } from './Form/Form';
 import { History } from './History/History';
 import classNames from 'classnames';
 import { createStyles, makeStyles } from '@material-ui/styles';
+import * as _ from 'lodash';
 
-const data = [
-  { x: 0, y: 2 },
-  { x: 1, y: 3 },
-  { x: 2, y: 5 },
-  { x: 3, y: 4 },
-  { x: 4, y: 7 },
-  { x: 5, y: 2 },
-  { x: 6, y: 3 },
-  { x: 7, y: 5 },
-  { x: 8, y: 4 },
-  { x: 9, y: 7 }
-];
+const data = _.map(_.range(0, 100), index => {
+  return {
+    x: index,
+    y: _.random(0.0, 1.0, true)
+  };
+});
 
 const drawerWidth = 280;
 
@@ -85,7 +80,7 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
       <DialogAppBar closeDialog={closeDialog} openedDrawer={openedDrawer} />
 
       <DialogContent>
-        {/*<History data={data} />*/}
+        <History data={data} />
 
         <Form />
       </DialogContent>

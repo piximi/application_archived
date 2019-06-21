@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
-import { VictoryLine } from 'victory';
+import { VictoryAxis, VictoryChart, VictoryLine, VictoryTheme } from 'victory';
 import { Grid } from '@material-ui/core';
 
 type Data = { x: Number; y: Number }[];
@@ -17,11 +17,53 @@ export const History = (props: HistoryProps) => {
   return (
     <Grid container spacing={2}>
       <Grid item xs={3}>
-        <VictoryLine data={data} height={100} padding={0} width={200} />
+        <VictoryChart
+          height={100}
+          padding={0}
+          theme={VictoryTheme.material}
+          width={400}
+        >
+          <VictoryAxis
+            crossAxis
+            standalone={false}
+            theme={VictoryTheme.material}
+          />
+
+          <VictoryAxis
+            crossAxis
+            dependentAxis
+            domain={[0.0, 1.0]}
+            standalone={false}
+            theme={VictoryTheme.material}
+          />
+
+          <VictoryLine data={data} />
+        </VictoryChart>
       </Grid>
 
       <Grid item xs={3}>
-        <VictoryLine data={data} height={100} padding={0} width={200} />
+        <VictoryChart
+          height={100}
+          padding={0}
+          theme={VictoryTheme.material}
+          width={400}
+        >
+          <VictoryAxis
+            crossAxis
+            standalone={false}
+            theme={VictoryTheme.material}
+          />
+
+          <VictoryAxis
+            crossAxis
+            dependentAxis
+            domain={[0.0, 1.0]}
+            standalone={false}
+            theme={VictoryTheme.material}
+          />
+
+          <VictoryLine data={data} />
+        </VictoryChart>
       </Grid>
     </Grid>
   );
