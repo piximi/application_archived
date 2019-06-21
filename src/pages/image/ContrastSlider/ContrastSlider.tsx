@@ -27,7 +27,7 @@ const ContrastSlider = (props: Props) => {
       </Typography>
 
       <Slider
-        classes={{ container: classes.slider }}
+        classes={{ root: classes.slider }}
         min={50}
         max={300}
         step={0.1}

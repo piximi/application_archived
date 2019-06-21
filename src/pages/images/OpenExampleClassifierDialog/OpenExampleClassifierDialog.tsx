@@ -16,6 +16,8 @@ import { useTranslation } from 'react-i18next';
 import { OpenExampleClassifierListItem } from '..';
 // @ts-ignore
 import WORMS from './worms.png';
+// @ts-ignore
+import MNIST from './MNIST.png';
 
 const useStyles = makeStyles(styles);
 
@@ -24,10 +26,26 @@ const OpenExampleClassifierDialog = (props: any) => {
 
   const { t: translation } = useTranslation();
 
-  const { openClassifier, open, onClose, closeMenu } = props;
+  const { openClassifier, open, onClose } = props;
 
   const openExampleClassifier = (name: string) => {
-    closeMenu();
+    onClose();
+
+    const url = `https://storage.piximi.app/examples/${name}/${name}.piximi`;
+
+    return axios
+      .get(url)
+      .then(result => {
+        openClassifier(result.data.categories, result.data.images, name);
+      })
+      .catch(function(error) {
+        alert(error);
+      });
+  };
+
+  const openGitHubExampleClassifier = (name: string) => {
+    onClose();
+
     return axios
       .get(
         'https://raw.githubusercontent.com/piximi/application/master/src/demos/' +
@@ -42,11 +60,6 @@ const OpenExampleClassifierDialog = (props: any) => {
       });
   };
 
-  const closeMenueAndDialog = () => {
-    onClose();
-    closeMenu();
-  };
-
   return (
     <Dialog fullWidth maxWidth="sm" open={open}>
       <DialogTitle disableTypography className={classes.dialogTitle}>
@@ -57,7 +70,7 @@ const OpenExampleClassifierDialog = (props: any) => {
         <IconButton
           aria-label="Close"
           className={classes.closeButton}
-          onClick={closeMenueAndDialog}
+          onClick={onClose}
         >
           <CloseIcon />
         </IconButton>
@@ -66,12 +79,22 @@ const OpenExampleClassifierDialog = (props: any) => {
       <DialogContent classes={{ root: classes.dialogContent }}>
         <List>
           <OpenExampleClassifierListItem
+            src={MNIST}
+            primary="MNIST"
+            secondary="worms"
+            onClick={() => {
+              onClose();
+              openExampleClassifier('mnist');
+            }}
+          />
+
+          <OpenExampleClassifierListItem
             src={WORMS}
             primary="worms"
             secondary="worms"
             onClick={() => {
               onClose();
-              openExampleClassifier('worms');
+              openGitHubExampleClassifier('worms');
             }}
           />
         </List>

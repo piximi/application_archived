@@ -8,7 +8,8 @@ type State = {
 
 const mapStateToProps = (state: State) => {
   return {
-    images: state.classifier.images
+    images: state.classifier.images,
+    categories: state.classifier.categories
   };
 };
 

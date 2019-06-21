@@ -4,6 +4,8 @@ import DeleteButton from './DeleteButton/DeleteButton';
 import DeleteCategoryDialog from './DeleteCategoryDialog/DeleteCategoryDialog';
 import DeleteImageDialog from './DeleteImageDialog/DeleteImageDialog';
 import EditCategoryDialog from './EditCategoryDialog/EditCategoryDialog';
+import HideOtherCategoriesMenuItem from './HideOtherCategoriesMenuItem/HideOtherCategoriesMenuItem';
+import ChangeCategoryVisibilityMenuItem from './ChangeCategoryVisibilityMenuItem/ChangeCategoryVisibilityMenuItem';
 import FileInput from './FileInput/FileInput';
 import Gallery from './Gallery/Gallery';
 import GalleryCustomDragLayer from './GalleryCustomDragLayer/GalleryCustomDragLayer';
@@ -24,12 +26,9 @@ import OpenMenuList from './OpenMenuList/OpenMenuList';
 import OpenWeightsMenuItem from './OpenWeightsMenuItem/OpenWeightsMenuItem';
 import PrimaryAppBar from './PrimaryAppBar/PrimaryAppBar';
 import SaveAnnotationsAndPredictionsDialog from './SaveAnnotationsAndPredictionsDialog/SaveAnnotationsAndPredictionsDialog';
-import SaveAnnotationsAndPredictionsMenuItem from './SaveAnnotationsAndPredictionsMenuItem/SaveAnnotationsAndPredictionsMenuItem';
 import SaveClassifierDialog from './SaveClassifierDialog/SaveClassifierDialog';
-import SaveClassifierMenuItem from './SaveClassifierMenuItem/SaveClassifierMenuItem';
 import SaveMenuList from './SaveMenuList/SaveMenuList';
 import SaveWeightsDialog from './SaveWeightsDialog/SaveWeightsDialog';
-import SaveWeightsMenuItem from './SaveWeightsMenuItem/SaveWeightsMenuItem';
 import Search from '../search/Search/Search';
 import SidebarAppBar from './SidebarAppBar/SidebarAppBar';
 import SidebarCategoriesList from './SidebarCategoriesList/SidebarCategoriesList';
@@ -57,6 +56,8 @@ export {
   DeleteCategoryDialog,
   DeleteImageDialog,
   EditCategoryDialog,
+  HideOtherCategoriesMenuItem,
+  ChangeCategoryVisibilityMenuItem,
   FileInput,
   Gallery,
   GalleryCustomDragLayer,
@@ -77,12 +78,9 @@ export {
   OpenWeightsMenuItem,
   PrimaryAppBar,
   SaveAnnotationsAndPredictionsDialog,
-  SaveAnnotationsAndPredictionsMenuItem,
   SaveClassifierDialog,
-  SaveClassifierMenuItem,
   SaveMenuList,
   SaveWeightsDialog,
-  SaveWeightsMenuItem,
   Search,
   SidebarAppBar,
   SidebarCategoriesList,
