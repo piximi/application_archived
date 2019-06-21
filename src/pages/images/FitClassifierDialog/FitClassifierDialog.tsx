@@ -13,6 +13,7 @@ import * as React from 'react';
 import { Close, Pause, PlayArrow, Replay, Stop } from '@material-ui/icons';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { TransitionProps } from '@material-ui/core/transitions';
+import { VictoryAxis, VictoryChart, VictoryLine } from 'victory';
 
 const lossFunctions = [
   {
@@ -70,6 +71,19 @@ const optimizationAlgorithms = [
     value: 'sgd',
     label: 'Stochastic gradient descent (SGD)'
   }
+];
+
+const data = [
+  { x: 0, y: 2 },
+  { x: 1, y: 3 },
+  { x: 2, y: 5 },
+  { x: 3, y: 4 },
+  { x: 4, y: 7 },
+  { x: 5, y: 2 },
+  { x: 6, y: 3 },
+  { x: 7, y: 5 },
+  { x: 8, y: 4 },
+  { x: 9, y: 7 }
 ];
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -224,11 +238,15 @@ export const FitClassifierDialog = (props: any) => {
         <Grid item xs={3} />
 
         <Grid item xs={3}>
-          <br />
+          <VictoryChart>
+            <VictoryLine data={data} />
+          </VictoryChart>
         </Grid>
 
         <Grid item xs={3}>
-          <br />
+          <VictoryChart>
+            <VictoryLine data={data} />
+          </VictoryChart>
         </Grid>
 
         <Grid item xs={3} />
