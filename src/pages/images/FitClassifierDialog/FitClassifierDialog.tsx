@@ -12,17 +12,10 @@ import { Form } from './Form/Form';
 import { History } from './History/History';
 import classNames from 'classnames';
 import { createStyles, makeStyles } from '@material-ui/styles';
-import * as _ from 'lodash';
 import { Category, Image } from '@piximi/types';
 import { createDataset, createModel } from '../../../network';
 import * as tensorflow from '@tensorflow/tfjs';
-
-const data = _.map(_.range(0, 100), index => {
-  return {
-    x: index,
-    y: _.random(0.0, 1.0, true)
-  };
-});
+import { useState } from 'react';
 
 const drawerWidth = 280;
 
@@ -67,6 +60,65 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
 
   const styles = useStyles({});
 
+  const [batchSize, setBatchSize] = useState<string>('32');
+  const [epochs, setEpochs] = useState<string>('10');
+  const [optimizationAlgorithm, setOptimizationAlgorithm] = useState<string>(
+    'adam'
+  );
+  const [learningRate, setLearningRate] = useState<string>('0.01');
+  const [lossFunction, setLossFunction] = useState<string>(
+    'softmaxCrossEntropy'
+  );
+  const [inputShape, setInputShape] = useState<string>('224, 224, 3');
+  const [trainingLossHistory, setTrainingLossHistory] = useState<number[]>([]);
+  const [trainingAccuracyHistory, setTrainingAccuracyHistory] = useState<
+    number[]
+  >([]);
+  const [validationLossHistory, setValidationLossHistory] = useState<number[]>(
+    []
+  );
+  const [validationAccuracyHistory, setValidationAccuracyHistory] = useState<
+    number[]
+  >([]);
+
+  const onBatchSizeChange = (event: React.FormEvent<EventTarget>) => {
+    const target = event.target as HTMLInputElement;
+
+    setBatchSize(target.value);
+  };
+
+  const onEpochsChange = (event: React.FormEvent<EventTarget>) => {
+    const target = event.target as HTMLInputElement;
+
+    setEpochs(target.value);
+  };
+
+  const onInputShapeChange = (event: React.FormEvent<EventTarget>) => {
+    const target = event.target as HTMLInputElement;
+
+    setInputShape(target.value);
+  };
+
+  const onLearningRateChange = (event: React.FormEvent<EventTarget>) => {
+    const target = event.target as HTMLInputElement;
+
+    setLearningRate(target.value);
+  };
+
+  const onLossFunctionChange = (event: React.FormEvent<EventTarget>) => {
+    const target = event.target as HTMLInputElement;
+
+    setLossFunction(target.value);
+  };
+
+  const onOptimizationAlgorithmChange = (
+    event: React.FormEvent<EventTarget>
+  ) => {
+    const target = event.target as HTMLInputElement;
+
+    setOptimizationAlgorithm(target.value);
+  };
+
   const className = classNames(styles.content, styles.contentLeft, {
     [styles.contentShift]: openedDrawer,
     [styles.contentShiftLeft]: openedDrawer
@@ -77,45 +129,36 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
   };
 
   const fit = async () => {
-    const model = await createModel(categories.length - 1, 100);
+    const depth = categories.length - 1;
 
-    console.log(tensorflow.memory());
+    const model = await createModel(depth, 100);
 
-    const { success, x, y } = await createDataset(categories, images);
+    createDataset(categories, images).then(async batches => {
+      for (const batch of batches) {
+        const [xs, ys] = batch;
 
-    if (!success) {
-      return;
-    }
+        const x = tensorflow.tidy(() => {
+          return tensorflow.concat(xs as tensorflow.Tensor<tensorflow.Rank>[]);
+        });
 
-    const args = {
-      batchSize: 1,
-      callbacks: {
-        onTrainBegin: async (logs?: tensorflow.Logs | undefined) => {},
-        onTrainEnd: async (logs?: tensorflow.Logs | undefined) => {},
-        onEpochBegin: async (
-          epoch: number,
-          logs?: tensorflow.Logs | undefined
-        ) => {},
-        onEpochEnd: async (
-          epoch: number,
-          logs?: tensorflow.Logs | undefined
-        ) => {},
-        onBatchBegin: async (
-          batch: number,
-          logs?: tensorflow.Logs | undefined
-        ) => {},
-        onBatchEnd: async (
-          batch: number,
-          logs?: tensorflow.Logs | undefined
-        ) => {}
-      },
-      epochs: 10,
-      shuffle: true,
-      validationSplit: 0.2,
-      verbose: 2
-    };
+        const y = tensorflow.tidy(() => {
+          return tensorflow.oneHot(ys as number[], depth);
+        });
 
-    const history = await model.fit(x, y, args);
+        const metrics: number[] = (await model.trainOnBatch(x, y)) as number[];
+
+        const [loss, accuracy] = metrics;
+
+        setTrainingLossHistory([...trainingLossHistory, loss]);
+        setTrainingAccuracyHistory([...trainingAccuracyHistory, accuracy]);
+
+        console.log(metrics);
+      }
+    });
+  };
+
+  const onFit = () => {
+    fit().then(() => {});
   };
 
   return (
@@ -132,18 +175,29 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
     >
       <DialogAppBar
         closeDialog={closeDialog}
-        fit={fit}
+        fit={onFit}
         openedDrawer={openedDrawer}
       />
 
       <DialogContent>
-        <History data={data} />
+        <History data={[]} />
 
-        <Grid container spacing={2}>
-          <LinearProgress variant="determinate" value={0} />
-        </Grid>
-
-        <Form />
+        <Form
+          batchSize={batchSize}
+          closeDialog={closeDialog}
+          epochs={epochs}
+          inputShape={inputShape}
+          learningRate={learningRate}
+          lossFunction={lossFunction}
+          onBatchSizeChange={onBatchSizeChange}
+          onEpochsChange={onEpochsChange}
+          onInputShapeChange={onInputShapeChange}
+          onLearningRateChange={onLearningRateChange}
+          onLossFunctionChange={onLossFunctionChange}
+          onOptimizationAlgorithmChange={onOptimizationAlgorithmChange}
+          openedDialog={openedDialog}
+          optimizationAlgorithm={optimizationAlgorithm}
+        />
       </DialogContent>
     </Dialog>
   );

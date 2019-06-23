@@ -5,10 +5,6 @@ import ScatterPlotIcon from '@material-ui/icons/ScatterPlot';
 import { useTranslation } from 'react-i18next';
 import { useDialog, useSnackbar } from '@piximi/hooks';
 import { Snackbar } from '@piximi/components';
-import { createDataset, createModel } from '../../../network';
-import { Logs } from '@tensorflow/tfjs-layers';
-import * as tensorflow from '@tensorflow/tfjs';
-import { FitClassifierDialog } from '../FitClassifierDialog/FitClassifierDialog';
 import { ConnectedFitClassifierDialog } from '../../../containers';
 
 const SidebarClassifierFitListItem = (props: any) => {
@@ -21,54 +17,6 @@ const SidebarClassifierFitListItem = (props: any) => {
   const [message, setMessage] = useState();
 
   const { t: translation } = useTranslation();
-
-  const fit = async () => {
-    const model = await createModel(categories.length - 1, 100);
-
-    console.log(tensorflow.memory());
-
-    const { success, x, y } = await createDataset(categories, images);
-
-    if (!success) {
-      return;
-    }
-
-    openSnackbar();
-
-    const args = {
-      batchSize: 1,
-      callbacks: {
-        onTrainBegin: async (logs?: Logs | undefined) => {
-          console.log(`onTrainBegin`);
-        },
-        onTrainEnd: async (logs?: Logs | undefined) => {
-          closeSnackbar();
-        },
-        onEpochBegin: async (epoch: number, logs?: Logs | undefined) => {
-          console.log(`onEpochBegin ${epoch}`);
-        },
-        onEpochEnd: async (epoch: number, logs?: Logs | undefined) => {
-          if (logs) {
-            console.log(`onEpochEnd ${epoch}, loss: ${logs.loss}`);
-          }
-        },
-        onBatchBegin: async (batch: number, logs?: Logs | undefined) => {
-          console.log(`onBatchBegin ${batch}`);
-        },
-        onBatchEnd: async (batch: number, logs?: Logs | undefined) => {
-          console.log(`onBatchEnd ${batch}`);
-        }
-      },
-      epochs: 10,
-      shuffle: true,
-      validationSplit: 0.2,
-      verbose: 2
-    };
-
-    const history = await model.fit(x, y, args);
-
-    setMessage(history);
-  };
 
   return (
     <React.Fragment>

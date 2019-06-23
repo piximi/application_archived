@@ -1,29 +1,15 @@
 import * as React from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { Grid, MenuItem, TextField } from '@material-ui/core';
+import * as _ from 'lodash';
 
-const optimizationAlgorithms = [
-  {
-    value: 'adadelta',
-    label: 'Adadelta'
-  },
-  {
-    value: 'adam',
-    label: 'Adam'
-  },
-  {
-    value: 'adamax',
-    label: 'Adamax'
-  },
-  {
-    value: 'rmsprop',
-    label: 'RMSProp'
-  },
-  {
-    value: 'sgd',
-    label: 'Stochastic gradient descent (SGD)'
-  }
-];
+const optimizationAlgorithms = {
+  adadelta: 'Adadelta',
+  adam: 'Adam',
+  adamax: 'Adamax',
+  rmsprop: 'RMSProp',
+  sgd: 'Stochastic gradient descent (SGD)'
+};
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -39,7 +25,21 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export const OptimizationGrid = (props: any) => {
+type OptimizationGridProps = {
+  optimizationAlgorithm: string;
+  onOptimizationAlgorithmChange: (event: React.FormEvent<EventTarget>) => void;
+  learningRate: string;
+  onLearningRateChange: (event: React.FormEvent<EventTarget>) => void;
+};
+
+export const OptimizationGrid = (props: OptimizationGridProps) => {
+  const {
+    optimizationAlgorithm,
+    onOptimizationAlgorithmChange,
+    learningRate,
+    onLearningRateChange
+  } = props;
+
   interface State {
     lossFunction: string;
     optimizationAlgorithm: string;
@@ -66,8 +66,8 @@ export const OptimizationGrid = (props: any) => {
           select
           label="Optimization algorithm"
           className={classes.textField}
-          value={values.optimizationAlgorithm}
-          onChange={onChange('optimizationAlgorithm')}
+          value={optimizationAlgorithm}
+          onChange={onOptimizationAlgorithmChange}
           SelectProps={{
             MenuProps: {
               className: classes.menu
@@ -75,15 +75,13 @@ export const OptimizationGrid = (props: any) => {
           }}
           margin="normal"
         >
-          {optimizationAlgorithms.map(optimizationAlgorithm => (
-            <MenuItem
-              dense
-              key={optimizationAlgorithm.value}
-              value={optimizationAlgorithm.value}
-            >
-              {optimizationAlgorithm.label}
-            </MenuItem>
-          ))}
+          {_.map(optimizationAlgorithms, (v, k) => {
+            return (
+              <MenuItem dense key={k} value={k}>
+                {v}
+              </MenuItem>
+            );
+          })}
         </TextField>
       </Grid>
 
@@ -92,8 +90,8 @@ export const OptimizationGrid = (props: any) => {
           id="learning-rate"
           label="Learning rate"
           className={classes.textField}
-          value={'0.01'}
-          onChange={() => {}}
+          value={learningRate}
+          onChange={onLearningRateChange}
           margin="normal"
         />
       </Grid>

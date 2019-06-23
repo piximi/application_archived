@@ -48,6 +48,7 @@ const styles = (theme: Theme) =>
       ...theme.mixins.toolbar
     },
     content: {
+      zIndex: 1100,
       flexGrow: 1,
       transition: theme.transitions.create('margin', {
         easing: theme.transitions.easing.sharp,

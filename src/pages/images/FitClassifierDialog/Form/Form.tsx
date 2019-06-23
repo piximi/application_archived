@@ -2,77 +2,18 @@ import * as React from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { OptimizationGrid } from './OptimizationGrid/OptimizationGrid';
 import { Grid, MenuItem, TextField } from '@material-ui/core';
+import * as _ from 'lodash';
 
-const lossFunctions = [
-  {
-    label: 'Absolute difference',
-    value: 'absoluteDifference'
-  },
-  {
-    label: 'Cosine distance',
-    value: 'cosineDistance'
-  },
-  {
-    label: 'Hinge',
-    value: 'hingeLoss'
-  },
-  {
-    label: 'Huber',
-    value: 'huberLoss'
-  },
-  {
-    label: 'Log',
-    value: 'logLoss'
-  },
-  {
-    label: 'Mean squared error (MSE)',
-    value: 'meanSquaredError'
-  },
-  {
-    label: 'Sigmoid cross entropy',
-    value: 'sigmoidCrossEntropy'
-  },
-  {
-    label: 'Softmax cross entropy',
-    value: 'softmaxCrossEntropy'
-  }
-];
-
-const optimizationAlgorithms = [
-  {
-    value: 'adadelta',
-    label: 'Adadelta'
-  },
-  {
-    value: 'adam',
-    label: 'Adam'
-  },
-  {
-    value: 'adamax',
-    label: 'Adamax'
-  },
-  {
-    value: 'rmsprop',
-    label: 'RMSProp'
-  },
-  {
-    value: 'sgd',
-    label: 'Stochastic gradient descent (SGD)'
-  }
-];
-
-const data = [
-  { x: 0, y: 2 },
-  { x: 1, y: 3 },
-  { x: 2, y: 5 },
-  { x: 3, y: 4 },
-  { x: 4, y: 7 },
-  { x: 5, y: 2 },
-  { x: 6, y: 3 },
-  { x: 7, y: 5 },
-  { x: 8, y: 4 },
-  { x: 9, y: 7 }
-];
+const lossFunctions = {
+  absoluteDifference: 'Absolute difference',
+  cosineDistance: 'Cosine distance',
+  hingeLoss: 'Hinge',
+  huberLoss: 'Huber',
+  logLoss: 'Log',
+  meanSquaredError: 'Mean squared error (MSE)',
+  sigmoidCrossEntropy: 'Sigmoid cross entropy',
+  softmaxCrossEntropy: 'Softmax cross entropy'
+};
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -132,8 +73,40 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export const Form = (props: any) => {
-  const { openedDialog, closeDialog } = props;
+type FormProps = {
+  batchSize: string;
+  closeDialog: () => void;
+  epochs: string;
+  inputShape: string;
+  learningRate: string;
+  lossFunction: string;
+  onBatchSizeChange: (event: React.FormEvent<EventTarget>) => void;
+  onEpochsChange: (event: React.FormEvent<EventTarget>) => void;
+  onInputShapeChange: (event: React.FormEvent<EventTarget>) => void;
+  onLearningRateChange: (event: React.FormEvent<EventTarget>) => void;
+  onLossFunctionChange: (event: React.FormEvent<EventTarget>) => void;
+  onOptimizationAlgorithmChange: any;
+  openedDialog: boolean;
+  optimizationAlgorithm: string;
+};
+
+export const Form = (props: FormProps) => {
+  const {
+    batchSize,
+    closeDialog,
+    epochs,
+    inputShape,
+    learningRate,
+    lossFunction,
+    onBatchSizeChange,
+    onEpochsChange,
+    onInputShapeChange,
+    onLearningRateChange,
+    onLossFunctionChange,
+    onOptimizationAlgorithmChange,
+    openedDialog,
+    optimizationAlgorithm
+  } = props;
 
   interface State {
     lossFunction: string;
@@ -155,7 +128,12 @@ export const Form = (props: any) => {
 
   return (
     <form className={classes.container} noValidate autoComplete="off">
-      <OptimizationGrid />
+      <OptimizationGrid
+        optimizationAlgorithm={optimizationAlgorithm}
+        onOptimizationAlgorithmChange={onOptimizationAlgorithmChange}
+        learningRate={learningRate}
+        onLearningRateChange={onLearningRateChange}
+      />
 
       <Grid container spacing={2}>
         <Grid item xs={4}>
@@ -164,8 +142,8 @@ export const Form = (props: any) => {
             select
             label="Loss function"
             className={classes.textField}
-            value={values.lossFunction}
-            onChange={onChange('lossFunction')}
+            value={lossFunction}
+            onChange={onLossFunctionChange}
             SelectProps={{
               MenuProps: {
                 className: classes.menu
@@ -173,15 +151,13 @@ export const Form = (props: any) => {
             }}
             margin="normal"
           >
-            {lossFunctions.map(lossFunction => (
-              <MenuItem
-                dense
-                key={lossFunction.value}
-                value={lossFunction.value}
-              >
-                {lossFunction.label}
-              </MenuItem>
-            ))}
+            {_.map(lossFunctions, (v, k) => {
+              return (
+                <MenuItem dense key={k} value={k}>
+                  {v}
+                </MenuItem>
+              );
+            })}
           </TextField>
         </Grid>
       </Grid>
@@ -192,8 +168,8 @@ export const Form = (props: any) => {
             id="input-shape"
             label="Input shape"
             className={classes.textField}
-            value={''}
-            onChange={() => {}}
+            value={inputShape}
+            onChange={onInputShapeChange}
             margin="normal"
           />
         </Grid>
@@ -203,8 +179,8 @@ export const Form = (props: any) => {
             id="batch-size"
             label="Batch size"
             className={classes.textField}
-            value={'32'}
-            onChange={() => {}}
+            value={batchSize}
+            onChange={onBatchSizeChange}
             margin="normal"
           />
         </Grid>
@@ -214,8 +190,8 @@ export const Form = (props: any) => {
             id="epochs"
             label="Epochs"
             className={classes.textField}
-            value={'10'}
-            onChange={() => {}}
+            value={epochs}
+            onChange={onEpochsChange}
             margin="normal"
           />
         </Grid>

@@ -1,6 +1,7 @@
 import { Category, Image } from '@piximi/types';
 import * as ImageJS from 'image-js';
 import * as tensorflow from '@tensorflow/tfjs';
+import * as _ from 'lodash';
 
 const imageToSquare = (
   image: HTMLImageElement | HTMLCanvasElement,
@@ -50,6 +51,9 @@ const extracted = async (image: Image) => {
 };
 
 const createDataset = async (categories: Category[], images: Image[]) => {
+  images = images.splice(0, 1024);
+  categories = categories.splice(0, 1024);
+
   images = images.filter(image => {
     return image.categoryIdentifier !== '00000000-0000-0000-0000-000000000000';
   });
@@ -72,26 +76,10 @@ const createDataset = async (categories: Category[], images: Image[]) => {
     ys.push(categoryIndex - 1);
   }
 
-  let x = tensorflow.tidy(() => tensorflow.concat(xs));
+  const x = _.chunk(xs, 32);
+  const y = _.chunk(ys, 32);
 
-  if (categories.length - 1 < 2) {
-    alert('There must be at least two categories!');
-    return {
-      success: false,
-      x: x,
-      y: x
-    };
-  }
-
-  let y = tensorflow.tidy(() => {
-    return tensorflow.oneHot(ys, categories.length - 1);
-  });
-
-  return {
-    success: true,
-    x: x,
-    y: y
-  };
+  return _.zip(x, y);
 };
 
 const createModel = async (classes: number, units: number) => {
@@ -106,6 +94,8 @@ const createModel = async (classes: number, units: number) => {
     inputs: mobilenet.inputs,
     outputs: layer.output
   });
+
+  for (const layer of backbone.layers) layer.trainable = false;
 
   const a = tensorflow.layers.flatten({
     inputShape: backbone.outputs[0].shape.slice(1)

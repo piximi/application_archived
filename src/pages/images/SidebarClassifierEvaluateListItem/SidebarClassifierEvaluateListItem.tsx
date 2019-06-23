@@ -19,14 +19,14 @@ const SidebarClassifierEvaluateListItem = (props: any) => {
   const { t: translation } = useTranslation();
 
   const evaluate = async () => {
-    const model = await createModel(categories.length - 1, 100);
-
-    const { x, y } = await createDataset(categories, images);
-
-    const evaluation = (await model.evaluate(x, y)) as tensorflow.Scalar[];
-
-    setLoss(evaluation[0]);
-    setAccuracy(evaluation[1]);
+    // const model = await createModel(categories.length - 1, 100);
+    //
+    // const [x, y] = await createDataset(categories, images);
+    //
+    // const evaluation = (await model.evaluate(x, y)) as tensorflow.Scalar[];
+    //
+    // setLoss(evaluation[0]);
+    // setAccuracy(evaluation[1]);
 
     openSnackbar();
   };

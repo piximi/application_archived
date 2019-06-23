@@ -56,7 +56,7 @@ export const DialogAppBar = (props: any) => {
 
         <div className={classes.grow} />
 
-        <IconButton className={classes.button} onClick={closeDialog} href={''}>
+        <IconButton className={classes.button} onClick={fit} href={''}>
           <PlayCircleOutline />
         </IconButton>
 
