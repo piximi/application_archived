@@ -168,7 +168,8 @@ export const Form = (props: FormProps) => {
             id="input-shape"
             label="Input shape"
             className={classes.textField}
-            value={inputShape}
+            value={''}
+            disabled
             onChange={onInputShapeChange}
             margin="normal"
           />
