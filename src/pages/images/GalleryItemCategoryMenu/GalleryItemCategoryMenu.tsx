@@ -10,7 +10,7 @@ import {
 import LabelIcon from '@material-ui/icons/Label';
 import * as _ from 'lodash';
 
-const GalleryItemCategoryMenu = (props: any) => {
+export const GalleryItemCategoryMenu = (props: any) => {
   const {
     anchorEl,
     categories,
@@ -65,5 +65,3 @@ const GalleryItemCategoryMenu = (props: any) => {
     </Popover>
   );
 };
-
-export default GalleryItemCategoryMenu;

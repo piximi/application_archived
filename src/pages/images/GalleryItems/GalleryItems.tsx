@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Grid, AutoSizer } from 'react-virtualized';
 import { ConnectedItem } from '../../../containers';
 
-type Props = {
+type GalleryItemsProps = {
   decreaseWidth: any;
   selectItem: any;
   images: any;
@@ -14,7 +14,7 @@ type Props = {
   windowWidth: any;
 };
 
-const GalleryItems = (props: Props) => {
+export const GalleryItems = (props: GalleryItemsProps) => {
   const {
     decreaseWidth,
     selectItem,
@@ -112,5 +112,3 @@ const GalleryItems = (props: Props) => {
     </AutoSizer>
   );
 };
-
-export default GalleryItems;

@@ -3,7 +3,7 @@ import './Gallery.css';
 import { GalleryCustomDragLayer, GalleryItems, GallerySelectionBox } from '..';
 import { collisionDetection } from '../helper';
 
-const Gallery = props => {
+export const Gallery = props => {
   const { images, categories, imagesPerRow, decreaseWidth } = props;
 
   const visibleCategories = categories
@@ -171,5 +171,3 @@ Gallery.defaultProps = {
   decreaseWidth: 0,
   imagesPerRow: 10
 };
-
-export default Gallery;

@@ -37,7 +37,7 @@ let swapArrayElements = (arr, indexA, indexB) => {
   arr[indexB] = temp;
 };
 
-const GalleryCustomDragLayer = props => {
+export const GalleryCustomDragLayer = props => {
   const { item, itemType, isDragging } = props;
 
   // const spec = {
@@ -102,5 +102,3 @@ const GalleryCustomDragLayer = props => {
 //     isDragging: monitor.isDragging()
 //   };
 // }
-
-export default GalleryCustomDragLayer;

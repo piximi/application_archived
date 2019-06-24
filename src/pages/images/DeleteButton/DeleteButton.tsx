@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles(styles);
 
-const DeleteButton = (props: any) => {
+export const DeleteButton = (props: any) => {
   const { t: translation } = useTranslation();
 
   const { openedDialog, openDialog, closeDialog } = useDialog();
@@ -39,5 +39,3 @@ const DeleteButton = (props: any) => {
     </React.Fragment>
   );
 };
-
-export default DeleteButton;

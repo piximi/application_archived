@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Portal } from 'react-portal';
 import hash from 'string-hash';
 
-const FileInput = (props: any) => {
+export const FileInput = (props: any) => {
   const { children, createImages } = props;
 
   const inputEl = React.useRef<HTMLInputElement>(null);
@@ -70,5 +70,3 @@ const FileInput = (props: any) => {
     </React.Fragment>
   );
 };
-
-export default FileInput;

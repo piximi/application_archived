@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles(styles);
 
-const ImportImagesButton = (props: any) => {
+export const ImportImagesButton = (props: any) => {
   const { createImages } = props;
 
   const classes = useStyles({});
@@ -25,5 +25,3 @@ const ImportImagesButton = (props: any) => {
     </FileInput>
   );
 };
-
-export default ImportImagesButton;
