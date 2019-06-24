@@ -3,8 +3,8 @@ import styles from './PrimaryAppBar.css';
 import { AppBar, IconButton, Toolbar } from '@material-ui/core';
 import classNames from 'classnames';
 import MenuIcon from '@material-ui/icons/Menu';
-import { ConnectedImportImagesButton } from '../../../containers';
-import { DeleteButton, Logo } from '../../../pages/images';
+import { ConnectedImportImagesButton } from '../../../../containers';
+import { DeleteButton, Logo } from '../../../../pages/images';
 import { makeStyles } from '@material-ui/styles';
 import ImageSearchIcon from '@material-ui/icons/ImageSearch';
 
