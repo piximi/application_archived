@@ -7,7 +7,7 @@ import { DndProvider } from 'react-dnd';
 import { useDrawer } from '@piximi/hooks';
 import { makeStyles } from '@material-ui/styles';
 import { ConnectedGallery } from '../../../containers';
-import { NavigationDrawer } from '@piximi/drawer';
+import { NavigationDrawer } from '@piximi/navigation-drawer';
 
 const useStyles = makeStyles(styles);
 

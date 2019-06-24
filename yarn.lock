@@ -1311,10 +1311,18 @@
     react-dom "^16.8.6"
     react-i18next "^10.11.2"
 
-"@piximi/drawer@^0.1.6":
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/@piximi/drawer/-/drawer-0.1.6.tgz#2310337fd6dddcf7b457ad59a85db20f40a46fa7"
-  integrity sha512-FCvwAs+LkDyHE89rfOsCqGU+nr/o8YldPERPKXEl2Ld3RJMzadpaE4Zy5GYO3Z+6oWX/3SP3XeWw7nrSgMkT4A==
+"@piximi/hooks@^0.1.11":
+  version "0.1.11"
+  resolved "https://registry.yarnpkg.com/@piximi/hooks/-/hooks-0.1.11.tgz#859316342ef6aa09197c7ac0eff2be5038a99cd9"
+  integrity sha512-w4aFtCpuuMDq8WL/Tmlixx3RYlRtounf1Ovsk1wPbpwbL9mrwnxErlX/fFmPLRAp+FIoZOs7km2AqOpgHIkxyA==
+  dependencies:
+    react "^16.8.6"
+    react-dom "^16.8.6"
+
+"@piximi/navigation-drawer@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@piximi/navigation-drawer/-/navigation-drawer-1.0.2.tgz#02bd9e8d5a6a44a36954148434e478017136d352"
+  integrity sha512-taOC12Qxq/29M/AaR/b0HmfrrQOpiERMgvEn0f6QXAGDO6yCWrcq/V4t+gLVFEbqyDNT5pPL3bxjRp6segTllA==
   dependencies:
     "@material-ui/core" "4.1.2"
     "@material-ui/icons" "4.2.1"
@@ -1336,14 +1344,6 @@
     react-redux "^7.1.0"
     styled-components "^4.3.1"
     uuid "^3.3.2"
-
-"@piximi/hooks@^0.1.11":
-  version "0.1.11"
-  resolved "https://registry.yarnpkg.com/@piximi/hooks/-/hooks-0.1.11.tgz#859316342ef6aa09197c7ac0eff2be5038a99cd9"
-  integrity sha512-w4aFtCpuuMDq8WL/Tmlixx3RYlRtounf1Ovsk1wPbpwbL9mrwnxErlX/fFmPLRAp+FIoZOs7km2AqOpgHIkxyA==
-  dependencies:
-    react "^16.8.6"
-    react-dom "^16.8.6"
 
 "@piximi/store@^0.1.23", "@piximi/store@^0.1.24":
   version "0.1.24"
