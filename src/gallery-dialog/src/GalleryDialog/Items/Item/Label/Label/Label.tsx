@@ -4,7 +4,7 @@ import styles from './Label.css';
 import { IconButton } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { useMenu } from '@piximi/hooks';
-import { ConnectedCategoryMenu } from '..';
+import { ConnectedCategoryMenu } from '../index';
 
 const useStyles = makeStyles(styles);
 

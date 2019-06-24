@@ -1,9 +1,9 @@
 import React from 'react';
-import { ImageViewerDialog } from '../../../../../pages/image';
-import Image from '../../../../../components/Image/Image';
+import { ImageViewerDialog } from '../../../../../../pages/image';
+import Image from '../../../../../../components/Image/Image';
 import { useDialog } from '@piximi/hooks';
 import { ImageDragSource } from '@piximi/components';
-import { ConnectedLabel } from '..';
+import { ConnectedLabel } from '../index';
 
 export const Item = (props: any) => {
   const { selectedItems, onmousedown, containerStyle, item } = props;

@@ -6,7 +6,10 @@ import { DndProvider } from 'react-dnd';
 import { useDrawer } from '@piximi/hooks';
 import { makeStyles } from '@material-ui/styles';
 import { NavigationDrawer } from '@piximi/navigation-drawer';
-import { ConnectedGalleryDialog, GalleryAppBar } from '../../../gallery-dialog';
+import {
+  ConnectedGalleryDialog,
+  GalleryAppBar
+} from '../../../gallery-dialog/src';
 
 const useStyles = makeStyles(styles);
 

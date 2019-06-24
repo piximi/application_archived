@@ -7,7 +7,7 @@ import { makeStyles } from '@material-ui/styles';
 import ImageSearchIcon from '@material-ui/icons/ImageSearch';
 import { ConnectedImportImagesButton } from '../ImportImagesButton/ImportImagesButton';
 import { DeleteButton } from '../DeleteButton';
-import { Logo } from '..';
+import { Logo } from '../index';
 
 const useStyles = makeStyles(styles);
 

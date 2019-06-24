@@ -4,7 +4,7 @@ import { Button } from '@material-ui/core';
 import AddPhotoAlternateIcon from '@material-ui/icons/AddPhotoAlternate';
 import { makeStyles } from '@material-ui/styles';
 import { useTranslation } from 'react-i18next';
-import { FileInput } from '..';
+import { FileInput } from '../index';
 
 const useStyles = makeStyles(styles);
 

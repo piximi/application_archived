@@ -5,7 +5,7 @@ import Delete from '@material-ui/icons/Delete';
 import { makeStyles } from '@material-ui/styles';
 import { useDialog } from '@piximi/hooks';
 import { useTranslation } from 'react-i18next';
-import { ConnectedDeleteImageDialog } from '../../..';
+import { ConnectedDeleteImageDialog } from '../../../index';
 
 const useStyles = makeStyles(styles);
 
