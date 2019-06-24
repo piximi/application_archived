@@ -8,7 +8,6 @@ import { DeleteButton, Logo } from '..';
 import { makeStyles } from '@material-ui/styles';
 import ImageSearchIcon from '@material-ui/icons/ImageSearch';
 import { useDialog } from '@piximi/hooks';
-import SearchDialog from '../../search/SearchDialog/SearchDialog';
 
 const useStyles = makeStyles(styles);
 
@@ -56,8 +55,6 @@ export const PrimaryAppBar = (props: any) => {
           setSelectedImages={setSelectedImages}
         />
       </Toolbar>
-
-      <SearchDialog onClose={closeDialog} open={openedDialog} />
     </AppBar>
   );
 };
