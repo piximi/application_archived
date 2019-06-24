@@ -1,8 +1,8 @@
 import * as React from 'react';
 import styles from './BrightnessSlider.css';
 import { Typography } from '@material-ui/core';
-import Slider from '@material-ui/lab/Slider';
 import { makeStyles } from '@material-ui/styles';
+import { Slider } from '@material-ui/lab';
 
 const useStyles = makeStyles(styles);
 

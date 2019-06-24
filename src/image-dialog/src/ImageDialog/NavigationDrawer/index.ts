@@ -1,5 +1,5 @@
 export { NavigationDrawer } from './NavigationDrawer';
 export { BrightnessSlider } from './BrightnessSlider';
-export { ChannelSelection } from './ChannelSelection';
+export { ChannelsList } from './ChannelsList';
 export { ContrastSlider } from './ContrastSlider';
 export { Histogram } from './Histogram';

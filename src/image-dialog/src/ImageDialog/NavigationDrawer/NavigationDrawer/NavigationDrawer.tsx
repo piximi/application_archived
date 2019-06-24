@@ -2,12 +2,7 @@ import * as React from 'react';
 import styles from './NavigationDrawer.css';
 import { Drawer } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
-import {
-  BrightnessSlider,
-  ChannelSelection,
-  ContrastSlider,
-  Histogram
-} from '..';
+import { BrightnessSlider, ChannelsList, ContrastSlider, Histogram } from '..';
 
 const useStyles = makeStyles(styles);
 
@@ -15,13 +10,10 @@ export const NavigationDrawer = (props: any) => {
   const {
     onClose,
     open,
-    src,
     setBrightness,
     brightness,
     setContrast,
-    contrast,
-    setUnselectedChannels,
-    unselectedChannels
+    contrast
   } = props;
 
   const classes = useStyles({});
@@ -35,12 +27,9 @@ export const NavigationDrawer = (props: any) => {
       onClose={onClose}
       open={open}
     >
-      <Histogram channels={unselectedChannels} src={src} />
+      <Histogram />
 
-      <ChannelSelection
-        setUnselectedChannels={setUnselectedChannels}
-        unselectedChannels={unselectedChannels}
-      />
+      <ChannelsList />
 
       <BrightnessSlider brightness={brightness} setBrightness={setBrightness} />
       <ContrastSlider contrast={contrast} setContrast={setContrast} />
