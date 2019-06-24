@@ -58,13 +58,13 @@ const Image = props => {
     }
   };
 
-  const selectVisibleChannels = (imageData, nonVisibleChannels) => {
-    for (let i = 0; i < imageData.length; i += 4) {
-      for (let j = 0; j < 4; j += 1) {
-        if (nonVisibleChannels.includes(j)) imageData[j + i] = 0;
-      }
-    }
-  };
+  // const selectVisibleChannels = (imageData, nonVisibleChannels) => {
+  //   for (let i = 0; i < imageData.length; i += 4) {
+  //     for (let j = 0; j < 4; j += 1) {
+  //       if (nonVisibleChannels.includes(j)) imageData[j + i] = 0;
+  //     }
+  //   }
+  // };
 
   React.useEffect(() => {
     draw();
