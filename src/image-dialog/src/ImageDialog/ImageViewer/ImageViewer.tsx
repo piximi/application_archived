@@ -11,9 +11,9 @@ import {
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import EqualizerIcon from '@material-ui/icons/Equalizer';
 import PublicIcon from '@material-ui/icons/Public';
-import { ImageViewerExposureDrawer } from '../../index';
 import Image from '../../../../components/Image/Image';
 import { makeStyles } from '@material-ui/styles';
+import { NavigationDrawer } from '../NavigationDrawer/NavigationDrawer';
 
 const useStyles = makeStyles(styles);
 
@@ -25,7 +25,7 @@ type Props = {
   images: any;
 };
 
-const ImageViewer = (props: Props) => {
+export const ImageViewer = (props: Props) => {
   const classes = useStyles({});
 
   const [applySettingsGlobally, setApplySettingsGlobally] = React.useState(
@@ -134,7 +134,7 @@ const ImageViewer = (props: Props) => {
         </Toolbar>
       </AppBar>
 
-      <ImageViewerExposureDrawer
+      <NavigationDrawer
         onClose={toggleExposureDrawer}
         open={exposureDrawerToggled}
         src={src}
@@ -149,5 +149,3 @@ const ImageViewer = (props: Props) => {
     </div>
   );
 };
-
-export default ImageViewer;

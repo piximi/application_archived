@@ -1,17 +1,17 @@
 import * as React from 'react';
-import styles from './ImageViewerExposureDrawer.css';
+import styles from './NavigationDrawer.css';
 import { Drawer } from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
 import {
   BrightnessSlider,
   ChannelSelection,
   ContrastSlider,
   ImageHistogram
-} from '../../index';
-import { makeStyles } from '@material-ui/styles';
+} from '..';
 
 const useStyles = makeStyles(styles);
 
-const ImageViewerExposureDrawer = (props: any) => {
+export const NavigationDrawer = (props: any) => {
   const {
     onClose,
     open,
@@ -47,5 +47,3 @@ const ImageViewerExposureDrawer = (props: any) => {
     </Drawer>
   );
 };
-
-export default ImageViewerExposureDrawer;

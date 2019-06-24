@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { ImageViewer } from '../image-dialog/src';
+import { ImageViewer } from './ImageViewer';
 import {
   updateImageBrightnessAction,
   updateImageContrastAction

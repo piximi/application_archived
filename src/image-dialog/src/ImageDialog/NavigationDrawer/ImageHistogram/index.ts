@@ -1,0 +1,1 @@
+export { ImageHistogram } from './ImageHistogram';

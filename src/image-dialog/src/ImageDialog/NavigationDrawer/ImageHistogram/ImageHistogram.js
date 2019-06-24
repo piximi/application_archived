@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as d3 from 'd3';
 
-const ImageHistogram = props => {
+export const ImageHistogram = props => {
   const canvasRef = React.useRef();
   const nodeRef = React.useRef();
 
@@ -161,5 +161,3 @@ const ImageHistogram = props => {
     </div>
   );
 };
-
-export default ImageHistogram;

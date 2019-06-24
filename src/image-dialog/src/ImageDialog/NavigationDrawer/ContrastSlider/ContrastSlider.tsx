@@ -1,43 +1,40 @@
 import * as React from 'react';
-import styles from './BrightnessSlider.css';
 import { Typography } from '@material-ui/core';
 import Slider from '@material-ui/lab/Slider';
+import styles from './ContrastSlider.css';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(styles);
 
 type Props = {
-  brightness: number;
-  setBrightness: (brightness: number) => void;
+  contrast: number;
+  setContrast: (contrast: number) => void;
 };
 
-const BrightnessSlider = (props: Props) => {
+export const ContrastSlider = (props: Props) => {
+  const { contrast, setContrast } = props;
+
   const classes = useStyles({});
 
-  const { brightness, setBrightness } = props;
-
   const onChange = (event: any, value: any) => {
-    setBrightness(value);
+    setContrast(value);
   };
 
   return (
     <div className={classes.root}>
       <Typography style={{ color: 'white' }} id="label">
-        Brightness
+        Contrast
       </Typography>
 
       <Slider
-        style={{ color: 'white' }}
         classes={{ root: classes.slider }}
-        value={brightness}
-        min={0}
-        max={1000}
-        step={0.5}
+        min={50}
+        max={300}
+        step={0.1}
+        value={contrast}
         aria-labelledby="label"
         onChange={onChange}
       />
     </div>
   );
 };
-
-export default BrightnessSlider;

@@ -1,0 +1,1 @@
+export { BrightnessSlider } from './BrightnessSlider';
