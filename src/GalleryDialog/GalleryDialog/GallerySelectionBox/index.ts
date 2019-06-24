@@ -1,1 +1,0 @@
-export { GallerySelectionBox } from './GallerySelectionBox';

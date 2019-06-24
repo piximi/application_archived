@@ -1,18 +1,16 @@
 import { connect } from 'react-redux';
-import { Application } from '../pages/images';
+import { CategoryMenu } from './CategoryMenu';
+import { updateImageCategoryAction } from '@piximi/store';
 import { Dispatch } from 'redux';
 import { Classifier } from '@piximi/types';
-import { updateImageCategoryAction } from '@piximi/store';
 
 type State = {
   classifier: Classifier;
-  settings: any;
 };
 
 const mapStateToProps = (state: State) => {
   return {
-    categories: state.classifier.categories,
-    images: state.classifier.images
+    categories: state.classifier.categories
   };
 };
 
@@ -31,7 +29,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
   };
 };
 
-export const ConnectedApplication = connect(
+export const ConnectedCategoryMenu = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Application);
+)(CategoryMenu);

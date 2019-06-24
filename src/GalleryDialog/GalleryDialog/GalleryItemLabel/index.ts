@@ -1,1 +1,0 @@
-export { GalleryItemLabel } from './GalleryItemLabel';

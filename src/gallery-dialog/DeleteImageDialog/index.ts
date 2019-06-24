@@ -1,0 +1,1 @@
+export { ConnectedDeleteImageDialog } from './ConnectedDeleteImageDialog';

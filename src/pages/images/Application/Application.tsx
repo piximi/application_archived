@@ -1,13 +1,12 @@
 import * as React from 'react';
 import styles from './Application.css';
 import classNames from 'classnames';
-import { PrimaryAppBar } from '..';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DndProvider } from 'react-dnd';
 import { useDrawer } from '@piximi/hooks';
 import { makeStyles } from '@material-ui/styles';
-import { ConnectedGallery } from '../../../containers';
 import { NavigationDrawer } from '@piximi/navigation-drawer';
+import { ConnectedGalleryDialog, GalleryAppBar } from '../../../gallery-dialog';
 
 const useStyles = makeStyles(styles);
 
@@ -26,7 +25,7 @@ export const Application = (props: Props) => {
   return (
     <DndProvider backend={HTML5Backend}>
       <div className={classes.appFrame}>
-        <PrimaryAppBar
+        <GalleryAppBar
           selectedImages={selectedImages}
           setSelectedImages={setSelectedImages}
           toggle={toggleDrawer}
@@ -43,7 +42,7 @@ export const Application = (props: Props) => {
         >
           <div className={classes.drawerHeader} />
 
-          <ConnectedGallery
+          <ConnectedGalleryDialog
             selectedImages={selectedImages}
             imagesPerRow={10}
             decreaseWidth={openedDrawer ? 280 + 24 : 24}

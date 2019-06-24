@@ -1,1 +1,0 @@
-export { GalleryCustomDragLayer } from './GalleryCustomDragLayer';

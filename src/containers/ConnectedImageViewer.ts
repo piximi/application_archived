@@ -66,9 +66,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
   };
 };
 
-const ConnectedImageViewer = connect(
+export const ConnectedImageViewer = connect(
   mapStateToProps,
   mapDispatchToProps
 )(ImageViewer);
-
-export default ConnectedImageViewer;

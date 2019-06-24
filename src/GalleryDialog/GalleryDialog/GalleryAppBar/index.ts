@@ -1,1 +1,0 @@
-export { PrimaryAppBar } from './GalleryAppBar';
