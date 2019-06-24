@@ -6,7 +6,7 @@ import {
   ChannelSelection,
   ContrastSlider,
   ImageHistogram
-} from '..';
+} from '../../index';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(styles);
