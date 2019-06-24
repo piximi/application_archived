@@ -6,7 +6,7 @@ import {
   BrightnessSlider,
   ChannelSelection,
   ContrastSlider,
-  ImageHistogram
+  Histogram
 } from '..';
 
 const useStyles = makeStyles(styles);
@@ -35,7 +35,7 @@ export const NavigationDrawer = (props: any) => {
       onClose={onClose}
       open={open}
     >
-      <ImageHistogram channels={unselectedChannels} src={src} />
+      <Histogram channels={unselectedChannels} src={src} />
 
       <ChannelSelection
         setUnselectedChannels={setUnselectedChannels}
