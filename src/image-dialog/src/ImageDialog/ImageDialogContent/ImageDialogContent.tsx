@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styles from './ImageViewer.css';
+import styles from './ImageDialogContent.css';
 import {
   AppBar,
   Grid,
@@ -25,7 +25,7 @@ type Props = {
   images: any;
 };
 
-export const ImageViewer = (props: Props) => {
+export const ImageDialogContent = (props: Props) => {
   const classes = useStyles({});
 
   const [applySettingsGlobally, setApplySettingsGlobally] = React.useState(

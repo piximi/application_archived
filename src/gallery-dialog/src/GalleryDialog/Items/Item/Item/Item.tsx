@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageViewerDialog } from '../../../../../../image-dialog/src';
+import { ImageDialog } from '../../../../../../image-dialog/src';
 import Image from '../../../../../../components/Image/Image';
 import { useDialog } from '@piximi/hooks';
 import { ImageDragSource } from '@piximi/components';
@@ -32,7 +32,7 @@ export const Item = (props: any) => {
         width={0.9 * containerStyle.width}
       />
 
-      <ImageViewerDialog
+      <ImageDialog
         onClose={closeDialog}
         open={openedDialog}
         src={item.data}

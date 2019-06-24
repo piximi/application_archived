@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { ImageViewer } from './ImageViewer';
+import { ImageDialogContent } from './ImageDialogContent';
 import {
   updateImageBrightnessAction,
   updateImageContrastAction
@@ -66,7 +66,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
   };
 };
 
-export const ConnectedImageViewer = connect(
+export const ConnectedImageDialogContent = connect(
   mapStateToProps,
   mapDispatchToProps
-)(ImageViewer);
+)(ImageDialogContent);
