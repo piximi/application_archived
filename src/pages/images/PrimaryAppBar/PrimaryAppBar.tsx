@@ -12,7 +12,7 @@ import SearchDialog from '../../search/SearchDialog/SearchDialog';
 
 const useStyles = makeStyles(styles);
 
-const PrimaryAppBar = (props: any) => {
+export const PrimaryAppBar = (props: any) => {
   const classes = useStyles({});
 
   const { openedDialog, openDialog, closeDialog } = useDialog();
@@ -61,5 +61,3 @@ const PrimaryAppBar = (props: any) => {
     </AppBar>
   );
 };
-
-export default PrimaryAppBar;

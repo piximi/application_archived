@@ -15,7 +15,7 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(styles);
 
-const UploadSnackbarContent = (props: any) => {
+export const UploadSnackbarContent = (props: any) => {
   const classes = useStyles({});
 
   return (
@@ -36,5 +36,3 @@ const UploadSnackbarContent = (props: any) => {
     </Card>
   );
 };
-
-export default UploadSnackbarContent;

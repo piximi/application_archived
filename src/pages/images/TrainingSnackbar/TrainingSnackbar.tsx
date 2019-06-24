@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Snackbar } from '@material-ui/core';
 
-const TrainingSnackbar = (props: any) => {
+export const TrainingSnackbar = (props: any) => {
   const { onClose, open } = props;
 
   return (
@@ -13,5 +13,3 @@ const TrainingSnackbar = (props: any) => {
     />
   );
 };
-
-export default TrainingSnackbar;

@@ -12,7 +12,7 @@ type Props = {
   visibility: any;
 };
 
-const GallerySelectionBox = (props: Props) => {
+export const GallerySelectionBox = (props: Props) => {
   const { selectionBoxCoordinates, visibility } = props;
 
   const [style, setStyle] = React.useState({
@@ -54,5 +54,3 @@ const GallerySelectionBox = (props: Props) => {
 
   return <div style={style} />;
 };
-
-export default GallerySelectionBox;

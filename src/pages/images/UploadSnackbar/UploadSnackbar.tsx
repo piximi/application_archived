@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Snackbar } from '@material-ui/core';
 import { UploadSnackbarContent } from '..';
 
-const UploadSnackbar = (props: any) => {
+export const UploadSnackbar = (props: any) => {
   const { open, onClose } = props;
 
   return (
@@ -16,5 +16,3 @@ const UploadSnackbar = (props: any) => {
     </Snackbar>
   );
 };
-
-export default UploadSnackbar;

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Typography } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 
-const Logo = () => {
+export const Logo = () => {
   const { t: translation } = useTranslation();
 
   return (
@@ -11,5 +11,3 @@ const Logo = () => {
     </Typography>
   );
 };
-
-export default Logo;

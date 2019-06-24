@@ -14,7 +14,7 @@ type Props = {
   windowWidth: any;
 };
 
-const GalleryItems = (props: Props) => {
+export const GalleryItems = (props: Props) => {
   const {
     decreaseWidth,
     selectItem,
@@ -112,5 +112,3 @@ const GalleryItems = (props: Props) => {
     </AutoSizer>
   );
 };
-
-export default GalleryItems;

@@ -8,7 +8,7 @@ import { useMenu } from '@piximi/hooks';
 
 const useStyles = makeStyles(styles);
 
-const GalleryItemLabel = (props: any) => {
+export const GalleryItemLabel = (props: any) => {
   const { anchorEl, openedMenu, openMenu, closeMenu } = useMenu();
 
   const { categories, image } = props;
@@ -47,5 +47,3 @@ const GalleryItemLabel = (props: any) => {
     </React.Fragment>
   );
 };
-
-export default GalleryItemLabel;

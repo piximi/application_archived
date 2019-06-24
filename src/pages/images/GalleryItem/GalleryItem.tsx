@@ -5,7 +5,7 @@ import { useDialog } from '@piximi/hooks';
 import { ConnectedItemLabel } from '../../../containers';
 import { ImageDragSource } from '@piximi/components';
 
-const GalleryItem = (props: any) => {
+export const GalleryItem = (props: any) => {
   const { selectedItems, onmousedown, containerStyle, item } = props;
 
   const { openedDialog, openDialog, closeDialog } = useDialog();
@@ -42,5 +42,3 @@ const GalleryItem = (props: any) => {
     </ImageDragSource>
   );
 };
-
-export default GalleryItem;

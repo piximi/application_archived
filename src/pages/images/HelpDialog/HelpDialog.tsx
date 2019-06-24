@@ -8,7 +8,7 @@ import {
 } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 
-const HelpDialog = (props: any) => {
+export const HelpDialog = (props: any) => {
   const { onClose, open } = props;
 
   const { t: translation } = useTranslation();
@@ -31,5 +31,3 @@ const HelpDialog = (props: any) => {
     </Dialog>
   );
 };
-
-export default HelpDialog;
