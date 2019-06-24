@@ -1,7 +1,9 @@
 import * as React from 'react';
 import './Gallery.css';
-import { GalleryCustomDragLayer, GalleryItems, GallerySelectionBox } from '..';
-import { collisionDetection } from '../helper';
+import { collisionDetection } from '../../../pages/images/helper';
+import { GalleryCustomDragLayer } from '../GalleryCustomDragLayer/GalleryCustomDragLayer';
+import { GallerySelectionBox } from '../GallerySelectionBox/GallerySelectionBox';
+import { GalleryItems } from '../GalleryItems/GalleryItems';
 
 export const Gallery = props => {
   const { images, categories, imagesPerRow, decreaseWidth } = props;

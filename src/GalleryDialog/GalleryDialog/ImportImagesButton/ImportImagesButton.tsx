@@ -3,7 +3,7 @@ import styles from './ImportImagesButton.css';
 import { Button } from '@material-ui/core';
 import AddPhotoAlternateIcon from '@material-ui/icons/AddPhotoAlternate';
 import { makeStyles } from '@material-ui/styles';
-import { FileInput } from '..';
+import { FileInput } from '../../../pages/images';
 import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles(styles);
