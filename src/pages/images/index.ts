@@ -16,6 +16,3 @@ export { GallerySelectionBox } from './GallerySelectionBox/GallerySelectionBox';
 export { ImportImagesButton } from './ImportImagesButton/ImportImagesButton';
 export { Logo } from './Logo/Logo';
 export { PrimaryAppBar } from './PrimaryAppBar/PrimaryAppBar';
-export {
-  UploadSnackbarContent
-} from './UploadSnackbarContent/UploadSnackbarContent';
