@@ -129,9 +129,12 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
   };
 
   const fit = async () => {
-    const depth = categories.length - 1;
+    const numberOfClasses: number = categories.length - 1;
+    if (numberOfClasses === 1) {
+      alert('The classifier must have at least two classes!');
+    }
 
-    const model = await createModel(depth, 100);
+    const model = await createModel(numberOfClasses, 100);
 
     createDataset(categories, images).then(async batches => {
       for (const batch of batches) {
@@ -142,7 +145,7 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
         });
 
         const y = tensorflow.tidy(() => {
-          return tensorflow.oneHot(ys as number[], depth);
+          return tensorflow.oneHot(ys as number[], numberOfClasses);
         });
 
         const metrics: number[] = (await model.trainOnBatch(x, y)) as number[];
