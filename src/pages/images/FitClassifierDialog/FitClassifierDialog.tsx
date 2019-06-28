@@ -129,9 +129,11 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
   };
 
   const fit = async () => {
+    console.log('fit');
     const numberOfClasses: number = categories.length - 1;
     if (numberOfClasses === 1) {
       alert('The classifier must have at least two classes!');
+      return;
     }
 
     const model = await createModel(numberOfClasses, 100);
