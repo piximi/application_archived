@@ -4,6 +4,33 @@ import * as tensorflow from '@tensorflow/tfjs';
 
 const VALIDATIONSET_RATIO = 0.2;
 
+const assignToSet = (
+  validationSetBound: number,
+  testSetBound: number
+): number => {
+  const rdn = Math.random();
+  if (rdn < testSetBound) {
+    return 2;
+  } else if (rdn >= testSetBound && rdn <= validationSetBound) {
+    return 1;
+  } else {
+    return 0;
+  }
+};
+
+// assign each image to train- test- or validation- set
+const initializeDatasets = (
+  images: Image[],
+  validationSetRation: number,
+  testSetRation: number = 0
+) => {
+  const validationSetBound = validationSetRation + testSetRation;
+  images.forEach((image: Image) => {
+    const setItentifier = assignToSet(validationSetBound, testSetRation);
+    // TODO: update Partition
+  });
+};
+
 const imageToSquare = (
   image: HTMLImageElement | HTMLCanvasElement,
   size: number

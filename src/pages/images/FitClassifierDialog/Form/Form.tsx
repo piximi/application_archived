@@ -3,6 +3,7 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { OptimizationGrid } from './OptimizationGrid/OptimizationGrid';
 import { Grid, MenuItem, TextField } from '@material-ui/core';
 import * as _ from 'lodash';
+import * as tensorflow from '@tensorflow/tfjs';
 
 const lossFunctions = {
   absoluteDifference: 'Absolute difference',
@@ -74,12 +75,12 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 type FormProps = {
-  batchSize: string;
+  batchSize: number;
   closeDialog: () => void;
-  epochs: string;
+  epochs: number;
   inputShape: string;
-  learningRate: string;
-  lossFunction: string;
+  learningRate: number;
+  lossFunction: String;
   onBatchSizeChange: (event: React.FormEvent<EventTarget>) => void;
   onEpochsChange: (event: React.FormEvent<EventTarget>) => void;
   onInputShapeChange: (event: React.FormEvent<EventTarget>) => void;
@@ -87,7 +88,7 @@ type FormProps = {
   onLossFunctionChange: (event: React.FormEvent<EventTarget>) => void;
   onOptimizationAlgorithmChange: any;
   openedDialog: boolean;
-  optimizationAlgorithm: string;
+  optimizationAlgorithm: tensorflow.Optimizer;
 };
 
 export const Form = (props: FormProps) => {
@@ -110,12 +111,12 @@ export const Form = (props: FormProps) => {
 
   interface State {
     lossFunction: string;
-    optimizationAlgorithm: string;
+    optimizationAlgorithm: tensorflow.Optimizer;
   }
 
   const [values, setValues] = React.useState<State>({
     lossFunction: 'softmaxCrossEntropy',
-    optimizationAlgorithm: 'adam'
+    optimizationAlgorithm: tensorflow.train.adam()
   });
 
   const onChange = (name: keyof State) => (
@@ -182,6 +183,7 @@ export const Form = (props: FormProps) => {
             className={classes.textField}
             value={batchSize}
             onChange={onBatchSizeChange}
+            type="number"
             margin="normal"
           />
         </Grid>
@@ -194,6 +196,7 @@ export const Form = (props: FormProps) => {
             value={epochs}
             onChange={onEpochsChange}
             margin="normal"
+            type="number"
           />
         </Grid>
       </Grid>

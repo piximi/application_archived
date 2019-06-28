@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export const DialogAppBar = (props: any) => {
-  const { closeDialog, fit, openedDrawer } = props;
+  const { onStopTrainingChange, closeDialog, fit, openedDrawer } = props;
 
   const classes = useStyles();
 
@@ -67,7 +67,7 @@ export const DialogAppBar = (props: any) => {
         <Tooltip title="Stop fitting the model" placement="bottom">
           <IconButton
             className={classes.button}
-            onClick={closeDialog}
+            onClick={onStopTrainingChange}
             href={''}
           >
             <PauseCircleOutline />
