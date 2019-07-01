@@ -13,8 +13,10 @@ import { History } from './History/History';
 import classNames from 'classnames';
 import { createStyles, makeStyles } from '@material-ui/styles';
 import { Category, Image } from '@piximi/types';
-import { createDataset, createModel } from '../../../network';
+import { createModel } from '../../../network';
+import { createTrainAndTestSet } from '../../../dataset';
 import * as tensorflow from '@tensorflow/tfjs';
+//import * as tfvis from '@tensorflow/tfjs-vis'
 import { useState } from 'react';
 
 const drawerWidth = 280;
@@ -60,14 +62,16 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
 
   const styles = useStyles({});
 
-  const [batchSize, setBatchSize] = useState<string>('32');
-  const [epochs, setEpochs] = useState<string>('10');
-  const [optimizationAlgorithm, setOptimizationAlgorithm] = useState<string>(
-    'adam'
-  );
-  const [learningRate, setLearningRate] = useState<string>('0.01');
+  const [stopTraining, setStopTraining] = useState<boolean>(false);
+
+  const [batchSize, setBatchSize] = useState<number>(32);
+  const [epochs, setEpochs] = useState<number>(10);
+  const [optimizationAlgorithm, setOptimizationAlgorithm] = useState<
+    tensorflow.Optimizer
+  >(tensorflow.train.adam);
+  const [learningRate, setLearningRate] = useState<number>(0.01);
   const [lossFunction, setLossFunction] = useState<string>(
-    'softmaxCrossEntropy'
+    'categoricalCrossentropy'
   );
   const [inputShape, setInputShape] = useState<string>('224, 224, 3');
   const [trainingLossHistory, setTrainingLossHistory] = useState<number[]>([]);
@@ -83,14 +87,25 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
 
   const onBatchSizeChange = (event: React.FormEvent<EventTarget>) => {
     const target = event.target as HTMLInputElement;
+    var value = Number(target.value);
 
-    setBatchSize(target.value);
+    setBatchSize(value);
   };
 
   const onEpochsChange = (event: React.FormEvent<EventTarget>) => {
     const target = event.target as HTMLInputElement;
+    var value = Number(target.value);
 
-    setEpochs(target.value);
+    setEpochs(value);
+  };
+
+  const onStopTrainingChange = () => {
+    setStopTraining(true);
+  };
+
+  const resetStopTraining = async () => {
+    console.log('reset stop');
+    await setStopTraining(false);
   };
 
   const onInputShapeChange = (event: React.FormEvent<EventTarget>) => {
@@ -101,8 +116,9 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
 
   const onLearningRateChange = (event: React.FormEvent<EventTarget>) => {
     const target = event.target as HTMLInputElement;
+    var value = Number(target.value);
 
-    setLearningRate(target.value);
+    setLearningRate(value);
   };
 
   const onLossFunctionChange = (event: React.FormEvent<EventTarget>) => {
@@ -115,8 +131,10 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
     event: React.FormEvent<EventTarget>
   ) => {
     const target = event.target as HTMLInputElement;
+    //const value = target.value as tensorflow.Optimizer;
+    const value = tensorflow.train.adam;
 
-    setOptimizationAlgorithm(target.value);
+    setOptimizationAlgorithm(value(0.1));
   };
 
   const className = classNames(styles.content, styles.contentLeft, {
@@ -129,36 +147,94 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
   };
 
   const fit = async () => {
-    const depth = categories.length - 1;
+    const numberOfClasses: number = categories.length - 1;
+    if (numberOfClasses === 1) {
+      alert('The classifier must have at least two classes!');
+      return;
+    }
 
-    const model = await createModel(depth, 100);
+    console.log(stopTraining);
+    await resetStopTraining();
+    console.log(stopTraining);
+    console.log('create model...');
 
-    createDataset(categories, images).then(async batches => {
-      for (const batch of batches) {
-        const [xs, ys] = batch;
+    const model = await createModel(
+      numberOfClasses,
+      100,
+      lossFunction,
+      ['accuracy'],
+      tensorflow.train.adam(learningRate)
+    );
+    console.log('... created model');
 
-        const x = tensorflow.tidy(() => {
-          return tensorflow.concat(xs as tensorflow.Tensor<tensorflow.Rank>[]);
-        });
+    console.log(tensorflow.memory());
 
-        const y = tensorflow.tidy(() => {
-          return tensorflow.oneHot(ys as number[], depth);
-        });
+    console.log('create dataset...');
+    const { trainData, testData } = await createTrainAndTestSet(
+      categories,
+      images
+    );
+    const x = trainData.data;
+    const y = trainData.lables;
+    console.log('...created dataset');
 
-        const metrics: number[] = (await model.trainOnBatch(x, y)) as number[];
+    const args = {
+      batchSize: batchSize,
+      callbacks: {
+        onTrainBegin: async (logs?: tensorflow.Logs | undefined) => {
+          console.log(`onTrainBegin`);
+        },
+        onTrainEnd: async (logs?: tensorflow.Logs | undefined) => {},
+        onEpochBegin: async (
+          epoch: number,
+          logs?: tensorflow.Logs | undefined
+        ) => {
+          console.log(`onEpochBegin ${epoch}`);
+        },
+        onEpochEnd: async (
+          epoch: number,
+          logs?: tensorflow.Logs | undefined
+        ) => {
+          if (logs) {
+            console.log(`onEpochEnd ${epoch}, loss: ${logs.loss}`);
+          }
+          if (stopTraining) {
+            console.log('test train stop');
+            model.stopTraining = true;
+          }
+        },
+        onBatchBegin: async (
+          batch: number,
+          logs?: tensorflow.Logs | undefined
+        ) => {
+          console.log(`onBatchBegin ${batch}`);
+        },
+        onBatchEnd: async (
+          batch: number,
+          logs?: tensorflow.Logs | undefined
+        ) => {
+          console.log(`onBatchEnd ${batch}`);
+        }
+      },
+      epochs: epochs
+    };
 
-        const [loss, accuracy] = metrics;
+    console.log('fit the model...');
+    const history = await model.fit(x, y, args);
 
-        setTrainingLossHistory([...trainingLossHistory, loss]);
-        setTrainingAccuracyHistory([...trainingAccuracyHistory, accuracy]);
-
-        console.log(metrics);
-      }
-    });
+    console.log('done with training!');
+    await model.save('indexeddb://mobileNet');
+    console.log('saved the model!');
   };
 
-  const onFit = () => {
-    fit().then(() => {});
+  const onFit = async () => {
+    const startTime = new Date().getTime();
+
+    await fit().then(() => {});
+
+    const endTime = new Date().getTime();
+    const seconds = Math.round((endTime - startTime) / 1000); //in seconds
+    console.log(seconds + ' seconds');
   };
 
   return (
@@ -174,6 +250,7 @@ export const FitClassifierDialog = (props: FitClassifierDialogProps) => {
       style={{ zIndex: 1100 }}
     >
       <DialogAppBar
+        onStopTrainingChange={onStopTrainingChange}
         closeDialog={closeDialog}
         fit={onFit}
         openedDrawer={openedDrawer}

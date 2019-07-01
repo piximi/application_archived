@@ -2,7 +2,7 @@ import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import * as React from 'react';
 import BarChartIcon from '@material-ui/icons/BarChart';
 import { useTranslation } from 'react-i18next';
-import { createDataset, createModel } from '../../../network';
+import { createModel } from '../../../network';
 import * as tensorflow from '@tensorflow/tfjs';
 import { useState } from 'react';
 import { Snackbar } from '@piximi/components';

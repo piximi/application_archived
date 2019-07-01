@@ -7,7 +7,7 @@ import {
 } from '@material-ui/icons';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import classNames from 'classnames';
-import { AppBar, IconButton, Toolbar } from '@material-ui/core';
+import { AppBar, IconButton, Toolbar, Tooltip } from '@material-ui/core';
 
 const drawerWidth = 280;
 
@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export const DialogAppBar = (props: any) => {
-  const { closeDialog, fit, openedDrawer } = props;
+  const { onStopTrainingChange, closeDialog, fit, openedDrawer } = props;
 
   const classes = useStyles();
 
@@ -44,27 +44,42 @@ export const DialogAppBar = (props: any) => {
       })}
     >
       <Toolbar>
-        <IconButton
-          edge="start"
-          color="primary"
-          onClick={closeDialog}
-          aria-label="Close"
-          href={''}
-        >
-          <ArrowBack />
-        </IconButton>
+        <Tooltip title="Close Dialog" placement="bottom">
+          <IconButton
+            edge="start"
+            color="primary"
+            onClick={closeDialog}
+            aria-label="Close"
+            href={''}
+          >
+            <ArrowBack />
+          </IconButton>
+        </Tooltip>
 
         <div className={classes.grow} />
 
-        <IconButton className={classes.button} onClick={fit} href={''}>
-          <PlayCircleOutline />
-        </IconButton>
+        <Tooltip title="Fit the model" placement="bottom">
+          <IconButton className={classes.button} onClick={fit} href={''}>
+            <PlayCircleOutline />
+          </IconButton>
+        </Tooltip>
 
-        <IconButton className={classes.button} onClick={closeDialog} href={''}>
-          <PauseCircleOutline />
-        </IconButton>
+        <Tooltip title="Stop fitting the model" placement="bottom">
+          <IconButton
+            className={classes.button}
+            onClick={onStopTrainingChange}
+            href={''}
+          >
+            <PauseCircleOutline />
+          </IconButton>
+        </Tooltip>
 
-        <IconButton className={classes.button} onClick={closeDialog} href={''}>
+        <IconButton
+          disabled
+          className={classes.button}
+          onClick={closeDialog}
+          href={''}
+        >
           <ReplayRounded />
         </IconButton>
       </Toolbar>
