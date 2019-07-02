@@ -67,7 +67,7 @@ export const DialogAppBar = (props: any) => {
         <Tooltip title="Stop fitting the model" placement="bottom">
           <IconButton
             className={classes.button}
-            onClick={onStopTrainingChange}
+            onClick={onStopTrainingChange(true)}
             href={''}
           >
             <PauseCircleOutline />

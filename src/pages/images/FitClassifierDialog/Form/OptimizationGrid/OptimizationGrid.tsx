@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 type OptimizationGridProps = {
-  optimizationAlgorithm: tensorflow.Optimizer;
+  optimizationAlgorithm: string;
   onOptimizationAlgorithmChange: (event: React.FormEvent<EventTarget>) => void;
   learningRate: number;
   onLearningRateChange: (event: React.FormEvent<EventTarget>) => void;
@@ -43,12 +43,12 @@ export const OptimizationGrid = (props: OptimizationGridProps) => {
 
   interface State {
     lossFunction: string;
-    optimizationAlgorithm: tensorflow.Optimizer;
+    optimizationAlgorithm: string;
   }
 
   const [values, setValues] = React.useState<State>({
     lossFunction: 'softmaxCrossEntropy',
-    optimizationAlgorithm: tensorflow.train.adam()
+    optimizationAlgorithm: 'adam'
   });
 
   const onChange = (name: keyof State) => (
