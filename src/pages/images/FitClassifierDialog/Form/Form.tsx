@@ -13,7 +13,8 @@ const lossFunctions = {
   logLoss: 'Log',
   meanSquaredError: 'Mean squared error (MSE)',
   sigmoidCrossEntropy: 'Sigmoid cross entropy',
-  softmaxCrossEntropy: 'Softmax cross entropy'
+  softmaxCrossEntropy: 'Softmax cross entropy',
+  categoricalCrossentropy: 'Categorical cross entropy'
 };
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -88,7 +89,7 @@ type FormProps = {
   onLossFunctionChange: (event: React.FormEvent<EventTarget>) => void;
   onOptimizationAlgorithmChange: any;
   openedDialog: boolean;
-  optimizationAlgorithm: tensorflow.Optimizer;
+  optimizationAlgorithm: string;
 };
 
 export const Form = (props: FormProps) => {
