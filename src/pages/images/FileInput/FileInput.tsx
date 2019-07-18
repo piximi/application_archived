@@ -25,21 +25,23 @@ export const FileInput = (props: any) => {
     const imageProps: imageProps[] = [];
     let counter = 0;
 
+    const onLoad = (reader: any) => {
+      const data = reader.result as string;
+
+      const checksum = String(hash(data as string));
+
+      imageProps.push({ checksum, data });
+      counter += 1;
+
+      if (counter === files.length) {
+        createImages(imageProps);
+      }
+    };
+
     for (const file of files) {
       const reader: FileReader = new FileReader();
 
-      reader.onload = () => {
-        const data = reader.result as string;
-
-        const checksum = String(hash(data as string));
-
-        imageProps.push({ checksum, data });
-        counter += 1;
-
-        if (counter === files.length) {
-          createImages(imageProps);
-        }
-      };
+      reader.onload = onLoad;
 
       reader.readAsDataURL(file);
     }
