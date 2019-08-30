@@ -9,7 +9,7 @@ import {
 } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 
-const DeleteImageDialog = (props: any) => {
+export const DeleteImageDialog = (props: any) => {
   const { onClose, open, selectedImages } = props;
 
   function onClickDeleteButton() {
@@ -59,5 +59,3 @@ const DeleteImageDialog = (props: any) => {
     </Dialog>
   );
 };
-
-export default DeleteImageDialog;

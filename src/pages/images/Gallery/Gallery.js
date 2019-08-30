@@ -3,12 +3,20 @@ import './Gallery.css';
 import { GalleryCustomDragLayer, GalleryItems, GallerySelectionBox } from '..';
 import { collisionDetection } from '../helper';
 
-const Gallery = props => {
-  const { images, imagesPerRow, decreaseWidth } = props;
+export const Gallery = props => {
+  const { images, categories, imagesPerRow, decreaseWidth } = props;
+
+  const visibleCategories = categories
+    .filter(category => category.visualization.visible)
+    .map(category => category.identifier);
+
+  const imageIsVisible = categoryIdentifier => {
+    return visibleCategories.includes(categoryIdentifier);
+  };
 
   const visibleImages =
     images.length > 0
-      ? images.filter(image => image.visualization.visible)
+      ? images.filter(image => imageIsVisible(image.categoryIdentifier))
       : images;
 
   const [selected, setSelected] = React.useState([]);
@@ -23,10 +31,16 @@ const Gallery = props => {
     'hidden'
   );
   const [currentlyDraggedItem, setCurrentlyDraggedItem] = React.useState(null);
-  const [shiftKeyPressed] = React.useState(false);
-  const [altKeyPressed] = React.useState(false);
+  const [shiftKeyPressed, setShiftKeyPressed] = React.useState(false);
+  const [altKeyPressed, setAltKeyPressed] = React.useState(false);
   const [mouseDown, setMouseDown] = React.useState(false);
-  const [windowWidth] = React.useState(window.innerWidth);
+  const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
+
+  React.useEffect(() => {
+    document.addEventListener('keydown', keyEvent);
+    document.addEventListener('keyup', keyEvent);
+    window.addEventListener('resize', windowResizeEvent);
+  }, []);
 
   const onmousedown = e => {
     let currentSelectionBoxCoordinates = {
@@ -114,6 +128,15 @@ const Gallery = props => {
     setSelected(selectedItems);
   };
 
+  const keyEvent = e => {
+    setShiftKeyPressed(e.shiftKey);
+    setAltKeyPressed(e.altKey);
+  };
+
+  const windowResizeEvent = e => {
+    setWindowWidth(e.target.innerWidth);
+  };
+
   // Check if no images are visible or available
   if (!images || !images.length) {
     return null;
@@ -148,5 +171,3 @@ Gallery.defaultProps = {
   decreaseWidth: 0,
   imagesPerRow: 10
 };
-
-export default Gallery;

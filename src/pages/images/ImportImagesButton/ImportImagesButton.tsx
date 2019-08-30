@@ -8,21 +8,15 @@ import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles(styles);
 
-const ImportImagesButton = (props: any) => {
-  const { createImage } = props;
+export const ImportImagesButton = (props: any) => {
+  const { createImages } = props;
 
   const classes = useStyles({});
 
   const { t: translation } = useTranslation();
 
-  const onFileInputChange = (image: { checksum: string; data: string }) => {
-    const { checksum, data } = image;
-
-    createImage(checksum, data);
-  };
-
   return (
-    <FileInput onChange={onFileInputChange}>
+    <FileInput createImages={createImages}>
       <Button className={classes.button}>
         <AddPhotoAlternateIcon className={classes.icon} />
 
@@ -31,5 +25,3 @@ const ImportImagesButton = (props: any) => {
     </FileInput>
   );
 };
-
-export default ImportImagesButton;

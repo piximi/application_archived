@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Grid, AutoSizer } from 'react-virtualized';
 import { ConnectedItem } from '../../../containers';
 
-type Props = {
+type GalleryItemsProps = {
   decreaseWidth: any;
   selectItem: any;
   images: any;
@@ -14,7 +14,7 @@ type Props = {
   windowWidth: any;
 };
 
-const GalleryItems = (props: Props) => {
+export const GalleryItems = (props: GalleryItemsProps) => {
   const {
     decreaseWidth,
     selectItem,
@@ -26,37 +26,6 @@ const GalleryItems = (props: Props) => {
     imagesPerRow,
     windowWidth
   } = props;
-
-  const [picturesPerRow, setPicturesPerRow] = React.useState(0);
-  const [rows, setRows] = React.useState(0);
-  const [noImages, setNoImages] = React.useState(0);
-
-  React.useEffect(() => {
-    let picturesPerRow = imagesPerRow;
-
-    // Media queries
-    if (windowWidth > 0) {
-      if (windowWidth - decreaseWidth < 900) picturesPerRow = 5;
-      if (windowWidth - decreaseWidth < 850) picturesPerRow = 4;
-      if (windowWidth - decreaseWidth < 700) picturesPerRow = 3;
-      if (windowWidth - decreaseWidth < 450) picturesPerRow = 2;
-      if (windowWidth - decreaseWidth < 200) picturesPerRow = 1;
-    }
-
-    const noImages = images.length;
-    const quotient = Math.floor(noImages / picturesPerRow);
-    const remainder = noImages % picturesPerRow;
-
-    let rowCount = quotient;
-
-    if (remainder !== 0) {
-      rowCount = rowCount + 1;
-    }
-
-    setPicturesPerRow(picturesPerRow > noImages ? noImages : picturesPerRow);
-    setRows(rowCount);
-    setNoImages(noImages);
-  }, [imagesPerRow, windowWidth, images, decreaseWidth]);
 
   const onmousedown = (imgId: any) => {
     selectItem(imgId);
@@ -77,9 +46,11 @@ const GalleryItems = (props: Props) => {
   cellRenderer = ({ columnIndex, key, rowIndex, style }) => {
     let newStyle = { ...style };
     const index = picturesPerRow * rowIndex - 1 + columnIndex + 1;
+
     if (index > noImages - 1) {
       return;
     }
+
     return (
       <div key={key} style={newStyle}>
         <ConnectedItem
@@ -96,6 +67,27 @@ const GalleryItems = (props: Props) => {
     );
   };
 
+  let picturesPerRow = imagesPerRow;
+
+  // Media queries
+  if (windowWidth > 0) {
+    if (windowWidth - decreaseWidth < 900) picturesPerRow = 5;
+    if (windowWidth - decreaseWidth < 850) picturesPerRow = 4;
+    if (windowWidth - decreaseWidth < 700) picturesPerRow = 3;
+    if (windowWidth - decreaseWidth < 450) picturesPerRow = 2;
+    if (windowWidth - decreaseWidth < 200) picturesPerRow = 1;
+  }
+
+  const noImages = images.length;
+  const quotient = Math.floor(noImages / picturesPerRow);
+  const remainder = noImages % picturesPerRow;
+
+  let rowCount = quotient;
+
+  if (remainder !== 0) {
+    rowCount = rowCount + 1;
+  }
+
   return (
     <AutoSizer>
       {({ height, width }) => {
@@ -103,13 +95,14 @@ const GalleryItems = (props: Props) => {
         const columnWidth = calculatedWidth / picturesPerRow;
         const columnCount =
           picturesPerRow > noImages ? noImages : picturesPerRow;
+
         return (
           <Grid
             cellRenderer={cellRenderer}
             columnCount={columnCount}
             columnWidth={columnWidth}
             height={height}
-            rowCount={rows}
+            rowCount={rowCount}
             rowHeight={150}
             width={calculatedWidth}
             style={{ outline: 'none' }}
@@ -119,5 +112,3 @@ const GalleryItems = (props: Props) => {
     </AutoSizer>
   );
 };
-
-export default GalleryItems;

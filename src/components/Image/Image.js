@@ -45,21 +45,26 @@ const Image = props => {
 
       context.drawImage(image, 0, 0, canvas.width, canvas.height);
 
+      image.crossOrigin = 'Anonymous';
+
+      image.setAttribute('crossOrigin', '');
+
+      // FIXME: Sat Jun 15 (Allen)
       // Apply selected channel filter
-      const pixel = context.getImageData(0, 0, canvas.width, canvas.height);
-      let data = pixel.data;
-      selectVisibleChannels(data, props.unselectedChannels);
-      context.putImageData(pixel, 0, 0);
+      // const pixel = context.getImageData(0, 0, canvas.width, canvas.height);
+      // let data = pixel.data;
+      // selectVisibleChannels(data, props.unselectedChannels);
+      // context.putImageData(pixel, 0, 0);
     }
   };
 
-  const selectVisibleChannels = (imageData, nonVisibleChannels) => {
-    for (let i = 0; i < imageData.length; i += 4) {
-      for (let j = 0; j < 4; j += 1) {
-        if (nonVisibleChannels.includes(j)) imageData[j + i] = 0;
-      }
-    }
-  };
+  // const selectVisibleChannels = (imageData, nonVisibleChannels) => {
+  //   for (let i = 0; i < imageData.length; i += 4) {
+  //     for (let j = 0; j < 4; j += 1) {
+  //       if (nonVisibleChannels.includes(j)) imageData[j + i] = 0;
+  //     }
+  //   }
+  // };
 
   React.useEffect(() => {
     draw();

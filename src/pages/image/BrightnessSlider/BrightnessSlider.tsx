@@ -28,7 +28,7 @@ const BrightnessSlider = (props: Props) => {
 
       <Slider
         style={{ color: 'white' }}
-        classes={{ container: classes.slider }}
+        classes={{ root: classes.slider }}
         value={brightness}
         min={0}
         max={1000}

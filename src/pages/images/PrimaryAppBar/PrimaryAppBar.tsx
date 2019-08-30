@@ -7,15 +7,11 @@ import { ConnectedImportImagesButton } from '../../../containers';
 import { DeleteButton, Logo } from '..';
 import { makeStyles } from '@material-ui/styles';
 import ImageSearchIcon from '@material-ui/icons/ImageSearch';
-import { useDialog } from '@piximi/hooks';
-import SearchDialog from '../../search/SearchDialog/SearchDialog';
 
 const useStyles = makeStyles(styles);
 
-const PrimaryAppBar = (props: any) => {
+export const PrimaryAppBar = (props: any) => {
   const classes = useStyles({});
-
-  const { openedDialog, openDialog, closeDialog } = useDialog();
 
   const { toggle, toggled, selectedImages, setSelectedImages } = props;
 
@@ -41,7 +37,7 @@ const PrimaryAppBar = (props: any) => {
 
         <div style={{ flexGrow: 1 }} />
 
-        <IconButton disabled onClick={openDialog}>
+        <IconButton disabled>
           <ImageSearchIcon />
         </IconButton>
 
@@ -56,10 +52,6 @@ const PrimaryAppBar = (props: any) => {
           setSelectedImages={setSelectedImages}
         />
       </Toolbar>
-
-      <SearchDialog onClose={closeDialog} open={openedDialog} />
     </AppBar>
   );
 };
-
-export default PrimaryAppBar;

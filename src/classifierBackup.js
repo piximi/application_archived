@@ -196,9 +196,9 @@ const createImageTags = (images, categories) => {
   indexMap = {};
   counter = 0;
   categoryIndexArray = [];
-  //debugger;
+
   return Object.values(images).map(image => {
-    let categoryIndex = getCategoryIndex(image.categoryIdentifier, categories);
+    let categoryIndex = getCategoryIndex(image.category, categories);
 
     // Create Index Map
     if (!categoryIndexArray.includes(categoryIndex) && categoryIndex !== null) {
@@ -274,7 +274,7 @@ class Dataset {
     }
 
     let labeledImages = {};
-    //debugger;
+
     for (let image of imDataArray) {
       if (image.category == null) {
         this.predictionSet.push(image);
