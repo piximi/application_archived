@@ -10,14 +10,15 @@ export const Gallery = props => {
     .filter(category => category.visualization.visible)
     .map(category => category.identifier);
 
-  const imageIsVisible = categoryIdentifier => {
-    return visibleCategories.includes(categoryIdentifier);
+  const imageIsVisible = image => {
+    return (
+      visibleCategories.includes(image.categoryIdentifier) &&
+      image.visualization.visible
+    );
   };
 
   const visibleImages =
-    images.length > 0
-      ? images.filter(image => imageIsVisible(image.categoryIdentifier))
-      : images;
+    images.length > 0 ? images.filter(image => imageIsVisible(image)) : images;
 
   const [selected, setSelected] = React.useState([]);
   const [collisions, setCollisions] = React.useState([]);
