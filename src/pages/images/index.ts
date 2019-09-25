@@ -15,4 +15,4 @@ export { GalleryItems } from './GalleryItems/GalleryItems';
 export { GallerySelectionBox } from './GallerySelectionBox/GallerySelectionBox';
 export { ImportImagesButton } from './ImportImagesButton/ImportImagesButton';
 export { Logo } from './Logo/Logo';
-export { PrimaryAppBar } from './PrimaryAppBar/PrimaryAppBar';
+export { ConnectedPrimaryAppBar } from './PrimaryAppBar/ConnectedPrimaryAppBar';
