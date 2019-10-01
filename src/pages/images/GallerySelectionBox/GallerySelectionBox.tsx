@@ -32,7 +32,7 @@ export const GallerySelectionBox = (props: GallerySelectionBoxProps) => {
       visibility: visibility
     };
 
-    setStyle(newStyle);
+    //setStyle(newStyle);
   }, [selectionBoxCoordinates, style, visibility]);
 
   // React.useEffect(() => {

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styles from './Application.css';
 import classNames from 'classnames';
-import { PrimaryAppBar } from '..';
+import { ConnectedPrimaryAppBar } from '..';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DndProvider } from 'react-dnd';
 import { useDrawer } from '@piximi/hooks';
@@ -26,7 +26,7 @@ export const Application = (props: Props) => {
   return (
     <DndProvider backend={HTML5Backend}>
       <div className={classes.appFrame}>
-        <PrimaryAppBar
+        <ConnectedPrimaryAppBar
           selectedImages={selectedImages}
           setSelectedImages={setSelectedImages}
           toggle={toggleDrawer}

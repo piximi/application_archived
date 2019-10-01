@@ -6,6 +6,7 @@ import { ConnectedItemLabel } from '../../../containers';
 import { ImageDragSource } from '@piximi/components';
 
 export const GalleryItem = (props: any) => {
+  // item = image
   const { selectedItems, onmousedown, containerStyle, item } = props;
 
   const { openedDialog, openDialog, closeDialog } = useDialog();
