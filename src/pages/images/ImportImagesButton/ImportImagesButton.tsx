@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styles from './ImportImagesButton.css';
-import { Button } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
 import AddPhotoAlternateIcon from '@material-ui/icons/AddPhotoAlternate';
 import { makeStyles } from '@material-ui/styles';
 import { FileInput } from '..';

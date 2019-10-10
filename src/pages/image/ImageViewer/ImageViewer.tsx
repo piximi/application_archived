@@ -1,13 +1,11 @@
 import * as React from 'react';
 import styles from './ImageViewer.css';
-import {
-  AppBar,
-  Grid,
-  IconButton,
-  Toolbar,
-  Button,
-  Tooltip
-} from '@material-ui/core';
+import AppBar from '@material-ui/core/AppBar';
+import Grid from '@material-ui/core/Grid';
+import IconButton from '@material-ui/core/IconButton';
+import Toolbar from '@material-ui/core/Toolbar';
+import Button from '@material-ui/core/Button';
+import Tooltip from '@material-ui/core/Tooltip';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import EqualizerIcon from '@material-ui/icons/Equalizer';
 import PublicIcon from '@material-ui/icons/Public';

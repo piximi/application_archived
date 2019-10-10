@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styles from './DeleteButton.css';
-import { IconButton, Tooltip } from '@material-ui/core';
+import IconButton from '@material-ui/core/IconButton';
+import Tooltip from '@material-ui/core/Tooltip';
 import Delete from '@material-ui/icons/Delete';
 import { ConnectedDeleteImageDialog } from '../../../containers';
 import { makeStyles } from '@material-ui/styles';

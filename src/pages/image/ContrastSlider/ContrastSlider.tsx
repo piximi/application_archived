@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Typography } from '@material-ui/core';
-import Slider from '@material-ui/lab/Slider';
+import Typography from '@material-ui/core/Typography';
+import Slider from '@material-ui/core/Slider';
 import styles from './ContrastSlider.css';
 import { makeStyles } from '@material-ui/styles';
 

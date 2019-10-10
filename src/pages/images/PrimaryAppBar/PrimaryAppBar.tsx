@@ -1,6 +1,9 @@
 import * as React from 'react';
 import styles from './PrimaryAppBar.css';
-import { AppBar, IconButton, Toolbar, Tooltip } from '@material-ui/core';
+import AppBar from '@material-ui/core/AppBar';
+import IconButton from '@material-ui/core/IconButton';
+import Toolbar from '@material-ui/core/Toolbar';
+import Tooltip from '@material-ui/core/Tooltip';
 import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
 import classNames from 'classnames';
@@ -42,7 +45,7 @@ export const PrimaryAppBar = (props: any) => {
 
   const onSearchIconClick = () => {
     InitializeSearch(categories, images, changeImagesVisibility);
-    var searchResultsToClear: boolean = ImageSearch(searchInput);
+    const searchResultsToClear: boolean = ImageSearch(searchInput);
     setClearSearchResults(searchResultsToClear);
   };
 

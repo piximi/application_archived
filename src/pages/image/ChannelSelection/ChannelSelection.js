@@ -1,5 +1,5 @@
 import React from 'react';
-import Checkbox from '@material-ui/core/Checkbox/index';
+import Checkbox from '@material-ui/core/Checkbox';
 
 class ChannelSelection extends React.Component {
   state = {

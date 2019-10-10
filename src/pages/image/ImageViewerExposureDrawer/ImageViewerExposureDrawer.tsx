@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styles from './ImageViewerExposureDrawer.css';
-import { Drawer } from '@material-ui/core';
+import Drawer from '@material-ui/core/Drawer';
 import {
   BrightnessSlider,
   ChannelSelection,

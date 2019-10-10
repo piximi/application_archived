@@ -1,14 +1,12 @@
 import * as React from 'react';
-import {
-  ListItemIcon,
-  ListItemText,
-  MenuList,
-  MenuItem,
-  Paper,
-  Popover
-} from '@material-ui/core';
 import LabelIcon from '@material-ui/icons/Label';
 import * as _ from 'lodash';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import MenuList from '@material-ui/core/MenuList';
+import MenuItem from '@material-ui/core/MenuItem';
+import Paper from '@material-ui/core/Paper';
+import Popover from '@material-ui/core/Popover';
 
 export const GalleryItemCategoryMenu = (props: any) => {
   const {

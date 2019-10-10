@@ -1,11 +1,11 @@
 import { Image, Partition, Category } from '@piximi/types';
 import { compileExpression } from 'filtrex';
 
-var changeImagesVisibilityFunction: (
+let changeImagesVisibilityFunction: (
   itentifiers: string[],
   visibility: boolean
 ) => void;
-var invisibleImages: string[] = [];
+let invisibleImages: string[] = [];
 
 const categoryDict: { [identifier: string]: string } = {};
 const flattendedImages: {
@@ -24,8 +24,8 @@ export const ImageSearch = (searchInput: string) => {
     return true;
   }
 
-  var negativeSearchResults: string[] = [];
-  var positiveSearchResults: string[] = [];
+  const negativeSearchResults: string[] = [];
+  const positiveSearchResults: string[] = [];
   flattendedImages.forEach(image => {
     if (searchFunction(image) === 0) {
       negativeSearchResults.push(image.identifier);
@@ -60,8 +60,8 @@ export const InitializeSearch = (
 };
 
 const getPrediction = (image: Image) => {
-  var maxScore = 0;
-  var lableIndex = 0;
+  let maxScore = 0;
+  let lableIndex = 0;
   for (let i = 0; i < image.scores.length; i++) {
     if (image.scores[i].probability > maxScore) {
       maxScore = image.scores[i].probability;
@@ -75,8 +75,8 @@ const getPrediction = (image: Image) => {
 };
 
 const flattenImage = (image: Image) => {
-  var probability: number;
-  var prediction: string;
+  let probability: number;
+  let prediction: string;
   if (image.scores.length === 0) {
     probability = -1;
     prediction = 'none';

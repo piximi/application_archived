@@ -2,7 +2,7 @@ import * as React from 'react';
 import LabelIcon from '@material-ui/icons/Label';
 import LabelImportantIcon from '@material-ui/icons/LabelImportant';
 import styles from './GalleryItemLabel.css';
-import { IconButton } from '@material-ui/core';
+import IconButton from '@material-ui/core/IconButton';
 import { ConnectedItemCategoryMenu } from '../../../containers';
 import { makeStyles } from '@material-ui/styles';
 import { useMenu } from '@piximi/hooks';
@@ -11,8 +11,8 @@ import { Image, Category, Score } from '@piximi/types';
 const useStyles = makeStyles(styles);
 
 const getLableIndex = (scores: Score[]) => {
-  var maxScore = 0;
-  var lableIndex = 0;
+  let maxScore = 0;
+  let lableIndex = 0;
   for (let i = 0; i < scores.length; i++) {
     if (scores[i].probability > maxScore) {
       maxScore = scores[i].probability;
