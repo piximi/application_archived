@@ -145,6 +145,7 @@ export const Gallery = props => {
 
   return (
     <div
+      style={{ zIndex: 999, paddingTop: 60 }}
       className="container noselect"
       onMouseDown={onmousedown}
       onMouseMove={onmousemove}
