@@ -37,7 +37,6 @@ export const ImageSearch = (searchInput: string) => {
   changeImagesVisibilityFunction(negativeSearchResults, false);
   changeImagesVisibilityFunction(positiveSearchResults, true);
 
-  debugger;
   invisibleImages = negativeSearchResults;
   return invisibleImages.length !== 0;
 };

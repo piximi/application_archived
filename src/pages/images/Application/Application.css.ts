@@ -45,7 +45,7 @@ const styles = (theme: Theme) =>
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'flex-end',
-      ...theme.mixins.toolbar
+      toolbar: theme.mixins.toolbar
     },
     content: {
       flexGrow: 1,
