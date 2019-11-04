@@ -9,7 +9,7 @@
     "@piximi/autotuner": "1.0.2",
     "@piximi/components": "^0.1.16",
     "@piximi/hooks": "^0.1.11",
-    "@piximi/navigation-drawer": "^1.0.8",
+    "@piximi/navigation-drawer": "^1.0.11",
     "@piximi/store": "^0.1.30",
     "@piximi/translations": "^0.1.2",
     "@piximi/types": "^0.1.8",
