@@ -1,6 +1,7 @@
-[![Build Status](https://travis-ci.org/piximi/application.svg?branch=master)](https://travis-ci.org/piximi/application)
-
 # Piximi
+
+[![Travis (.org) branch](https://img.shields.io/travis/piximi/application/develop.svg?label=Develop%20Build%20on%20Travis%20CI%20&style=flat-square&logo=Travis)](https://travis-ci.org/piximi/application)
+[![Travis (.org) branch](https://img.shields.io/travis/piximi/application/production.svg?label=Production%20Build%20on%20Travis%20CI%20&style=flat-square&logo=Travis)](https://travis-ci.org/piximi/application)
 
 A web-based deep learning tool for classification of human cells, created with Tensorflow.js and React.
 https://application.piximi.org
