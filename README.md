@@ -13,23 +13,20 @@ https://application.piximi.org
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-### Prerequisites
+## Development
 
-What things you need to install the software and how to install them
-
+### Option 1: Develop Locally Without Docker
 1. Install npm and Node.js: https://www.npmjs.com/get-npm
+2. Verify the installation by: `node --version` and `npm -v`
+3. Install the node dependencies with `npm install`
+4. Clone the project: `git clone https://github.com/piximi/application.git` and move into the repo with `cd application`
+5. Run `npm start` from within the root directory of the repo, which should pop up a new tab your browser pointing at http://localhost:3000
 
-
-### Installing
-
-1. Clone the project: ``` git clone https://github.com/piximi/application.git ```
-
-2. Move into the created directory: ``` cd application  ```
-
-3. Install all dependencies: ``` npm install ```
-
-4. Run on local server: ``` npm start ```
-
+### Option 2: Develop Using Docker-Compose
+1. Clone the project: `git clone https://github.com/piximi/application.git` and move into the repo with `cd application`
+2. Make sure you have docker-compose installed: `docker-compose version`
+3. From within the root directory, run `docker-compose up`. (Note you might want to run `docker-compose up --build` whenever you make changes to the `Dockerfile.dev`.)
+4. You should be able to see the application page at http://localhost:3000
 
 ## Deployment
 
