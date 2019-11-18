@@ -13,6 +13,8 @@ https://application.piximi.org
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
+## Development
+
 ### Option 1: Develop Locally Without Docker
 1. Install npm and Node.js: https://www.npmjs.com/get-npm
 2. Verify the installation by: `node --version` and `npm -v`
