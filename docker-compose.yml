@@ -1,0 +1,18 @@
+version: "3"
+services: 
+  application:
+    container_name: piximi-application
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    command: 
+      ["npm", "start"]
+    volumes: 
+      # Only mount a whitelist of top-level /ui files/directories; specifically
+      # exclude node_modules here.
+      - ./src:/application/src
+      - ./public:/application/public
+    ports: 
+      - "3000:3000"
+    environment: 
+      - NODE_ENV=dev
