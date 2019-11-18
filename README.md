@@ -24,7 +24,7 @@ These instructions will get you a copy of the project up and running on your loc
 1. Clone the project: `git clone https://github.com/piximi/application.git` and move into the repo with `cd application`
 2. Make sure you have docker-compose installed: `docker-compose version`
 3. From within the root directory, run `docker-compose up`. (Note you might want to run `docker-compose up --build` whenever you make changes to the `Dockerfile.dev`.)
-4. You should be able to see the ui page at http://localhost:3000
+4. You should be able to see the application page at http://localhost:3000
 
 ## Deployment
 
