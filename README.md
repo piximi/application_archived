@@ -32,7 +32,7 @@ These instructions will get you a copy of the project up and running on your loc
 ### Development process
 
 There is no _master_ branch in this repo, and `develop` is the default branch that you should branch off when you want to make changes. Although in some rare cases the maintainers of the repo could merge hot-fix PRs directly to `production` branch,
-in general developers will follow the process:
+in general developers follow the process:
 
 1. Branch off the latest remote `develop` branch either in a forked repo or the same repo (requries write access to the repo).
 2. Make changes, commit the changes and create a PR against the `develop` branch.
@@ -40,7 +40,7 @@ in general developers will follow the process:
 4. Ask the maintainers of the repo to merge the PR for you, usually they will be the reviewers of your PR.
 5. PRs merged to `develop` will trigger a deployment to the dev server.
 
-Maintainers can merge the `develop` to `production` to trigger a deployment/promotion to the prod server.
+Maintainers can merge the `develop` to `production` to trigger a deployment/promotion to the prod server. External contributors will need to follow the CONTRIBUTING guide.
 
 ## Deployment
 
@@ -50,7 +50,7 @@ You can define where to deploy in the package.json file under: ** homepage **
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://github.com/piximi/application/blob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](https://github.com/piximi/application/blob/develop/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Versioning
 
