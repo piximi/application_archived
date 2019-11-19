@@ -8,7 +8,7 @@ services:
     command: 
       ["npm", "start"]
     volumes: 
-      # Only mount a whitelist of top-level /ui files/directories; specifically
+      # Only mount a whitelist of top-level files/directories; specifically
       # exclude node_modules here.
       - ./src:/application/src
       - ./public:/application/public
