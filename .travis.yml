@@ -55,6 +55,7 @@ jobs:
 
 cache: yarn
 before_deploy:
+  - unset CI 
   - yarn build && ls build
 
 gcs: &gcs
