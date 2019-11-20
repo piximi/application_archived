@@ -32,9 +32,9 @@ const StyledMenu = withStyles({
 export default function CustomizedMenus() {
   const { t: translation } = useTranslation();
 
-  const inputElFolder = React.useRef<HTMLInputElement>(null);
+  const inputElFolder = React.useRef(null);
 
-  const inputElFile = React.useRef<HTMLInputElement>(null);
+  const inputElFile = React.useRef(null);
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
@@ -47,10 +47,10 @@ export default function CustomizedMenus() {
       console.log('folder');
       inputElFolder.current.click();
     }
-    if (inputElFile.current) {
-      console.log('file');
-      inputElFile.current.click();
-    }
+    // if (inputElFile.current) {
+    //   console.log('file');
+    //   inputElFile.current.click();
+    // }
     handleClose();
   };
 
@@ -83,12 +83,12 @@ export default function CustomizedMenus() {
           <ListItemText primary="Open Folder" />
           <input
             ref={inputElFolder}
-            type="file"
             accept={'image/*'}
-            onChange={() => console.log('Hello World')}
+            directory=""
+            webkitdirectory=""
+            type="file"
             style={{ display: 'none' }}
-            multiple
-          />
+          ></input>
         </MenuItem>
         <MenuItem onClick={handleClickInput}>
           <ListItemIcon>
@@ -96,7 +96,7 @@ export default function CustomizedMenus() {
           </ListItemIcon>
           <ListItemText primary="Open File" />
           <input
-            ref={inputElFolder}
+            ref={inputElFile}
             type="file"
             accept={'image/*'}
             onChange={() => console.log('Hello World')}
