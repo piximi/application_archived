@@ -5,6 +5,8 @@ node_js:
 env:
   - NODE_OPTIONS=--max-old-space-size=4096
 
+warnings_are_errors: false
+
 stages:
   - Testing
   - name: Dev Deployment
@@ -53,6 +55,7 @@ jobs:
 
 cache: yarn
 before_deploy:
+  - unset CI 
   - yarn build && ls build
 
 gcs: &gcs
