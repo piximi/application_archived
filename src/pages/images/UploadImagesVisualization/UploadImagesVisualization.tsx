@@ -50,11 +50,6 @@ export default function LinearDeterminate() {
         This can take a while, based on the number of images being read
       </Typography>
       <LinearProgress variant="determinate" value={completed} />
-      <LinearProgress
-        variant="determinate"
-        value={completed}
-        color="secondary"
-      />
     </Paper>
   );
 }
