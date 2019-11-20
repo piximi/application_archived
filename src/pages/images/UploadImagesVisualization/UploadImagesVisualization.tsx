@@ -7,10 +7,12 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      width: '100%',
-      '& > * + *': {
-        marginTop: theme.spacing(2)
-      }
+      // width: '100%',
+      // '& > * + *': {
+      //   marginTop: theme.spacing(2)
+      // }
+      padding: '30px',
+      width: '450px'
     },
     paper: {
       padding: theme.spacing(3, 2)
@@ -42,11 +44,10 @@ export default function LinearDeterminate() {
   return (
     <Paper className={classes.root}>
       <Typography variant="h5" component="h3">
-        This is a sheet of paper.
+        Reading Images
       </Typography>
       <Typography component="p">
-        Paper can be used to build surface or other elements for your
-        application.
+        This can take a while, based on the number of images being read
       </Typography>
       <LinearProgress variant="determinate" value={completed} />
       <LinearProgress
