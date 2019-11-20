@@ -16,7 +16,7 @@ const theme = createMuiTheme({
 
 const toggle = () => {};
 
-storiesOf('NavigationDrawer', module).add('example', () => (
+storiesOf('ImportImagesButton', module).add('example', () => (
   <DndProvider backend={HTML5Backend}>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
