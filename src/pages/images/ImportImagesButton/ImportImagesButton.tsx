@@ -19,7 +19,6 @@ export const ImportImagesButton = (props: any) => {
     <FileInput createImages={createImages}>
       <Button className={classes.button}>
         <AddPhotoAlternateIcon className={classes.icon} />
-
         {translation('Import images')}
       </Button>
     </FileInput>
