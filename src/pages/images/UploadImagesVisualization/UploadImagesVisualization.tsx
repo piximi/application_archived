@@ -1,6 +1,8 @@
 import React from 'react';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -9,6 +11,9 @@ const useStyles = makeStyles((theme: Theme) =>
       '& > * + *': {
         marginTop: theme.spacing(2)
       }
+    },
+    paper: {
+      padding: theme.spacing(3, 2)
     }
   })
 );
@@ -35,13 +40,20 @@ export default function LinearDeterminate() {
   }, []);
 
   return (
-    <div className={classes.root}>
+    <Paper className={classes.root}>
+      <Typography variant="h5" component="h3">
+        This is a sheet of paper.
+      </Typography>
+      <Typography component="p">
+        Paper can be used to build surface or other elements for your
+        application.
+      </Typography>
       <LinearProgress variant="determinate" value={completed} />
       <LinearProgress
         variant="determinate"
         value={completed}
         color="secondary"
       />
-    </div>
+    </Paper>
   );
 }
