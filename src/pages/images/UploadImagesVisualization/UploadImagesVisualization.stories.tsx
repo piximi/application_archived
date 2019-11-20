@@ -20,7 +20,7 @@ storiesOf('UploadImagesVisualization', module).add('example', () => (
   <DndProvider backend={HTML5Backend}>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <UploadImagesVisualization />
+        <UploadImagesVisualization completed={50} />
       </ThemeProvider>
     </Provider>
   </DndProvider>

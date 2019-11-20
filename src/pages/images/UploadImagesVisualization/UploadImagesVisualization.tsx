@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export default function LinearDeterminate(props: any) {
-  const [completed] = props;
+  const completed = props.completed;
   const classes = useStyles();
   return (
     <Paper className={classes.root}>
