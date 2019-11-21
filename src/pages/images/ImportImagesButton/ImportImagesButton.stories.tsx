@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import SplitButton from './ImportImagesButtonNew';
+import { ImportImagesButton } from './ImportImagesButton';
 import { ThemeProvider } from '@material-ui/styles';
 import { createMuiTheme } from '@material-ui/core';
 import { store } from '@piximi/store';
@@ -20,7 +20,7 @@ storiesOf('ImportImagesButton', module).add('example', () => (
   <DndProvider backend={HTML5Backend}>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <SplitButton />
+        <ImportImagesButton />
       </ThemeProvider>
     </Provider>
   </DndProvider>
