@@ -1,6 +1,6 @@
 import * as React from 'react';
 import '../GalleryDialog/GalleryDialog.css';
-import { reCalc } from '../helper';
+import { reCalc } from '../utilities';
 
 type GallerySelectionBoxProps = {
   selectionBoxCoordinates: {

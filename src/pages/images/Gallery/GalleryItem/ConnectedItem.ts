@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { GalleryItem } from '../index';
+import { GalleryItem } from './GalleryItem';
 import { updateImageCategoryAction } from '@piximi/store';
 import { Dispatch } from 'redux';
 import { Classifier } from '@piximi/types';
