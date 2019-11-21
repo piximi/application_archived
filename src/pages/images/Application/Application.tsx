@@ -6,7 +6,7 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import { DndProvider } from 'react-dnd';
 import { useDrawer } from '@piximi/hooks';
 import { makeStyles } from '@material-ui/styles';
-import { ConnectedGalleryDialog } from '../Gallery/GalleryDialog/ConnectedGalleryDialog';
+import { ConnectedGalleryDialog } from '../GalleryDialog/GalleryDialog/ConnectedGalleryDialog';
 import { NavigationDrawer } from '@piximi/navigation-drawer';
 
 const useStyles = makeStyles(styles);
