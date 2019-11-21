@@ -1,9 +1,9 @@
 import * as React from 'react';
-import './Gallery.css';
+import './GalleryDialog.css';
 import { GalleryCustomDragLayer, GalleryItems, GallerySelectionBox } from '..';
 import { collisionDetection } from '../helper';
 
-export const Gallery = props => {
+export const GalleryDialog = props => {
   const { images, categories, imagesPerRow, decreaseWidth } = props;
 
   const visibleCategories = categories
@@ -169,7 +169,7 @@ export const Gallery = props => {
   );
 };
 
-Gallery.defaultProps = {
+GalleryDialog.defaultProps = {
   decreaseWidth: 0,
   imagesPerRow: 10
 };

@@ -6,7 +6,7 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import { DndProvider } from 'react-dnd';
 import { useDrawer } from '@piximi/hooks';
 import { makeStyles } from '@material-ui/styles';
-import { ConnectedGallery } from '../Gallery/ConnectedGallery';
+import { ConnectedGalleryDialog } from '../GalleryDialog/ConnectedGalleryDialog';
 import { NavigationDrawer } from '@piximi/navigation-drawer';
 
 const useStyles = makeStyles(styles);
@@ -43,7 +43,7 @@ export const Application = (props: Props) => {
         >
           <div className={classes.drawerHeader} />
 
-          <ConnectedGallery
+          <ConnectedGalleryDialog
             selectedImages={selectedImages}
             imagesPerRow={10}
             decreaseWidth={openedDrawer ? 280 + 24 : 24}
