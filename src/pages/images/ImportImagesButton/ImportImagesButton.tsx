@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import hash from 'string-hash';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -9,6 +9,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import FolderOpen from '@material-ui/icons/FolderOpen';
 import CropOriginal from '@material-ui/icons/CropOriginal';
 import AddPhotoAlternateIcon from '@material-ui/icons/AddPhotoAlternate';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/styles';
 import styles from './ImportImagesButton.css';
@@ -42,6 +43,7 @@ export function ImportImagesButton(props: any) {
   const inputElFolder = React.useRef<HTMLInputElement>(null);
   const inputElFile = React.useRef<HTMLInputElement>(null);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [reading, setReading] = useState(false);
 
   type imageProps = {
     checksum: string;
@@ -73,6 +75,7 @@ export function ImportImagesButton(props: any) {
   const onInputChange = (event: any) => {
     const files = event.target.files;
     const imageProps: imageProps[] = [];
+    setReading(true);
     let counter = 0;
     for (const file of files) {
       const reader: FileReader = new FileReader();
@@ -82,6 +85,7 @@ export function ImportImagesButton(props: any) {
         imageProps.push({ checksum, data });
         counter += 1;
         if (counter === files.length) {
+          setReading(false);
           createImages(imageProps);
         }
       };
@@ -89,17 +93,9 @@ export function ImportImagesButton(props: any) {
     }
   };
 
+  // prettier-ignore
   //@ts-ignore
-  const inputElement = (
-    <input
-      ref={inputElFolder}
-      type="file"
-      onChange={onInputChange}
-      directory=""
-      webkitdirectory=""
-      style={{ display: 'none' }}
-    />
-  );
+  const inputElement = <input ref={inputElFolder} type="file" onChange={onInputChange} directory="" webkitdirectory="" style={{ display: 'none' }} />
 
   return (
     <div>
@@ -110,7 +106,11 @@ export function ImportImagesButton(props: any) {
         color="inherit"
         onClick={handleClick}
       >
-        <AddPhotoAlternateIcon className={classes.icon} />
+        {true ? (
+          <CircularProgress size={24} />
+        ) : (
+          <AddPhotoAlternateIcon className={classes.icon} />
+        )}
         {translation('Import images')}
       </Button>
       <StyledMenu
