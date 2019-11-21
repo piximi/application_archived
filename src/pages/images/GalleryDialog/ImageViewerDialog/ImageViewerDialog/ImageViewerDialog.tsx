@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styles from './ImageViewerDialog.css';
 import Dialog from '@material-ui/core/Dialog';
-import { ConnectedImageViewer } from '../../../containers';
+import { ConnectedImageViewer } from '../ImageViewer/ConnectedImageViewer';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(styles);

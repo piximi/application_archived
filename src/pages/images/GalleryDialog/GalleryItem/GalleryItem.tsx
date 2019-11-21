@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageViewerDialog } from '../../../image';
+import { ImageViewerDialog } from '../ImageViewerDialog';
 import Image from '../../../../components/Image/Image';
 import { useDialog } from '@piximi/hooks';
 import { ConnectedItemLabel } from '../GalleryItemLabel/ConnectedItemLabel';

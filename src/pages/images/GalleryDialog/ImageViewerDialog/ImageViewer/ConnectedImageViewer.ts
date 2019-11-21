@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { ImageViewer } from '../pages/image';
+import { ImageViewer } from '../index';
 import {
   updateImageBrightnessAction,
   updateImageContrastAction
@@ -66,9 +66,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
   };
 };
 
-const ConnectedImageViewer = connect(
+export const ConnectedImageViewer = connect(
   mapStateToProps,
   mapDispatchToProps
 )(ImageViewer);
-
-export default ConnectedImageViewer;
