@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { GalleryItemLabel } from '../pages/images';
+import { GalleryItemLabel } from './GalleryItemLabel';
 import { Classifier } from '@piximi/types';
 
 type State = {
@@ -12,6 +12,4 @@ const mapStateToProps = (state: State) => {
   };
 };
 
-const ConnectedItemLabel = connect(mapStateToProps)(GalleryItemLabel);
-
-export default ConnectedItemLabel;
+export const ConnectedItemLabel = connect(mapStateToProps)(GalleryItemLabel);

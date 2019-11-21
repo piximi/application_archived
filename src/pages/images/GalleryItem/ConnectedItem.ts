@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { GalleryItemCategoryMenu } from '../pages/images';
+import { GalleryItem } from '../index';
 import { updateImageCategoryAction } from '@piximi/store';
 import { Dispatch } from 'redux';
 import { Classifier } from '@piximi/types';
@@ -10,7 +10,7 @@ type State = {
 
 const mapStateToProps = (state: State) => {
   return {
-    categories: state.classifier.categories
+    images: state.classifier.images
   };
 };
 
@@ -18,8 +18,8 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     updateImageCategory: (identifier: string, categoryIdentifier: string) => {
       const payload = {
-        identifier: identifier,
-        categoryIdentifier: categoryIdentifier
+        categoryIdentifier: categoryIdentifier,
+        identifier: identifier
       };
 
       const action = updateImageCategoryAction(payload);
@@ -29,9 +29,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
   };
 };
 
-const ConnectedItemCategoryMenu = connect(
+export const ConnectedItem = connect(
   mapStateToProps,
   mapDispatchToProps
-)(GalleryItemCategoryMenu);
-
-export default ConnectedItemCategoryMenu;
+)(GalleryItem);

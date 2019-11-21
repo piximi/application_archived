@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { Gallery } from '../pages/images';
+import { Gallery } from './Gallery';
 import { Classifier } from '@piximi/types';
 
 type State = {
@@ -13,6 +13,4 @@ const mapStateToProps = (state: State) => {
   };
 };
 
-const ConnectedGallery = connect(mapStateToProps)(Gallery);
-
-export default ConnectedGallery;
+export const ConnectedGallery = connect(mapStateToProps)(Gallery);
