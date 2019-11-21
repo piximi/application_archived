@@ -106,8 +106,10 @@ export function ImportImagesButton(props: any) {
         color="inherit"
         onClick={handleClick}
       >
-        {true ? (
-          <CircularProgress size={24} />
+        {reading ? (
+          <div style={{ paddingRight: '12px' }}>
+            <CircularProgress size={24} />
+          </div>
         ) : (
           <AddPhotoAlternateIcon className={classes.icon} />
         )}
