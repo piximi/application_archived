@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './GalleryCustomDragLayer.css';
+// import './GalleryCustomDragLayer.css';
 
 const layerStyles = {
   position: 'fixed',

@@ -8,6 +8,7 @@
     "@material-ui/styles": "4.5.0",
     "@piximi/autotuner": "1.0.2",
     "@piximi/components": "^0.1.16",
+    "@piximi/gallery-dialog": "^0.1.3",
     "@piximi/hooks": "^0.1.11",
     "@piximi/navigation-drawer": "^1.0.11",
     "@piximi/store": "^0.1.30",
