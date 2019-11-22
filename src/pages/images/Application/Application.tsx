@@ -6,7 +6,7 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import { DndProvider } from 'react-dnd';
 import { useDrawer } from '@piximi/hooks';
 import { makeStyles } from '@material-ui/styles';
-import { ConnectedGalleryDialog } from '../GalleryDialog';
+import { ConnectedGalleryDialog } from '@piximi/gallery-dialog';
 import { NavigationDrawer } from '@piximi/navigation-drawer';
 
 const useStyles = makeStyles(styles);
@@ -18,7 +18,7 @@ type Props = {
 export const Application = (props: Props) => {
   const classes = useStyles({});
 
-  const [selectedImages, setSelectedImages] = React.useState([]);
+  const [selectedImages, setSelectedImages] = React.useState<Array<string>>([]);
   const { openedDrawer, toggleDrawer } = useDrawer();
 
   const { updateImageCategory } = props;
