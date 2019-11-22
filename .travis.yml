@@ -22,7 +22,7 @@ jobs:
       script: npm test
 
     - stage: Dev Deployment
-      script: CI=false npm run build && ls
+      script: if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then CI=false npm run build && ls; else echo "Skip build for Pull Request"; fi
       deploy:
         provider: gcs
         on:
@@ -38,7 +38,7 @@ jobs:
         skip_cleanup: true
 
     - stage: Prod Deployment
-      script: CI=false npm run build && ls
+      script: if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then CI=false npm run build && ls; else echo "Skip build for Pull Request"; fi
       deploy:
         provider: gcs
         on:
