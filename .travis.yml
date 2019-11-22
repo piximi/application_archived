@@ -18,7 +18,7 @@ cache: npm
 before_deploy: |
   function keep_alive() {
     while true; do
-      echo -en ".\n"
+      echo -en "\a"
       sleep 60
     done
   }
