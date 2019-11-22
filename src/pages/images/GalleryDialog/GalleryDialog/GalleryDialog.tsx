@@ -1,10 +1,13 @@
 import * as React from 'react';
-import { FormEvent, MouseEventHandler, SyntheticEvent, useState } from 'react';
-import './GalleryDialog.css';
+import { SyntheticEvent, useState } from 'react';
 import { GalleryCustomDragLayer } from '../..';
 import { GalleryItems } from '../..';
 import { GallerySelectionBox } from '../..';
 import { collisionDetection } from '../utilities';
+import { makeStyles } from '@material-ui/styles';
+import { styles } from './GalleryDialog.css';
+
+const useStyles = makeStyles(styles);
 
 export const GalleryDialog = (props: {
   callOnDragEnd: any;
@@ -16,6 +19,8 @@ export const GalleryDialog = (props: {
   setSelectedImages?: any;
 }) => {
   const { images, categories, imagesPerRow, decreaseWidth } = props;
+
+  const classes = useStyles();
 
   const visibleCategories = categories
     .filter(
@@ -195,7 +200,7 @@ export const GalleryDialog = (props: {
   return (
     <div
       style={{ zIndex: 999, paddingTop: 60 }}
-      className="container noselect"
+      className={[classes.container, classes.noselect, classes.root].join(' ')}
       onMouseDown={onmousedown}
       onMouseMove={onmousemove}
       onMouseUp={onmouseup}
