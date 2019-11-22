@@ -1,17 +1,15 @@
 import * as React from 'react';
 import styles from './ImageViewerExposureDrawer.css';
 import Drawer from '@material-ui/core/Drawer';
-import {
-  BrightnessSlider,
-  ChannelSelection,
-  ContrastSlider,
-  ImageHistogram
-} from '../index';
+import { BrightnessSlider } from '../BrightnessSlider/BrightnessSlider';
+import { ContrastSlider } from '../ContrastSlider/ContrastSlider';
+import { ChannelSelection } from '../ChannelSelection/ChannelSelection';
+import { ImageHistogram } from '../ImageHistogram/ImageHistogram';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(styles);
 
-const ImageViewerExposureDrawer = (props: any) => {
+export const ImageViewerExposureDrawer = (props: any) => {
   const {
     onClose,
     open,
@@ -35,17 +33,12 @@ const ImageViewerExposureDrawer = (props: any) => {
       onClose={onClose}
       open={open}
     >
-      <ImageHistogram channels={unselectedChannels} src={src} />
+      <ImageHistogram />
 
-      <ChannelSelection
-        setUnselectedChannels={setUnselectedChannels}
-        unselectedChannels={unselectedChannels}
-      />
+      <ChannelSelection />
 
       <BrightnessSlider brightness={brightness} setBrightness={setBrightness} />
       <ContrastSlider contrast={contrast} setContrast={setContrast} />
     </Drawer>
   );
 };
-
-export default ImageViewerExposureDrawer;

@@ -11,7 +11,7 @@ type Props = {
   setBrightness: (brightness: number) => void;
 };
 
-const BrightnessSlider = (props: Props) => {
+export const BrightnessSlider = (props: Props) => {
   const classes = useStyles({});
 
   const { brightness, setBrightness } = props;
@@ -39,5 +39,3 @@ const BrightnessSlider = (props: Props) => {
     </div>
   );
 };
-
-export default BrightnessSlider;

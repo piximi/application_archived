@@ -63,6 +63,7 @@
   "devDependencies": {
     "@types/classnames": "^2.2.7",
     "@types/color": "^3.0.0",
+    "@types/d3": "^5.7.2",
     "@types/enzyme": "^3.9.4",
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/file-saver": "^2.0.1",

@@ -11,7 +11,7 @@ type Props = {
   setContrast: (contrast: number) => void;
 };
 
-const ContrastSlider = (props: Props) => {
+export const ContrastSlider = (props: Props) => {
   const { contrast, setContrast } = props;
 
   const classes = useStyles({});
@@ -38,5 +38,3 @@ const ContrastSlider = (props: Props) => {
     </div>
   );
 };
-
-export default ContrastSlider;

@@ -9,7 +9,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import EqualizerIcon from '@material-ui/icons/Equalizer';
 import PublicIcon from '@material-ui/icons/Public';
-import { ImageViewerExposureDrawer } from '../index';
+import { ImageViewerExposureDrawer } from '../ImageViewerExposureDrawer/ImageViewerExposureDrawer';
 import Image from '../../Image/Image';
 import { makeStyles } from '@material-ui/styles';
 
@@ -23,7 +23,7 @@ type Props = {
   images: any;
 };
 
-const ImageViewer = (props: Props) => {
+export const ImageViewer = (props: Props) => {
   const classes = useStyles({});
 
   const [applySettingsGlobally, setApplySettingsGlobally] = React.useState(
@@ -147,5 +147,3 @@ const ImageViewer = (props: Props) => {
     </div>
   );
 };
-
-export default ImageViewer;
