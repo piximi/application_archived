@@ -15,8 +15,6 @@ stages:
     if: branch = production
 
 cache: npm
-before_deploy:
-  - CI=false npm run build && ls build
 
 jobs:
   include:
@@ -24,7 +22,7 @@ jobs:
       script: npm test
 
     - stage: Dev Deployment
-      script: skip
+      script: if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then CI=false npm run build && ls; else echo "Skip build for Pull Request"; fi
       deploy:
         provider: gcs
         on:
@@ -40,7 +38,7 @@ jobs:
         skip_cleanup: true
 
     - stage: Prod Deployment
-      script: skip
+      script: if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then CI=false npm run build && ls; else echo "Skip build for Pull Request"; fi
       deploy:
         provider: gcs
         on:
