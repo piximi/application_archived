@@ -27,7 +27,7 @@ jobs:
           branch: develop
         access_key_id: GOOGAPI2JYRMRONGVOXT
         acl: public-read
-        bucket: master.piximi.app  # TODO: request for new domain: dev.piximi.app and change this
+        bucket: www.piximi.app  # TODO: request for new domain: dev.piximi.app and change this
         cache_control: "max-age=no-cache"
         detect_encoding: true
         local-dir: build
