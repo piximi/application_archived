@@ -14,6 +14,10 @@ stages:
   - name: Prod Deployment
     if: branch = production
 
+cache: npm
+before_deploy:
+  - CI=false npm run build && ls build
+
 jobs:
   include:
     - stage: Testing
@@ -27,10 +31,9 @@ jobs:
           branch: develop
         access_key_id: GOOGAPI2JYRMRONGVOXT
         acl: public-read
-        bucket: www.piximi.app  # TODO: request for new domain: dev.piximi.app and change this
+        bucket: master.piximi.app  # TODO: request for new domain: dev.piximi.app and change this
         cache_control: "max-age=no-cache"
         detect_encoding: true
-        local-dir: build
         repo: piximi/application
         secret_access_key:
           secure: Xv/fFzUooy3JjZG/296tkoJW40zgIQM/xTURF/m7tOegruReVXyt8AIuSeVoTBMeUoDIfvj1ZoIIFFFaAkihgib8ixFJZUl51lv1v2q45GzW0aqztKyLYDfXhkdebVK5VaEw1ggdD1hlHxzadwKLESUIAsQzPCsGyMbR59LaSRoNzY4xWOHtBl+e/KWPjpoT9F5K/5YTv45UMnMvVuQ+7gvfAUPybh+xQ8FbZl5y1BGS91Fa9PFfclRCdZOiu1S62Z0Evouj4ECRE+vWsihm6AsAm49EEeoLJQxyGzppmlSb+lTHtOv6EaQHJ8fwGTjDXlCqMI5sfG2pvK1DjXitXuNTyMgijFdyvgm/yQanXamKxPBqRTsvz6Shop+MWJ7MnC8SRExbYC3wHkgoqNfI9T8IMezxeN6KXJGBua2dsNBNZ/iVzeB4IClNAc0qguFEJiWTjXMGjAxSqGtnEMGe8gPsv6bdaZXnt3TWZqHiN7KtkhtepsM9NTWfGb/plHLnnhrMWeBwI6BsYyY6nRBkIpA3bCvMFyb5SWvamXMspBWKpMLGiqseceElL7kD9hfSlmB7VDt2piyuESUsvgp9eR9CGTq9BXFiLfAPonGPLArqxLLnIr9bQhrjp6kRcEPtUkE86pq/5avK3i1itq8pr2EdIIUhZCeVJbqjSmlDv7U=
@@ -44,27 +47,10 @@ jobs:
           branch: production
         access_key_id: GOOGAPI2JYRMRONGVOXT
         acl: public-read
-        bucket: master.piximi.app
+        bucket: www.piximi.app
         cache_control: "max-age=no-cache"
         detect_encoding: true
-        local-dir: build
         repo: piximi/application
         secret_access_key:
           secure: Xv/fFzUooy3JjZG/296tkoJW40zgIQM/xTURF/m7tOegruReVXyt8AIuSeVoTBMeUoDIfvj1ZoIIFFFaAkihgib8ixFJZUl51lv1v2q45GzW0aqztKyLYDfXhkdebVK5VaEw1ggdD1hlHxzadwKLESUIAsQzPCsGyMbR59LaSRoNzY4xWOHtBl+e/KWPjpoT9F5K/5YTv45UMnMvVuQ+7gvfAUPybh+xQ8FbZl5y1BGS91Fa9PFfclRCdZOiu1S62Z0Evouj4ECRE+vWsihm6AsAm49EEeoLJQxyGzppmlSb+lTHtOv6EaQHJ8fwGTjDXlCqMI5sfG2pvK1DjXitXuNTyMgijFdyvgm/yQanXamKxPBqRTsvz6Shop+MWJ7MnC8SRExbYC3wHkgoqNfI9T8IMezxeN6KXJGBua2dsNBNZ/iVzeB4IClNAc0qguFEJiWTjXMGjAxSqGtnEMGe8gPsv6bdaZXnt3TWZqHiN7KtkhtepsM9NTWfGb/plHLnnhrMWeBwI6BsYyY6nRBkIpA3bCvMFyb5SWvamXMspBWKpMLGiqseceElL7kD9hfSlmB7VDt2piyuESUsvgp9eR9CGTq9BXFiLfAPonGPLArqxLLnIr9bQhrjp6kRcEPtUkE86pq/5avK3i1itq8pr2EdIIUhZCeVJbqjSmlDv7U=
         skip_cleanup: true
-
-cache: npm
-before_deploy:
-  - CI=false npm run build && ls build
-
-gcs: &gcs
-  access_key_id: GOOGAPI2JYRMRONGVOXT
-  acl: public-read
-  cache_control: "max-age=31536000"
-  detect_encoding: true
-  local-dir: build
-  provider: gcs
-  repo: piximi/application
-  secret_access_key:
-    secure: Xv/fFzUooy3JjZG/296tkoJW40zgIQM/xTURF/m7tOegruReVXyt8AIuSeVoTBMeUoDIfvj1ZoIIFFFaAkihgib8ixFJZUl51lv1v2q45GzW0aqztKyLYDfXhkdebVK5VaEw1ggdD1hlHxzadwKLESUIAsQzPCsGyMbR59LaSRoNzY4xWOHtBl+e/KWPjpoT9F5K/5YTv45UMnMvVuQ+7gvfAUPybh+xQ8FbZl5y1BGS91Fa9PFfclRCdZOiu1S62Z0Evouj4ECRE+vWsihm6AsAm49EEeoLJQxyGzppmlSb+lTHtOv6EaQHJ8fwGTjDXlCqMI5sfG2pvK1DjXitXuNTyMgijFdyvgm/yQanXamKxPBqRTsvz6Shop+MWJ7MnC8SRExbYC3wHkgoqNfI9T8IMezxeN6KXJGBua2dsNBNZ/iVzeB4IClNAc0qguFEJiWTjXMGjAxSqGtnEMGe8gPsv6bdaZXnt3TWZqHiN7KtkhtepsM9NTWfGb/plHLnnhrMWeBwI6BsYyY6nRBkIpA3bCvMFyb5SWvamXMspBWKpMLGiqseceElL7kD9hfSlmB7VDt2piyuESUsvgp9eR9CGTq9BXFiLfAPonGPLArqxLLnIr9bQhrjp6kRcEPtUkE86pq/5avK3i1itq8pr2EdIIUhZCeVJbqjSmlDv7U=
-  skip_cleanup: true
