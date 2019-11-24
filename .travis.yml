@@ -15,6 +15,14 @@ stages:
     if: branch = production
 
 cache: npm
+before_deploy: |
+  function keep_alive() {
+    while true; do
+      echo -en "\a"
+      sleep 60
+    done
+  }
+  keep_alive &
 
 jobs:
   include:
