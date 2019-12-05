@@ -14,6 +14,7 @@
     "@piximi/store": "^0.1.30",
     "@piximi/translations": "^0.1.2",
     "@piximi/types": "^0.1.8",
+    "@piximi/upload-image-dialog": "^0.1.0",
     "@tensorflow/tfjs": "^1.2.11",
     "@tensorflow/tfjs-vis": "^1.2.0",
     "axios": "^0.19.0",
