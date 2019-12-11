@@ -23,9 +23,10 @@ jobs:
         node-version: ${{ matrix.node-version }}
 
     # Build the app with NPM
+    # also tells yarn to not generate a lockfile and fail if an update is needed.
     - name: NPM Install and Test
       run: |
-        npm ci
+        yarn install --frozen-lockfile
         npm test
       env:
         CI: true
