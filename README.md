@@ -1,5 +1,8 @@
 # Piximi
 
+[![](https://github.com/piximi/application/workflows/Master%20Deployment%20CI/badge.svg)](https://github.com/piximi/application/actions?query=workflow%3A%22Master+Deployment+CI%22)
+[![](https://github.com/piximi/application/workflows/Production%20Deployment%20CI/badge.svg)](https://github.com/piximi/application/actions?query=workflow%3A%22Production+Deployment+CI%22)
+
 A web-based deep learning tool for classification of human cells, created with Tensorflow.js and React.
 https://www.piximi.app
 
