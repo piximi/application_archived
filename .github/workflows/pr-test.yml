@@ -1,0 +1,31 @@
+# This workflow triggers tests on PRs that targets either master or production
+
+name: Node CI Tests on Pull Requests
+
+on: [pull_request]
+
+jobs:
+  setup-test:
+    name: PR CI Test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+
+    # Use the Node version that defined in the strategy
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    # Build the app with NPM
+    - name: NPM Install and Test
+      run: |
+        npm ci
+        npm test
+      env:
+        CI: true

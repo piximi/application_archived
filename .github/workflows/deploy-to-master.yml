@@ -1,0 +1,50 @@
+# This workflow will build the Node applciation and push it
+# to the GCS bucket.
+
+name: "Master Deployment CI"
+
+on:
+  push:
+    branches:
+      - master
+
+# Environment variables available to all jobs and steps in this workflow
+env:
+  MASTER_BUCKET: ${{ secrets.MASTER_BUCKET }}
+
+jobs:
+  setup-build-deploy:
+    name: Master Deployment Job
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+
+    # Setup gcloud CLI
+    - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+      with:
+          version: '270.0.0'
+          service_account_key: ${{ secrets.GS_BUCKET_ADMIN_SERVICE_ACCOUNT_KEY }}
+
+    # Use the Node version that defined in the strategy
+    - uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    # Build the app with NPM
+    - name: NPM Install, Build and Test
+      run: |
+        npm ci
+        npm run build --if-present
+        npm test
+      env:
+        CI: true
+
+    # Deploy by copying the files to the bucket
+    - name: Deploy to master bucket
+      run: |
+        gsutil -m cp -a public-read -r build/* $MASTER_BUCKET
