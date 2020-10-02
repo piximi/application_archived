@@ -12,7 +12,7 @@ https://www.piximi.app
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-## Development
+## Development session
 
 ### Set up your development environment
 
@@ -42,7 +42,7 @@ in general developers follow the process:
 
 Maintainers can merge the `develop` to `production` to trigger a deployment/promotion to the prod server. External contributors will need to follow the CONTRIBUTING guide.
 
-## Deployment
+## Deployment process
 
 You can deploy by running: ``` npm deploy ```
 
