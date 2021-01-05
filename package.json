@@ -21,7 +21,7 @@
     "@storybook/storybook-deployer": "^2.8.1",
     "@tensorflow/tfjs": "^1.2.11",
     "@tensorflow/tfjs-vis": "^1.2.0",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "base64-arraybuffer": "^0.2.0",
     "classnames": "^2.2.6",
     "color": "^3.1.2",
