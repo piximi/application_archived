@@ -1,3 +1,6 @@
+# DEPRECATED
+Old piximi monorepo -> see piximi/piximi
+
 # Piximi
 
 [![Travis (.org) branch](https://img.shields.io/travis/piximi/application/develop.svg?label=Develop%20Build%20on%20Travis%20CI%20&style=flat-square&logo=Travis)](https://travis-ci.org/piximi/application)
